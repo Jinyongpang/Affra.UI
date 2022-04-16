@@ -1,8 +1,10 @@
 ﻿
+using Microsoft.OData.Client;
+
 namespace JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
 {
     public interface IFileManagementService
     {
-        Task<IEnumerable<Affra.Service.DataExtractor.Domain.Files.File>> GetAsync();
+        DataServiceQuery<Affra.Service.DataExtractor.Domain.Files.File> Get(bool includeCount = true);
     }
 }

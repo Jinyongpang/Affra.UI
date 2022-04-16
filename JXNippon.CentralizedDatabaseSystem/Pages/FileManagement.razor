@@ -1,47 +1,49 @@
-﻿@page "/fetchdata"
+﻿@page "/filemanagement"
+@using System.Linq;
+@using System.Linq.Dynamic.Core;
+@using JXNippon.CentralizedDatabaseSystem.Domain.Extensions
 @using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
+@using Microsoft.OData.Client
+@using Microsoft.OData.Extensions.Client
 @inject IFileManagementService FileManagementService
 
 <PageTitle>File Management</PageTitle>
 
 <h1>File Management</h1>
+<RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />
+<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@files" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="Affra.Service.DataExtractor.Domain.Files.File" ColumnWidth="200px">
+    <Columns>
+        <RadzenDataGridColumn TItem="Affra.Service.DataExtractor.Domain.Files.File" Property="FolderName" Filterable="false" Title="Folder Name" Frozen="true" Width="50px" TextAlign="TextAlign.Center" />
+        <RadzenDataGridColumn TItem="Affra.Service.DataExtractor.Domain.Files.File" Property="FileName" Title="File Name" />
+        <RadzenDataGridColumn TItem="Affra.Service.DataExtractor.Domain.Files.File" Property="LastUpdatedDateTime" Title="Last Updated Date Time" Width="150px"/>
+        <RadzenDataGridColumn TItem="Affra.Service.DataExtractor.Domain.Files.File" Property="ProcessStatus" Title="Process Status"/>
 
-<p>This component demonstrates fetching data from the server.</p>
-
-@if (files == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Folder</th>
-                <th>File Name</th>
-                <th>Last Updated Date Time</th>
-                <th>Process Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var file in files)
-            {
-                <tr>
-                    <td>@file.FolderName</td>
-                    <td>@file.FileName</td>
-                    <td>@file.LastUpdatedDateTime</td>
-                    <td>@file.ProcessStatus</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+    </Columns>
+</RadzenDataGrid>
 
 @code {
+    private RadzenDataGrid<Affra.Service.DataExtractor.Domain.Files.File> grid;
     private IEnumerable<Affra.Service.DataExtractor.Domain.Files.File> files;
+    private int count;
+    private bool isLoading;
 
-    protected override async Task OnInitializedAsync()
+    async Task Reload()
     {
-        files = await FileManagementService.GetAsync();
+        grid.Reset(true); 
+        await grid.Reload();
+    }
+
+    async Task LoadData(LoadDataArgs args)
+    {
+        isLoading = true;
+
+        var filesResponse = await FileManagementService.Get()
+            .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
+            .ToQueryOperationResponseAsync<Affra.Service.DataExtractor.Domain.Files.File>();
+
+        count = (int)filesResponse.Count;
+        files = filesResponse.ToList();
+
+        isLoading = false;
     }
 }
