@@ -1,0 +1,47 @@
+﻿@page "/fetchdata"
+@using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
+@inject IFileManagementService FileManagementService
+
+<PageTitle>File Management</PageTitle>
+
+<h1>File Management</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (files == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Folder</th>
+                <th>File Name</th>
+                <th>Last Updated Date Time</th>
+                <th>Process Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var file in files)
+            {
+                <tr>
+                    <td>@file.FolderName</td>
+                    <td>@file.FileName</td>
+                    <td>@file.LastUpdatedDateTime</td>
+                    <td>@file.ProcessStatus</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Affra.Service.DataExtractor.Domain.Files.File> files;
+
+    protected override async Task OnInitializedAsync()
+    {
+        files = await FileManagementService.GetAsync();
+    }
+}
