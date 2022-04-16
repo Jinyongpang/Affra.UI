@@ -1,3 +1,6 @@
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
 using JXNippon.CentralizedDatabaseSystem;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements;
@@ -20,7 +23,13 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddODataClient(nameof(DataExtractorUnitOfWork))
     .AddHttpClient();
 
-
+builder.Services
+    .AddBlazorise(options =>
+    {
+        options.Immediate = true;
+    })
+    .AddBootstrapProviders()
+    .AddFontAwesomeIcons();
 
 builder.Services.AddMsalAuthentication(options =>
 {
