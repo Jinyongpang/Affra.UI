@@ -1,3 +1,5 @@
+using Affra.Core.Domain.Extensions;
+using Affra.Core.Domain.UnitOfWorks;
 using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
@@ -19,7 +21,9 @@ builder.Configuration.GetSection(nameof(DataExtractorConfigurations)).Bind(dataE
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<IFileManagementService, FileManagementService>()
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
+    .AddScoped<IUnitOfWork, DataExtractorUnitOfWork>()
     .AddSingleton<IOptions<DataExtractorConfigurations>>(Options.Create(dataExtractorConfigurations))
+    .AddGenericService()
     .AddODataClient(nameof(DataExtractorUnitOfWork))
     .AddHttpClient();
 

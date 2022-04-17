@@ -4,6 +4,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
 {
     public interface IDataExtractorUnitOfWork : IUnitOfWork
     {
-        IGenericRepository<Affra.Service.DataExtractor.Domain.Files.File> FileRepository { get; }
+        IGenericRepository<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> FileRepository { get; }
     }
 }

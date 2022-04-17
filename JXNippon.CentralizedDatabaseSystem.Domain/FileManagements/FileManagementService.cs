@@ -11,9 +11,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
             _dataExtractorUnitOfWork = dataExtractorUnitOfWork;
         }
 
-        public DataServiceQuery<Affra.Service.DataExtractor.Domain.Files.File> Get(bool includeCount = true)
+        public DataServiceQuery<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> Get(bool includeCount = true)
         {
-            var query = _dataExtractorUnitOfWork.FileRepository.Get() as DataServiceQuery<Affra.Service.DataExtractor.Domain.Files.File>;
+            var query = _dataExtractorUnitOfWork.FileRepository.Get() as DataServiceQuery<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File>;
             query = query.IncludeCount(includeCount);
             return query;
         }

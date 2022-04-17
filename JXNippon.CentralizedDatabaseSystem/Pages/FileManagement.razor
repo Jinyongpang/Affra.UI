@@ -1,29 +1,54 @@
 ﻿@page "/filemanagement"
 @using System.Linq;
 @using System.Linq.Dynamic.Core;
+@using Affra.Core.Domain.Services
 @using JXNippon.CentralizedDatabaseSystem.Domain.Extensions
 @using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
 @using Microsoft.OData.Client
 @using Microsoft.OData.Extensions.Client
 @inject IFileManagementService FileManagementService
+@inject IGenericService<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> GenericFileService
 
 <PageTitle>File Management</PageTitle>
 
 <h1>File Management</h1>
 <RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />
-<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@files" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="Affra.Service.DataExtractor.Domain.Files.File" ColumnWidth="200px">
+<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@files" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" ColumnWidth="200px">
     <Columns>
-        <RadzenDataGridColumn TItem="Affra.Service.DataExtractor.Domain.Files.File" Property="FolderName" Filterable="false" Title="Folder Name" Frozen="true" Width="50px" TextAlign="TextAlign.Center" />
-        <RadzenDataGridColumn TItem="Affra.Service.DataExtractor.Domain.Files.File" Property="FileName" Title="File Name" />
-        <RadzenDataGridColumn TItem="Affra.Service.DataExtractor.Domain.Files.File" Property="LastUpdatedDateTime" Title="Last Updated Date Time" Width="150px"/>
-        <RadzenDataGridColumn TItem="Affra.Service.DataExtractor.Domain.Files.File" Property="ProcessStatus" Title="Process Status"/>
+        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="FolderName" Filterable="false" Title="Folder Name" Frozen="true" Width="50px" TextAlign="TextAlign.Center" />
+        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="FileName" Title="File Name" />
+        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="LastUpdatedDateTime" Title="Last Updated Date Time" Width="150px"/>
+        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="ProcessStatus" Title="Process Status"/>
+        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Context="sampleBlazorModelsSampleOrder" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="120px">
+            <Template Context="file">
+                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@(args => EditRow(file))" @onclick:stopPropagation="true">
+                </RadzenButton>
+            </Template>
+            <EditTemplate Context="file">
+                <RadzenButton Icon="check" ButtonStyle="ButtonStyle.Primary" Class="m-1" Click="@((args) => SaveRow(file))">
+                </RadzenButton>
+                <RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@((args) => CancelEdit(file))">
+                </RadzenButton>
+            </EditTemplate>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Context="order" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="60px">
+            <Template Context="file">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Small" Class="m-1" Click="@(args => DeleteRow(file))"  @onclick:stopPropagation="true">
+                </RadzenButton>
+            </Template>
+            <EditTemplate Context="file">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Small" Class="m-1" Click="@(args => DeleteRow(file))">
+                </RadzenButton>
+            </EditTemplate>
+        </RadzenDataGridColumn>
 
     </Columns>
 </RadzenDataGrid>
 
 @code {
-    private RadzenDataGrid<Affra.Service.DataExtractor.Domain.Files.File> grid;
-    private IEnumerable<Affra.Service.DataExtractor.Domain.Files.File> files;
+    private RadzenDataGrid<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> grid;
+    private IEnumerable<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> files;
+    private DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File fileToInsert;
     private int count;
     private bool isLoading;
 
@@ -39,11 +64,58 @@
 
         var filesResponse = await FileManagementService.Get()
             .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-            .ToQueryOperationResponseAsync<Affra.Service.DataExtractor.Domain.Files.File>();
+            .ToQueryOperationResponseAsync<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File>();
 
         count = (int)filesResponse.Count;
         files = filesResponse.ToList();
 
         isLoading = false;
     }
+
+    async Task EditRow(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
+    {
+        await grid.EditRow(file);
+    }
+
+    async Task SaveRow(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
+    {
+        if (file == fileToInsert)
+        {
+            fileToInsert = null;
+        }
+        await GenericFileService.InsertAsync(file);
+        await grid.UpdateRow(file);
+    }
+
+    void CancelEdit(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
+    {
+        if (file == fileToInsert)
+        {
+            fileToInsert = null;
+        }
+
+        grid.CancelEditRow(file);
+
+    }
+
+    async Task DeleteRow(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
+    {
+        if (file == fileToInsert)
+        {
+            fileToInsert = null;
+        }
+
+        if (files.Contains(file))
+        {
+            await GenericFileService.DeleteAsync(file);
+
+            await grid.Reload();
+        }
+        else
+        {
+            grid.CancelEditRow(file);
+        }
+    }
+
+
 }
