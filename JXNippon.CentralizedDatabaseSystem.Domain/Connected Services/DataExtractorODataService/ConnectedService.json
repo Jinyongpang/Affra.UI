@@ -16,7 +16,7 @@
     "GenerateOperationImports": false,
     "ServiceName": "DataExtractorODataService",
     "AcceptAllUntrustedCertificates": false,
-    "Endpoint": "http://localhost:50000/DataExtractor-api/odata/$metadata",
+    "Endpoint": "https://localhost:7200/DataExtractor-api/odata/$metadata",
     "EdmxVersion": {
       "Major": 4,
       "Minor": 0,
@@ -27,7 +27,7 @@
     },
     "GeneratedFileNamePrefix": "DataExtractorODataService",
     "UseNameSpacePrefix": true,
-    "NamespacePrefix": null,
+    "NamespacePrefix": "DataExtractorODataService",
     "UseDataServiceCollection": false,
     "UseAsyncDataServiceCollection": false,
     "OpenGeneratedFilesOnComplete": false,
