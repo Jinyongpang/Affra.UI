@@ -6,8 +6,8 @@
 @using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
 @using Microsoft.OData.Client
 @using Microsoft.OData.Extensions.Client
-@inject IFileManagementService FileManagementService
-@inject IGenericService<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> GenericFileService
+@inject IServiceProvider ServiceProvider
+@inject NotificationService NotificationService
 
 <PageTitle>File Management</PageTitle>
 
@@ -18,9 +18,14 @@
         <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="FolderName" Filterable="false" Title="Folder Name" Frozen="true" Width="50px" TextAlign="TextAlign.Center" />
         <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="FileName" Title="File Name" />
         <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="LastUpdatedDateTime" Title="Last Updated Date Time" Width="150px">
-              <Template Context="file">
-                  @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:f}", file.LastUpdatedDateTime.ToLocalTime())
-              </Template>
+            <Template Context="file">
+                @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:f}", file.LastUpdatedDateTime.ToLocalTime())
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="NumberOfAttempts" Title="Attempts">
+            <EditTemplate Context="file">
+                <RadzenNumeric @bind-Value="file.NumberOfAttempts" Style="width:100%" />
+            </EditTemplate>
         </RadzenDataGridColumn>
         <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="ProcessStatus" Title="Process Status"/>
         <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Context="sampleBlazorModelsSampleOrder" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="120px">
@@ -65,8 +70,9 @@
     async Task LoadData(LoadDataArgs args)
     {
         isLoading = true;
-
-        var filesResponse = await FileManagementService.Get()
+        using var serviceScope = ServiceProvider.CreateScope();
+        var fileManagementService = this.GetFileManagementService(serviceScope);
+        var filesResponse = await fileManagementService.Get()
             .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
             .ToQueryOperationResponseAsync<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File>();
 
@@ -83,12 +89,23 @@
 
     async Task SaveRow(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
     {
-        if (file == fileToInsert)
+        try
         {
-            fileToInsert = null;
+            if (file == fileToInsert)
+            {
+                fileToInsert = null;
+            }
+            using var serviceScope = ServiceProvider.CreateScope();
+            var fileService = this.GetGenericFileService(serviceScope);
+            await fileService.UpdateAsync(file, file.Id);
+            // file = await GenericFileService.GetByIdAsync(file.Id);
+            await grid.UpdateRow(file);
         }
-        await GenericFileService.InsertAsync(file);
-        await grid.UpdateRow(file);
+        catch (Exception ex)
+        {
+            HandleException(ex);
+            throw;
+        }
     }
 
     void CancelEdit(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
@@ -104,21 +121,51 @@
 
     async Task DeleteRow(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
     {
-        if (file == fileToInsert)
+        try
         {
-            fileToInsert = null;
-        }
+            if (file == fileToInsert)
+            {
+                fileToInsert = null;
+            }
 
-        if (files.Contains(file))
-        {
-            await GenericFileService.DeleteAsync(file);
-            await grid.Reload();
+            if (files.Contains(file))
+            {
+                using var serviceScope = ServiceProvider.CreateScope();
+                var fileService = this.GetGenericFileService(serviceScope);
+                await fileService.DeleteAsync(file);
+                await grid.Reload();
+            }
+            else
+            {
+                grid.CancelEditRow(file);
+            }
         }
-        else
+        catch (Exception ex)
         {
-            grid.CancelEditRow(file);
+            HandleException(ex);
+            throw;
         }
     }
 
+    void HandleException(Exception ex)
+    {
+        NotificationService.Notify(new()
+            {
+                Summary = "Error",
+                Detail = ex.InnerException?.ToString(),
+                Severity = NotificationSeverity.Error,
+                Duration = 120000,
+            });
+    }
+
+    IGenericService<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> GetGenericFileService(IServiceScope serviceScope)
+    {
+        return serviceScope.ServiceProvider.GetRequiredService<IGenericService<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File>>();     
+    }
+
+    IFileManagementService GetFileManagementService(IServiceScope serviceScope)
+    {
+        return serviceScope.ServiceProvider.GetRequiredService<IFileManagementService>();     
+    }
 
 }
