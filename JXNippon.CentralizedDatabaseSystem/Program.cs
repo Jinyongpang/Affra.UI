@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OData.Extensions.Client;
+using Radzen;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -25,7 +26,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<DataExtractorConfigurations>>(Options.Create(dataExtractorConfigurations))
     .AddGenericService()
     .AddODataClient(nameof(DataExtractorUnitOfWork))
-    .AddHttpClient();
+    .AddHttpClient()
+    .Services.AddScoped<NotificationService>();
 
 builder.Services
     .AddBlazorise(options =>

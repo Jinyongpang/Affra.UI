@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JXNippon.CentralizedDatabaseSystem.Domain\JXNippon.CentralizedDatabaseSystem.Domain.csproj" />
+	<ProjectReference Include="..\JXNippon.CentralizedDatabaseSystem.Domain\JXNippon.CentralizedDatabaseSystem.Domain.csproj" />
     <ProjectReference Include="..\JXNippon.CentralizedDatabaseSystem.Infrastructure\JXNippon.CentralizedDatabaseSystem.Infrastructure.csproj" />
   </ItemGroup>
 
