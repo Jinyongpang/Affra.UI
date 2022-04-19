@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JXNippon.CentralizedDatabaseSystem", "JXNippon.CentralizedDatabaseSystem\JXNippon.CentralizedDatabaseSystem.csproj", "{866CBF8D-EA16-4314-8BF2-5F6019F21F6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JXNippon.CentralizedDatabaseSystem", "src\JXNippon.CentralizedDatabaseSystem\JXNippon.CentralizedDatabaseSystem.csproj", "{866CBF8D-EA16-4314-8BF2-5F6019F21F6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JXNippon.CentralizedDatabaseSystem.Domain", "JXNippon.CentralizedDatabaseSystem.Domain\JXNippon.CentralizedDatabaseSystem.Domain.csproj", "{AE0267A4-5DA3-4955-9A9A-D9CF07DF815D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JXNippon.CentralizedDatabaseSystem.Domain", "src\JXNippon.CentralizedDatabaseSystem.Domain\JXNippon.CentralizedDatabaseSystem.Domain.csproj", "{AE0267A4-5DA3-4955-9A9A-D9CF07DF815D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JXNippon.CentralizedDatabaseSystem.Infrastructure", "JXNippon.CentralizedDatabaseSystem.Infrastructure\JXNippon.CentralizedDatabaseSystem.Infrastructure.csproj", "{0A1E6EDC-05B1-4C07-8538-8C108AFA51AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JXNippon.CentralizedDatabaseSystem.Infrastructure", "src\JXNippon.CentralizedDatabaseSystem.Infrastructure\JXNippon.CentralizedDatabaseSystem.Infrastructure.csproj", "{0A1E6EDC-05B1-4C07-8538-8C108AFA51AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
