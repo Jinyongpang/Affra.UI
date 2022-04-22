@@ -1,4 +1,5 @@
 ﻿using Affra.Core.Domain.Services;
+using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using Microsoft.AspNetCore.Components;
@@ -9,9 +10,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
     public partial class FileManagement
     {
-        private RadzenDataGrid<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> grid;
-        private IEnumerable<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> files;
-        private DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File fileToInsert;
+        private RadzenDataGrid<DataFile> grid;
+        private IEnumerable<DataFile> files;
+        private DataFile fileToInsert;
         private int count;
         private bool isLoading;
 
@@ -31,7 +32,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             var fileManagementService = this.GetFileManagementService(serviceScope);
             var filesResponse = await fileManagementService.Get()
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File>();
+                .ToQueryOperationResponseAsync<DataFile>();
 
             count = (int)filesResponse.Count;
             files = filesResponse.ToList();
@@ -39,12 +40,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             isLoading = false;
         }
 
-        private async Task EditRow(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
+        private async Task EditRow(DataFile file)
         {
             await grid.EditRow(file);
         }
 
-        private async Task SaveRow(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
+        private async Task SaveRow(DataFile file)
         {
             try
             {
@@ -64,7 +65,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             }
         }
 
-        private void CancelEdit(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
+        private void CancelEdit(DataFile file)
         {
             if (file == fileToInsert)
             {
@@ -75,7 +76,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         }
 
-        private async Task DeleteRow(DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
+        private async Task DeleteRow(DataFile file)
         {
             try
             {
@@ -114,9 +115,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             });
         }
 
-        private IGenericService<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> GetGenericFileService(IServiceScope serviceScope)
+        private IGenericService<DataFile> GetGenericFileService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IGenericService<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IGenericService<DataFile>>();
         }
 
         private IFileManagementService GetFileManagementService(IServiceScope serviceScope)

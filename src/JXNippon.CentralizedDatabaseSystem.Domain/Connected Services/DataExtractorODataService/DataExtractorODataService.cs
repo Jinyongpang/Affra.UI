@@ -8,209 +8,60 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 17/4/2022 12:41:01 PM
-namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts
+// Generation date: 22/4/2022 6:06:38 PM
+namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
 {
     /// <summary>
-    /// There are no comments for AccountSingle in the schema.
+    /// There are no comments for DataFileSingle in the schema.
     /// </summary>
-    public partial class AccountSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Account>
+    public partial class DataFileSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DataFile>
     {
         /// <summary>
-        /// Initialize a new AccountSingle object.
+        /// Initialize a new DataFileSingle object.
         /// </summary>
-        public AccountSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+        public DataFileSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
             : base(context, path) {}
 
         /// <summary>
-        /// Initialize a new AccountSingle object.
+        /// Initialize a new DataFileSingle object.
         /// </summary>
-        public AccountSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+        public DataFileSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
             : base(context, path, isComposable) {}
 
         /// <summary>
-        /// Initialize a new AccountSingle object.
+        /// Initialize a new DataFileSingle object.
         /// </summary>
-        public AccountSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<Account> query)
+        public DataFileSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DataFile> query)
             : base(query) {}
 
     }
     /// <summary>
-    /// There are no comments for Account in the schema.
+    /// There are no comments for DataFile in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    public partial class Account : global::Microsoft.OData.Client.BaseEntityType
+    public partial class DataFile : global::Microsoft.OData.Client.BaseEntityType
     {
         /// <summary>
-        /// Create a new Account object.
+        /// Create a new DataFile object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static Account CreateAccount(string ID, long xmin)
-        {
-            Account account = new Account();
-            account.Id = ID;
-            account.xmin = xmin;
-            return account;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Id;
-        partial void OnIdChanging(string value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Name in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Name
-        {
-            get
-            {
-                return this._Name;
-            }
-            set
-            {
-                this.OnNameChanging(value);
-                this._Name = value;
-                this.OnNameChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Name;
-        partial void OnNameChanging(string value);
-        partial void OnNameChanged();
-        /// <summary>
-        /// There are no comments for Property xmin in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
-        {
-            get
-            {
-                return this._xmin;
-            }
-            set
-            {
-                this.OnxminChanging(value);
-                this._xmin = value;
-                this.OnxminChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _xmin;
-        partial void OnxminChanging(long value);
-        partial void OnxminChanged();
-    }
-    /// <summary>
-    /// Class containing all extension methods
-    /// </summary>
-    public static class ExtensionMethods
-    {
-        /// <summary>
-        /// Get an entity of type global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.Account as global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.AccountSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.AccountSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.Account> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.AccountSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.Account as global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.AccountSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.AccountSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.Account> _source,
-            string id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.AccountSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-    }
-}
-namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files
-{
-    /// <summary>
-    /// There are no comments for FileSingle in the schema.
-    /// </summary>
-    public partial class FileSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<File>
-    {
-        /// <summary>
-        /// Initialize a new FileSingle object.
-        /// </summary>
-        public FileSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
-            : base(context, path) {}
-
-        /// <summary>
-        /// Initialize a new FileSingle object.
-        /// </summary>
-        public FileSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
-            : base(context, path, isComposable) {}
-
-        /// <summary>
-        /// Initialize a new FileSingle object.
-        /// </summary>
-        public FileSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<File> query)
-            : base(query) {}
-
-    }
-    /// <summary>
-    /// There are no comments for File in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::Microsoft.OData.Client.Key("Id")]
-    public partial class File : global::Microsoft.OData.Client.BaseEntityType
-    {
-        /// <summary>
-        /// Create a new File object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="lastUpdatedDateTime">Initial value of LastUpdatedDateTime.</param>
-        /// <param name="pickupDateTime">Initial value of PickupDateTime.</param>
+        /// <param name="lastModifiedDateTime">Initial value of LastModifiedDateTime.</param>
         /// <param name="processStatus">Initial value of ProcessStatus.</param>
         /// <param name="numberOfAttempts">Initial value of NumberOfAttempts.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static File CreateFile(long ID, 
-                    global::System.DateTimeOffset lastUpdatedDateTime, 
-                    global::System.DateTimeOffset pickupDateTime, 
-                    global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileProcessStatus processStatus, 
-                    int numberOfAttempts, 
-                    long xmin)
+        public static DataFile CreateDataFile(long ID, global::System.DateTimeOffset lastModifiedDateTime, global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.FileProcessStatus processStatus, int numberOfAttempts, long xmin)
         {
-            File file = new File();
-            file.Id = ID;
-            file.LastUpdatedDateTime = lastUpdatedDateTime;
-            file.PickupDateTime = pickupDateTime;
-            file.ProcessStatus = processStatus;
-            file.NumberOfAttempts = numberOfAttempts;
-            file.xmin = xmin;
-            return file;
+            DataFile dataFile = new DataFile();
+            dataFile.Id = ID;
+            dataFile.LastModifiedDateTime = lastModifiedDateTime;
+            dataFile.ProcessStatus = processStatus;
+            dataFile.NumberOfAttempts = numberOfAttempts;
+            dataFile.xmin = xmin;
+            return dataFile;
         }
         /// <summary>
         /// There are no comments for Property Id in the schema.
@@ -276,52 +127,73 @@ namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files
         partial void OnFileNameChanging(string value);
         partial void OnFileNameChanged();
         /// <summary>
-        /// There are no comments for Property LastUpdatedDateTime in the schema.
+        /// There are no comments for Property LastModifiedDateTime in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset LastUpdatedDateTime
+        public global::System.DateTimeOffset LastModifiedDateTime
         {
             get
             {
-                return this._LastUpdatedDateTime;
+                return this._LastModifiedDateTime;
             }
             set
             {
-                this.OnLastUpdatedDateTimeChanging(value);
-                this._LastUpdatedDateTime = value;
-                this.OnLastUpdatedDateTimeChanged();
+                this.OnLastModifiedDateTimeChanging(value);
+                this._LastModifiedDateTime = value;
+                this.OnLastModifiedDateTimeChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _LastUpdatedDateTime;
-        partial void OnLastUpdatedDateTimeChanging(global::System.DateTimeOffset value);
-        partial void OnLastUpdatedDateTimeChanged();
+        private global::System.DateTimeOffset _LastModifiedDateTime;
+        partial void OnLastModifiedDateTimeChanging(global::System.DateTimeOffset value);
+        partial void OnLastModifiedDateTimeChanged();
         /// <summary>
-        /// There are no comments for Property PickupDateTime in the schema.
+        /// There are no comments for Property JobStartDateTime in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset PickupDateTime
+        public global::System.Nullable<global::System.DateTimeOffset> JobStartDateTime
         {
             get
             {
-                return this._PickupDateTime;
+                return this._JobStartDateTime;
             }
             set
             {
-                this.OnPickupDateTimeChanging(value);
-                this._PickupDateTime = value;
-                this.OnPickupDateTimeChanged();
+                this.OnJobStartDateTimeChanging(value);
+                this._JobStartDateTime = value;
+                this.OnJobStartDateTimeChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _PickupDateTime;
-        partial void OnPickupDateTimeChanging(global::System.DateTimeOffset value);
-        partial void OnPickupDateTimeChanged();
+        private global::System.Nullable<global::System.DateTimeOffset> _JobStartDateTime;
+        partial void OnJobStartDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnJobStartDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property ProcessedLastModifiedDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> ProcessedLastModifiedDateTime
+        {
+            get
+            {
+                return this._ProcessedLastModifiedDateTime;
+            }
+            set
+            {
+                this.OnProcessedLastModifiedDateTimeChanging(value);
+                this._ProcessedLastModifiedDateTime = value;
+                this.OnProcessedLastModifiedDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _ProcessedLastModifiedDateTime;
+        partial void OnProcessedLastModifiedDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnProcessedLastModifiedDateTimeChanged();
         /// <summary>
         /// There are no comments for Property ProcessStatus in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileProcessStatus ProcessStatus
+        public global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.FileProcessStatus ProcessStatus
         {
             get
             {
@@ -335,8 +207,8 @@ namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileProcessStatus _ProcessStatus;
-        partial void OnProcessStatusChanging(global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileProcessStatus value);
+        private global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.FileProcessStatus _ProcessStatus;
+        partial void OnProcessStatusChanging(global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.FileProcessStatus value);
         partial void OnProcessStatusChanged();
         /// <summary>
         /// There are no comments for Property NumberOfAttempts in the schema.
@@ -386,9 +258,10 @@ namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files
     /// </summary>
     public enum FileProcessStatus
     {
-        Processing = 0,
-        Failed = 1,
-        Completed = 2
+        Pending = 0,
+        Processing = 1,
+        Failed = 2,
+        Completed = 3
     }
     /// <summary>
     /// Class containing all extension methods
@@ -396,27 +269,27 @@ namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files
     public static class ExtensionMethods
     {
         /// <summary>
-        /// Get an entity of type global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File as global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileSingle specified by key from an entity set
+        /// Get an entity of type global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile as global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFileSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        public static global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFileSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
         {
-            return new global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFileSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File as global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileSingle specified by key from an entity set
+        /// Get an entity of type global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile as global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFileSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> _source,
+        public static global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFileSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile> _source,
             long id)
         {
             global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.FileSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFileSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
@@ -449,12 +322,7 @@ namespace DataExtractorODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.DataExtractor.Domain.Accounts", "DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts");
-            if ((resolvedType != null))
-            {
-                return resolvedType;
-            }
-            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.DataExtractor.Domain.Files", "DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.DataExtractor.Domain.DataFiles", "DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -474,13 +342,9 @@ namespace DataExtractorODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
-            if (clientType.Namespace.Equals("DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts", global::System.StringComparison.Ordinal))
+            if (clientType.Namespace.Equals("DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles", global::System.StringComparison.Ordinal))
             {
-                return string.Concat("Affra.Service.DataExtractor.Domain.Accounts.", clientType.Name);
-            }
-            if (clientType.Namespace.Equals("DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files", global::System.StringComparison.Ordinal))
-            {
-                return string.Concat("Affra.Service.DataExtractor.Domain.Files.", clientType.Name);
+                return string.Concat("Affra.Service.DataExtractor.Domain.DataFiles.", clientType.Name);
             }
             if (clientType.Namespace.Equals("DataExtractorODataService.Default", global::System.StringComparison.Ordinal))
             {
@@ -489,54 +353,29 @@ namespace DataExtractorODataService.Default
             return clientType.FullName;
         }
         /// <summary>
-        /// There are no comments for Account in the schema.
+        /// There are no comments for DataFile in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.Account> Account
+        public global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile> DataFile
         {
             get
             {
-                if ((this._Account == null))
+                if ((this._DataFile == null))
                 {
-                    this._Account = base.CreateQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.Account>("Account");
+                    this._DataFile = base.CreateQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile>("DataFile");
                 }
-                return this._Account;
+                return this._DataFile;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.Account> _Account;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile> _DataFile;
         /// <summary>
-        /// There are no comments for File in the schema.
+        /// There are no comments for DataFile in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> File
+        public void AddToDataFile(global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile dataFile)
         {
-            get
-            {
-                if ((this._File == null))
-                {
-                    this._File = base.CreateQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File>("File");
-                }
-                return this._File;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> _File;
-        /// <summary>
-        /// There are no comments for Account in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToAccount(global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Accounts.Account account)
-        {
-            base.AddObject("Account", account);
-        }
-        /// <summary>
-        /// There are no comments for File in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToFile(global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File file)
-        {
-            base.AddObject("File", file);
+            base.AddObject("DataFile", dataFile);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -546,46 +385,31 @@ namespace DataExtractorODataService.Default
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
             private const string Edmx = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
   <edmx:DataServices>
-    <Schema Namespace=""Affra.Service.DataExtractor.Domain.Accounts"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityType Name=""Account"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.String"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-      </EntityType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.DataExtractor.Domain.Files"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityType Name=""File"">
+    <Schema Namespace=""Affra.Service.DataExtractor.Domain.DataFiles"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""DataFile"">
         <Key>
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""FolderName"" Type=""Edm.String"" />
         <Property Name=""FileName"" Type=""Edm.String"" />
-        <Property Name=""LastUpdatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""PickupDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""ProcessStatus"" Type=""Affra.Service.DataExtractor.Domain.Files.FileProcessStatus"" Nullable=""false"" />
+        <Property Name=""LastModifiedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""JobStartDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""ProcessedLastModifiedDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""ProcessStatus"" Type=""Affra.Service.DataExtractor.Domain.DataFiles.FileProcessStatus"" Nullable=""false"" />
         <Property Name=""NumberOfAttempts"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
       <EnumType Name=""FileProcessStatus"">
-        <Member Name=""Processing"" Value=""0"" />
-        <Member Name=""Failed"" Value=""1"" />
-        <Member Name=""Completed"" Value=""2"" />
+        <Member Name=""Pending"" Value=""0"" />
+        <Member Name=""Processing"" Value=""1"" />
+        <Member Name=""Failed"" Value=""2"" />
+        <Member Name=""Completed"" Value=""3"" />
       </EnumType>
     </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityContainer Name=""Container"">
-        <EntitySet Name=""Account"" EntityType=""Affra.Service.DataExtractor.Domain.Accounts.Account"">
-          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name=""File"" EntityType=""Affra.Service.DataExtractor.Domain.Files.File"">
+        <EntitySet Name=""DataFile"" EntityType=""Affra.Service.DataExtractor.Domain.DataFiles.DataFile"">
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
