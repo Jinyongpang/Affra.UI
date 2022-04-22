@@ -1,4 +1,5 @@
-﻿using Microsoft.OData.Client;
+﻿using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
+using Microsoft.OData.Client;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
 {
@@ -11,9 +12,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
             _dataExtractorUnitOfWork = dataExtractorUnitOfWork;
         }
 
-        public DataServiceQuery<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> Get(bool includeCount = true)
+        public DataServiceQuery<DataFile> Get(bool includeCount = true)
         {
-            var query = _dataExtractorUnitOfWork.FileRepository.Get() as DataServiceQuery<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File>;
+            var query = _dataExtractorUnitOfWork.DataFileRepository.Get() as DataServiceQuery<DataFile>;
             query = query.IncludeCount(includeCount);
             return query;
         }

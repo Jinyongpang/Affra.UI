@@ -1,9 +1,10 @@
 ﻿using Affra.Core.Domain.UnitOfWorks;
+using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.FileManagements
 {
     public interface IDataExtractorUnitOfWork : IUnitOfWork
     {
-        IGenericRepository<DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File> FileRepository { get; }
+        IGenericRepository<DataFile> DataFileRepository { get; }
     }
 }

@@ -1,25 +1,26 @@
 ﻿@page "/filemanagement"
+@using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
 
 <PageTitle>File Management</PageTitle>
 
 <h1>File Management</h1>
 <RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />
-<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@files" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" ColumnWidth="200px">
+<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@files" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DataFile" ColumnWidth="200px">
     <Columns>
-        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="FolderName" Filterable="false" Title="Folder Name" Frozen="true" Width="50px" TextAlign="TextAlign.Center" />
-        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="FileName" Title="File Name" />
-        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="LastUpdatedDateTime" Title="Last Updated Date Time" Width="150px">
+        <RadzenDataGridColumn TItem="DataFile" Property="FolderName" Filterable="false" Title="Folder" Frozen="true" Width="200px" TextAlign="TextAlign.Center" />
+        <RadzenDataGridColumn TItem="DataFile" Property="FileName" Title="File" />
+        <RadzenDataGridColumn TItem="DataFile" Property="LastModifiedDateTime" Title="Last Modified Date Time" Width="200px">
             <Template Context="file">
-                @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:f}", file.LastUpdatedDateTime.ToLocalTime())
+                @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:f}", file.LastModifiedDateTime.ToLocalTime())
             </Template>
         </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="NumberOfAttempts" Title="Attempts">
+        <RadzenDataGridColumn TItem="DataFile" Property="NumberOfAttempts" Title="Attempts" Width="60px">
             <EditTemplate Context="file">
                 <RadzenNumeric @bind-Value="file.NumberOfAttempts" Style="width:100%" />
             </EditTemplate>
         </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Property="ProcessStatus" Title="Process Status"/>
-        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Context="sampleBlazorModelsSampleOrder" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="120px">
+        <RadzenDataGridColumn TItem="DataFile" Property="ProcessStatus" Title="Status" Width="100px"/>
+        <RadzenDataGridColumn TItem="DataFile" Context="sampleBlazorModelsSampleOrder" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="120px">
             <Template Context="file">
                 <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@(args => EditRow(file))" @onclick:stopPropagation="true">
                 </RadzenButton>
@@ -31,7 +32,7 @@
                 </RadzenButton>
             </EditTemplate>
         </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DataExtractorODataService.Affra.Service.DataExtractor.Domain.Files.File" Context="order" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="60px">
+        <RadzenDataGridColumn TItem="DataFile" Context="order" Filterable="false" Sortable="false" TextAlign="TextAlign.Center">
             <Template Context="file">
                 <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Small" Class="m-1" Click="@(args => DeleteRow(file))"  @onclick:stopPropagation="true">
                 </RadzenButton>
