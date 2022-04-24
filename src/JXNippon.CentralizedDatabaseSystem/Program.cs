@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Affra.Core.Domain.Extensions;
 using Affra.Core.Domain.UnitOfWorks;
 using Blazorise;
@@ -27,7 +28,10 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddGenericService()
     .AddODataClient(nameof(DataExtractorUnitOfWork))
     .AddHttpClient()
-    .Services.AddScoped<NotificationService>();
+    .AddHttpMessageHandler<CreateActivityHandler>()
+    .Services
+    .AddTransient<CreateActivityHandler>()
+    .AddScoped<NotificationService>();
 
 builder.Services
     .AddBlazorise(options =>
