@@ -5,7 +5,9 @@ using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
 using JXNippon.CentralizedDatabaseSystem;
+using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
+using JXNippon.CentralizedDatabaseSystem.Infrastructure.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -20,12 +22,15 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 DataExtractorConfigurations dataExtractorConfigurations = new DataExtractorConfigurations();
 builder.Configuration.GetSection(nameof(DataExtractorConfigurations)).Bind(dataExtractorConfigurations);
 
+CentralizedDatabaseSystemConfigurations centralizedDatabaseSystemConfigurations = new CentralizedDatabaseSystemConfigurations();
+builder.Configuration.GetSection(nameof(CentralizedDatabaseSystemConfigurations)).Bind(centralizedDatabaseSystemConfigurations);
+
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
-    .AddScoped<IFileManagementService, FileManagementService>()
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
-    .AddScoped<IUnitOfWork, DataExtractorUnitOfWork>()
     .AddSingleton<IOptions<DataExtractorConfigurations>>(Options.Create(dataExtractorConfigurations))
-    .AddGenericService()
+    .AddScoped<ICentralizedDatabaseSystemUnitOfWork, CentralizedDatabaseSystemUnitOfWork>()
+    .AddSingleton<IOptions<CentralizedDatabaseSystemConfigurations>>(Options.Create(centralizedDatabaseSystemConfigurations))
+    .AddUnitGenericService()
     .AddODataClient(nameof(DataExtractorUnitOfWork))
     .AddHttpClient()
     .AddHttpMessageHandler<CreateActivityHandler>()

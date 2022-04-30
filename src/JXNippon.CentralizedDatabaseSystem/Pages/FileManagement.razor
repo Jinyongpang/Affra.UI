@@ -20,7 +20,7 @@
             </EditTemplate>
         </RadzenDataGridColumn>
         <RadzenDataGridColumn TItem="DataFile" Property="ProcessStatus" Title="Status" Width="100px"/>
-        <RadzenDataGridColumn TItem="DataFile" Context="sampleBlazorModelsSampleOrder" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="120px">
+        <RadzenDataGridColumn TItem="DataFile" Context="file" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="120px">
             <Template Context="file">
                 <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@(args => EditRow(file))" @onclick:stopPropagation="true">
                 </RadzenButton>
