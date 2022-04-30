@@ -29,8 +29,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             isLoading = true;
             using var serviceScope = ServiceProvider.CreateScope();
-            var fileManagementService = this.GetFileManagementService(serviceScope);
-            var filesResponse = await fileManagementService.Get()
+            var fileService = this.GetGenericFileService(serviceScope);
+            var filesResponse = await fileService.Get()
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<DataFile>();
 
@@ -117,12 +117,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         private IGenericService<DataFile> GetGenericFileService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IGenericService<DataFile>>();
-        }
-
-        private IFileManagementService GetFileManagementService(IServiceScope serviceScope)
-        {
-            return serviceScope.ServiceProvider.GetRequiredService<IFileManagementService>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DataFile, IDataExtractorUnitOfWork>>();
         }
     }
 }
