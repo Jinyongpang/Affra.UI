@@ -1,0 +1,33 @@
+﻿@page "/ProducedWaterTreatmentSystemManagement"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
+
+<PageTitle>Produced Water Treatment System</PageTitle>
+
+<div class="container-fluid py-5">  
+    <RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />
+    <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyProducedWaterTreatmentSystems" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyProducedWaterTreatmentSystem" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true">
+        <Columns>
+            <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="ProducedWaterTreatmentSystemName" Width="60px" Title="Name" Frozen="true" Pickable="false">
+                 <FooterTemplate>
+                     Displayed items: <b>@grid.View.Count()</b> of <b>@count</b>
+                </FooterTemplate>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Status" Title="Status" Width="30px"/>
+            <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Date" Title="Date" Width="30px">
+                <Template Context="DailyProducedWaterTreatmentSystem">
+                    @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", DailyProducedWaterTreatmentSystem.Date.ToLocalTime())
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="LastSkimmingDate" Title="Last Skimming" Width="40px">
+                <Template Context="DailyProducedWaterTreatmentSystem">
+                    @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", DailyProducedWaterTreatmentSystem.LastSkimmingDate.ToLocalTime())
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="AnalyserStatus" Title="Analyser Status" Width="50px" />
+            <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Iron" Title="Iron (ppm)" Width="30px" />
+            <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="PH" Title="pH" Width="30px"/>
+            <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Remark" Title="Remark" Width="60px"/>
+            <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Remark2" Title="Remark 2" Width="60px"/>
+        </Columns>
+    </RadzenDataGrid>
+</div>

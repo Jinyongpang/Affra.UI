@@ -1,41 +1,19 @@
 ﻿@page "/PowerGenerationAndDistributionManagement"
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 
-<PageTitle>Power Generation And Distribution Management</PageTitle>
+<PageTitle>Power Generation And Distribution</PageTitle>
 
-<h1>Power Generation And Distribution Management</h1>
-<RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />
-<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyPowerGenerationAndDistributions" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyPowerGenerationAndDistribution" ColumnWidth="200px">
-    <Columns>
-        <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="PowerGeneratorName" Filterable="false" Title="Name" Frozen="true" Width="200px" TextAlign="TextAlign.Center" />
-        <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Status" Title="Status" />
-        <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="DateTime" Title="DateTime" Width="200px">
-            <Template Context="dailyPowerGenerationAndDistribution">
-                @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:f}", dailyPowerGenerationAndDistribution.DateTime.ToLocalTime())
-            </Template>
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Context="dailyPowerGenerationAndDistribution" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="120px">
-            <Template Context="dailyPowerGenerationAndDistribution">
-                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@(args => EditRow(dailyPowerGenerationAndDistribution))" @onclick:stopPropagation="true">
-                </RadzenButton>
-            </Template>
-            <EditTemplate Context="dailyPowerGenerationAndDistribution">
-                <RadzenButton Icon="check" ButtonStyle="ButtonStyle.Primary" Class="m-1" Click="@((args) => SaveRow(dailyPowerGenerationAndDistribution))">
-                </RadzenButton>
-                <RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@((args) => CancelEdit(dailyPowerGenerationAndDistribution))">
-                </RadzenButton>
-            </EditTemplate>
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Context="dailyPowerGenerationAndDistribution" Filterable="false" Sortable="false" TextAlign="TextAlign.Center">
-            <Template Context="dailyPowerGenerationAndDistribution">
-                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Small" Class="m-1" Click="@(args => DeleteRow(dailyPowerGenerationAndDistribution))"  @onclick:stopPropagation="true">
-                </RadzenButton>
-            </Template>
-            <EditTemplate Context="dailyPowerGenerationAndDistribution">
-                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Small" Class="m-1" Click="@(args => DeleteRow(dailyPowerGenerationAndDistribution))">
-                </RadzenButton>
-            </EditTemplate>
-        </RadzenDataGridColumn>
-
-    </Columns>
-</RadzenDataGrid>
+<div class="container-fluid py-5">  
+    <RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />
+    <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyPowerGenerationAndDistributions" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyPowerGenerationAndDistribution" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true">
+        <Columns>
+            <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="PowerGeneratorName" Filterable="false" Title="Name" Frozen="true" />
+            <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Status" Title="Status" />
+            <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Date" Title="Date">
+                <Template Context="dailyPowerGenerationAndDistribution">
+                    @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyPowerGenerationAndDistribution.Date.ToLocalTime())
+                </Template>
+            </RadzenDataGridColumn>
+        </Columns>
+    </RadzenDataGrid>
+</div>
