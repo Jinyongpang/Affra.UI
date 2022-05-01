@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 30/4/2022 4:18:35 PM
+// Generation date: 1/5/2022 12:44:13 AM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -69,14 +69,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new DailyPowerGenerationAndDistribution object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="dateTime">Initial value of DateTime.</param>
+        /// <param name="date">Initial value of Date.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyPowerGenerationAndDistribution CreateDailyPowerGenerationAndDistribution(long ID, global::System.DateTimeOffset dateTime, long xmin)
+        public static DailyPowerGenerationAndDistribution CreateDailyPowerGenerationAndDistribution(long ID, global::System.DateTimeOffset date, long xmin)
         {
             DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution = new DailyPowerGenerationAndDistribution();
             dailyPowerGenerationAndDistribution.Id = ID;
-            dailyPowerGenerationAndDistribution.DateTime = dateTime;
+            dailyPowerGenerationAndDistribution.Date = date;
             dailyPowerGenerationAndDistribution.xmin = xmin;
             return dailyPowerGenerationAndDistribution;
         }
@@ -102,6 +102,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
         /// There are no comments for Property PowerGeneratorName in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -122,27 +143,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private string _PowerGeneratorName;
         partial void OnPowerGeneratorNameChanging(string value);
         partial void OnPowerGeneratorNameChanged();
-        /// <summary>
-        /// There are no comments for Property DateTime in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset DateTime
-        {
-            get
-            {
-                return this._DateTime;
-            }
-            set
-            {
-                this.OnDateTimeChanging(value);
-                this._DateTime = value;
-                this.OnDateTimeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _DateTime;
-        partial void OnDateTimeChanging(global::System.DateTimeOffset value);
-        partial void OnDateTimeChanged();
         /// <summary>
         /// There are no comments for Property Status in the schema.
         /// </summary>
@@ -433,6 +433,537 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
+{
+    /// <summary>
+    /// There are no comments for DailyProducedWaterTreatmentSystemSingle in the schema.
+    /// </summary>
+    public partial class DailyProducedWaterTreatmentSystemSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DailyProducedWaterTreatmentSystem>
+    {
+        /// <summary>
+        /// Initialize a new DailyProducedWaterTreatmentSystemSingle object.
+        /// </summary>
+        public DailyProducedWaterTreatmentSystemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new DailyProducedWaterTreatmentSystemSingle object.
+        /// </summary>
+        public DailyProducedWaterTreatmentSystemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new DailyProducedWaterTreatmentSystemSingle object.
+        /// </summary>
+        public DailyProducedWaterTreatmentSystemSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyProducedWaterTreatmentSystem> query)
+            : base(query) {}
+
+        /// <summary>
+        /// There are no comments for ProducedWaterTreatmentSystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle ProducedWaterTreatmentSystem
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._ProducedWaterTreatmentSystem == null))
+                {
+                    this._ProducedWaterTreatmentSystem = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle(this.Context, GetPath("ProducedWaterTreatmentSystem"));
+                }
+                return this._ProducedWaterTreatmentSystem;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle _ProducedWaterTreatmentSystem;
+    }
+    /// <summary>
+    /// There are no comments for DailyProducedWaterTreatmentSystem in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class DailyProducedWaterTreatmentSystem : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new DailyProducedWaterTreatmentSystem object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="lastSkimmingDate">Initial value of LastSkimmingDate.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static DailyProducedWaterTreatmentSystem CreateDailyProducedWaterTreatmentSystem(long ID, global::System.DateTimeOffset date, global::System.DateTimeOffset lastSkimmingDate, long xmin)
+        {
+            DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystem = new DailyProducedWaterTreatmentSystem();
+            dailyProducedWaterTreatmentSystem.Id = ID;
+            dailyProducedWaterTreatmentSystem.Date = date;
+            dailyProducedWaterTreatmentSystem.LastSkimmingDate = lastSkimmingDate;
+            dailyProducedWaterTreatmentSystem.xmin = xmin;
+            return dailyProducedWaterTreatmentSystem;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property ProducedWaterTreatmentSystemName in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ProducedWaterTreatmentSystemName
+        {
+            get
+            {
+                return this._ProducedWaterTreatmentSystemName;
+            }
+            set
+            {
+                this.OnProducedWaterTreatmentSystemNameChanging(value);
+                this._ProducedWaterTreatmentSystemName = value;
+                this.OnProducedWaterTreatmentSystemNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ProducedWaterTreatmentSystemName;
+        partial void OnProducedWaterTreatmentSystemNameChanging(string value);
+        partial void OnProducedWaterTreatmentSystemNameChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property Status in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Status
+        {
+            get
+            {
+                return this._Status;
+            }
+            set
+            {
+                this.OnStatusChanging(value);
+                this._Status = value;
+                this.OnStatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Status;
+        partial void OnStatusChanging(string value);
+        partial void OnStatusChanged();
+        /// <summary>
+        /// There are no comments for Property Remark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Remark
+        {
+            get
+            {
+                return this._Remark;
+            }
+            set
+            {
+                this.OnRemarkChanging(value);
+                this._Remark = value;
+                this.OnRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Remark;
+        partial void OnRemarkChanging(string value);
+        partial void OnRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property LastSkimmingDate in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset LastSkimmingDate
+        {
+            get
+            {
+                return this._LastSkimmingDate;
+            }
+            set
+            {
+                this.OnLastSkimmingDateChanging(value);
+                this._LastSkimmingDate = value;
+                this.OnLastSkimmingDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _LastSkimmingDate;
+        partial void OnLastSkimmingDateChanging(global::System.DateTimeOffset value);
+        partial void OnLastSkimmingDateChanged();
+        /// <summary>
+        /// There are no comments for Property AnalyserStatus in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string AnalyserStatus
+        {
+            get
+            {
+                return this._AnalyserStatus;
+            }
+            set
+            {
+                this.OnAnalyserStatusChanging(value);
+                this._AnalyserStatus = value;
+                this.OnAnalyserStatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _AnalyserStatus;
+        partial void OnAnalyserStatusChanging(string value);
+        partial void OnAnalyserStatusChanged();
+        /// <summary>
+        /// There are no comments for Property Iron in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> Iron
+        {
+            get
+            {
+                return this._Iron;
+            }
+            set
+            {
+                this.OnIronChanging(value);
+                this._Iron = value;
+                this.OnIronChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _Iron;
+        partial void OnIronChanging(global::System.Nullable<decimal> value);
+        partial void OnIronChanged();
+        /// <summary>
+        /// There are no comments for Property PH in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> PH
+        {
+            get
+            {
+                return this._PH;
+            }
+            set
+            {
+                this.OnPHChanging(value);
+                this._PH = value;
+                this.OnPHChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _PH;
+        partial void OnPHChanging(global::System.Nullable<decimal> value);
+        partial void OnPHChanged();
+        /// <summary>
+        /// There are no comments for Property Remark2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Remark2
+        {
+            get
+            {
+                return this._Remark2;
+            }
+            set
+            {
+                this.OnRemark2Changing(value);
+                this._Remark2 = value;
+                this.OnRemark2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Remark2;
+        partial void OnRemark2Changing(string value);
+        partial void OnRemark2Changed();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property ProducedWaterTreatmentSystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem ProducedWaterTreatmentSystem
+        {
+            get
+            {
+                return this._ProducedWaterTreatmentSystem;
+            }
+            set
+            {
+                this.OnProducedWaterTreatmentSystemChanging(value);
+                this._ProducedWaterTreatmentSystem = value;
+                this.OnProducedWaterTreatmentSystemChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem _ProducedWaterTreatmentSystem;
+        partial void OnProducedWaterTreatmentSystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem value);
+        partial void OnProducedWaterTreatmentSystemChanged();
+    }
+    /// <summary>
+    /// There are no comments for ProducedWaterTreatmentSystemSingle in the schema.
+    /// </summary>
+    public partial class ProducedWaterTreatmentSystemSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<ProducedWaterTreatmentSystem>
+    {
+        /// <summary>
+        /// Initialize a new ProducedWaterTreatmentSystemSingle object.
+        /// </summary>
+        public ProducedWaterTreatmentSystemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new ProducedWaterTreatmentSystemSingle object.
+        /// </summary>
+        public ProducedWaterTreatmentSystemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new ProducedWaterTreatmentSystemSingle object.
+        /// </summary>
+        public ProducedWaterTreatmentSystemSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<ProducedWaterTreatmentSystem> query)
+            : base(query) {}
+
+        /// <summary>
+        /// There are no comments for DailyProducedWaterTreatmentSystems in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> DailyProducedWaterTreatmentSystems
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._DailyProducedWaterTreatmentSystems == null))
+                {
+                    this._DailyProducedWaterTreatmentSystems = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem>(GetPath("DailyProducedWaterTreatmentSystems"));
+                }
+                return this._DailyProducedWaterTreatmentSystems;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> _DailyProducedWaterTreatmentSystems;
+    }
+    /// <summary>
+    /// There are no comments for ProducedWaterTreatmentSystem in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class ProducedWaterTreatmentSystem : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new ProducedWaterTreatmentSystem object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static ProducedWaterTreatmentSystem CreateProducedWaterTreatmentSystem(long ID, long xmin)
+        {
+            ProducedWaterTreatmentSystem producedWaterTreatmentSystem = new ProducedWaterTreatmentSystem();
+            producedWaterTreatmentSystem.Id = ID;
+            producedWaterTreatmentSystem.xmin = xmin;
+            return producedWaterTreatmentSystem;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Name in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property DailyProducedWaterTreatmentSystems in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> DailyProducedWaterTreatmentSystems
+        {
+            get
+            {
+                return this._DailyProducedWaterTreatmentSystems;
+            }
+            set
+            {
+                this.OnDailyProducedWaterTreatmentSystemsChanging(value);
+                this._DailyProducedWaterTreatmentSystems = value;
+                this.OnDailyProducedWaterTreatmentSystemsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> _DailyProducedWaterTreatmentSystems = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem>();
+        partial void OnDailyProducedWaterTreatmentSystemsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> value);
+        partial void OnDailyProducedWaterTreatmentSystemsChanged();
+    }
+    /// <summary>
+    /// Class containing all extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystemSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystemSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Default
 {
     /// <summary>
@@ -467,6 +998,11 @@ namespace CentralizedDatabaseSystemODataService.Default
             {
                 return resolvedType;
             }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
             resolvedType = this.DefaultResolveType(typeName, "Default", "CentralizedDatabaseSystemODataService.Default");
             if ((resolvedType != null))
             {
@@ -485,6 +1021,10 @@ namespace CentralizedDatabaseSystemODataService.Default
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.", clientType.Name);
+            }
+            if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.", clientType.Name);
             }
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Default", global::System.StringComparison.Ordinal))
             {
@@ -527,6 +1067,40 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.PowerGenerator> _PowerGenerator;
         /// <summary>
+        /// There are no comments for DailyProducedWaterTreatmentSystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> DailyProducedWaterTreatmentSystem
+        {
+            get
+            {
+                if ((this._DailyProducedWaterTreatmentSystem == null))
+                {
+                    this._DailyProducedWaterTreatmentSystem = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem>("DailyProducedWaterTreatmentSystem");
+                }
+                return this._DailyProducedWaterTreatmentSystem;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> _DailyProducedWaterTreatmentSystem;
+        /// <summary>
+        /// There are no comments for ProducedWaterTreatmentSystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem> ProducedWaterTreatmentSystem
+        {
+            get
+            {
+                if ((this._ProducedWaterTreatmentSystem == null))
+                {
+                    this._ProducedWaterTreatmentSystem = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem>("ProducedWaterTreatmentSystem");
+                }
+                return this._ProducedWaterTreatmentSystem;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem> _ProducedWaterTreatmentSystem;
+        /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -542,6 +1116,22 @@ namespace CentralizedDatabaseSystemODataService.Default
         {
             base.AddObject("PowerGenerator", powerGenerator);
         }
+        /// <summary>
+        /// There are no comments for DailyProducedWaterTreatmentSystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToDailyProducedWaterTreatmentSystem(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystem)
+        {
+            base.AddObject("DailyProducedWaterTreatmentSystem", dailyProducedWaterTreatmentSystem);
+        }
+        /// <summary>
+        /// There are no comments for ProducedWaterTreatmentSystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToProducedWaterTreatmentSystem(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem producedWaterTreatmentSystem)
+        {
+            base.AddObject("ProducedWaterTreatmentSystem", producedWaterTreatmentSystem);
+        }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
         {
@@ -556,8 +1146,8 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""PowerGeneratorName"" Type=""Edm.String"" />
-        <Property Name=""DateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -573,6 +1163,34 @@ namespace CentralizedDatabaseSystemODataService.Default
         <NavigationProperty Name=""DailyPowerGenerationAndDistributions"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution)"" />
       </EntityType>
     </Schema>
+    <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""DailyProducedWaterTreatmentSystem"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""ProducedWaterTreatmentSystemName"" Type=""Edm.String"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Status"" Type=""Edm.String"" />
+        <Property Name=""Remark"" Type=""Edm.String"" />
+        <Property Name=""LastSkimmingDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""AnalyserStatus"" Type=""Edm.String"" />
+        <Property Name=""Iron"" Type=""Edm.Decimal"" />
+        <Property Name=""PH"" Type=""Edm.Decimal"" />
+        <Property Name=""Remark2"" Type=""Edm.String"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <NavigationProperty Name=""ProducedWaterTreatmentSystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem"" />
+      </EntityType>
+      <EntityType Name=""ProducedWaterTreatmentSystem"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Name"" Type=""Edm.String"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <NavigationProperty Name=""DailyProducedWaterTreatmentSystems"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem)"" />
+      </EntityType>
+    </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityContainer Name=""Container"">
         <EntitySet Name=""DailyPowerGenerationAndDistribution"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution"">
@@ -585,6 +1203,22 @@ namespace CentralizedDatabaseSystemODataService.Default
         </EntitySet>
         <EntitySet Name=""PowerGenerator"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.PowerGenerator"">
           <NavigationPropertyBinding Path=""DailyPowerGenerationAndDistributions"" Target=""DailyPowerGenerationAndDistribution"" />
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""DailyProducedWaterTreatmentSystem"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem"">
+          <NavigationPropertyBinding Path=""ProducedWaterTreatmentSystem"" Target=""ProducedWaterTreatmentSystem"" />
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""ProducedWaterTreatmentSystem"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem"">
+          <NavigationPropertyBinding Path=""DailyProducedWaterTreatmentSystems"" Target=""DailyProducedWaterTreatmentSystem"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
