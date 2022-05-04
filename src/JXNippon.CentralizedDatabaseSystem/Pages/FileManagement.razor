@@ -6,12 +6,15 @@
     <div class="row py-5">
         <div class="col">
             <RadzenCard>
-                <RadzenDataList WrapItems="true" Count="@count" LoadData="@LoadData" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="9" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true">
+                <div class="col-md-6 col-lg-4 p-3">
+                        <RadzenTextBox Placeholder="Search..." type="search" Change=@(args => OnChangeAsync(args, "TextBox with placeholder")) Class="w-100" />
+                </div>
+                <RadzenDataList WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadData" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="9" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true">
                     <Template Context="file">
                         <RadzenCard Style="width:300px;">
                             <div class="d-flex flex-row align-items-center">
                                  <div>
-                                    <h4 class="mb-0" Style="color:#0AA1DD;"><i class="oi oi-spreadsheet"></i> @(file.FileName)</h4>
+                                    <h4 class="mb-0" Style="color:#0AA1DD;" href="#"><i class="oi oi-spreadsheet"></i> @(file.FileName)</h4>
                                     <div>Folder : @file.FolderName</div>
                                     <div style="font-size: .8em">Attempts: @(file.NumberOfAttempts)</div>
                                 </div>

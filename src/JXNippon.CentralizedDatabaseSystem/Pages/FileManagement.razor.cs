@@ -4,13 +4,16 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using Microsoft.AspNetCore.Components;
 using Radzen;
+using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
     public partial class FileManagement
     {
+        private RadzenDataList<DataFile> _dataList;
         private IEnumerable<DataFile> files;
         private int count;
+        private string search = string.Empty;
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NotificationService NotificationService { get; set; }
@@ -19,7 +22,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             using var serviceScope = ServiceProvider.CreateScope();
             IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
-            Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await fileService.Get()
+            var query = fileService.Get();
+            if (!string.IsNullOrEmpty(search))
+            { 
+                query = query.Where(dataFile => dataFile.FileName.ToUpper().Contains(search.ToUpper()));
+            }
+            Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
                 .OrderByDescending(file => file.LastModifiedDateTime)
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<DataFile>();
@@ -42,6 +50,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private IGenericService<DataFile> GetGenericFileService(IServiceScope serviceScope)
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DataFile, IDataExtractorUnitOfWork>>();
+        }
+
+        private async Task OnChangeAsync(string value, string name)
+        {
+            search = value;
+            await _dataList.Reload();
         }
     }
 }
