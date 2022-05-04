@@ -9,7 +9,7 @@
                 <div class="col-md-6 col-lg-4 p-3">
                         <RadzenTextBox Placeholder="Search..." type="search" Change=@(args => OnChangeAsync(args, "TextBox with placeholder")) Class="w-100" />
                 </div>
-                <RadzenDataList WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadData" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="9" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true">
+                <RadzenDataList WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadData" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="6" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true">
                     <Template Context="file">
                         <RadzenCard Style="width:300px;">
                             <div class="d-flex flex-row align-items-center">
@@ -48,10 +48,8 @@
                                 </div>
                             </div>
                         </RadzenCard>
-                    </Template>
-                    
+                    </Template>                    
                 </RadzenDataList>
-
             </RadzenCard>
         </div>
     </div>
