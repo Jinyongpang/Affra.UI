@@ -4,12 +4,9 @@
 <PageTitle>Produced Water Treatment System</PageTitle>
 
 <!--RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" /> -->
-<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyProducedWaterTreatmentSystems" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyProducedWaterTreatmentSystem" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true">
+<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyProducedWaterTreatmentSystems" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyProducedWaterTreatmentSystem" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true" ShowPagingSummary="true">
     <Columns>
         <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="ProducedWaterTreatmentSystemName" Width="60px" Title="Name" Frozen="true" Pickable="false">
-                <FooterTemplate>
-                    Displayed items: <b>@grid.View.Count()</b> of <b>@count</b>
-            </FooterTemplate>
         </RadzenDataGridColumn>
         <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Status" Title="Status"  Width="40px">
             <Template Context="item">
