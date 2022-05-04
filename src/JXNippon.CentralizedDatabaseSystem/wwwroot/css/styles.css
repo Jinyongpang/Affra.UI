@@ -23,3 +23,11 @@
     padding: 0;
     height: 50px;
 }
+
+.rz-group-header {
+    background-color: #E8F9FD;
+}
+
+.rz-grid-table-fixed .rz-frozen-cell {
+    background: #E8F9FD;
+}

@@ -1,9 +1,4 @@
-using System.Diagnostics;
 using Affra.Core.Domain.Extensions;
-using Affra.Core.Domain.UnitOfWorks;
-using Blazorise;
-using Blazorise.Bootstrap;
-using Blazorise.Icons.FontAwesome;
 using JXNippon.CentralizedDatabaseSystem;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
@@ -37,14 +32,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .Services
     .AddTransient<CreateActivityHandler>()
     .AddScoped<NotificationService>();
-
-builder.Services
-    .AddBlazorise(options =>
-    {
-        options.Immediate = true;
-    })
-    .AddBootstrapProviders()
-    .AddFontAwesomeIcons();
 
 builder.Services.AddMsalAuthentication(options =>
 {
