@@ -2,46 +2,54 @@
 @using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
 
 <PageTitle>File Management</PageTitle>
+<div class="container">
+    <div class="row py-5">
+        <div class="col">
+            <RadzenCard>
+                <RadzenDataList WrapItems="true" Count="@count" LoadData="@LoadData" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="9" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true">
+                    <Template Context="file">
+                        <RadzenCard Style="width:300px;">
+                            <div class="d-flex flex-row align-items-center">
+                                 <div>
+                                    <h4 class="mb-0" Style="color:#0AA1DD;"><i class="oi oi-spreadsheet"></i> @(file.FileName)</h4>
+                                    <div>Folder : @file.FolderName</div>
+                                    <div style="font-size: .8em">Attempts: @(file.NumberOfAttempts)</div>
+                                </div>
+                            </div>
+                            <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
+                            <div class="row">
+                                <div class="col-md-8 text-truncate card-time">
+                                    <b>@String.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Modified : {0:d}", file.LastModifiedDateTime.ToLocalTime())</b>
+                                </div>
+                                <div class="col-md-8 text-truncate card-time">
+                                    <b>@String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", file.LastModifiedDateTime.ToLocalTime())</b>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                     @if (file.ProcessStatus == FileProcessStatus.Completed)
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(file.ProcessStatus.ToString())"/>
+                                    }
+                                    else if (file.ProcessStatus == FileProcessStatus.Failed)
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(file.ProcessStatus.ToString())"/>
+                                    }
+                                    else if (file.ProcessStatus == FileProcessStatus.Pending)
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(file.ProcessStatus.ToString())"/>
+                                    }
+                                    else
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(file.ProcessStatus.ToString())"/>
+                                    }
+                                    
+                                </div>
+                            </div>
+                        </RadzenCard>
+                    </Template>
+                    
+                </RadzenDataList>
 
-<h1>File Management</h1>
-<RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />
-<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@files" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DataFile" ColumnWidth="200px">
-    <Columns>
-        <RadzenDataGridColumn TItem="DataFile" Property="FolderName" Filterable="false" Title="Folder" Frozen="true" Width="200px" TextAlign="TextAlign.Center" />
-        <RadzenDataGridColumn TItem="DataFile" Property="FileName" Title="File" />
-        <RadzenDataGridColumn TItem="DataFile" Property="LastModifiedDateTime" Title="Last Modified Date Time" Width="200px">
-            <Template Context="file">
-                @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:f}", file.LastModifiedDateTime.ToLocalTime())
-            </Template>
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DataFile" Property="NumberOfAttempts" Title="Attempts" Width="60px">
-            <EditTemplate Context="file">
-                <RadzenNumeric @bind-Value="file.NumberOfAttempts" Style="width:100%" />
-            </EditTemplate>
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DataFile" Property="ProcessStatus" Title="Status" Width="100px"/>
-        <RadzenDataGridColumn TItem="DataFile" Context="file" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="120px">
-            <Template Context="file">
-                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@(args => EditRow(file))" @onclick:stopPropagation="true">
-                </RadzenButton>
-            </Template>
-            <EditTemplate Context="file">
-                <RadzenButton Icon="check" ButtonStyle="ButtonStyle.Primary" Class="m-1" Click="@((args) => SaveRow(file))">
-                </RadzenButton>
-                <RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@((args) => CancelEdit(file))">
-                </RadzenButton>
-            </EditTemplate>
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DataFile" Context="order" Filterable="false" Sortable="false" TextAlign="TextAlign.Center">
-            <Template Context="file">
-                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Small" Class="m-1" Click="@(args => DeleteRow(file))"  @onclick:stopPropagation="true">
-                </RadzenButton>
-            </Template>
-            <EditTemplate Context="file">
-                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Small" Class="m-1" Click="@(args => DeleteRow(file))">
-                </RadzenButton>
-            </EditTemplate>
-        </RadzenDataGridColumn>
-
-    </Columns>
-</RadzenDataGrid>
+            </RadzenCard>
+        </div>
+    </div>
+</div>
