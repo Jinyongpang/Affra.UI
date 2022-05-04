@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 <RadzenNotification />
 <div class="page">
-    <div class="sidebar">
+    <div class="sidebar @NavMenuCssClass">
         <NavMenu />
     </div>
 
@@ -15,3 +15,8 @@
         </article>
     </main>
 </div>
+@code {
+    [CascadingParameter] private AppState AppState { get; set; }
+
+    private string? NavMenuCssClass => AppState.CollapseNavMenu ? "collapseSideBar" : "expandSideBar";
+}

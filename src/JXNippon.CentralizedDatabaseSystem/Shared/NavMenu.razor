@@ -1,39 +1,41 @@
-﻿<div class="top-row ps-4 navbar navbar-dark">
+﻿<div class="top-row navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="filemanagement">JX Nippon CDS</a>
+        <a class="navbar-brand @NavItemLabelCssClass" href="filemanagement">JX Nippon CDS</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+<div>
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="filemanagement" Match="NavLinkMatch.All">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> File Management
+                <span class="oi oi-list-rich" aria-hidden="true"></span>
+                <span class="@NavItemLabelCssClass">File Management</span>
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="PowerGenerationAndDistributionManagement" Match="NavLinkMatch.All">
-                <span class="oi oi-lightbulb" aria-hidden="true"></span> Power Generation
+                <span class="oi oi-lightbulb" aria-hidden="true"></span>
+                <span class="@NavItemLabelCssClass">Power Generation</span>
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="ProducedWaterTreatmentSystemManagement" Match="NavLinkMatch.All">
-                <span class="oi oi-droplet" aria-hidden="true"></span> Water Treatment
+                <span class="oi oi-droplet" aria-hidden="true"></span>
+                <span class="@NavItemLabelCssClass">Water Treatment</span>
             </NavLink>
         </div>
     </nav>
 </div>
 
 @code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    [CascadingParameter] private AppState AppState { get; set; }
+    private string? NavItemLabelCssClass => AppState.CollapseNavMenu ? "sideBarItemLabelHide" : "sideBarItemLabelShow";
 
     private void ToggleNavMenu()
     {
-        collapseNavMenu = !collapseNavMenu;
+        AppState.CollapseNavMenu = !AppState.CollapseNavMenu;
     }
 }
