@@ -3,6 +3,17 @@
 
 <PageTitle>Power Generation And Distribution</PageTitle>
 
+<RadzenBreadCrumb>
+    <Template Context="item">
+        <RadzenBadge Text="@item.Text" IsPill="true" />
+    </Template>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/PowerGenerationAndDistributionManagement" Text="Power Generation And Distribution" />
+    </ChildContent>
+</RadzenBreadCrumb>
+<div class="space"></div>
+
 <!--RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />  -->
 <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyPowerGenerationAndDistributions" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyPowerGenerationAndDistribution" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true" ShowPagingSummary="true">
     <Columns>
@@ -30,4 +41,4 @@
             </Template>
         </RadzenDataGridColumn>
     </Columns>
-</RadzenDataGrid>           
+</RadzenDataGrid>    
