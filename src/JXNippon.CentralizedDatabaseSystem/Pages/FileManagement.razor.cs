@@ -14,6 +14,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private IEnumerable<DataFile> files;
         private int count;
         private string search = string.Empty;
+        private FileProcessStatus? fileProcessStatus = null;
+        private IEnumerable<string> fileProcessStatuses = Enum.GetValues(typeof(FileProcessStatus))        
+            .Cast<FileProcessStatus>()
+            .Select(x => x.ToString())
+            .ToList();
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NotificationService NotificationService { get; set; }
@@ -26,6 +31,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             if (!string.IsNullOrEmpty(search))
             { 
                 query = query.Where(dataFile => dataFile.FileName.ToUpper().Contains(search.ToUpper()));
+            }
+            if (fileProcessStatus != null)
+            { 
+                query = query.Where(dataFile => dataFile.ProcessStatus == fileProcessStatus);
             }
             Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
                 .OrderByDescending(file => file.LastModifiedDateTime)
@@ -57,5 +66,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             search = value;
             await _dataList.Reload();
         }
+        private async Task OnChangeStatusFilterAsync(object value, string name)
+        {
+            fileProcessStatus = value is null
+                ? null
+                : (FileProcessStatus)Enum.Parse(typeof(FileProcessStatus), value.ToString());
+            await _dataList.Reload();
+        }
+
     }
 }
