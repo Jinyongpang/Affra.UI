@@ -1,0 +1,16 @@
+﻿.status-online {
+    color: #85C88A;
+}
+
+.status-standby {
+    color: #F0A500;
+}
+
+
+.status-default {
+    color: lightgrey;
+}
+
+.card-time {
+    color: #6FB2D2;
+}
