@@ -10,7 +10,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
     public partial class FileManagement
     {
         private IEnumerable<DataFile> files;
-        private DataFile fileToInsert;
         private int count;
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
@@ -19,8 +18,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private async Task LoadData(LoadDataArgs args)
         {
             using var serviceScope = ServiceProvider.CreateScope();
-            var fileService = this.GetGenericFileService(serviceScope);
-            var filesResponse = await fileService.Get()
+            IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
+            Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await fileService.Get()
+                .OrderByDescending(file => file.LastModifiedDateTime)
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<DataFile>();
 
