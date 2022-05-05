@@ -1,0 +1,30 @@
+﻿@inject IJSInProcessRuntime JS
+
+<CascadingValue Value=this>
+    @ChildContent
+</CascadingValue>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    private bool _collapseNavMenu = false;
+
+    public bool CollapseNavMenu
+    {
+        get
+        {
+            return _collapseNavMenu;
+        }
+        set
+        {
+            _collapseNavMenu = value;
+            JS.Invoke<string>(JSInteropConstants.SetSessionStorage, nameof(CollapseNavMenu), value);
+            StateHasChanged();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        var value = JS.Invoke<string>(JSInteropConstants.GetSessionStorage, nameof(CollapseNavMenu));
+    }
+}

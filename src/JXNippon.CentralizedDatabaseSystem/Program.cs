@@ -7,6 +7,7 @@ using JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Options;
+using Microsoft.JSInterop;
 using Microsoft.OData.Extensions.Client;
 using Radzen;
 
@@ -31,7 +32,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddHttpMessageHandler<CreateActivityHandler>()
     .Services
     .AddTransient<CreateActivityHandler>()
-    .AddScoped<NotificationService>();
+    .AddScoped<NotificationService>()
+    .AddSingleton<IJSInProcessRuntime>(services => 
+        (IJSInProcessRuntime)services.GetRequiredService<IJSRuntime>());
 
 builder.Services.AddMsalAuthentication(options =>
 {
