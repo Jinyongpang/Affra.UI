@@ -10,10 +10,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
     public partial class FileManagement
     {
+        private DateTime? date = null;
         private RadzenDataList<DataFile> _dataList;
         private IEnumerable<DataFile> files;
         private int count;
         private string search = string.Empty;
+        private bool isLoading = false;
         private FileProcessStatus? fileProcessStatus = null;
         private IEnumerable<string> fileProcessStatuses = Enum.GetValues(typeof(FileProcessStatus))        
             .Cast<FileProcessStatus>()
@@ -25,6 +27,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         private async Task LoadData(LoadDataArgs args)
         {
+            isLoading = true;
             using var serviceScope = ServiceProvider.CreateScope();
             IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
             var query = fileService.Get();
@@ -36,6 +39,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             { 
                 query = query.Where(dataFile => dataFile.ProcessStatus == fileProcessStatus);
             }
+            if (date != null)
+            {
+                var start = TimeZoneInfo.ConvertTimeToUtc(date.Value);
+                var end = TimeZoneInfo.ConvertTimeToUtc(date.Value.AddDays(1));
+                query = query
+                    .Where(dataFile => dataFile.LastModifiedDateTime >= start)
+                    .Where(dataFile => dataFile.LastModifiedDateTime < end);
+            }
             Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
                 .OrderByDescending(file => file.LastModifiedDateTime)
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
@@ -43,6 +54,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
             count = (int)filesResponse.Count;
             files = filesResponse.ToList();
+            isLoading = false;
         }
 
         private void HandleException(Exception ex)
@@ -71,6 +83,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             fileProcessStatus = value is null
                 ? null
                 : (FileProcessStatus)Enum.Parse(typeof(FileProcessStatus), value.ToString());
+            await _dataList.Reload();
+        }
+
+        private void OnTodayClick()
+        {
+            date = DateTime.Now;
+        }
+
+        private async Task OnChangeAsync(DateTime? value, string name, string format)
+        {
+            date = value;
             await _dataList.Reload();
         }
 
