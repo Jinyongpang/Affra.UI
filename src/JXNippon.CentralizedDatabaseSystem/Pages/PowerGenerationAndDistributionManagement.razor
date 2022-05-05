@@ -12,33 +12,36 @@
         <RadzenBreadCrumbItem Path="/PowerGenerationAndDistributionManagement" Text="Power Generation And Distribution" />
     </ChildContent>
 </RadzenBreadCrumb>
-<div class="space"></div>
 
-<!--RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />  -->
-<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyPowerGenerationAndDistributions" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyPowerGenerationAndDistribution" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true" ShowPagingSummary="true">
-    <Columns>
-        <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="PowerGeneratorName" Filterable="false" Title="Name" Frozen="true" Pickable="false">           
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Status" Title="Status">
-            <Template Context="item">
-                @if (item.Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <div class="status-online"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                }
-                else if (item.Status.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <div class="status-standby"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                }
-                else
-                {
-                    <div class="status-default"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                }
-            </Template>         
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Date" Title="Date">
-            <Template Context="dailyPowerGenerationAndDistribution">
-                @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyPowerGenerationAndDistribution.Date.ToLocalTime())
-            </Template>
-        </RadzenDataGridColumn>
-    </Columns>
-</RadzenDataGrid>    
+<div class="row py-4">
+    <div class="col">
+        <!--RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />  -->
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyPowerGenerationAndDistributions" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyPowerGenerationAndDistribution" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true" ShowPagingSummary="true">
+            <Columns>
+                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="PowerGeneratorName" Filterable="false" Title="Name" Frozen="true" Pickable="false">           
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Status" Title="Status">
+                    <Template Context="item">
+                        @if (item.Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <div class="status-online"><i class="oi oi-media-record"></i> @(item.Status)</div>
+                        }
+                        else if (item.Status.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <div class="status-standby"><i class="oi oi-media-record"></i> @(item.Status)</div>
+                        }
+                        else
+                        {
+                            <div class="status-default"><i class="oi oi-media-record"></i> @(item.Status)</div>
+                        }
+                    </Template>         
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Date" Title="Date">
+                    <Template Context="dailyPowerGenerationAndDistribution">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyPowerGenerationAndDistribution.Date.ToLocalTime())
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+        </RadzenDataGrid>  
+    </div>
+</div>
