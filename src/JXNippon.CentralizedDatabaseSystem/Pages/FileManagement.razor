@@ -18,11 +18,11 @@
                 <div class="col-md-6 col-lg-4 p-3">
                     <div style="position: relative">
                         <RadzenIcon Icon="search" style="position:absolute;top:5px; left: 5px; pointer-events: none" />
-                        <RadzenTextBox style="padding-left: 30px" Placeholder="Search Files" type="search" Change=@(args => OnChangeAsync(args, "TextBox with placeholder")) Class="w-100" />
+                        <RadzenTextBox style="padding-left: 30px" @bind-Value=@search Placeholder="Search Files" type="search" Change=@(args => OnChangeAsync(args, "TextBox with placeholder")) Class="w-100" />
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 p-3">
-                        <RadzenDropDown Placeholder="Status" AllowClear="true" TValue="string" Class="w-100" 
+                        <RadzenDropDown Placeholder="Status" @bind-Value=@status AllowClear="true" TValue="string" Class="w-100" 
                             Data=@(fileProcessStatuses)
                             Change=@(args => OnChangeStatusFilterAsync(args, "DropDown")) />
                 </div>
