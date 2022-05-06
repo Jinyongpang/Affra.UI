@@ -25,7 +25,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NotificationService NotificationService { get; set; }
 
-        private async Task LoadData(LoadDataArgs args)
+        private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
             using var serviceScope = ServiceProvider.CreateScope();

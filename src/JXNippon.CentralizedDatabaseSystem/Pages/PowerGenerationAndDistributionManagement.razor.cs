@@ -14,23 +14,53 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private IEnumerable<DailyPowerGenerationAndDistribution> dailyPowerGenerationAndDistributions;
         private DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistributionToInsert;
         private int count;
-        private bool isLoading;
+        private bool isLoading = false;
+        private IEnumerable<PowerGenerator> powerGenerators;
+        private string search = null;
+        private DateTime? date = null;
+        private string status = null;
+        private IEnumerable<string> statuses = new string[] { "Online", "Offline", "Standby" };
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NotificationService NotificationService { get; set; }
 
-        private async Task Reload()
+        protected override async Task OnInitializedAsync()
+        {
+            using var serviceScope = ServiceProvider.CreateScope();
+            powerGenerators = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PowerGenerator, ICentralizedDatabaseSystemUnitOfWork>>()
+                .Get()
+                .ToQueryOperationResponseAsync<PowerGenerator>()).ToList();
+        }
+
+        private async Task ReloadAsync()
         {
             grid.Reset(true);
             await grid.Reload();
         }
 
-        private async Task LoadData(LoadDataArgs args)
+        private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
             using var serviceScope = ServiceProvider.CreateScope();
             var dailyPowerGenerationAndDistributionService = this.GetGenericService(serviceScope);
-            var dailyPowerGenerationAndDistributionsResponse = await dailyPowerGenerationAndDistributionService.Get()
+            var query = dailyPowerGenerationAndDistributionService.Get();
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(x => x.PowerGeneratorName.ToUpper().Contains(search.ToUpper()));
+            }
+            if (status != null)
+            {
+                query = query.Where(x => x.Status.ToUpper() == status.ToUpper());
+            }
+            if (date != null)
+            {
+                var start = TimeZoneInfo.ConvertTimeToUtc(date.Value);
+                var end = TimeZoneInfo.ConvertTimeToUtc(date.Value.AddDays(1));
+                query = query
+                    .Where(x => x.Date >= start)
+                    .Where(x => x.Date < end);
+            }
+            var dailyPowerGenerationAndDistributionsResponse = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<DailyPowerGenerationAndDistribution>();
 
@@ -40,12 +70,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             isLoading = false;
         }
 
-        private async Task EditRow(DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution)
+        private async Task EditRowAsync(DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution)
         {
             await grid.EditRow(dailyPowerGenerationAndDistribution);
         }
 
-        private async Task SaveRow(DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution)
+        private async Task SaveRowAsync(DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution)
         {
             try
             {
@@ -118,6 +148,28 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private IGenericService<DailyPowerGenerationAndDistribution> GetGenericService(IServiceScope serviceScope)
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyPowerGenerationAndDistribution, ICentralizedDatabaseSystemUnitOfWork>>();
+        }
+
+        private async Task OnChangeAsync(object value, string name)
+        {
+            search = value.ToString();
+            await this.ReloadAsync();
+        }
+        private async Task OnChangeStatusFilterAsync(object value, string name)
+        {
+            status = value?.ToString();
+            await this.ReloadAsync();
+        }
+
+        private void OnTodayClick()
+        {
+            date = DateTime.Now;
+        }
+
+        private async Task OnChangeAsync(DateTime? value, string name, string format)
+        {
+            date = value;
+            await this.ReloadAsync();
         }
     }
 }
