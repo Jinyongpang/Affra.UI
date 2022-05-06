@@ -13,10 +13,35 @@
     </ChildContent>
 </RadzenBreadCrumb>
 
-<div class="row py-4">
+
+<div class="row py-3">
+    <div class="col">
+        <RadzenCard>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 p-3">
+                    <div style="position: relative">
+                        <RadzenIcon Icon="search" style="position:absolute;top:5px; left: 5px; pointer-events: none" />
+                        <RadzenAutoComplete style="padding-left: 30px" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Search Power Generators" TextProperty="Name" type="search" Change=@(args => OnChangeAsync(args, "TextBox with placeholder")) Class="w-100" AutoComplete="true" Data=@powerGenerators/>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 p-3">
+                        <RadzenDropDown Placeholder="Status" AllowClear="true" TValue="string" Class="w-100" 
+                            Data=@(statuses)
+                            Change=@(args => OnChangeStatusFilterAsync(args, "DropDown")) />
+                </div>
+                <div class="col-md-6 col-lg-4 p-3">
+                    <RadzenDatePicker Placeholder="Date" TValue="DateTime?" @bind-Value=@date AllowClear="true" DateFormat="d" Class="w-100" Change=@(args => OnChangeAsync(args, "DatePicker with disabled dates", "MM/dd/yyyy"))>
+                    </RadzenDatePicker>
+                </div>
+            </div>        
+        </RadzenCard>
+    </div>
+</div>
+
+<div class="row py-1">
     <div class="col">
         <!--RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" />  -->
-        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyPowerGenerationAndDistributions" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyPowerGenerationAndDistribution" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true" ShowPagingSummary="true">
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyPowerGenerationAndDistributions" LoadData="@LoadDataAsync" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyPowerGenerationAndDistribution" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true" ShowPagingSummary="true">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="PowerGeneratorName" Filterable="false" Title="Name" Frozen="true" Pickable="false">           
                 </RadzenDataGridColumn>

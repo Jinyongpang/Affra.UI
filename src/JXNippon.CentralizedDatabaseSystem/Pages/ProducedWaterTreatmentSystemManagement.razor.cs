@@ -15,22 +15,53 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystemToInsert;
         private int count;
         private bool isLoading;
+        private IEnumerable<ProducedWaterTreatmentSystem> producedWaterTreatmentSystems;
+        private string search = null;
+        private DateTime? date = null;
+        private string status = null;
+        private IEnumerable<string> statuses = new string[] { "Online", "Offline", "Standby" };
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NotificationService NotificationService { get; set; }
 
-        private async Task Reload()
+        protected override async Task OnInitializedAsync()
+        {
+            using var serviceScope = ServiceProvider.CreateScope();
+            producedWaterTreatmentSystems = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<ProducedWaterTreatmentSystem, ICentralizedDatabaseSystemUnitOfWork>>()
+                .Get()
+                .ToQueryOperationResponseAsync<ProducedWaterTreatmentSystem>()).ToList();
+        }
+
+        private async Task ReloadAsync()
         {
             grid.Reset(true);
             await grid.Reload();
         }
 
-        private async Task LoadData(LoadDataArgs args)
+        private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
             using var serviceScope = ServiceProvider.CreateScope();
             var dailyProducedWaterTreatmentSystemService = this.GetGenericService(serviceScope);
-            var dailyProducedWaterTreatmentSystemsResponse = await dailyProducedWaterTreatmentSystemService.Get()
+            var query = dailyProducedWaterTreatmentSystemService.Get();
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(x => x.ProducedWaterTreatmentSystemName.ToUpper().Contains(search.ToUpper()));
+            }
+            if (status != null)
+            {
+                query = query.Where(x => x.Status.ToUpper() == status.ToUpper());
+            }
+            if (date != null)
+            {
+                var start = TimeZoneInfo.ConvertTimeToUtc(date.Value);
+                var end = TimeZoneInfo.ConvertTimeToUtc(date.Value.AddDays(1));
+                query = query
+                    .Where(x => x.Date >= start)
+                    .Where(x => x.Date < end);
+            }
+
+            var dailyProducedWaterTreatmentSystemsResponse = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<DailyProducedWaterTreatmentSystem>();
 
@@ -40,12 +71,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             isLoading = false;
         }
 
-        private async Task EditRow(DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystem)
+        private async Task EditRowAsync(DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystem)
         {
             await grid.EditRow(dailyProducedWaterTreatmentSystem);
         }
 
-        private async Task SaveRow(DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystem)
+        private async Task SaveRowAsync(DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystem)
         {
             try
             {
@@ -76,7 +107,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         }
 
-        private async Task DeleteRow(DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystem)
+        private async Task DeleteRowAsync(DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystem)
         {
             try
             {
@@ -118,6 +149,28 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private IGenericService<DailyProducedWaterTreatmentSystem> GetGenericService(IServiceScope serviceScope)
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyProducedWaterTreatmentSystem, ICentralizedDatabaseSystemUnitOfWork>>();
+        }
+
+        private async Task OnChangeAsync(object value, string name)
+        {
+            search = value.ToString();
+            await this.ReloadAsync();
+        }
+        private async Task OnChangeStatusFilterAsync(object value, string name)
+        {
+            status = value?.ToString();
+            await this.ReloadAsync();
+        }
+
+        private void OnTodayClick()
+        {
+            date = DateTime.Now;
+        }
+
+        private async Task OnChangeAsync(DateTime? value, string name, string format)
+        {
+            date = value;
+            await this.ReloadAsync();
         }
     }
 }
