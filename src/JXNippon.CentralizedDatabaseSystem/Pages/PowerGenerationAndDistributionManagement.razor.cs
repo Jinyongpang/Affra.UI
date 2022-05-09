@@ -2,7 +2,9 @@
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Extensions;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.WebUtilities;
 using Radzen;
 using Radzen.Blazor;
 
@@ -23,9 +25,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NotificationService NotificationService { get; set; }
+        [Inject] private NavigationManager NavManager { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            search = NavManager.GetQueryString<string>(nameof(search));
+            date = NavManager.GetQueryString<DateTime?>(nameof(date));
+            status = NavManager.GetQueryString<string>(nameof(status));
+
             using var serviceScope = ServiceProvider.CreateScope();
             powerGenerators = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PowerGenerator, ICentralizedDatabaseSystemUnitOfWork>>()
                 .Get()
@@ -41,6 +48,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
+
+            AppendQuery();
             using var serviceScope = ServiceProvider.CreateScope();
             var dailyPowerGenerationAndDistributionService = this.GetGenericService(serviceScope);
             var query = dailyPowerGenerationAndDistributionService.Get();
@@ -170,6 +179,25 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             date = value;
             await this.ReloadAsync();
+        }
+
+        private void AppendQuery()
+        {
+            var queries = new Dictionary<string, string>();
+            if (search != null)
+            {
+                queries.Add(nameof(search), search);
+            }
+            if (status != null)
+            {
+                queries.Add(nameof(status), status);
+            }
+            if (date != null)
+            {
+                queries.Add(nameof(date), date.Value.ToString("yyyy-MM-dd"));
+            }
+            var uriBuilder = new UriBuilder(NavManager.Uri);
+            NavManager.NavigateTo(QueryHelpers.AddQueryString(uriBuilder.Uri.AbsolutePath, queries));
         }
     }
 }

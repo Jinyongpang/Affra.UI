@@ -2,7 +2,9 @@
 using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
+using JXNippon.CentralizedDatabaseSystem.Extensions;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.WebUtilities;
 using Radzen;
 using Radzen.Blazor;
 
@@ -17,6 +19,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private string search = string.Empty;
         private bool isLoading = false;
         private FileProcessStatus? fileProcessStatus = null;
+        private string status = null;
         private IEnumerable<string> fileProcessStatuses = Enum.GetValues(typeof(FileProcessStatus))        
             .Cast<FileProcessStatus>()
             .Select(x => x.ToString())
@@ -24,10 +27,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NotificationService NotificationService { get; set; }
+        [Inject] private NavigationManager NavManager { get; set; }
+
+        protected override void OnInitialized()
+        {
+            search = NavManager.GetQueryString<string>(nameof(search));
+            date = NavManager.GetQueryString<DateTime?>(nameof(date));
+            status = NavManager.GetQueryString<string>(nameof(fileProcessStatus));
+            if (!string.IsNullOrEmpty(status))
+            {
+                fileProcessStatus = (FileProcessStatus)Enum.Parse(typeof(FileProcessStatus), status);
+            }
+        }
+            
 
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
+            AppendQuery();
             using var serviceScope = ServiceProvider.CreateScope();
             IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
             var query = fileService.Get();
@@ -36,7 +53,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 query = query.Where(dataFile => dataFile.FileName.ToUpper().Contains(search.ToUpper()));
             }
             if (fileProcessStatus != null)
-            { 
+            {
                 query = query.Where(dataFile => dataFile.ProcessStatus == fileProcessStatus);
             }
             if (date != null)
@@ -97,5 +114,23 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             await _dataList.Reload();
         }
 
+        private void AppendQuery()
+        {
+            var queries = new Dictionary<string, string>();
+            if (search != null)
+            {
+                queries.Add(nameof(search), search);
+            }
+            if (fileProcessStatus != null)
+            {
+                queries.Add(nameof(fileProcessStatus), fileProcessStatus.ToString());
+            }
+            if (date != null)
+            {
+                queries.Add(nameof(date), date.Value.ToString("yyyy-MM-dd"));
+            }
+            var uriBuilder = new UriBuilder(NavManager.Uri);
+            NavManager.NavigateTo(QueryHelpers.AddQueryString(uriBuilder.Uri.AbsolutePath, queries));
+        }
     }
 }
