@@ -48,6 +48,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
+
+            AppendQuery();
             using var serviceScope = ServiceProvider.CreateScope();
             var dailyPowerGenerationAndDistributionService = this.GetGenericService(serviceScope);
             var query = dailyPowerGenerationAndDistributionService.Get();
@@ -160,13 +162,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private async Task OnChangeAsync(object value, string name)
         {
             search = value.ToString();
-            AppendQuery();
             await this.ReloadAsync();
         }
         private async Task OnChangeStatusFilterAsync(object value, string name)
         {
             status = value?.ToString();
-            AppendQuery();
             await this.ReloadAsync();
         }
 
@@ -178,7 +178,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private async Task OnChangeAsync(DateTime? value, string name, string format)
         {
             date = value;
-            AppendQuery();
             await this.ReloadAsync();
         }
 

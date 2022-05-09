@@ -44,6 +44,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
+            AppendQuery();
             using var serviceScope = ServiceProvider.CreateScope();
             IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
             var query = fileService.Get();
@@ -92,7 +93,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private async Task OnChangeAsync(string value, string name)
         {
             search = value;
-            AppendQuery();
             await _dataList.Reload();
         }
         private async Task OnChangeStatusFilterAsync(object value, string name)
@@ -100,7 +100,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             fileProcessStatus = value is null
                 ? null
                 : (FileProcessStatus)Enum.Parse(typeof(FileProcessStatus), value.ToString());
-            AppendQuery();
             await _dataList.Reload();
         }
 
@@ -112,7 +111,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private async Task OnChangeAsync(DateTime? value, string name, string format)
         {
             date = value;
-            AppendQuery();
             await _dataList.Reload();
         }
 
