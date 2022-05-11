@@ -1,0 +1,51 @@
+﻿@page "/"
+@using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
+
+<PageTitle>Home</PageTitle>
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<DashboardFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args)) />
+
+<div class="row py-3">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center">
+                    <b>12. Power Generation & Distrubution</b>
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <PowerGenerationAndDistributionManagementDataGrid @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args))/>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@powerGenerationAndDistributionManagementDataGrid.Count record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div
+</div>
+
+<div class="row py-3">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center">
+                    <b>14. Tilted Plate Separator V-3000 & Produced Water Treatment System</b>
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <ProducedWaterTreatmentSystemManagementDataGrid @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args))/>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@producedWaterTreatmentSystemManagementDataGrid.Count record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div
+</div>

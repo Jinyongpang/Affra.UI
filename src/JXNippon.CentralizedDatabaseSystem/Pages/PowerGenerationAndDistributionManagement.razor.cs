@@ -1,203 +1,22 @@
-﻿using Affra.Core.Domain.Services;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
-using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
-using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
-using JXNippon.CentralizedDatabaseSystem.Extensions;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.WebUtilities;
+﻿using JXNippon.CentralizedDatabaseSystem.Models;
+using JXNippon.CentralizedDatabaseSystem.Shared;
 using Radzen;
-using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
     public partial class PowerGenerationAndDistributionManagement
     {
-        private RadzenDataGrid<DailyPowerGenerationAndDistribution> grid;
-        private IEnumerable<DailyPowerGenerationAndDistribution> dailyPowerGenerationAndDistributions;
-        private DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistributionToInsert;
-        private int count;
-        private bool isLoading = false;
-        private IEnumerable<PowerGenerator> powerGenerators;
-        private string search = null;
-        private DateTime? date = null;
-        private string status = null;
-        private IEnumerable<string> statuses = new string[] { "Online", "Offline", "Standby" };
-
-        [Inject] private IServiceProvider ServiceProvider { get; set; }
-        [Inject] private NotificationService NotificationService { get; set; }
-        [Inject] private NavigationManager NavManager { get; set; }
-
-        protected override async Task OnInitializedAsync()
-        {
-            search = NavManager.GetQueryString<string>(nameof(search));
-            date = NavManager.GetQueryString<DateTime?>(nameof(date));
-            status = NavManager.GetQueryString<string>(nameof(status));
-
-            using var serviceScope = ServiceProvider.CreateScope();
-            powerGenerators = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PowerGenerator, ICentralizedDatabaseSystemUnitOfWork>>()
-                .Get()
-                .ToQueryOperationResponseAsync<PowerGenerator>()).ToList();
-        }
-
-        private async Task ReloadAsync()
-        {
-            grid.Reset(true);
-            await grid.Reload();
-        }
+        private PowerGenerationAndDistributionManagementDataGrid dataGrid;
+        private PowerGenerationAndDistributionManagementFilterPanel filterPanel;
 
         private async Task LoadDataAsync(LoadDataArgs args)
         {
-            isLoading = true;
-
-            AppendQuery();
-            using var serviceScope = ServiceProvider.CreateScope();
-            var dailyPowerGenerationAndDistributionService = this.GetGenericService(serviceScope);
-            var query = dailyPowerGenerationAndDistributionService.Get();
-            if (!string.IsNullOrEmpty(search))
-            {
-                query = query.Where(x => x.PowerGeneratorName.ToUpper().Contains(search.ToUpper()));
-            }
-            if (status != null)
-            {
-                query = query.Where(x => x.Status.ToUpper() == status.ToUpper());
-            }
-            if (date != null)
-            {
-                var start = TimeZoneInfo.ConvertTimeToUtc(date.Value);
-                var end = TimeZoneInfo.ConvertTimeToUtc(date.Value.AddDays(1));
-                query = query
-                    .Where(x => x.Date >= start)
-                    .Where(x => x.Date < end);
-            }
-            var dailyPowerGenerationAndDistributionsResponse = await query
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailyPowerGenerationAndDistribution>();
-
-            count = (int)dailyPowerGenerationAndDistributionsResponse.Count;
-            dailyPowerGenerationAndDistributions = dailyPowerGenerationAndDistributionsResponse.ToList();
-
-            isLoading = false;
+            dataGrid.CommonFilter = filterPanel.CommonFilter;
         }
 
-        private async Task EditRowAsync(DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution)
+        private async Task OnChangeAsync(CommonFilter commonFilter)
         {
-            await grid.EditRow(dailyPowerGenerationAndDistribution);
-        }
-
-        private async Task SaveRowAsync(DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution)
-        {
-            try
-            {
-                if (dailyPowerGenerationAndDistribution == dailyPowerGenerationAndDistributionToInsert)
-                {
-                    dailyPowerGenerationAndDistributionToInsert = null;
-                }
-                using var serviceScope = ServiceProvider.CreateScope();
-                var dailyPowerGenerationAndDistributionService = this.GetGenericService(serviceScope);
-                await dailyPowerGenerationAndDistributionService.UpdateAsync(dailyPowerGenerationAndDistribution, dailyPowerGenerationAndDistribution.Id);
-                await grid.UpdateRow(dailyPowerGenerationAndDistribution);
-            }
-            catch (Exception ex)
-            {
-                HandleException(ex);
-                throw;
-            }
-        }
-
-        private void CancelEdit(DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution)
-        {
-            if (dailyPowerGenerationAndDistribution == dailyPowerGenerationAndDistributionToInsert)
-            {
-                dailyPowerGenerationAndDistributionToInsert = null;
-            }
-
-            grid.CancelEditRow(dailyPowerGenerationAndDistribution);
-
-        }
-
-        private async Task DeleteRow(DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution)
-        {
-            try
-            {
-                if (dailyPowerGenerationAndDistribution == dailyPowerGenerationAndDistributionToInsert)
-                {
-                    dailyPowerGenerationAndDistributionToInsert = null;
-                }
-
-                if (dailyPowerGenerationAndDistributions.Contains(dailyPowerGenerationAndDistribution))
-                {
-                    using var serviceScope = ServiceProvider.CreateScope();
-                    var dailyPowerGenerationAndDistributionService = this.GetGenericService(serviceScope);
-                    await dailyPowerGenerationAndDistributionService.DeleteAsync(dailyPowerGenerationAndDistribution);
-                    await grid.Reload();
-                }
-                else
-                {
-                    grid.CancelEditRow(dailyPowerGenerationAndDistribution);
-                }
-            }
-            catch (Exception ex)
-            {
-                HandleException(ex);
-                throw;
-            }
-        }
-
-        private void HandleException(Exception ex)
-        {
-            NotificationService.Notify(new()
-            {
-                Summary = "Error",
-                Detail = ex.InnerException?.ToString(),
-                Severity = NotificationSeverity.Error,
-                Duration = 120000,
-            });
-        }
-
-        private IGenericService<DailyPowerGenerationAndDistribution> GetGenericService(IServiceScope serviceScope)
-        {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyPowerGenerationAndDistribution, ICentralizedDatabaseSystemUnitOfWork>>();
-        }
-
-        private async Task OnChangeAsync(object value, string name)
-        {
-            search = value.ToString();
-            await this.ReloadAsync();
-        }
-        private async Task OnChangeStatusFilterAsync(object value, string name)
-        {
-            status = value?.ToString();
-            await this.ReloadAsync();
-        }
-
-        private void OnTodayClick()
-        {
-            date = DateTime.Now;
-        }
-
-        private async Task OnChangeAsync(DateTime? value, string name, string format)
-        {
-            date = value;
-            await this.ReloadAsync();
-        }
-
-        private void AppendQuery()
-        {
-            var queries = new Dictionary<string, string>();
-            if (search != null)
-            {
-                queries.Add(nameof(search), search);
-            }
-            if (status != null)
-            {
-                queries.Add(nameof(status), status);
-            }
-            if (date != null)
-            {
-                queries.Add(nameof(date), date.Value.ToString("yyyy-MM-dd"));
-            }
-            var uriBuilder = new UriBuilder(NavManager.Uri);
-            NavManager.NavigateTo(QueryHelpers.AddQueryString(uriBuilder.Uri.AbsolutePath, queries));
+            await dataGrid.ReloadAsync();
         }
     }
 }

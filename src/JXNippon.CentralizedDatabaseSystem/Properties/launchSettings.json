@@ -11,7 +11,7 @@
     "JXNippon.CentralizedDatabaseSystem": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "filemanagement",
+      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

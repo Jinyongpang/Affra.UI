@@ -1,0 +1,23 @@
+﻿<div class="row py-3">
+    <div class="col">
+        <RadzenCard>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 p-3">
+                    <div style="position: relative">
+                        <RadzenIcon Icon="search" style="position:absolute;top:5px; left: 5px; pointer-events: none" />
+                        <RadzenTextBox style="padding-left: 30px" @bind-Value=@CommonFilter.Search Placeholder="Search Files" type="search" Change=@(args => OnChangeAsync(args)) Class="w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 p-3">
+                        <RadzenDropDown Placeholder="Status" @bind-Value=@CommonFilter.Status AllowClear="true" TValue="string" Class="w-100" 
+                            Data=@(fileProcessStatuses)
+                            Change=@(args => OnChangeAsync(args)) />
+                </div>
+                <div class="col-md-6 col-lg-4 p-3">
+                    <RadzenDatePicker Placeholder="Last Modified Date" TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear="true" DateFormat="d" Class="w-100" Change=@(args => OnChangeAsync(args))>
+                    </RadzenDatePicker>
+                </div>
+            </div>        
+        </RadzenCard>
+    </div>
+</div>
