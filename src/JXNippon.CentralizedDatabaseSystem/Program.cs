@@ -2,6 +2,7 @@ using Affra.Core.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
+using JXNippon.CentralizedDatabaseSystem.Handlers;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements;
 using Microsoft.AspNetCore.Components.Web;
@@ -33,7 +34,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .Services
     .AddTransient<CreateActivityHandler>()
     .AddScoped<NotificationService>()
-    .AddSingleton<IJSInProcessRuntime>(services => 
+    .AddSingleton<IJSInProcessRuntime>(services =>
         (IJSInProcessRuntime)services.GetRequiredService<IJSRuntime>());
 
 builder.Services.AddMsalAuthentication(options =>

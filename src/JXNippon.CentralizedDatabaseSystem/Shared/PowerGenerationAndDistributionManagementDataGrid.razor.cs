@@ -1,0 +1,83 @@
+﻿using Affra.Core.Domain.Extensions;
+using Affra.Core.Domain.Services;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
+using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Models;
+using Microsoft.AspNetCore.Components;
+using Radzen;
+using Radzen.Blazor;
+
+namespace JXNippon.CentralizedDatabaseSystem.Shared
+{
+    public partial class PowerGenerationAndDistributionManagementDataGrid
+    {
+        private RadzenDataGrid<DailyPowerGenerationAndDistribution> grid;
+        private IEnumerable<DailyPowerGenerationAndDistribution> items;
+        private bool isLoading = false;
+
+        [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
+        [Inject] private IServiceProvider ServiceProvider { get; set; }
+        [Inject] private NotificationService NotificationService { get; set; }
+        public CommonFilter CommonFilter { get; set; }
+        public int Count { get; set; }
+
+        public async Task ReloadAsync()
+        {
+            grid.Reset(true);
+            await grid.Reload();
+        }
+
+        private async Task LoadDataAsync(LoadDataArgs args)
+        {
+            isLoading = true;
+            await LoadData.InvokeAsync();
+            using var serviceScope = ServiceProvider.CreateScope();
+            var service = this.GetGenericService(serviceScope);
+            var query = service.Get();
+            if (CommonFilter != null)
+            {
+                if (!string.IsNullOrEmpty(CommonFilter.Search))
+                {
+                    query = query.Where(x => x.PowerGeneratorName.ToUpper().Contains(CommonFilter.Search.ToUpper()));
+                }
+                if (CommonFilter.Status != null)
+                {
+                    query = query.Where(x => x.Status.ToUpper() == CommonFilter.Status.ToUpper());
+                }
+                if (CommonFilter.Date != null)
+                {
+                    var start = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value);
+                    var end = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value.AddDays(1));
+                    query = query
+                        .Where(x => x.Date >= start)
+                        .Where(x => x.Date < end);
+                }
+            }
+            
+            var response = await query
+                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
+                .ToQueryOperationResponseAsync<DailyPowerGenerationAndDistribution>();
+
+            Count = (int)response.Count;
+            items = response.ToList();
+            isLoading = false;
+        }
+
+        private void HandleException(Exception ex)
+        {
+            NotificationService.Notify(new()
+            {
+                Summary = "Error",
+                Detail = ex.InnerException?.ToString(),
+                Severity = NotificationSeverity.Error,
+                Duration = 120000,
+            });
+        }
+
+        private IGenericService<DailyPowerGenerationAndDistribution> GetGenericService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyPowerGenerationAndDistribution, ICentralizedDatabaseSystemUnitOfWork>>();
+        }
+    }
+}

@@ -4,93 +4,11 @@
 <PageTitle>Produced Water Treatment System</PageTitle>
 
 <RadzenBreadCrumb>
-    <Template Context="item">
-        <RadzenBadge Text="@item.Text" IsPill="true" />
-    </Template>
     <ChildContent>
         <RadzenBreadCrumbItem Path="/" Text="Home" />
         <RadzenBreadCrumbItem Path="/ProducedWaterTreatmentSystemManagement" Text="Produced Water Treatment System" />
     </ChildContent>
 </RadzenBreadCrumb>
 
-<div class="row py-3">
-    <div class="col">
-        <RadzenCard>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 p-3">
-                    <div style="position: relative">
-                        <RadzenIcon Icon="search" style="position:absolute;top:5px; left: 5px; pointer-events: none" />
-                        <RadzenAutoComplete style="padding-left: 30px" @bind-Value=@search FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Search Produced Water Treatment Systems" TextProperty="Name" type="search" Change=@(args => OnChangeAsync(args, "TextBox with placeholder")) Class="w-100" AutoComplete="true" Data=@producedWaterTreatmentSystems/>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 p-3">
-                        <RadzenDropDown Placeholder="Status" @bind-Value=@status AllowClear="true" TValue="string" Class="w-100" 
-                            Data=@(statuses)
-                            Change=@(args => OnChangeStatusFilterAsync(args, "DropDown")) />
-                </div>
-                <div class="col-md-6 col-lg-4 p-3">
-                    <RadzenDatePicker Placeholder="Date" TValue="DateTime?" @bind-Value=@date AllowClear="true" DateFormat="d" Class="w-100" Change=@(args => OnChangeAsync(args, "DatePicker with disabled dates", "MM/dd/yyyy"))>
-                    </RadzenDatePicker>
-                </div>
-            </div>        
-        </RadzenCard>
-    </div>
-</div>
-
-<div class="row py-1">
-    <div class="col">
-        <!--RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" /> -->
-        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@count" Data="@dailyProducedWaterTreatmentSystems" LoadData="@LoadDataAsync" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyProducedWaterTreatmentSystem" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true" ShowPagingSummary="true" AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true">
-            <Columns>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="ProducedWaterTreatmentSystemName" Width="60px" Title="Name" Frozen="true" Pickable="false">
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Status" Title="Status"  Width="40px">
-                    <Template Context="item">
-                        @if (item.Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-online"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                        else if (item.Status.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-standby"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                        else
-                        {
-                            <div class="status-default"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                    </Template>      
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Date" Title="Date" Width="30px" SortOrder="SortOrder.Descending">
-                    <Template Context="dailyProducedWaterTreatmentSystem">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyProducedWaterTreatmentSystem.Date.ToLocalTime())
-                    </Template>
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="LastSkimmingDate" Title="Last Skimming" Width="40px">
-                    <Template Context="dailyProducedWaterTreatmentSystem">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyProducedWaterTreatmentSystem.LastSkimmingDate.ToLocalTime())
-                    </Template>
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="AnalyserStatus" Title="Analyser Status"  Width="40px">
-                    <Template Context="item">
-                        @if (item.Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-online"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                        else if (item.Status.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-standby"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                        else
-                        {
-                            <div class="status-default"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                    </Template>      
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Iron" Title="Iron (ppm)" Width="30px" />
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="PH" Title="pH" Width="30px"/>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Remark" Title="Remark" Width="60px"/>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Remark2" Title="Remark 2" Width="60px"/>
-            </Columns>
-        </RadzenDataGrid>
-    </div>
-</div>
+<ProducedWaterTreatmentSystemManagementFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+<ProducedWaterTreatmentSystemManagementDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args))/>
