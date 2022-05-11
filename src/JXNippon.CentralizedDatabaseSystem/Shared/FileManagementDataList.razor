@@ -7,7 +7,7 @@
             {  
                 <div>No records to display.</div>
             }
-            <RadzenDataList WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadDataAsync" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="6" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true">
+            <RadzenDataList WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadDataAsync" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="8" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true">
                 <Template Context="file">
                     <RadzenCard class="dataFileCard">
                         <div class="d-flex flex-row align-items-center">
