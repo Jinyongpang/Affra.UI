@@ -6,7 +6,7 @@
                     <div style="position: relative">
                         <RadzenIcon Icon="search" style="position:absolute;top:5px; left: 5px; pointer-events: none" />
                         <RadzenAutoComplete @bind-Value=@CommonFilter.Search  style="padding-left: 30px" 
-                            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Search Produced Water System" TextProperty="Name" 
+                            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Search Produced Water Systems" TextProperty="Name" 
                             Change=@(args => OnChangeAsync(args)) Class="w-100" AutoComplete="true" Data=@datas/>
                     </div>
                 </div>
