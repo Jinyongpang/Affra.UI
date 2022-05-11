@@ -23,3 +23,11 @@
     padding: 0;
     height: 50px;
 }
+.dataFileCard {
+    width: 300px;
+}
+@media (min-width: 2560px) {
+    .dataFileCard {
+        width: 600px;
+    }
+}

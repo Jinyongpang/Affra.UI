@@ -41,10 +41,9 @@
             {  
                 <div>No records to display.</div>
             }
-                
             <RadzenDataList WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadDataAsync" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="6" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true">
                 <Template Context="file">
-                    <RadzenCard Style="width:300px;">
+                    <RadzenCard class="dataFileCard">
                         <div class="d-flex flex-row align-items-center">
                                 <div>
                                 <h4 class="mb-0" Style="color:#0AA1DD;" href="#"><i class="oi oi-spreadsheet"></i> @(file.FileName)</h4>
@@ -61,7 +60,7 @@
                                 <b>@String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", file.LastModifiedDateTime.ToLocalTime())</b>
                             </div>
                             <div class="col-md-4 text-right">
-                                    @if (file.ProcessStatus == FileProcessStatus.Completed)
+                                @if (file.ProcessStatus == FileProcessStatus.Completed)
                                 {
                                     <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(file.ProcessStatus.ToString())"/>
                                 }
