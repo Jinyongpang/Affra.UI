@@ -26,6 +26,11 @@
 .dataFileCard {
     width: 300px;
 }
+
+.title {
+    color: #0AA1DD;
+}
+
 @media (min-width: 2560px) {
     .dataFileCard {
         width: 600px;
