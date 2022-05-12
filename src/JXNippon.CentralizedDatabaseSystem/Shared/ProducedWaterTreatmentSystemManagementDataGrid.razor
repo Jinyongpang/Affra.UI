@@ -29,7 +29,7 @@
                         }
                     </Template>      
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Date" Title="Date" Width="30px" SortOrder="SortOrder.Descending">
+                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Date" Title="Date" Width="30px" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="dailyProducedWaterTreatmentSystem">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyProducedWaterTreatmentSystem.Date.ToLocalTime())
                     </Template>

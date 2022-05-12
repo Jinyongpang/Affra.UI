@@ -1,15 +1,15 @@
 ﻿@page "/ProducedWaterTreatmentSystemManagement"
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
 
-<PageTitle>Produced Water Treatment System</PageTitle>
+<PageTitle>Tilted Plate Separator V-3000 & Produced Water Treatment System</PageTitle>
 
 <RadzenBreadCrumb>
     <ChildContent>
         <RadzenBreadCrumbItem Path="/" Text="Home" />
-        <RadzenBreadCrumbItem Path="/ProducedWaterTreatmentSystemManagement" Text="Produced Water Treatment System" />
+        <RadzenBreadCrumbItem Path="/ProducedWaterTreatmentSystemManagement" Text="Tilted Plate Separator V-3000 & Produced Water Treatment System" />
     </ChildContent>
 </RadzenBreadCrumb>
 
 <ProducedWaterTreatmentSystemManagementFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
 <ProducedWaterTreatmentSystemManagementDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
-    ShowRefreshButton="true" PagerAlwaysVisible="true"/>
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>

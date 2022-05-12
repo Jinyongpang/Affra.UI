@@ -2,6 +2,7 @@
 
 <div class="row py-2">
     <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;"/>
         <RadzenCard>
             @if (count == 0 && !isLoading)
             {  

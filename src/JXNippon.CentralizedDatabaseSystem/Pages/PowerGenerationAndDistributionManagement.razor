@@ -1,15 +1,15 @@
 ﻿@page "/PowerGenerationAndDistributionManagement"
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 
-<PageTitle>Power Generation And Distribution</PageTitle>
+<PageTitle>Power Generation & Distribution</PageTitle>
 
 <RadzenBreadCrumb>
     <ChildContent>
         <RadzenBreadCrumbItem Path="/" Text="Home" />
-        <RadzenBreadCrumbItem Path="/PowerGenerationAndDistributionManagement" Text="Power Generation And Distribution" />
+        <RadzenBreadCrumbItem Path="/PowerGenerationAndDistributionManagement" Text="Power Generation & Distribution" />
     </ChildContent>
 </RadzenBreadCrumb>
 
 <PowerGenerationAndDistributionManagementFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
 <PowerGenerationAndDistributionManagementDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
-    ShowRefreshButton="true" PagerAlwaysVisible="true"/>
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>

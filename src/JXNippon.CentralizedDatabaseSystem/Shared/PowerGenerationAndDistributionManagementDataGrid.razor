@@ -29,7 +29,8 @@
                         }
                     </Template>         
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Date" Title="Date" SortOrder="SortOrder.Descending">
+                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Remark" Title="Remark"/>
+                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
                     </Template>
