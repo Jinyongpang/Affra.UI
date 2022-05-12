@@ -17,6 +17,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         private bool isLoading = false;
 
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
+        [Parameter] public bool ShowRefreshButton { get; set; }
+        [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NotificationService NotificationService { get; set; }
         public CommonFilter CommonFilter { get; set; }
@@ -24,8 +26,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
         public async Task ReloadAsync()
         {
-            grid.Reset(true);
-            await grid.Reload();
+            await grid.FirstPage(true);
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)

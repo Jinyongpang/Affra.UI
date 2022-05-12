@@ -11,4 +11,5 @@
 </RadzenBreadCrumb>
 
 <PowerGenerationAndDistributionManagementFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
-<PowerGenerationAndDistributionManagementDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args))/>
+<PowerGenerationAndDistributionManagementDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true"/>

@@ -36,3 +36,5 @@
         width: 600px;
     }
 }
+
+@import './styles-generated.css';
