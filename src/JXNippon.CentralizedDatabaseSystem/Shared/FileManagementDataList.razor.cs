@@ -30,7 +30,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
         public async Task ReloadAsync()
         {
-            await _dataList.Reload();
+            await _dataList.FirstPage(true);
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)

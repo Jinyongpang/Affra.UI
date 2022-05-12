@@ -11,4 +11,5 @@
 </RadzenBreadCrumb>
 
 <ProducedWaterTreatmentSystemManagementFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
-<ProducedWaterTreatmentSystemManagementDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args))/>
+<ProducedWaterTreatmentSystemManagementDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true"/>
