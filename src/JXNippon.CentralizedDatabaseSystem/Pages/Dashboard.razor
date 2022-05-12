@@ -40,6 +40,7 @@
             </HeaderTemplate>
             <ChildContent>
                 <ProducedWaterTreatmentSystemManagementDataGrid @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args))/>
+                <DeOilerInjectionDataGrid @ref="deOilerInjectionDataGrid" LoadData=@(args => LoadDeOilerInjectionDataGridAsync(args))/>
             </ChildContent>
             <SummaryTemplate>
                 <RadzenCard class="mt-3">
