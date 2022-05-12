@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-4 p-3">
                     <div style="position: relative">
-                        <RadzenIcon Icon="search" style="position:absolute;top:5px; left: 5px; pointer-events: none" />
+                        <RadzenIcon Icon="search" class="search-icon" />
                         <RadzenTextBox style="padding-left: 30px" @bind-Value=@CommonFilter.Search Placeholder="Search Files" type="search" Change=@(args => OnChangeAsync(args)) Class="w-100" />
                     </div>
                 </div>
