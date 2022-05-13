@@ -12,6 +12,8 @@
 
 <ProducedWaterTreatmentSystemManagementFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
 <ProducedWaterTreatmentSystemManagementDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
-    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"
+    Refresh=@(args => deOilerInjectionDataGrid.ReloadAsync())/>
+<hr class="solid"><div class="title">De-oiler Injection</div>
 <DeOilerInjectionDataGrid @ref="deOilerInjectionDataGrid" LoadData=@(args => LoadDataAsync(args)) 
-    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>

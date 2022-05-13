@@ -1,4 +1,5 @@
-﻿.status-online {
+﻿@import './styles-generated.css';
+.status-online {
     color: #85C88A;
 }
 
@@ -33,7 +34,7 @@
 
 .search-icon {
     position: absolute;
-    top: 6px;
+    top: 10px;
     left: 5px;
     pointer-events: none;
 }
@@ -43,5 +44,3 @@
         width: 600px;
     }
 }
-
-@import './styles-generated.css';
