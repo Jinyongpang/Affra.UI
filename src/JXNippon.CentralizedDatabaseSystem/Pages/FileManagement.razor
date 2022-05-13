@@ -3,70 +3,10 @@
 
 <PageTitle>File Management</PageTitle>
 <RadzenBreadCrumb>
-    <Template Context="item">
-        <RadzenBadge Text="@item.Text" IsPill="true" />
-    </Template>
     <ChildContent>
-        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/" Text="Home"/>
         <RadzenBreadCrumbItem Path="/FileManagement" Text="File Management" />
     </ChildContent>
 </RadzenBreadCrumb>
-<div class="container">
-    <div class="row py-5">
-        <div class="col">
-            <RadzenCard>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 p-3">
-                        <RadzenTextBox Placeholder="Search..." type="search" Dlet Change=@(args => OnChangeAsync(args, "TextBox with placeholder")) Class="w-100" />
-                    </div>
-                    <div class="col-md-6 col-lg-4 p-3">
-                           <RadzenDropDown Placeholder="Status" AllowClear="true" TValue="string" Class="w-100" 
-                                Data=@(fileProcessStatuses)
-                                Change=@(args => OnChangeStatusFilterAsync(args, "DropDown")) />
-                    </div>
-                </div>    
-                <RadzenDataList WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadData" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="6" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true">
-                    <Template Context="file">
-                        <RadzenCard Style="width:300px;">
-                            <div class="d-flex flex-row align-items-center">
-                                 <div>
-                                    <h4 class="mb-0" Style="color:#0AA1DD;" href="#"><i class="oi oi-spreadsheet"></i> @(file.FileName)</h4>
-                                    <div>Folder : @file.FolderName</div>
-                                    <div style="font-size: .8em">Attempts: @(file.NumberOfAttempts)</div>
-                                </div>
-                            </div>
-                            <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
-                            <div class="row">
-                                <div class="col-md-8 text-truncate card-time">
-                                    <b>@String.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Modified : {0:d}", file.LastModifiedDateTime.ToLocalTime())</b>
-                                </div>
-                                <div class="col-md-8 text-truncate card-time">
-                                    <b>@String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", file.LastModifiedDateTime.ToLocalTime())</b>
-                                </div>
-                                <div class="col-md-4 text-right">
-                                     @if (file.ProcessStatus == FileProcessStatus.Completed)
-                                    {
-                                        <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(file.ProcessStatus.ToString())"/>
-                                    }
-                                    else if (file.ProcessStatus == FileProcessStatus.Failed)
-                                    {
-                                        <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(file.ProcessStatus.ToString())"/>
-                                    }
-                                    else if (file.ProcessStatus == FileProcessStatus.Pending)
-                                    {
-                                        <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(file.ProcessStatus.ToString())"/>
-                                    }
-                                    else
-                                    {
-                                        <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(file.ProcessStatus.ToString())"/>
-                                    }
-                                    
-                                </div>
-                            </div>
-                        </RadzenCard>
-                    </Template>                    
-                </RadzenDataList>
-            </RadzenCard>
-        </div>
-    </div>
-</div>
+<FileManagementFilterPanel @ref="fileManagementFilterPanel" Change=@(args => OnChangeAsync(args)) />
+<FileManagementDataList @ref="fileManagementDataList" LoadData=@(args => LoadDataAsync(args))/>

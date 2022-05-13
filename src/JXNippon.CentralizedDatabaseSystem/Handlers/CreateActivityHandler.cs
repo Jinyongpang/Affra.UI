@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace JXNippon.CentralizedDatabaseSystem
+namespace JXNippon.CentralizedDatabaseSystem.Handlers
 {
     public class CreateActivityHandler : DelegatingHandler
     {
