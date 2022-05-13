@@ -1,0 +1,43 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems
+
+<div class="row py-2">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyWellHeadAndSeparationSystem" 
+            ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+            <Columns>
+                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="StationRecyclePV2015" Filterable="false" Title="Station Recycle PV-2015 %" Frozen="true" Pickable="false" />
+                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="ProductionSeparatorV2010PV" Title="Production Separator V-2010 PV"/>
+                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="TestSeparatorV2000PV" Title="Test Separator V-2000 PV"/>
+                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="SayBoltColour" Title="Say Bolt Colour"/>
+                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="SandFilterS0400Status" Title="Sand Filter S-0400 Status">
+                    <Template Context="item">
+                        @if (item.SandFilterS0400Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <div class="status-online"><i class="oi oi-media-record"></i> @(item.SandFilterS0400Status)</div>
+                        }
+                        else if (item.SandFilterS0400Status.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <div class="status-standby"><i class="oi oi-media-record"></i> @(item.SandFilterS0400Status)</div>
+                        }
+                        else
+                        {
+                            <div class="status-default"><i class="oi oi-media-record"></i> @(item.SandFilterS0400Status)</div>
+                        }
+                    </Template>         
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="S0400" Title="S-0400 (bar)"/>
+                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>  
+    </div>
+</div>
