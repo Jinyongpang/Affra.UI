@@ -11,7 +11,7 @@
             PagerAlwaysVisible="@PagerAlwaysVisible">
 
             <Columns>
-                <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="InjectionPoint" Width="60px" Title="Injection Point" Frozen="true" Pickable="false">
+                <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="InjectionPoint" Title="Injection Point" Width="40px">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="InjectionStatus" Title="Injection Status"  Width="40px">
                     <Template Context="item">
@@ -36,6 +36,7 @@
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="TodayLevel" Title="Today's' Level" Width="30px" />
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="YesterdayLevel" Title="Yesterday's Level" Width="30px"/>
+                <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="LevelDrop" Title="Level Drop" Width="30px"/>
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="PumpStroke" Title="Pump Stroke / Min" Width="30px"/>
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="PumpDischarge" Title="Pump Discharge (I/d)" Width="30px"/>
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="TotalTank" Title="Total Tank" Width="30px"/>
