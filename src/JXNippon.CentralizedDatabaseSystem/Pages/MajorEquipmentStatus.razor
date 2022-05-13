@@ -1,40 +1,15 @@
 ﻿@page "/MajorEquipmentStatus"
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatus
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses
 
 <PageTitle>Major Equipment Status</PageTitle>
 
 <RadzenBreadCrumb>
-    <Template Context="item">
-        <RadzenBadge Text="@item.Text" IsPill="true" />
-    </Template>
     <ChildContent>
         <RadzenBreadCrumbItem Path="/" Text="Home" />
         <RadzenBreadCrumbItem Path="/MajorEquipmentStatus" Text="Major Equipment Status" />
     </ChildContent>
 </RadzenBreadCrumb>
-<div class="space"></div>
 
-<!--RadzenButton Text="Reload" Click="@Reload" Style="margin-bottom: 20px;" /> -->
-<RadzenDataGrid @ref=grid IsLoading="@isLoading" Count="@count" Data="@dailyMajorEquipmentStatuses" LoadData="@LoadData" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyMajorEquipmentStatus" ColumnWidth="200px" AllowColumnPicking="true" AllowColumnResize="true" ShowPagingSummary="true">
-    <Columns>
-        <RadzenDataGridColumn TItem="DailyMajorEquipmentStatus" Property="MajorEquipmentName" Width="60px" Title="Name" Frozen="true" Pickable="false">
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DailyMajorEquipmentStatus" Property="Status" Title="Status">
-            <Template Context="item">
-                @if (item.Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <div class="status-online"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                }
-                else if (item.Status.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    <div class="status-standby"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                }
-                else
-                {
-                    <div class="status-default"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                }
-            </Template>
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="DailyMajorEquipmentStatus" Property="Remark" Title="Remark" Width="60px"/>
-    </Columns>
-</RadzenDataGrid>
+<MajorEquipmentStatusFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+<MajorEquipmentStatusDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>

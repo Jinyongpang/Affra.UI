@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 12/5/2022 9:48:08 PM
+// Generation date: 13/5/2022 11:38:41 AM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -910,6 +910,374 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> _DailyProducedWaterTreatmentSystems = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem>();
         partial void OnDailyProducedWaterTreatmentSystemsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> value);
         partial void OnDailyProducedWaterTreatmentSystemsChanged();
+    }
+    /// <summary>
+    /// There are no comments for DailyDeOilerInjectionSingle in the schema.
+    /// </summary>
+    public partial class DailyDeOilerInjectionSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DailyDeOilerInjection>
+    {
+        /// <summary>
+        /// Initialize a new DailyDeOilerInjectionSingle object.
+        /// </summary>
+        public DailyDeOilerInjectionSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new DailyDeOilerInjectionSingle object.
+        /// </summary>
+        public DailyDeOilerInjectionSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new DailyDeOilerInjectionSingle object.
+        /// </summary>
+        public DailyDeOilerInjectionSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyDeOilerInjection> query)
+            : base(query) {}
+
+        /// <summary>
+        /// There are no comments for ProducedWaterTreatmentSystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle ProducedWaterTreatmentSystem
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._ProducedWaterTreatmentSystem == null))
+                {
+                    this._ProducedWaterTreatmentSystem = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle(this.Context, GetPath("ProducedWaterTreatmentSystem"));
+                }
+                return this._ProducedWaterTreatmentSystem;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle _ProducedWaterTreatmentSystem;
+    }
+    /// <summary>
+    /// There are no comments for DailyDeOilerInjection in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class DailyDeOilerInjection : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new DailyDeOilerInjection object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="totalTank">Initial value of TotalTank.</param>
+        /// <param name="drums">Initial value of Drums.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static DailyDeOilerInjection CreateDailyDeOilerInjection(long ID, global::System.DateTimeOffset date, int totalTank, int drums, long xmin)
+        {
+            DailyDeOilerInjection dailyDeOilerInjection = new DailyDeOilerInjection();
+            dailyDeOilerInjection.Id = ID;
+            dailyDeOilerInjection.Date = date;
+            dailyDeOilerInjection.TotalTank = totalTank;
+            dailyDeOilerInjection.Drums = drums;
+            dailyDeOilerInjection.xmin = xmin;
+            return dailyDeOilerInjection;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property InjectionPoint in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string InjectionPoint
+        {
+            get
+            {
+                return this._InjectionPoint;
+            }
+            set
+            {
+                this.OnInjectionPointChanging(value);
+                this._InjectionPoint = value;
+                this.OnInjectionPointChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _InjectionPoint;
+        partial void OnInjectionPointChanging(string value);
+        partial void OnInjectionPointChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property InjectionStatus in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string InjectionStatus
+        {
+            get
+            {
+                return this._InjectionStatus;
+            }
+            set
+            {
+                this.OnInjectionStatusChanging(value);
+                this._InjectionStatus = value;
+                this.OnInjectionStatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _InjectionStatus;
+        partial void OnInjectionStatusChanging(string value);
+        partial void OnInjectionStatusChanged();
+        /// <summary>
+        /// There are no comments for Property Remark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Remark
+        {
+            get
+            {
+                return this._Remark;
+            }
+            set
+            {
+                this.OnRemarkChanging(value);
+                this._Remark = value;
+                this.OnRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Remark;
+        partial void OnRemarkChanging(string value);
+        partial void OnRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property TodayLevel in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TodayLevel
+        {
+            get
+            {
+                return this._TodayLevel;
+            }
+            set
+            {
+                this.OnTodayLevelChanging(value);
+                this._TodayLevel = value;
+                this.OnTodayLevelChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TodayLevel;
+        partial void OnTodayLevelChanging(global::System.Nullable<decimal> value);
+        partial void OnTodayLevelChanged();
+        /// <summary>
+        /// There are no comments for Property YesterdayLevel in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YesterdayLevel
+        {
+            get
+            {
+                return this._YesterdayLevel;
+            }
+            set
+            {
+                this.OnYesterdayLevelChanging(value);
+                this._YesterdayLevel = value;
+                this.OnYesterdayLevelChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YesterdayLevel;
+        partial void OnYesterdayLevelChanging(global::System.Nullable<decimal> value);
+        partial void OnYesterdayLevelChanged();
+        /// <summary>
+        /// There are no comments for Property LevelDrop in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> LevelDrop
+        {
+            get
+            {
+                return this._LevelDrop;
+            }
+            set
+            {
+                this.OnLevelDropChanging(value);
+                this._LevelDrop = value;
+                this.OnLevelDropChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _LevelDrop;
+        partial void OnLevelDropChanging(global::System.Nullable<decimal> value);
+        partial void OnLevelDropChanged();
+        /// <summary>
+        /// There are no comments for Property PumpStroke in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string PumpStroke
+        {
+            get
+            {
+                return this._PumpStroke;
+            }
+            set
+            {
+                this.OnPumpStrokeChanging(value);
+                this._PumpStroke = value;
+                this.OnPumpStrokeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _PumpStroke;
+        partial void OnPumpStrokeChanging(string value);
+        partial void OnPumpStrokeChanged();
+        /// <summary>
+        /// There are no comments for Property PumpDischarge in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string PumpDischarge
+        {
+            get
+            {
+                return this._PumpDischarge;
+            }
+            set
+            {
+                this.OnPumpDischargeChanging(value);
+                this._PumpDischarge = value;
+                this.OnPumpDischargeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _PumpDischarge;
+        partial void OnPumpDischargeChanging(string value);
+        partial void OnPumpDischargeChanged();
+        /// <summary>
+        /// There are no comments for Property TotalTank in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int TotalTank
+        {
+            get
+            {
+                return this._TotalTank;
+            }
+            set
+            {
+                this.OnTotalTankChanging(value);
+                this._TotalTank = value;
+                this.OnTotalTankChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _TotalTank;
+        partial void OnTotalTankChanging(int value);
+        partial void OnTotalTankChanged();
+        /// <summary>
+        /// There are no comments for Property Drums in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Drums
+        {
+            get
+            {
+                return this._Drums;
+            }
+            set
+            {
+                this.OnDrumsChanging(value);
+                this._Drums = value;
+                this.OnDrumsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Drums;
+        partial void OnDrumsChanging(int value);
+        partial void OnDrumsChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property ProducedWaterTreatmentSystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem ProducedWaterTreatmentSystem
+        {
+            get
+            {
+                return this._ProducedWaterTreatmentSystem;
+            }
+            set
+            {
+                this.OnProducedWaterTreatmentSystemChanging(value);
+                this._ProducedWaterTreatmentSystem = value;
+                this.OnProducedWaterTreatmentSystemChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem _ProducedWaterTreatmentSystem;
+        partial void OnProducedWaterTreatmentSystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem value);
+        partial void OnProducedWaterTreatmentSystemChanged();
     }
     /// <summary>
     /// Class containing all extension methods
@@ -9357,19 +9725,6 @@ namespace CentralizedDatabaseSystemODataService.Default
         public void AddToDailyLogistic(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic dailyLogistic)
         {
             base.AddObject("DailyLogistic", dailyLogistic);
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToDailyMajorEquipmentStatus(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatus.DailyMajorEquipmentStatus dailyMajorEquipmentStatus)
-        {
-            base.AddObject("DailyMajorEquipmentStatus", dailyMajorEquipmentStatus);
-        }
-        /// <summary>
-        /// There are no comments for MajorEquipment in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToMajorEquipment(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatus.MajorEquipment majorEquipment)
-        {
-            base.AddObject("MajorEquipment", majorEquipment);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel

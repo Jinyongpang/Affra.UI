@@ -9,6 +9,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private DashboardFilterPanel filterPanel;
         private PowerGenerationAndDistributionManagementDataGrid powerGenerationAndDistributionManagementDataGrid;
         private ProducedWaterTreatmentSystemManagementDataGrid producedWaterTreatmentSystemManagementDataGrid;
+        private MajorEquipmentStatusDataGrid majorEquipmentStatusDataGrid;
         private DeOilerInjectionDataGrid deOilerInjectionDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
@@ -23,12 +24,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             deOilerInjectionDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        private async Task LoadMajorEquipmentDataGridAsync(LoadDataArgs args)
+        {
+            majorEquipmentStatusDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private async Task OnChangeAsync(CommonFilter commonFilter)
         {
             await Task.WhenAll(powerGenerationAndDistributionManagementDataGrid.ReloadAsync(),
                 producedWaterTreatmentSystemManagementDataGrid.ReloadAsync(),
-                deOilerInjectionDataGrid.ReloadAsync());
+                deOilerInjectionDataGrid.ReloadAsync(),
+                majorEquipmentStatusDataGrid.ReloadAsync());
         }
 
     }
