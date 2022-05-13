@@ -18,6 +18,76 @@
         <RadzenPanel AllowCollapse="true">
             <HeaderTemplate>
                 <h4 class="m-0 d-flex align-items-center title">
+                    3. Daily Production
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <div class="row py-2">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    SK10 Production
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <ProductionSK10DataGrid @ref="productionSK10DataGrid" LoadData=@(args => LoadProductionSK10DataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@productionSK10DataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    HIP Production
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <ProductionHIPDataGrid @ref="productionHIPDataGrid" LoadData=@(args => LoadProductionHIPDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@productionHIPDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    FPSO Production
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <ProductionFPSOHelangDataGrid @ref="productionFPSOHelangDataGrid" LoadData=@(args => LoadProductionFPSODataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@productionFPSOHelangDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+            </ChildContent>
+        </RadzenPanel>
+    </div>
+</div>
+ <div class="row py-2">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center title">
                     4. Major Equipment Status
                 </h4>
             </HeaderTemplate>

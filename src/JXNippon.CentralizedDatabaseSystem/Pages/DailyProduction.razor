@@ -1,0 +1,31 @@
+﻿@page "/DailyProductions"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
+
+<PageTitle>Daily Production</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/DailyProduction" Text="Daily Production" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<DailyProductionFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+    
+<div class="row py-2">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="true" />
+    </div>
+</div>
+    
+<hr class="solid"><div class="title">SK10 Production</div>
+<ProductionSK10DataGrid @ref="sk10DataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+
+<hr class="solid"><div class="title">HIP Production</div>
+<ProductionHIPDataGrid @ref="hipDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+    
+<hr class="solid"><div class="title">FPSO Production</div>
+<ProductionFPSOHelangDataGrid @ref="fpsoDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
