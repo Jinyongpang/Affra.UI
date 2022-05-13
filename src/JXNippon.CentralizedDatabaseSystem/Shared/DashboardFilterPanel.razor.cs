@@ -13,7 +13,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         protected override async Task OnInitializedAsync()
         {
             CommonFilter = new CommonFilter(NavManager);
-            CommonFilter.Date = DateTime.Today.AddDays(-1);
+            CommonFilter.Date = DateTime.Today;
         }
 
         private async Task OnChangeAsync(object value)

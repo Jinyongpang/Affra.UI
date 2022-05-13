@@ -52,7 +52,7 @@ main {
     }
 }
 
-@media (min-width: 1370px) {
+@media (min-width: 1450px) {
     .page {
         flex-direction: row;
     }
@@ -81,7 +81,7 @@ main {
         padding-right: 1.5rem !important;
     }
     .expandSideBar {
-        width: 14rem;
+        width: 15rem;
         transition: 0.5s;
     }
 
@@ -91,7 +91,7 @@ main {
     }
 }
 
-@media (max-width: 1370px) {
+@media (max-width: 1450px) {
     .expandSideBar {
         height: 100%;
     }

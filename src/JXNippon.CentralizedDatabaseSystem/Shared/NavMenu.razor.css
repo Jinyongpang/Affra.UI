@@ -52,7 +52,7 @@
     color: white;
 }
 
-@media (min-width: 1370px) {
+@media (min-width: 1450px) {
     .sideBarItemLabelShow {
         display: block;
     }

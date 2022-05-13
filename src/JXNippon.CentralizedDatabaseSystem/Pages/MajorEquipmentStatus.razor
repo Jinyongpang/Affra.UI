@@ -1,0 +1,15 @@
+﻿@page "/MajorEquipmentStatus"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses
+
+<PageTitle>Major Equipment Status</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/MajorEquipmentStatus" Text="Major Equipment Status" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<MajorEquipmentStatusFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+<MajorEquipmentStatusDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
