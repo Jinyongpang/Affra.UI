@@ -1,7 +1,6 @@
-﻿using Affra.Core.Domain.Extensions;
-using Affra.Core.Domain.Services;
+﻿using Affra.Core.Domain.Services;
+using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
-using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using Microsoft.AspNetCore.Components;

@@ -1,5 +1,5 @@
-﻿using Affra.Core.Domain.Extensions;
-using Affra.Core.Domain.Services;
+﻿using Affra.Core.Domain.Services;
+using Affra.Core.Infrastructure.OData.Extensions;
 using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;

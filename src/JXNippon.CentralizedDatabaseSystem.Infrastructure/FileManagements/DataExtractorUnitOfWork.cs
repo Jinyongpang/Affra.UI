@@ -1,5 +1,5 @@
 ﻿using Affra.Core.Domain.UnitOfWorks;
-using Affra.Core.Infrastructure.UnitOfWorks;
+using Affra.Core.Infrastructure.OData.UnitOfWorks;
 using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 using DataExtractorODataService.Default;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
