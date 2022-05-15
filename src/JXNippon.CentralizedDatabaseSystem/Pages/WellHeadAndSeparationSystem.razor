@@ -1,0 +1,21 @@
+﻿@page "/WellHeadAndSeparationSystem"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems
+
+<PageTitle>WellHead And Separation System</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/WellHeadAndSeparationSystem" Text="WellHead And Separation System" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<WellHeadAndSeparationSystemFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+<WellHeadAndSeparationSystemDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"
+    Refresh=@(args => wellStreamCoolerDataGrid.ReloadAsync())/>
+
+
+<hr class="solid"><div class="title">Well Stream Coolers Temperature</div>
+<WellStreamCoolerDataGrid @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>

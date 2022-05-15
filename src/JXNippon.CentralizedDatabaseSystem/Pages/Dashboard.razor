@@ -80,6 +80,11 @@
                     </div>
                 </div>
             </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@(productionSK10DataGrid.Count + productionHIPDataGrid.Count + productionFPSOHelangDataGrid.Count) record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
         </RadzenPanel>
     </div>
 </div>
@@ -97,6 +102,44 @@
             <SummaryTemplate>
                 <RadzenCard class="mt-3">
                     <b>@majorEquipmentStatusDataGrid.Count record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div>
+</div>
+ <div class="row py-2">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center title">
+                    6. WellHead & Separation System
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <WellHeadAndSeparationSystemDataGrid @ref="wellHeadAndSeparationSystemDataGrid" LoadData=@(args => LoadWellHeadAndSeparationSystemDataGridAsync(args))/>
+                <div class="row py-2">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    Well Stream Cooler
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <WellStreamCoolerDataGrid @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@wellStreamCoolerDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@wellHeadAndSeparationSystemDataGrid.Count record(s).</b>
                 </RadzenCard>
             </SummaryTemplate>
         </RadzenPanel>
