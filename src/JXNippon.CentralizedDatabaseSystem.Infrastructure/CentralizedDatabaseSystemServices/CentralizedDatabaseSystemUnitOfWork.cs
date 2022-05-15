@@ -1,5 +1,5 @@
 ﻿using Affra.Core.Domain.UnitOfWorks;
-using Affra.Core.Infrastructure.UnitOfWorks;
+using Affra.Core.Infrastructure.OData.UnitOfWorks;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
 using CentralizedDatabaseSystemODataService.Default;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;

@@ -1,5 +1,5 @@
-﻿using Affra.Core.Domain.Extensions;
-using Affra.Core.Domain.Services;
+﻿using Affra.Core.Domain.Services;
+using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
@@ -13,7 +13,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
     public partial class DeOilerInjectionDataGrid
     {
         private RadzenDataGrid<DailyDeOilerInjection> grid;
-        private IEnumerable<DailyDeOilerInjection> items;    
+        private IEnumerable<DailyDeOilerInjection> items;
         private bool isLoading = false;
 
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }

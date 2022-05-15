@@ -1,5 +1,5 @@
-﻿using Affra.Core.Domain.Extensions;
-using Affra.Core.Domain.Services;
+﻿using Affra.Core.Domain.Services;
+using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Models;

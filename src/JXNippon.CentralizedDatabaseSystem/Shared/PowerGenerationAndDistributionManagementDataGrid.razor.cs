@@ -1,5 +1,5 @@
-﻿using Affra.Core.Domain.Extensions;
-using Affra.Core.Domain.Services;
+﻿using Affra.Core.Domain.Services;
+using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
@@ -57,7 +57,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
                         .Where(x => x.Date < end);
                 }
             }
-            
+
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<DailyPowerGenerationAndDistribution>();
