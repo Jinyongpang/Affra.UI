@@ -24,6 +24,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
         public CommonFilter FileManagementFilter { get; set; }
 
+        private bool isNotLoading => !isLoading;
+
         protected override void OnInitialized()
         {
         }
