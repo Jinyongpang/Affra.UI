@@ -1,14 +1,14 @@
-﻿@page "/LWPActivity"
+﻿@page "/CommunicationSystem"
 
-<PageTitle>Layang Wellhead Platform Activities</PageTitle>
+<PageTitle>DCS, FGS, ASD & Communication System</PageTitle>
 
 <RadzenBreadCrumb>
     <ChildContent>
         <RadzenBreadCrumbItem Path="/" Text="Home" />
-        <RadzenBreadCrumbItem Path="/LWPActivity" Text="Layang Wellhead Platform Activities" />
+        <RadzenBreadCrumbItem Path="/CommunicationSystem" Text="DCS, FGS, ASD & Communication System" />
     </ChildContent>
 </RadzenBreadCrumb>
 
 <DateFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
-<LWPActivityDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+<CommunicationSystemDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
     ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
