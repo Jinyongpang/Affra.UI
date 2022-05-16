@@ -1,7 +1,6 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared;
 using Radzen;
-using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
@@ -18,6 +17,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private WellHeadAndSeparationSystemDataGrid wellHeadAndSeparationSystemDataGrid;
         private WellStreamCoolerDataGrid wellStreamCoolerDataGrid;
         private LogisticDataGrid logisticDataGrid;
+        private LWPActivityDataGrid lWPActivityDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -61,6 +61,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             logisticDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
 
+        private async Task LoadLWPActivityDataGridAsync(LoadDataArgs args)
+        {
+            lWPActivityDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+
+
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
             return this.ReloadAsync();
@@ -77,7 +83,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 productionFPSOHelangDataGrid.ReloadAsync(),
                 wellHeadAndSeparationSystemDataGrid.ReloadAsync(),
                 wellStreamCoolerDataGrid.ReloadAsync(),
-                logisticDataGrid.ReloadAsync());
+                logisticDataGrid.ReloadAsync(),
+                lWPActivityDataGrid.ReloadAsync());
         }
     }
 }
