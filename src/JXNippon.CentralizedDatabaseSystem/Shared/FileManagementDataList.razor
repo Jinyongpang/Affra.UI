@@ -8,6 +8,7 @@
             {  
                 <div>No records to display.</div>
             }
+            <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate" Visible="@isLoading"/>
             <RadzenDataList WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadDataAsync" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="8" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true" PagerAlwaysVisible="true">
                 <Template Context="file">
                     <RadzenCard class="dataFileCard">
