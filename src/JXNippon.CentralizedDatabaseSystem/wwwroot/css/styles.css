@@ -39,8 +39,25 @@
     pointer-events: none;
 }
 
+.oi {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
 @media (min-width: 2560px) {
     .dataFileCard {
         width: 600px;
+    }
+}
+
+@media (min-width: 1450px) {
+    .sideBarItemLabelShow {
+        display: block;
+    }
+
+    .sideBarItemLabelHide {
+        display: none;
     }
 }

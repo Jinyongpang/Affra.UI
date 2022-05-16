@@ -34,6 +34,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .Services
     .AddTransient<CreateActivityHandler>()
     .AddScoped<NotificationService>()
+    .AddScoped<TooltipService>()
     .AddSingleton<IJSInProcessRuntime>(services =>
         (IJSInProcessRuntime)services.GetRequiredService<IJSRuntime>());
 
