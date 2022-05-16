@@ -1,6 +1,7 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared;
 using Radzen;
+using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
@@ -16,6 +17,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private ProductionFPSOHelangDataGrid productionFPSOHelangDataGrid;
         private WellHeadAndSeparationSystemDataGrid wellHeadAndSeparationSystemDataGrid;
         private WellStreamCoolerDataGrid wellStreamCoolerDataGrid;
+        private LogisticDataGrid logisticDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -54,9 +56,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             wellStreamCoolerDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
 
-        private async Task OnChangeAsync(CommonFilter commonFilter)
+        private async Task LoadLogisticDataGridAsync(LoadDataArgs args)
         {
-            await Task.WhenAll(powerGenerationAndDistributionManagementDataGrid.ReloadAsync(),
+            logisticDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+
+        private Task OnChangeAsync(CommonFilter commonFilter)
+        {
+            return this.ReloadAsync();
+        }
+
+        private Task ReloadAsync()
+        {
+            return Task.WhenAll(powerGenerationAndDistributionManagementDataGrid.ReloadAsync(),
                 producedWaterTreatmentSystemManagementDataGrid.ReloadAsync(),
                 deOilerInjectionDataGrid.ReloadAsync(),
                 majorEquipmentStatusDataGrid.ReloadAsync(),
@@ -64,8 +76,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 productionHIPDataGrid.ReloadAsync(),
                 productionFPSOHelangDataGrid.ReloadAsync(),
                 wellHeadAndSeparationSystemDataGrid.ReloadAsync(),
-                wellStreamCoolerDataGrid.ReloadAsync());
+                wellStreamCoolerDataGrid.ReloadAsync(),
+                logisticDataGrid.ReloadAsync());
         }
-
     }
 }
