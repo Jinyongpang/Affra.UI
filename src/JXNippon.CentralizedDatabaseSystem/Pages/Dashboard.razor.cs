@@ -18,6 +18,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private WellStreamCoolerDataGrid wellStreamCoolerDataGrid;
         private LogisticDataGrid logisticDataGrid;
         private LWPActivityDataGrid lWPActivityDataGrid;
+        private CommunicationSystemDataGrid communicationSystemDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -66,6 +67,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             lWPActivityDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
 
+        private async Task LoadCommunicationSystemDataGridAsync(LoadDataArgs args)
+        {
+            communicationSystemDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
@@ -84,7 +89,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 wellHeadAndSeparationSystemDataGrid.ReloadAsync(),
                 wellStreamCoolerDataGrid.ReloadAsync(),
                 logisticDataGrid.ReloadAsync(),
-                lWPActivityDataGrid.ReloadAsync());
+                lWPActivityDataGrid.ReloadAsync(),
+                communicationSystemDataGrid.ReloadAsync());
         }
     }
 }

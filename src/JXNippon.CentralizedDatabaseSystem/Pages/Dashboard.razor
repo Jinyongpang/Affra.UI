@@ -209,6 +209,26 @@
         <RadzenPanel AllowCollapse="true">
             <HeaderTemplate>
                 <h4 class="m-0 d-flex align-items-center title">
+                    16. DCS, FGS, ASD & Communication System
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <CommunicationSystemDataGrid @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args))/>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@communicationSystemDataGrid.Count record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div>
+</div>
+
+<div class="row py-2">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center title">
                     17. Layang Wellhead Platform (LWP) Activities
                 </h4>
             </HeaderTemplate>
