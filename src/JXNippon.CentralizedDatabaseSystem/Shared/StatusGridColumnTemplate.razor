@@ -1,0 +1,19 @@
+﻿@if (Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase)
+    || Status.Equals("Duty", StringComparison.InvariantCultureIgnoreCase)
+    || Status.Equals("In Service", StringComparison.InvariantCultureIgnoreCase))
+{
+    <div class="status-online"><i class="oi oi-media-record"></i> @Status</div>
+}
+else if (Status.Contains("Standby", StringComparison.InvariantCultureIgnoreCase))
+{
+    <div class="status-standby"><i class="oi oi-media-record"></i> @Status</div>
+}
+else if (Status.Contains("Downtime", StringComparison.InvariantCultureIgnoreCase)
+    || Status.Contains("Offline", StringComparison.InvariantCultureIgnoreCase))
+{
+    <div class="status-offline"><i class="oi oi-media-record"></i> @Status</div>
+}
+else
+{
+    <div class="status-default"><i class="oi oi-media-record"></i> @Status</div>
+}

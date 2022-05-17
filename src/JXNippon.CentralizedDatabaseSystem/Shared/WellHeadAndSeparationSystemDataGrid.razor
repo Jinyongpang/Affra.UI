@@ -16,19 +16,8 @@
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="SayBoltColour" Title="Say Bolt Colour"/>
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="SandFilterS0400Status" Title="Sand Filter S-0400 Status">
                     <Template Context="item">
-                        @if (item.SandFilterS0400Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-online"><i class="oi oi-media-record"></i> @(item.SandFilterS0400Status)</div>
-                        }
-                        else if (item.SandFilterS0400Status.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-standby"><i class="oi oi-media-record"></i> @(item.SandFilterS0400Status)</div>
-                        }
-                        else
-                        {
-                            <div class="status-default"><i class="oi oi-media-record"></i> @(item.SandFilterS0400Status)</div>
-                        }
-                    </Template>         
+                        <StatusGridColumnTemplate Status="@(item.SandFilterS0400Status)"></StatusGridColumnTemplate>
+                    </Template>        
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="S0400" Title="S-0400 (bar)"/>
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">

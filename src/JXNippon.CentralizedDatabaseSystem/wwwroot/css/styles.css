@@ -7,8 +7,11 @@
     color: #F0A500;
 }
 
-
 .status-default {
+    color: grey;
+}
+
+.status-offline {
     color: lightgrey;
 }
 
@@ -37,13 +40,6 @@
     top: 10px;
     left: 5px;
     pointer-events: none;
-}
-
-.oi {
-    width: 2rem;
-    font-size: 1.1rem;
-    vertical-align: text-top;
-    top: -2px;
 }
 
 @media (min-width: 2560px) {

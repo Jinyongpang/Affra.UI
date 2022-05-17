@@ -15,18 +15,7 @@
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Status" Title="Status">
                     <Template Context="item">
-                        @if (item.Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-online"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                        else if (item.Status.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-standby"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                        else
-                        {
-                            <div class="status-default"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
+                        <StatusGridColumnTemplate Status="@(item.Status)"></StatusGridColumnTemplate>
                     </Template>         
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Remark" Title="Remark"/>

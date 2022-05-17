@@ -15,19 +15,8 @@
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyMajorEquipmentStatus" Property="Status" Title="Status">
                     <Template Context="item">
-                        @if (item.Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-online"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                        else if (item.Status.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-standby"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                        else
-                        {
-                            <div class="status-default"><i class="oi oi-media-record"></i> @(item.Status)</div>
-                        }
-                    </Template>         
+                        <StatusGridColumnTemplate Status="@(item.Status)"></StatusGridColumnTemplate>
+                    </Template>           
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyMajorEquipmentStatus" Property="Remark" Title="Remark"/>
                 <RadzenDataGridColumn TItem="DailyMajorEquipmentStatus" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
