@@ -15,19 +15,8 @@
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="InjectionStatus" Title="Injection Status"  Width="40px">
                     <Template Context="item">
-                        @if (item.InjectionStatus.Equals("Online", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-online"><i class="oi oi-media-record"></i> @(item.InjectionStatus)</div>
-                        }
-                        else if (item.InjectionStatus.Equals("Standby", StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            <div class="status-standby"><i class="oi oi-media-record"></i> @(item.InjectionStatus)</div>
-                        }
-                        else
-                        {
-                            <div class="status-default"><i class="oi oi-media-record"></i> @(item.InjectionStatus)</div>
-                        }
-                    </Template>      
+                        <StatusGridColumnTemplate Status="@(item.InjectionStatus)"></StatusGridColumnTemplate>
+                    </Template>
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="Date" Title="Date" Width="30px" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="DailyDeOilerInjection">
