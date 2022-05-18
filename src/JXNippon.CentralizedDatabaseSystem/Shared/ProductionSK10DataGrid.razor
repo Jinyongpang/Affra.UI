@@ -11,9 +11,9 @@
             PagerAlwaysVisible="@PagerAlwaysVisible">
 
             <Columns>
-                <RadzenDataGridColumn TItem="DailySK10Production" Property="SK10ProductionItemName" Filterable="false" Title="Name" Frozen="true" Pickable="false" />
-                <RadzenDataGridColumn TItem="DailySK10Production" Property="Status" Title="Status"/>
-                <RadzenDataGridColumn TItem="DailySK10Production" Property="Remark" Title="Remark"/>
+                <RadzenDataGridColumn TItem="DailySK10Production" Property="SK10CumulativeGasExport" Filterable="false" Title="SK10 Cumulative Gas Export (MMscf) " Frozen="true" Pickable="false" />
+                <RadzenDataGridColumn TItem="DailySK10Production" Property="SK10GasExportGODCPlan" Filterable="false" Title="SK10 Gas Export GODC Plan (MMscfd)" Frozen="true" Pickable="false" />
+                <RadzenDataGridColumn TItem="DailySK10Production" Property="SK10GasExportGODCPlanRemark" Title="Remark"/>
                 <RadzenDataGridColumn TItem="DailySK10Production" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())

@@ -38,14 +38,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             var query = service.Get();
             if (CommonFilter != null)
             {
-                if (!string.IsNullOrEmpty(CommonFilter.Search))
-                {
-                    query = query.Where(x => x.SK10ProductionItemName.ToUpper().Contains(CommonFilter.Search.ToUpper()));
-                }
-                if (CommonFilter.Status != null)
-                {
-                    query = query.Where(x => x.Status.ToUpper() == CommonFilter.Status.ToUpper());
-                }
                 if (CommonFilter.Date != null)
                 {
                     var start = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value);

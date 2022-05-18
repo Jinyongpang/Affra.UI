@@ -36,7 +36,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddScoped<NotificationService>()
     .AddScoped<TooltipService>()
     .AddSingleton<IJSInProcessRuntime>(services =>
-        (IJSInProcessRuntime)services.GetRequiredService<IJSRuntime>());
+        (IJSInProcessRuntime)services.GetRequiredService<IJSRuntime>())
+    .AddScoped<ContextMenuService>()
+    .AddScoped<DialogService>();
 
 builder.Services.AddMsalAuthentication(options =>
 {
