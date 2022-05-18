@@ -16,8 +16,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         public CommonFilter CommonFilter { get; set; }
 
-        private IEnumerable<string> statuses = new string[] { "Online", "Offline", "Standby" };
-
         protected override async Task OnInitializedAsync()
         {
             CommonFilter = new CommonFilter(NavManager);
