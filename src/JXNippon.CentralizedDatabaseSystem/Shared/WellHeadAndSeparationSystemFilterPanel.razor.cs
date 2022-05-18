@@ -25,10 +25,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
                 .Get()
                 .ToQueryOperationResponseAsync<DailyWellHeadAndSeparationSystem>()).ToList();
         }
-        private async Task OnChangeAsync(object value)
+        private Task OnChangeAsync(object value)
         {
             CommonFilter.AppendQuery(NavManager);
-            await Change.InvokeAsync(CommonFilter);
+            return Change.InvokeAsync(CommonFilter);
         }
     }
 }

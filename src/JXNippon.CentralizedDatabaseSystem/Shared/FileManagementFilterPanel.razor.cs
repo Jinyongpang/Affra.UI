@@ -14,14 +14,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         [Inject] private NavigationManager NavManager { get; set; }
         public CommonFilter CommonFilter { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override Task OnInitializedAsync()
         {
             CommonFilter = new CommonFilter(NavManager);
+            return Task.CompletedTask;
         }
-        private async Task OnChangeAsync(object value)
+        private Task OnChangeAsync(object value)
         {
             CommonFilter.AppendQuery(NavManager);
-            await Change.InvokeAsync(CommonFilter);
+            return Change.InvokeAsync(CommonFilter);
         }
     }
 }

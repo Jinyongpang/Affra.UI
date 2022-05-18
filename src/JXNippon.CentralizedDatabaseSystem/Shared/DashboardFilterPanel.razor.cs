@@ -10,10 +10,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         public CommonFilter CommonFilter { get; set; }
 
 
-        protected override async Task OnInitializedAsync()
+        protected override Task OnInitializedAsync()
         {
             CommonFilter = new CommonFilter(NavManager);
             CommonFilter.Date = DateTime.Today;
+
+            return Task.CompletedTask;
         }
 
         private async Task OnChangeAsync(object value)
