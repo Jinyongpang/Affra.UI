@@ -9,7 +9,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         [Inject] private NavigationManager NavManager { get; set; }
         public CommonFilter CommonFilter { get; set; }
 
-
         protected override Task OnInitializedAsync()
         {
             CommonFilter = new CommonFilter(NavManager);
