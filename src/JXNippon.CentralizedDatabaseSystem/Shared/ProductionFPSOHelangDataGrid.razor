@@ -1,7 +1,7 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
 
 <div class="row py-2">
-    <div class="col">
+    <div class="col" style="width:1000px">
         <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />
         <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
             FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
@@ -11,9 +11,23 @@
             PagerAlwaysVisible="@PagerAlwaysVisible">
 
             <Columns>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOHelangProductionItemName" Filterable="false" Title="Name" Frozen="true" Pickable="false" />
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="Status" Title="Status"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="Remark" Title="Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeGasExport" Title="FPSO Cumulative Gas Export (MMscf)"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeGasExportRemark" Title="FPSO Cumulative Gas Export Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeCrudeOil" Title="FPSO Cumulative Crude Oil (bbl)"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeCrudeOilRemark" Title="FPSO Cumulative Crude Oil Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCrudeAPIReading" Title="FPSO Crude API reading"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedHIPCrudeToFPSO" Title="Estimated HIP Crude to FPSO (bbl)"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedHIPCrudeToFPSORemark" Title="Estimated HIP Crude to FPSO Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedLWPCrudeToFPSO" Title="Estimated LWP Crude to FPSO (bbl)"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedLWPCrudeToFPSORemark" Title="Estimated LWP Crude to FPSO Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="HIPCondyDivertToFPSO" Title="Estimated HIP Condy Divert to FPSO (bbl)"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="HIPCondyDivertToFPSORemark" Title="Estimated HIP Condy Divert to FPSO Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeWaterProduction" Title="FPSO Cumulative Water Production (bbl)"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeWaterProductionRemark" Title="FPSO Cumulative Water Production Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFlaring" Title="FPSO Flaring (MMscf)"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFlaringRemark" Title="FPSO Flaring Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFuelGasConsumption" Title="FPSO Fuel Gas Consumption (MMscf)"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFuelGasConsumptionRemark" Title="FPSO Fuel Gas Consumption Remark"/>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())

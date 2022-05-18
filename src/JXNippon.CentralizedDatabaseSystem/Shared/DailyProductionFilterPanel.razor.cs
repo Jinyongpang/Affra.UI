@@ -19,33 +19,34 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         {
             CommonFilter = new CommonFilter(NavManager);
 
-            using var serviceScope = ServiceProvider.CreateScope();
-            var sk = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<SK10ProductionItem, ICentralizedDatabaseSystemUnitOfWork>>()
-                .Get()
-                .ToQueryOperationResponseAsync<SK10ProductionItem>();
-            var hip = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<HIPProductionItem, ICentralizedDatabaseSystemUnitOfWork>>()
-                .Get()
-                .ToQueryOperationResponseAsync<HIPProductionItem>();
-            var fpso = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<FPSOHelangProductionItem, ICentralizedDatabaseSystemUnitOfWork>>()
-                .Get()
-                .ToQueryOperationResponseAsync<FPSOHelangProductionItem>();
+            //using var serviceScope = ServiceProvider.CreateScope();
+            //var sk = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<SK10ProductionItem, ICentralizedDatabaseSystemUnitOfWork>>()
+            //    .Get()
+            //    .ToQueryOperationResponseAsync<SK10ProductionItem>();
+            //var hip = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<HIPProductionItem, ICentralizedDatabaseSystemUnitOfWork>>()
+            //    .Get()
+            //    .ToQueryOperationResponseAsync<HIPProductionItem>();
+            //var fpso = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<FPSOHelangProductionItem, ICentralizedDatabaseSystemUnitOfWork>>()
+            //    .Get()
+            //    .ToQueryOperationResponseAsync<FPSOHelangProductionItem>();
 
-            List<string> names = (await sk)
-                .Select(item => item.Name)
-                .ToList();
+            //List<string> names = (await sk)
+            //    .Select(item => item.Name)
+            //    .ToList();
 
-            names.AddRange((await hip)
-                .Select(item => item.Name)
-                .ToList());
+            //names.AddRange((await hip)
+            //    .Select(item => item.Name)
+            //    .ToList());
 
-            names.AddRange((await fpso)
-                .Select(item => item.Name)
-                .ToList());
+            //names.AddRange((await fpso)
+            //    .Select(item => item.Name)
+            //    .ToList());
 
 
-            datas = names.Distinct()
-                .Select(name => new NameFilter(name))
-                .ToList();
+            //datas = names.Distinct()
+            //    .Select(name => new NameFilter(name))
+            //    .ToList();
+
         }
         private async Task OnChangeAsync(object value)
         {

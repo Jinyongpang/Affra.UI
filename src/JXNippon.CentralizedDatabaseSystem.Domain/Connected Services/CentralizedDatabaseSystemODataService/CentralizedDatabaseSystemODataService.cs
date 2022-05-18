@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 16/5/2022 9:59:42 PM
+// Generation date: 18/5/2022 12:14:05 AM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -1804,27 +1804,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         public DailySK10ProductionSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailySK10Production> query)
             : base(query) {}
 
-        /// <summary>
-        /// There are no comments for ProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItemSingle ProductionItem
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._ProductionItem == null))
-                {
-                    this._ProductionItem = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItemSingle(this.Context, GetPath("ProductionItem"));
-                }
-                return this._ProductionItem;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItemSingle _ProductionItem;
     }
     /// <summary>
     /// There are no comments for DailySK10Production in the schema.
@@ -1893,68 +1872,68 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDateChanging(global::System.DateTimeOffset value);
         partial void OnDateChanged();
         /// <summary>
-        /// There are no comments for Property SK10ProductionItemName in the schema.
+        /// There are no comments for Property SK10CumulativeGasExport in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string SK10ProductionItemName
+        public global::System.Nullable<decimal> SK10CumulativeGasExport
         {
             get
             {
-                return this._SK10ProductionItemName;
+                return this._SK10CumulativeGasExport;
             }
             set
             {
-                this.OnSK10ProductionItemNameChanging(value);
-                this._SK10ProductionItemName = value;
-                this.OnSK10ProductionItemNameChanged();
+                this.OnSK10CumulativeGasExportChanging(value);
+                this._SK10CumulativeGasExport = value;
+                this.OnSK10CumulativeGasExportChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _SK10ProductionItemName;
-        partial void OnSK10ProductionItemNameChanging(string value);
-        partial void OnSK10ProductionItemNameChanged();
+        private global::System.Nullable<decimal> _SK10CumulativeGasExport;
+        partial void OnSK10CumulativeGasExportChanging(global::System.Nullable<decimal> value);
+        partial void OnSK10CumulativeGasExportChanged();
         /// <summary>
-        /// There are no comments for Property Status in the schema.
+        /// There are no comments for Property SK10GasExportGODCPlan in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Status
+        public global::System.Nullable<decimal> SK10GasExportGODCPlan
         {
             get
             {
-                return this._Status;
+                return this._SK10GasExportGODCPlan;
             }
             set
             {
-                this.OnStatusChanging(value);
-                this._Status = value;
-                this.OnStatusChanged();
+                this.OnSK10GasExportGODCPlanChanging(value);
+                this._SK10GasExportGODCPlan = value;
+                this.OnSK10GasExportGODCPlanChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Status;
-        partial void OnStatusChanging(string value);
-        partial void OnStatusChanged();
+        private global::System.Nullable<decimal> _SK10GasExportGODCPlan;
+        partial void OnSK10GasExportGODCPlanChanging(global::System.Nullable<decimal> value);
+        partial void OnSK10GasExportGODCPlanChanged();
         /// <summary>
-        /// There are no comments for Property Remark in the schema.
+        /// There are no comments for Property SK10GasExportGODCPlanRemark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Remark
+        public string SK10GasExportGODCPlanRemark
         {
             get
             {
-                return this._Remark;
+                return this._SK10GasExportGODCPlanRemark;
             }
             set
             {
-                this.OnRemarkChanging(value);
-                this._Remark = value;
-                this.OnRemarkChanged();
+                this.OnSK10GasExportGODCPlanRemarkChanging(value);
+                this._SK10GasExportGODCPlanRemark = value;
+                this.OnSK10GasExportGODCPlanRemarkChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Remark;
-        partial void OnRemarkChanging(string value);
-        partial void OnRemarkChanged();
+        private string _SK10GasExportGODCPlanRemark;
+        partial void OnSK10GasExportGODCPlanRemarkChanging(string value);
+        partial void OnSK10GasExportGODCPlanRemarkChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -1976,179 +1955,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property ProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem ProductionItem
-        {
-            get
-            {
-                return this._ProductionItem;
-            }
-            set
-            {
-                this.OnProductionItemChanging(value);
-                this._ProductionItem = value;
-                this.OnProductionItemChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem _ProductionItem;
-        partial void OnProductionItemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem value);
-        partial void OnProductionItemChanged();
-    }
-    /// <summary>
-    /// There are no comments for SK10ProductionItemSingle in the schema.
-    /// </summary>
-    public partial class SK10ProductionItemSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<SK10ProductionItem>
-    {
-        /// <summary>
-        /// Initialize a new SK10ProductionItemSingle object.
-        /// </summary>
-        public SK10ProductionItemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
-            : base(context, path) {}
-
-        /// <summary>
-        /// Initialize a new SK10ProductionItemSingle object.
-        /// </summary>
-        public SK10ProductionItemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
-            : base(context, path, isComposable) {}
-
-        /// <summary>
-        /// Initialize a new SK10ProductionItemSingle object.
-        /// </summary>
-        public SK10ProductionItemSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<SK10ProductionItem> query)
-            : base(query) {}
-
-        /// <summary>
-        /// There are no comments for DailySK10Productions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production> DailySK10Productions
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._DailySK10Productions == null))
-                {
-                    this._DailySK10Productions = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production>(GetPath("DailySK10Productions"));
-                }
-                return this._DailySK10Productions;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production> _DailySK10Productions;
-    }
-    /// <summary>
-    /// There are no comments for SK10ProductionItem in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::Microsoft.OData.Client.Key("Id")]
-    public partial class SK10ProductionItem : global::Microsoft.OData.Client.BaseEntityType
-    {
-        /// <summary>
-        /// Create a new SK10ProductionItem object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static SK10ProductionItem CreateSK10ProductionItem(long ID, long xmin)
-        {
-            SK10ProductionItem sK10ProductionItem = new SK10ProductionItem();
-            sK10ProductionItem.Id = ID;
-            sK10ProductionItem.xmin = xmin;
-            return sK10ProductionItem;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _Id;
-        partial void OnIdChanging(long value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Name in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Name
-        {
-            get
-            {
-                return this._Name;
-            }
-            set
-            {
-                this.OnNameChanging(value);
-                this._Name = value;
-                this.OnNameChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Name;
-        partial void OnNameChanging(string value);
-        partial void OnNameChanged();
-        /// <summary>
-        /// There are no comments for Property xmin in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
-        {
-            get
-            {
-                return this._xmin;
-            }
-            set
-            {
-                this.OnxminChanging(value);
-                this._xmin = value;
-                this.OnxminChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _xmin;
-        partial void OnxminChanging(long value);
-        partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property DailySK10Productions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production> DailySK10Productions
-        {
-            get
-            {
-                return this._DailySK10Productions;
-            }
-            set
-            {
-                this.OnDailySK10ProductionsChanging(value);
-                this._DailySK10Productions = value;
-                this.OnDailySK10ProductionsChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production> _DailySK10Productions = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production>();
-        partial void OnDailySK10ProductionsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production> value);
-        partial void OnDailySK10ProductionsChanged();
     }
     /// <summary>
     /// There are no comments for DailyHIPProductionSingle in the schema.
@@ -2173,27 +1979,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         public DailyHIPProductionSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyHIPProduction> query)
             : base(query) {}
 
-        /// <summary>
-        /// There are no comments for ProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItemSingle ProductionItem
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._ProductionItem == null))
-                {
-                    this._ProductionItem = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItemSingle(this.Context, GetPath("ProductionItem"));
-                }
-                return this._ProductionItem;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItemSingle _ProductionItem;
     }
     /// <summary>
     /// There are no comments for DailyHIPProduction in the schema.
@@ -2262,68 +2047,383 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDateChanging(global::System.DateTimeOffset value);
         partial void OnDateChanged();
         /// <summary>
-        /// There are no comments for Property HIPProductionItemName in the schema.
+        /// There are no comments for Property HIPCumulativeGasExport in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string HIPProductionItemName
+        public global::System.Nullable<decimal> HIPCumulativeGasExport
         {
             get
             {
-                return this._HIPProductionItemName;
+                return this._HIPCumulativeGasExport;
             }
             set
             {
-                this.OnHIPProductionItemNameChanging(value);
-                this._HIPProductionItemName = value;
-                this.OnHIPProductionItemNameChanged();
+                this.OnHIPCumulativeGasExportChanging(value);
+                this._HIPCumulativeGasExport = value;
+                this.OnHIPCumulativeGasExportChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _HIPProductionItemName;
-        partial void OnHIPProductionItemNameChanging(string value);
-        partial void OnHIPProductionItemNameChanged();
+        private global::System.Nullable<decimal> _HIPCumulativeGasExport;
+        partial void OnHIPCumulativeGasExportChanging(global::System.Nullable<decimal> value);
+        partial void OnHIPCumulativeGasExportChanged();
         /// <summary>
-        /// There are no comments for Property Status in the schema.
+        /// There are no comments for Property HIPCumulativeGasExportRemark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Status
+        public string HIPCumulativeGasExportRemark
         {
             get
             {
-                return this._Status;
+                return this._HIPCumulativeGasExportRemark;
             }
             set
             {
-                this.OnStatusChanging(value);
-                this._Status = value;
-                this.OnStatusChanged();
+                this.OnHIPCumulativeGasExportRemarkChanging(value);
+                this._HIPCumulativeGasExportRemark = value;
+                this.OnHIPCumulativeGasExportRemarkChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Status;
-        partial void OnStatusChanging(string value);
-        partial void OnStatusChanged();
+        private string _HIPCumulativeGasExportRemark;
+        partial void OnHIPCumulativeGasExportRemarkChanging(string value);
+        partial void OnHIPCumulativeGasExportRemarkChanged();
         /// <summary>
-        /// There are no comments for Property Remark in the schema.
+        /// There are no comments for Property HIPCumulativeCondensateExport in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Remark
+        public global::System.Nullable<decimal> HIPCumulativeCondensateExport
         {
             get
             {
-                return this._Remark;
+                return this._HIPCumulativeCondensateExport;
             }
             set
             {
-                this.OnRemarkChanging(value);
-                this._Remark = value;
-                this.OnRemarkChanged();
+                this.OnHIPCumulativeCondensateExportChanging(value);
+                this._HIPCumulativeCondensateExport = value;
+                this.OnHIPCumulativeCondensateExportChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Remark;
-        partial void OnRemarkChanging(string value);
-        partial void OnRemarkChanged();
+        private global::System.Nullable<decimal> _HIPCumulativeCondensateExport;
+        partial void OnHIPCumulativeCondensateExportChanging(global::System.Nullable<decimal> value);
+        partial void OnHIPCumulativeCondensateExportChanged();
+        /// <summary>
+        /// There are no comments for Property HIPCumulativeCondensateExportRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string HIPCumulativeCondensateExportRemark
+        {
+            get
+            {
+                return this._HIPCumulativeCondensateExportRemark;
+            }
+            set
+            {
+                this.OnHIPCumulativeCondensateExportRemarkChanging(value);
+                this._HIPCumulativeCondensateExportRemark = value;
+                this.OnHIPCumulativeCondensateExportRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _HIPCumulativeCondensateExportRemark;
+        partial void OnHIPCumulativeCondensateExportRemarkChanging(string value);
+        partial void OnHIPCumulativeCondensateExportRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property HIPCumulativeWaterProduction in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> HIPCumulativeWaterProduction
+        {
+            get
+            {
+                return this._HIPCumulativeWaterProduction;
+            }
+            set
+            {
+                this.OnHIPCumulativeWaterProductionChanging(value);
+                this._HIPCumulativeWaterProduction = value;
+                this.OnHIPCumulativeWaterProductionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _HIPCumulativeWaterProduction;
+        partial void OnHIPCumulativeWaterProductionChanging(global::System.Nullable<decimal> value);
+        partial void OnHIPCumulativeWaterProductionChanged();
+        /// <summary>
+        /// There are no comments for Property HIPCumulativeWaterProductionRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string HIPCumulativeWaterProductionRemark
+        {
+            get
+            {
+                return this._HIPCumulativeWaterProductionRemark;
+            }
+            set
+            {
+                this.OnHIPCumulativeWaterProductionRemarkChanging(value);
+                this._HIPCumulativeWaterProductionRemark = value;
+                this.OnHIPCumulativeWaterProductionRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _HIPCumulativeWaterProductionRemark;
+        partial void OnHIPCumulativeWaterProductionRemarkChanging(string value);
+        partial void OnHIPCumulativeWaterProductionRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property FuelGas in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> FuelGas
+        {
+            get
+            {
+                return this._FuelGas;
+            }
+            set
+            {
+                this.OnFuelGasChanging(value);
+                this._FuelGas = value;
+                this.OnFuelGasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _FuelGas;
+        partial void OnFuelGasChanging(global::System.Nullable<decimal> value);
+        partial void OnFuelGasChanged();
+        /// <summary>
+        /// There are no comments for Property FuelGasRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FuelGasRemark
+        {
+            get
+            {
+                return this._FuelGasRemark;
+            }
+            set
+            {
+                this.OnFuelGasRemarkChanging(value);
+                this._FuelGasRemark = value;
+                this.OnFuelGasRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FuelGasRemark;
+        partial void OnFuelGasRemarkChanging(string value);
+        partial void OnFuelGasRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property HPVent in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> HPVent
+        {
+            get
+            {
+                return this._HPVent;
+            }
+            set
+            {
+                this.OnHPVentChanging(value);
+                this._HPVent = value;
+                this.OnHPVentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _HPVent;
+        partial void OnHPVentChanging(global::System.Nullable<decimal> value);
+        partial void OnHPVentChanged();
+        /// <summary>
+        /// There are no comments for Property HPVentRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string HPVentRemark
+        {
+            get
+            {
+                return this._HPVentRemark;
+            }
+            set
+            {
+                this.OnHPVentRemarkChanging(value);
+                this._HPVentRemark = value;
+                this.OnHPVentRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _HPVentRemark;
+        partial void OnHPVentRemarkChanging(string value);
+        partial void OnHPVentRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property LPVent in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> LPVent
+        {
+            get
+            {
+                return this._LPVent;
+            }
+            set
+            {
+                this.OnLPVentChanging(value);
+                this._LPVent = value;
+                this.OnLPVentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _LPVent;
+        partial void OnLPVentChanging(global::System.Nullable<decimal> value);
+        partial void OnLPVentChanged();
+        /// <summary>
+        /// There are no comments for Property LPVentRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string LPVentRemark
+        {
+            get
+            {
+                return this._LPVentRemark;
+            }
+            set
+            {
+                this.OnLPVentRemarkChanging(value);
+                this._LPVentRemark = value;
+                this.OnLPVentRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _LPVentRemark;
+        partial void OnLPVentRemarkChanging(string value);
+        partial void OnLPVentRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property WaterContentInGas in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> WaterContentInGas
+        {
+            get
+            {
+                return this._WaterContentInGas;
+            }
+            set
+            {
+                this.OnWaterContentInGasChanging(value);
+                this._WaterContentInGas = value;
+                this.OnWaterContentInGasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _WaterContentInGas;
+        partial void OnWaterContentInGasChanging(global::System.Nullable<decimal> value);
+        partial void OnWaterContentInGasChanged();
+        /// <summary>
+        /// There are no comments for Property WaterContentInGasRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string WaterContentInGasRemark
+        {
+            get
+            {
+                return this._WaterContentInGasRemark;
+            }
+            set
+            {
+                this.OnWaterContentInGasRemarkChanging(value);
+                this._WaterContentInGasRemark = value;
+                this.OnWaterContentInGasRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _WaterContentInGasRemark;
+        partial void OnWaterContentInGasRemarkChanging(string value);
+        partial void OnWaterContentInGasRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property CondensateWaterCutMeter in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> CondensateWaterCutMeter
+        {
+            get
+            {
+                return this._CondensateWaterCutMeter;
+            }
+            set
+            {
+                this.OnCondensateWaterCutMeterChanging(value);
+                this._CondensateWaterCutMeter = value;
+                this.OnCondensateWaterCutMeterChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _CondensateWaterCutMeter;
+        partial void OnCondensateWaterCutMeterChanging(global::System.Nullable<decimal> value);
+        partial void OnCondensateWaterCutMeterChanged();
+        /// <summary>
+        /// There are no comments for Property CondensateWaterCutMeterRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string CondensateWaterCutMeterRemark
+        {
+            get
+            {
+                return this._CondensateWaterCutMeterRemark;
+            }
+            set
+            {
+                this.OnCondensateWaterCutMeterRemarkChanging(value);
+                this._CondensateWaterCutMeterRemark = value;
+                this.OnCondensateWaterCutMeterRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _CondensateWaterCutMeterRemark;
+        partial void OnCondensateWaterCutMeterRemarkChanging(string value);
+        partial void OnCondensateWaterCutMeterRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property OilInWaterReading in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> OilInWaterReading
+        {
+            get
+            {
+                return this._OilInWaterReading;
+            }
+            set
+            {
+                this.OnOilInWaterReadingChanging(value);
+                this._OilInWaterReading = value;
+                this.OnOilInWaterReadingChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _OilInWaterReading;
+        partial void OnOilInWaterReadingChanging(global::System.Nullable<decimal> value);
+        partial void OnOilInWaterReadingChanged();
+        /// <summary>
+        /// There are no comments for Property OilInWaterReadingRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string OilInWaterReadingRemark
+        {
+            get
+            {
+                return this._OilInWaterReadingRemark;
+            }
+            set
+            {
+                this.OnOilInWaterReadingRemarkChanging(value);
+                this._OilInWaterReadingRemark = value;
+                this.OnOilInWaterReadingRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _OilInWaterReadingRemark;
+        partial void OnOilInWaterReadingRemarkChanging(string value);
+        partial void OnOilInWaterReadingRemarkChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -2345,179 +2445,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property ProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem ProductionItem
-        {
-            get
-            {
-                return this._ProductionItem;
-            }
-            set
-            {
-                this.OnProductionItemChanging(value);
-                this._ProductionItem = value;
-                this.OnProductionItemChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem _ProductionItem;
-        partial void OnProductionItemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem value);
-        partial void OnProductionItemChanged();
-    }
-    /// <summary>
-    /// There are no comments for HIPProductionItemSingle in the schema.
-    /// </summary>
-    public partial class HIPProductionItemSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<HIPProductionItem>
-    {
-        /// <summary>
-        /// Initialize a new HIPProductionItemSingle object.
-        /// </summary>
-        public HIPProductionItemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
-            : base(context, path) {}
-
-        /// <summary>
-        /// Initialize a new HIPProductionItemSingle object.
-        /// </summary>
-        public HIPProductionItemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
-            : base(context, path, isComposable) {}
-
-        /// <summary>
-        /// Initialize a new HIPProductionItemSingle object.
-        /// </summary>
-        public HIPProductionItemSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<HIPProductionItem> query)
-            : base(query) {}
-
-        /// <summary>
-        /// There are no comments for DailyHIPProductions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction> DailyHIPProductions
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._DailyHIPProductions == null))
-                {
-                    this._DailyHIPProductions = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction>(GetPath("DailyHIPProductions"));
-                }
-                return this._DailyHIPProductions;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction> _DailyHIPProductions;
-    }
-    /// <summary>
-    /// There are no comments for HIPProductionItem in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::Microsoft.OData.Client.Key("Id")]
-    public partial class HIPProductionItem : global::Microsoft.OData.Client.BaseEntityType
-    {
-        /// <summary>
-        /// Create a new HIPProductionItem object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static HIPProductionItem CreateHIPProductionItem(long ID, long xmin)
-        {
-            HIPProductionItem hIPProductionItem = new HIPProductionItem();
-            hIPProductionItem.Id = ID;
-            hIPProductionItem.xmin = xmin;
-            return hIPProductionItem;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _Id;
-        partial void OnIdChanging(long value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Name in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Name
-        {
-            get
-            {
-                return this._Name;
-            }
-            set
-            {
-                this.OnNameChanging(value);
-                this._Name = value;
-                this.OnNameChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Name;
-        partial void OnNameChanging(string value);
-        partial void OnNameChanged();
-        /// <summary>
-        /// There are no comments for Property xmin in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
-        {
-            get
-            {
-                return this._xmin;
-            }
-            set
-            {
-                this.OnxminChanging(value);
-                this._xmin = value;
-                this.OnxminChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _xmin;
-        partial void OnxminChanging(long value);
-        partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property DailyHIPProductions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction> DailyHIPProductions
-        {
-            get
-            {
-                return this._DailyHIPProductions;
-            }
-            set
-            {
-                this.OnDailyHIPProductionsChanging(value);
-                this._DailyHIPProductions = value;
-                this.OnDailyHIPProductionsChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction> _DailyHIPProductions = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction>();
-        partial void OnDailyHIPProductionsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction> value);
-        partial void OnDailyHIPProductionsChanged();
     }
     /// <summary>
     /// There are no comments for DailyFPSOHelangProductionSingle in the schema.
@@ -2542,27 +2469,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         public DailyFPSOHelangProductionSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyFPSOHelangProduction> query)
             : base(query) {}
 
-        /// <summary>
-        /// There are no comments for ProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItemSingle ProductionItem
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._ProductionItem == null))
-                {
-                    this._ProductionItem = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItemSingle(this.Context, GetPath("ProductionItem"));
-                }
-                return this._ProductionItem;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItemSingle _ProductionItem;
     }
     /// <summary>
     /// There are no comments for DailyFPSOHelangProduction in the schema.
@@ -2631,68 +2537,362 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDateChanging(global::System.DateTimeOffset value);
         partial void OnDateChanged();
         /// <summary>
-        /// There are no comments for Property FPSOHelangProductionItemName in the schema.
+        /// There are no comments for Property FPSOCumulativeGasExport in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string FPSOHelangProductionItemName
+        public global::System.Nullable<decimal> FPSOCumulativeGasExport
         {
             get
             {
-                return this._FPSOHelangProductionItemName;
+                return this._FPSOCumulativeGasExport;
             }
             set
             {
-                this.OnFPSOHelangProductionItemNameChanging(value);
-                this._FPSOHelangProductionItemName = value;
-                this.OnFPSOHelangProductionItemNameChanged();
+                this.OnFPSOCumulativeGasExportChanging(value);
+                this._FPSOCumulativeGasExport = value;
+                this.OnFPSOCumulativeGasExportChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _FPSOHelangProductionItemName;
-        partial void OnFPSOHelangProductionItemNameChanging(string value);
-        partial void OnFPSOHelangProductionItemNameChanged();
+        private global::System.Nullable<decimal> _FPSOCumulativeGasExport;
+        partial void OnFPSOCumulativeGasExportChanging(global::System.Nullable<decimal> value);
+        partial void OnFPSOCumulativeGasExportChanged();
         /// <summary>
-        /// There are no comments for Property Status in the schema.
+        /// There are no comments for Property FPSOCumulativeGasExportRemark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Status
+        public string FPSOCumulativeGasExportRemark
         {
             get
             {
-                return this._Status;
+                return this._FPSOCumulativeGasExportRemark;
             }
             set
             {
-                this.OnStatusChanging(value);
-                this._Status = value;
-                this.OnStatusChanged();
+                this.OnFPSOCumulativeGasExportRemarkChanging(value);
+                this._FPSOCumulativeGasExportRemark = value;
+                this.OnFPSOCumulativeGasExportRemarkChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Status;
-        partial void OnStatusChanging(string value);
-        partial void OnStatusChanged();
+        private string _FPSOCumulativeGasExportRemark;
+        partial void OnFPSOCumulativeGasExportRemarkChanging(string value);
+        partial void OnFPSOCumulativeGasExportRemarkChanged();
         /// <summary>
-        /// There are no comments for Property Remark in the schema.
+        /// There are no comments for Property FPSOCumulativeCrudeOil in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Remark
+        public global::System.Nullable<decimal> FPSOCumulativeCrudeOil
         {
             get
             {
-                return this._Remark;
+                return this._FPSOCumulativeCrudeOil;
             }
             set
             {
-                this.OnRemarkChanging(value);
-                this._Remark = value;
-                this.OnRemarkChanged();
+                this.OnFPSOCumulativeCrudeOilChanging(value);
+                this._FPSOCumulativeCrudeOil = value;
+                this.OnFPSOCumulativeCrudeOilChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Remark;
-        partial void OnRemarkChanging(string value);
-        partial void OnRemarkChanged();
+        private global::System.Nullable<decimal> _FPSOCumulativeCrudeOil;
+        partial void OnFPSOCumulativeCrudeOilChanging(global::System.Nullable<decimal> value);
+        partial void OnFPSOCumulativeCrudeOilChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOCumulativeCrudeOilRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FPSOCumulativeCrudeOilRemark
+        {
+            get
+            {
+                return this._FPSOCumulativeCrudeOilRemark;
+            }
+            set
+            {
+                this.OnFPSOCumulativeCrudeOilRemarkChanging(value);
+                this._FPSOCumulativeCrudeOilRemark = value;
+                this.OnFPSOCumulativeCrudeOilRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FPSOCumulativeCrudeOilRemark;
+        partial void OnFPSOCumulativeCrudeOilRemarkChanging(string value);
+        partial void OnFPSOCumulativeCrudeOilRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOCrudeAPIReading in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FPSOCrudeAPIReading
+        {
+            get
+            {
+                return this._FPSOCrudeAPIReading;
+            }
+            set
+            {
+                this.OnFPSOCrudeAPIReadingChanging(value);
+                this._FPSOCrudeAPIReading = value;
+                this.OnFPSOCrudeAPIReadingChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FPSOCrudeAPIReading;
+        partial void OnFPSOCrudeAPIReadingChanging(string value);
+        partial void OnFPSOCrudeAPIReadingChanged();
+        /// <summary>
+        /// There are no comments for Property EstimatedHIPCrudeToFPSO in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> EstimatedHIPCrudeToFPSO
+        {
+            get
+            {
+                return this._EstimatedHIPCrudeToFPSO;
+            }
+            set
+            {
+                this.OnEstimatedHIPCrudeToFPSOChanging(value);
+                this._EstimatedHIPCrudeToFPSO = value;
+                this.OnEstimatedHIPCrudeToFPSOChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _EstimatedHIPCrudeToFPSO;
+        partial void OnEstimatedHIPCrudeToFPSOChanging(global::System.Nullable<decimal> value);
+        partial void OnEstimatedHIPCrudeToFPSOChanged();
+        /// <summary>
+        /// There are no comments for Property EstimatedHIPCrudeToFPSORemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string EstimatedHIPCrudeToFPSORemark
+        {
+            get
+            {
+                return this._EstimatedHIPCrudeToFPSORemark;
+            }
+            set
+            {
+                this.OnEstimatedHIPCrudeToFPSORemarkChanging(value);
+                this._EstimatedHIPCrudeToFPSORemark = value;
+                this.OnEstimatedHIPCrudeToFPSORemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _EstimatedHIPCrudeToFPSORemark;
+        partial void OnEstimatedHIPCrudeToFPSORemarkChanging(string value);
+        partial void OnEstimatedHIPCrudeToFPSORemarkChanged();
+        /// <summary>
+        /// There are no comments for Property EstimatedLWPCrudeToFPSO in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> EstimatedLWPCrudeToFPSO
+        {
+            get
+            {
+                return this._EstimatedLWPCrudeToFPSO;
+            }
+            set
+            {
+                this.OnEstimatedLWPCrudeToFPSOChanging(value);
+                this._EstimatedLWPCrudeToFPSO = value;
+                this.OnEstimatedLWPCrudeToFPSOChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _EstimatedLWPCrudeToFPSO;
+        partial void OnEstimatedLWPCrudeToFPSOChanging(global::System.Nullable<decimal> value);
+        partial void OnEstimatedLWPCrudeToFPSOChanged();
+        /// <summary>
+        /// There are no comments for Property EstimatedLWPCrudeToFPSORemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string EstimatedLWPCrudeToFPSORemark
+        {
+            get
+            {
+                return this._EstimatedLWPCrudeToFPSORemark;
+            }
+            set
+            {
+                this.OnEstimatedLWPCrudeToFPSORemarkChanging(value);
+                this._EstimatedLWPCrudeToFPSORemark = value;
+                this.OnEstimatedLWPCrudeToFPSORemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _EstimatedLWPCrudeToFPSORemark;
+        partial void OnEstimatedLWPCrudeToFPSORemarkChanging(string value);
+        partial void OnEstimatedLWPCrudeToFPSORemarkChanged();
+        /// <summary>
+        /// There are no comments for Property HIPCondyDivertToFPSO in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> HIPCondyDivertToFPSO
+        {
+            get
+            {
+                return this._HIPCondyDivertToFPSO;
+            }
+            set
+            {
+                this.OnHIPCondyDivertToFPSOChanging(value);
+                this._HIPCondyDivertToFPSO = value;
+                this.OnHIPCondyDivertToFPSOChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _HIPCondyDivertToFPSO;
+        partial void OnHIPCondyDivertToFPSOChanging(global::System.Nullable<decimal> value);
+        partial void OnHIPCondyDivertToFPSOChanged();
+        /// <summary>
+        /// There are no comments for Property HIPCondyDivertToFPSORemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string HIPCondyDivertToFPSORemark
+        {
+            get
+            {
+                return this._HIPCondyDivertToFPSORemark;
+            }
+            set
+            {
+                this.OnHIPCondyDivertToFPSORemarkChanging(value);
+                this._HIPCondyDivertToFPSORemark = value;
+                this.OnHIPCondyDivertToFPSORemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _HIPCondyDivertToFPSORemark;
+        partial void OnHIPCondyDivertToFPSORemarkChanging(string value);
+        partial void OnHIPCondyDivertToFPSORemarkChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOCumulativeWaterProduction in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> FPSOCumulativeWaterProduction
+        {
+            get
+            {
+                return this._FPSOCumulativeWaterProduction;
+            }
+            set
+            {
+                this.OnFPSOCumulativeWaterProductionChanging(value);
+                this._FPSOCumulativeWaterProduction = value;
+                this.OnFPSOCumulativeWaterProductionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _FPSOCumulativeWaterProduction;
+        partial void OnFPSOCumulativeWaterProductionChanging(global::System.Nullable<decimal> value);
+        partial void OnFPSOCumulativeWaterProductionChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOCumulativeWaterProductionRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FPSOCumulativeWaterProductionRemark
+        {
+            get
+            {
+                return this._FPSOCumulativeWaterProductionRemark;
+            }
+            set
+            {
+                this.OnFPSOCumulativeWaterProductionRemarkChanging(value);
+                this._FPSOCumulativeWaterProductionRemark = value;
+                this.OnFPSOCumulativeWaterProductionRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FPSOCumulativeWaterProductionRemark;
+        partial void OnFPSOCumulativeWaterProductionRemarkChanging(string value);
+        partial void OnFPSOCumulativeWaterProductionRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOFlaring in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> FPSOFlaring
+        {
+            get
+            {
+                return this._FPSOFlaring;
+            }
+            set
+            {
+                this.OnFPSOFlaringChanging(value);
+                this._FPSOFlaring = value;
+                this.OnFPSOFlaringChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _FPSOFlaring;
+        partial void OnFPSOFlaringChanging(global::System.Nullable<decimal> value);
+        partial void OnFPSOFlaringChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOFlaringRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FPSOFlaringRemark
+        {
+            get
+            {
+                return this._FPSOFlaringRemark;
+            }
+            set
+            {
+                this.OnFPSOFlaringRemarkChanging(value);
+                this._FPSOFlaringRemark = value;
+                this.OnFPSOFlaringRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FPSOFlaringRemark;
+        partial void OnFPSOFlaringRemarkChanging(string value);
+        partial void OnFPSOFlaringRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOFuelGasConsumption in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> FPSOFuelGasConsumption
+        {
+            get
+            {
+                return this._FPSOFuelGasConsumption;
+            }
+            set
+            {
+                this.OnFPSOFuelGasConsumptionChanging(value);
+                this._FPSOFuelGasConsumption = value;
+                this.OnFPSOFuelGasConsumptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _FPSOFuelGasConsumption;
+        partial void OnFPSOFuelGasConsumptionChanging(global::System.Nullable<decimal> value);
+        partial void OnFPSOFuelGasConsumptionChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOFuelGasConsumptionRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FPSOFuelGasConsumptionRemark
+        {
+            get
+            {
+                return this._FPSOFuelGasConsumptionRemark;
+            }
+            set
+            {
+                this.OnFPSOFuelGasConsumptionRemarkChanging(value);
+                this._FPSOFuelGasConsumptionRemark = value;
+                this.OnFPSOFuelGasConsumptionRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FPSOFuelGasConsumptionRemark;
+        partial void OnFPSOFuelGasConsumptionRemarkChanging(string value);
+        partial void OnFPSOFuelGasConsumptionRemarkChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -2714,179 +2914,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property ProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem ProductionItem
-        {
-            get
-            {
-                return this._ProductionItem;
-            }
-            set
-            {
-                this.OnProductionItemChanging(value);
-                this._ProductionItem = value;
-                this.OnProductionItemChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem _ProductionItem;
-        partial void OnProductionItemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem value);
-        partial void OnProductionItemChanged();
-    }
-    /// <summary>
-    /// There are no comments for FPSOHelangProductionItemSingle in the schema.
-    /// </summary>
-    public partial class FPSOHelangProductionItemSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<FPSOHelangProductionItem>
-    {
-        /// <summary>
-        /// Initialize a new FPSOHelangProductionItemSingle object.
-        /// </summary>
-        public FPSOHelangProductionItemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
-            : base(context, path) {}
-
-        /// <summary>
-        /// Initialize a new FPSOHelangProductionItemSingle object.
-        /// </summary>
-        public FPSOHelangProductionItemSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
-            : base(context, path, isComposable) {}
-
-        /// <summary>
-        /// Initialize a new FPSOHelangProductionItemSingle object.
-        /// </summary>
-        public FPSOHelangProductionItemSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<FPSOHelangProductionItem> query)
-            : base(query) {}
-
-        /// <summary>
-        /// There are no comments for DailyFPSOHelangProductions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction> DailyFPSOHelangProductions
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._DailyFPSOHelangProductions == null))
-                {
-                    this._DailyFPSOHelangProductions = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction>(GetPath("DailyFPSOHelangProductions"));
-                }
-                return this._DailyFPSOHelangProductions;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction> _DailyFPSOHelangProductions;
-    }
-    /// <summary>
-    /// There are no comments for FPSOHelangProductionItem in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::Microsoft.OData.Client.Key("Id")]
-    public partial class FPSOHelangProductionItem : global::Microsoft.OData.Client.BaseEntityType
-    {
-        /// <summary>
-        /// Create a new FPSOHelangProductionItem object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static FPSOHelangProductionItem CreateFPSOHelangProductionItem(long ID, long xmin)
-        {
-            FPSOHelangProductionItem fPSOHelangProductionItem = new FPSOHelangProductionItem();
-            fPSOHelangProductionItem.Id = ID;
-            fPSOHelangProductionItem.xmin = xmin;
-            return fPSOHelangProductionItem;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _Id;
-        partial void OnIdChanging(long value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Name in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Name
-        {
-            get
-            {
-                return this._Name;
-            }
-            set
-            {
-                this.OnNameChanging(value);
-                this._Name = value;
-                this.OnNameChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Name;
-        partial void OnNameChanging(string value);
-        partial void OnNameChanged();
-        /// <summary>
-        /// There are no comments for Property xmin in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
-        {
-            get
-            {
-                return this._xmin;
-            }
-            set
-            {
-                this.OnxminChanging(value);
-                this._xmin = value;
-                this.OnxminChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _xmin;
-        partial void OnxminChanging(long value);
-        partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property DailyFPSOHelangProductions in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction> DailyFPSOHelangProductions
-        {
-            get
-            {
-                return this._DailyFPSOHelangProductions;
-            }
-            set
-            {
-                this.OnDailyFPSOHelangProductionsChanging(value);
-                this._DailyFPSOHelangProductions = value;
-                this.OnDailyFPSOHelangProductionsChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction> _DailyFPSOHelangProductions = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction>();
-        partial void OnDailyFPSOHelangProductionsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction> value);
-        partial void OnDailyFPSOHelangProductionsChanged();
     }
     /// <summary>
     /// Class containing all extension methods
@@ -2917,29 +2944,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10ProductionSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItemSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItemSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem> _source,
-            long id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
         /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProductionSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
@@ -2963,29 +2967,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProductionSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItemSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItemSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem> _source,
-            long id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
         /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProductionSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
@@ -3007,29 +2988,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 { "Id", id }
             };
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProductionSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItemSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItemSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItemSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem> _source,
-            long id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItemSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
@@ -3773,8 +3731,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="date">Initial value of Date.</param>
         /// <param name="lastPiggingDate">Initial value of LastPiggingDate.</param>
         /// <param name="nextPiggingDate">Initial value of NextPiggingDate.</param>
-        /// <param name="trunkLinePressure">Initial value of TrunkLinePressure.</param>
-        /// <param name="pV2901SP">Initial value of PV2901SP.</param>
         /// <param name="lastChangeOut">Initial value of LastChangeOut.</param>
         /// <param name="nextChangeOut">Initial value of NextChangeOut.</param>
         /// <param name="lastSampling">Initial value of LastSampling.</param>
@@ -3785,8 +3741,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                     global::System.DateTimeOffset date, 
                     global::System.DateTimeOffset lastPiggingDate, 
                     global::System.DateTimeOffset nextPiggingDate, 
-                    decimal trunkLinePressure, 
-                    decimal pV2901SP, 
                     global::System.DateTimeOffset lastChangeOut, 
                     global::System.DateTimeOffset nextChangeOut, 
                     global::System.DateTimeOffset lastSampling, 
@@ -3798,8 +3752,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             dailyGasCondensateExportSamplerAndExportLine.Date = date;
             dailyGasCondensateExportSamplerAndExportLine.LastPiggingDate = lastPiggingDate;
             dailyGasCondensateExportSamplerAndExportLine.NextPiggingDate = nextPiggingDate;
-            dailyGasCondensateExportSamplerAndExportLine.TrunkLinePressure = trunkLinePressure;
-            dailyGasCondensateExportSamplerAndExportLine.PV2901SP = pV2901SP;
             dailyGasCondensateExportSamplerAndExportLine.LastChangeOut = lastChangeOut;
             dailyGasCondensateExportSamplerAndExportLine.NextChangeOut = nextChangeOut;
             dailyGasCondensateExportSamplerAndExportLine.LastSampling = lastSampling;
@@ -3895,7 +3847,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property TrunkLinePressure in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal TrunkLinePressure
+        public global::System.Nullable<decimal> TrunkLinePressure
         {
             get
             {
@@ -3909,14 +3861,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _TrunkLinePressure;
-        partial void OnTrunkLinePressureChanging(decimal value);
+        private global::System.Nullable<decimal> _TrunkLinePressure;
+        partial void OnTrunkLinePressureChanging(global::System.Nullable<decimal> value);
         partial void OnTrunkLinePressureChanged();
         /// <summary>
         /// There are no comments for Property PV2901SP in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal PV2901SP
+        public global::System.Nullable<decimal> PV2901SP
         {
             get
             {
@@ -3930,8 +3882,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _PV2901SP;
-        partial void OnPV2901SPChanging(decimal value);
+        private global::System.Nullable<decimal> _PV2901SP;
+        partial void OnPV2901SPChanging(global::System.Nullable<decimal> value);
         partial void OnPV2901SPChanged();
         /// <summary>
         /// There are no comments for Property GasSamplerId in the schema.
@@ -5565,92 +5517,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="speed">Initial value of Speed.</param>
-        /// <param name="pressureSuct">Initial value of PressureSuct.</param>
-        /// <param name="pressureDisc">Initial value of PressureDisc.</param>
-        /// <param name="throughPut">Initial value of ThroughPut.</param>
-        /// <param name="afterCoolerDischLP">Initial value of AfterCoolerDischLP.</param>
-        /// <param name="afterCoolerDischHP">Initial value of AfterCoolerDischHP.</param>
-        /// <param name="recycleValueLP">Initial value of RecycleValueLP.</param>
-        /// <param name="recycleValueHP">Initial value of RecycleValueHP.</param>
-        /// <param name="surgeDeviationLP">Initial value of SurgeDeviationLP.</param>
-        /// <param name="surgeDeviationHP">Initial value of SurgeDeviationHP.</param>
-        /// <param name="axialDisp1">Initial value of AxialDisp1.</param>
-        /// <param name="axialDisp2">Initial value of AxialDisp2.</param>
-        /// <param name="primaryVentDE">Initial value of PrimaryVentDE.</param>
-        /// <param name="primaryVentNDE">Initial value of PrimaryVentNDE.</param>
-        /// <param name="dEVibrationX">Initial value of DEVibrationX.</param>
-        /// <param name="dEVibrationY">Initial value of DEVibrationY.</param>
-        /// <param name="nDEVibrationX">Initial value of NDEVibrationX.</param>
-        /// <param name="nDEVibrationY">Initial value of NDEVibrationY.</param>
-        /// <param name="outboardThrustBrgTE801">Initial value of OutboardThrustBrgTE801.</param>
-        /// <param name="outboardThrustBrgTE802">Initial value of OutboardThrustBrgTE802.</param>
-        /// <param name="inboardThrustBrgTE803">Initial value of InboardThrustBrgTE803.</param>
-        /// <param name="inboardThrustBrgTE804">Initial value of InboardThrustBrgTE804.</param>
-        /// <param name="nDEJournalBrgTE805">Initial value of NDEJournalBrgTE805.</param>
-        /// <param name="nDEJournalBrgTE806">Initial value of NDEJournalBrgTE806.</param>
-        /// <param name="dEJournalBrgTE807">Initial value of DEJournalBrgTE807.</param>
-        /// <param name="dEJournalBrgTE808">Initial value of DEJournalBrgTE808.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyKawasakiExportCompressor CreateDailyKawasakiExportCompressor(long ID, 
-                    global::System.DateTimeOffset date, 
-                    int speed, 
-                    decimal pressureSuct, 
-                    decimal pressureDisc, 
-                    decimal throughPut, 
-                    decimal afterCoolerDischLP, 
-                    decimal afterCoolerDischHP, 
-                    decimal recycleValueLP, 
-                    decimal recycleValueHP, 
-                    decimal surgeDeviationLP, 
-                    decimal surgeDeviationHP, 
-                    decimal axialDisp1, 
-                    decimal axialDisp2, 
-                    decimal primaryVentDE, 
-                    decimal primaryVentNDE, 
-                    decimal dEVibrationX, 
-                    decimal dEVibrationY, 
-                    decimal nDEVibrationX, 
-                    decimal nDEVibrationY, 
-                    decimal outboardThrustBrgTE801, 
-                    decimal outboardThrustBrgTE802, 
-                    decimal inboardThrustBrgTE803, 
-                    decimal inboardThrustBrgTE804, 
-                    decimal nDEJournalBrgTE805, 
-                    decimal nDEJournalBrgTE806, 
-                    decimal dEJournalBrgTE807, 
-                    decimal dEJournalBrgTE808, 
-                    long xmin)
+        public static DailyKawasakiExportCompressor CreateDailyKawasakiExportCompressor(long ID, global::System.DateTimeOffset date, int speed, long xmin)
         {
             DailyKawasakiExportCompressor dailyKawasakiExportCompressor = new DailyKawasakiExportCompressor();
             dailyKawasakiExportCompressor.Id = ID;
             dailyKawasakiExportCompressor.Date = date;
             dailyKawasakiExportCompressor.Speed = speed;
-            dailyKawasakiExportCompressor.PressureSuct = pressureSuct;
-            dailyKawasakiExportCompressor.PressureDisc = pressureDisc;
-            dailyKawasakiExportCompressor.ThroughPut = throughPut;
-            dailyKawasakiExportCompressor.AfterCoolerDischLP = afterCoolerDischLP;
-            dailyKawasakiExportCompressor.AfterCoolerDischHP = afterCoolerDischHP;
-            dailyKawasakiExportCompressor.RecycleValueLP = recycleValueLP;
-            dailyKawasakiExportCompressor.RecycleValueHP = recycleValueHP;
-            dailyKawasakiExportCompressor.SurgeDeviationLP = surgeDeviationLP;
-            dailyKawasakiExportCompressor.SurgeDeviationHP = surgeDeviationHP;
-            dailyKawasakiExportCompressor.AxialDisp1 = axialDisp1;
-            dailyKawasakiExportCompressor.AxialDisp2 = axialDisp2;
-            dailyKawasakiExportCompressor.PrimaryVentDE = primaryVentDE;
-            dailyKawasakiExportCompressor.PrimaryVentNDE = primaryVentNDE;
-            dailyKawasakiExportCompressor.DEVibrationX = dEVibrationX;
-            dailyKawasakiExportCompressor.DEVibrationY = dEVibrationY;
-            dailyKawasakiExportCompressor.NDEVibrationX = nDEVibrationX;
-            dailyKawasakiExportCompressor.NDEVibrationY = nDEVibrationY;
-            dailyKawasakiExportCompressor.OutboardThrustBrgTE801 = outboardThrustBrgTE801;
-            dailyKawasakiExportCompressor.OutboardThrustBrgTE802 = outboardThrustBrgTE802;
-            dailyKawasakiExportCompressor.InboardThrustBrgTE803 = inboardThrustBrgTE803;
-            dailyKawasakiExportCompressor.InboardThrustBrgTE804 = inboardThrustBrgTE804;
-            dailyKawasakiExportCompressor.NDEJournalBrgTE805 = nDEJournalBrgTE805;
-            dailyKawasakiExportCompressor.NDEJournalBrgTE806 = nDEJournalBrgTE806;
-            dailyKawasakiExportCompressor.DEJournalBrgTE807 = dEJournalBrgTE807;
-            dailyKawasakiExportCompressor.DEJournalBrgTE808 = dEJournalBrgTE808;
             dailyKawasakiExportCompressor.xmin = xmin;
             return dailyKawasakiExportCompressor;
         }
@@ -5763,7 +5637,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property PressureSuct in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal PressureSuct
+        public global::System.Nullable<decimal> PressureSuct
         {
             get
             {
@@ -5777,14 +5651,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _PressureSuct;
-        partial void OnPressureSuctChanging(decimal value);
+        private global::System.Nullable<decimal> _PressureSuct;
+        partial void OnPressureSuctChanging(global::System.Nullable<decimal> value);
         partial void OnPressureSuctChanged();
         /// <summary>
         /// There are no comments for Property PressureDisc in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal PressureDisc
+        public global::System.Nullable<decimal> PressureDisc
         {
             get
             {
@@ -5798,14 +5672,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _PressureDisc;
-        partial void OnPressureDiscChanging(decimal value);
+        private global::System.Nullable<decimal> _PressureDisc;
+        partial void OnPressureDiscChanging(global::System.Nullable<decimal> value);
         partial void OnPressureDiscChanged();
         /// <summary>
         /// There are no comments for Property ThroughPut in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal ThroughPut
+        public global::System.Nullable<decimal> ThroughPut
         {
             get
             {
@@ -5819,14 +5693,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _ThroughPut;
-        partial void OnThroughPutChanging(decimal value);
+        private global::System.Nullable<decimal> _ThroughPut;
+        partial void OnThroughPutChanging(global::System.Nullable<decimal> value);
         partial void OnThroughPutChanged();
         /// <summary>
         /// There are no comments for Property AfterCoolerDischLP in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal AfterCoolerDischLP
+        public global::System.Nullable<decimal> AfterCoolerDischLP
         {
             get
             {
@@ -5840,14 +5714,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _AfterCoolerDischLP;
-        partial void OnAfterCoolerDischLPChanging(decimal value);
+        private global::System.Nullable<decimal> _AfterCoolerDischLP;
+        partial void OnAfterCoolerDischLPChanging(global::System.Nullable<decimal> value);
         partial void OnAfterCoolerDischLPChanged();
         /// <summary>
         /// There are no comments for Property AfterCoolerDischHP in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal AfterCoolerDischHP
+        public global::System.Nullable<decimal> AfterCoolerDischHP
         {
             get
             {
@@ -5861,14 +5735,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _AfterCoolerDischHP;
-        partial void OnAfterCoolerDischHPChanging(decimal value);
+        private global::System.Nullable<decimal> _AfterCoolerDischHP;
+        partial void OnAfterCoolerDischHPChanging(global::System.Nullable<decimal> value);
         partial void OnAfterCoolerDischHPChanged();
         /// <summary>
         /// There are no comments for Property RecycleValueLP in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal RecycleValueLP
+        public global::System.Nullable<decimal> RecycleValueLP
         {
             get
             {
@@ -5882,14 +5756,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _RecycleValueLP;
-        partial void OnRecycleValueLPChanging(decimal value);
+        private global::System.Nullable<decimal> _RecycleValueLP;
+        partial void OnRecycleValueLPChanging(global::System.Nullable<decimal> value);
         partial void OnRecycleValueLPChanged();
         /// <summary>
         /// There are no comments for Property RecycleValueHP in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal RecycleValueHP
+        public global::System.Nullable<decimal> RecycleValueHP
         {
             get
             {
@@ -5903,14 +5777,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _RecycleValueHP;
-        partial void OnRecycleValueHPChanging(decimal value);
+        private global::System.Nullable<decimal> _RecycleValueHP;
+        partial void OnRecycleValueHPChanging(global::System.Nullable<decimal> value);
         partial void OnRecycleValueHPChanged();
         /// <summary>
         /// There are no comments for Property SurgeDeviationLP in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal SurgeDeviationLP
+        public global::System.Nullable<decimal> SurgeDeviationLP
         {
             get
             {
@@ -5924,14 +5798,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _SurgeDeviationLP;
-        partial void OnSurgeDeviationLPChanging(decimal value);
+        private global::System.Nullable<decimal> _SurgeDeviationLP;
+        partial void OnSurgeDeviationLPChanging(global::System.Nullable<decimal> value);
         partial void OnSurgeDeviationLPChanged();
         /// <summary>
         /// There are no comments for Property SurgeDeviationHP in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal SurgeDeviationHP
+        public global::System.Nullable<decimal> SurgeDeviationHP
         {
             get
             {
@@ -5945,14 +5819,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _SurgeDeviationHP;
-        partial void OnSurgeDeviationHPChanging(decimal value);
+        private global::System.Nullable<decimal> _SurgeDeviationHP;
+        partial void OnSurgeDeviationHPChanging(global::System.Nullable<decimal> value);
         partial void OnSurgeDeviationHPChanged();
         /// <summary>
         /// There are no comments for Property AxialDisp1 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal AxialDisp1
+        public global::System.Nullable<decimal> AxialDisp1
         {
             get
             {
@@ -5966,14 +5840,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _AxialDisp1;
-        partial void OnAxialDisp1Changing(decimal value);
+        private global::System.Nullable<decimal> _AxialDisp1;
+        partial void OnAxialDisp1Changing(global::System.Nullable<decimal> value);
         partial void OnAxialDisp1Changed();
         /// <summary>
         /// There are no comments for Property AxialDisp2 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal AxialDisp2
+        public global::System.Nullable<decimal> AxialDisp2
         {
             get
             {
@@ -5987,14 +5861,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _AxialDisp2;
-        partial void OnAxialDisp2Changing(decimal value);
+        private global::System.Nullable<decimal> _AxialDisp2;
+        partial void OnAxialDisp2Changing(global::System.Nullable<decimal> value);
         partial void OnAxialDisp2Changed();
         /// <summary>
         /// There are no comments for Property PrimaryVentDE in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal PrimaryVentDE
+        public global::System.Nullable<decimal> PrimaryVentDE
         {
             get
             {
@@ -6008,14 +5882,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _PrimaryVentDE;
-        partial void OnPrimaryVentDEChanging(decimal value);
+        private global::System.Nullable<decimal> _PrimaryVentDE;
+        partial void OnPrimaryVentDEChanging(global::System.Nullable<decimal> value);
         partial void OnPrimaryVentDEChanged();
         /// <summary>
         /// There are no comments for Property PrimaryVentNDE in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal PrimaryVentNDE
+        public global::System.Nullable<decimal> PrimaryVentNDE
         {
             get
             {
@@ -6029,14 +5903,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _PrimaryVentNDE;
-        partial void OnPrimaryVentNDEChanging(decimal value);
+        private global::System.Nullable<decimal> _PrimaryVentNDE;
+        partial void OnPrimaryVentNDEChanging(global::System.Nullable<decimal> value);
         partial void OnPrimaryVentNDEChanged();
         /// <summary>
         /// There are no comments for Property DEVibrationX in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal DEVibrationX
+        public global::System.Nullable<decimal> DEVibrationX
         {
             get
             {
@@ -6050,14 +5924,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _DEVibrationX;
-        partial void OnDEVibrationXChanging(decimal value);
+        private global::System.Nullable<decimal> _DEVibrationX;
+        partial void OnDEVibrationXChanging(global::System.Nullable<decimal> value);
         partial void OnDEVibrationXChanged();
         /// <summary>
         /// There are no comments for Property DEVibrationY in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal DEVibrationY
+        public global::System.Nullable<decimal> DEVibrationY
         {
             get
             {
@@ -6071,14 +5945,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _DEVibrationY;
-        partial void OnDEVibrationYChanging(decimal value);
+        private global::System.Nullable<decimal> _DEVibrationY;
+        partial void OnDEVibrationYChanging(global::System.Nullable<decimal> value);
         partial void OnDEVibrationYChanged();
         /// <summary>
         /// There are no comments for Property NDEVibrationX in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal NDEVibrationX
+        public global::System.Nullable<decimal> NDEVibrationX
         {
             get
             {
@@ -6092,14 +5966,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _NDEVibrationX;
-        partial void OnNDEVibrationXChanging(decimal value);
+        private global::System.Nullable<decimal> _NDEVibrationX;
+        partial void OnNDEVibrationXChanging(global::System.Nullable<decimal> value);
         partial void OnNDEVibrationXChanged();
         /// <summary>
         /// There are no comments for Property NDEVibrationY in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal NDEVibrationY
+        public global::System.Nullable<decimal> NDEVibrationY
         {
             get
             {
@@ -6113,14 +5987,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _NDEVibrationY;
-        partial void OnNDEVibrationYChanging(decimal value);
+        private global::System.Nullable<decimal> _NDEVibrationY;
+        partial void OnNDEVibrationYChanging(global::System.Nullable<decimal> value);
         partial void OnNDEVibrationYChanged();
         /// <summary>
         /// There are no comments for Property OutboardThrustBrgTE801 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal OutboardThrustBrgTE801
+        public global::System.Nullable<decimal> OutboardThrustBrgTE801
         {
             get
             {
@@ -6134,14 +6008,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _OutboardThrustBrgTE801;
-        partial void OnOutboardThrustBrgTE801Changing(decimal value);
+        private global::System.Nullable<decimal> _OutboardThrustBrgTE801;
+        partial void OnOutboardThrustBrgTE801Changing(global::System.Nullable<decimal> value);
         partial void OnOutboardThrustBrgTE801Changed();
         /// <summary>
         /// There are no comments for Property OutboardThrustBrgTE802 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal OutboardThrustBrgTE802
+        public global::System.Nullable<decimal> OutboardThrustBrgTE802
         {
             get
             {
@@ -6155,14 +6029,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _OutboardThrustBrgTE802;
-        partial void OnOutboardThrustBrgTE802Changing(decimal value);
+        private global::System.Nullable<decimal> _OutboardThrustBrgTE802;
+        partial void OnOutboardThrustBrgTE802Changing(global::System.Nullable<decimal> value);
         partial void OnOutboardThrustBrgTE802Changed();
         /// <summary>
         /// There are no comments for Property InboardThrustBrgTE803 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal InboardThrustBrgTE803
+        public global::System.Nullable<decimal> InboardThrustBrgTE803
         {
             get
             {
@@ -6176,14 +6050,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _InboardThrustBrgTE803;
-        partial void OnInboardThrustBrgTE803Changing(decimal value);
+        private global::System.Nullable<decimal> _InboardThrustBrgTE803;
+        partial void OnInboardThrustBrgTE803Changing(global::System.Nullable<decimal> value);
         partial void OnInboardThrustBrgTE803Changed();
         /// <summary>
         /// There are no comments for Property InboardThrustBrgTE804 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal InboardThrustBrgTE804
+        public global::System.Nullable<decimal> InboardThrustBrgTE804
         {
             get
             {
@@ -6197,14 +6071,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _InboardThrustBrgTE804;
-        partial void OnInboardThrustBrgTE804Changing(decimal value);
+        private global::System.Nullable<decimal> _InboardThrustBrgTE804;
+        partial void OnInboardThrustBrgTE804Changing(global::System.Nullable<decimal> value);
         partial void OnInboardThrustBrgTE804Changed();
         /// <summary>
         /// There are no comments for Property NDEJournalBrgTE805 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal NDEJournalBrgTE805
+        public global::System.Nullable<decimal> NDEJournalBrgTE805
         {
             get
             {
@@ -6218,14 +6092,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _NDEJournalBrgTE805;
-        partial void OnNDEJournalBrgTE805Changing(decimal value);
+        private global::System.Nullable<decimal> _NDEJournalBrgTE805;
+        partial void OnNDEJournalBrgTE805Changing(global::System.Nullable<decimal> value);
         partial void OnNDEJournalBrgTE805Changed();
         /// <summary>
         /// There are no comments for Property NDEJournalBrgTE806 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal NDEJournalBrgTE806
+        public global::System.Nullable<decimal> NDEJournalBrgTE806
         {
             get
             {
@@ -6239,14 +6113,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _NDEJournalBrgTE806;
-        partial void OnNDEJournalBrgTE806Changing(decimal value);
+        private global::System.Nullable<decimal> _NDEJournalBrgTE806;
+        partial void OnNDEJournalBrgTE806Changing(global::System.Nullable<decimal> value);
         partial void OnNDEJournalBrgTE806Changed();
         /// <summary>
         /// There are no comments for Property DEJournalBrgTE807 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal DEJournalBrgTE807
+        public global::System.Nullable<decimal> DEJournalBrgTE807
         {
             get
             {
@@ -6260,14 +6134,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _DEJournalBrgTE807;
-        partial void OnDEJournalBrgTE807Changing(decimal value);
+        private global::System.Nullable<decimal> _DEJournalBrgTE807;
+        partial void OnDEJournalBrgTE807Changing(global::System.Nullable<decimal> value);
         partial void OnDEJournalBrgTE807Changed();
         /// <summary>
         /// There are no comments for Property DEJournalBrgTE808 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal DEJournalBrgTE808
+        public global::System.Nullable<decimal> DEJournalBrgTE808
         {
             get
             {
@@ -6281,8 +6155,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _DEJournalBrgTE808;
-        partial void OnDEJournalBrgTE808Changing(decimal value);
+        private global::System.Nullable<decimal> _DEJournalBrgTE808;
+        partial void OnDEJournalBrgTE808Changing(global::System.Nullable<decimal> value);
         partial void OnDEJournalBrgTE808Changed();
         /// <summary>
         /// There are no comments for Property Remark in the schema.
@@ -6562,10 +6436,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="gGN1">Initial value of GGN1.</param>
         /// <param name="gGN2">Initial value of GGN2.</param>
         /// <param name="pTN3">Initial value of PTN3.</param>
-        /// <param name="gGCTBrgLO">Initial value of GGCTBrgLO.</param>
         /// <param name="t6">Initial value of T6.</param>
         /// <param name="cDP">Initial value of CDP.</param>
-        /// <param name="gGAirIntake">Initial value of GGAirIntake.</param>
         /// <param name="runningHours">Initial value of RunningHours.</param>
         /// <param name="startAttempt">Initial value of StartAttempt.</param>
         /// <param name="successfulStarts">Initial value of SuccessfulStarts.</param>
@@ -6578,10 +6450,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                     int gGN1, 
                     int gGN2, 
                     int pTN3, 
-                    decimal gGCTBrgLO, 
                     int t6, 
                     int cDP, 
-                    decimal gGAirIntake, 
                     int runningHours, 
                     int startAttempt, 
                     int successfulStarts, 
@@ -6595,10 +6465,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             dailyRollsRoyceRB211Engine.GGN1 = gGN1;
             dailyRollsRoyceRB211Engine.GGN2 = gGN2;
             dailyRollsRoyceRB211Engine.PTN3 = pTN3;
-            dailyRollsRoyceRB211Engine.GGCTBrgLO = gGCTBrgLO;
             dailyRollsRoyceRB211Engine.T6 = t6;
             dailyRollsRoyceRB211Engine.CDP = cDP;
-            dailyRollsRoyceRB211Engine.GGAirIntake = gGAirIntake;
             dailyRollsRoyceRB211Engine.RunningHours = runningHours;
             dailyRollsRoyceRB211Engine.StartAttempt = startAttempt;
             dailyRollsRoyceRB211Engine.SuccessfulStarts = successfulStarts;
@@ -6737,7 +6605,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property GGCTBrgLO in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal GGCTBrgLO
+        public global::System.Nullable<decimal> GGCTBrgLO
         {
             get
             {
@@ -6751,8 +6619,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _GGCTBrgLO;
-        partial void OnGGCTBrgLOChanging(decimal value);
+        private global::System.Nullable<decimal> _GGCTBrgLO;
+        partial void OnGGCTBrgLOChanging(global::System.Nullable<decimal> value);
         partial void OnGGCTBrgLOChanged();
         /// <summary>
         /// There are no comments for Property T6 in the schema.
@@ -6800,7 +6668,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property GGAirIntake in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal GGAirIntake
+        public global::System.Nullable<decimal> GGAirIntake
         {
             get
             {
@@ -6814,8 +6682,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _GGAirIntake;
-        partial void OnGGAirIntakeChanging(decimal value);
+        private global::System.Nullable<decimal> _GGAirIntake;
+        partial void OnGGAirIntakeChanging(global::System.Nullable<decimal> value);
         partial void OnGGAirIntakeChanged();
         /// <summary>
         /// There are no comments for Property RunningHours in the schema.
@@ -8141,17 +8009,13 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
-        /// <param name="glycolStockInToteTank">Initial value of GlycolStockInToteTank.</param>
-        /// <param name="glycolStockInDrum">Initial value of GlycolStockInDrum.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyGlycolStock CreateDailyGlycolStock(long ID, global::System.DateTimeOffset date, int glycolStockInToteTank, int glycolStockInDrum, long xmin)
+        public static DailyGlycolStock CreateDailyGlycolStock(long ID, global::System.DateTimeOffset date, long xmin)
         {
             DailyGlycolStock dailyGlycolStock = new DailyGlycolStock();
             dailyGlycolStock.Id = ID;
             dailyGlycolStock.Date = date;
-            dailyGlycolStock.GlycolStockInToteTank = glycolStockInToteTank;
-            dailyGlycolStock.GlycolStockInDrum = glycolStockInDrum;
             dailyGlycolStock.xmin = xmin;
             return dailyGlycolStock;
         }
@@ -8201,7 +8065,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property GlycolStockInToteTank in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int GlycolStockInToteTank
+        public global::System.Nullable<int> GlycolStockInToteTank
         {
             get
             {
@@ -8215,14 +8079,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _GlycolStockInToteTank;
-        partial void OnGlycolStockInToteTankChanging(int value);
+        private global::System.Nullable<int> _GlycolStockInToteTank;
+        partial void OnGlycolStockInToteTankChanging(global::System.Nullable<int> value);
         partial void OnGlycolStockInToteTankChanged();
         /// <summary>
         /// There are no comments for Property GlycolStockInDrum in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int GlycolStockInDrum
+        public global::System.Nullable<int> GlycolStockInDrum
         {
             get
             {
@@ -8236,8 +8100,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _GlycolStockInDrum;
-        partial void OnGlycolStockInDrumChanging(int value);
+        private global::System.Nullable<int> _GlycolStockInDrum;
+        partial void OnGlycolStockInDrumChanging(global::System.Nullable<int> value);
         partial void OnGlycolStockInDrumChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
@@ -9686,30 +9550,13 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
-        /// <param name="pM">Initial value of PM.</param>
-        /// <param name="cM">Initial value of CM.</param>
-        /// <param name="cB">Initial value of CB.</param>
-        /// <param name="mO">Initial value of MO.</param>
-        /// <param name="total">Initial value of Total.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyMaximoWorkOrder CreateDailyMaximoWorkOrder(long ID, 
-                    global::System.DateTimeOffset date, 
-                    int pM, 
-                    int cM, 
-                    int cB, 
-                    int mO, 
-                    int total, 
-                    long xmin)
+        public static DailyMaximoWorkOrder CreateDailyMaximoWorkOrder(long ID, global::System.DateTimeOffset date, long xmin)
         {
             DailyMaximoWorkOrder dailyMaximoWorkOrder = new DailyMaximoWorkOrder();
             dailyMaximoWorkOrder.Id = ID;
             dailyMaximoWorkOrder.Date = date;
-            dailyMaximoWorkOrder.PM = pM;
-            dailyMaximoWorkOrder.CM = cM;
-            dailyMaximoWorkOrder.CB = cB;
-            dailyMaximoWorkOrder.MO = mO;
-            dailyMaximoWorkOrder.Total = total;
             dailyMaximoWorkOrder.xmin = xmin;
             return dailyMaximoWorkOrder;
         }
@@ -9801,7 +9648,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property PM in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int PM
+        public global::System.Nullable<int> PM
         {
             get
             {
@@ -9815,14 +9662,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _PM;
-        partial void OnPMChanging(int value);
+        private global::System.Nullable<int> _PM;
+        partial void OnPMChanging(global::System.Nullable<int> value);
         partial void OnPMChanged();
         /// <summary>
         /// There are no comments for Property CM in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int CM
+        public global::System.Nullable<int> CM
         {
             get
             {
@@ -9836,14 +9683,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _CM;
-        partial void OnCMChanging(int value);
+        private global::System.Nullable<int> _CM;
+        partial void OnCMChanging(global::System.Nullable<int> value);
         partial void OnCMChanged();
         /// <summary>
         /// There are no comments for Property CB in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int CB
+        public global::System.Nullable<int> CB
         {
             get
             {
@@ -9857,14 +9704,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _CB;
-        partial void OnCBChanging(int value);
+        private global::System.Nullable<int> _CB;
+        partial void OnCBChanging(global::System.Nullable<int> value);
         partial void OnCBChanged();
         /// <summary>
         /// There are no comments for Property MO in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int MO
+        public global::System.Nullable<int> MO
         {
             get
             {
@@ -9878,14 +9725,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _MO;
-        partial void OnMOChanging(int value);
+        private global::System.Nullable<int> _MO;
+        partial void OnMOChanging(global::System.Nullable<int> value);
         partial void OnMOChanged();
         /// <summary>
         /// There are no comments for Property Total in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int Total
+        public global::System.Nullable<int> Total
         {
             get
             {
@@ -9899,8 +9746,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _Total;
-        partial void OnTotalChanging(int value);
+        private global::System.Nullable<int> _Total;
+        partial void OnTotalChanging(global::System.Nullable<int> value);
         partial void OnTotalChanged();
         /// <summary>
         /// There are no comments for Property Remark in the schema.
@@ -11743,57 +11590,13 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
-        /// <param name="yesterdayLevel">Initial value of YesterdayLevel.</param>
-        /// <param name="todayLevel">Initial value of TodayLevel.</param>
-        /// <param name="levelDrop">Initial value of LevelDrop.</param>
-        /// <param name="actualConsumption">Initial value of ActualConsumption.</param>
-        /// <param name="dailyTargetRate">Initial value of DailyTargetRate.</param>
-        /// <param name="deviation">Initial value of Deviation.</param>
-        /// <param name="wellInjectionTarget">Initial value of WellInjectionTarget.</param>
-        /// <param name="wellActualInjection">Initial value of WellActualInjection.</param>
-        /// <param name="trunkLineInjectionTarget">Initial value of TrunkLineInjectionTarget.</param>
-        /// <param name="trunkLineActualInjection">Initial value of TrunkLineActualInjection.</param>
-        /// <param name="lWPInjectionTarget">Initial value of LWPInjectionTarget.</param>
-        /// <param name="lWPActualInjection">Initial value of LWPActualInjection.</param>
-        /// <param name="toteTank">Initial value of ToteTank.</param>
-        /// <param name="drum">Initial value of Drum.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyCiNalco CreateDailyCiNalco(long ID, 
-                    global::System.DateTimeOffset date, 
-                    decimal yesterdayLevel, 
-                    decimal todayLevel, 
-                    decimal levelDrop, 
-                    decimal actualConsumption, 
-                    decimal dailyTargetRate, 
-                    decimal deviation, 
-                    decimal wellInjectionTarget, 
-                    decimal wellActualInjection, 
-                    decimal trunkLineInjectionTarget, 
-                    decimal trunkLineActualInjection, 
-                    decimal lWPInjectionTarget, 
-                    decimal lWPActualInjection, 
-                    int toteTank, 
-                    int drum, 
-                    long xmin)
+        public static DailyCiNalco CreateDailyCiNalco(long ID, global::System.DateTimeOffset date, long xmin)
         {
             DailyCiNalco dailyCiNalco = new DailyCiNalco();
             dailyCiNalco.Id = ID;
             dailyCiNalco.Date = date;
-            dailyCiNalco.YesterdayLevel = yesterdayLevel;
-            dailyCiNalco.TodayLevel = todayLevel;
-            dailyCiNalco.LevelDrop = levelDrop;
-            dailyCiNalco.ActualConsumption = actualConsumption;
-            dailyCiNalco.DailyTargetRate = dailyTargetRate;
-            dailyCiNalco.Deviation = deviation;
-            dailyCiNalco.WellInjectionTarget = wellInjectionTarget;
-            dailyCiNalco.WellActualInjection = wellActualInjection;
-            dailyCiNalco.TrunkLineInjectionTarget = trunkLineInjectionTarget;
-            dailyCiNalco.TrunkLineActualInjection = trunkLineActualInjection;
-            dailyCiNalco.LWPInjectionTarget = lWPInjectionTarget;
-            dailyCiNalco.LWPActualInjection = lWPActualInjection;
-            dailyCiNalco.ToteTank = toteTank;
-            dailyCiNalco.Drum = drum;
             dailyCiNalco.xmin = xmin;
             return dailyCiNalco;
         }
@@ -11843,7 +11646,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property YesterdayLevel in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal YesterdayLevel
+        public global::System.Nullable<decimal> YesterdayLevel
         {
             get
             {
@@ -11857,14 +11660,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _YesterdayLevel;
-        partial void OnYesterdayLevelChanging(decimal value);
+        private global::System.Nullable<decimal> _YesterdayLevel;
+        partial void OnYesterdayLevelChanging(global::System.Nullable<decimal> value);
         partial void OnYesterdayLevelChanged();
         /// <summary>
         /// There are no comments for Property TodayLevel in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal TodayLevel
+        public global::System.Nullable<decimal> TodayLevel
         {
             get
             {
@@ -11878,14 +11681,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _TodayLevel;
-        partial void OnTodayLevelChanging(decimal value);
+        private global::System.Nullable<decimal> _TodayLevel;
+        partial void OnTodayLevelChanging(global::System.Nullable<decimal> value);
         partial void OnTodayLevelChanged();
         /// <summary>
         /// There are no comments for Property LevelDrop in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal LevelDrop
+        public global::System.Nullable<decimal> LevelDrop
         {
             get
             {
@@ -11899,14 +11702,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _LevelDrop;
-        partial void OnLevelDropChanging(decimal value);
+        private global::System.Nullable<decimal> _LevelDrop;
+        partial void OnLevelDropChanging(global::System.Nullable<decimal> value);
         partial void OnLevelDropChanged();
         /// <summary>
         /// There are no comments for Property ActualConsumption in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal ActualConsumption
+        public global::System.Nullable<decimal> ActualConsumption
         {
             get
             {
@@ -11920,14 +11723,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _ActualConsumption;
-        partial void OnActualConsumptionChanging(decimal value);
+        private global::System.Nullable<decimal> _ActualConsumption;
+        partial void OnActualConsumptionChanging(global::System.Nullable<decimal> value);
         partial void OnActualConsumptionChanged();
         /// <summary>
         /// There are no comments for Property DailyTargetRate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal DailyTargetRate
+        public global::System.Nullable<decimal> DailyTargetRate
         {
             get
             {
@@ -11941,14 +11744,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _DailyTargetRate;
-        partial void OnDailyTargetRateChanging(decimal value);
+        private global::System.Nullable<decimal> _DailyTargetRate;
+        partial void OnDailyTargetRateChanging(global::System.Nullable<decimal> value);
         partial void OnDailyTargetRateChanged();
         /// <summary>
         /// There are no comments for Property Deviation in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal Deviation
+        public global::System.Nullable<decimal> Deviation
         {
             get
             {
@@ -11962,14 +11765,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _Deviation;
-        partial void OnDeviationChanging(decimal value);
+        private global::System.Nullable<decimal> _Deviation;
+        partial void OnDeviationChanging(global::System.Nullable<decimal> value);
         partial void OnDeviationChanged();
         /// <summary>
         /// There are no comments for Property WellInjectionTarget in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal WellInjectionTarget
+        public global::System.Nullable<decimal> WellInjectionTarget
         {
             get
             {
@@ -11983,14 +11786,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _WellInjectionTarget;
-        partial void OnWellInjectionTargetChanging(decimal value);
+        private global::System.Nullable<decimal> _WellInjectionTarget;
+        partial void OnWellInjectionTargetChanging(global::System.Nullable<decimal> value);
         partial void OnWellInjectionTargetChanged();
         /// <summary>
         /// There are no comments for Property WellActualInjection in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal WellActualInjection
+        public global::System.Nullable<decimal> WellActualInjection
         {
             get
             {
@@ -12004,14 +11807,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _WellActualInjection;
-        partial void OnWellActualInjectionChanging(decimal value);
+        private global::System.Nullable<decimal> _WellActualInjection;
+        partial void OnWellActualInjectionChanging(global::System.Nullable<decimal> value);
         partial void OnWellActualInjectionChanged();
         /// <summary>
         /// There are no comments for Property TrunkLineInjectionTarget in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal TrunkLineInjectionTarget
+        public global::System.Nullable<decimal> TrunkLineInjectionTarget
         {
             get
             {
@@ -12025,14 +11828,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _TrunkLineInjectionTarget;
-        partial void OnTrunkLineInjectionTargetChanging(decimal value);
+        private global::System.Nullable<decimal> _TrunkLineInjectionTarget;
+        partial void OnTrunkLineInjectionTargetChanging(global::System.Nullable<decimal> value);
         partial void OnTrunkLineInjectionTargetChanged();
         /// <summary>
         /// There are no comments for Property TrunkLineActualInjection in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal TrunkLineActualInjection
+        public global::System.Nullable<decimal> TrunkLineActualInjection
         {
             get
             {
@@ -12046,14 +11849,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _TrunkLineActualInjection;
-        partial void OnTrunkLineActualInjectionChanging(decimal value);
+        private global::System.Nullable<decimal> _TrunkLineActualInjection;
+        partial void OnTrunkLineActualInjectionChanging(global::System.Nullable<decimal> value);
         partial void OnTrunkLineActualInjectionChanged();
         /// <summary>
         /// There are no comments for Property LWPInjectionTarget in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal LWPInjectionTarget
+        public global::System.Nullable<decimal> LWPInjectionTarget
         {
             get
             {
@@ -12067,14 +11870,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _LWPInjectionTarget;
-        partial void OnLWPInjectionTargetChanging(decimal value);
+        private global::System.Nullable<decimal> _LWPInjectionTarget;
+        partial void OnLWPInjectionTargetChanging(global::System.Nullable<decimal> value);
         partial void OnLWPInjectionTargetChanged();
         /// <summary>
         /// There are no comments for Property LWPActualInjection in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public decimal LWPActualInjection
+        public global::System.Nullable<decimal> LWPActualInjection
         {
             get
             {
@@ -12088,14 +11891,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private decimal _LWPActualInjection;
-        partial void OnLWPActualInjectionChanging(decimal value);
+        private global::System.Nullable<decimal> _LWPActualInjection;
+        partial void OnLWPActualInjectionChanging(global::System.Nullable<decimal> value);
         partial void OnLWPActualInjectionChanged();
         /// <summary>
         /// There are no comments for Property ToteTank in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int ToteTank
+        public global::System.Nullable<int> ToteTank
         {
             get
             {
@@ -12109,14 +11912,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _ToteTank;
-        partial void OnToteTankChanging(int value);
+        private global::System.Nullable<int> _ToteTank;
+        partial void OnToteTankChanging(global::System.Nullable<int> value);
         partial void OnToteTankChanged();
         /// <summary>
         /// There are no comments for Property Drum in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int Drum
+        public global::System.Nullable<int> Drum
         {
             get
             {
@@ -12130,8 +11933,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _Drum;
-        partial void OnDrumChanging(int value);
+        private global::System.Nullable<int> _Drum;
+        partial void OnDrumChanging(global::System.Nullable<int> value);
         partial void OnDrumChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
@@ -13964,23 +13767,6 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production> _DailySK10Production;
         /// <summary>
-        /// There are no comments for SK10ProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem> SK10ProductionItem
-        {
-            get
-            {
-                if ((this._SK10ProductionItem == null))
-                {
-                    this._SK10ProductionItem = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem>("SK10ProductionItem");
-                }
-                return this._SK10ProductionItem;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem> _SK10ProductionItem;
-        /// <summary>
         /// There are no comments for DailyHIPProduction in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -13998,23 +13784,6 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction> _DailyHIPProduction;
         /// <summary>
-        /// There are no comments for HIPProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem> HIPProductionItem
-        {
-            get
-            {
-                if ((this._HIPProductionItem == null))
-                {
-                    this._HIPProductionItem = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem>("HIPProductionItem");
-                }
-                return this._HIPProductionItem;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem> _HIPProductionItem;
-        /// <summary>
         /// There are no comments for DailyFPSOHelangProduction in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -14031,23 +13800,6 @@ namespace CentralizedDatabaseSystemODataService.Default
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction> _DailyFPSOHelangProduction;
-        /// <summary>
-        /// There are no comments for FPSOHelangProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem> FPSOHelangProductionItem
-        {
-            get
-            {
-                if ((this._FPSOHelangProductionItem == null))
-                {
-                    this._FPSOHelangProductionItem = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem>("FPSOHelangProductionItem");
-                }
-                return this._FPSOHelangProductionItem;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem> _FPSOHelangProductionItem;
         /// <summary>
         /// There are no comments for DailyWellHeadAndSeparationSystem in the schema.
         /// </summary>
@@ -14742,14 +14494,6 @@ namespace CentralizedDatabaseSystemODataService.Default
             base.AddObject("DailySK10Production", dailySK10Production);
         }
         /// <summary>
-        /// There are no comments for SK10ProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToSK10ProductionItem(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem sK10ProductionItem)
-        {
-            base.AddObject("SK10ProductionItem", sK10ProductionItem);
-        }
-        /// <summary>
         /// There are no comments for DailyHIPProduction in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -14758,28 +14502,12 @@ namespace CentralizedDatabaseSystemODataService.Default
             base.AddObject("DailyHIPProduction", dailyHIPProduction);
         }
         /// <summary>
-        /// There are no comments for HIPProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToHIPProductionItem(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem hIPProductionItem)
-        {
-            base.AddObject("HIPProductionItem", hIPProductionItem);
-        }
-        /// <summary>
         /// There are no comments for DailyFPSOHelangProduction in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         public void AddToDailyFPSOHelangProduction(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction dailyFPSOHelangProduction)
         {
             base.AddObject("DailyFPSOHelangProduction", dailyFPSOHelangProduction);
-        }
-        /// <summary>
-        /// There are no comments for FPSOHelangProductionItem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToFPSOHelangProductionItem(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem fPSOHelangProductionItem)
-        {
-            base.AddObject("FPSOHelangProductionItem", fPSOHelangProductionItem);
         }
         /// <summary>
         /// There are no comments for DailyWellHeadAndSeparationSystem in the schema.
@@ -15185,20 +14913,10 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""SK10ProductionItemName"" Type=""Edm.String"" />
-        <Property Name=""Status"" Type=""Edm.String"" />
-        <Property Name=""Remark"" Type=""Edm.String"" />
+        <Property Name=""SK10CumulativeGasExport"" Type=""Edm.Decimal"" />
+        <Property Name=""SK10GasExportGODCPlan"" Type=""Edm.Decimal"" />
+        <Property Name=""SK10GasExportGODCPlanRemark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""ProductionItem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem"" />
-      </EntityType>
-      <EntityType Name=""SK10ProductionItem"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""DailySK10Productions"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production)"" />
       </EntityType>
       <EntityType Name=""DailyHIPProduction"">
         <Key>
@@ -15206,20 +14924,25 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""HIPProductionItemName"" Type=""Edm.String"" />
-        <Property Name=""Status"" Type=""Edm.String"" />
-        <Property Name=""Remark"" Type=""Edm.String"" />
+        <Property Name=""HIPCumulativeGasExport"" Type=""Edm.Decimal"" />
+        <Property Name=""HIPCumulativeGasExportRemark"" Type=""Edm.String"" />
+        <Property Name=""HIPCumulativeCondensateExport"" Type=""Edm.Decimal"" />
+        <Property Name=""HIPCumulativeCondensateExportRemark"" Type=""Edm.String"" />
+        <Property Name=""HIPCumulativeWaterProduction"" Type=""Edm.Decimal"" />
+        <Property Name=""HIPCumulativeWaterProductionRemark"" Type=""Edm.String"" />
+        <Property Name=""FuelGas"" Type=""Edm.Decimal"" />
+        <Property Name=""FuelGasRemark"" Type=""Edm.String"" />
+        <Property Name=""HPVent"" Type=""Edm.Decimal"" />
+        <Property Name=""HPVentRemark"" Type=""Edm.String"" />
+        <Property Name=""LPVent"" Type=""Edm.Decimal"" />
+        <Property Name=""LPVentRemark"" Type=""Edm.String"" />
+        <Property Name=""WaterContentInGas"" Type=""Edm.Decimal"" />
+        <Property Name=""WaterContentInGasRemark"" Type=""Edm.String"" />
+        <Property Name=""CondensateWaterCutMeter"" Type=""Edm.Decimal"" />
+        <Property Name=""CondensateWaterCutMeterRemark"" Type=""Edm.String"" />
+        <Property Name=""OilInWaterReading"" Type=""Edm.Decimal"" />
+        <Property Name=""OilInWaterReadingRemark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""ProductionItem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem"" />
-      </EntityType>
-      <EntityType Name=""HIPProductionItem"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""DailyHIPProductions"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction)"" />
       </EntityType>
       <EntityType Name=""DailyFPSOHelangProduction"">
         <Key>
@@ -15227,20 +14950,24 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""FPSOHelangProductionItemName"" Type=""Edm.String"" />
-        <Property Name=""Status"" Type=""Edm.String"" />
-        <Property Name=""Remark"" Type=""Edm.String"" />
+        <Property Name=""FPSOCumulativeGasExport"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOCumulativeGasExportRemark"" Type=""Edm.String"" />
+        <Property Name=""FPSOCumulativeCrudeOil"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOCumulativeCrudeOilRemark"" Type=""Edm.String"" />
+        <Property Name=""FPSOCrudeAPIReading"" Type=""Edm.String"" />
+        <Property Name=""EstimatedHIPCrudeToFPSO"" Type=""Edm.Decimal"" />
+        <Property Name=""EstimatedHIPCrudeToFPSORemark"" Type=""Edm.String"" />
+        <Property Name=""EstimatedLWPCrudeToFPSO"" Type=""Edm.Decimal"" />
+        <Property Name=""EstimatedLWPCrudeToFPSORemark"" Type=""Edm.String"" />
+        <Property Name=""HIPCondyDivertToFPSO"" Type=""Edm.Decimal"" />
+        <Property Name=""HIPCondyDivertToFPSORemark"" Type=""Edm.String"" />
+        <Property Name=""FPSOCumulativeWaterProduction"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOCumulativeWaterProductionRemark"" Type=""Edm.String"" />
+        <Property Name=""FPSOFlaring"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOFlaringRemark"" Type=""Edm.String"" />
+        <Property Name=""FPSOFuelGasConsumption"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOFuelGasConsumptionRemark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""ProductionItem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem"" />
-      </EntityType>
-      <EntityType Name=""FPSOHelangProductionItem"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""DailyFPSOHelangProductions"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction)"" />
       </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
@@ -15289,8 +15016,8 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""LastPiggingDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""NextPiggingDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""TrunkLinePressure"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""PV2901SP"" Type=""Edm.Decimal"" Nullable=""false"" />
+        <Property Name=""TrunkLinePressure"" Type=""Edm.Decimal"" />
+        <Property Name=""PV2901SP"" Type=""Edm.Decimal"" />
         <Property Name=""GasSamplerId"" Type=""Edm.String"" />
         <Property Name=""LastChangeOut"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""GasSamplerContent"" Type=""Edm.Decimal"" />
@@ -15378,31 +15105,31 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""SpeedControl"" Type=""Edm.String"" />
         <Property Name=""Speed"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""PressureSuct"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""PressureDisc"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""ThroughPut"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""AfterCoolerDischLP"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""AfterCoolerDischHP"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""RecycleValueLP"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""RecycleValueHP"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""SurgeDeviationLP"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""SurgeDeviationHP"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""AxialDisp1"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""AxialDisp2"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""PrimaryVentDE"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""PrimaryVentNDE"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""DEVibrationX"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""DEVibrationY"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""NDEVibrationX"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""NDEVibrationY"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""OutboardThrustBrgTE801"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""OutboardThrustBrgTE802"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""InboardThrustBrgTE803"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""InboardThrustBrgTE804"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""NDEJournalBrgTE805"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""NDEJournalBrgTE806"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""DEJournalBrgTE807"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""DEJournalBrgTE808"" Type=""Edm.Decimal"" Nullable=""false"" />
+        <Property Name=""PressureSuct"" Type=""Edm.Decimal"" />
+        <Property Name=""PressureDisc"" Type=""Edm.Decimal"" />
+        <Property Name=""ThroughPut"" Type=""Edm.Decimal"" />
+        <Property Name=""AfterCoolerDischLP"" Type=""Edm.Decimal"" />
+        <Property Name=""AfterCoolerDischHP"" Type=""Edm.Decimal"" />
+        <Property Name=""RecycleValueLP"" Type=""Edm.Decimal"" />
+        <Property Name=""RecycleValueHP"" Type=""Edm.Decimal"" />
+        <Property Name=""SurgeDeviationLP"" Type=""Edm.Decimal"" />
+        <Property Name=""SurgeDeviationHP"" Type=""Edm.Decimal"" />
+        <Property Name=""AxialDisp1"" Type=""Edm.Decimal"" />
+        <Property Name=""AxialDisp2"" Type=""Edm.Decimal"" />
+        <Property Name=""PrimaryVentDE"" Type=""Edm.Decimal"" />
+        <Property Name=""PrimaryVentNDE"" Type=""Edm.Decimal"" />
+        <Property Name=""DEVibrationX"" Type=""Edm.Decimal"" />
+        <Property Name=""DEVibrationY"" Type=""Edm.Decimal"" />
+        <Property Name=""NDEVibrationX"" Type=""Edm.Decimal"" />
+        <Property Name=""NDEVibrationY"" Type=""Edm.Decimal"" />
+        <Property Name=""OutboardThrustBrgTE801"" Type=""Edm.Decimal"" />
+        <Property Name=""OutboardThrustBrgTE802"" Type=""Edm.Decimal"" />
+        <Property Name=""InboardThrustBrgTE803"" Type=""Edm.Decimal"" />
+        <Property Name=""InboardThrustBrgTE804"" Type=""Edm.Decimal"" />
+        <Property Name=""NDEJournalBrgTE805"" Type=""Edm.Decimal"" />
+        <Property Name=""NDEJournalBrgTE806"" Type=""Edm.Decimal"" />
+        <Property Name=""DEJournalBrgTE807"" Type=""Edm.Decimal"" />
+        <Property Name=""DEJournalBrgTE808"" Type=""Edm.Decimal"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""KawasakiExportCompressor"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.KawasakiExportCompressor"" />
@@ -15426,10 +15153,10 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""GGN1"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""GGN2"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""PTN3"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""GGCTBrgLO"" Type=""Edm.Decimal"" Nullable=""false"" />
+        <Property Name=""GGCTBrgLO"" Type=""Edm.Decimal"" />
         <Property Name=""T6"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""CDP"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""GGAirIntake"" Type=""Edm.Decimal"" Nullable=""false"" />
+        <Property Name=""GGAirIntake"" Type=""Edm.Decimal"" />
         <Property Name=""RunningHours"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""StartAttempt"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""SuccessfulStarts"" Type=""Edm.Int32"" Nullable=""false"" />
@@ -15504,8 +15231,8 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""GlycolStockInToteTank"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""GlycolStockInDrum"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""GlycolStockInToteTank"" Type=""Edm.Int32"" />
+        <Property Name=""GlycolStockInDrum"" Type=""Edm.Int32"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
     </Schema>
@@ -15584,11 +15311,11 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Period"" Type=""Edm.String"" />
         <Property Name=""WorkOrderTypeName"" Type=""Edm.String"" />
-        <Property Name=""PM"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""CM"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""CB"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""MO"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""Total"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""PM"" Type=""Edm.Int32"" />
+        <Property Name=""CM"" Type=""Edm.Int32"" />
+        <Property Name=""CB"" Type=""Edm.Int32"" />
+        <Property Name=""MO"" Type=""Edm.Int32"" />
+        <Property Name=""Total"" Type=""Edm.Int32"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""WorkOrderType"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.WorkOrderType"" />
@@ -15686,20 +15413,20 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""YesterdayLevel"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""TodayLevel"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""ActualConsumption"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""DailyTargetRate"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""Deviation"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""WellInjectionTarget"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""WellActualInjection"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""TrunkLineInjectionTarget"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""TrunkLineActualInjection"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""LWPInjectionTarget"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""LWPActualInjection"" Type=""Edm.Decimal"" Nullable=""false"" />
-        <Property Name=""ToteTank"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""Drum"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""YesterdayLevel"" Type=""Edm.Decimal"" />
+        <Property Name=""TodayLevel"" Type=""Edm.Decimal"" />
+        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" />
+        <Property Name=""ActualConsumption"" Type=""Edm.Decimal"" />
+        <Property Name=""DailyTargetRate"" Type=""Edm.Decimal"" />
+        <Property Name=""Deviation"" Type=""Edm.Decimal"" />
+        <Property Name=""WellInjectionTarget"" Type=""Edm.Decimal"" />
+        <Property Name=""WellActualInjection"" Type=""Edm.Decimal"" />
+        <Property Name=""TrunkLineInjectionTarget"" Type=""Edm.Decimal"" />
+        <Property Name=""TrunkLineActualInjection"" Type=""Edm.Decimal"" />
+        <Property Name=""LWPInjectionTarget"" Type=""Edm.Decimal"" />
+        <Property Name=""LWPActualInjection"" Type=""Edm.Decimal"" />
+        <Property Name=""ToteTank"" Type=""Edm.Int32"" />
+        <Property Name=""Drum"" Type=""Edm.Int32"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""DailyInowacInjection"">
@@ -15832,15 +15559,6 @@ namespace CentralizedDatabaseSystemODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""DailySK10Production"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production"">
-          <NavigationPropertyBinding Path=""ProductionItem"" Target=""SK10ProductionItem"" />
-          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name=""SK10ProductionItem"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.SK10ProductionItem"">
-          <NavigationPropertyBinding Path=""DailySK10Productions"" Target=""DailySK10Production"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -15848,15 +15566,6 @@ namespace CentralizedDatabaseSystemODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""DailyHIPProduction"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction"">
-          <NavigationPropertyBinding Path=""ProductionItem"" Target=""HIPProductionItem"" />
-          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name=""HIPProductionItem"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.HIPProductionItem"">
-          <NavigationPropertyBinding Path=""DailyHIPProductions"" Target=""DailyHIPProduction"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -15864,15 +15573,6 @@ namespace CentralizedDatabaseSystemODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""DailyFPSOHelangProduction"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction"">
-          <NavigationPropertyBinding Path=""ProductionItem"" Target=""FPSOHelangProductionItem"" />
-          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name=""FPSOHelangProductionItem"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.FPSOHelangProductionItem"">
-          <NavigationPropertyBinding Path=""DailyFPSOHelangProductions"" Target=""DailyFPSOHelangProduction"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
