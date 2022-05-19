@@ -12,7 +12,8 @@
                         <RadzenLabel class="dialogTextSize" Text="Logistic Name" />
                     </div>
                     <div class="col-8">
-                       <RadzenTextBox class="dialogTextSize w-100" @bind-Value="@Item.LogisticName"></RadzenTextBox>
+                       <RadzenAutoComplete class="dialogTextSize w-100" @bind-Value="@Item.LogisticName" Data="@datas" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                            Placeholder="Enter logistics name..." TextProperty="Name"></RadzenAutoComplete>
                     </div>
                 </div>
                 <div class="row py-2">
