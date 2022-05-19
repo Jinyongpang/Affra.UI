@@ -47,6 +47,7 @@
         }
         else if (i == 1)
         {
+            args.Data.Date = args.Data.Date.ToLocalTime();
             await ShowDialogAsync(args.Data, i, "Edit logistic item");
         }
         else if (i == 2)
