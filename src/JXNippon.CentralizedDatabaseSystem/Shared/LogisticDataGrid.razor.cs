@@ -114,12 +114,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
                            new DialogOptions() { Style = "min-height:auto;min-width:600px;width:auto", Resizable = true, Draggable = true });
             }
 
-            if (response != null && response)
-            {
-                await grid.Reload();
-            }
-
-
+            await grid.Reload();
         }
     }
 }
