@@ -5,7 +5,6 @@ using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemService
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
 
@@ -16,8 +15,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         private RadzenDataGrid<DailyLogistic> grid;
         private IEnumerable<DailyLogistic> items;
         private bool isLoading = false;
-
-        private IList<DailyLogistic> selectedItem;
 
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
@@ -88,7 +85,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         {
             ContextMenuService.Close();
             dynamic? response;
-            if(menuAction == 2)
+            if (menuAction == 2)
             {
                 response = await DialogService.OpenAsync<GenericDeleteDialog>(title,
                            new Dictionary<string, object>() { },
@@ -107,7 +104,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
                         Severity = NotificationSeverity.Success,
                         Duration = 10000,
                     });
-                    
+
                 }
             }
             else
