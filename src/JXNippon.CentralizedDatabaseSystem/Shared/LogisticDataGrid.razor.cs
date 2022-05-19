@@ -30,9 +30,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
-        public async Task ReloadAsync()
+        public Task ReloadAsync()
         {
-            await grid.FirstPage(true);
+            return grid.FirstPage(true);
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)
@@ -83,45 +83,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyLogistic, ICentralizedDatabaseSystemUnitOfWork>>();
         }
-        private void OnCellContextMenu(DataGridCellMouseEventArgs<DailyLogistic> args)
-        {
-            ContextMenuService.Open(args,
-                new List<ContextMenuItem> {
-                new ContextMenuItem(){ Text = "Add", Value = 1 },
-                new ContextMenuItem(){ Text = "Edit", Value = 2 },
-                new ContextMenuItem(){ Text = "Detail", Value = 3 },
-                new ContextMenuItem(){ Text = "Delete", Value = 4 }
-                },
-                async (e) => {
-                    if (e.Text == "Add")
-                    {
-                        await ShowDialog(new DailyLogistic(), e.Text, "Add new logistic item");
-                    }
-                    else if (e.Text == "Edit")
-                    {
-                        await ShowDialog(args.Data, e.Text, "Edit logistic item");
-                    }
-                    else if (e.Text == "Delete")
-                    {
-                        await ShowDialog(args.Data, e.Text, "Delete logistic item");
-                    }
-                    else if (e.Text == "Detail")
-                    {
-                        await ShowDialog(args.Data, e.Text, "Logistic item details");
-                    }
-                }
-             );
-        }
 
-        private async Task ShowDialog(DailyLogistic data, string menuAction, string title)
+        private async Task ShowDialogAsync(DailyLogistic data, int menuAction, string title)
         {
             ContextMenuService.Close();
-
-            if(menuAction == "Delete")
+            dynamic? response;
+            if(menuAction == 2)
             {
-                var response = await DialogService.OpenAsync<GenericDeleteDialog>(title,
+                response = await DialogService.OpenAsync<GenericDeleteDialog>(title,
                            new Dictionary<string, object>() { },
-                           new DialogOptions() { Width = "600px", Height = "400px", Resizable = true, Draggable = true });
+                           new DialogOptions() { Style = "min-height:auto;min-width:600px;width:auto", Resizable = true, Draggable = true });
 
                 if (response != null && response)
                 {
@@ -134,19 +105,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
                         Summary = "Delete successful.",
                         Detail = "",
                         Severity = NotificationSeverity.Success,
-                        Duration = 120000,
+                        Duration = 10000,
                     });
+                    
                 }
             }
             else
             {
-                await DialogService.OpenAsync<LogisticDialog>(title,
+                response = await DialogService.OpenAsync<LogisticDialog>(title,
                            new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction } },
-                           new DialogOptions() { Width = "700px", Height = "570px", Resizable = true, Draggable = true });
+                           new DialogOptions() { Style = "min-height:auto;min-width:600px;width:auto", Resizable = true, Draggable = true });
+            }
+
+            if (response != null && response)
+            {
+                await grid.Reload();
             }
 
 
-            await grid.Reload();
         }
     }
 }

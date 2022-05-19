@@ -3,16 +3,13 @@ using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSys
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using Microsoft.AspNetCore.Components;
 using Radzen;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared
 {
     public partial class LogisticDialog
     {
         [Parameter] public DailyLogistic Item { get; set; }
-        [Parameter] public string MenuAction { get; set; }
+        [Parameter] public int MenuAction { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NotificationService NotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
@@ -24,32 +21,32 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
                 using var serviceScope = ServiceProvider.CreateScope();
                 var service = this.GetGenericService(serviceScope);
 
-                if(arg.Id > 0)
+                if (arg.Id > 0)
                 {
                     await service.UpdateAsync(arg, arg.Id);
                     NotificationService.Notify(new()
                     {
-                        Summary = "Updated successful.",
+                        Summary = "Updated successfully.",
                         Detail = "",
                         Severity = NotificationSeverity.Success,
-                        Duration = 120000,
+                        Duration = 10000,
                     });
                 }
                 else
                 {
-                    //arg.Date = DateTime.Now;
+                    arg.Date = arg.Date.ToUniversalTime();
                     await service.InsertAsync(arg);
                     NotificationService.Notify(new()
                     {
                         Summary = "Added new logistic item.",
                         Detail = "",
                         Severity = NotificationSeverity.Success,
-                        Duration = 120000,
+                        Duration = 10000,
                     });
                 }
 
 
-                DialogService.Close(arg);
+                DialogService.Close(true);
             }
             catch (Exception ex)
             {
@@ -69,7 +66,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
         private void Cancel()
         {
-            DialogService.Close();
+            DialogService.Close(false);
         }
     }
 }

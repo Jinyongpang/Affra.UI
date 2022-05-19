@@ -25,9 +25,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
-        public async Task ReloadAsync()
+        public Task ReloadAsync()
         {
-            await grid.FirstPage(true);
+            return grid.FirstPage(true);
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)

@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Radzen;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared
 {
