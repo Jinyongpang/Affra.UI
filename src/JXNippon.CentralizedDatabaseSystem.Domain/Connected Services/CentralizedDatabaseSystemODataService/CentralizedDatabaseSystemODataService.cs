@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 18/5/2022 12:14:05 AM
+// Generation date: 20/5/2022 9:42:30 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -934,27 +934,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         public DailyDeOilerInjectionSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyDeOilerInjection> query)
             : base(query) {}
 
-        /// <summary>
-        /// There are no comments for ProducedWaterTreatmentSystem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle ProducedWaterTreatmentSystem
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._ProducedWaterTreatmentSystem == null))
-                {
-                    this._ProducedWaterTreatmentSystem = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle(this.Context, GetPath("ProducedWaterTreatmentSystem"));
-                }
-                return this._ProducedWaterTreatmentSystem;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystemSingle _ProducedWaterTreatmentSystem;
     }
     /// <summary>
     /// There are no comments for DailyDeOilerInjection in the schema.
@@ -1257,27 +1236,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property ProducedWaterTreatmentSystem in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem ProducedWaterTreatmentSystem
-        {
-            get
-            {
-                return this._ProducedWaterTreatmentSystem;
-            }
-            set
-            {
-                this.OnProducedWaterTreatmentSystemChanging(value);
-                this._ProducedWaterTreatmentSystem = value;
-                this.OnProducedWaterTreatmentSystemChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem _ProducedWaterTreatmentSystem;
-        partial void OnProducedWaterTreatmentSystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem value);
-        partial void OnProducedWaterTreatmentSystemChanged();
     }
     /// <summary>
     /// Class containing all extension methods
@@ -14880,7 +14838,6 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""TotalTank"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""Drums"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""ProducedWaterTreatmentSystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem"" />
       </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
@@ -15535,7 +15492,6 @@ namespace CentralizedDatabaseSystemODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""DailyDeOilerInjection"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyDeOilerInjection"">
-          <NavigationPropertyBinding Path=""ProducedWaterTreatmentSystem"" Target=""ProducedWaterTreatmentSystem"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

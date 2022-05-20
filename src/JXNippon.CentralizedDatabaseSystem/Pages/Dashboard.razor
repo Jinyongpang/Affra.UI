@@ -146,6 +146,118 @@
         </RadzenPanel>
     </div>
 </div>
+ <div class="row py-2">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center title">
+                    7. WellHead
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <div class="row py-2">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    HIP WellHead Parameter
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <HIPWellHeadParameterDataGrid @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@hipWellHeadParameterDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    LWP WellHead Parameter
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <LWPWellHeadParameterDataGrid @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@lwpWellHeadParameterDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@(hipWellHeadParameterDataGrid.Count + lwpWellHeadParameterDataGrid.Count) record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div>
+</div>
+ <div class="row py-2">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center title">
+                    8. Rolls Royce Gas Engine & Kawasaki Compression System
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <div class="row py-2">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    Kawasaki Export Compressor
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <KawasakiExportCompressorDataGrid @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@kawasakiExportCompressorDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    Rolls Royce RB211 Engine
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <RollsRoyceRB211EngineDataGrid @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@rollsRoyceRB211EngineDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@(kawasakiExportCompressorDataGrid.Count + rollsRoyceRB211EngineDataGrid.Count) record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div>
+</div>
 <div class="row py-2">
     <div class="col">
         <RadzenPanel AllowCollapse="true">

@@ -11,12 +11,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Models
         public string Status { get; set; }
 
         public DateTime? Date { get; set; }
+        public string Mode { get; set; }
 
         public CommonFilter(NavigationManager navigationManager)
         {
             this.Search = navigationManager.GetQueryString<string>(nameof(CommonFilter.Search));
             this.Date = navigationManager.GetQueryString<DateTime?>(nameof(CommonFilter.Date));
             this.Status = navigationManager.GetQueryString<string>(nameof(CommonFilter.Status));
+            this.Mode = navigationManager.GetQueryString<string>(nameof(CommonFilter.Mode));
         }
 
         public void AppendQuery(NavigationManager navigationManager)
@@ -33,6 +35,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Models
             if (this.Date != null)
             {
                 queries.Add(nameof(CommonFilter.Date), this.Date.Value.ToString("yyyy-MM-dd"));
+            }
+            if (this.Mode != null)
+            {
+                queries.Add(nameof(CommonFilter.Mode), this.Mode);
             }
             var uriBuilder = new UriBuilder(navigationManager.Uri);
             navigationManager.NavigateTo(QueryHelpers.AddQueryString(uriBuilder.Uri.AbsolutePath, queries));

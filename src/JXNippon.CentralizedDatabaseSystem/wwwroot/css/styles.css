@@ -60,3 +60,6 @@
 .dialogTextSize{
     font-size: 18px !important;
 }
+.max-grid-width {
+    width: 1500px;
+}
