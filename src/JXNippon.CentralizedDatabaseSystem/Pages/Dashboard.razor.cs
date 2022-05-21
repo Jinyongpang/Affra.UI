@@ -1,5 +1,6 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared;
+using JXNippon.CentralizedDatabaseSystem.Shared.Logistic;
 using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary;
 using Radzen;
 

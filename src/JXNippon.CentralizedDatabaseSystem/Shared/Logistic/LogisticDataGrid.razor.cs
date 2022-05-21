@@ -5,11 +5,12 @@ using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemService
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.Logistic
 {
     public partial class LogisticDataGrid
     {
@@ -84,7 +85,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             {
                 response = await DialogService.OpenAsync<GenericDeleteDialog>(title,
                            new Dictionary<string, object>() { },
-                           new DialogOptions() { Style = "min-height:auto;min-width:600px;width:auto", Resizable = true, Draggable = true });
+                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
 
                 if (response != null && response)
                 {
@@ -99,7 +100,39 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             {
                 response = await DialogService.OpenAsync<LogisticDialog>(title,
                            new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction } },
-                           new DialogOptions() { Style = "min-height:auto;min-width:600px;width:auto", Resizable = true, Draggable = true });
+                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+
+                if (response != null && response)
+                {
+                    try
+                    {
+                        using var serviceScope = ServiceProvider.CreateScope();
+                        var service = this.GetGenericService(serviceScope);
+                        data.Date = data.Date.ToUniversalTime();
+
+                        if (data.Id > 0)
+                        {
+                            isLoading = true;
+                            await service.UpdateAsync(data, data.Id);
+                            AffraNotificationService.NotifyItemUpdated();
+                        }
+                        else
+                        {
+                            isLoading = true;
+                            await service.InsertAsync(data);
+                            AffraNotificationService.NotifyItemCreated();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        AffraNotificationService.NotifyException(ex);
+                    }
+                    finally
+                    {
+                        isLoading = false;
+                    }
+                }
             }
 
             await grid.Reload();
