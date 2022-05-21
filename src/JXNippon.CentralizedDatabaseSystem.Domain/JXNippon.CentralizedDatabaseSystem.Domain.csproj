@@ -9,10 +9,10 @@
   <ItemGroup>
     <PackageReference Include="Affra.Core.Domain" Version="1.0.30" />
     <PackageReference Include="Microsoft.OData.Client" Version="7.10.0" />
-    <PackageReference Include="Microsoft.OData.Core" Version="7.10.0" />
-    <PackageReference Include="Microsoft.OData.Edm" Version="7.10.0" />
+	<PackageReference Include="Microsoft.OData.Core" Version="7.10.0" />
+	<PackageReference Include="Microsoft.OData.Edm" Version="7.10.0" />
 	<PackageReference Include="Microsoft.OData.Extensions.Client" Version="1.0.6" />
-    <PackageReference Include="Microsoft.Spatial" Version="7.10.0" />
+	<PackageReference Include="Microsoft.Spatial" Version="7.10.0" />
 	<PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.18" />
   </ItemGroup>
 

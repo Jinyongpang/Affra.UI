@@ -4,6 +4,7 @@ using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSys
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
+using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
@@ -21,7 +22,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool ShowDateColumn { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
-        [Inject] private NotificationService NotificationService { get; set; }
+        [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private ContextMenuService ContextMenuService { get; set; }
         public CommonFilter CommonFilter { get; set; }
@@ -67,13 +68,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
         private void HandleException(Exception ex)
         {
-            NotificationService.Notify(new()
-            {
-                Summary = "Error",
-                Detail = ex.InnerException?.ToString(),
-                Severity = NotificationSeverity.Error,
-                Duration = 120000,
-            });
+            AffraNotificationService.NotifyException(ex);
         }
 
         private IGenericService<DailyLogistic> GetGenericService(IServiceScope serviceScope)
@@ -97,14 +92,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
                     var service = this.GetGenericService(serviceScope);
                     await service.DeleteAsync(data);
 
-                    NotificationService.Notify(new()
-                    {
-                        Summary = "Delete successful.",
-                        Detail = "",
-                        Severity = NotificationSeverity.Success,
-                        Duration = 10000,
-                    });
-
+                    AffraNotificationService.NotifyItemDeleted();
                 }
             }
             else
