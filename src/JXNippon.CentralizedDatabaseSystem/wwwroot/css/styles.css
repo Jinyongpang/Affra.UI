@@ -37,7 +37,7 @@
 
 .search-icon {
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: 5px;
     pointer-events: none;
 }
@@ -57,6 +57,10 @@
         display: none;
     }
 }
-.dialogTextSize{
-    font-size: 18px !important;
+.dialogTextSize {
+    font-size: 1rem !important;
+}
+
+.rz-inputtext, .rz-textarea {
+    font-size: 1rem !important;
 }

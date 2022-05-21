@@ -1,4 +1,5 @@
 ﻿@page "/Debug"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics
 
 <PageTitle>Debug</PageTitle>
@@ -11,4 +12,7 @@
 </RadzenBreadCrumb>
 
 <GenericDataGrid TItem="DailyLogistic" @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+
+<GenericDataGrid TItem="DailyHIPProduction"
     ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
