@@ -17,7 +17,7 @@
             </div>
           </div>
         </nav>
-        <article class="content px-4" style="width:85vw">
+        <article class="content px-4 @(@AppState.CollapseNavMenu ? "expandArticalSize" : "reduceArticalSize")">
             @Body
         </article>
     </main>
