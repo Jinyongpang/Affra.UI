@@ -19,6 +19,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private LogisticDataGrid logisticDataGrid;
         private LWPActivityDataGrid lWPActivityDataGrid;
         private CommunicationSystemDataGrid communicationSystemDataGrid;
+        private HIPWellHeadParameterDataGrid hipWellHeadParameterDataGrid;
+        private LWPWellHeadParameterDataGrid lwpWellHeadParameterDataGrid;
+        private RollsRoyceRB211EngineDataGrid rollsRoyceRB211EngineDataGrid;
+        private KawasakiExportCompressorDataGrid kawasakiExportCompressorDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -71,6 +75,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             communicationSystemDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        private async Task LoadHIPWellHeadParameterDataGridAsync(LoadDataArgs args)
+        {
+            hipWellHeadParameterDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadLWPWellHeadParameterDataGridAsync(LoadDataArgs args)
+        {
+            lwpWellHeadParameterDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadRollsRoyceRB211EngineDataGridAsync(LoadDataArgs args)
+        {
+            rollsRoyceRB211EngineDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadKawasakiExportCompressorDataGridAsync(LoadDataArgs args)
+        {
+            kawasakiExportCompressorDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
@@ -90,7 +110,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 wellStreamCoolerDataGrid.ReloadAsync(),
                 logisticDataGrid.ReloadAsync(),
                 lWPActivityDataGrid.ReloadAsync(),
-                communicationSystemDataGrid.ReloadAsync());
+                communicationSystemDataGrid.ReloadAsync(),
+                lwpWellHeadParameterDataGrid.ReloadAsync(),
+                hipWellHeadParameterDataGrid.ReloadAsync(),
+                rollsRoyceRB211EngineDataGrid.ReloadAsync(),
+                kawasakiExportCompressorDataGrid.ReloadAsync());
         }
     }
 }

@@ -1,0 +1,11 @@
+﻿::deep .rz-autocomplete .rz-inputtext {
+    font-size: 18px;
+}
+
+::deep .rz-calendar .rz-inputtext {
+    font-size: 18px;
+}
+
+::deep .dialogTextSize11 {
+    font-size: 18px;
+}

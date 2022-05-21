@@ -1,0 +1,52 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems
+
+<div class="row py-2">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyKawasakiExportCompressor" 
+            ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+
+            <Columns>
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="KawasakiExportCompressorName" Title="Name" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="SpeedControl" Title="Speed Control" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="Speed" Title="Speed" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="PressureSuct" Title="Pressure (bar) Suct (LP)" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="PressureDisc" Title="Pressure (bar) Disc (HP)" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="ThroughPut" Title="Throughput MMscfd" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="AfterCoolerDischLP" Title="After Cooler Disch LP" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="AfterCoolerDischHP" Title="After Cooler Disch HP" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="RecycleValueLP" Title="Recycle Value LP %" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="RecycleValueHP" Title="Recycle Value HP %" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="SurgeDeviationLP" Title="Surge Deviation LP %" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="SurgeDeviationHP" Title="Surge Deviation HP %" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="AxialDisp1" Title="Axial Disp. mm #1" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="AxialDisp2" Title="Axial Disp. mm #2" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="PrimaryVentDE" Title="Primary Vent DE (kPa)" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="PrimaryVentNDE" Title="Primary Vent NDE (kPa)" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEVibrationX" Title="DE Vibration X" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEVibrationY" Title="DE Vibration Y" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="NDEVibrationX" Title="NDE Vibration X" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="NDEVibrationY" Title="NDE Vibration Y" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="OutboardThrustBrgTE801" Title="Outboard Thrust Brg TE-801 °c" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="OutboardThrustBrgTE802" Title="Outboard Thrust Brg TE-802 °c" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="InboardThrustBrgTE803" Title="Inboard Thrust Brg TE-803 °c" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="InboardThrustBrgTE804" Title="Inboard Thrust Brg TE-804 °c" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="NDEJournalBrgTE805" Title="NDE Journal Brg TE-805 °c" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="NDEJournalBrgTE806" Title="NDE Journal Brg TE-806 °c" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEJournalBrgTE807" Title="DE Journal Brg TE-807 °c" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEJournalBrgTE808" Title="DE Journal Brg TE-808 °c" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="Remark" Title="Remark" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>  
+    </div>
+</div>
