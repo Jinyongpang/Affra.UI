@@ -1,15 +1,15 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using Microsoft.AspNetCore.Components;
+using Logistics = CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.Logistic
 {
     public partial class LogisticFilterPanel
     {
-        private IEnumerable<Logistic> datas;
+        private IEnumerable<Logistics.Logistic> datas;
 
         [Parameter] public EventCallback<CommonFilter> Change { get; set; }
         [Inject] private NavigationManager NavManager { get; set; }
@@ -21,9 +21,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             CommonFilter = new CommonFilter(NavManager);
 
             using var serviceScope = ServiceProvider.CreateScope();
-            datas = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<Logistic, ICentralizedDatabaseSystemUnitOfWork>>()
+            datas = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<Logistics.Logistic, ICentralizedDatabaseSystemUnitOfWork>>()
                 .Get()
-                .ToQueryOperationResponseAsync<Logistic>()).ToList();
+                .ToQueryOperationResponseAsync<Logistics.Logistic>()).ToList();
         }
         private Task OnChangeAsync(object value)
         {

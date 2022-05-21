@@ -64,3 +64,24 @@
 .rz-inputtext, .rz-textarea {
     font-size: 1rem !important;
 }
+.rz-datatable-thead th, .rz-grid-table thead th {
+    background-color: #97C4B8 !important;
+}
+
+.rz-grid-table thead th .rz-column-title {
+    text-transform: capitalize !important;
+    font-size: 1rem !important;
+}
+
+.rz-grid-table td .rz-cell-data {
+    font-size: 1rem !important;
+}
+
+.rz-dialog-titlebar {
+    color: whitesmoke;
+    background-color: #5089C6 !important;
+}
+
+body {
+    font-family: "Lato", Arial, Helvetica, sans-serif !important;
+}
