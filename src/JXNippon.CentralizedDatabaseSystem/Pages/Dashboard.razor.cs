@@ -1,5 +1,6 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared;
+using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -23,6 +24,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private LWPWellHeadParameterDataGrid lwpWellHeadParameterDataGrid;
         private RollsRoyceRB211EngineDataGrid rollsRoyceRB211EngineDataGrid;
         private KawasakiExportCompressorDataGrid kawasakiExportCompressorDataGrid;
+        private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
+        private HIPAndLWPSummaryDataGrid hipAndLWPSummaryDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -91,6 +94,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             kawasakiExportCompressorDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        private async Task LoadFPSOHelangSummaryDataGridAsync(LoadDataArgs args)
+        {
+            fpsoHelangSummaryDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadHIPAndLWPSummaryDataGridAsync(LoadDataArgs args)
+        {
+            hipAndLWPSummaryDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
@@ -114,7 +125,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 lwpWellHeadParameterDataGrid.ReloadAsync(),
                 hipWellHeadParameterDataGrid.ReloadAsync(),
                 rollsRoyceRB211EngineDataGrid.ReloadAsync(),
-                kawasakiExportCompressorDataGrid.ReloadAsync());
+                kawasakiExportCompressorDataGrid.ReloadAsync(),
+                fpsoHelangSummaryDataGrid.ReloadAsync(),
+                lwpWellHeadParameterDataGrid.ReloadAsync());
         }
     }
 }
