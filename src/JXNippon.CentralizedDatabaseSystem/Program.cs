@@ -5,6 +5,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Handlers;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements;
+using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Options;
@@ -38,7 +39,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IJSInProcessRuntime>(services =>
         (IJSInProcessRuntime)services.GetRequiredService<IJSRuntime>())
     .AddScoped<ContextMenuService>()
-    .AddScoped<DialogService>();
+    .AddScoped<DialogService>()
+    .AddScoped<AffraNotificationService>()
+    .AddLocalization();
 
 builder.Services.AddMsalAuthentication(options =>
 {
