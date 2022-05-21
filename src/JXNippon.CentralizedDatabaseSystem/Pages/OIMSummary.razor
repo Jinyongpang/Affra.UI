@@ -1,0 +1,27 @@
+﻿@page "/OIMSummary"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries
+@using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary;
+
+<PageTitle>OIM Summary</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/OIMSummary" Text="OIM Summary" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<DateFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+    
+<div class="row py-2">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="true" />
+    </div>
+</div>
+    
+<hr class="solid"><div class="title">Kawasaki Export Compressor</div>
+<HIPAndLWPSummaryDataGrid @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">Rolls Royce RB211 Engine</div>
+<FPSOHelangSummaryDataGrid @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
