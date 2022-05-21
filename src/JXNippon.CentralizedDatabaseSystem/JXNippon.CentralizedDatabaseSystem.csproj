@@ -21,12 +21,7 @@
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
     <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="6.0.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-    <PackageReference Include="Microsoft.OData.Extensions.Client" Version="1.0.6" />
-    <PackageReference Include="Microsoft.OData.Extensions.Client.Abstractions" Version="1.0.6" />
     <PackageReference Include="Radzen.Blazor" Version="3.18.2" />
   </ItemGroup>
 
