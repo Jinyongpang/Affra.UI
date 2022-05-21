@@ -9,10 +9,10 @@
             <RadzenCard>
                  <div class="row py-2">
                     <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize11" Text="Logistic Name" />
+                        <RadzenLabel class="dialogTextSize" Text="Logistic Name" />
                     </div>
                     <div class="col-8">
-                       <RadzenAutoComplete class="w-100 dialogComponentText" @bind-Value="@Item.LogisticName" Data="@datas" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                       <RadzenAutoComplete class="w-100" @bind-Value="@Item.LogisticName" Data="@datas" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
                             Placeholder="Enter logistics name..." TextProperty="Name"></RadzenAutoComplete>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                         <RadzenLabel class="dialogTextSize" Text="Remarks" />
                     </div>
                     <div class="col-8">
-                        <RadzenTextArea class="dialogTextSize w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark"></RadzenTextArea>
+                        <RadzenTextArea class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark"></RadzenTextArea>
                     </div>
                 </div>
                 <div class="row py-2">
@@ -29,7 +29,7 @@
                         <RadzenLabel class="dialogTextSize" Text="Date" />
                     </div>
                     <div class="col-8">
-                        <RadzenDatePicker class="w-100 dialogComponentText" DateFormat="d" @bind-Value="@Item.Date" ShowTime="false"></RadzenDatePicker>
+                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.Date" ShowTime="false"></RadzenDatePicker>
                     </div>
                 </div>
                 <div class="row justify-content-center py-4">
