@@ -14,6 +14,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemMana
 using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
 using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
+using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -44,6 +45,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private LifeBoatsDataGrid lifeBoatsDataGrid;
         private LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid;
         private OperatingChangeDataGrid operatingChangeDataGrid;
+        private CINalcoDataGrid ciNalcoDataGrid;
+        private InowacInjectionDataGrid inowacInjectionDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -140,6 +143,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             operatingChangeDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        private async Task LoadCINalcoDataGridAsync(LoadDataArgs args)
+        {
+            ciNalcoDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadInowacInjectionDataGridAsync(LoadDataArgs args)
+        {
+            inowacInjectionDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
@@ -171,7 +182,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 lossOfPrimaryContainmentIncidentDataGrid.ReloadAsync(),
                 lifeBoatsDataGrid.ReloadAsync(),
                 longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.ReloadAsync(),
-                operatingChangeDataGrid.ReloadAsync());
+                operatingChangeDataGrid.ReloadAsync(),
+                ciNalcoDataGrid.ReloadAsync(),
+                inowacInjectionDataGrid.ReloadAsync());
         }
     }
 }
