@@ -13,6 +13,7 @@
 @using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement
 @using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 @using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity
+@using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
 
 <PageTitle>Home</PageTitle>
 <RadzenBreadCrumb>
@@ -78,6 +79,119 @@
             <SummaryTemplate>
                 <RadzenCard class="mt-3">
                     <b>@(hipAndLWPSummaryDataGrid.Count + fpsoHelangSummaryDataGrid.Count) record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div>
+</div>
+<div class="row py-1">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center title">
+                    2. Health, Safety & Environment
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <div class="row py-1">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    Health, Safety & Environment
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <HealthSafetyAndEnvironmentDataGrid @ref="healthSafetyAndEnvironmentDataGrid" LoadData=@(args => LoadHealthSafetyAndEnvironmentDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@healthSafetyAndEnvironmentDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    Loss Of Primary Containment (LOPC) Incident
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <LossOfPrimaryContainmentIncidentDataGrid @ref="lossOfPrimaryContainmentIncidentDataGrid" LoadData=@(args => LoadLossOfPrimaryContainmentIncidentDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@lossOfPrimaryContainmentIncidentDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    LifeBoats
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <LifeBoatsDataGrid @ref="lifeBoatsDataGrid" LoadData=@(args => LoadLifeBoatsDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@lifeBoatsDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    Management Of Change (MOC) : Long Term Overrides & Inhibits On Alarm And/Or Trip
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    Management Of Change (MOC) : Operating Change
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <OperatingChangeDataGrid @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@operatingChangeDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@(healthSafetyAndEnvironmentDataGrid.Count + lossOfPrimaryContainmentIncidentDataGrid.Count + lifeBoatsDataGrid.Count + longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.Count + operatingChangeDataGrid.Count) record(s).</b>
                 </RadzenCard>
             </SummaryTemplate>
         </RadzenPanel>
