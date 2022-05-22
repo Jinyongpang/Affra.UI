@@ -11,7 +11,7 @@ main {
 .sidebar {
     background-color: #062C30;
     white-space: nowrap;
-    overflow: hidden
+    overflow-y: scroll;
 }
 
 .top-row {
@@ -82,45 +82,45 @@ main {
     }
 
     .expandSideBar {
-        width: 18rem;
+        width: 19rem;
         transition: 0.5s;
     }
 
     .collapseSideBar {
-        width: 5.5rem;
+        width: 6.5rem;
         transition: 0.5s;
     }
 
     .reduceArticalSize {
-        width: 84vw;
+        width: 83vw;
         transition: 0.5s;
     }
 
     .expandArticalSize {
-        width: 94vw;
+        width: 93vw;
         transition: 0.5s;
     }
 }
 
 @media (max-width: 1840px) {
     .reduceArticalSize {
-        width: 83vw !important;
-        transition: 0.5s;
-    }
-
-    .expandArticalSize {
-        width: 93vw !important;
-        transition: 0.5s;
-    }
-}
-@media (max-width: 1680px) {
-    .reduceArticalSize {
         width: 82vw !important;
         transition: 0.5s;
     }
 
     .expandArticalSize {
-        width: 93vw !important;
+        width: 92vw !important;
+        transition: 0.5s;
+    }
+}
+@media (max-width: 1680px) {
+    .reduceArticalSize {
+        width: 81vw !important;
+        transition: 0.5s;
+    }
+
+    .expandArticalSize {
+        width: 92vw !important;
         transition: 0.5s;
     }
 }

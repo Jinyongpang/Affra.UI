@@ -15,6 +15,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
 using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
 using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
+using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -47,6 +48,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private OperatingChangeDataGrid operatingChangeDataGrid;
         private CINalcoDataGrid ciNalcoDataGrid;
         private InowacInjectionDataGrid inowacInjectionDataGrid;
+        private GlycolPumpDataGrid glycolPumpDataGrid;
+        private GlycolTrainDataGrid glycolTrainDataGrid;
+        private GlycolStockDataGrid glycolStockDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -151,6 +155,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             inowacInjectionDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        private async Task LoadGlycolPumpDataGridAsync(LoadDataArgs args)
+        {
+            glycolPumpDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadGlycolTrainDataGridAsync(LoadDataArgs args)
+        {
+            glycolTrainDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadGlycolStockDataGridAsync(LoadDataArgs args)
+        {
+            glycolStockDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
@@ -184,7 +200,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.ReloadAsync(),
                 operatingChangeDataGrid.ReloadAsync(),
                 ciNalcoDataGrid.ReloadAsync(),
-                inowacInjectionDataGrid.ReloadAsync());
+                inowacInjectionDataGrid.ReloadAsync(),
+                glycolPumpDataGrid.ReloadAsync(),
+                glycolStockDataGrid.ReloadAsync(),
+                glycolTrainDataGrid.ReloadAsync());
         }
     }
 }
