@@ -1,0 +1,26 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Models
+<div class="row py-3">
+    <div class="col">
+        <RadzenCard>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 p-3">
+                    <div style="position: relative">
+                        <RadzenIcon Icon="search" class="search-icon align-items-center" />
+                        <RadzenAutoComplete @bind-Value=@CommonFilter.Search  style="padding-left: 30px" 
+                            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Search Cooling Medium System" TextProperty="CoolingMediumSystemName" 
+                            Change=@(args => OnChangeAsync(args)) Class="w-100" AutoComplete="true" Data=@datas/>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 p-3">
+                    <RadzenDropDown @bind-Value=@CommonFilter.Status Placeholder="Status" AllowClear="true" TValue="string" Class="w-100" 
+                        Data=@(StatusFilter.Statuses)
+                        Change=@(args => OnChangeAsync(args)) />
+                </div>
+                <div class="col-md-6 col-lg-4 p-3">
+                    <RadzenDatePicker Placeholder="Date" TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear="true" DateFormat="d" Class="w-100" Change=@(args => OnChangeAsync(args))>
+                    </RadzenDatePicker>
+                </div>
+            </div>        
+        </RadzenCard>
+    </div>
+</div>

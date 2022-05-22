@@ -13,6 +13,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionMa
 using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
+using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -38,6 +39,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private KawasakiExportCompressorDataGrid kawasakiExportCompressorDataGrid;
         private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
         private HIPAndLWPSummaryDataGrid hipAndLWPSummaryDataGrid;
+        private AnalysisResultDataGrid analysisResultDataGrid;
+        private CoolingMediumSystemDataGrid coolingMediumSystemDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -115,6 +118,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             hipAndLWPSummaryDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
 
+        private async Task LoadAnalysisResultDataGridAsync(LoadDataArgs args)
+        {
+            analysisResultDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadCoolingMediumSystemDataGridAsync(LoadDataArgs args)
+        {
+            coolingMediumSystemDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
             return this.ReloadAsync();
@@ -140,7 +152,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 kawasakiExportCompressorDataGrid.ReloadAsync(),
                 fpsoHelangSummaryDataGrid.ReloadAsync(),
                 lwpWellHeadParameterDataGrid.ReloadAsync(),
-                hipAndLWPSummaryDataGrid.ReloadAsync());
+                hipAndLWPSummaryDataGrid.ReloadAsync(),
+                analysisResultDataGrid.ReloadAsync(),
+                coolingMediumSystemDataGrid.ReloadAsync());
         }
     }
 }
