@@ -2,6 +2,17 @@
 using JXNippon.CentralizedDatabaseSystem.Shared;
 using JXNippon.CentralizedDatabaseSystem.Shared.Logistic;
 using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary;
+using JXNippon.CentralizedDatabaseSystem.Shared.Dashboard;
+using JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment;
+using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction;
+using JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.WellHead;
+using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement;
+using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement;
+using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement;
+using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages

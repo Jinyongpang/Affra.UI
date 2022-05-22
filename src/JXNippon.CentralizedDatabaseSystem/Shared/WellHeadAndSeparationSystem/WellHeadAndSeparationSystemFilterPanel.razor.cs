@@ -1,15 +1,15 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
 {
-    public partial class MajorEquipmentStatusFilterPanel
+    public partial class WellHeadAndSeparationSystemFilterPanel
     {
-        private IEnumerable<MajorEquipment> datas;
+        private IEnumerable<DailyWellHeadAndSeparationSystem> datas;
 
         [Parameter] public EventCallback<CommonFilter> Change { get; set; }
         [Inject] private NavigationManager NavManager { get; set; }
@@ -21,9 +21,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             CommonFilter = new CommonFilter(NavManager);
 
             using var serviceScope = ServiceProvider.CreateScope();
-            datas = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<MajorEquipment, ICentralizedDatabaseSystemUnitOfWork>>()
+            datas = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyWellHeadAndSeparationSystem, ICentralizedDatabaseSystemUnitOfWork>>()
                 .Get()
-                .ToQueryOperationResponseAsync<MajorEquipment>()).ToList();
+                .ToQueryOperationResponseAsync<DailyWellHeadAndSeparationSystem>()).ToList();
         }
         private Task OnChangeAsync(object value)
         {

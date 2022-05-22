@@ -1,5 +1,5 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Models;
-using JXNippon.CentralizedDatabaseSystem.Shared;
+using JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages

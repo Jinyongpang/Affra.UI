@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHead
 {
     public partial class HIPWellHeadParameterDataGrid
     {

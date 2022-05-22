@@ -1,5 +1,6 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared;
+using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages

@@ -1,6 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem
 {
-    public partial class ProductionSK10DataGrid
+    public partial class RollsRoyceRB211EngineDataGrid : ComponentBase
     {
-        private RadzenDataGrid<DailySK10Production> grid;
-        private IEnumerable<DailySK10Production> items;
+        private RadzenDataGrid<DailyRollsRoyceRB211Engine> grid;
+        private IEnumerable<DailyRollsRoyceRB211Engine> items;
         private bool isLoading = false;
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public EventCallback Refresh { get; set; }
@@ -50,7 +50,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailySK10Production>();
+                .ToQueryOperationResponseAsync<DailyRollsRoyceRB211Engine>();
 
             Count = (int)response.Count;
             items = response.ToList();
@@ -68,9 +68,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             });
         }
 
-        private IGenericService<DailySK10Production> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<DailyRollsRoyceRB211Engine> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailySK10Production, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyRollsRoyceRB211Engine, ICentralizedDatabaseSystemUnitOfWork>>();
         }
     }
 }

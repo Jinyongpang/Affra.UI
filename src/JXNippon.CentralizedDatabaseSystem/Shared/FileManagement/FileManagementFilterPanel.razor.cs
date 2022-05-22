@@ -2,7 +2,7 @@
 using JXNippon.CentralizedDatabaseSystem.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 {
     public partial class FileManagementFilterPanel
     {

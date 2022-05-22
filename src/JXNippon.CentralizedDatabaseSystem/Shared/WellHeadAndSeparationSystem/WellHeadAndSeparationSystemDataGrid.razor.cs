@@ -1,6 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
 {
-    public partial class MajorEquipmentStatusDataGrid
+    public partial class WellHeadAndSeparationSystemDataGrid
     {
-        private RadzenDataGrid<DailyMajorEquipmentStatus> grid;
-        private IEnumerable<DailyMajorEquipmentStatus> items;
+        private RadzenDataGrid<DailyWellHeadAndSeparationSystem> grid;
+        private IEnumerable<DailyWellHeadAndSeparationSystem> items;
         private bool isLoading = false;
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public EventCallback Refresh { get; set; }
@@ -38,13 +38,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             var query = service.Get();
             if (CommonFilter != null)
             {
-                if (!string.IsNullOrEmpty(CommonFilter.Search))
-                {
-                    query = query.Where(x => x.MajorEquipmentName.ToUpper().Contains(CommonFilter.Search.ToUpper()));
-                }
                 if (CommonFilter.Status != null)
                 {
-                    query = query.Where(x => x.Status.ToUpper() == CommonFilter.Status.ToUpper());
+                    query = query.Where(x => x.SandFilterS0400Status.ToUpper() == CommonFilter.Status.ToUpper());
                 }
                 if (CommonFilter.Date != null)
                 {
@@ -58,7 +54,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailyMajorEquipmentStatus>();
+                .ToQueryOperationResponseAsync<DailyWellHeadAndSeparationSystem>();
 
             Count = (int)response.Count;
             items = response.ToList();
@@ -76,9 +72,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             });
         }
 
-        private IGenericService<DailyMajorEquipmentStatus> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<DailyWellHeadAndSeparationSystem> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyMajorEquipmentStatus, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyWellHeadAndSeparationSystem, ICentralizedDatabaseSystemUnitOfWork>>();
         }
     }
 }
