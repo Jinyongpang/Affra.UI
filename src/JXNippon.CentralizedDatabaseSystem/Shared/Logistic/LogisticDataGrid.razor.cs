@@ -83,11 +83,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Logistic
             dynamic? response;
             if (menuAction == 2)
             {
-                response = await DialogService.OpenAsync<GenericDeleteDialog>(title,
+                response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
                            new Dictionary<string, object>() { },
                            new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
 
-                if (response != null && response)
+                if (response == true)
                 {
                     using var serviceScope = ServiceProvider.CreateScope();
                     var service = this.GetGenericService(serviceScope);
@@ -100,9 +100,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Logistic
             {
                 response = await DialogService.OpenAsync<LogisticDialog>(title,
                            new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction } },
-                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+                           Constant.DialogOptions);
 
-                if (response != null && response)
+                if (response == true)
                 {
                     try
                     {

@@ -33,9 +33,10 @@
         ContextMenuService.Open(args, ds =>
            @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args, e))">
                 <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
-                <RadzenMenuItem Text="Edit ..." Value="1" Icon="build"/>
-                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" />
-    </RadzenMenu>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description"/>
+                <RadzenMenuItem Text="Delete" Value="2" Icon="delete" />
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" />
+            </RadzenMenu>
     );  
     }
     private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyLogistic> args, MenuItemEventArgs e)
@@ -43,7 +44,7 @@
         int i = (int)e.Value;
         if (i == 0)
         {
-            await ShowDialogAsync(new DailyLogistic() { Date = DateTimeOffset.Now.Date }, i, "Add");
+            await ShowDialogAsync(new DailyLogistic() { LogisticName = args.Data.LogisticName, Date = DateTimeOffset.Now.Date }, i, "Add");
         }
         else if (i == 1)
         {
@@ -53,6 +54,11 @@
         else if (i == 2)
         {
             await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            args.Data.Date = args.Data.Date.ToLocalTime();
+            await ShowDialogAsync(args.Data, i, "View");
         }
     }
 }
