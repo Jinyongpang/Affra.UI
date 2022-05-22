@@ -3,15 +3,17 @@
 <div class="row">
     <div class="col">
         <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />
+        <RadzenButton Click="@(e => ShowDialogAsync(new DailyPowerGenerationAndDistribution() { Date = DateTimeOffset.Now.Date }, 0, "Add"))" Text="Add" Icon="note_add" ButtonStyle="ButtonStyle.Primary" Style="margin-left: 10px; margin-bottom: 20px;" Visible="@ShowRefreshButton" />   
+
         <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
             FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyPowerGenerationAndDistribution" 
             ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
+            PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu=@OnCellContextMenu AllowGrouping="@AllowGrouping">
 
             <Columns>
-                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="PowerGeneratorName" Filterable="false" Title="Name" Frozen="true" Pickable="false">           
+                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="PowerGeneratorName" Filterable="false" Title="Name" Pickable="false">           
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Status" Title="Status">
                     <Template Context="item">
@@ -19,7 +21,7 @@
                     </Template>         
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Remark" Title="Remark"/>
-                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn" Groupable="false">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
                     </Template>
@@ -29,3 +31,40 @@
         </RadzenDataGrid>  
     </div>
 </div>
+
+@code
+{
+    private void OnCellContextMenu(DataGridCellMouseEventArgs<DailyPowerGenerationAndDistribution> args)
+    {
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description"/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" />
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" />
+            </RadzenMenu>
+    );  
+    }
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyPowerGenerationAndDistribution> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DailyPowerGenerationAndDistribution() { PowerGeneratorName = args.Data.PowerGeneratorName, Date = DateTimeOffset.Now.Date }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            args.Data.Date = args.Data.Date.ToLocalTime();
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            args.Data.Date = args.Data.Date.ToLocalTime();
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+    }
+}
