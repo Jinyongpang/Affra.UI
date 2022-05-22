@@ -1,0 +1,35 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines
+
+<div class="row">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyGasCondensateExportSamplerAndExportLine" 
+            ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+
+            <Columns>
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="LastPiggingDate" Title="Last Pigging Date" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="NextPiggingDate" Title="Next Pigging Date" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="TrunkLinePressure" Title="Trunk Line Pressure" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="PV2901SP" Title="PV-2901 SP" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="GasSamplerId" Title="Gas Sampler Id" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="LastChangeOut" Title="Last Change Out" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="GasSamplerContent" Title="Gas Sampler Content (ml)" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="NextChangeOut" Title="Next Change Out" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="CondySamplerId" Title="Condy Sampler Id" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="LastSampling" Title="Last Sampling" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="CondySamplerContent" Title="Condy Sampler Content (ml)" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="NextSampling" Title="Next Sampling" />
+                <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>  
+    </div>
+</div>

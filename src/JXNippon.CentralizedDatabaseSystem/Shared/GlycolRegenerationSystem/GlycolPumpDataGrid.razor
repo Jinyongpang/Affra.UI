@@ -1,0 +1,30 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems
+
+<div class="row">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyGlycolPump" 
+            ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+
+            <Columns>
+                <RadzenDataGridColumn TItem="DailyGlycolPump" Property="GlycolPumpName" Title="Glycol Pump Name" />
+                <RadzenDataGridColumn TItem="DailyGlycolPump" Property="Status" Title="Status">
+                    <Template Context="item">
+                        <StatusGridColumnTemplate Status="@(item.Status)"></StatusGridColumnTemplate>
+                    </Template>           
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyGlycolPump" Property="Remark" Title="Remark" />
+                <RadzenDataGridColumn TItem="DailyGlycolPump" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>  
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@page "/ChemicalInjection"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
+@using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection
+
+<PageTitle>Chemical Injection</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/ChemicalInjection" Text="Chemical Injection" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<DateFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+    
+<div class="row py-2">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="true" />
+    </div>
+</div>
+    
+<hr class="solid"><div class="title">CI Nalco, EC-1310A (3:7 = CI : Diesel)</div>
+<CINalcoDataGrid @ref="ciNalcoDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">Inowac SBN-810 Injection</div>
+<InowacInjectionDataGrid @ref="inowacDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
