@@ -1,6 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -8,14 +8,13 @@ using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment
 {
-    public partial class PowerGenerationAndDistributionManagementDataGrid
+    public partial class MajorEquipmentStatusDataGrid
     {
-        private RadzenDataGrid<DailyPowerGenerationAndDistribution> grid;
-        private IEnumerable<DailyPowerGenerationAndDistribution> items;
+        private RadzenDataGrid<DailyMajorEquipmentStatus> grid;
+        private IEnumerable<DailyMajorEquipmentStatus> items;
         private bool isLoading = false;
-
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public EventCallback Refresh { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
@@ -30,7 +29,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         {
             return Task.WhenAll(grid.FirstPage(true), Refresh.InvokeAsync());
         }
-
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
@@ -42,7 +40,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             {
                 if (!string.IsNullOrEmpty(CommonFilter.Search))
                 {
-                    query = query.Where(x => x.PowerGeneratorName.ToUpper().Contains(CommonFilter.Search.ToUpper()));
+                    query = query.Where(x => x.MajorEquipmentName.ToUpper().Contains(CommonFilter.Search.ToUpper()));
                 }
                 if (CommonFilter.Status != null)
                 {
@@ -60,7 +58,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailyPowerGenerationAndDistribution>();
+                .ToQueryOperationResponseAsync<DailyMajorEquipmentStatus>();
 
             Count = (int)response.Count;
             items = response.ToList();
@@ -78,9 +76,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             });
         }
 
-        private IGenericService<DailyPowerGenerationAndDistribution> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<DailyMajorEquipmentStatus> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyPowerGenerationAndDistribution, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyMajorEquipmentStatus, ICentralizedDatabaseSystemUnitOfWork>>();
         }
     }
 }

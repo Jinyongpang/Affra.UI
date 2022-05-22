@@ -1,6 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction
 {
-    public partial class CommunicationSystemDataGrid
+    public partial class ProductionHIPDataGrid
     {
-        private RadzenDataGrid<DailyCommunicationSystem> grid;
-        private IEnumerable<DailyCommunicationSystem> items;
+        private RadzenDataGrid<DailyHIPProduction> grid;
+        private IEnumerable<DailyHIPProduction> items;
         private bool isLoading = false;
-
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
+        [Parameter] public EventCallback Refresh { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool ShowDateColumn { get; set; }
@@ -25,11 +25,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
-        public async Task ReloadAsync()
+        public Task ReloadAsync()
         {
-            await grid.FirstPage(true);
+            return Task.WhenAll(grid.FirstPage(true), Refresh.InvokeAsync());
         }
-
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
@@ -51,7 +50,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailyCommunicationSystem>();
+                .ToQueryOperationResponseAsync<DailyHIPProduction>();
 
             Count = (int)response.Count;
             items = response.ToList();
@@ -69,9 +68,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             });
         }
 
-        private IGenericService<DailyCommunicationSystem> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<DailyHIPProduction> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyCommunicationSystem, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyHIPProduction, ICentralizedDatabaseSystemUnitOfWork>>();
         }
     }
 }

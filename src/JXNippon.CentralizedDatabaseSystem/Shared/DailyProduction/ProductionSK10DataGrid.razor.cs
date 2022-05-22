@@ -1,6 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -8,14 +8,13 @@ using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction
 {
-    public partial class ProducedWaterTreatmentSystemManagementDataGrid
+    public partial class ProductionSK10DataGrid
     {
-        private RadzenDataGrid<DailyProducedWaterTreatmentSystem> grid;
-        private IEnumerable<DailyProducedWaterTreatmentSystem> items;
+        private RadzenDataGrid<DailySK10Production> grid;
+        private IEnumerable<DailySK10Production> items;
         private bool isLoading = false;
-
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public EventCallback Refresh { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
@@ -30,7 +29,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         {
             return Task.WhenAll(grid.FirstPage(true), Refresh.InvokeAsync());
         }
-
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
@@ -40,14 +38,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             var query = service.Get();
             if (CommonFilter != null)
             {
-                if (!string.IsNullOrEmpty(CommonFilter.Search))
-                {
-                    query = query.Where(x => x.ProducedWaterTreatmentSystemName.ToUpper().Contains(CommonFilter.Search.ToUpper()));
-                }
-                if (CommonFilter.Status != null)
-                {
-                    query = query.Where(x => x.Status.ToUpper() == CommonFilter.Status.ToUpper());
-                }
                 if (CommonFilter.Date != null)
                 {
                     var start = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value);
@@ -60,7 +50,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailyProducedWaterTreatmentSystem>();
+                .ToQueryOperationResponseAsync<DailySK10Production>();
 
             Count = (int)response.Count;
             items = response.ToList();
@@ -78,9 +68,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             });
         }
 
-        private IGenericService<DailyProducedWaterTreatmentSystem> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<DailySK10Production> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyProducedWaterTreatmentSystem, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailySK10Production, ICentralizedDatabaseSystemUnitOfWork>>();
         }
     }
 }

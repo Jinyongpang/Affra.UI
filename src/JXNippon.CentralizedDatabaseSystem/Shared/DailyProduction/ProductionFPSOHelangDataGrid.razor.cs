@@ -1,6 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction
 {
-    public partial class LWPWellHeadParameterDataGrid
+    public partial class ProductionFPSOHelangDataGrid
     {
-        private RadzenDataGrid<DailyLWPWellHeadParameter> grid;
-        private IEnumerable<DailyLWPWellHeadParameter> items;
+        private RadzenDataGrid<DailyFPSOHelangProduction> grid;
+        private IEnumerable<DailyFPSOHelangProduction> items;
         private bool isLoading = false;
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public EventCallback Refresh { get; set; }
@@ -38,18 +38,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             var query = service.Get();
             if (CommonFilter != null)
             {
-                if (!string.IsNullOrEmpty(CommonFilter.Search))
-                {
-                    query = query.Where(x => x.LWPWellHeadName.ToUpper().Contains(CommonFilter.Search.ToUpper()));
-                }
-                if (CommonFilter.Status != null)
-                {
-                    query = query.Where(x => x.Status.ToUpper() == CommonFilter.Status.ToUpper());
-                }
-                if (CommonFilter.Mode != null)
-                {
-                    query = query.Where(x => x.ChokeMode.ToUpper() == CommonFilter.Mode.ToUpper());
-                }
                 if (CommonFilter.Date != null)
                 {
                     var start = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value);
@@ -62,7 +50,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailyLWPWellHeadParameter>();
+                .ToQueryOperationResponseAsync<DailyFPSOHelangProduction>();
 
             Count = (int)response.Count;
             items = response.ToList();
@@ -80,9 +68,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             });
         }
 
-        private IGenericService<DailyLWPWellHeadParameter> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<DailyFPSOHelangProduction> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyLWPWellHeadParameter, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyFPSOHelangProduction, ICentralizedDatabaseSystemUnitOfWork>>();
         }
     }
 }

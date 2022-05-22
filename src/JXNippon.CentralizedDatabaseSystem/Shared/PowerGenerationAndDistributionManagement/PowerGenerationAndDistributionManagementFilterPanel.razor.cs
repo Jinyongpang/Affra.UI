@@ -1,15 +1,15 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement
 {
-    public partial class WellHeadAndSeparationSystemFilterPanel
+    public partial class PowerGenerationAndDistributionManagementFilterPanel
     {
-        private IEnumerable<DailyWellHeadAndSeparationSystem> datas;
+        private IEnumerable<PowerGenerator> datas;
 
         [Parameter] public EventCallback<CommonFilter> Change { get; set; }
         [Inject] private NavigationManager NavManager { get; set; }
@@ -21,9 +21,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             CommonFilter = new CommonFilter(NavManager);
 
             using var serviceScope = ServiceProvider.CreateScope();
-            datas = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyWellHeadAndSeparationSystem, ICentralizedDatabaseSystemUnitOfWork>>()
+            datas = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PowerGenerator, ICentralizedDatabaseSystemUnitOfWork>>()
                 .Get()
-                .ToQueryOperationResponseAsync<DailyWellHeadAndSeparationSystem>()).ToList();
+                .ToQueryOperationResponseAsync<PowerGenerator>()).ToList();
         }
         private Task OnChangeAsync(object value)
         {

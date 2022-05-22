@@ -1,6 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement
 {
-    public partial class WellHeadAndSeparationSystemDataGrid
+    public partial class DeOilerInjectionDataGrid
     {
-        private RadzenDataGrid<DailyWellHeadAndSeparationSystem> grid;
-        private IEnumerable<DailyWellHeadAndSeparationSystem> items;
+        private RadzenDataGrid<DailyDeOilerInjection> grid;
+        private IEnumerable<DailyDeOilerInjection> items;
         private bool isLoading = false;
+
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
-        [Parameter] public EventCallback Refresh { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool ShowDateColumn { get; set; }
@@ -25,10 +25,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
-        public Task ReloadAsync()
+        public async Task ReloadAsync()
         {
-            return Task.WhenAll(grid.FirstPage(true), Refresh.InvokeAsync());
+            await grid.FirstPage(true);
         }
+
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
@@ -40,7 +41,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             {
                 if (CommonFilter.Status != null)
                 {
-                    query = query.Where(x => x.SandFilterS0400Status.ToUpper() == CommonFilter.Status.ToUpper());
+                    query = query.Where(x => x.InjectionStatus.ToUpper() == CommonFilter.Status.ToUpper());
                 }
                 if (CommonFilter.Date != null)
                 {
@@ -54,7 +55,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailyWellHeadAndSeparationSystem>();
+                .ToQueryOperationResponseAsync<DailyDeOilerInjection>();
 
             Count = (int)response.Count;
             items = response.ToList();
@@ -72,9 +73,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             });
         }
 
-        private IGenericService<DailyWellHeadAndSeparationSystem> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<DailyDeOilerInjection> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyWellHeadAndSeparationSystem, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyDeOilerInjection, ICentralizedDatabaseSystemUnitOfWork>>();
         }
     }
 }
