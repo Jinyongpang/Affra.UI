@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 22/5/2022 12:34:42 PM
+// Generation date: 22/5/2022 4:41:35 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -70,13 +70,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="powerGeneratorName">Initial value of PowerGeneratorName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyPowerGenerationAndDistribution CreateDailyPowerGenerationAndDistribution(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyPowerGenerationAndDistribution CreateDailyPowerGenerationAndDistribution(long ID, global::System.DateTimeOffset date, string powerGeneratorName, long xmin)
         {
             DailyPowerGenerationAndDistribution dailyPowerGenerationAndDistribution = new DailyPowerGenerationAndDistribution();
             dailyPowerGenerationAndDistribution.Id = ID;
             dailyPowerGenerationAndDistribution.Date = date;
+            dailyPowerGenerationAndDistribution.PowerGeneratorName = powerGeneratorName;
             dailyPowerGenerationAndDistribution.xmin = xmin;
             return dailyPowerGenerationAndDistribution;
         }
@@ -493,14 +495,16 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new DailyProducedWaterTreatmentSystem object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="producedWaterTreatmentSystemName">Initial value of ProducedWaterTreatmentSystemName.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="lastSkimmingDate">Initial value of LastSkimmingDate.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyProducedWaterTreatmentSystem CreateDailyProducedWaterTreatmentSystem(long ID, global::System.DateTimeOffset date, global::System.DateTimeOffset lastSkimmingDate, long xmin)
+        public static DailyProducedWaterTreatmentSystem CreateDailyProducedWaterTreatmentSystem(long ID, string producedWaterTreatmentSystemName, global::System.DateTimeOffset date, global::System.DateTimeOffset lastSkimmingDate, long xmin)
         {
             DailyProducedWaterTreatmentSystem dailyProducedWaterTreatmentSystem = new DailyProducedWaterTreatmentSystem();
             dailyProducedWaterTreatmentSystem.Id = ID;
+            dailyProducedWaterTreatmentSystem.ProducedWaterTreatmentSystemName = producedWaterTreatmentSystemName;
             dailyProducedWaterTreatmentSystem.Date = date;
             dailyProducedWaterTreatmentSystem.LastSkimmingDate = lastSkimmingDate;
             dailyProducedWaterTreatmentSystem.xmin = xmin;
@@ -1370,13 +1374,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="majorEquipmentName">Initial value of MajorEquipmentName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyMajorEquipmentStatus CreateDailyMajorEquipmentStatus(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyMajorEquipmentStatus CreateDailyMajorEquipmentStatus(long ID, global::System.DateTimeOffset date, string majorEquipmentName, long xmin)
         {
             DailyMajorEquipmentStatus dailyMajorEquipmentStatus = new DailyMajorEquipmentStatus();
             dailyMajorEquipmentStatus.Id = ID;
             dailyMajorEquipmentStatus.Date = date;
+            dailyMajorEquipmentStatus.MajorEquipmentName = majorEquipmentName;
             dailyMajorEquipmentStatus.xmin = xmin;
             return dailyMajorEquipmentStatus;
         }
@@ -3265,13 +3271,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="wellStreamCoolerName">Initial value of WellStreamCoolerName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyWellStreamCooler CreateDailyWellStreamCooler(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyWellStreamCooler CreateDailyWellStreamCooler(long ID, global::System.DateTimeOffset date, string wellStreamCoolerName, long xmin)
         {
             DailyWellStreamCooler dailyWellStreamCooler = new DailyWellStreamCooler();
             dailyWellStreamCooler.Id = ID;
             dailyWellStreamCooler.Date = date;
+            dailyWellStreamCooler.WellStreamCoolerName = wellStreamCoolerName;
             dailyWellStreamCooler.xmin = xmin;
             return dailyWellStreamCooler;
         }
@@ -4106,13 +4114,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new DailyHIPWellHeadParameter object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="hIPWellHeadName">Initial value of HIPWellHeadName.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyHIPWellHeadParameter CreateDailyHIPWellHeadParameter(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyHIPWellHeadParameter CreateDailyHIPWellHeadParameter(long ID, string hIPWellHeadName, global::System.DateTimeOffset date, long xmin)
         {
             DailyHIPWellHeadParameter dailyHIPWellHeadParameter = new DailyHIPWellHeadParameter();
             dailyHIPWellHeadParameter.Id = ID;
+            dailyHIPWellHeadParameter.HIPWellHeadName = hIPWellHeadName;
             dailyHIPWellHeadParameter.Date = date;
             dailyHIPWellHeadParameter.xmin = xmin;
             return dailyHIPWellHeadParameter;
@@ -4727,13 +4737,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new DailyLWPWellHeadParameter object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="lWPWellHeadName">Initial value of LWPWellHeadName.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyLWPWellHeadParameter CreateDailyLWPWellHeadParameter(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyLWPWellHeadParameter CreateDailyLWPWellHeadParameter(long ID, string lWPWellHeadName, global::System.DateTimeOffset date, long xmin)
         {
             DailyLWPWellHeadParameter dailyLWPWellHeadParameter = new DailyLWPWellHeadParameter();
             dailyLWPWellHeadParameter.Id = ID;
+            dailyLWPWellHeadParameter.LWPWellHeadName = lWPWellHeadName;
             dailyLWPWellHeadParameter.Date = date;
             dailyLWPWellHeadParameter.xmin = xmin;
             return dailyLWPWellHeadParameter;
@@ -5407,13 +5419,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new DailyKawasakiExportCompressor object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="kawasakiExportCompressorName">Initial value of KawasakiExportCompressorName.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyKawasakiExportCompressor CreateDailyKawasakiExportCompressor(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyKawasakiExportCompressor CreateDailyKawasakiExportCompressor(long ID, string kawasakiExportCompressorName, global::System.DateTimeOffset date, long xmin)
         {
             DailyKawasakiExportCompressor dailyKawasakiExportCompressor = new DailyKawasakiExportCompressor();
             dailyKawasakiExportCompressor.Id = ID;
+            dailyKawasakiExportCompressor.KawasakiExportCompressorName = kawasakiExportCompressorName;
             dailyKawasakiExportCompressor.Date = date;
             dailyKawasakiExportCompressor.xmin = xmin;
             return dailyKawasakiExportCompressor;
@@ -6322,14 +6336,16 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new DailyRollsRoyceRB211Engine object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="rollsRoyceRB211EngineName">Initial value of RollsRoyceRB211EngineName.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="turbineWashDate">Initial value of TurbineWashDate.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyRollsRoyceRB211Engine CreateDailyRollsRoyceRB211Engine(long ID, global::System.DateTimeOffset date, global::System.DateTimeOffset turbineWashDate, long xmin)
+        public static DailyRollsRoyceRB211Engine CreateDailyRollsRoyceRB211Engine(long ID, string rollsRoyceRB211EngineName, global::System.DateTimeOffset date, global::System.DateTimeOffset turbineWashDate, long xmin)
         {
             DailyRollsRoyceRB211Engine dailyRollsRoyceRB211Engine = new DailyRollsRoyceRB211Engine();
             dailyRollsRoyceRB211Engine.Id = ID;
+            dailyRollsRoyceRB211Engine.RollsRoyceRB211EngineName = rollsRoyceRB211EngineName;
             dailyRollsRoyceRB211Engine.Date = date;
             dailyRollsRoyceRB211Engine.TurbineWashDate = turbineWashDate;
             dailyRollsRoyceRB211Engine.xmin = xmin;
@@ -7047,13 +7063,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="glycolPumpName">Initial value of GlycolPumpName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyGlycolPump CreateDailyGlycolPump(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyGlycolPump CreateDailyGlycolPump(long ID, global::System.DateTimeOffset date, string glycolPumpName, long xmin)
         {
             DailyGlycolPump dailyGlycolPump = new DailyGlycolPump();
             dailyGlycolPump.Id = ID;
             dailyGlycolPump.Date = date;
+            dailyGlycolPump.GlycolPumpName = glycolPumpName;
             dailyGlycolPump.xmin = xmin;
             return dailyGlycolPump;
         }
@@ -7416,13 +7434,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="glycolTrainName">Initial value of GlycolTrainName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyGlycolTrain CreateDailyGlycolTrain(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyGlycolTrain CreateDailyGlycolTrain(long ID, global::System.DateTimeOffset date, string glycolTrainName, long xmin)
         {
             DailyGlycolTrain dailyGlycolTrain = new DailyGlycolTrain();
             dailyGlycolTrain.Id = ID;
             dailyGlycolTrain.Date = date;
+            dailyGlycolTrain.GlycolTrainName = glycolTrainName;
             dailyGlycolTrain.xmin = xmin;
             return dailyGlycolTrain;
         }
@@ -8320,13 +8340,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="logisticName">Initial value of LogisticName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyLogistic CreateDailyLogistic(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyLogistic CreateDailyLogistic(long ID, global::System.DateTimeOffset date, string logisticName, long xmin)
         {
             DailyLogistic dailyLogistic = new DailyLogistic();
             dailyLogistic.Id = ID;
             dailyLogistic.Date = date;
+            dailyLogistic.LogisticName = logisticName;
             dailyLogistic.xmin = xmin;
             return dailyLogistic;
         }
@@ -8571,13 +8593,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="analysisResultName">Initial value of AnalysisResultName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyAnalysisResult CreateDailyAnalysisResult(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyAnalysisResult CreateDailyAnalysisResult(long ID, global::System.DateTimeOffset date, string analysisResultName, long xmin)
         {
             DailyAnalysisResult dailyAnalysisResult = new DailyAnalysisResult();
             dailyAnalysisResult.Id = ID;
             dailyAnalysisResult.Date = date;
+            dailyAnalysisResult.AnalysisResultName = analysisResultName;
             dailyAnalysisResult.xmin = xmin;
             return dailyAnalysisResult;
         }
@@ -8940,13 +8964,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="coolingMediumSystemName">Initial value of CoolingMediumSystemName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyCoolingMediumSystem CreateDailyCoolingMediumSystem(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyCoolingMediumSystem CreateDailyCoolingMediumSystem(long ID, global::System.DateTimeOffset date, string coolingMediumSystemName, long xmin)
         {
             DailyCoolingMediumSystem dailyCoolingMediumSystem = new DailyCoolingMediumSystem();
             dailyCoolingMediumSystem.Id = ID;
             dailyCoolingMediumSystem.Date = date;
+            dailyCoolingMediumSystem.CoolingMediumSystemName = coolingMediumSystemName;
             dailyCoolingMediumSystem.xmin = xmin;
             return dailyCoolingMediumSystem;
         }
@@ -9410,13 +9436,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="workOrderTypeName">Initial value of WorkOrderTypeName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyMaximoWorkOrder CreateDailyMaximoWorkOrder(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyMaximoWorkOrder CreateDailyMaximoWorkOrder(long ID, global::System.DateTimeOffset date, string workOrderTypeName, long xmin)
         {
             DailyMaximoWorkOrder dailyMaximoWorkOrder = new DailyMaximoWorkOrder();
             dailyMaximoWorkOrder.Id = ID;
             dailyMaximoWorkOrder.Date = date;
+            dailyMaximoWorkOrder.WorkOrderTypeName = workOrderTypeName;
             dailyMaximoWorkOrder.xmin = xmin;
             return dailyMaximoWorkOrder;
         }
@@ -10293,13 +10321,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="utilityName">Initial value of UtilityName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyUtility CreateDailyUtility(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyUtility CreateDailyUtility(long ID, global::System.DateTimeOffset date, string utilityName, long xmin)
         {
             DailyUtility dailyUtility = new DailyUtility();
             dailyUtility.Id = ID;
             dailyUtility.Date = date;
+            dailyUtility.UtilityName = utilityName;
             dailyUtility.xmin = xmin;
             return dailyUtility;
         }
@@ -10363,13 +10393,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="utilityName">Initial value of UtilityName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyWaterTank CreateDailyWaterTank(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyWaterTank CreateDailyWaterTank(long ID, global::System.DateTimeOffset date, string utilityName, long xmin)
         {
             DailyWaterTank dailyWaterTank = new DailyWaterTank();
             dailyWaterTank.Id = ID;
             dailyWaterTank.Date = date;
+            dailyWaterTank.UtilityName = utilityName;
             dailyWaterTank.xmin = xmin;
             return dailyWaterTank;
         }
@@ -10454,13 +10486,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="utilityName">Initial value of UtilityName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyNitrogenGenerator CreateDailyNitrogenGenerator(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyNitrogenGenerator CreateDailyNitrogenGenerator(long ID, global::System.DateTimeOffset date, string utilityName, long xmin)
         {
             DailyNitrogenGenerator dailyNitrogenGenerator = new DailyNitrogenGenerator();
             dailyNitrogenGenerator.Id = ID;
             dailyNitrogenGenerator.Date = date;
+            dailyNitrogenGenerator.UtilityName = utilityName;
             dailyNitrogenGenerator.xmin = xmin;
             return dailyNitrogenGenerator;
         }
@@ -10848,13 +10882,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="vendorName">Initial value of VendorName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyVendorActivity CreateDailyVendorActivity(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyVendorActivity CreateDailyVendorActivity(long ID, global::System.DateTimeOffset date, string vendorName, long xmin)
         {
             DailyVendorActivity dailyVendorActivity = new DailyVendorActivity();
             dailyVendorActivity.Id = ID;
             dailyVendorActivity.Date = date;
+            dailyVendorActivity.VendorName = vendorName;
             dailyVendorActivity.xmin = xmin;
             return dailyVendorActivity;
         }
@@ -12695,15 +12731,22 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="sandDisposalDesanderName">Initial value of SandDisposalDesanderName.</param>
         /// <param name="lastSandJettingDate">Initial value of LastSandJettingDate.</param>
         /// <param name="nextSandJettingDate">Initial value of NextSandJettingDate.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailySandDisposalDesander CreateDailySandDisposalDesander(long ID, global::System.DateTimeOffset date, global::System.DateTimeOffset lastSandJettingDate, global::System.DateTimeOffset nextSandJettingDate, long xmin)
+        public static DailySandDisposalDesander CreateDailySandDisposalDesander(long ID, 
+                    global::System.DateTimeOffset date, 
+                    string sandDisposalDesanderName, 
+                    global::System.DateTimeOffset lastSandJettingDate, 
+                    global::System.DateTimeOffset nextSandJettingDate, 
+                    long xmin)
         {
             DailySandDisposalDesander dailySandDisposalDesander = new DailySandDisposalDesander();
             dailySandDisposalDesander.Id = ID;
             dailySandDisposalDesander.Date = date;
+            dailySandDisposalDesander.SandDisposalDesanderName = sandDisposalDesanderName;
             dailySandDisposalDesander.LastSandJettingDate = lastSandJettingDate;
             dailySandDisposalDesander.NextSandJettingDate = nextSandJettingDate;
             dailySandDisposalDesander.xmin = xmin;
@@ -14230,13 +14273,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="lifeBoatName">Initial value of LifeBoatName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyLifeBoat CreateDailyLifeBoat(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyLifeBoat CreateDailyLifeBoat(long ID, global::System.DateTimeOffset date, string lifeBoatName, long xmin)
         {
             DailyLifeBoat dailyLifeBoat = new DailyLifeBoat();
             dailyLifeBoat.Id = ID;
             dailyLifeBoat.Date = date;
+            dailyLifeBoat.LifeBoatName = lifeBoatName;
             dailyLifeBoat.xmin = xmin;
             return dailyLifeBoat;
         }
@@ -14468,14 +14513,16 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="tagName">Initial value of TagName.</param>
         /// <param name="raisedDate">Initial value of RaisedDate.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyLongTermOverridesInhibitsOnAlarmTrip CreateDailyLongTermOverridesInhibitsOnAlarmTrip(long ID, global::System.DateTimeOffset date, global::System.DateTimeOffset raisedDate, long xmin)
+        public static DailyLongTermOverridesInhibitsOnAlarmTrip CreateDailyLongTermOverridesInhibitsOnAlarmTrip(long ID, global::System.DateTimeOffset date, string tagName, global::System.DateTimeOffset raisedDate, long xmin)
         {
             DailyLongTermOverridesInhibitsOnAlarmTrip dailyLongTermOverridesInhibitsOnAlarmTrip = new DailyLongTermOverridesInhibitsOnAlarmTrip();
             dailyLongTermOverridesInhibitsOnAlarmTrip.Id = ID;
             dailyLongTermOverridesInhibitsOnAlarmTrip.Date = date;
+            dailyLongTermOverridesInhibitsOnAlarmTrip.TagName = tagName;
             dailyLongTermOverridesInhibitsOnAlarmTrip.RaisedDate = raisedDate;
             dailyLongTermOverridesInhibitsOnAlarmTrip.xmin = xmin;
             return dailyLongTermOverridesInhibitsOnAlarmTrip;
@@ -14607,26 +14654,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnLocationChanging(string value);
         partial void OnLocationChanged();
         /// <summary>
-        /// There are no comments for Property LongDecriptionRemark in the schema.
+        /// There are no comments for Property LongDescriptionRemark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string LongDecriptionRemark
+        public string LongDescriptionRemark
         {
             get
             {
-                return this._LongDecriptionRemark;
+                return this._LongDescriptionRemark;
             }
             set
             {
-                this.OnLongDecriptionRemarkChanging(value);
-                this._LongDecriptionRemark = value;
-                this.OnLongDecriptionRemarkChanged();
+                this.OnLongDescriptionRemarkChanging(value);
+                this._LongDescriptionRemark = value;
+                this.OnLongDescriptionRemarkChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _LongDecriptionRemark;
-        partial void OnLongDecriptionRemarkChanging(string value);
-        partial void OnLongDecriptionRemarkChanged();
+        private string _LongDescriptionRemark;
+        partial void OnLongDescriptionRemarkChanging(string value);
+        partial void OnLongDescriptionRemarkChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -14761,26 +14808,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDateChanging(global::System.DateTimeOffset value);
         partial void OnDateChanged();
         /// <summary>
-        /// There are no comments for Property MajorLOPC2022 in the schema.
+        /// There are no comments for Property MajorLOPC in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<int> MajorLOPC2022
+        public global::System.Nullable<int> MajorLOPC
         {
             get
             {
-                return this._MajorLOPC2022;
+                return this._MajorLOPC;
             }
             set
             {
-                this.OnMajorLOPC2022Changing(value);
-                this._MajorLOPC2022 = value;
-                this.OnMajorLOPC2022Changed();
+                this.OnMajorLOPCChanging(value);
+                this._MajorLOPC = value;
+                this.OnMajorLOPCChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<int> _MajorLOPC2022;
-        partial void OnMajorLOPC2022Changing(global::System.Nullable<int> value);
-        partial void OnMajorLOPC2022Changed();
+        private global::System.Nullable<int> _MajorLOPC;
+        partial void OnMajorLOPCChanging(global::System.Nullable<int> value);
+        partial void OnMajorLOPCChanged();
         /// <summary>
         /// There are no comments for Property LastMajorLOPC in the schema.
         /// </summary>
@@ -14803,26 +14850,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnLastMajorLOPCChanging(string value);
         partial void OnLastMajorLOPCChanged();
         /// <summary>
-        /// There are no comments for Property MinorLOPC2022 in the schema.
+        /// There are no comments for Property MinorLOPC in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<int> MinorLOPC2022
+        public global::System.Nullable<int> MinorLOPC
         {
             get
             {
-                return this._MinorLOPC2022;
+                return this._MinorLOPC;
             }
             set
             {
-                this.OnMinorLOPC2022Changing(value);
-                this._MinorLOPC2022 = value;
-                this.OnMinorLOPC2022Changed();
+                this.OnMinorLOPCChanging(value);
+                this._MinorLOPC = value;
+                this.OnMinorLOPCChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<int> _MinorLOPC2022;
-        partial void OnMinorLOPC2022Changing(global::System.Nullable<int> value);
-        partial void OnMinorLOPC2022Changed();
+        private global::System.Nullable<int> _MinorLOPC;
+        partial void OnMinorLOPCChanging(global::System.Nullable<int> value);
+        partial void OnMinorLOPCChanged();
         /// <summary>
         /// There are no comments for Property LastMinorLOPC in the schema.
         /// </summary>
@@ -14845,26 +14892,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnLastMinorLOPCChanging(string value);
         partial void OnLastMinorLOPCChanged();
         /// <summary>
-        /// There are no comments for Property OtherLOPC2022 in the schema.
+        /// There are no comments for Property OtherLOPC in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<int> OtherLOPC2022
+        public global::System.Nullable<int> OtherLOPC
         {
             get
             {
-                return this._OtherLOPC2022;
+                return this._OtherLOPC;
             }
             set
             {
-                this.OnOtherLOPC2022Changing(value);
-                this._OtherLOPC2022 = value;
-                this.OnOtherLOPC2022Changed();
+                this.OnOtherLOPCChanging(value);
+                this._OtherLOPC = value;
+                this.OnOtherLOPCChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<int> _OtherLOPC2022;
-        partial void OnOtherLOPC2022Changing(global::System.Nullable<int> value);
-        partial void OnOtherLOPC2022Changed();
+        private global::System.Nullable<int> _OtherLOPC;
+        partial void OnOtherLOPCChanging(global::System.Nullable<int> value);
+        partial void OnOtherLOPCChanged();
         /// <summary>
         /// There are no comments for Property LastOtherLOPC in the schema.
         /// </summary>
@@ -14967,14 +15014,16 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="tagName">Initial value of TagName.</param>
         /// <param name="raisedDate">Initial value of RaisedDate.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyOperatingChange CreateDailyOperatingChange(long ID, global::System.DateTimeOffset date, global::System.DateTimeOffset raisedDate, long xmin)
+        public static DailyOperatingChange CreateDailyOperatingChange(long ID, global::System.DateTimeOffset date, string tagName, global::System.DateTimeOffset raisedDate, long xmin)
         {
             DailyOperatingChange dailyOperatingChange = new DailyOperatingChange();
             dailyOperatingChange.Id = ID;
             dailyOperatingChange.Date = date;
+            dailyOperatingChange.TagName = tagName;
             dailyOperatingChange.RaisedDate = raisedDate;
             dailyOperatingChange.xmin = xmin;
             return dailyOperatingChange;
@@ -17486,7 +17535,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""PowerGeneratorName"" Type=""Edm.String"" />
+        <Property Name=""PowerGeneratorName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -17508,7 +17557,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""ProducedWaterTreatmentSystemName"" Type=""Edm.String"" />
+        <Property Name=""ProducedWaterTreatmentSystemName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
@@ -17555,7 +17604,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""MajorEquipmentName"" Type=""Edm.String"" />
+        <Property Name=""MajorEquipmentName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -17657,7 +17706,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""WellStreamCoolerName"" Type=""Edm.String"" />
+        <Property Name=""WellStreamCoolerName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""WellStreamCoolerTemparature"" Type=""Edm.Decimal"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""WellStreamCooler"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.WellStreamCooler"" />
@@ -17700,7 +17749,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""HIPWellHeadName"" Type=""Edm.String"" />
+        <Property Name=""HIPWellHeadName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
@@ -17733,7 +17782,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""LWPWellHeadName"" Type=""Edm.String"" />
+        <Property Name=""LWPWellHeadName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
@@ -17766,7 +17815,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""KawasakiExportCompressorName"" Type=""Edm.String"" />
+        <Property Name=""KawasakiExportCompressorName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""SpeedControl"" Type=""Edm.String"" />
         <Property Name=""Speed"" Type=""Edm.Int32"" />
@@ -17813,7 +17862,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""RollsRoyceRB211EngineName"" Type=""Edm.String"" />
+        <Property Name=""RollsRoyceRB211EngineName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""GGN1"" Type=""Edm.Int32"" />
         <Property Name=""GGN2"" Type=""Edm.Int32"" />
@@ -17849,7 +17898,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""GlycolPumpName"" Type=""Edm.String"" />
+        <Property Name=""GlycolPumpName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -17870,7 +17919,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""GlycolTrainName"" Type=""Edm.String"" />
+        <Property Name=""GlycolTrainName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""PreviousDayLevel"" Type=""Edm.Decimal"" />
         <Property Name=""TodayReportLevel"" Type=""Edm.Decimal"" />
         <Property Name=""LevelDrop"" Type=""Edm.Decimal"" />
@@ -17917,7 +17966,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""LogisticName"" Type=""Edm.String"" />
+        <Property Name=""LogisticName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""Logistic"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.Logistic"" />
@@ -17930,7 +17979,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""AnalysisResultName"" Type=""Edm.String"" />
+        <Property Name=""AnalysisResultName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""AnalysisResultValue"" Type=""Edm.Decimal"" />
         <Property Name=""Range"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -17951,7 +18000,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""CoolingMediumSystemName"" Type=""Edm.String"" />
+        <Property Name=""CoolingMediumSystemName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -17975,7 +18024,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Period"" Type=""Edm.String"" />
-        <Property Name=""WorkOrderTypeName"" Type=""Edm.String"" />
+        <Property Name=""WorkOrderTypeName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""PM"" Type=""Edm.Int32"" />
         <Property Name=""CM"" Type=""Edm.Int32"" />
         <Property Name=""CB"" Type=""Edm.Int32"" />
@@ -18011,7 +18060,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""UtilityName"" Type=""Edm.String"" />
+        <Property Name=""UtilityName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -18041,7 +18090,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""VendorName"" Type=""Edm.String"" />
+        <Property Name=""VendorName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Title"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""PlanForTomorrow"" Type=""Edm.String"" />
@@ -18141,7 +18190,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""SandDisposalDesanderName"" Type=""Edm.String"" />
+        <Property Name=""SandDisposalDesanderName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""LastSandJettingDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
@@ -18223,7 +18272,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""LifeBoatName"" Type=""Edm.String"" />
+        <Property Name=""LifeBoatName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""StartDate"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
@@ -18236,11 +18285,11 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""TagName"" Type=""Edm.String"" />
+        <Property Name=""TagName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""RaisedDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""MaximoWorkOrder"" Type=""Edm.String"" />
         <Property Name=""Location"" Type=""Edm.String"" />
-        <Property Name=""LongDecriptionRemark"" Type=""Edm.String"" />
+        <Property Name=""LongDescriptionRemark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""LongTermOverridesInhibitsOnAlarmTrip"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.LongTermOverridesInhibitsOnAlarmTrip"" />
       </EntityType>
@@ -18250,11 +18299,11 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""MajorLOPC2022"" Type=""Edm.Int32"" />
+        <Property Name=""MajorLOPC"" Type=""Edm.Int32"" />
         <Property Name=""LastMajorLOPC"" Type=""Edm.String"" />
-        <Property Name=""MinorLOPC2022"" Type=""Edm.Int32"" />
+        <Property Name=""MinorLOPC"" Type=""Edm.Int32"" />
         <Property Name=""LastMinorLOPC"" Type=""Edm.String"" />
-        <Property Name=""OtherLOPC2022"" Type=""Edm.Int32"" />
+        <Property Name=""OtherLOPC"" Type=""Edm.Int32"" />
         <Property Name=""LastOtherLOPC"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
@@ -18264,7 +18313,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""TagName"" Type=""Edm.String"" />
+        <Property Name=""TagName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""RaisedDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""ExpiredDate"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""ReferenceNumber"" Type=""Edm.String"" />
