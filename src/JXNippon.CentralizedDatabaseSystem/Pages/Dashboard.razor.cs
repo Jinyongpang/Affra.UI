@@ -13,6 +13,8 @@ using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionMa
 using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
+using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
+using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -38,6 +40,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private KawasakiExportCompressorDataGrid kawasakiExportCompressorDataGrid;
         private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
         private HIPAndLWPSummaryDataGrid hipAndLWPSummaryDataGrid;
+        private HealthSafetyAndEnvironmentDataGrid healthSafetyAndEnvironmentDataGrid;
+        private LossOfPrimaryContainmentIncidentDataGrid lossOfPrimaryContainmentIncidentDataGrid;
+        private LifeBoatsDataGrid lifeBoatsDataGrid;
+        private LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid;
+        private OperatingChangeDataGrid operatingChangeDataGrid;
+        private CINalcoDataGrid ciNalcoDataGrid;
+        private InowacInjectionDataGrid inowacInjectionDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -114,6 +123,34 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             hipAndLWPSummaryDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        private async Task LoadHealthSafetyAndEnvironmentDataGridAsync(LoadDataArgs args)
+        {
+            healthSafetyAndEnvironmentDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadLossOfPrimaryContainmentIncidentDataGridAsync(LoadDataArgs args)
+        {
+            lossOfPrimaryContainmentIncidentDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadLifeBoatsDataGridAsync(LoadDataArgs args)
+        {
+            lifeBoatsDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(LoadDataArgs args)
+        {
+            longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadOperatingChangeDataGridAsync(LoadDataArgs args)
+        {
+            operatingChangeDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadCINalcoDataGridAsync(LoadDataArgs args)
+        {
+            ciNalcoDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadInowacInjectionDataGridAsync(LoadDataArgs args)
+        {
+            inowacInjectionDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
@@ -140,7 +177,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 kawasakiExportCompressorDataGrid.ReloadAsync(),
                 fpsoHelangSummaryDataGrid.ReloadAsync(),
                 lwpWellHeadParameterDataGrid.ReloadAsync(),
-                hipAndLWPSummaryDataGrid.ReloadAsync());
+                hipAndLWPSummaryDataGrid.ReloadAsync(),
+                healthSafetyAndEnvironmentDataGrid.ReloadAsync(),
+                lossOfPrimaryContainmentIncidentDataGrid.ReloadAsync(),
+                lifeBoatsDataGrid.ReloadAsync(),
+                longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.ReloadAsync(),
+                operatingChangeDataGrid.ReloadAsync(),
+                ciNalcoDataGrid.ReloadAsync(),
+                inowacInjectionDataGrid.ReloadAsync());
         }
     }
 }
