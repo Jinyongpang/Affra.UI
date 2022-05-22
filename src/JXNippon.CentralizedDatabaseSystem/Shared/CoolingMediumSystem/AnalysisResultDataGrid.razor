@@ -11,10 +11,15 @@
             PagerAlwaysVisible="@PagerAlwaysVisible">
 
             <Columns>
-                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="AnalysisResultName" Filterable="false" Title="Name" Frozen="true" Pickable="false">           
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="AnalysisResultValue" Title="Value"/>
-                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="Range" Title="Range"/>
+                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="PhReading" Title="ph Reading"/>
+                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="PhReadingRange" Title="pH Reading Range"/>
+                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="Iron" Title="Iron"/>
+                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="IronRange" Title="Iron Range"/>
+                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="Salinity" Title="Salinity"/>
+                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="Nitrite" Title="Nitrite"/>
+                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="NitriteRange" Title="Nitrite Range"/>
+                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="CMFilterS6970" Title="CM Filter S-6970"/>
+                <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="CMFilterS6970Range" Title="CM Filter S-6970 Range"/>
                 <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())

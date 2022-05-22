@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 22/5/2022 4:41:35 PM
+// Generation date: 22/5/2022 9:44:42 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -8557,27 +8557,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         public DailyAnalysisResultSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyAnalysisResult> query)
             : base(query) {}
 
-        /// <summary>
-        /// There are no comments for AnalysisResult in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResultSingle AnalysisResult
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._AnalysisResult == null))
-                {
-                    this._AnalysisResult = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResultSingle(this.Context, GetPath("AnalysisResult"));
-                }
-                return this._AnalysisResult;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResultSingle _AnalysisResult;
     }
     /// <summary>
     /// There are no comments for DailyAnalysisResult in the schema.
@@ -8593,15 +8572,13 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
-        /// <param name="analysisResultName">Initial value of AnalysisResultName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyAnalysisResult CreateDailyAnalysisResult(long ID, global::System.DateTimeOffset date, string analysisResultName, long xmin)
+        public static DailyAnalysisResult CreateDailyAnalysisResult(long ID, global::System.DateTimeOffset date, long xmin)
         {
             DailyAnalysisResult dailyAnalysisResult = new DailyAnalysisResult();
             dailyAnalysisResult.Id = ID;
             dailyAnalysisResult.Date = date;
-            dailyAnalysisResult.AnalysisResultName = analysisResultName;
             dailyAnalysisResult.xmin = xmin;
             return dailyAnalysisResult;
         }
@@ -8648,68 +8625,194 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDateChanging(global::System.DateTimeOffset value);
         partial void OnDateChanged();
         /// <summary>
-        /// There are no comments for Property AnalysisResultName in the schema.
+        /// There are no comments for Property PhReading in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string AnalysisResultName
+        public global::System.Nullable<decimal> PhReading
         {
             get
             {
-                return this._AnalysisResultName;
+                return this._PhReading;
             }
             set
             {
-                this.OnAnalysisResultNameChanging(value);
-                this._AnalysisResultName = value;
-                this.OnAnalysisResultNameChanged();
+                this.OnPhReadingChanging(value);
+                this._PhReading = value;
+                this.OnPhReadingChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _AnalysisResultName;
-        partial void OnAnalysisResultNameChanging(string value);
-        partial void OnAnalysisResultNameChanged();
+        private global::System.Nullable<decimal> _PhReading;
+        partial void OnPhReadingChanging(global::System.Nullable<decimal> value);
+        partial void OnPhReadingChanged();
         /// <summary>
-        /// There are no comments for Property AnalysisResultValue in the schema.
+        /// There are no comments for Property PhReadingRange in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<decimal> AnalysisResultValue
+        public string PhReadingRange
         {
             get
             {
-                return this._AnalysisResultValue;
+                return this._PhReadingRange;
             }
             set
             {
-                this.OnAnalysisResultValueChanging(value);
-                this._AnalysisResultValue = value;
-                this.OnAnalysisResultValueChanged();
+                this.OnPhReadingRangeChanging(value);
+                this._PhReadingRange = value;
+                this.OnPhReadingRangeChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<decimal> _AnalysisResultValue;
-        partial void OnAnalysisResultValueChanging(global::System.Nullable<decimal> value);
-        partial void OnAnalysisResultValueChanged();
+        private string _PhReadingRange;
+        partial void OnPhReadingRangeChanging(string value);
+        partial void OnPhReadingRangeChanged();
         /// <summary>
-        /// There are no comments for Property Range in the schema.
+        /// There are no comments for Property Iron in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Range
+        public global::System.Nullable<decimal> Iron
         {
             get
             {
-                return this._Range;
+                return this._Iron;
             }
             set
             {
-                this.OnRangeChanging(value);
-                this._Range = value;
-                this.OnRangeChanged();
+                this.OnIronChanging(value);
+                this._Iron = value;
+                this.OnIronChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Range;
-        partial void OnRangeChanging(string value);
-        partial void OnRangeChanged();
+        private global::System.Nullable<decimal> _Iron;
+        partial void OnIronChanging(global::System.Nullable<decimal> value);
+        partial void OnIronChanged();
+        /// <summary>
+        /// There are no comments for Property IronRange in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string IronRange
+        {
+            get
+            {
+                return this._IronRange;
+            }
+            set
+            {
+                this.OnIronRangeChanging(value);
+                this._IronRange = value;
+                this.OnIronRangeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _IronRange;
+        partial void OnIronRangeChanging(string value);
+        partial void OnIronRangeChanged();
+        /// <summary>
+        /// There are no comments for Property Salinity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> Salinity
+        {
+            get
+            {
+                return this._Salinity;
+            }
+            set
+            {
+                this.OnSalinityChanging(value);
+                this._Salinity = value;
+                this.OnSalinityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _Salinity;
+        partial void OnSalinityChanging(global::System.Nullable<decimal> value);
+        partial void OnSalinityChanged();
+        /// <summary>
+        /// There are no comments for Property Nitrite in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> Nitrite
+        {
+            get
+            {
+                return this._Nitrite;
+            }
+            set
+            {
+                this.OnNitriteChanging(value);
+                this._Nitrite = value;
+                this.OnNitriteChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _Nitrite;
+        partial void OnNitriteChanging(global::System.Nullable<decimal> value);
+        partial void OnNitriteChanged();
+        /// <summary>
+        /// There are no comments for Property NitriteRange in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string NitriteRange
+        {
+            get
+            {
+                return this._NitriteRange;
+            }
+            set
+            {
+                this.OnNitriteRangeChanging(value);
+                this._NitriteRange = value;
+                this.OnNitriteRangeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _NitriteRange;
+        partial void OnNitriteRangeChanging(string value);
+        partial void OnNitriteRangeChanged();
+        /// <summary>
+        /// There are no comments for Property CMFilterS6970 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> CMFilterS6970
+        {
+            get
+            {
+                return this._CMFilterS6970;
+            }
+            set
+            {
+                this.OnCMFilterS6970Changing(value);
+                this._CMFilterS6970 = value;
+                this.OnCMFilterS6970Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _CMFilterS6970;
+        partial void OnCMFilterS6970Changing(global::System.Nullable<decimal> value);
+        partial void OnCMFilterS6970Changed();
+        /// <summary>
+        /// There are no comments for Property CMFilterS6970Range in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string CMFilterS6970Range
+        {
+            get
+            {
+                return this._CMFilterS6970Range;
+            }
+            set
+            {
+                this.OnCMFilterS6970RangeChanging(value);
+                this._CMFilterS6970Range = value;
+                this.OnCMFilterS6970RangeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _CMFilterS6970Range;
+        partial void OnCMFilterS6970RangeChanging(string value);
+        partial void OnCMFilterS6970RangeChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -8731,179 +8834,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property AnalysisResult in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult AnalysisResult
-        {
-            get
-            {
-                return this._AnalysisResult;
-            }
-            set
-            {
-                this.OnAnalysisResultChanging(value);
-                this._AnalysisResult = value;
-                this.OnAnalysisResultChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult _AnalysisResult;
-        partial void OnAnalysisResultChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult value);
-        partial void OnAnalysisResultChanged();
-    }
-    /// <summary>
-    /// There are no comments for AnalysisResultSingle in the schema.
-    /// </summary>
-    public partial class AnalysisResultSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<AnalysisResult>
-    {
-        /// <summary>
-        /// Initialize a new AnalysisResultSingle object.
-        /// </summary>
-        public AnalysisResultSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
-            : base(context, path) {}
-
-        /// <summary>
-        /// Initialize a new AnalysisResultSingle object.
-        /// </summary>
-        public AnalysisResultSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
-            : base(context, path, isComposable) {}
-
-        /// <summary>
-        /// Initialize a new AnalysisResultSingle object.
-        /// </summary>
-        public AnalysisResultSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<AnalysisResult> query)
-            : base(query) {}
-
-        /// <summary>
-        /// There are no comments for DailyAnalysisResults in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult> DailyAnalysisResults
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._DailyAnalysisResults == null))
-                {
-                    this._DailyAnalysisResults = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult>(GetPath("DailyAnalysisResults"));
-                }
-                return this._DailyAnalysisResults;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult> _DailyAnalysisResults;
-    }
-    /// <summary>
-    /// There are no comments for AnalysisResult in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::Microsoft.OData.Client.Key("Id")]
-    public partial class AnalysisResult : global::Microsoft.OData.Client.BaseEntityType
-    {
-        /// <summary>
-        /// Create a new AnalysisResult object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static AnalysisResult CreateAnalysisResult(long ID, long xmin)
-        {
-            AnalysisResult analysisResult = new AnalysisResult();
-            analysisResult.Id = ID;
-            analysisResult.xmin = xmin;
-            return analysisResult;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _Id;
-        partial void OnIdChanging(long value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Name in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Name
-        {
-            get
-            {
-                return this._Name;
-            }
-            set
-            {
-                this.OnNameChanging(value);
-                this._Name = value;
-                this.OnNameChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Name;
-        partial void OnNameChanging(string value);
-        partial void OnNameChanged();
-        /// <summary>
-        /// There are no comments for Property xmin in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
-        {
-            get
-            {
-                return this._xmin;
-            }
-            set
-            {
-                this.OnxminChanging(value);
-                this._xmin = value;
-                this.OnxminChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _xmin;
-        partial void OnxminChanging(long value);
-        partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property DailyAnalysisResults in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult> DailyAnalysisResults
-        {
-            get
-            {
-                return this._DailyAnalysisResults;
-            }
-            set
-            {
-                this.OnDailyAnalysisResultsChanging(value);
-                this._DailyAnalysisResults = value;
-                this.OnDailyAnalysisResultsChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult> _DailyAnalysisResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult>();
-        partial void OnDailyAnalysisResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult> value);
-        partial void OnDailyAnalysisResultsChanged();
     }
     /// <summary>
     /// There are no comments for DailyCoolingMediumSystemSingle in the schema.
@@ -9303,29 +9233,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 { "Id", id }
             };
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResultSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResultSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResultSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResultSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResultSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResultSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult> _source,
-            long id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResultSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
         /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyCoolingMediumSystem as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyCoolingMediumSystemSingle specified by key from an entity set
@@ -16606,23 +16513,6 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult> _DailyAnalysisResult;
         /// <summary>
-        /// There are no comments for AnalysisResult in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult> AnalysisResult
-        {
-            get
-            {
-                if ((this._AnalysisResult == null))
-                {
-                    this._AnalysisResult = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult>("AnalysisResult");
-                }
-                return this._AnalysisResult;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult> _AnalysisResult;
-        /// <summary>
         /// There are no comments for DailyCoolingMediumSystem in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -17305,14 +17195,6 @@ namespace CentralizedDatabaseSystemODataService.Default
             base.AddObject("DailyAnalysisResult", dailyAnalysisResult);
         }
         /// <summary>
-        /// There are no comments for AnalysisResult in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToAnalysisResult(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult analysisResult)
-        {
-            base.AddObject("AnalysisResult", analysisResult);
-        }
-        /// <summary>
         /// There are no comments for DailyCoolingMediumSystem in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -17979,20 +17861,16 @@ namespace CentralizedDatabaseSystemODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""AnalysisResultName"" Type=""Edm.String"" Nullable=""false"" />
-        <Property Name=""AnalysisResultValue"" Type=""Edm.Decimal"" />
-        <Property Name=""Range"" Type=""Edm.String"" />
+        <Property Name=""PhReading"" Type=""Edm.Decimal"" />
+        <Property Name=""PhReadingRange"" Type=""Edm.String"" />
+        <Property Name=""Iron"" Type=""Edm.Decimal"" />
+        <Property Name=""IronRange"" Type=""Edm.String"" />
+        <Property Name=""Salinity"" Type=""Edm.Decimal"" />
+        <Property Name=""Nitrite"" Type=""Edm.Decimal"" />
+        <Property Name=""NitriteRange"" Type=""Edm.String"" />
+        <Property Name=""CMFilterS6970"" Type=""Edm.Decimal"" />
+        <Property Name=""CMFilterS6970Range"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""AnalysisResult"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult"" />
-      </EntityType>
-      <EntityType Name=""AnalysisResult"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""DailyAnalysisResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult)"" />
       </EntityType>
       <EntityType Name=""DailyCoolingMediumSystem"">
         <Key>
@@ -18577,15 +18455,6 @@ namespace CentralizedDatabaseSystemODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""DailyAnalysisResult"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult"">
-          <NavigationPropertyBinding Path=""AnalysisResult"" Target=""AnalysisResult"" />
-          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name=""AnalysisResult"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.AnalysisResult"">
-          <NavigationPropertyBinding Path=""DailyAnalysisResults"" Target=""DailyAnalysisResult"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

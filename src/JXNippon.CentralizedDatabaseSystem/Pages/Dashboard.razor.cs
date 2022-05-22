@@ -223,7 +223,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 glycolPumpDataGrid.ReloadAsync(),
                 glycolStockDataGrid.ReloadAsync(),
                 glycolTrainDataGrid.ReloadAsync(),
-                gasAndCondensateExportSamplersDataGrid.ReloadAsync());
+                gasAndCondensateExportSamplersDataGrid.ReloadAsync(),
                 analysisResultDataGrid.ReloadAsync(),
                 coolingMediumSystemDataGrid.ReloadAsync());
         }
