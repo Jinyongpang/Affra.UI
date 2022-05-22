@@ -128,7 +128,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 rollsRoyceRB211EngineDataGrid.ReloadAsync(),
                 kawasakiExportCompressorDataGrid.ReloadAsync(),
                 fpsoHelangSummaryDataGrid.ReloadAsync(),
-                lwpWellHeadParameterDataGrid.ReloadAsync());
+                lwpWellHeadParameterDataGrid.ReloadAsync(),
+                hipAndLWPSummaryDataGrid.ReloadAsync());
         }
     }
 }
