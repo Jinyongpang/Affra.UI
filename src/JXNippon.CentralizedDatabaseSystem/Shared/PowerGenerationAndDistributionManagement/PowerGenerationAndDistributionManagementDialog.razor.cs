@@ -1,16 +1,16 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using Microsoft.AspNetCore.Components;
 using Radzen;
-using Logistics = CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared.Logistic
+namespace JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement
 {
-    public partial class LogisticDialog
+    public partial class PowerGenerationAndDistributionManagementDialog
     {
-        private IEnumerable<Logistics.Logistic> datas;
-        [Parameter] public Logistics.DailyLogistic Item { get; set; }
+        private IEnumerable<PowerGenerator> datas;
+        [Parameter] public DailyPowerGenerationAndDistribution Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private DialogService DialogService { get; set; }
@@ -22,13 +22,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Logistic
             if (!isViewing)
             {
                 using var serviceScope = ServiceProvider.CreateScope();
-                datas = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<Logistics.Logistic, ICentralizedDatabaseSystemUnitOfWork>>()
+                datas = (await serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PowerGenerator, ICentralizedDatabaseSystemUnitOfWork>>()
                     .Get()
-                    .ToQueryOperationResponseAsync<Logistics.Logistic>()).ToList();
+                    .ToQueryOperationResponseAsync<PowerGenerator>()).ToList();
             }
         }
 
-        protected Task SubmitAsync(Logistics.DailyLogistic arg)
+        protected Task SubmitAsync(DailyPowerGenerationAndDistribution arg)
         {
             DialogService.Close(true);
             return Task.CompletedTask;

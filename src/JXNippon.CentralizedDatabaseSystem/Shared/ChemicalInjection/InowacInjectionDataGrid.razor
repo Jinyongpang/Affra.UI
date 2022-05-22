@@ -1,0 +1,54 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
+
+<div class="row">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyInowacInjection" 
+            ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+
+            <Columns>
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="V2010" Title="V-2010" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCALP" Title="TC-A LP" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCAHP" Title="TC-A HP" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCBLP" Title="TC-B LP" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCBHP" Title="TC-B HP" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="Target" Title="Target" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="ActualInjection" Title="Actual Injection" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_DE_PH" Title="TC-A DE pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_DE_FE" Title="TC-A DE Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_NDE_PH" Title="TC-A NDE pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_NDE_FE" Title="TC-A NDE Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_V2400_PH" Title="TC-A V-2400 pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_V2400_FE" Title="TC-A V-2400 Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_V2430_PH" Title="TC-A V-2430 pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_V2430_FE" Title="TC-A V-2430 Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_TCALP_PH" Title="TC-A LP pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_TCALP_FE" Title="TC-A LP Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_V2200_PH" Title="TC-A V-2200 pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCA_V2200_FE" Title="TC-A V-2200 Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_DE_PH" Title="TC-B DE pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_DE_FE" Title="TC-B DE Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_NDE_PH" Title="TC-B NDE pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_NDE_FE" Title="TC-B NDE Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_V2500_PH" Title="TC-B V-2500 pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_V2500_FE" Title="TC-B V-2500 Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_V2530_PH" Title="TC-B V-2530 pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_V2530_FE" Title="TC-B V-2530 Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_TCBLP_PH" Title="TC-B LP pH" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_TCBLP_FE" Title="TC-B LP Fe" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="Stock" Title="Level Drop" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="LevelDrop" Title="Stock (Drums)" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>  
+    </div>
+</div>

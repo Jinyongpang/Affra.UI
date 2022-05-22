@@ -1,0 +1,24 @@
+﻿@page "/GasAndCondensateExportSamplerAndExportLine"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines
+@using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine
+
+<PageTitle>Gas & Condensate Export Sampler & Export Line</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/GasAndCondensateExportSamplerAndExportLine" Text="Gas & Condensate Export Sampler & Export Line" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<DateFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+    
+<div class="row py-2">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="true" />
+    </div>
+</div>
+    
+<hr class="solid"><div class="title">Gas & Condensate Export Sampler & Export Line</div>
+<GasAndCondensateExportSamplersAndExportLineDataGrid @ref="gasAndCondensateExportSamplersAndExportLineDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>

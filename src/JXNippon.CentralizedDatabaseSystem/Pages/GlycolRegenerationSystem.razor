@@ -1,0 +1,30 @@
+﻿@page "/GlycolRegenerationSystem"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems
+@using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem
+
+<PageTitle>Glycol Regeneration System</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/GlycolRegenerationSystem" Text="Glycol Regeneration System" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<DateFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+    
+<div class="row py-2">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="true" />
+    </div>
+</div>
+    
+<hr class="solid"><div class="title">Glycol Pump</div>
+<GlycolPumpDataGrid @ref="glycolPumpDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">Glycol Train</div>
+<GlycolTrainDataGrid @ref="glycolTrainDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">Glycol Stock</div>
+<GlycolStockDataGrid @ref="glycolStockDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>

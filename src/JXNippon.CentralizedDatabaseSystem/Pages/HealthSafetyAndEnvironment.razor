@@ -1,0 +1,36 @@
+﻿@page "/HealthSafetyAndEnvironment"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments
+@using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
+
+<PageTitle>Health Safety & Environment</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/HealthSafetyAndEnvironment" Text="Health Safety & Environment" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<DateFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+    
+<div class="row py-2">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="true" />
+    </div>
+</div>
+    
+<div class="title">Health Safety & Environment</div>
+<HealthSafetyAndEnvironmentDataGrid @ref="healthSafetyAndEnvironmentDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">Loss Of Primary Containment (LOPC) Incident</div>
+<LossOfPrimaryContainmentIncidentDataGrid @ref="lossOfPrimaryContainmentIncidentDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">LifeBoats</div>
+<LifeBoatsDataGrid @ref="lifeBoatsDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">Management Of Change (MOC) : Long Term Overrides & Inhibits On Alarm And/Or Trip</div>
+<LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">Management Of Change (MOC) : Operating Change</div>
+<OperatingChangeDataGrid @ref="operatingChangeDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>

@@ -13,6 +13,10 @@ using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionMa
 using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
+using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
+using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
+using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine;
 using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
 using Radzen;
 
@@ -39,6 +43,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private KawasakiExportCompressorDataGrid kawasakiExportCompressorDataGrid;
         private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
         private HIPAndLWPSummaryDataGrid hipAndLWPSummaryDataGrid;
+        private HealthSafetyAndEnvironmentDataGrid healthSafetyAndEnvironmentDataGrid;
+        private LossOfPrimaryContainmentIncidentDataGrid lossOfPrimaryContainmentIncidentDataGrid;
+        private LifeBoatsDataGrid lifeBoatsDataGrid;
+        private LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid;
+        private OperatingChangeDataGrid operatingChangeDataGrid;
+        private CINalcoDataGrid ciNalcoDataGrid;
+        private InowacInjectionDataGrid inowacInjectionDataGrid;
+        private GlycolPumpDataGrid glycolPumpDataGrid;
+        private GlycolTrainDataGrid glycolTrainDataGrid;
+        private GlycolStockDataGrid glycolStockDataGrid;
+        private GasAndCondensateExportSamplersAndExportLineDataGrid gasAndCondensateExportSamplersDataGrid;
         private AnalysisResultDataGrid analysisResultDataGrid;
         private CoolingMediumSystemDataGrid coolingMediumSystemDataGrid;
 
@@ -117,6 +132,51 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             hipAndLWPSummaryDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        private async Task LoadHealthSafetyAndEnvironmentDataGridAsync(LoadDataArgs args)
+        {
+            healthSafetyAndEnvironmentDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadLossOfPrimaryContainmentIncidentDataGridAsync(LoadDataArgs args)
+        {
+            lossOfPrimaryContainmentIncidentDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadLifeBoatsDataGridAsync(LoadDataArgs args)
+        {
+            lifeBoatsDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(LoadDataArgs args)
+        {
+            longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadOperatingChangeDataGridAsync(LoadDataArgs args)
+        {
+            operatingChangeDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadCINalcoDataGridAsync(LoadDataArgs args)
+        {
+            ciNalcoDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadInowacInjectionDataGridAsync(LoadDataArgs args)
+        {
+            inowacInjectionDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadGlycolPumpDataGridAsync(LoadDataArgs args)
+        {
+            glycolPumpDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadGlycolTrainDataGridAsync(LoadDataArgs args)
+        {
+            glycolTrainDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        
+        private async Task LoadGlycolStockDataGridAsync(LoadDataArgs args)
+        {
+            glycolStockDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadGasAndCondensateExportSamplersAndExportLineDataGridAsync(LoadDataArgs args)
+        {
+            gasAndCondensateExportSamplersDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private async Task LoadAnalysisResultDataGridAsync(LoadDataArgs args)
         {
@@ -153,6 +213,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 fpsoHelangSummaryDataGrid.ReloadAsync(),
                 lwpWellHeadParameterDataGrid.ReloadAsync(),
                 hipAndLWPSummaryDataGrid.ReloadAsync(),
+                healthSafetyAndEnvironmentDataGrid.ReloadAsync(),
+                lossOfPrimaryContainmentIncidentDataGrid.ReloadAsync(),
+                lifeBoatsDataGrid.ReloadAsync(),
+                longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.ReloadAsync(),
+                operatingChangeDataGrid.ReloadAsync(),
+                ciNalcoDataGrid.ReloadAsync(),
+                inowacInjectionDataGrid.ReloadAsync(),
+                glycolPumpDataGrid.ReloadAsync(),
+                glycolStockDataGrid.ReloadAsync(),
+                glycolTrainDataGrid.ReloadAsync(),
+                gasAndCondensateExportSamplersDataGrid.ReloadAsync());
                 analysisResultDataGrid.ReloadAsync(),
                 coolingMediumSystemDataGrid.ReloadAsync());
         }

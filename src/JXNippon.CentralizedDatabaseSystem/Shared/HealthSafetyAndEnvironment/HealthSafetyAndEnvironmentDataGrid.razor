@@ -1,0 +1,46 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments
+
+<div class="row">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyHealthSafetyEnvironment" 
+            ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+
+            <Columns>
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastLTIDate" Title="Last LTI Date" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="SK10DaysLTIFree" Title="SK-10 Days LTI Free" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastDrillExerciseConducted" Title="Last Drill Exercise Conducted" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastAnnualESDTest" Title="Last Annual ESD Test" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="NextAnnualESDTest" Title="Next Annual ESD Test" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Injurious_MTC_FACCount" Title="Injurious/MTC/FAC Count" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Injurious_MTC_FACDate" Title="Injurious/MTC/FAC Date" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="NearMissCount" Title="Near Miss Count" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="NearMissDate" Title="Near Miss Date" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="PropertyDamageCount" Title="Property Damage Count" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="PropertyDamageDate" Title="Property Damage Date" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="TotalUCUXToday" Title="Total UCUX Today" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="TotalUCUXThisMonth" Title="Total UCUX Report Month" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="HIP_LQ" Title="HIP LQ" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="HIP_ALQ" Title="HIP ALQ" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Total_HIP_POB" Title="Total HIP POB" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="AvailableBedding" Title="Available Bedding" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Operation_Catering_NonEssential" Title="Operation:Catering:NonEssential" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Weather" Title="Weather" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="WindSpeed" Title="Wind Speed (knots)" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="WindDirection" Title="Wind Direction" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="SwellWaveHeight" Title="Swell/Wave Height" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="visibility" Title="Visibility (NM)" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>  
+    </div>
+</div>
