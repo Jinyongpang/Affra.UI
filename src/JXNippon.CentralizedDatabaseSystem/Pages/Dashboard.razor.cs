@@ -16,6 +16,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
 using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
 using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -51,6 +52,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private GlycolPumpDataGrid glycolPumpDataGrid;
         private GlycolTrainDataGrid glycolTrainDataGrid;
         private GlycolStockDataGrid glycolStockDataGrid;
+        private GasAndCondensateExportSamplersAndExportLineDataGrid gasAndCondensateExportSamplersDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -163,9 +165,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             glycolTrainDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        
         private async Task LoadGlycolStockDataGridAsync(LoadDataArgs args)
         {
             glycolStockDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadGasAndCondensateExportSamplersAndExportLineDataGridAsync(LoadDataArgs args)
+        {
+            gasAndCondensateExportSamplersDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
 
         private Task OnChangeAsync(CommonFilter commonFilter)
@@ -203,7 +210,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 inowacInjectionDataGrid.ReloadAsync(),
                 glycolPumpDataGrid.ReloadAsync(),
                 glycolStockDataGrid.ReloadAsync(),
-                glycolTrainDataGrid.ReloadAsync());
+                glycolTrainDataGrid.ReloadAsync(),
+                gasAndCondensateExportSamplersDataGrid.ReloadAsync());
         }
     }
 }
