@@ -17,6 +17,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
 using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine;
+using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -53,6 +54,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private GlycolTrainDataGrid glycolTrainDataGrid;
         private GlycolStockDataGrid glycolStockDataGrid;
         private GasAndCondensateExportSamplersAndExportLineDataGrid gasAndCondensateExportSamplersDataGrid;
+        private AnalysisResultDataGrid analysisResultDataGrid;
+        private CoolingMediumSystemDataGrid coolingMediumSystemDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -175,6 +178,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             gasAndCondensateExportSamplersDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
 
+        private async Task LoadAnalysisResultDataGridAsync(LoadDataArgs args)
+        {
+            analysisResultDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadCoolingMediumSystemDataGridAsync(LoadDataArgs args)
+        {
+            coolingMediumSystemDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
             return this.ReloadAsync();
@@ -211,7 +223,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 glycolPumpDataGrid.ReloadAsync(),
                 glycolStockDataGrid.ReloadAsync(),
                 glycolTrainDataGrid.ReloadAsync(),
-                gasAndCondensateExportSamplersDataGrid.ReloadAsync());
+                gasAndCondensateExportSamplersDataGrid.ReloadAsync(),
+                analysisResultDataGrid.ReloadAsync(),
+                coolingMediumSystemDataGrid.ReloadAsync());
         }
     }
 }

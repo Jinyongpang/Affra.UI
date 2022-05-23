@@ -1,0 +1,21 @@
+﻿@page "/CoolingMediumSystem"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems
+@using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem
+
+<PageTitle>Cooling Medium System</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/CoolingMediumSystem" Text="Cooling Medium System" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<CoolingMediumSystemFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+<CoolingMediumSystemDataGrid @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"
+    Refresh=@(args => dataGrid.ReloadAsync())/>
+
+<hr class="solid"><div class="title">Analysis Result</div>
+<AnalysisResultDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>

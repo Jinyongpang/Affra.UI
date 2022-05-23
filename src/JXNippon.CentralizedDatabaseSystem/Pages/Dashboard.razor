@@ -17,6 +17,7 @@
 @using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection
 @using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem
 @using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine
+@using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem
 
 <PageTitle>Home</PageTitle>
 <RadzenBreadCrumb>
@@ -589,6 +590,44 @@
             <SummaryTemplate>
                 <RadzenCard class="mt-3">
                     <b>@gasAndCondensateExportSamplersDataGrid.Count record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div>
+</div>
+<div class="row py-1">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center title">
+                    11. Cooling Medium System
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <CoolingMediumSystemDataGrid @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args))/>
+                <div class="row py-1">
+                    <div class="col">
+                        <RadzenPanel AllowCollapse="true">
+                            <HeaderTemplate>
+                                <h4 class="m-0 d-flex align-items-center title">
+                                    Analysis Result
+                                </h4>
+                            </HeaderTemplate>
+                            <ChildContent>
+                                <AnalysisResultDataGrid @ref="analysisResultDataGrid" LoadData=@(args => LoadAnalysisResultDataGridAsync(args))/>
+                            </ChildContent>
+                            <SummaryTemplate>
+                                <RadzenCard class="mt-3">
+                                    <b>@analysisResultDataGrid.Count record(s)</b>
+                                </RadzenCard>
+                            </SummaryTemplate>
+                        </RadzenPanel>
+                    </div>
+                </div>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@coolingMediumSystemDataGrid.Count record(s).</b>
                 </RadzenCard>
             </SummaryTemplate>
         </RadzenPanel>
