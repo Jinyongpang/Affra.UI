@@ -18,6 +18,8 @@ using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine;
 using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers;
+using JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -56,6 +58,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private GasAndCondensateExportSamplersAndExportLineDataGrid gasAndCondensateExportSamplersDataGrid;
         private AnalysisResultDataGrid analysisResultDataGrid;
         private CoolingMediumSystemDataGrid coolingMediumSystemDataGrid;
+        private UtilitiesDataGrid UtilitiesDataGrid;
+        private WaterTankDataGrid waterTankDataGrid;
+        private NitrogenGeneratorDataGrid nitrogenGeneratorDataGrid;
+        private SandDisposalDesanderDataGrid sandDisposalDesanderDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -186,6 +192,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             coolingMediumSystemDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        private async Task LoadUtilitiesDataGridAsync(LoadDataArgs args)
+        {
+            UtilitiesDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadWaterTankDataGridAsync(LoadDataArgs args)
+        {
+            waterTankDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadNitrogenGeneratorDataGridAsync(LoadDataArgs args)
+        {
+            nitrogenGeneratorDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
+        private async Task LoadSandDisposalDesanderDataGridAsync(LoadDataArgs args)
+        {
+            sandDisposalDesanderDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
@@ -225,7 +247,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 glycolTrainDataGrid.ReloadAsync(),
                 gasAndCondensateExportSamplersDataGrid.ReloadAsync(),
                 analysisResultDataGrid.ReloadAsync(),
-                coolingMediumSystemDataGrid.ReloadAsync());
+                coolingMediumSystemDataGrid.ReloadAsync(),
+                UtilitiesDataGrid.ReloadAsync(),
+                waterTankDataGrid.ReloadAsync(),
+                nitrogenGeneratorDataGrid.ReloadAsync(),
+                sandDisposalDesanderDataGrid.ReloadAsync());
         }
     }
 }
