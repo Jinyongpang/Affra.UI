@@ -20,6 +20,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAn
 using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers;
 using JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander;
+using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -62,6 +63,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private WaterTankDataGrid waterTankDataGrid;
         private NitrogenGeneratorDataGrid nitrogenGeneratorDataGrid;
         private SandDisposalDesanderDataGrid sandDisposalDesanderDataGrid;
+        private VendorActivitiesDataGrid vendorActivitiesDataGrid;
 
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
@@ -208,6 +210,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             sandDisposalDesanderDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
+        private async Task LoadVendorActivitiesDataGridAsync(LoadDataArgs args)
+        {
+            vendorActivitiesDataGrid.CommonFilter = filterPanel.CommonFilter;
+        }
 
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
@@ -251,7 +257,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 UtilitiesDataGrid.ReloadAsync(),
                 waterTankDataGrid.ReloadAsync(),
                 nitrogenGeneratorDataGrid.ReloadAsync(),
-                sandDisposalDesanderDataGrid.ReloadAsync());
+                sandDisposalDesanderDataGrid.ReloadAsync(),
+                vendorActivitiesDataGrid.ReloadAsync());
         }
     }
 }

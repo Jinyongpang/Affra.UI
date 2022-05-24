@@ -20,6 +20,7 @@
 @using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem
 @using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers
 @using JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander
+@using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities
 
 <PageTitle>Home</PageTitle>
 <RadzenBreadCrumb>
@@ -805,7 +806,6 @@
         </RadzenPanel>
     </div>
 </div>
-
 <div class="row py-1">
     <div class="col">
         <RadzenPanel AllowCollapse="true">
@@ -825,7 +825,25 @@
         </RadzenPanel>
     </div>
 </div>
-
+<div class="row py-1">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center title">
+                    18. Vendor Activities
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <VendorActivitiesDataGrid @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args))/>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@vendorActivitiesDataGrid.Count record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div>
+</div>
 <div class="row py-1">
     <div class="col">
         <RadzenPanel AllowCollapse="true">

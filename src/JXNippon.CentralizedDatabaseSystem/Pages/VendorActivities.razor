@@ -1,0 +1,16 @@
+﻿@page "/VendorActivities"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors
+@using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities;
+
+<PageTitle>Vendor Activities</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/VendorActivities" Text="Vendor Activities" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<VendorActivitiesFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+<VendorActivitiesDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
