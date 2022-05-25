@@ -1,5 +1,7 @@
+using System.Globalization;
 using Affra.Core.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem;
+using JXNippon.CentralizedDatabaseSystem.Configurations;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Handlers;
@@ -14,6 +16,13 @@ using Microsoft.OData.Extensions.Client;
 using Radzen;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+CultureConfigurations cultureConfigurations = new CultureConfigurations();
+builder.Configuration.GetSection(nameof(CultureConfigurations)).Bind(cultureConfigurations);
+
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(cultureConfigurations.DefaultCulture);
+CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(cultureConfigurations.DefaultCulture);
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
