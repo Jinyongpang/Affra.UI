@@ -1,0 +1,30 @@
+﻿@page "/LivingQuartersUtilitiesAndOthers"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities
+@using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers
+
+<PageTitle>Living Quarters, Utilities & Others</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/LivingQuartersUtilitiesAndOthers" Text="Living Quarters, Utilities & Others" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<LivingQuartersUtilitiesAndOtherFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+    
+<div class="row py-2">
+    <div class="col">
+        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="true" />
+    </div>
+</div>
+    
+<hr class="solid"><div class="title">Utilities</div>
+<UtilitiesDataGrid @ref="utilitiesDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">Water Tank</div>
+<WaterTankDataGrid @ref="waterTankDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+<hr class="solid"><div class="title">Nitrogen Generator</div>
+<NitrogenGeneratorDataGrid @ref="nitrogenGeneratorDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="false" PagerAlwaysVisible="true" ShowDateColumn="true"/>

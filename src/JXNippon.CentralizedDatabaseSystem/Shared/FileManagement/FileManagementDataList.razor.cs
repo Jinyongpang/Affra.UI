@@ -4,6 +4,7 @@ using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Models;
+using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
@@ -20,7 +21,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
-        [Inject] private NotificationService NotificationService { get; set; }
+        [Inject] private AffraNotificationService AffraNotificationService { get; set; }
 
         public CommonFilter FileManagementFilter { get; set; }
 
@@ -71,13 +72,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 
         private void HandleException(Exception ex)
         {
-            NotificationService.Notify(new()
-            {
-                Summary = "Error",
-                Detail = ex.InnerException?.ToString(),
-                Severity = NotificationSeverity.Error,
-                Duration = 120000,
-            });
+            AffraNotificationService.NotifyException(ex);
         }
 
         private IGenericService<DataFile> GetGenericFileService(IServiceScope serviceScope)

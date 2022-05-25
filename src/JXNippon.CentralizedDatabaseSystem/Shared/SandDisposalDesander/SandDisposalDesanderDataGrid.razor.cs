@@ -1,20 +1,21 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
+namespace JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander
 {
-    public partial class WellHeadAndSeparationSystemDataGrid
+    public partial class SandDisposalDesanderDataGrid
     {
-        private RadzenDataGrid<DailyWellHeadAndSeparationSystem> grid;
-        private IEnumerable<DailyWellHeadAndSeparationSystem> items;
+        private RadzenDataGrid<DailySandDisposalDesander> grid;
+        private IEnumerable<DailySandDisposalDesander> items;
         private bool isLoading = false;
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public EventCallback Refresh { get; set; }
@@ -39,9 +40,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
             var query = service.Get();
             if (CommonFilter != null)
             {
+                if (!string.IsNullOrEmpty(CommonFilter.Search))
+                {
+                    query = query.Where(x => x.SandDisposalDesanderName.ToUpper().Contains(CommonFilter.Search.ToUpper()));
+                }
                 if (CommonFilter.Status != null)
                 {
-                    query = query.Where(x => x.SandFilterS0400Status.ToUpper() == CommonFilter.Status.ToUpper());
+                    query = query.Where(x => x.Status.ToUpper() == CommonFilter.Status.ToUpper());
                 }
                 if (CommonFilter.Date != null)
                 {
@@ -55,7 +60,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
 
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailyWellHeadAndSeparationSystem>();
+                .ToQueryOperationResponseAsync<DailySandDisposalDesander>();
 
             Count = (int)response.Count;
             items = response.ToList();
@@ -67,9 +72,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
             AffraNotificationService.NotifyException(ex);
         }
 
-        private IGenericService<DailyWellHeadAndSeparationSystem> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<DailySandDisposalDesander> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyWellHeadAndSeparationSystem, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailySandDisposalDesander, ICentralizedDatabaseSystemUnitOfWork>>();
         }
     }
 }
