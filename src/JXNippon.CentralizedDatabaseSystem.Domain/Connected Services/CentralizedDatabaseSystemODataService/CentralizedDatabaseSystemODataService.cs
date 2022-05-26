@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 22/5/2022 9:44:42 PM
+// Generation date: 26/5/2022 9:51:26 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>

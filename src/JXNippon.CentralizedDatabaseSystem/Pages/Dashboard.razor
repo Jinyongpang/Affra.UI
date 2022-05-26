@@ -21,6 +21,7 @@
 @using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers
 @using JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander
 @using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities
+@using JXNippon.CentralizedDatabaseSystem.Shared.MaximoWorkOrder
 
 <PageTitle>Home</PageTitle>
 <RadzenBreadCrumb>
@@ -858,6 +859,25 @@
             <SummaryTemplate>
                 <RadzenCard class="mt-3">
                     <b>@logisticDataGrid.Count record(s).</b>
+                </RadzenCard>
+            </SummaryTemplate>
+        </RadzenPanel>
+    </div>
+</div>
+ <div class="row py-1">
+    <div class="col">
+        <RadzenPanel AllowCollapse="true">
+            <HeaderTemplate>
+                <h4 class="m-0 d-flex align-items-center title">
+                    20. Maximo Work Order
+                </h4>
+            </HeaderTemplate>
+            <ChildContent>
+                <MaximoWorkOrderDataGrid @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args))/>
+            </ChildContent>
+            <SummaryTemplate>
+                <RadzenCard class="mt-3">
+                    <b>@maximoWorkOrderDataGrid.Count record(s).</b>
                 </RadzenCard>
             </SummaryTemplate>
         </RadzenPanel>
