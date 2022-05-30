@@ -12,7 +12,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements
     {
         private IGenericRepository<DataFile> _fileRepository;
 
-        public DataExtractorUnitOfWork(IODataClientFactory oDataClientFactory, IOptions<DataExtractorConfigurations> dataExtractorConfigurations) : base(oDataClientFactory.CreateClient<Container>(new Uri(dataExtractorConfigurations.Value.Url), nameof(DataExtractorUnitOfWork)))
+        public DataExtractorUnitOfWork(IODataClientFactory oDataClientFactory, IOptions<DataExtractorConfigurations> dataExtractorConfigurations) 
+            : base(oDataClientFactory.CreateClient<Container>(new Uri(dataExtractorConfigurations.Value.Url), nameof(DataExtractorUnitOfWork)))
         {
         }
 
