@@ -4,9 +4,11 @@ using JXNippon.CentralizedDatabaseSystem;
 using JXNippon.CentralizedDatabaseSystem.Configurations;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
+using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Handlers;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements;
+using JXNippon.CentralizedDatabaseSystem.Infrastructure.Views;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -32,13 +34,26 @@ builder.Configuration.GetSection(nameof(DataExtractorConfigurations)).Bind(dataE
 CentralizedDatabaseSystemConfigurations centralizedDatabaseSystemConfigurations = new CentralizedDatabaseSystemConfigurations();
 builder.Configuration.GetSection(nameof(CentralizedDatabaseSystemConfigurations)).Bind(centralizedDatabaseSystemConfigurations);
 
+ViewConfigurations viewConfigurations = new ViewConfigurations();
+builder.Configuration.GetSection(nameof(ViewConfigurations)).Bind(viewConfigurations);
+
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
     .AddSingleton<IOptions<DataExtractorConfigurations>>(Options.Create(dataExtractorConfigurations))
     .AddScoped<ICentralizedDatabaseSystemUnitOfWork, CentralizedDatabaseSystemUnitOfWork>()
     .AddSingleton<IOptions<CentralizedDatabaseSystemConfigurations>>(Options.Create(centralizedDatabaseSystemConfigurations))
+    .AddScoped<IViewUnitOfWork, ViewUnitOfWork>()
+    .AddSingleton<IOptions<ViewConfigurations>>(Options.Create(viewConfigurations))
     .AddUnitGenericService()
     .AddODataClient(nameof(DataExtractorUnitOfWork))
+    .AddHttpClient()
+    .AddHttpMessageHandler<CreateActivityHandler>()
+    .Services
+    .AddODataClient(nameof(CentralizedDatabaseSystemUnitOfWork))
+    .AddHttpClient()
+    .AddHttpMessageHandler<CreateActivityHandler>()
+    .Services
+    .AddODataClient(nameof(ViewUnitOfWork))
     .AddHttpClient()
     .AddHttpMessageHandler<CreateActivityHandler>()
     .Services
