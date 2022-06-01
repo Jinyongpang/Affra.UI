@@ -1,5 +1,4 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
-
 <div class="row">
     <div class="col">
         <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />   
@@ -23,8 +22,8 @@
                     </Template>
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="Date" Title="Date" Width="30px" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
-                    <Template Context="DailyDeOilerInjection">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", DailyDeOilerInjection.Date.ToLocalTime())
+                    <Template Context="dailyDeOilerInjection">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyDeOilerInjection.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyDeOilerInjection" Property="TodayLevel" Title="Today's Level" Width="30px" />
@@ -70,7 +69,6 @@
         }
         else if (i == 1)
         {
-            args.Data.Date = args.Data.Date.ToLocalTime();
             await ShowDialogAsync(args.Data, i, "Edit");
         }
         else if (i == 2)
@@ -79,12 +77,11 @@
         }
         else if (i == 3)
         {
-            args.Data.Date = args.Data.Date.ToLocalTime();
             await ShowDialogAsync(args.Data, i, "View");
         }
         else if (i == 4)
         {
-            await grid.Reload();      
+            await grid.Reload();    
         }
     }
 }
