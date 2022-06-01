@@ -25,6 +25,16 @@
                 </div>
                 <div class="row py-2">
                     <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Status" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenDropDown Name="InjectionStatus" class="w-100"  @bind-Value="@Item.InjectionStatus" Data="@(StatusFilter.Statuses)" TValue="string" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                            Placeholder="Enter injection status..."></RadzenDropDown>
+                       <RadzenRequiredValidator Component="InjectionStatus" Text="Injection status is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
                         <RadzenLabel class="dialogTextSize" Text="Level Drop" />
                     </div>
                     <div class="col-8">
@@ -68,7 +78,7 @@
                         <RadzenLabel class="dialogTextSize" Text="Date" />
                     </div>
                     <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.Date" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
                     </div>
                 </div>
                  <div class="row justify-content-center py-4" hidden=@isViewing>

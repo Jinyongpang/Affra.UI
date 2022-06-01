@@ -1,0 +1,17 @@
+﻿@typeparam TItem
+
+<RadzenChart @ref="chart">
+    @foreach(var series in ChartSeries)
+    {
+        <RadzenLineSeries Data="@items" CategoryProperty="@series.CategoryProperty"
+            Title="@series.Title" ValueProperty="@series.ValueProperty"
+            Smooth="@series.Smooth">
+            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+        </RadzenLineSeries>
+    }
+    <RadzenCategoryAxis FormatString="@FormatString"  Step="@Step"/>
+    <RadzenValueAxis>
+        <RadzenGridLines/>
+        <RadzenAxisTitle Text="@AxisTitle" />
+    </RadzenValueAxis>
+</RadzenChart>

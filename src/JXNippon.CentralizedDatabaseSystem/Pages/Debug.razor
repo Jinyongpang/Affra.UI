@@ -1,6 +1,7 @@
 ﻿@page "/Debug"
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
 
 <PageTitle>Debug</PageTitle>
 
@@ -16,3 +17,9 @@
 
 <GenericDataGrid TItem="DailyHIPProduction"
     ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+
+<div class="row">
+    <div class="col">
+        <GenericChart TItem="DailyDeOilerInjection" AxisTitle="Level" FormatString="{0:d}" Step="TimeSpan.FromDays(1)" ChartSeries="@chartSeries"></GenericChart>
+    </div>
+</div>
