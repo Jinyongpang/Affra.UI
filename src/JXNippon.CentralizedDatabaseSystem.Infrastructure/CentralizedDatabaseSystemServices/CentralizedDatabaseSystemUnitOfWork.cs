@@ -13,7 +13,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.CentralizedDatabaseS
     {
         private IGenericRepository<DailyPowerGenerationAndDistribution> _dailyPowerGenerationAndDistributionRepository;
 
-        public CentralizedDatabaseSystemUnitOfWork(IODataClientFactory oDataClientFactory, IOptions<CentralizedDatabaseSystemConfigurations> centralizedDatabaseSystemConfigurations) : base(oDataClientFactory.CreateClient<Container>(new Uri(centralizedDatabaseSystemConfigurations.Value.Url), nameof(DataExtractorUnitOfWork)))
+        public CentralizedDatabaseSystemUnitOfWork(IODataClientFactory oDataClientFactory, IOptions<CentralizedDatabaseSystemConfigurations> centralizedDatabaseSystemConfigurations)
+            : base(oDataClientFactory.CreateClient<Container>(new Uri(centralizedDatabaseSystemConfigurations.Value.Url), nameof(CentralizedDatabaseSystemUnitOfWork)))
         {
         }
 
