@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using BlazorDateRangePicker
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
 @using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
 @using JXNippon.CentralizedDatabaseSystem.Models
@@ -9,6 +10,7 @@
 @using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem
 @using JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction
 @using JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.Views
 @using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
 @using JXNippon.CentralizedDatabaseSystem.Shared.WellHead
 @using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement
@@ -31,19 +33,25 @@
         <RadzenBreadCrumbItem Path="/" Text="Dashboard" />
     </ChildContent>
 </RadzenBreadCrumb>
-@foreach(var row in view.Rows)
-{
-    <div class="row">
-        @foreach(var col in row.Columns) 
-        {
-            if (col is LineChart column)
-            {
-                <div class="col">
-                    <RadzenCard>                  
-                        <Chart TType="@column.Type" AxisTitle="@column.AxisTitle" FormatString="@column.FormatString" 
-                    Step="@TimeSpan.FromMinutes(column.StepInMinutes)" ChartSeries="@column.ChartSeries"></Chart></RadzenCard>  
-                </div> 
-            }
-        }
+
+<div class="row justify-content-end">
+    <div class="col-3">
+     <DateRangePicker class="form-control form-control-sm" placeholder="Select dates..."
+        OnRangeSelect="OnRangeSelectAsync"
+        @bind-StartDate="startDate" @bind-EndDate="endDate"
+        MinDate="DateTimeOffset.Now.AddYears(-1)" MaxDate="DateTimeOffset.Now"
+        ShowOnlyOneCalendar="true"
+        MaxSpan="TimeSpan.FromDays(62)"
+        onc>
+        <PickerTemplate>
+            <div id="@context.Id" @onclick="context.Toggle" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
+                <i class="oi oi-calendar"></i>&nbsp;
+                <span>@context.FormattedRange @(string.IsNullOrEmpty(context.FormattedRange) ? "Choose dates..." : "")</span>
+                <i class="oi oi-chevron-bottom float-right"></i>
+            </div>
+        </PickerTemplate>    
+    </DateRangePicker>
     </div>
-}
+</div>
+
+<ViewComponent @ref="viewComponent" View=@view StartDate="@startDate" EndDate="@endDate"/>

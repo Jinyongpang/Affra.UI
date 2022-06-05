@@ -8,9 +8,9 @@ using Microsoft.OData.Client;
 using Radzen.Blazor;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared
+namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class Chart
+    public partial class LineChartComponent
     {
         private RadzenChart chart;
         private IEnumerable<IDaily> items;
@@ -23,6 +23,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         [Parameter] public IEnumerable<ChartSeries> ChartSeries { get; set; }
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
         [Parameter] public string TType { get; set; }
+        [Parameter] public DateTimeOffset? StartDate { get; set; }
+        [Parameter] public DateTimeOffset? EndDate { get; set; }
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
@@ -31,11 +33,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
         protected override Task OnInitializedAsync()
         {
-            return ReloadAsync();
+            return ReloadAsync(StartDate, EndDate);
         }
 
-        public async Task ReloadAsync()
+        public async Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
         {
+
+            StartDate = startDate ?? StartDate;
+            EndDate = endDate ?? EndDate;
             await LoadDataAsync();
             await chart.Reload();
         }
@@ -47,28 +52,40 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
             using var serviceScope = ServiceProvider.CreateScope();
             var service = this.GetGenericService(serviceScope);
             Queryable = service.Get();
+            if (StartDate != null && EndDate != null)
+            {
+                Queryable = Queryable
+                    .Cast<IDaily>()
+                    .Where(item => item.Date >= StartDate.Value.ToUniversalTime())
+                    .Where(item => item.Date <= EndDate.Value.ToUniversalTime());
+            }
             await LoadData.InvokeAsync(Queryable);
             var q = (DataServiceQuery)Queryable;
+
             items = (await q.ExecuteAsync())
                 .Cast<IDaily>()
+                .OrderBy(x => x.Date)
                 .ToList();
 
             isLoading = false;
         }
 
-        private IEnumerable<SeriesItem> GetSeriesItems(ChartSeries chartSeries)
+        private IEnumerable<SeriesItem> GetSeriesItems(ChartSeries chartSeries, IEnumerable<IDaily> dailyItems)
         {
             List<SeriesItem> seriesItem = new List<SeriesItem>();
 
-            if (items != null)
+            if (dailyItems != null)
             {
-                foreach (var item in items)
+                foreach (var item in dailyItems)
                 {
-                    seriesItem.Add(new SeriesItem()
+                    if ((decimal?)GetPropValue(item, chartSeries.ValueProperty) != null)
                     {
-                        Category = GetPropValue(item, chartSeries.CategoryProperty),
-                        Value = (decimal)GetPropValue(item, chartSeries.ValueProperty)
-                    });
+                        seriesItem.Add(new SeriesItem()
+                        {
+                            Category = GetPropValue(item, chartSeries.CategoryProperty),
+                            Value = (decimal?)GetPropValue(item, chartSeries.ValueProperty)
+                        });
+                    }
                 }
             }
 

@@ -1,0 +1,80 @@
+﻿@using ViewODataService.Affra.Service.View.Domain.Views
+
+<div class="row">
+    <div class="col">
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="ChartSeries" 
+            ColumnWidth="20px" AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+            <EmptyTemplate>                
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>No records to display.</a>
+                </div>                    
+            </EmptyTemplate>
+            <Columns>
+                <RadzenDataGridColumn TItem="ChartSeries" Property="Title" Title="Title" Width="20px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ChartSeries" Property="GroupProperty" Title="GroupProperty" Width="20px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ChartSeries" Property="CategoryProperty" Title="CategoryProperty" Width="20px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ChartSeries" Property="ValueProperty" Title="ValueProperty" Width="20px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ChartSeries" Property="Sequence" Title="Sequence" Width="20px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ChartSeries" Property="Smooth" Title="Smooth" Width="20px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ChartSeries" Property="LineType" Title="LineType" Width="20px">
+                </RadzenDataGridColumn>
+                 <RadzenDataGridColumn TItem="ChartSeries" Property="MarkerType" Title="MarkerType" Width="20px">
+                </RadzenDataGridColumn>
+            </Columns>
+
+        </RadzenDataGrid>  
+    </div>
+</div>
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<ChartSeries>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<ChartSeries>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+    </RadzenMenu>
+    );  
+    }
+
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<ChartSeries> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(
+                new ChartSeries()
+                {
+                    LineChartId = LineChart.Id,
+                },
+                i,
+                "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+    }
+}

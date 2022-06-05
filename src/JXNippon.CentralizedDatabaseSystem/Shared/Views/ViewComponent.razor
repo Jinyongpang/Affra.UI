@@ -1,0 +1,31 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Views
+@using ViewODataService.Affra.Service.View.Domain.Views
+
+@inject IViewService ViewService
+
+@foreach(var row in View.Rows)
+{
+    <div class="row">
+
+        @if (row.Columns is null
+            || row.Columns.Count == 0)
+        {
+             <div class="col py-3">
+                    <RadzenCard></RadzenCard>  
+             </div> 
+        }
+
+        @foreach(var col in row.Columns) 
+        {      
+            if (col is LineChart column)
+            {
+                string type = ViewService.GetTypeMapping()[column.Type];
+                <div class="col py-3">
+                    <RadzenCard>                  
+                        <LineChartComponent @ref="@lineChartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@type" AxisTitle="@column.AxisTitle" FormatString="@column.FormatString" 
+                        Step="@TimeSpan.FromMinutes(column.StepInMinutes)" ChartSeries="@column.ChartSeries"></LineChartComponent></RadzenCard>  
+                </div> 
+            }
+        }
+    </div>
+}

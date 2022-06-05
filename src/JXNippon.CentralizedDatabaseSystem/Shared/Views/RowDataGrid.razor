@@ -1,0 +1,59 @@
+﻿@using ViewODataService.Affra.Service.View.Domain.Views
+
+<div class="row">
+    <div class="col">
+        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="Row" 
+            ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+            <EmptyTemplate>                
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>No records to display.</a>
+                </div>                    
+            </EmptyTemplate>
+            <Columns>
+                <RadzenDataGridColumn TItem="Row" Property="ViewName" Title="View" Width="40px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="Row" Property="Sequence" Title="Sequence" Width="40px">
+                </RadzenDataGridColumn>
+            </Columns>
+        </RadzenDataGrid>  
+    </div>
+</div>
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<Row>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<Row>, e))">
+                <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Delete ..." Value="1" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Refresh" Value="2" Icon="refresh"/>
+    </RadzenMenu>
+    );  
+    }
+
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<Row> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await AddRowAsync();
+            AffraNotificationService.NotifyItemCreated();
+            await grid.Reload();
+            ContextMenuService.Close();
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 2)
+        {
+            await grid.Reload();      
+        }
+    }
+}
