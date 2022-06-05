@@ -1,0 +1,37 @@
+﻿@using ViewODataService.Affra.Service.View.Domain.Views
+
+<div class="row">
+    <div class="col">
+        <RadzenCard>
+            <RadzenDropDown AllowClear="false" TValue="View" Class="w-100" 
+                            Data=@views
+                            @ref=radzenDropDown
+                            TextProperty="Name"
+                            Change=@(args => OnChangeAsync(args)) 
+                            Placeholder="Select view..."/>
+        </RadzenCard>
+        
+    </div>
+</div>
+
+<div class="title py-3">Rows</div>
+<div class="row py-1">
+    <div class="col">
+       <RowDataGrid View=@view @ref=rowDataGrid LoadData=@(args => LoadDataAsync(args))/>
+    </div>
+</div>
+
+<hr class="solid"><div class="title">Columns</div>
+<div class="row py-2">
+    <div class="col">
+        <ColumnDataGrid View=@view @ref=columnDataGrid LoadData=@(args => LoadDataAsync(args))/>
+        
+    </div>
+</div>
+
+<hr class="solid"><div class="title">Preview</div>
+<div class="row py-2">
+    <div class="col">
+        <ViewComponent View=@view @ref=viewComponent/>
+    </div>
+</div>

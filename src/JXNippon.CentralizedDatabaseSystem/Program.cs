@@ -65,6 +65,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddScoped<ContextMenuService>()
     .AddScoped<DialogService>()
     .AddScoped<AffraNotificationService>()
+    .AddScoped<IViewService, ViewService>()
     .AddLocalization();
 
 builder.Services.AddMsalAuthentication(options =>

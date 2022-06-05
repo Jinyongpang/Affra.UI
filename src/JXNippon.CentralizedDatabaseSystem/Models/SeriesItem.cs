@@ -4,6 +4,6 @@
     {
         public object Category { get; set; }
 
-        public decimal Value { get; set; }
+        public decimal? Value { get; set; }
     }
 }

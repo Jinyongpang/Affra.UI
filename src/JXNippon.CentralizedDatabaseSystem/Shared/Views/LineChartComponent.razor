@@ -1,0 +1,44 @@
+﻿@using System.Linq.Dynamic.Core
+@using JXNippon.CentralizedDatabaseSystem.Models
+
+<RadzenChart @ref="chart">
+    @if(items != null)
+    {   
+        foreach(var series in ChartSeries)
+        {
+            bool isGroup = !string.IsNullOrEmpty(series.GroupProperty);
+
+            var groupItems = items.GroupBy(x => 
+                isGroup 
+                ? (string)GetPropValue(x, series.GroupProperty)
+                : series.Title);
+
+            foreach (var group in groupItems)
+            {           
+                IEnumerable<SeriesItem> seriesItem = GetSeriesItems(series, group);
+
+                <RadzenLineSeries Data="@seriesItem" CategoryProperty="Category"
+                    Title="@group.Key" ValueProperty="Value"
+                    LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
+                    Smooth="@series.Smooth">
+                    <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                </RadzenLineSeries>
+            }
+
+            if (groupItems.Count() == 0)
+            {
+                <a>No records to display.</a>  
+            }
+        }
+    }
+    else
+    {
+        <a>No records to display.</a>  
+    }
+
+    <RadzenCategoryAxis FormatString="@FormatString" Step="@Step"/>
+    <RadzenValueAxis>
+        <RadzenGridLines/>
+        <RadzenAxisTitle Text="@AxisTitle" />
+    </RadzenValueAxis>
+</RadzenChart>

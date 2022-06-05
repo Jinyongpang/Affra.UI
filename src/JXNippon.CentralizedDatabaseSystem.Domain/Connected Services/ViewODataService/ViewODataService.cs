@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 30/5/2022 12:31:23 AM
+// Generation date: 5/6/2022 10:14:28 AM
 namespace ViewODataService.Affra.Service.View.Domain.Views
 {
     /// <summary>
@@ -90,12 +90,14 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         /// Create a new View object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="name">Initial value of Name.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static View CreateView(long ID, long xmin)
+        public static View CreateView(long ID, string name, long xmin)
         {
             View view = new View();
             view.Id = ID;
+            view.Name = name;
             view.xmin = xmin;
             return view;
         }
@@ -306,13 +308,15 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="sequence">Initial value of Sequence.</param>
+        /// <param name="viewName">Initial value of ViewName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static Row CreateRow(long ID, int sequence, long xmin)
+        public static Row CreateRow(long ID, int sequence, string viewName, long xmin)
         {
             Row row = new Row();
             row.Id = ID;
             row.Sequence = sequence;
+            row.ViewName = viewName;
             row.xmin = xmin;
             return row;
         }
@@ -809,14 +813,16 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="sequence">Initial value of Sequence.</param>
+        /// <param name="viewName">Initial value of ViewName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         /// <param name="stepInMinutes">Initial value of StepInMinutes.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static LineChart CreateLineChart(long ID, int sequence, long xmin, int stepInMinutes)
+        public static LineChart CreateLineChart(long ID, int sequence, string viewName, long xmin, int stepInMinutes)
         {
             LineChart lineChart = new LineChart();
             lineChart.Id = ID;
             lineChart.Sequence = sequence;
+            lineChart.ViewName = viewName;
             lineChart.xmin = xmin;
             lineChart.StepInMinutes = stepInMinutes;
             return lineChart;
@@ -1188,6 +1194,27 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         partial void OnMarkerTypeChanging(string value);
         partial void OnMarkerTypeChanged();
         /// <summary>
+        /// There are no comments for Property GroupProperty in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string GroupProperty
+        {
+            get
+            {
+                return this._GroupProperty;
+            }
+            set
+            {
+                this.OnGroupPropertyChanging(value);
+                this._GroupProperty = value;
+                this.OnGroupPropertyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _GroupProperty;
+        partial void OnGroupPropertyChanging(string value);
+        partial void OnGroupPropertyChanged();
+        /// <summary>
         /// There are no comments for Property LineChartId in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -1555,7 +1582,7 @@ namespace ViewODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
+        <Property Name=""Name"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""Rows"" Type=""Collection(Affra.Service.View.Domain.Views.Row)"" />
         <NavigationProperty Name=""LineCharts"" Type=""Collection(Affra.Service.View.Domain.Views.LineChart)"" />
@@ -1566,7 +1593,7 @@ namespace ViewODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Sequence"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""ViewName"" Type=""Edm.String"" />
+        <Property Name=""ViewName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""View"" Type=""Affra.Service.View.Domain.Views.View"" />
         <NavigationProperty Name=""Columns"" Type=""Collection(Affra.Service.View.Domain.Views.ColumnBase)"" />
@@ -1579,7 +1606,7 @@ namespace ViewODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Sequence"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""RowId"" Type=""Edm.Int64"" />
-        <Property Name=""ViewName"" Type=""Edm.String"" />
+        <Property Name=""ViewName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""Row"" Type=""Affra.Service.View.Domain.Views.Row"">
           <ReferentialConstraint Property=""RowId"" ReferencedProperty=""Id"" />
@@ -1608,6 +1635,7 @@ namespace ViewODataService.Default
         <Property Name=""Smooth"" Type=""Edm.Boolean"" Nullable=""false"" />
         <Property Name=""LineType"" Type=""Edm.String"" />
         <Property Name=""MarkerType"" Type=""Edm.String"" />
+        <Property Name=""GroupProperty"" Type=""Edm.String"" />
         <Property Name=""LineChartId"" Type=""Edm.Int64"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""LineChart"" Type=""Affra.Service.View.Domain.Views.LineChart"">
