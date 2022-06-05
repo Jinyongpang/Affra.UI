@@ -1,0 +1,16 @@
+﻿@page "/MaximoWorkOrder"
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders
+@using JXNippon.CentralizedDatabaseSystem.Shared.MaximoWorkOrder
+
+<PageTitle>Maximo Work Order</PageTitle>
+
+<RadzenBreadCrumb>
+    <ChildContent>
+        <RadzenBreadCrumbItem Path="/" Text="Home" />
+        <RadzenBreadCrumbItem Path="/MaximoWorkOrder" Text="Maximo Work Order" />
+    </ChildContent>
+</RadzenBreadCrumb>
+
+<MaximoWorkOrderFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
+<MaximoWorkOrderDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
