@@ -25,7 +25,7 @@
                 <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Remark" Title="Remark"/>
                 <RadzenDataGridColumn TItem="DailyPowerGenerationAndDistribution" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn" Groupable="false">
                     <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
@@ -56,13 +56,12 @@
         if (i == 0)
         {
             await ShowDialogAsync(
-                new DailyPowerGenerationAndDistribution() { PowerGeneratorName = args?.Data?.PowerGeneratorName, Date = DateTimeOffset.Now.Date },
+                new DailyPowerGenerationAndDistribution() { PowerGeneratorName = args?.Data?.PowerGeneratorName, DateUI = DateTimeOffset.Now.Date },
                 i,
                 "Add");
         }
         else if (i == 1)
         {
-            args.Data.Date = args.Data.Date.ToLocalTime();
             await ShowDialogAsync(args.Data, i, "Edit");
         }
         else if (i == 2)
@@ -71,7 +70,6 @@
         }
         else if (i == 3)
         {
-            args.Data.Date = args.Data.Date.ToLocalTime();
             await ShowDialogAsync(args.Data, i, "View");
         }
         else if (i == 4)
