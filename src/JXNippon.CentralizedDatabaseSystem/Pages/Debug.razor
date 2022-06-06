@@ -2,6 +2,9 @@
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
+@using System.Reflection
+@using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces
+@using ViewODataService.Affra.Service.View.Domain.Views
 
 <PageTitle>Debug</PageTitle>
 
@@ -23,3 +26,36 @@
         <GenericChart TItem="DailyDeOilerInjection" AxisTitle="Level" FormatString="{0:d}" Step="TimeSpan.FromDays(1)" ChartSeries="@chartSeries"></GenericChart>
     </div>
 </div>
+
+@{
+
+                Assembly assembly = typeof(View).Assembly;
+            var a = assembly.GetTypes()
+                   .DistinctBy(t => t.Name)
+                   .Where(t => t.Name.StartsWith("Daily"))
+                   .Where(t => !t.Name.EndsWith("Single"))
+                   .ToDictionary(x => x.Name, x => x.Namespace);
+            foreach (var type in a)
+            {
+                var res = @"namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
+{
+    public partial class DailyDeOilerInjection : IDaily
+        {
+            public DateTime DateUI
+            {
+                get
+                {
+                    return this.Date.LocalDateTime;
+                }
+                set
+                {
+                    this.Date = value.ToUniversalTime();
+                }
+            }
+        }
+    }";
+                res = res.Replace("DailyDeOilerInjection", type.Key);
+                res = res.Replace("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems", type.Value);
+                <a>@res</a>
+            }
+}
