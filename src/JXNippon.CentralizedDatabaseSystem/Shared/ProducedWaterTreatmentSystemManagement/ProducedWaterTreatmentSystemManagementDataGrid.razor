@@ -69,14 +69,12 @@
         if (i == 0)
         {
             await ShowDialogAsync(
-                new DailyProducedWaterTreatmentSystem() { ProducedWaterTreatmentSystemName = args?.Data?.ProducedWaterTreatmentSystemName, Date = DateTimeOffset.Now.Date, LastSkimmingDate = DateTimeOffset.Now.Date },
+                new DailyProducedWaterTreatmentSystem() { ProducedWaterTreatmentSystemName = args?.Data?.ProducedWaterTreatmentSystemName, DateUI = DateTimeOffset.Now.Date, LastSkimmingDateUI = DateTimeOffset.Now.Date },
                 i,
                 "Add");
         }
         else if (i == 1)
         {
-            args.Data.Date = args.Data.Date.ToLocalTime();
-            args.Data.LastSkimmingDate = args.Data.LastSkimmingDate.ToLocalTime();
             await ShowDialogAsync(args.Data, i, "Edit");
         }
         else if (i == 2)
@@ -85,7 +83,6 @@
         }
         else if (i == 3)
         {
-            args.Data.Date = args.Data.Date.ToLocalTime();
             await ShowDialogAsync(args.Data, i, "View");
         }
         else if (i == 4)

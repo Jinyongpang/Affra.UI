@@ -63,7 +63,7 @@
         if (i == 0)
         {
             await ShowDialogAsync(
-                new DailyDeOilerInjection() { InjectionPoint = args?.Data?.InjectionPoint, Date = DateTimeOffset.Now.Date },
+                new DailyDeOilerInjection() { InjectionPoint = args?.Data?.InjectionPoint, DateUI = DateTimeOffset.Now.Date },
                 i,
                 "Add");
         }
