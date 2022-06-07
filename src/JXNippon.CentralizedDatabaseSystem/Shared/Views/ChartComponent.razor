@@ -1,0 +1,101 @@
+﻿@using System.Linq.Dynamic.Core
+@using JXNippon.CentralizedDatabaseSystem.Models
+
+<RadzenChart @ref="chart">
+    @if(items != null)
+    {   
+        foreach(var series in ChartSeries)
+        {
+            bool isGroup = !string.IsNullOrEmpty(series.GroupProperty);
+
+            var groupItems = items.GroupBy(x => 
+                isGroup 
+                ? (string)GetPropValue(x, series.GroupProperty)
+                : series.Title);
+
+            foreach (var group in groupItems)
+            {           
+                IEnumerable<SeriesItem> seriesItem = GetSeriesItems(series, group);
+                switch (ChartType)
+                {
+                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.AreaChart:
+                    {                           
+                        <RadzenAreaSeries Data="@seriesItem" CategoryProperty="Category"
+                            Title="@group.Key" ValueProperty="Value"
+                            LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
+                            Smooth="@series.Smooth">
+                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                        </RadzenAreaSeries>
+                        break;
+                    }
+                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.LineChart:
+                    {                           
+                        <RadzenLineSeries Data="@seriesItem" CategoryProperty="Category"
+                            Title="@group.Key" ValueProperty="Value"
+                            LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
+                            Smooth="@series.Smooth">
+                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                        </RadzenLineSeries>
+                        break;
+                    };
+                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.BarChart:
+                    {                           
+                        <RadzenBarSeries Data="@seriesItem" CategoryProperty="Category"
+                            Title="@group.Key" ValueProperty="Value"
+                            LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
+                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                        </RadzenBarSeries>
+                        break;
+                    };
+                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.ColumnChart:
+                    {                           
+                        <RadzenColumnSeries Data="@seriesItem" CategoryProperty="Category"
+                            Title="@group.Key" ValueProperty="Value"
+                            LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
+                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                        </RadzenColumnSeries>
+                        break;
+                    };
+                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.DonutChart:
+                    {                           
+                        <RadzenDonutSeries Data="@seriesItem" CategoryProperty="Category"
+                            Title="@group.Key" ValueProperty="Value">
+                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                        </RadzenDonutSeries>
+                        break;
+                    };
+                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.PieChart:
+                    {                           
+                        <RadzenPieSeries Data="@seriesItem" CategoryProperty="Category"
+                            Title="@group.Key" ValueProperty="Value">
+                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                        </RadzenPieSeries>
+                        break;
+                    };
+                    default:
+                    {
+                        break;       
+                    }
+
+                }
+
+
+            }
+
+            if (groupItems.Count() == 0)
+            {
+                <a>No records to display.</a>  
+            }
+        }
+    }
+    else
+    {
+        <a>No records to display.</a>  
+    }
+
+    <RadzenCategoryAxis FormatString="@FormatString" Step="@Step"/>
+    <RadzenValueAxis>
+        <RadzenGridLines/>
+        <RadzenAxisTitle Text="@AxisTitle" />
+    </RadzenValueAxis>
+</RadzenChart>

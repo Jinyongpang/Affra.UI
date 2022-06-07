@@ -8,7 +8,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
-using ViewODataService.Affra.Service.View.Domain.Views;
+using ViewODataService.Affra.Service.View.Domain.Charts;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
@@ -18,7 +18,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private IEnumerable<ChartSeries> items;
         private bool isLoading = false;
 
-        [Parameter] public LineChart LineChart { get; set; }
+        [Parameter] public Chart Chart { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
@@ -34,7 +34,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         }
         private async Task LoadDataAsync(LoadDataArgs args)
         {
-            if (LineChart is null)
+            if (Chart is null)
             {
                 return;
             }
@@ -44,7 +44,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             var genericService = this.GetGenericService(serviceScope);
             var response = await genericService
                 .Get()
-                .Where(x => x.LineChartId == LineChart.Id)
+                .Where(x => x.ChartId == Chart.Id)
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<ChartSeries>();
 
@@ -84,7 +84,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             else
             {
                 response = await DialogService.OpenAsync<ChartSeriesDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "LineChart", LineChart } },
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "LineChart", Chart } },
                            Constant.DialogOptions);
 
                 if (response == true)

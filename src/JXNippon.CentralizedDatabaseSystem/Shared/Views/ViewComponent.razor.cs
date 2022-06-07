@@ -11,8 +11,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         [Parameter] public DateTimeOffset? EndDate { get; set; }
 
-        private List<LineChartComponent> lineChartComponents = new();
-        public LineChartComponent lineChartComponentRef { set => lineChartComponents.Add(value); }
+        private List<ChartComponent> chartComponents = new();
+        public ChartComponent chartComponentRef { set => chartComponents.Add(value); }
 
         public Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
         {
@@ -20,7 +20,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             StartDate = startDate ?? StartDate;
             EndDate = endDate ?? EndDate;
             StateHasChanged();
-            return Task.WhenAll(lineChartComponents.Select(x => x.ReloadAsync(StartDate, EndDate)).ToList());
+            return Task.WhenAll(chartComponents.Select(x => x.ReloadAsync(StartDate, EndDate)).ToList());
         }
     }
 }

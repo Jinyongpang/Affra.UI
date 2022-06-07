@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.OData.Client;
 using Microsoft.OData.Extensions.Client;
+using ViewODataService.Affra.Service.View.Domain.Charts;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
@@ -23,13 +24,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             DataServiceQuery<View> query = (DataServiceQuery<View>)viewUnitOfWork.ViewRepository.Get();
             query = query.Expand(view => view.Rows);
             Task<IEnumerable<View>> getView = GetViewsAndRowsAsync(name);
-            Task<IEnumerable<LineChart>> getLineChart = GetLineChartsAsync(name);
+            Task<IEnumerable<Chart>> getChart = GetChartsAsync(name);
 
-            await Task.WhenAll(getView, getLineChart);
+            await Task.WhenAll(getView, getChart);
 
             View view = (await getView).FirstOrDefault();
 
-            ConstructView(view, await getLineChart);
+            ConstructView(view, await getChart);
 
             return view;
         }
@@ -49,8 +50,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             if (view != null
                 && !string.IsNullOrEmpty(view.Name))
             {
-                IEnumerable<LineChart> lineCharts = await GetLineChartsAsync(view.Name);
-                columnBases.AddRange(lineCharts.Cast<ColumnBase>());
+                IEnumerable<Chart> charts = await GetChartsAsync(view.Name);
+                columnBases.AddRange(charts.Cast<ColumnBase>());
             }
             return columnBases;
         }
@@ -68,20 +69,20 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             return query.ExecuteAsync<View>();
         }
 
-        private Task<IEnumerable<LineChart>> GetLineChartsAsync(string name = null)
+        private Task<IEnumerable<Chart>> GetChartsAsync(string name = null)
         {
-            DataServiceQuery<LineChart> query = (DataServiceQuery<LineChart>)viewUnitOfWork.LineChartRepository.Get();
-            query = query.Expand(linechart => linechart.ChartSeries);
-            query = query.Expand(linechart => linechart.Row);
+            DataServiceQuery<Chart> query = (DataServiceQuery<Chart>)viewUnitOfWork.ChartRepository.Get();
+            query = query.Expand(chart => chart.ChartSeries);
+            query = query.Expand(chart => chart.Row);
 
             if (!string.IsNullOrEmpty(name))
             {
-                query = (DataServiceQuery<LineChart>)query
+                query = (DataServiceQuery<Chart>)query
                     .Where(d => d.ViewName == name);
             }
             return query
                 .OrderBy(d => d.Sequence)
-                .ExecuteAsync<LineChart>();
+                .ExecuteAsync<Chart>();
         }
 
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 5/6/2022 10:14:28 AM
+// Generation date: 6/6/2022 10:58:25 PM
 namespace ViewODataService.Affra.Service.View.Domain.Views
 {
     /// <summary>
@@ -56,10 +56,10 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Row> _Rows;
         /// <summary>
-        /// There are no comments for LineCharts in the schema.
+        /// There are no comments for Charts in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> LineCharts
+        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Charts
         {
             get
             {
@@ -67,15 +67,15 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._LineCharts == null))
+                if ((this._Charts == null))
                 {
-                    this._LineCharts = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart>(GetPath("LineCharts"));
+                    this._Charts = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>(GetPath("Charts"));
                 }
-                return this._LineCharts;
+                return this._Charts;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> _LineCharts;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Charts;
     }
     /// <summary>
     /// There are no comments for View in the schema.
@@ -186,26 +186,26 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         partial void OnRowsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.Row> value);
         partial void OnRowsChanged();
         /// <summary>
-        /// There are no comments for Property LineCharts in the schema.
+        /// There are no comments for Property Charts in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> LineCharts
+        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Charts
         {
             get
             {
-                return this._LineCharts;
+                return this._Charts;
             }
             set
             {
-                this.OnLineChartsChanging(value);
-                this._LineCharts = value;
-                this.OnLineChartsChanged();
+                this.OnChartsChanging(value);
+                this._Charts = value;
+                this.OnChartsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> _LineCharts = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart>();
-        partial void OnLineChartsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> value);
-        partial void OnLineChartsChanged();
+        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Charts = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>();
+        partial void OnChartsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> value);
+        partial void OnChartsChanged();
     }
     /// <summary>
     /// There are no comments for RowSingle in the schema.
@@ -273,10 +273,10 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _Columns;
         /// <summary>
-        /// There are no comments for LineCharts in the schema.
+        /// There are no comments for Charts in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> LineCharts
+        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Charts
         {
             get
             {
@@ -284,15 +284,15 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._LineCharts == null))
+                if ((this._Charts == null))
                 {
-                    this._LineCharts = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart>(GetPath("LineCharts"));
+                    this._Charts = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>(GetPath("Charts"));
                 }
-                return this._LineCharts;
+                return this._Charts;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> _LineCharts;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Charts;
     }
     /// <summary>
     /// There are no comments for Row in the schema.
@@ -447,26 +447,26 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         partial void OnColumnsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> value);
         partial void OnColumnsChanged();
         /// <summary>
-        /// There are no comments for Property LineCharts in the schema.
+        /// There are no comments for Property Charts in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> LineCharts
+        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Charts
         {
             get
             {
-                return this._LineCharts;
+                return this._Charts;
             }
             set
             {
-                this.OnLineChartsChanging(value);
-                this._LineCharts = value;
-                this.OnLineChartsChanged();
+                this.OnChartsChanging(value);
+                this._Charts = value;
+                this.OnChartsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> _LineCharts = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart>();
-        partial void OnLineChartsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> value);
-        partial void OnLineChartsChanged();
+        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Charts = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>();
+        partial void OnChartsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> value);
+        partial void OnChartsChanged();
     }
     /// <summary>
     /// There are no comments for ColumnBaseSingle in the schema.
@@ -692,33 +692,111 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         partial void OnViewChanged();
     }
     /// <summary>
-    /// There are no comments for LineChartSingle in the schema.
+    /// Class containing all extension methods
     /// </summary>
-    public partial class LineChartSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<LineChart>
+    public static class ExtensionMethods
     {
         /// <summary>
-        /// Initialize a new LineChartSingle object.
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.View as global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle specified by key from an entity set
         /// </summary>
-        public LineChartSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.View> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.View as global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.View> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.Row as global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Row> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.Row as global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Row> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase as global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase as global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+    }
+}
+namespace ViewODataService.Affra.Service.View.Domain.Charts
+{
+    /// <summary>
+    /// There are no comments for ChartSingle in the schema.
+    /// </summary>
+    public partial class ChartSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Chart>
+    {
+        /// <summary>
+        /// Initialize a new ChartSingle object.
+        /// </summary>
+        public ChartSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
             : base(context, path) {}
 
         /// <summary>
-        /// Initialize a new LineChartSingle object.
+        /// Initialize a new ChartSingle object.
         /// </summary>
-        public LineChartSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+        public ChartSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
             : base(context, path, isComposable) {}
 
         /// <summary>
-        /// Initialize a new LineChartSingle object.
+        /// Initialize a new ChartSingle object.
         /// </summary>
-        public LineChartSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<LineChart> query)
+        public ChartSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<Chart> query)
             : base(query) {}
 
         /// <summary>
-        /// There are no comments for RowAsLineChart in the schema.
+        /// There are no comments for RowAsChart in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle RowAsLineChart
+        public global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle RowAsChart
         {
             get
             {
@@ -726,20 +804,20 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._RowAsLineChart == null))
+                if ((this._RowAsChart == null))
                 {
-                    this._RowAsLineChart = new global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle(this.Context, GetPath("RowAsLineChart"));
+                    this._RowAsChart = new global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle(this.Context, GetPath("RowAsChart"));
                 }
-                return this._RowAsLineChart;
+                return this._RowAsChart;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle _RowAsLineChart;
+        private global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle _RowAsChart;
         /// <summary>
         /// There are no comments for ChartSeries in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries> ChartSeries
+        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> ChartSeries
         {
             get
             {
@@ -749,13 +827,13 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
                 }
                 if ((this._ChartSeries == null))
                 {
-                    this._ChartSeries = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries>(GetPath("ChartSeries"));
+                    this._ChartSeries = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries>(GetPath("ChartSeries"));
                 }
                 return this._ChartSeries;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries> _ChartSeries;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _ChartSeries;
         /// <summary>
         /// There are no comments for Row in the schema.
         /// </summary>
@@ -800,32 +878,39 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         private global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle _View;
     }
     /// <summary>
-    /// There are no comments for LineChart in the schema.
+    /// There are no comments for Chart in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    public partial class LineChart : ColumnBase
+    public partial class Chart : global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase
     {
         /// <summary>
-        /// Create a new LineChart object.
+        /// Create a new Chart object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="sequence">Initial value of Sequence.</param>
         /// <param name="viewName">Initial value of ViewName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         /// <param name="stepInMinutes">Initial value of StepInMinutes.</param>
+        /// <param name="chartType">Initial value of ChartType.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static LineChart CreateLineChart(long ID, int sequence, string viewName, long xmin, int stepInMinutes)
+        public static Chart CreateChart(long ID, 
+                    int sequence, 
+                    string viewName, 
+                    long xmin, 
+                    int stepInMinutes, 
+                    global::ViewODataService.Affra.Service.View.Domain.Charts.ChartType chartType)
         {
-            LineChart lineChart = new LineChart();
-            lineChart.Id = ID;
-            lineChart.Sequence = sequence;
-            lineChart.ViewName = viewName;
-            lineChart.xmin = xmin;
-            lineChart.StepInMinutes = stepInMinutes;
-            return lineChart;
+            Chart chart = new Chart();
+            chart.Id = ID;
+            chart.Sequence = sequence;
+            chart.ViewName = viewName;
+            chart.xmin = xmin;
+            chart.StepInMinutes = stepInMinutes;
+            chart.ChartType = chartType;
+            return chart;
         }
         /// <summary>
         /// There are no comments for Property Type in the schema.
@@ -912,31 +997,52 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         partial void OnAxisTitleChanging(string value);
         partial void OnAxisTitleChanged();
         /// <summary>
-        /// There are no comments for Property RowAsLineChart in the schema.
+        /// There are no comments for Property ChartType in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Views.Row RowAsLineChart
+        public global::ViewODataService.Affra.Service.View.Domain.Charts.ChartType ChartType
         {
             get
             {
-                return this._RowAsLineChart;
+                return this._ChartType;
             }
             set
             {
-                this.OnRowAsLineChartChanging(value);
-                this._RowAsLineChart = value;
-                this.OnRowAsLineChartChanged();
+                this.OnChartTypeChanging(value);
+                this._ChartType = value;
+                this.OnChartTypeChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Views.Row _RowAsLineChart;
-        partial void OnRowAsLineChartChanging(global::ViewODataService.Affra.Service.View.Domain.Views.Row value);
-        partial void OnRowAsLineChartChanged();
+        private global::ViewODataService.Affra.Service.View.Domain.Charts.ChartType _ChartType;
+        partial void OnChartTypeChanging(global::ViewODataService.Affra.Service.View.Domain.Charts.ChartType value);
+        partial void OnChartTypeChanged();
+        /// <summary>
+        /// There are no comments for Property RowAsChart in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::ViewODataService.Affra.Service.View.Domain.Views.Row RowAsChart
+        {
+            get
+            {
+                return this._RowAsChart;
+            }
+            set
+            {
+                this.OnRowAsChartChanging(value);
+                this._RowAsChart = value;
+                this.OnRowAsChartChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::ViewODataService.Affra.Service.View.Domain.Views.Row _RowAsChart;
+        partial void OnRowAsChartChanging(global::ViewODataService.Affra.Service.View.Domain.Views.Row value);
+        partial void OnRowAsChartChanged();
         /// <summary>
         /// There are no comments for Property ChartSeries in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries> ChartSeries
+        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> ChartSeries
         {
             get
             {
@@ -950,8 +1056,8 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries> _ChartSeries = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries>();
-        partial void OnChartSeriesChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries> value);
+        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _ChartSeries = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries>();
+        partial void OnChartSeriesChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> value);
         partial void OnChartSeriesChanged();
     }
     /// <summary>
@@ -978,10 +1084,10 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
             : base(query) {}
 
         /// <summary>
-        /// There are no comments for LineChart in the schema.
+        /// There are no comments for Chart in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle LineChart
+        public global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle Chart
         {
             get
             {
@@ -989,15 +1095,15 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._LineChart == null))
+                if ((this._Chart == null))
                 {
-                    this._LineChart = new global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle(this.Context, GetPath("LineChart"));
+                    this._Chart = new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle(this.Context, GetPath("Chart"));
                 }
-                return this._LineChart;
+                return this._Chart;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle _LineChart;
+        private global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle _Chart;
     }
     /// <summary>
     /// There are no comments for ChartSeries in the schema.
@@ -1215,26 +1321,26 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         partial void OnGroupPropertyChanging(string value);
         partial void OnGroupPropertyChanged();
         /// <summary>
-        /// There are no comments for Property LineChartId in the schema.
+        /// There are no comments for Property ChartId in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<long> LineChartId
+        public global::System.Nullable<long> ChartId
         {
             get
             {
-                return this._LineChartId;
+                return this._ChartId;
             }
             set
             {
-                this.OnLineChartIdChanging(value);
-                this._LineChartId = value;
-                this.OnLineChartIdChanged();
+                this.OnChartIdChanging(value);
+                this._ChartId = value;
+                this.OnChartIdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<long> _LineChartId;
-        partial void OnLineChartIdChanging(global::System.Nullable<long> value);
-        partial void OnLineChartIdChanged();
+        private global::System.Nullable<long> _ChartId;
+        partial void OnChartIdChanging(global::System.Nullable<long> value);
+        partial void OnChartIdChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -1257,26 +1363,38 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
-        /// There are no comments for Property LineChart in the schema.
+        /// There are no comments for Property Chart in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Views.LineChart LineChart
+        public global::ViewODataService.Affra.Service.View.Domain.Charts.Chart Chart
         {
             get
             {
-                return this._LineChart;
+                return this._Chart;
             }
             set
             {
-                this.OnLineChartChanging(value);
-                this._LineChart = value;
-                this.OnLineChartChanged();
+                this.OnChartChanging(value);
+                this._Chart = value;
+                this.OnChartChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Views.LineChart _LineChart;
-        partial void OnLineChartChanging(global::ViewODataService.Affra.Service.View.Domain.Views.LineChart value);
-        partial void OnLineChartChanged();
+        private global::ViewODataService.Affra.Service.View.Domain.Charts.Chart _Chart;
+        partial void OnChartChanging(global::ViewODataService.Affra.Service.View.Domain.Charts.Chart value);
+        partial void OnChartChanged();
+    }
+    /// <summary>
+    /// There are no comments for ChartType in the schema.
+    /// </summary>
+    public enum ChartType
+    {
+        LineChart = 0,
+        AreaChart = 1,
+        BarChart = 2,
+        ColumnChart = 3,
+        PieChart = 4,
+        DonutChart = 5
     }
     /// <summary>
     /// Class containing all extension methods
@@ -1284,128 +1402,59 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
     public static class ExtensionMethods
     {
         /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.View as global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle specified by key from an entity set
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Charts.Chart as global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.View> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
         {
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.View as global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle specified by key from an entity set
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Charts.Chart as global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.View> _source,
+        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _source,
             long id)
         {
             global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.Row as global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Row> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.Row as global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Row> _source,
-            long id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase as global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase as global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _source,
-            long id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.LineChart as global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.LineChart as global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> _source,
-            long id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Cast an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase to its derived type global::ViewODataService.Affra.Service.View.Domain.Views.LineChart
+        /// Cast an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase to its derived type global::ViewODataService.Affra.Service.View.Domain.Charts.Chart
         /// </summary>
         /// <param name="_source">source entity</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle CastToLineChart(this global::Microsoft.OData.Client.DataServiceQuerySingle<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _source)
+        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle CastToChart(this global::Microsoft.OData.Client.DataServiceQuerySingle<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _source)
         {
-            global::Microsoft.OData.Client.DataServiceQuerySingle<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> query = _source.CastTo<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart>();
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.LineChartSingle(_source.Context, query.GetPath(null));
+            global::Microsoft.OData.Client.DataServiceQuerySingle<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> query = _source.CastTo<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>();
+            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle(_source.Context, query.GetPath(null));
         }
         /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries as global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeriesSingle specified by key from an entity set
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries as global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeriesSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
         {
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeriesSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries as global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeriesSingle specified by key from an entity set
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries as global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeriesSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries> _source,
+        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _source,
             long id)
         {
             global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeriesSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
@@ -1438,7 +1487,12 @@ namespace ViewODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.View.Domain.Views", "ViewODataService.Affra.Service.View.Domain.Views");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.View.Domain.Charts", "ViewODataService.Affra.Service.View.Domain.Charts");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.View.Domain.Views", "ViewODataService.Affra.Service.View.Domain.Views");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -1458,6 +1512,10 @@ namespace ViewODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
+            if (clientType.Namespace.Equals("ViewODataService.Affra.Service.View.Domain.Charts", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.View.Domain.Charts.", clientType.Name);
+            }
             if (clientType.Namespace.Equals("ViewODataService.Affra.Service.View.Domain.Views", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.View.Domain.Views.", clientType.Name);
@@ -1503,39 +1561,39 @@ namespace ViewODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Row> _Row;
         /// <summary>
-        /// There are no comments for LineChart in the schema.
+        /// There are no comments for Chart in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> LineChart
+        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Chart
         {
             get
             {
-                if ((this._LineChart == null))
+                if ((this._Chart == null))
                 {
-                    this._LineChart = base.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart>("LineChart");
+                    this._Chart = base.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>("Chart");
                 }
-                return this._LineChart;
+                return this._Chart;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.LineChart> _LineChart;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Chart;
         /// <summary>
         /// There are no comments for ChartSeries in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries> ChartSeries
+        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> ChartSeries
         {
             get
             {
                 if ((this._ChartSeries == null))
                 {
-                    this._ChartSeries = base.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries>("ChartSeries");
+                    this._ChartSeries = base.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries>("ChartSeries");
                 }
                 return this._ChartSeries;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries> _ChartSeries;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _ChartSeries;
         /// <summary>
         /// There are no comments for View in the schema.
         /// </summary>
@@ -1553,18 +1611,18 @@ namespace ViewODataService.Default
             base.AddObject("Row", row);
         }
         /// <summary>
-        /// There are no comments for LineChart in the schema.
+        /// There are no comments for Chart in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToLineChart(global::ViewODataService.Affra.Service.View.Domain.Views.LineChart lineChart)
+        public void AddToChart(global::ViewODataService.Affra.Service.View.Domain.Charts.Chart chart)
         {
-            base.AddObject("LineChart", lineChart);
+            base.AddObject("Chart", chart);
         }
         /// <summary>
         /// There are no comments for ChartSeries in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToChartSeries(global::ViewODataService.Affra.Service.View.Domain.Views.ChartSeries chartSeries)
+        public void AddToChartSeries(global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries chartSeries)
         {
             base.AddObject("ChartSeries", chartSeries);
         }
@@ -1585,7 +1643,7 @@ namespace ViewODataService.Default
         <Property Name=""Name"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""Rows"" Type=""Collection(Affra.Service.View.Domain.Views.Row)"" />
-        <NavigationProperty Name=""LineCharts"" Type=""Collection(Affra.Service.View.Domain.Views.LineChart)"" />
+        <NavigationProperty Name=""Charts"" Type=""Collection(Affra.Service.View.Domain.Charts.Chart)"" />
       </EntityType>
       <EntityType Name=""Row"">
         <Key>
@@ -1597,7 +1655,7 @@ namespace ViewODataService.Default
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""View"" Type=""Affra.Service.View.Domain.Views.View"" />
         <NavigationProperty Name=""Columns"" Type=""Collection(Affra.Service.View.Domain.Views.ColumnBase)"" />
-        <NavigationProperty Name=""LineCharts"" Type=""Collection(Affra.Service.View.Domain.Views.LineChart)"" />
+        <NavigationProperty Name=""Charts"" Type=""Collection(Affra.Service.View.Domain.Charts.Chart)"" />
       </EntityType>
       <EntityType Name=""ColumnBase"" Abstract=""true"">
         <Key>
@@ -1613,15 +1671,18 @@ namespace ViewODataService.Default
         </NavigationProperty>
         <NavigationProperty Name=""View"" Type=""Affra.Service.View.Domain.Views.View"" />
       </EntityType>
-      <EntityType Name=""LineChart"" BaseType=""Affra.Service.View.Domain.Views.ColumnBase"">
+    </Schema>
+    <Schema Namespace=""Affra.Service.View.Domain.Charts"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""Chart"" BaseType=""Affra.Service.View.Domain.Views.ColumnBase"">
         <Property Name=""Type"" Type=""Edm.String"" />
         <Property Name=""FormatString"" Type=""Edm.String"" />
         <Property Name=""StepInMinutes"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""AxisTitle"" Type=""Edm.String"" />
-        <NavigationProperty Name=""RowAsLineChart"" Type=""Affra.Service.View.Domain.Views.Row"">
+        <Property Name=""ChartType"" Type=""Affra.Service.View.Domain.Charts.ChartType"" Nullable=""false"" />
+        <NavigationProperty Name=""RowAsChart"" Type=""Affra.Service.View.Domain.Views.Row"">
           <ReferentialConstraint Property=""RowId"" ReferencedProperty=""Id"" />
         </NavigationProperty>
-        <NavigationProperty Name=""ChartSeries"" Type=""Collection(Affra.Service.View.Domain.Views.ChartSeries)"" />
+        <NavigationProperty Name=""ChartSeries"" Type=""Collection(Affra.Service.View.Domain.Charts.ChartSeries)"" />
       </EntityType>
       <EntityType Name=""ChartSeries"">
         <Key>
@@ -1636,17 +1697,25 @@ namespace ViewODataService.Default
         <Property Name=""LineType"" Type=""Edm.String"" />
         <Property Name=""MarkerType"" Type=""Edm.String"" />
         <Property Name=""GroupProperty"" Type=""Edm.String"" />
-        <Property Name=""LineChartId"" Type=""Edm.Int64"" />
+        <Property Name=""ChartId"" Type=""Edm.Int64"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""LineChart"" Type=""Affra.Service.View.Domain.Views.LineChart"">
-          <ReferentialConstraint Property=""LineChartId"" ReferencedProperty=""Id"" />
+        <NavigationProperty Name=""Chart"" Type=""Affra.Service.View.Domain.Charts.Chart"">
+          <ReferentialConstraint Property=""ChartId"" ReferencedProperty=""Id"" />
         </NavigationProperty>
       </EntityType>
+      <EnumType Name=""ChartType"">
+        <Member Name=""LineChart"" Value=""0"" />
+        <Member Name=""AreaChart"" Value=""1"" />
+        <Member Name=""BarChart"" Value=""2"" />
+        <Member Name=""ColumnChart"" Value=""3"" />
+        <Member Name=""PieChart"" Value=""4"" />
+        <Member Name=""DonutChart"" Value=""5"" />
+      </EnumType>
     </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityContainer Name=""Container"">
         <EntitySet Name=""View"" EntityType=""Affra.Service.View.Domain.Views.View"">
-          <NavigationPropertyBinding Path=""LineCharts"" Target=""LineChart"" />
+          <NavigationPropertyBinding Path=""Charts"" Target=""Chart"" />
           <NavigationPropertyBinding Path=""Rows"" Target=""Row"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
@@ -1655,7 +1724,7 @@ namespace ViewODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""Row"" EntityType=""Affra.Service.View.Domain.Views.Row"">
-          <NavigationPropertyBinding Path=""LineCharts"" Target=""LineChart"" />
+          <NavigationPropertyBinding Path=""Charts"" Target=""Chart"" />
           <NavigationPropertyBinding Path=""View"" Target=""View"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
@@ -1663,10 +1732,10 @@ namespace ViewODataService.Default
             </Collection>
           </Annotation>
         </EntitySet>
-        <EntitySet Name=""LineChart"" EntityType=""Affra.Service.View.Domain.Views.LineChart"">
+        <EntitySet Name=""Chart"" EntityType=""Affra.Service.View.Domain.Charts.Chart"">
           <NavigationPropertyBinding Path=""ChartSeries"" Target=""ChartSeries"" />
           <NavigationPropertyBinding Path=""Row"" Target=""Row"" />
-          <NavigationPropertyBinding Path=""RowAsLineChart"" Target=""Row"" />
+          <NavigationPropertyBinding Path=""RowAsChart"" Target=""Row"" />
           <NavigationPropertyBinding Path=""View"" Target=""View"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
@@ -1674,8 +1743,8 @@ namespace ViewODataService.Default
             </Collection>
           </Annotation>
         </EntitySet>
-        <EntitySet Name=""ChartSeries"" EntityType=""Affra.Service.View.Domain.Views.ChartSeries"">
-          <NavigationPropertyBinding Path=""LineChart"" Target=""LineChart"" />
+        <EntitySet Name=""ChartSeries"" EntityType=""Affra.Service.View.Domain.Charts.ChartSeries"">
+          <NavigationPropertyBinding Path=""Chart"" Target=""Chart"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
