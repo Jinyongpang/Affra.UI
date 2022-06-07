@@ -2,7 +2,7 @@
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared;
 using Radzen;
-using ViewODataService.Affra.Service.View.Domain.Views;
+using ViewODataService.Affra.Service.View.Domain.Charts;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
@@ -10,9 +10,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
     {
         private GenericDataGrid<DailyLogistic> dataGrid;
         private IEnumerable<ChartSeries> chartSeries = new List<ChartSeries>()
-        { 
+        {
             new ()
-            { 
+            {
                 Title = "Today's Level",
                 CategoryProperty = "DateUI",
                 LineType = "Dashed",

@@ -6,6 +6,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
+using ViewODataService.Affra.Service.View.Domain.Charts;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
@@ -78,7 +79,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
             else
             {
-                response = await DialogService.OpenAsync<LineChartDialog>(title,
+                response = await DialogService.OpenAsync<ChartDialog>(title,
                            new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "View", View } },
                            Constant.DialogOptions);
 
@@ -87,18 +88,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     try
                     {
                         using var serviceScope = ServiceProvider.CreateScope();
-                        var service = this.GetGenericService<LineChart>(serviceScope);
+                        var service = this.GetGenericService<Chart>(serviceScope);
 
                         if (data.Id > 0)
                         {
                             isLoading = true;
-                            await service.UpdateAsync(data as LineChart, data.Id);
+                            await service.UpdateAsync(data as Chart, data.Id);
                             AffraNotificationService.NotifyItemUpdated();
                         }
                         else
                         {
                             isLoading = true;
-                            await service.InsertAsync(data as LineChart);
+                            await service.InsertAsync(data as Chart);
                             AffraNotificationService.NotifyItemCreated();
                         }
 

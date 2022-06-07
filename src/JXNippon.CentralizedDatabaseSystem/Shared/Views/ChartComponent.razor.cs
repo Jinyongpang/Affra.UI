@@ -6,11 +6,11 @@ using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 using Microsoft.OData.Client;
 using Radzen.Blazor;
-using ViewODataService.Affra.Service.View.Domain.Views;
+using ViewODataService.Affra.Service.View.Domain.Charts;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class LineChartComponent
+    public partial class ChartComponent
     {
         private RadzenChart chart;
         private IEnumerable<IDaily> items;
@@ -21,6 +21,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public object Step { get; set; }
         [Parameter] public string AxisTitle { get; set; }
         [Parameter] public IEnumerable<ChartSeries> ChartSeries { get; set; }
+        [Parameter] public ChartType ChartType { get; set; }
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
         [Parameter] public string TType { get; set; }
         [Parameter] public DateTimeOffset? StartDate { get; set; }

@@ -1,14 +1,15 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.AspNetCore.Components;
 using Radzen;
+using ViewODataService.Affra.Service.View.Domain.Charts;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class LineChartDialog
+    public partial class ChartDialog
     {
         [Parameter] public View View { get; set; }
-        [Parameter] public LineChart Item { get; set; }
+        [Parameter] public Chart Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private IViewService ViewService { get; set; }
@@ -16,6 +17,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private IEnumerable<string> types;
         private bool isViewing { get => MenuAction == 3; }
+
+        private static IEnumerable<string> ChartTypes = Enum.GetValues(typeof(ChartType))
+            .Cast<ChartType>()
+            .Select(x => x.ToString())
+            .ToList();
 
         protected override Task OnInitializedAsync()
         {
@@ -27,7 +33,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return Task.CompletedTask;
         }
 
-        protected Task SubmitAsync(LineChart arg)
+        protected Task SubmitAsync(Chart arg)
         {
             DialogService.Close(true);
             return Task.CompletedTask;
@@ -43,6 +49,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             var row = value as Row;
             Item.RowId = row.Id;
             Item.Row = row;
+            Item.Sequence = row.Columns.Count;
         }
     }
 }

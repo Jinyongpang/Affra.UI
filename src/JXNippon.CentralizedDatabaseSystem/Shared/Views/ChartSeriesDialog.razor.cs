@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Radzen;
-using ViewODataService.Affra.Service.View.Domain.Views;
+using ViewODataService.Affra.Service.View.Domain.Charts;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
     public partial class ChartSeriesDialog
     {
         [Parameter] public ChartSeries Item { get; set; }
-        [Parameter] public LineChart LineChart { get; set; }
+        [Parameter] public Chart LineChart { get; set; }
         [Parameter] public int MenuAction { get; set; }
         [Inject] private DialogService DialogService { get; set; }
 

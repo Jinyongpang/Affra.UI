@@ -1,6 +1,7 @@
-﻿@using ViewODataService.Affra.Service.View.Domain.Views
+﻿@using ViewODataService.Affra.Service.View.Domain.Charts
+@using ViewODataService.Affra.Service.View.Domain.Views
 
-<RadzenTemplateForm Data="@Item" Submit="@( async (LineChart args) => { await SubmitAsync(args); })">
+<RadzenTemplateForm Data="@Item" Submit="@( async (Chart args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
             <RadzenCard>
@@ -20,6 +21,15 @@
                     <div class="col-8">
                         <RadzenNumeric Name="Sequence" class="w-100" Placeholder="Enter sequence..." @bind-Value="@Item.Sequence" Disabled=@isViewing></RadzenNumeric>
                         <RadzenRequiredValidator Component="Sequence" Text="Sequence is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Chart Type" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDropDown AllowClear="false" Data="@ChartTypes" Name="ChartType" class="w-100" Placeholder="Select chart type..." @bind-Value="@Item.ChartTypeString" Disabled=@isViewing></RadzenDropDown>
+                        <RadzenRequiredValidator Component="ChartType" Text="Chart type is required" Popup=false/>
                     </div>
                 </div>
                 <div class="row py-2">
@@ -50,7 +60,7 @@
                     </div>
                 </div>
                 <div class="row py-2">
-                   <ChartSeriesDataGrid LineChart="@Item"></ChartSeriesDataGrid>
+                   <ChartSeriesDataGrid Chart="@Item"></ChartSeriesDataGrid>
                 </div>
             </RadzenCard>
                 <div class="row justify-content-center py-4" hidden=@isViewing>

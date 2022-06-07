@@ -1,14 +1,11 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Affra.Core.Domain.Services;
+﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
-using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
-using Radzen;
 using Radzen.Blazor;
-using ViewODataService.Affra.Service.View.Domain.Views;
+using ViewODataService.Affra.Service.View.Domain.Charts;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared
 {
@@ -32,8 +29,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         public int Count { get; set; }
 
         protected override Task OnInitializedAsync()
-        { 
-            return ReloadAsync();        
+        {
+            return ReloadAsync();
         }
 
         public async Task ReloadAsync()
@@ -45,7 +42,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         private async Task LoadDataAsync()
         {
             isLoading = true;
-            
+
             using var serviceScope = ServiceProvider.CreateScope();
             var service = this.GetGenericService(serviceScope);
             Queryable = service.Get();
