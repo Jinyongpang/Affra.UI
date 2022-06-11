@@ -1,8 +1,8 @@
 ﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics;
+using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared;
 using Radzen;
-using ViewODataService.Affra.Service.View.Domain.Charts;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
 {

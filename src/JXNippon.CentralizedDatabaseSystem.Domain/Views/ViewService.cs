@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.OData.Client;
 using Microsoft.OData.Extensions.Client;
-using ViewODataService.Affra.Service.View.Domain.Charts;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
@@ -24,13 +23,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             DataServiceQuery<View> query = (DataServiceQuery<View>)viewUnitOfWork.ViewRepository.Get();
             query = query.Expand(view => view.Rows);
             Task<IEnumerable<View>> getView = GetViewsAndRowsAsync(name);
-            Task<IEnumerable<Chart>> getChart = GetChartsAsync(name);
+            Task<IEnumerable<Column>> getColumns = GetColumnsAsync(name);
 
-            await Task.WhenAll(getView, getChart);
+            await Task.WhenAll(getView, getColumns);
 
             View view = (await getView).FirstOrDefault();
 
-            ConstructView(view, await getChart);
+            ConstructView(view, await getColumns);
 
             return view;
         }
@@ -44,14 +43,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             }
         }
 
-        public async Task<IEnumerable<ColumnBase>> GetColumnsAsync(View view)
+        public async Task<IEnumerable<Column>> GetColumnsAsync(View view)
         {
-            List<ColumnBase> columnBases = new List<ColumnBase>();
+            List<Column> columnBases = new List<Column>();
             if (view != null
                 && !string.IsNullOrEmpty(view.Name))
             {
-                IEnumerable<Chart> charts = await GetChartsAsync(view.Name);
-                columnBases.AddRange(charts.Cast<ColumnBase>());
+                IEnumerable<Column> columns = await GetColumnsAsync(view.Name);
+                columnBases.AddRange(columns);
             }
             return columnBases;
         }
@@ -69,30 +68,28 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             return query.ExecuteAsync<View>();
         }
 
-        private Task<IEnumerable<Chart>> GetChartsAsync(string name = null)
+        private Task<IEnumerable<Column>> GetColumnsAsync(string name = null)
         {
-            DataServiceQuery<Chart> query = (DataServiceQuery<Chart>)viewUnitOfWork.ChartRepository.Get();
-            query = query.Expand(chart => chart.ChartSeries);
-            query = query.Expand(chart => chart.Row);
-
+            DataServiceQuery<Column> query = (DataServiceQuery<Column>)viewUnitOfWork.ColumnRepository.Get();
+            query = query.Expand(column => column.Row);
             if (!string.IsNullOrEmpty(name))
             {
-                query = (DataServiceQuery<Chart>)query
+                query = (DataServiceQuery<Column>)query
                     .Where(d => d.ViewName == name);
             }
             return query
                 .OrderBy(d => d.Sequence)
-                .ExecuteAsync<Chart>();
+                .ExecuteAsync<Column>();
         }
 
 
-        private void ConstructView(View view, IEnumerable<ColumnBase> columnBases)
+        private void ConstructView(View view, IEnumerable<Column> columnBases)
         {
             if (view != null)
             {
                 foreach (Row row in view.Rows)
                 {
-                    row.Columns = new Collection<ColumnBase>();
+                    row.Columns = new Collection<Column>();
                 }
                 foreach (var column in columnBases)
                 {

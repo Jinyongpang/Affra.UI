@@ -1,5 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -8,7 +9,6 @@ using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
-using ViewODataService.Affra.Service.View.Domain.Charts;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
@@ -16,7 +16,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     {
         private RadzenDataGrid<ChartSeries> grid;
         private IEnumerable<ChartSeries> items;
-        private bool isLoading = false;
 
         [Parameter] public Chart Chart { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
@@ -28,30 +27,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
+        protected override void OnInitialized()
+        {
+            items = Chart.ChartSeries;
+        }
+
         public Task ReloadAsync()
         {
             return grid.FirstPage(true);
         }
-        private async Task LoadDataAsync(LoadDataArgs args)
-        {
-            if (Chart is null)
-            {
-                return;
-            }
-            isLoading = true;
-            await LoadData.InvokeAsync();
-            using var serviceScope = ServiceProvider.CreateScope();
-            var genericService = this.GetGenericService(serviceScope);
-            var response = await genericService
-                .Get()
-                .Where(x => x.ChartId == Chart.Id)
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<ChartSeries>();
 
-            Count = (int)response.Count;
-            items = response.ToList();
-            isLoading = false;
-        }
         private void HandleException(Exception ex)
         {
             AffraNotificationService.NotifyException(ex);
@@ -74,17 +59,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
                 if (response == true)
                 {
-                    using var serviceScope = ServiceProvider.CreateScope();
-                    var service = this.GetGenericService(serviceScope);
-                    await service.DeleteAsync(data);
-
+                    Chart.ChartSeries.Remove(data);
                     AffraNotificationService.NotifyItemDeleted();
                 }
             }
             else
             {
                 response = await DialogService.OpenAsync<ChartSeriesDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "LineChart", Chart } },
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "Chart", Chart } },
                            Constant.DialogOptions);
 
                 if (response == true)
@@ -94,16 +76,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         using var serviceScope = ServiceProvider.CreateScope();
                         var service = this.GetGenericService(serviceScope);
 
-                        if (data.Id > 0)
+                        if (menuAction != 0)
                         {
-                            isLoading = true;
-                            await service.UpdateAsync(data, data.Id);
                             AffraNotificationService.NotifyItemUpdated();
                         }
                         else
                         {
-                            isLoading = true;
-                            await service.InsertAsync(data);
+                            Chart.ChartSeries.Add(data);
                             AffraNotificationService.NotifyItemCreated();
                         }
 
@@ -114,7 +93,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     }
                     finally
                     {
-                        isLoading = false;
                     }
                 }
             }

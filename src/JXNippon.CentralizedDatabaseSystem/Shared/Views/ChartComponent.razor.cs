@@ -1,12 +1,12 @@
 ﻿using Affra.Core.Domain.Services;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 using Microsoft.OData.Client;
 using Radzen.Blazor;
-using ViewODataService.Affra.Service.View.Domain.Charts;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {

@@ -1,9 +1,9 @@
-﻿@using ViewODataService.Affra.Service.View.Domain.Charts
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
 @using ViewODataService.Affra.Service.View.Domain.Views
 
 <div class="row">
     <div class="col">
-        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+        <RadzenDataGrid @ref="grid" Data="@items"
             FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="ChartSeries" 
             ColumnWidth="20px" AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
@@ -58,10 +58,7 @@
         if (i == 0)
         {
             await ShowDialogAsync(
-                new ChartSeries()
-                {
-                    ChartId = Chart.Id,
-                },
+                new ChartSeries(),
                 i,
                 "Add");
         }

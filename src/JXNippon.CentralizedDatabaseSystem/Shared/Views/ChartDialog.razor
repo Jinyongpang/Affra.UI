@@ -1,4 +1,4 @@
-﻿@using ViewODataService.Affra.Service.View.Domain.Charts
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
 @using ViewODataService.Affra.Service.View.Domain.Views
 
 <RadzenTemplateForm Data="@Item" Submit="@( async (Chart args) => { await SubmitAsync(args); })">
@@ -10,7 +10,7 @@
                         <RadzenLabel class="dialogTextSize" Text="Row Number" />
                     </div>
                     <div class="col-8">
-                       <RadzenDropDown Name="RowNumber" class="w-100" Data="@View.Rows" TextProperty="Sequence" @bind-Value="@Item.Row" AllowClear="false" TValue="Row" Change=@(args => OnChange(args)) Disabled=@isViewing></RadzenDropDown>
+                       <RadzenDropDown Name="RowNumber" class="w-100" Data="@View.Rows" TextProperty="Sequence" @bind-Value="@Column.Row" AllowClear="false" TValue="Row" Change=@(args => OnChange(args)) Disabled=@isViewing></RadzenDropDown>
                        <RadzenRequiredValidator Component="RowNumber" Text="Row number is required" Popup=false/>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                         <RadzenLabel class="dialogTextSize" Text="Sequence" />
                     </div>
                     <div class="col-8">
-                        <RadzenNumeric Name="Sequence" class="w-100" Placeholder="Enter sequence..." @bind-Value="@Item.Sequence" Disabled=@isViewing></RadzenNumeric>
+                        <RadzenNumeric Name="Sequence" class="w-100" Placeholder="Enter sequence..." @bind-Value="@Column.Sequence" Disabled=@isViewing></RadzenNumeric>
                         <RadzenRequiredValidator Component="Sequence" Text="Sequence is required" Popup=false/>
                     </div>
                 </div>

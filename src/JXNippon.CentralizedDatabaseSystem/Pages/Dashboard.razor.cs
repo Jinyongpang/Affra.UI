@@ -10,7 +10,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
     {
         [Inject] private IServiceProvider ServiceProvider { get; set; }
 
-        private DateTimeOffset? startDate { get; set; } = DateTime.Now.Date.AddDays(-7);
+        private DateTimeOffset? startDate { get; set; } = DateTime.Now.Date.AddDays(-30);
         private DateTimeOffset? endDate { get; set; } = DateTime.Now.Date;
 
         private View view = new View();
