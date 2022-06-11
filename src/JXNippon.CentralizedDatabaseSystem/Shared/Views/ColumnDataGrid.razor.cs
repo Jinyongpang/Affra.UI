@@ -1,4 +1,5 @@
 ﻿using Affra.Core.Domain.Services;
+using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
@@ -6,15 +7,14 @@ using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 using Radzen.Blazor;
-using ViewODataService.Affra.Service.View.Domain.Charts;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
     public partial class ColumnDataGrid
     {
-        private RadzenDataGrid<ColumnBase> grid;
-        private IEnumerable<ColumnBase> items;
+        private RadzenDataGrid<Column> grid;
+        private IEnumerable<Column> items;
         private bool isLoading = false;
 
         [Parameter] public View View { get; set; }
@@ -58,10 +58,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<T, IViewUnitOfWork>>();
         }
 
-        private async Task ShowDialogAsync(ColumnBase data, int menuAction, string title)
+        private async Task ShowDialogAsync(Column data, int menuAction, string title)
         {
             ContextMenuService.Close();
-            dynamic? response;
+            dynamic? response = null;
             if (menuAction == 2)
             {
                 response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
@@ -71,7 +71,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 if (response == true)
                 {
                     using var serviceScope = ServiceProvider.CreateScope();
-                    var service = this.GetGenericService<ColumnBase>(serviceScope);
+                    var service = this.GetGenericService<Column>(serviceScope);
                     await service.DeleteAsync(data);
 
                     AffraNotificationService.NotifyItemDeleted();
@@ -79,27 +79,31 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
             else
             {
-                response = await DialogService.OpenAsync<ChartDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "View", View } },
-                           Constant.DialogOptions);
+                if (data.ComponentType == nameof(Chart))
+                {
+                    response = await DialogService.OpenAsync<ChartDialog>(title,
+                       new Dictionary<string, object>() { { "Column", data }, { "MenuAction", menuAction }, { "View", View } },
+                       Constant.DialogOptions);
+                }
+
 
                 if (response == true)
                 {
                     try
                     {
                         using var serviceScope = ServiceProvider.CreateScope();
-                        var service = this.GetGenericService<Chart>(serviceScope);
+                        var service = this.GetGenericService<Column>(serviceScope);
 
                         if (data.Id > 0)
                         {
                             isLoading = true;
-                            await service.UpdateAsync(data as Chart, data.Id);
+                            await service.UpdateAsync(data, data.Id);
                             AffraNotificationService.NotifyItemUpdated();
                         }
                         else
                         {
                             isLoading = true;
-                            await service.InsertAsync(data as Chart);
+                            await service.InsertAsync(data);
                             AffraNotificationService.NotifyItemCreated();
                         }
 

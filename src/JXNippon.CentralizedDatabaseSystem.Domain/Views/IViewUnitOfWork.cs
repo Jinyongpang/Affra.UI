@@ -1,5 +1,4 @@
 ﻿using Affra.Core.Domain.UnitOfWorks;
-using ViewODataService.Affra.Service.View.Domain.Charts;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
@@ -10,6 +9,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
 
         IGenericRepository<Row> RowRepository { get; }
 
-        IGenericRepository<Chart> ChartRepository { get; }
+        IGenericRepository<Column> ColumnRepository { get; }
     }
 }

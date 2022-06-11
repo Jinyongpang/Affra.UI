@@ -18,7 +18,7 @@
                 IEnumerable<SeriesItem> seriesItem = GetSeriesItems(series, group);
                 switch (ChartType)
                 {
-                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.AreaChart:
+                    case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.AreaChart:
                     {                           
                         <RadzenAreaSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Key" ValueProperty="Value"
@@ -28,7 +28,7 @@
                         </RadzenAreaSeries>
                         break;
                     }
-                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.LineChart:
+                    case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.LineChart:
                     {                           
                         <RadzenLineSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Key" ValueProperty="Value"
@@ -38,7 +38,7 @@
                         </RadzenLineSeries>
                         break;
                     };
-                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.BarChart:
+                    case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.BarChart:
                     {                           
                         <RadzenBarSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Key" ValueProperty="Value"
@@ -47,7 +47,7 @@
                         </RadzenBarSeries>
                         break;
                     };
-                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.ColumnChart:
+                    case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.ColumnChart:
                     {                           
                         <RadzenColumnSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Key" ValueProperty="Value"
@@ -56,7 +56,7 @@
                         </RadzenColumnSeries>
                         break;
                     };
-                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.DonutChart:
+                    case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.DonutChart:
                     {                           
                         <RadzenDonutSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Key" ValueProperty="Value">
@@ -64,7 +64,7 @@
                         </RadzenDonutSeries>
                         break;
                     };
-                    case ViewODataService.Affra.Service.View.Domain.Charts.ChartType.PieChart:
+                    case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.PieChart:
                     {                           
                         <RadzenPieSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Key" ValueProperty="Value">

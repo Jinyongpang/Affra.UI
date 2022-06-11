@@ -2,7 +2,7 @@
 
 namespace ViewODataService.Affra.Service.View.Domain.Views
 {
-    public partial class ColumnBase
+    public partial class Column
     {
         [IgnoreClientProperty]
         public int RowSequence 

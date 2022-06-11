@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+using Microsoft.AspNetCore.Components;
 using Radzen;
-using ViewODataService.Affra.Service.View.Domain.Charts;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
     public partial class ChartSeriesDialog
     {
         [Parameter] public ChartSeries Item { get; set; }
-        [Parameter] public Chart LineChart { get; set; }
+        [Parameter] public Chart Chart { get; set; }
         [Parameter] public int MenuAction { get; set; }
         [Inject] private DialogService DialogService { get; set; }
 
@@ -41,18 +41,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override Task OnInitializedAsync()
         {
-            categoryProperties = LineChart.ActualType.GetProperties()
+            categoryProperties = Chart.ActualType.GetProperties()
                 .Where(prop => prop.PropertyType == typeof(DateTime)
                     || prop.PropertyType == typeof(DateTime?))
                 .Select(prop => prop.Name)
                 .ToList();
 
-            valueProperties = LineChart.ActualType.GetProperties()
+            valueProperties = Chart.ActualType.GetProperties()
                 .Where(prop => valueTypes.Contains(prop.PropertyType))
                 .Select(prop => prop.Name)
                 .ToList();
 
-            groupProperties = LineChart.ActualType.GetProperties()
+            groupProperties = Chart.ActualType.GetProperties()
                 .Where(prop => prop.PropertyType == typeof(string))
                 .Select(prop => prop.Name)
                 .ToList();

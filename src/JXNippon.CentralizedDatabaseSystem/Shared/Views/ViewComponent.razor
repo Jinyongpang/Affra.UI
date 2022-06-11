@@ -1,5 +1,6 @@
-﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Views
-@using ViewODataService.Affra.Service.View.Domain.Charts
+﻿@using System.Text.Json;
+@using JXNippon.CentralizedDatabaseSystem.Domain.Views
+@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
 @using ViewODataService.Affra.Service.View.Domain.Views
 
 @inject IViewService ViewService
@@ -18,13 +19,14 @@
 
         @foreach(var col in row.Columns) 
         {      
-            if (col is Chart column)
+            if (col.ComponentType ==  nameof(Chart))
             {
-                string type = ViewService.GetTypeMapping()[column.Type];
+                Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
+                string type = ViewService.GetTypeMapping()[chart.Type];
                 <div class="col py-3">
                     <RadzenCard>                  
-                        <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@type" AxisTitle="@column.AxisTitle" FormatString="@column.FormatString" 
-                        Step="@TimeSpan.FromMinutes(column.StepInMinutes)" ChartSeries="@column.ChartSeries" ChartType="@column.ChartType"></ChartComponent></RadzenCard>  
+                        <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ChartSeries="@chart.ChartSeries" ChartType="@chart.ChartType"></ChartComponent></RadzenCard>  
                 </div> 
             }
         }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 6/6/2022 10:58:25 PM
+// Generation date: 11/6/2022 1:40:59 PM
 namespace ViewODataService.Affra.Service.View.Domain.Views
 {
     /// <summary>
@@ -55,27 +55,6 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Row> _Rows;
-        /// <summary>
-        /// There are no comments for Charts in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Charts
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._Charts == null))
-                {
-                    this._Charts = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>(GetPath("Charts"));
-                }
-                return this._Charts;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Charts;
     }
     /// <summary>
     /// There are no comments for View in the schema.
@@ -185,27 +164,6 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.Row> _Rows = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.Row>();
         partial void OnRowsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.Row> value);
         partial void OnRowsChanged();
-        /// <summary>
-        /// There are no comments for Property Charts in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Charts
-        {
-            get
-            {
-                return this._Charts;
-            }
-            set
-            {
-                this.OnChartsChanging(value);
-                this._Charts = value;
-                this.OnChartsChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Charts = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>();
-        partial void OnChartsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> value);
-        partial void OnChartsChanged();
     }
     /// <summary>
     /// There are no comments for RowSingle in the schema.
@@ -255,7 +213,7 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         /// There are no comments for Columns in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> Columns
+        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Column> Columns
         {
             get
             {
@@ -265,34 +223,13 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
                 }
                 if ((this._Columns == null))
                 {
-                    this._Columns = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase>(GetPath("Columns"));
+                    this._Columns = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Column>(GetPath("Columns"));
                 }
                 return this._Columns;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _Columns;
-        /// <summary>
-        /// There are no comments for Charts in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Charts
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._Charts == null))
-                {
-                    this._Charts = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>(GetPath("Charts"));
-                }
-                return this._Charts;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Charts;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Column> _Columns;
     }
     /// <summary>
     /// There are no comments for Row in the schema.
@@ -429,7 +366,7 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         /// There are no comments for Property Columns in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> Columns
+        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.Column> Columns
         {
             get
             {
@@ -443,52 +380,31 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _Columns = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase>();
-        partial void OnColumnsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> value);
+        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.Column> _Columns = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.Column>();
+        partial void OnColumnsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Views.Column> value);
         partial void OnColumnsChanged();
-        /// <summary>
-        /// There are no comments for Property Charts in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Charts
-        {
-            get
-            {
-                return this._Charts;
-            }
-            set
-            {
-                this.OnChartsChanging(value);
-                this._Charts = value;
-                this.OnChartsChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Charts = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>();
-        partial void OnChartsChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> value);
-        partial void OnChartsChanged();
     }
     /// <summary>
-    /// There are no comments for ColumnBaseSingle in the schema.
+    /// There are no comments for ColumnSingle in the schema.
     /// </summary>
-    public partial class ColumnBaseSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<ColumnBase>
+    public partial class ColumnSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Column>
     {
         /// <summary>
-        /// Initialize a new ColumnBaseSingle object.
+        /// Initialize a new ColumnSingle object.
         /// </summary>
-        public ColumnBaseSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+        public ColumnSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
             : base(context, path) {}
 
         /// <summary>
-        /// Initialize a new ColumnBaseSingle object.
+        /// Initialize a new ColumnSingle object.
         /// </summary>
-        public ColumnBaseSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+        public ColumnSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
             : base(context, path, isComposable) {}
 
         /// <summary>
-        /// Initialize a new ColumnBaseSingle object.
+        /// Initialize a new ColumnSingle object.
         /// </summary>
-        public ColumnBaseSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<ColumnBase> query)
+        public ColumnSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<Column> query)
             : base(query) {}
 
         /// <summary>
@@ -535,14 +451,31 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         private global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle _View;
     }
     /// <summary>
-    /// There are no comments for ColumnBase in the schema.
+    /// There are no comments for Column in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    public abstract partial class ColumnBase : global::Microsoft.OData.Client.BaseEntityType
+    public partial class Column : global::Microsoft.OData.Client.BaseEntityType
     {
+        /// <summary>
+        /// Create a new Column object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="sequence">Initial value of Sequence.</param>
+        /// <param name="viewName">Initial value of ViewName.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static Column CreateColumn(long ID, int sequence, string viewName, long xmin)
+        {
+            Column column = new Column();
+            column.Id = ID;
+            column.Sequence = sequence;
+            column.ViewName = viewName;
+            column.xmin = xmin;
+            return column;
+        }
         /// <summary>
         /// There are no comments for Property Id in the schema.
         /// </summary>
@@ -606,6 +539,48 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         private global::System.Nullable<long> _RowId;
         partial void OnRowIdChanging(global::System.Nullable<long> value);
         partial void OnRowIdChanged();
+        /// <summary>
+        /// There are no comments for Property ComponentType in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ComponentType
+        {
+            get
+            {
+                return this._ComponentType;
+            }
+            set
+            {
+                this.OnComponentTypeChanging(value);
+                this._ComponentType = value;
+                this.OnComponentTypeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ComponentType;
+        partial void OnComponentTypeChanging(string value);
+        partial void OnComponentTypeChanged();
+        /// <summary>
+        /// There are no comments for Property ColumnComponent in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ColumnComponent
+        {
+            get
+            {
+                return this._ColumnComponent;
+            }
+            set
+            {
+                this.OnColumnComponentChanging(value);
+                this._ColumnComponent = value;
+                this.OnColumnComponentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ColumnComponent;
+        partial void OnColumnComponentChanging(string value);
+        partial void OnColumnComponentChanged();
         /// <summary>
         /// There are no comments for Property ViewName in the schema.
         /// </summary>
@@ -743,718 +718,27 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
             return new global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase as global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle specified by key from an entity set
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.Column as global::ViewODataService.Affra.Service.View.Domain.Views.ColumnSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        public static global::ViewODataService.Affra.Service.View.Domain.Views.ColumnSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Column> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
         {
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ViewODataService.Affra.Service.View.Domain.Views.ColumnSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase as global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle specified by key from an entity set
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.Column as global::ViewODataService.Affra.Service.View.Domain.Views.ColumnSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _source,
+        public static global::ViewODataService.Affra.Service.View.Domain.Views.ColumnSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Column> _source,
             long id)
         {
             global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBaseSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-    }
-}
-namespace ViewODataService.Affra.Service.View.Domain.Charts
-{
-    /// <summary>
-    /// There are no comments for ChartSingle in the schema.
-    /// </summary>
-    public partial class ChartSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Chart>
-    {
-        /// <summary>
-        /// Initialize a new ChartSingle object.
-        /// </summary>
-        public ChartSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
-            : base(context, path) {}
-
-        /// <summary>
-        /// Initialize a new ChartSingle object.
-        /// </summary>
-        public ChartSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
-            : base(context, path, isComposable) {}
-
-        /// <summary>
-        /// Initialize a new ChartSingle object.
-        /// </summary>
-        public ChartSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<Chart> query)
-            : base(query) {}
-
-        /// <summary>
-        /// There are no comments for RowAsChart in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle RowAsChart
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._RowAsChart == null))
-                {
-                    this._RowAsChart = new global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle(this.Context, GetPath("RowAsChart"));
-                }
-                return this._RowAsChart;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle _RowAsChart;
-        /// <summary>
-        /// There are no comments for ChartSeries in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> ChartSeries
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._ChartSeries == null))
-                {
-                    this._ChartSeries = Context.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries>(GetPath("ChartSeries"));
-                }
-                return this._ChartSeries;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _ChartSeries;
-        /// <summary>
-        /// There are no comments for Row in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle Row
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._Row == null))
-                {
-                    this._Row = new global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle(this.Context, GetPath("Row"));
-                }
-                return this._Row;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Views.RowSingle _Row;
-        /// <summary>
-        /// There are no comments for View in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle View
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._View == null))
-                {
-                    this._View = new global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle(this.Context, GetPath("View"));
-                }
-                return this._View;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Views.ViewSingle _View;
-    }
-    /// <summary>
-    /// There are no comments for Chart in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::Microsoft.OData.Client.Key("Id")]
-    public partial class Chart : global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase
-    {
-        /// <summary>
-        /// Create a new Chart object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="sequence">Initial value of Sequence.</param>
-        /// <param name="viewName">Initial value of ViewName.</param>
-        /// <param name="xmin">Initial value of xmin.</param>
-        /// <param name="stepInMinutes">Initial value of StepInMinutes.</param>
-        /// <param name="chartType">Initial value of ChartType.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static Chart CreateChart(long ID, 
-                    int sequence, 
-                    string viewName, 
-                    long xmin, 
-                    int stepInMinutes, 
-                    global::ViewODataService.Affra.Service.View.Domain.Charts.ChartType chartType)
-        {
-            Chart chart = new Chart();
-            chart.Id = ID;
-            chart.Sequence = sequence;
-            chart.ViewName = viewName;
-            chart.xmin = xmin;
-            chart.StepInMinutes = stepInMinutes;
-            chart.ChartType = chartType;
-            return chart;
-        }
-        /// <summary>
-        /// There are no comments for Property Type in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Type
-        {
-            get
-            {
-                return this._Type;
-            }
-            set
-            {
-                this.OnTypeChanging(value);
-                this._Type = value;
-                this.OnTypeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Type;
-        partial void OnTypeChanging(string value);
-        partial void OnTypeChanged();
-        /// <summary>
-        /// There are no comments for Property FormatString in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string FormatString
-        {
-            get
-            {
-                return this._FormatString;
-            }
-            set
-            {
-                this.OnFormatStringChanging(value);
-                this._FormatString = value;
-                this.OnFormatStringChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _FormatString;
-        partial void OnFormatStringChanging(string value);
-        partial void OnFormatStringChanged();
-        /// <summary>
-        /// There are no comments for Property StepInMinutes in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int StepInMinutes
-        {
-            get
-            {
-                return this._StepInMinutes;
-            }
-            set
-            {
-                this.OnStepInMinutesChanging(value);
-                this._StepInMinutes = value;
-                this.OnStepInMinutesChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _StepInMinutes;
-        partial void OnStepInMinutesChanging(int value);
-        partial void OnStepInMinutesChanged();
-        /// <summary>
-        /// There are no comments for Property AxisTitle in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string AxisTitle
-        {
-            get
-            {
-                return this._AxisTitle;
-            }
-            set
-            {
-                this.OnAxisTitleChanging(value);
-                this._AxisTitle = value;
-                this.OnAxisTitleChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _AxisTitle;
-        partial void OnAxisTitleChanging(string value);
-        partial void OnAxisTitleChanged();
-        /// <summary>
-        /// There are no comments for Property ChartType in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Charts.ChartType ChartType
-        {
-            get
-            {
-                return this._ChartType;
-            }
-            set
-            {
-                this.OnChartTypeChanging(value);
-                this._ChartType = value;
-                this.OnChartTypeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Charts.ChartType _ChartType;
-        partial void OnChartTypeChanging(global::ViewODataService.Affra.Service.View.Domain.Charts.ChartType value);
-        partial void OnChartTypeChanged();
-        /// <summary>
-        /// There are no comments for Property RowAsChart in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Views.Row RowAsChart
-        {
-            get
-            {
-                return this._RowAsChart;
-            }
-            set
-            {
-                this.OnRowAsChartChanging(value);
-                this._RowAsChart = value;
-                this.OnRowAsChartChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Views.Row _RowAsChart;
-        partial void OnRowAsChartChanging(global::ViewODataService.Affra.Service.View.Domain.Views.Row value);
-        partial void OnRowAsChartChanged();
-        /// <summary>
-        /// There are no comments for Property ChartSeries in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> ChartSeries
-        {
-            get
-            {
-                return this._ChartSeries;
-            }
-            set
-            {
-                this.OnChartSeriesChanging(value);
-                this._ChartSeries = value;
-                this.OnChartSeriesChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _ChartSeries = new global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries>();
-        partial void OnChartSeriesChanging(global::System.Collections.ObjectModel.Collection<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> value);
-        partial void OnChartSeriesChanged();
-    }
-    /// <summary>
-    /// There are no comments for ChartSeriesSingle in the schema.
-    /// </summary>
-    public partial class ChartSeriesSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<ChartSeries>
-    {
-        /// <summary>
-        /// Initialize a new ChartSeriesSingle object.
-        /// </summary>
-        public ChartSeriesSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
-            : base(context, path) {}
-
-        /// <summary>
-        /// Initialize a new ChartSeriesSingle object.
-        /// </summary>
-        public ChartSeriesSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
-            : base(context, path, isComposable) {}
-
-        /// <summary>
-        /// Initialize a new ChartSeriesSingle object.
-        /// </summary>
-        public ChartSeriesSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<ChartSeries> query)
-            : base(query) {}
-
-        /// <summary>
-        /// There are no comments for Chart in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle Chart
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._Chart == null))
-                {
-                    this._Chart = new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle(this.Context, GetPath("Chart"));
-                }
-                return this._Chart;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle _Chart;
-    }
-    /// <summary>
-    /// There are no comments for ChartSeries in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// Id
-    /// </KeyProperties>
-    [global::Microsoft.OData.Client.Key("Id")]
-    public partial class ChartSeries : global::Microsoft.OData.Client.BaseEntityType
-    {
-        /// <summary>
-        /// Create a new ChartSeries object.
-        /// </summary>
-        /// <param name="ID">Initial value of Id.</param>
-        /// <param name="sequence">Initial value of Sequence.</param>
-        /// <param name="smooth">Initial value of Smooth.</param>
-        /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static ChartSeries CreateChartSeries(long ID, int sequence, bool smooth, long xmin)
-        {
-            ChartSeries chartSeries = new ChartSeries();
-            chartSeries.Id = ID;
-            chartSeries.Sequence = sequence;
-            chartSeries.Smooth = smooth;
-            chartSeries.xmin = xmin;
-            return chartSeries;
-        }
-        /// <summary>
-        /// There are no comments for Property Id in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long Id
-        {
-            get
-            {
-                return this._Id;
-            }
-            set
-            {
-                this.OnIdChanging(value);
-                this._Id = value;
-                this.OnIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _Id;
-        partial void OnIdChanging(long value);
-        partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for Property Sequence in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int Sequence
-        {
-            get
-            {
-                return this._Sequence;
-            }
-            set
-            {
-                this.OnSequenceChanging(value);
-                this._Sequence = value;
-                this.OnSequenceChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private int _Sequence;
-        partial void OnSequenceChanging(int value);
-        partial void OnSequenceChanged();
-        /// <summary>
-        /// There are no comments for Property CategoryProperty in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string CategoryProperty
-        {
-            get
-            {
-                return this._CategoryProperty;
-            }
-            set
-            {
-                this.OnCategoryPropertyChanging(value);
-                this._CategoryProperty = value;
-                this.OnCategoryPropertyChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _CategoryProperty;
-        partial void OnCategoryPropertyChanging(string value);
-        partial void OnCategoryPropertyChanged();
-        /// <summary>
-        /// There are no comments for Property Title in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Title
-        {
-            get
-            {
-                return this._Title;
-            }
-            set
-            {
-                this.OnTitleChanging(value);
-                this._Title = value;
-                this.OnTitleChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Title;
-        partial void OnTitleChanging(string value);
-        partial void OnTitleChanged();
-        /// <summary>
-        /// There are no comments for Property ValueProperty in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string ValueProperty
-        {
-            get
-            {
-                return this._ValueProperty;
-            }
-            set
-            {
-                this.OnValuePropertyChanging(value);
-                this._ValueProperty = value;
-                this.OnValuePropertyChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _ValueProperty;
-        partial void OnValuePropertyChanging(string value);
-        partial void OnValuePropertyChanged();
-        /// <summary>
-        /// There are no comments for Property Smooth in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public bool Smooth
-        {
-            get
-            {
-                return this._Smooth;
-            }
-            set
-            {
-                this.OnSmoothChanging(value);
-                this._Smooth = value;
-                this.OnSmoothChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private bool _Smooth;
-        partial void OnSmoothChanging(bool value);
-        partial void OnSmoothChanged();
-        /// <summary>
-        /// There are no comments for Property LineType in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string LineType
-        {
-            get
-            {
-                return this._LineType;
-            }
-            set
-            {
-                this.OnLineTypeChanging(value);
-                this._LineType = value;
-                this.OnLineTypeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _LineType;
-        partial void OnLineTypeChanging(string value);
-        partial void OnLineTypeChanged();
-        /// <summary>
-        /// There are no comments for Property MarkerType in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string MarkerType
-        {
-            get
-            {
-                return this._MarkerType;
-            }
-            set
-            {
-                this.OnMarkerTypeChanging(value);
-                this._MarkerType = value;
-                this.OnMarkerTypeChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _MarkerType;
-        partial void OnMarkerTypeChanging(string value);
-        partial void OnMarkerTypeChanged();
-        /// <summary>
-        /// There are no comments for Property GroupProperty in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string GroupProperty
-        {
-            get
-            {
-                return this._GroupProperty;
-            }
-            set
-            {
-                this.OnGroupPropertyChanging(value);
-                this._GroupProperty = value;
-                this.OnGroupPropertyChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _GroupProperty;
-        partial void OnGroupPropertyChanging(string value);
-        partial void OnGroupPropertyChanged();
-        /// <summary>
-        /// There are no comments for Property ChartId in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<long> ChartId
-        {
-            get
-            {
-                return this._ChartId;
-            }
-            set
-            {
-                this.OnChartIdChanging(value);
-                this._ChartId = value;
-                this.OnChartIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<long> _ChartId;
-        partial void OnChartIdChanging(global::System.Nullable<long> value);
-        partial void OnChartIdChanged();
-        /// <summary>
-        /// There are no comments for Property xmin in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
-        {
-            get
-            {
-                return this._xmin;
-            }
-            set
-            {
-                this.OnxminChanging(value);
-                this._xmin = value;
-                this.OnxminChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private long _xmin;
-        partial void OnxminChanging(long value);
-        partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property Chart in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ViewODataService.Affra.Service.View.Domain.Charts.Chart Chart
-        {
-            get
-            {
-                return this._Chart;
-            }
-            set
-            {
-                this.OnChartChanging(value);
-                this._Chart = value;
-                this.OnChartChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::ViewODataService.Affra.Service.View.Domain.Charts.Chart _Chart;
-        partial void OnChartChanging(global::ViewODataService.Affra.Service.View.Domain.Charts.Chart value);
-        partial void OnChartChanged();
-    }
-    /// <summary>
-    /// There are no comments for ChartType in the schema.
-    /// </summary>
-    public enum ChartType
-    {
-        LineChart = 0,
-        AreaChart = 1,
-        BarChart = 2,
-        ColumnChart = 3,
-        PieChart = 4,
-        DonutChart = 5
-    }
-    /// <summary>
-    /// Class containing all extension methods
-    /// </summary>
-    public static class ExtensionMethods
-    {
-        /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Charts.Chart as global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Charts.Chart as global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _source,
-            long id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Cast an entity of type global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase to its derived type global::ViewODataService.Affra.Service.View.Domain.Charts.Chart
-        /// </summary>
-        /// <param name="_source">source entity</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle CastToChart(this global::Microsoft.OData.Client.DataServiceQuerySingle<global::ViewODataService.Affra.Service.View.Domain.Views.ColumnBase> _source)
-        {
-            global::Microsoft.OData.Client.DataServiceQuerySingle<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> query = _source.CastTo<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>();
-            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSingle(_source.Context, query.GetPath(null));
-        }
-        /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries as global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
-        {
-            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
-        }
-        /// <summary>
-        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries as global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle specified by key from an entity set
-        /// </summary>
-        /// <param name="_source">source entity set</param>
-        /// <param name="id">The value of id</param>
-        public static global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _source,
-            long id)
-        {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
-            {
-                { "Id", id }
-            };
-            return new global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeriesSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ViewODataService.Affra.Service.View.Domain.Views.ColumnSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
@@ -1487,12 +771,7 @@ namespace ViewODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.View.Domain.Charts", "ViewODataService.Affra.Service.View.Domain.Charts");
-            if ((resolvedType != null))
-            {
-                return resolvedType;
-            }
-            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.View.Domain.Views", "ViewODataService.Affra.Service.View.Domain.Views");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.View.Domain.Views", "ViewODataService.Affra.Service.View.Domain.Views");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -1512,10 +791,6 @@ namespace ViewODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
-            if (clientType.Namespace.Equals("ViewODataService.Affra.Service.View.Domain.Charts", global::System.StringComparison.Ordinal))
-            {
-                return string.Concat("Affra.Service.View.Domain.Charts.", clientType.Name);
-            }
             if (clientType.Namespace.Equals("ViewODataService.Affra.Service.View.Domain.Views", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.View.Domain.Views.", clientType.Name);
@@ -1561,39 +836,22 @@ namespace ViewODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Row> _Row;
         /// <summary>
-        /// There are no comments for Chart in the schema.
+        /// There are no comments for Column in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> Chart
+        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Column> Column
         {
             get
             {
-                if ((this._Chart == null))
+                if ((this._Column == null))
                 {
-                    this._Chart = base.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart>("Chart");
+                    this._Column = base.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Column>("Column");
                 }
-                return this._Chart;
+                return this._Column;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.Chart> _Chart;
-        /// <summary>
-        /// There are no comments for ChartSeries in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> ChartSeries
-        {
-            get
-            {
-                if ((this._ChartSeries == null))
-                {
-                    this._ChartSeries = base.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries>("ChartSeries");
-                }
-                return this._ChartSeries;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries> _ChartSeries;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Column> _Column;
         /// <summary>
         /// There are no comments for View in the schema.
         /// </summary>
@@ -1611,20 +869,12 @@ namespace ViewODataService.Default
             base.AddObject("Row", row);
         }
         /// <summary>
-        /// There are no comments for Chart in the schema.
+        /// There are no comments for Column in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToChart(global::ViewODataService.Affra.Service.View.Domain.Charts.Chart chart)
+        public void AddToColumn(global::ViewODataService.Affra.Service.View.Domain.Views.Column column)
         {
-            base.AddObject("Chart", chart);
-        }
-        /// <summary>
-        /// There are no comments for ChartSeries in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToChartSeries(global::ViewODataService.Affra.Service.View.Domain.Charts.ChartSeries chartSeries)
-        {
-            base.AddObject("ChartSeries", chartSeries);
+            base.AddObject("Column", column);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -1643,7 +893,6 @@ namespace ViewODataService.Default
         <Property Name=""Name"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""Rows"" Type=""Collection(Affra.Service.View.Domain.Views.Row)"" />
-        <NavigationProperty Name=""Charts"" Type=""Collection(Affra.Service.View.Domain.Charts.Chart)"" />
       </EntityType>
       <EntityType Name=""Row"">
         <Key>
@@ -1654,16 +903,17 @@ namespace ViewODataService.Default
         <Property Name=""ViewName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""View"" Type=""Affra.Service.View.Domain.Views.View"" />
-        <NavigationProperty Name=""Columns"" Type=""Collection(Affra.Service.View.Domain.Views.ColumnBase)"" />
-        <NavigationProperty Name=""Charts"" Type=""Collection(Affra.Service.View.Domain.Charts.Chart)"" />
+        <NavigationProperty Name=""Columns"" Type=""Collection(Affra.Service.View.Domain.Views.Column)"" />
       </EntityType>
-      <EntityType Name=""ColumnBase"" Abstract=""true"">
+      <EntityType Name=""Column"">
         <Key>
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Sequence"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""RowId"" Type=""Edm.Int64"" />
+        <Property Name=""ComponentType"" Type=""Edm.String"" />
+        <Property Name=""ColumnComponent"" Type=""Edm.String"" />
         <Property Name=""ViewName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""Row"" Type=""Affra.Service.View.Domain.Views.Row"">
@@ -1672,50 +922,9 @@ namespace ViewODataService.Default
         <NavigationProperty Name=""View"" Type=""Affra.Service.View.Domain.Views.View"" />
       </EntityType>
     </Schema>
-    <Schema Namespace=""Affra.Service.View.Domain.Charts"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityType Name=""Chart"" BaseType=""Affra.Service.View.Domain.Views.ColumnBase"">
-        <Property Name=""Type"" Type=""Edm.String"" />
-        <Property Name=""FormatString"" Type=""Edm.String"" />
-        <Property Name=""StepInMinutes"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""AxisTitle"" Type=""Edm.String"" />
-        <Property Name=""ChartType"" Type=""Affra.Service.View.Domain.Charts.ChartType"" Nullable=""false"" />
-        <NavigationProperty Name=""RowAsChart"" Type=""Affra.Service.View.Domain.Views.Row"">
-          <ReferentialConstraint Property=""RowId"" ReferencedProperty=""Id"" />
-        </NavigationProperty>
-        <NavigationProperty Name=""ChartSeries"" Type=""Collection(Affra.Service.View.Domain.Charts.ChartSeries)"" />
-      </EntityType>
-      <EntityType Name=""ChartSeries"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Sequence"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""CategoryProperty"" Type=""Edm.String"" />
-        <Property Name=""Title"" Type=""Edm.String"" />
-        <Property Name=""ValueProperty"" Type=""Edm.String"" />
-        <Property Name=""Smooth"" Type=""Edm.Boolean"" Nullable=""false"" />
-        <Property Name=""LineType"" Type=""Edm.String"" />
-        <Property Name=""MarkerType"" Type=""Edm.String"" />
-        <Property Name=""GroupProperty"" Type=""Edm.String"" />
-        <Property Name=""ChartId"" Type=""Edm.Int64"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""Chart"" Type=""Affra.Service.View.Domain.Charts.Chart"">
-          <ReferentialConstraint Property=""ChartId"" ReferencedProperty=""Id"" />
-        </NavigationProperty>
-      </EntityType>
-      <EnumType Name=""ChartType"">
-        <Member Name=""LineChart"" Value=""0"" />
-        <Member Name=""AreaChart"" Value=""1"" />
-        <Member Name=""BarChart"" Value=""2"" />
-        <Member Name=""ColumnChart"" Value=""3"" />
-        <Member Name=""PieChart"" Value=""4"" />
-        <Member Name=""DonutChart"" Value=""5"" />
-      </EnumType>
-    </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityContainer Name=""Container"">
         <EntitySet Name=""View"" EntityType=""Affra.Service.View.Domain.Views.View"">
-          <NavigationPropertyBinding Path=""Charts"" Target=""Chart"" />
           <NavigationPropertyBinding Path=""Rows"" Target=""Row"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
@@ -1724,7 +933,7 @@ namespace ViewODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""Row"" EntityType=""Affra.Service.View.Domain.Views.Row"">
-          <NavigationPropertyBinding Path=""Charts"" Target=""Chart"" />
+          <NavigationPropertyBinding Path=""Columns"" Target=""Column"" />
           <NavigationPropertyBinding Path=""View"" Target=""View"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
@@ -1732,19 +941,9 @@ namespace ViewODataService.Default
             </Collection>
           </Annotation>
         </EntitySet>
-        <EntitySet Name=""Chart"" EntityType=""Affra.Service.View.Domain.Charts.Chart"">
-          <NavigationPropertyBinding Path=""ChartSeries"" Target=""ChartSeries"" />
+        <EntitySet Name=""Column"" EntityType=""Affra.Service.View.Domain.Views.Column"">
           <NavigationPropertyBinding Path=""Row"" Target=""Row"" />
-          <NavigationPropertyBinding Path=""RowAsChart"" Target=""Row"" />
           <NavigationPropertyBinding Path=""View"" Target=""View"" />
-          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name=""ChartSeries"" EntityType=""Affra.Service.View.Domain.Charts.ChartSeries"">
-          <NavigationPropertyBinding Path=""Chart"" Target=""Chart"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
