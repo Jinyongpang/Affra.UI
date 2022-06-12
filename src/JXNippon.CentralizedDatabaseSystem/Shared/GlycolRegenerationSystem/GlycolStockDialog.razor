@@ -1,16 +1,26 @@
-﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems
+@using JXNippon.CentralizedDatabaseSystem.Models
 
-<RadzenTemplateForm Data="@Item" Submit="@( async (DailyCommunicationSystem args) => { await SubmitAsync(args); })">
+<RadzenTemplateForm Data="@Item" Submit="@( async (DailyGlycolStock args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
             <RadzenCard>
-                <div class="row py-2">
+                 <div class="row py-2">
                     <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Remarks" />
+                        <RadzenLabel class="dialogTextSize" Text="Glycol Stock In Tote Tank" />
                     </div>
                     <div class="col-8">
-                        <RadzenTextArea Name="Remark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="Remark" Text="Remark is required" Popup=false/>
+                       <RadzenNumeric Name="GlycolStockInToteTank" class="w-100" @bind-Value="@Item.GlycolStockInToteTank" Data="@datas" Disabled=@isViewing
+                       Placeholder="Enter glycol stock in tote tank ..." TextProperty="GlycolStockInToteTank"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Glycol Stock In Drum" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="GlycolStockInDrum" class="w-100" @bind-Value="@Item.GlycolStockInDrum" Data="@datas" Disabled=@isViewing
+                       Placeholder="Enter glycol stock in drum ..." TextProperty="GlycolStockInDrum"></RadzenNumeric>
                     </div>
                 </div>
                 <div class="row py-2">
