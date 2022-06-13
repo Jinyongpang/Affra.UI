@@ -1,4 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using Affra.Core.Domain.Services;
+using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Client;
 using Microsoft.OData.Extensions.Client;
 using ViewODataService.Affra.Service.View.Domain.Views;
@@ -16,6 +19,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
         public IDictionary<string, string> GetTypeMapping()
         {
             return ViewHelper.GetTypeMapping();
+        }
+
+        public object GetPropValue(object src, string propName)
+        {
+            return src.GetType().GetProperty(propName).GetValue(src, null);
+        }
+
+        public dynamic GetGenericService(IServiceScope serviceScope, string typeInString)
+        {
+            var type = typeof(IUnitGenericService<,>).MakeGenericType(Type.GetType(typeInString), typeof(ICentralizedDatabaseSystemUnitOfWork));
+            return serviceScope.ServiceProvider.GetRequiredService(type);
         }
 
         public async Task<View> GetViewAsync(string name)

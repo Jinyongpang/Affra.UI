@@ -1,4 +1,4 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+﻿using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
@@ -8,12 +8,12 @@ using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class ChartSeriesDataGrid
+    public partial class GridColumnDataGrid
     {
-        private RadzenDataGrid<ChartSeries> grid;
-        private IEnumerable<ChartSeries> items;
+        private RadzenDataGrid<GridColumn> grid;
+        private IEnumerable<GridColumn> items;
 
-        [Parameter] public Chart Chart { get; set; }
+        [Parameter] public Grid Grid { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
@@ -25,7 +25,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override void OnInitialized()
         {
-            items = Chart.ChartSeries;
+            items = Grid.GridColumns;
         }
 
         public Task ReloadAsync()
@@ -38,7 +38,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             AffraNotificationService.NotifyException(ex);
         }
 
-        private async Task ShowDialogAsync(ChartSeries data, int menuAction, string title)
+        private async Task ShowDialogAsync(GridColumn data, int menuAction, string title)
         {
             ContextMenuService.Close();
             dynamic? response;
@@ -50,14 +50,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
                 if (response == true)
                 {
-                    Chart.ChartSeries.Remove(data);
+                    Grid.GridColumns.Remove(data);
                     AffraNotificationService.NotifyItemDeleted();
                 }
             }
             else
             {
-                response = await DialogService.OpenAsync<ChartSeriesDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "Chart", Chart } },
+                response = await DialogService.OpenAsync<GridColumnDialog>(title,
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "Grid", Grid } },
                            Constant.DialogOptions);
 
                 if (response == true)
@@ -70,7 +70,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         }
                         else
                         {
-                            Chart.ChartSeries.Add(data);
+                            Grid.GridColumns.Add(data);
                             AffraNotificationService.NotifyItemCreated();
                         }
 

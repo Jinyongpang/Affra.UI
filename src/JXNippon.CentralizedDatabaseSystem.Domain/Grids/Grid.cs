@@ -2,25 +2,17 @@
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.OData.Client;
 
-namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
+namespace JXNippon.CentralizedDatabaseSystem.Domain.Grids
 {
-    public class Chart
+    public class Grid
     {
+        public string Type { get; set; }
+
         public string Title { get; set; }
 
         public string Icon { get; set; }
 
-        public string Type { get; set; }
-
-        public string FormatString { get; set; }
-
-        public int StepInMinutes { get; set; }
-
-        public decimal? ValueAxisStep { get; set; }
-
-        public string AxisTitle { get; set; }
-
-        public ICollection<ChartSeries> ChartSeries { get; set; }
+        public ICollection<GridColumn> GridColumns { get; set; }
 
         [IgnoreClientProperty]
         [JsonIgnore]

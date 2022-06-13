@@ -1,4 +1,5 @@
 ﻿@using System.Text.Json;
+@using JXNippon.CentralizedDatabaseSystem.Domain.Grids
 @using JXNippon.CentralizedDatabaseSystem.Domain.Views
 @using JXNippon.CentralizedDatabaseSystem.Domain.Charts
 @using ViewODataService.Affra.Service.View.Domain.Views
@@ -25,8 +26,18 @@
                 string type = ViewService.GetTypeMapping()[chart.Type];
                 <div class="col py-3">
                     <RadzenCard>                  
-                        <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
-                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ChartSeries="@chart.ChartSeries" ChartType="@chart.ChartType"></ChartComponent></RadzenCard>  
+                        <ChartComponent @ref="@chartComponentRef"  Title=@chart.Title Icon=@chart.Icon StartDate="@StartDate" EndDate="@EndDate" TType="@type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries"></ChartComponent></RadzenCard>  
+                </div> 
+            }
+            else if (col.ComponentType ==  nameof(Grid))
+            {
+                Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
+                string type = ViewService.GetTypeMapping()[grid.Type];
+                <div class="col py-3">
+                    <RadzenCard>                  
+                        <DataGridComponent @ref="@gridComponentRef" TType="@type" Title=@grid.Title Icon=@grid.Icon StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns"></DataGridComponent>   
+                    </RadzenCard>  
                 </div> 
             }
         }

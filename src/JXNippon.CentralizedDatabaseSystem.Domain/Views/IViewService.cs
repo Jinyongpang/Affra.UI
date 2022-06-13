@@ -1,4 +1,5 @@
-﻿using ViewODataService.Affra.Service.View.Domain.Views;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
 {
@@ -9,5 +10,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
         Task GetViewDetailAsync(View view);
         Task<IEnumerable<Column>> GetColumnsAsync(View view);
         IDictionary<string, string> GetTypeMapping();
+        object GetPropValue(object src, string propName);
+        dynamic GetGenericService(IServiceScope serviceScope, string typeInString);
     }
 }

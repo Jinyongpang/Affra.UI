@@ -1,4 +1,5 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 
@@ -25,6 +26,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             .Select(x => x.ToString())
             .ToList();
 
+        private static IEnumerable<string> executionTypes = Enum.GetValues(typeof(ExecutionType))
+            .Cast<ExecutionType>()
+            .Select(x => x.ToString())
+            .ToList();
+
         private static HashSet<Type> valueTypes = new HashSet<Type>()
         {
             typeof(decimal?),
@@ -37,13 +43,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             typeof(double),
         };
 
+        private static IEnumerable<string> ChartTypes = Enum.GetValues(typeof(ChartType))
+            .Cast<ChartType>()
+            .Select(x => x.ToString())
+            .ToList();
+
+        private bool isAPie
+        {
+            get => Item?.ChartType == ChartType.PieChart
+                || Item?.ChartType == ChartType.DonutChart;
+        }
         private bool isViewing { get => MenuAction == 3; }
 
         protected override Task OnInitializedAsync()
         {
             categoryProperties = Chart.ActualType.GetProperties()
-                .Where(prop => prop.PropertyType == typeof(DateTime)
-                    || prop.PropertyType == typeof(DateTime?))
                 .Select(prop => prop.Name)
                 .ToList();
 
@@ -53,7 +67,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 .ToList();
 
             groupProperties = Chart.ActualType.GetProperties()
-                .Where(prop => prop.PropertyType == typeof(string))
                 .Select(prop => prop.Name)
                 .ToList();
 

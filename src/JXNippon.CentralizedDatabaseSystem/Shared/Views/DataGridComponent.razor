@@ -1,0 +1,25 @@
+﻿@using System.Linq.Dynamic.Core
+@using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces
+@using JXNippon.CentralizedDatabaseSystem.Models
+
+<p>
+  <i class="@Icon"></i>
+    @Title
+</p>
+<hr class="solid">
+
+<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="false" AllowFiltering="false" AllowPaging="true" 
+    PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center"
+    ColumnWidth="40px" AllowColumnResize="true" ShowPagingSummary="true" 
+    AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+    PagerAlwaysVisible="false">
+
+    <Columns>
+        @foreach(var gridColumn in GridColumns)
+        {                    
+            <RadzenDataGridColumn TItem="IDaily" Property="@(gridColumn.Property)" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)">
+                </RadzenDataGridColumn>
+        }             
+    </Columns>
+</RadzenDataGrid> 

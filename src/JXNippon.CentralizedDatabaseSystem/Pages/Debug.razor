@@ -4,6 +4,8 @@
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
 @using System.Reflection
 @using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces
+@using JXNippon.CentralizedDatabaseSystem.Domain.Views
+@using JXNippon.CentralizedDatabaseSystem.Shared.Views
 @using ViewODataService.Affra.Service.View.Domain.Views
 
 <PageTitle>Debug</PageTitle>
@@ -15,11 +17,21 @@
     </ChildContent>
 </RadzenBreadCrumb>
 
+ <RadzenTextArea class="w-100" Placeholder="Expression..." @bind-Value="@Eval.Expression"></RadzenTextArea>
+ <RadzenButton Click=@OnClickAsync></RadzenButton>
+
+
 <GenericDataGrid TItem="DailyLogistic" @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
     ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
 
 <GenericDataGrid TItem="DailyHIPProduction"
     ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+
+@{
+     string t = ViewService.GetTypeMapping()["DailyLogistic"];
+     <DataGridComponent TType=@t></DataGridComponent>
+}
+
 
 <div class="row">
     <div class="col">
