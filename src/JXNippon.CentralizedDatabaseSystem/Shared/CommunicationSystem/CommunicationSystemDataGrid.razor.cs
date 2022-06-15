@@ -103,7 +103,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem
                     {
                         using var serviceScope = ServiceProvider.CreateScope();
                         var service = this.GetGenericService(serviceScope);
-                        data.Date = data.Date.ToUniversalTime();
 
                         if (data.Id > 0)
                         {

@@ -26,7 +26,7 @@
                 <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="CMFilterS6970Range" Title="CM Filter S-6970 Range"/>
                 <RadzenDataGridColumn TItem="DailyAnalysisResult" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
@@ -42,9 +42,9 @@
         ContextMenuService.Open(args, ds =>
            @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyAnalysisResult>, e))">
                 <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
-                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description"/>
-                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" />
-                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" />
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
                 <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
             </RadzenMenu>
     );  
@@ -54,11 +54,10 @@
         int i = (int)e.Value;
         if (i == 0)
         {
-            await ShowDialogAsync(new DailyAnalysisResult() { Date = DateTimeOffset.Now.Date }, i, "Add");
+            await ShowDialogAsync(new DailyAnalysisResult() { DateUI = DateTimeOffset.Now.Date }, i, "Add");
         }
         else if (i == 1)
         {
-            args.Data.Date = args.Data.Date.ToLocalTime();
             await ShowDialogAsync(args.Data, i, "Edit");
         }
         else if (i == 2)
@@ -67,7 +66,6 @@
         }
         else if (i == 3)
         {
-            args.Data.Date = args.Data.Date.ToLocalTime();
             await ShowDialogAsync(args.Data, i, "View");
         }
         else if (i == 4)
