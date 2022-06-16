@@ -29,7 +29,58 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems { public partial class DailyRollsRoyceRB211Engine : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads { public partial class DailyHIPWellHeadParameter : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads { public partial class DailyLWPWellHeadParameter : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines { public partial class DailyGasCondensateExportSamplerAndExportLine : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines { public partial class DailyGasCondensateExportSamplerAndExportLine : IDaily 
+    { 
+        [IgnoreClientProperty]
+        public DateTime DateUI 
+        { 
+            get { return this.Date.LocalDateTime; } 
+            set { this.Date = value.ToUniversalTime(); } 
+        }
+
+        [IgnoreClientProperty]
+        public DateTime LastPiggingDateUI
+        {
+            get { return this.LastPiggingDate.LocalDateTime; }
+            set { this.LastPiggingDate = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime NextPiggingDateUI
+        {
+            get { return this.NextPiggingDate.LocalDateTime; }
+            set { this.NextPiggingDate = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime LastChangeOutDateUI
+        {
+            get { return this.LastChangeOut.LocalDateTime; }
+            set { this.LastChangeOut = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime NextChangeOutDateUI
+        {
+            get { return this.NextChangeOut.LocalDateTime; }
+            set { this.NextChangeOut = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime LastSamplingDateUI
+        {
+            get { return this.LastSampling.LocalDateTime; }
+            set { this.LastSampling = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime NextSamplingDateUI
+        {
+            get { return this.NextSampling.LocalDateTime; }
+            set { this.NextSampling = value.ToUniversalTime(); }
+        }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems { public partial class DailyWellHeadAndSeparationSystem : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems { public partial class DailyWellStreamCooler : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions { public partial class DailySK10Production : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
