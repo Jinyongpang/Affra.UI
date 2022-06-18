@@ -1,0 +1,51 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
+@using JXNippon.CentralizedDatabaseSystem.Models
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (DailySK10Production args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <RadzenCard>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="SK10 Cumulative Gas Export (MMscf)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="SK10CumulativeGasExport" class="w-100" @bind-Value="@Item.SK10CumulativeGasExport" Disabled=@isViewing
+                       Placeholder="Enter SK10 cumulative gas export (MMscf) ..." TextProperty="SK10CumulativeGasExport"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="SK10 Gas Export GODC Plan (MMscfd)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="SK10GasExportGODCPlan" class="w-100" @bind-Value="@Item.SK10GasExportGODCPlan" Disabled=@isViewing
+                       Placeholder="Enter SK10 gas export GODC plan (MMscfd) ..." TextProperty="SK10GasExportGODCPlan"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="SK10GasExportGODCPlanRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.SK10GasExportGODCPlanRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Date" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                    </div>
+                </div>
+                <div class="row justify-content-center py-4" hidden=@isViewing>
+                    <div class="col-md-12 d-flex align-items-end justify-content-center">
+                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                    </div>
+                </div>
+            </RadzenCard>
+        </div>
+    </div>
+</RadzenTemplateForm>

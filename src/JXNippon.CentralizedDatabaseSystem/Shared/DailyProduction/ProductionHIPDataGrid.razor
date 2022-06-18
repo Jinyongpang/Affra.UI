@@ -8,30 +8,71 @@
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyHIPProduction" 
             ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
-
+            PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu">
+            <EmptyTemplate>                
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>No records to display.</a>
+                </div>                    
+            </EmptyTemplate>
             <Columns>
                 <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HIPCumulativeGasExport" Title="HIP Cumulative Gas Export (MMscf)"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HIPCumulativeGasExportRemark" Title="HIP Cumulative Gas Export Remark"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HIPCumulativeGasExportRemark" Title="HIP Cumulative Gas Export Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.HIPCumulativeGasExportRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HIPCumulativeCondensateExport" Title="HIP Cumulative Condensate Export (bbl)"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HIPCumulativeCondensateExportRemark" Title="HIP Cumulative Condensate Export Remark"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HIPCumulativeCondensateExportRemark" Title="HIP Cumulative Condensate Export Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.HIPCumulativeCondensateExportRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HIPCumulativeWaterProduction" Title="HIP Cumulative Water Production (bbl)"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HIPCumulativeWaterProductionRemark" Title="HIP Cumulative Water Production Remark"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HIPCumulativeWaterProductionRemark" Title="HIP Cumulative Water Production Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.HIPCumulativeWaterProductionRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPProduction" Property="FuelGas" Title="Fuel Gas (MMscf)"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="FuelGasRemark" Title="Fuel Gas Remark"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="FuelGasRemark" Title="Fuel Gas Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.FuelGasRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HPVent" Title="HP Vent (MMscf)"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HPVentRemark" Title="HP Vent Remark"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="HPVentRemark" Title="HP Vent Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.HPVentRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPProduction" Property="LPVent" Title="LP Vent (MMscf)"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="LPVentRemark" Title="LP Vent Remark"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="LPVentRemark" Title="LP Vent Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.LPVentRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPProduction" Property="WaterContentInGas" Title="Water Content in Gas (lb/MMscf)"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="WaterContentInGasRemark" Title="Water Content in Gas Remark"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="CondensateWaterCutMeter" Title="Condensate Water Cut Meter (%) (PPM)"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="CondensateWaterCutMeterRemark" Title="Condensate Water Cut Meter Remark"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="WaterContentInGasRemark" Title="Water Content in Gas Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.WaterContentInGasRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="CondensateWaterCutMeterPercentage" Title="Condensate Water Cut Meter (%)"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="CondensateWaterCutMeterPPM" Title="Condensate Water Cut Meter (PPM)"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="CondensateWaterCutMeterRemark" Title="Condensate Water Cut Meter Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.CondensateWaterCutMeterRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPProduction" Property="OilInWaterReading" Title="Oil In Water Reading (PPM)"/>
-                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="OilInWaterReadingRemark" Title="Oil In Water Reading Remark"/>
+                <RadzenDataGridColumn TItem="DailyHIPProduction" Property="OilInWaterReadingRemark" Title="Oil In Water Reading Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.OilInWaterReadingRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPProduction" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
@@ -39,3 +80,44 @@
         </RadzenDataGrid>  
     </div>
 </div>
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyHIPProduction>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyHIPProduction>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+            </RadzenMenu>
+    );  
+    }
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyHIPProduction> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DailyHIPProduction() { DateUI = DateTimeOffset.Now.Date }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();      
+        }
+    }
+}

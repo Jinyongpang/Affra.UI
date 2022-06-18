@@ -1,0 +1,187 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
+@using JXNippon.CentralizedDatabaseSystem.Models
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (DailyHIPProduction args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <RadzenCard>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="HIP Cumulative Gas Export (MMscf)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="HIPCumulativeGasExport" class="w-100" @bind-Value="@Item.HIPCumulativeGasExport" Disabled=@isViewing
+                       Placeholder="Enter HIP cumulative gas export (MMscf) ..." TextProperty="HIPCumulativeGasExport"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="HIP Cumulative Gas Export Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="HIPCumulativeGasExportRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.HIPCumulativeGasExportRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="HIP Cumulative Condensate Export (bbl)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="HIPCumulativeCondensateExport" class="w-100" @bind-Value="@Item.HIPCumulativeCondensateExport" Disabled=@isViewing
+                       Placeholder="Enter HIP cumulative condensate export (bbl) ..." TextProperty="HIPCumulativeCondensateExport"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="HIP Cumulative Condensate Export Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="HIPCumulativeCondensateExportRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.HIPCumulativeCondensateExportRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="HIP Cumulative Water Production (bbl)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="HIPCumulativeWaterProduction" class="w-100" @bind-Value="@Item.HIPCumulativeWaterProduction" Disabled=@isViewing
+                       Placeholder="Enter HIP cumulative water production (bbl) ..." TextProperty="HIPCumulativeWaterProduction"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="HIP Cumulative Water Production Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="HIPCumulativeWaterProductionRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.HIPCumulativeWaterProductionRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Fuel Gas (MMscf)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="FuelGas" class="w-100" @bind-Value="@Item.FuelGas" Disabled=@isViewing
+                       Placeholder="Enter fuel gas (MMscf) ..." TextProperty="FuelGas"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Fuel Gas Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="FuelGasRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.FuelGasRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="HP Vent (MMscf)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="HPVent" class="w-100" @bind-Value="@Item.HPVent" Disabled=@isViewing
+                       Placeholder="Enter HP vent (MMscf) ..." TextProperty="HPVent"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="HP Vent Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="HPVentRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.HPVentRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="LP Vent (MMscf)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="LPVent" class="w-100" @bind-Value="@Item.LPVent" Disabled=@isViewing
+                       Placeholder="Enter LP vent (MMscf) ..." TextProperty="LPVent"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="LP Vent Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="LPVentRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.LPVentRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Water Content in Gas (lb/MMscf)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="WaterContentInGas" class="w-100" @bind-Value="@Item.WaterContentInGas" Disabled=@isViewing
+                       Placeholder="Enter water content in gas (lb/MMscf) ..." TextProperty="WaterContentInGas"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Water Content in Gas Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="WaterContentInGasRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.WaterContentInGasRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Condensate Water Cut Meter (%)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="CondensateWaterCutMeterPercentage" class="w-100" @bind-Value="@Item.CondensateWaterCutMeterPercentage" Disabled=@isViewing
+                       Placeholder="Enter condensate water cut meter (%) ..." TextProperty="CondensateWaterCutMeterPercentage"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Condensate Water Cut Meter (PPM)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="CondensateWaterCutMeterPPM" class="w-100" @bind-Value="@Item.CondensateWaterCutMeterPPM" Disabled=@isViewing
+                       Placeholder="Enter condensate water cut meter (PPM) ..." TextProperty="CondensateWaterCutMeterPPM"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Condensate Water Cut Meter Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="CondensateWaterCutMeterRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.CondensateWaterCutMeterRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Oil In Water Reading (PPM)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="OilInWaterReading" class="w-100" @bind-Value="@Item.OilInWaterReading" Disabled=@isViewing
+                       Placeholder="Enter oil in water reading (PPM) ..." TextProperty="OilInWaterReading"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Oil In Water Reading Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="OilInWaterReadingRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.OilInWaterReadingRemark" Disabled=@isViewing></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Date" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                    </div>
+                </div>
+                <div class="row justify-content-center py-4" hidden=@isViewing>
+                    <div class="col-md-12 d-flex align-items-end justify-content-center">
+                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                    </div>
+                </div>
+            </RadzenCard>
+        </div>
+    </div>
+</RadzenTemplateForm>
