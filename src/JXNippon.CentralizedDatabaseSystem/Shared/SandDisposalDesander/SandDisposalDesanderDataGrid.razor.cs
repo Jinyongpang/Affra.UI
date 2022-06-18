@@ -24,6 +24,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander
         [Parameter] public bool ShowDateColumn { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
+        [Inject] private DialogService DialogService { get; set; }
+        [Inject] private ContextMenuService ContextMenuService { get; set; }
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
@@ -75,6 +77,66 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander
         private IGenericService<DailySandDisposalDesander> GetGenericService(IServiceScope serviceScope)
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailySandDisposalDesander, ICentralizedDatabaseSystemUnitOfWork>>();
+        }
+
+        private async Task ShowDialogAsync(DailySandDisposalDesander data, int menuAction, string title)
+        {
+            ContextMenuService.Close();
+            dynamic? response;
+            if (menuAction == 2)
+            {
+                response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
+                           new Dictionary<string, object>() { },
+                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+
+                if (response == true)
+                {
+                    using var serviceScope = ServiceProvider.CreateScope();
+                    var service = this.GetGenericService(serviceScope);
+                    await service.DeleteAsync(data);
+
+                    AffraNotificationService.NotifyItemDeleted();
+                }
+            }
+            else
+            {
+                response = await DialogService.OpenAsync<SandDisposalDesanderDialog>(title,
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction } },
+                           Constant.DialogOptions);
+
+                if (response == true)
+                {
+                    try
+                    {
+                        using var serviceScope = ServiceProvider.CreateScope();
+                        var service = this.GetGenericService(serviceScope);
+
+                        if (data.Id > 0)
+                        {
+                            isLoading = true;
+                            await service.UpdateAsync(data, data.Id);
+                            AffraNotificationService.NotifyItemUpdated();
+                        }
+                        else
+                        {
+                            isLoading = true;
+                            await service.InsertAsync(data);
+                            AffraNotificationService.NotifyItemCreated();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        AffraNotificationService.NotifyException(ex);
+                    }
+                    finally
+                    {
+                        isLoading = false;
+                    }
+                }
+            }
+
+            await grid.Reload();
         }
     }
 }

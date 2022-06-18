@@ -1,0 +1,124 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders
+@using JXNippon.CentralizedDatabaseSystem.Models
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (DailySandDisposalDesander args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <RadzenCard>
+                 <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Sand Disposal Desander Name" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenAutoComplete Name="SandDisposalDesanderName" class="w-100" @bind-Value="@Item.SandDisposalDesanderName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                            Placeholder="Enter sand disposal desander name ..." TextProperty="Name"></RadzenAutoComplete>
+                       <RadzenRequiredValidator Component="SandDisposalDesanderName" Text="Sand disposal desander name is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Status" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDropDown Name="Status" Placeholder="Status" @bind-Value="@Item.Status" Disabled=@isViewing 
+                        Data=@(StatusFilter.Statuses) />
+                        <RadzenRequiredValidator Component="Status" Text="Status is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Remark" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="Remark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark" Disabled=@isViewing></RadzenTextArea>
+                        <RadzenRequiredValidator Component="Remark" Text="Remark is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Last Sand Jetting Date" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.LastSandJettingDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Next Sand Jetting Date" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.NextSandJettingDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="No. of East Cluster Jetting Cycle" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="EastClusterJettingCycleNumber" class="w-100" @bind-Value="@Item.EastClusterJettingCycleNumber" Data="@datas" Disabled=@isViewing
+                       Placeholder="Enter no. of east cluster jetting cycle ..." TextProperty="EastClusterJettingCycleNumber"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="No. of West Cluster Jetting Cycle" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="WestClusterJettingCycleNumber" class="w-100" @bind-Value="@Item.WestClusterJettingCycleNumber" Data="@datas" Disabled=@isViewing
+                       Placeholder="Enter no. of west cluster jetting cycle ..." TextProperty="WestClusterJettingCycleNumber"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="No. of Drum Collected" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="DrumCollectedNumber" class="w-100" @bind-Value="@Item.DrumCollectedNumber" Data="@datas" Disabled=@isViewing
+                       Placeholder="Enter no. of drum collected ..." TextProperty="DrumCollectedNumber"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Accumulated Sand Disposed" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="AccumulatedSandDisposed" class="w-100" @bind-Value="@Item.AccumulatedSandDisposed" Data="@datas" Disabled=@isViewing
+                       Placeholder="Enter accumulated sand disposed ..." TextProperty="AccumulatedSandDisposed"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Highest Mercury Reading" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="HighestMercuryReading" class="w-100" @bind-Value="@Item.HighestMercuryReading" Data="@datas" Disabled=@isViewing
+                       Placeholder="Enter highest mercury reading ..." TextProperty="HighestMercuryReading"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Remarks" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextArea Name="Remark1" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark1" Disabled=@isViewing></RadzenTextArea>
+                        <RadzenRequiredValidator Component="Remark1" Text="Remark is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Date" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                    </div>
+                </div>
+                <div class="row justify-content-center py-4" hidden=@isViewing>
+                    <div class="col-md-12 d-flex align-items-end justify-content-center">
+                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                    </div>
+                </div>
+            </RadzenCard>
+        </div>
+    </div>
+</RadzenTemplateForm>
