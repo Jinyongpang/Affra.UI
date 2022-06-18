@@ -1,0 +1,90 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems
+@using JXNippon.CentralizedDatabaseSystem.Models
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (DailyWellHeadAndSeparationSystem args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <RadzenCard>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Station Recycle PV-2015 %" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="StationRecyclePV2015" class="w-100" @bind-Value="@Item.StationRecyclePV2015" Disabled=@isViewing
+                       Placeholder="Enter station recycle PV-2015 percentage ..." TextProperty="StationRecyclePV2015"></RadzenNumeric>
+                    </div>
+                </div>
+                 <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Station Recycle PV-2015 Control" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenAutoComplete Name="StationRecyclePV2015Control" class="w-100" @bind-Value="@Item.StationRecyclePV2015Control" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                            Placeholder="Enter station recycle PV-2015 control..." TextProperty="Name"></RadzenAutoComplete>
+                       <RadzenRequiredValidator Component="StationRecyclePV2015Control" Text="Control is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Production Separator V-2010 PV" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="ProductionSeparatorV2010PV" class="w-100" @bind-Value="@Item.ProductionSeparatorV2010PV" Disabled=@isViewing
+                       Placeholder="Enter production separator V-2010 PV ..." TextProperty="ProductionSeparatorV2010PV"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Test Separator V-2000 PV" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="TestSeparatorV2000PV" class="w-100" @bind-Value="@Item.TestSeparatorV2000PV" Disabled=@isViewing
+                       Placeholder="Enter test separator V-2000 PV ..." TextProperty="TestSeparatorV2000PV"></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Say bolt Colour" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenAutoComplete Name="SayBoltColour" class="w-100" @bind-Value="@Item.SayBoltColour" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                            Placeholder="Enter say bolt colour..." TextProperty="SayBoltColour"></RadzenAutoComplete>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Sand Filter S-0400 Status" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDropDown Name="SandFilterS0400Status" Placeholder="Sand Filter S-0400 Status" @bind-Value="@Item.SandFilterS0400Status" Disabled=@isViewing 
+                        Data=@(StatusFilter.Statuses) />
+                        <RadzenRequiredValidator Component="SandFilterS0400Status" Text="Status is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="S-0400 ΔP (bar)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenAutoComplete Name="S0400" class="w-100" @bind-Value="@Item.S0400" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                            Placeholder="Enter S-0400 ΔP..." TextProperty="S0400"></RadzenAutoComplete>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Date" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                    </div>
+                </div>
+                <div class="row justify-content-center py-4" hidden=@isViewing>
+                    <div class="col-md-12 d-flex align-items-end justify-content-center">
+                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                    </div>
+                </div>
+            </RadzenCard>
+        </div>
+    </div>
+</RadzenTemplateForm>
