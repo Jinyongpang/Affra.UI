@@ -15,7 +15,11 @@
                 </div>                    
             </EmptyTemplate>
             <Columns>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangSummary" Property="Remark" Title="Remark" />      
+                <RadzenDataGridColumn TItem="DailyFPSOHelangSummary" Property="Remark" Title="Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.Remark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangSummary" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
