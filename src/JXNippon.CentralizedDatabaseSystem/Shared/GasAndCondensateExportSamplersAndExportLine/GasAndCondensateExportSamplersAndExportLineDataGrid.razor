@@ -82,7 +82,16 @@
         int i = (int)e.Value;
         if (i == 0)
         {
-            await ShowDialogAsync(new DailyGasCondensateExportSamplerAndExportLine() { DateUI = DateTimeOffset.Now.Date }, i, "Add");
+            await ShowDialogAsync(new DailyGasCondensateExportSamplerAndExportLine() 
+                { 
+                    DateUI = DateTimeOffset.Now.Date,
+                    LastPiggingDateUI = DateTimeOffset.Now.Date,
+                    NextPiggingDateUI = DateTimeOffset.Now.Date,
+                    LastSamplingDateUI = DateTimeOffset.Now.Date,
+                    NextSamplingDateUI = DateTimeOffset.Now.Date,
+                    LastChangeOutDateUI = DateTimeOffset.Now.Date,
+                    NextChangeOutDateUI = DateTimeOffset.Now.Date,
+                }, i, "Add");
         }
         else if (i == 1)
         {
