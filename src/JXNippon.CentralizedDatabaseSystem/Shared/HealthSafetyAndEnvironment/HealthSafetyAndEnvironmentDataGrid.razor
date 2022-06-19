@@ -8,20 +8,52 @@
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyHealthSafetyEnvironment" 
             ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
-
+            PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu">
+            <EmptyTemplate>                
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>No records to display.</a>
+                </div>                    
+            </EmptyTemplate>
             <Columns>
-                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastLTIDate" Title="Last LTI Date" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastLTIDate" Title="Last LTI Date" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.LastLTIDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="SK10DaysLTIFree" Title="SK-10 Days LTI Free" />
-                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastDrillExerciseConducted" Title="Last Drill Exercise Conducted" />
-                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastAnnualESDTest" Title="Last Annual ESD Test" />
-                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="NextAnnualESDTest" Title="Next Annual ESD Test" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastDrillExerciseConducted" Title="Last Drill Exercise Conducted" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.LastDrillExerciseConductedDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastAnnualESDTest" Title="Last Annual ESD Test" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.LastAnnualESDTestDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="NextAnnualESDTest" Title="Next Annual ESD Test" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.NextAnnualESDTestDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Injurious_MTC_FACCount" Title="Injurious/MTC/FAC Count" />
-                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Injurious_MTC_FACDate" Title="Injurious/MTC/FAC Date" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Injurious_MTC_FACDate" Title="Injurious/MTC/FAC Date" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Injurious_MTC_FACDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="NearMissCount" Title="Near Miss Count" />
-                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="NearMissDate" Title="Near Miss Date" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="NearMissDate" Title="Near Miss Date" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.NearMissDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="PropertyDamageCount" Title="Property Damage Count" />
-                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="PropertyDamageDate" Title="Property Damage Date" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="PropertyDamageDate" Title="Property Damage Date" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.PropertyDamageDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="TotalUCUXToday" Title="Total UCUX Today" />
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="TotalUCUXThisMonth" Title="Total UCUX Report Month" />
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="HIP_LQ" Title="HIP LQ" />
@@ -33,10 +65,10 @@
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="WindSpeed" Title="Wind Speed (knots)" />
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="WindDirection" Title="Wind Direction" />
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="SwellWaveHeight" Title="Swell/Wave Height" />
-                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="visibility" Title="Visibility (NM)" />
+                <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Visibility" Title="Visibility (NM)" />
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
@@ -44,3 +76,54 @@
         </RadzenDataGrid>  
     </div>
 </div>
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyHealthSafetyEnvironment>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyHealthSafetyEnvironment>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+            </RadzenMenu>
+    );  
+    }
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyHealthSafetyEnvironment> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DailyHealthSafetyEnvironment() 
+                { 
+                    DateUI = DateTimeOffset.Now.Date,
+                    LastLTIDateUI = DateTimeOffset.Now.Date,
+                    LastDrillExerciseConductedDateUI = DateTimeOffset.Now.Date,
+                    LastAnnualESDTestDateUI = DateTimeOffset.Now.Date,
+                    NextAnnualESDTestDateUI = DateTimeOffset.Now.Date,
+                    Injurious_MTC_FACDateUI = DateTimeOffset.Now.Date,
+                    NearMissDateUI = DateTimeOffset.Now.Date,
+                    PropertyDamageDateUI = DateTimeOffset.Now.Date,
+                }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();      
+        }
+    }
+}

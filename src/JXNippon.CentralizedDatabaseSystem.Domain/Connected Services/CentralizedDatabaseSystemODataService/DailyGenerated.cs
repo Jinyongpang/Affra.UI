@@ -1,11 +1,114 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using Microsoft.OData.Client;
 
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments { public partial class DailyHealthSafetyEnvironment : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments 
+{ 
+    public partial class DailyHealthSafetyEnvironment : IDaily
+    { 
+        [IgnoreClientProperty]
+        public DateTime DateUI 
+        { 
+            get { return this.Date.LocalDateTime; }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime LastLTIDateUI
+        {
+            get { return this.LastLTIDate.LocalDateTime; }
+            set { this.LastLTIDate = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime LastDrillExerciseConductedDateUI
+        {
+            get { return this.LastDrillExerciseConducted.LocalDateTime; }
+            set { this.LastDrillExerciseConducted = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime LastAnnualESDTestDateUI
+        {
+            get { return this.LastAnnualESDTest.LocalDateTime; }
+            set { this.LastAnnualESDTest = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime NextAnnualESDTestDateUI
+        {
+            get { return this.NextAnnualESDTest.LocalDateTime; }
+            set { this.NextAnnualESDTest = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime Injurious_MTC_FACDateUI
+        {
+            get { return this.Injurious_MTC_FACDate.LocalDateTime; }
+            set { this.Injurious_MTC_FACDate = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime NearMissDateUI
+        {
+            get { return this.NearMissDate.LocalDateTime; }
+            set { this.NearMissDate = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime PropertyDamageDateUI
+        {
+            get { return this.PropertyDamageDate.LocalDateTime; }
+            set { this.PropertyDamageDate = value.ToUniversalTime(); }
+        }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments { public partial class DailyLifeBoat : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments { public partial class DailyLongTermOverridesInhibitsOnAlarmTrip : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments 
+{ 
+    public partial class DailyLongTermOverridesInhibitsOnAlarmTrip : IDaily 
+    { 
+        [IgnoreClientProperty]
+        public DateTime DateUI 
+        { 
+            get { return this.Date.LocalDateTime; }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime RaisedDateUI
+        {
+            get { return this.RaisedDate.LocalDateTime; }
+            set { this.RaisedDate = value.ToUniversalTime(); }
+        }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments { public partial class DailyLossOfPrimaryContainmentIncident : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments { public partial class DailyOperatingChange : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments 
+{
+    public partial class DailyOperatingChange : IDaily
+    { 
+        [IgnoreClientProperty] 
+        public DateTime DateUI 
+        { 
+            get { return this.Date.LocalDateTime; }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime RaisedDateUI
+        {
+            get { return this.RaisedDate.LocalDateTime; }
+            set { this.RaisedDate = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime? ExpiredDateUI
+        {
+            get { return this.ExpiredDate?.LocalDateTime; }
+            set { this.ExpiredDate = value?.ToUniversalTime(); }
+        }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries { public partial class DailyHIPAndLWPSummary : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries { public partial class DailyFPSOHelangSummary : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders { public partial class DailySandDisposalDesander : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.LocalDateTime; } set { this.Date = value.ToUniversalTime(); } } } }

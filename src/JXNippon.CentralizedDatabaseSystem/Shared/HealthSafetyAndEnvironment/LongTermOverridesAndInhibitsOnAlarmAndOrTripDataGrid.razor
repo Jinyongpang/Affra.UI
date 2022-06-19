@@ -8,17 +8,37 @@
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" 
             ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
-
+            PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu">
+            <EmptyTemplate>                
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>No records to display.</a>
+                </div>                    
+            </EmptyTemplate>
             <Columns>
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="TagName" Title="Tag Name" />
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="RaisedDate" Title="Raised Date" />
+                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="TagName" Title="Tag Name">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.TagName</p>
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="RaisedDate" Title="Raised Date" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.RaisedDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="MaximoWorkOrder" Title="Maximo Work Order" />
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="Location" Title="Location" />
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="LongDescriptionRemark" Title="Long Description & Remark" />
+                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="Location" Title="Location">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.Location</p>
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="LongDescriptionRemark" Title="Long Description & Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.LongDescriptionRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
@@ -26,3 +46,44 @@
         </RadzenDataGrid>  
     </div>
 </div>
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyLongTermOverridesInhibitsOnAlarmTrip>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyLongTermOverridesInhibitsOnAlarmTrip>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+            </RadzenMenu>
+    );  
+    }
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyLongTermOverridesInhibitsOnAlarmTrip> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DailyLongTermOverridesInhibitsOnAlarmTrip() { DateUI = DateTimeOffset.Now.Date, RaisedDateUI = DateTimeOffset.Now.Date }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();      
+        }
+    }
+}
