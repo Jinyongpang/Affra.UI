@@ -8,9 +8,15 @@
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyWellHeadAndSeparationSystem" 
             ColumnWidth="50px" AllowColumnResize="true" ShowPagingSummary="true" 
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
+            PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu">
+            <EmptyTemplate>                
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>No records to display.</a>
+                </div>                    
+            </EmptyTemplate>
             <Columns>
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="StationRecyclePV2015" Filterable="false" Title="Station Recycle PV-2015 %" Frozen="true" Pickable="false" />
+                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="StationRecyclePV2015Control" Filterable="false" Title="Station Recycle PV-2015 Control" Frozen="true" Pickable="false" />
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="ProductionSeparatorV2010PV" Title="Production Separator V-2010 PV"/>
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="TestSeparatorV2000PV" Title="Test Separator V-2000 PV"/>
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="SayBoltColour" Title="Say Bolt Colour"/>
@@ -19,10 +25,10 @@
                         <StatusGridColumnTemplate Status="@(item.SandFilterS0400Status)"></StatusGridColumnTemplate>
                     </Template>        
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="S0400" Title="S-0400 (bar)"/>
+                <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="S0400" Title="S-0400 ΔP (bar)"/>
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
@@ -30,3 +36,44 @@
         </RadzenDataGrid>  
     </div>
 </div>
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyWellHeadAndSeparationSystem>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyWellHeadAndSeparationSystem>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+            </RadzenMenu>
+    );  
+    }
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyWellHeadAndSeparationSystem> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DailyWellHeadAndSeparationSystem() { DateUI = DateTimeOffset.Now.Date }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();      
+        }
+    }
+}

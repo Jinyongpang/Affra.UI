@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 26/5/2022 9:51:26 PM
+// Generation date: 18/6/2022 4:31:09 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -2301,26 +2301,47 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnWaterContentInGasRemarkChanging(string value);
         partial void OnWaterContentInGasRemarkChanged();
         /// <summary>
-        /// There are no comments for Property CondensateWaterCutMeter in the schema.
+        /// There are no comments for Property CondensateWaterCutMeterPercentage in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<decimal> CondensateWaterCutMeter
+        public global::System.Nullable<decimal> CondensateWaterCutMeterPercentage
         {
             get
             {
-                return this._CondensateWaterCutMeter;
+                return this._CondensateWaterCutMeterPercentage;
             }
             set
             {
-                this.OnCondensateWaterCutMeterChanging(value);
-                this._CondensateWaterCutMeter = value;
-                this.OnCondensateWaterCutMeterChanged();
+                this.OnCondensateWaterCutMeterPercentageChanging(value);
+                this._CondensateWaterCutMeterPercentage = value;
+                this.OnCondensateWaterCutMeterPercentageChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<decimal> _CondensateWaterCutMeter;
-        partial void OnCondensateWaterCutMeterChanging(global::System.Nullable<decimal> value);
-        partial void OnCondensateWaterCutMeterChanged();
+        private global::System.Nullable<decimal> _CondensateWaterCutMeterPercentage;
+        partial void OnCondensateWaterCutMeterPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnCondensateWaterCutMeterPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property CondensateWaterCutMeterPPM in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> CondensateWaterCutMeterPPM
+        {
+            get
+            {
+                return this._CondensateWaterCutMeterPPM;
+            }
+            set
+            {
+                this.OnCondensateWaterCutMeterPPMChanging(value);
+                this._CondensateWaterCutMeterPPM = value;
+                this.OnCondensateWaterCutMeterPPMChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _CondensateWaterCutMeterPPM;
+        partial void OnCondensateWaterCutMeterPPMChanging(global::System.Nullable<decimal> value);
+        partial void OnCondensateWaterCutMeterPPMChanged();
         /// <summary>
         /// There are no comments for Property CondensateWaterCutMeterRemark in the schema.
         /// </summary>
@@ -17534,7 +17555,8 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""LPVentRemark"" Type=""Edm.String"" />
         <Property Name=""WaterContentInGas"" Type=""Edm.Decimal"" />
         <Property Name=""WaterContentInGasRemark"" Type=""Edm.String"" />
-        <Property Name=""CondensateWaterCutMeter"" Type=""Edm.Decimal"" />
+        <Property Name=""CondensateWaterCutMeterPercentage"" Type=""Edm.Decimal"" />
+        <Property Name=""CondensateWaterCutMeterPPM"" Type=""Edm.Decimal"" />
         <Property Name=""CondensateWaterCutMeterRemark"" Type=""Edm.String"" />
         <Property Name=""OilInWaterReading"" Type=""Edm.Decimal"" />
         <Property Name=""OilInWaterReadingRemark"" Type=""Edm.String"" />

@@ -8,29 +8,69 @@
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyFPSOHelangProduction" 
             ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
-
+            PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu">
+            <EmptyTemplate>                
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>No records to display.</a>
+                </div>                    
+            </EmptyTemplate>
             <Columns>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeGasExport" Title="FPSO Cumulative Gas Export (MMscf)"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeGasExportRemark" Title="FPSO Cumulative Gas Export Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeGasExportRemark" Title="FPSO Cumulative Gas Export Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.FPSOCumulativeGasExportRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeCrudeOil" Title="FPSO Cumulative Crude Oil (bbl)"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeCrudeOilRemark" Title="FPSO Cumulative Crude Oil Remark"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCrudeAPIReading" Title="FPSO Crude API reading"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeCrudeOilRemark" Title="FPSO Cumulative Crude Oil Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.FPSOCumulativeCrudeOilRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCrudeAPIReading" Title="FPSO Crude API reading">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.FPSOCrudeAPIReading</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedHIPCrudeToFPSO" Title="Estimated HIP Crude to FPSO (bbl)"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedHIPCrudeToFPSORemark" Title="Estimated HIP Crude to FPSO Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedHIPCrudeToFPSORemark" Title="Estimated HIP Crude to FPSO Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.EstimatedHIPCrudeToFPSORemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedLWPCrudeToFPSO" Title="Estimated LWP Crude to FPSO (bbl)"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedLWPCrudeToFPSORemark" Title="Estimated LWP Crude to FPSO Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedLWPCrudeToFPSORemark" Title="Estimated LWP Crude to FPSO Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.EstimatedLWPCrudeToFPSORemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="HIPCondyDivertToFPSO" Title="Estimated HIP Condy Divert to FPSO (bbl)"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="HIPCondyDivertToFPSORemark" Title="Estimated HIP Condy Divert to FPSO Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="HIPCondyDivertToFPSORemark" Title="Estimated HIP Condy Divert to FPSO Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.HIPCondyDivertToFPSORemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeWaterProduction" Title="FPSO Cumulative Water Production (bbl)"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeWaterProductionRemark" Title="FPSO Cumulative Water Production Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeWaterProductionRemark" Title="FPSO Cumulative Water Production Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.FPSOCumulativeWaterProductionRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFlaring" Title="FPSO Flaring (MMscf)"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFlaringRemark" Title="FPSO Flaring Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFlaringRemark" Title="FPSO Flaring Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.FPSOFlaringRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFuelGasConsumption" Title="FPSO Fuel Gas Consumption (MMscf)"/>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFuelGasConsumptionRemark" Title="FPSO Fuel Gas Consumption Remark"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOFuelGasConsumptionRemark" Title="FPSO Fuel Gas Consumption Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.FPSOFuelGasConsumptionRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
@@ -38,3 +78,44 @@
         </RadzenDataGrid>  
     </div>
 </div>
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyFPSOHelangProduction>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyFPSOHelangProduction>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+            </RadzenMenu>
+    );  
+    }
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyFPSOHelangProduction> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DailyFPSOHelangProduction() { DateUI = DateTimeOffset.Now.Date }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();      
+        }
+    }
+}
