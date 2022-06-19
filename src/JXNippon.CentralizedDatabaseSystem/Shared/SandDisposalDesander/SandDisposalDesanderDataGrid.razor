@@ -77,7 +77,12 @@
         int i = (int)e.Value;
         if (i == 0)
         {
-            await ShowDialogAsync(new DailySandDisposalDesander() { DateUI = DateTimeOffset.Now.Date }, i, "Add");
+            await ShowDialogAsync(new DailySandDisposalDesander() 
+                { 
+                    DateUI = DateTimeOffset.Now.Date,
+                    LastSandJettingDateUI = DateTimeOffset.Now.Date,
+                    NextSandJettingDateUI = DateTimeOffset.Now.Date
+                }, i, "Add");
         }
         else if (i == 1)
         {
