@@ -8,8 +8,12 @@
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyInowacInjection" 
             ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
-
+            PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu">
+            <EmptyTemplate>                
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>No records to display.</a>
+                </div>                    
+            </EmptyTemplate>
             <Columns>
                 <RadzenDataGridColumn TItem="DailyInowacInjection" Property="V2010" Title="V-2010" />
                 <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCALP" Title="TC-A LP" />
@@ -40,11 +44,11 @@
                 <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_V2530_FE" Title="TC-B V-2530 Fe" />
                 <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_TCBLP_PH" Title="TC-B LP pH" />
                 <RadzenDataGridColumn TItem="DailyInowacInjection" Property="TCB_TCBLP_FE" Title="TC-B LP Fe" />
-                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="Stock" Title="Level Drop" />
-                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="LevelDrop" Title="Stock (Drums)" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="LevelDrop" Title="Level Drop" />
+                <RadzenDataGridColumn TItem="DailyInowacInjection" Property="Stock" Title="Stock (Drums)" />
                 <RadzenDataGridColumn TItem="DailyInowacInjection" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
@@ -52,3 +56,44 @@
         </RadzenDataGrid>  
     </div>
 </div>
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyInowacInjection>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyInowacInjection>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+            </RadzenMenu>
+    );  
+    }
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyInowacInjection> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DailyInowacInjection() { DateUI = DateTimeOffset.Now.Date }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();      
+        }
+    }
+}

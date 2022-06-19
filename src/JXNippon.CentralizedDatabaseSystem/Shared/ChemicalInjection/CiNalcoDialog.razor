@@ -1,0 +1,142 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
+@using JXNippon.CentralizedDatabaseSystem.Models
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (DailyCiNalco args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <RadzenCard>
+                 <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Yesterday's Level (2400 hrs)" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="YesterdayLevel" class="w-100" @bind-Value="@Item.YesterdayLevel" Disabled=@isViewing
+                            Placeholder="Enter yesterday level..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Today's Level (2400 hrs)" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="TodayLevel" class="w-100" @bind-Value="@Item.TodayLevel" Disabled=@isViewing
+                            Placeholder="Enter today level..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Level Drop" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="LevelDrop" class="w-100" @bind-Value="@Item.LevelDrop" Disabled=@isViewing
+                            Placeholder="Enter level drop..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Actual Consumption" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="ActualConsumption" class="w-100" @bind-Value="@Item.ActualConsumption" Disabled=@isViewing
+                            Placeholder="Enter actual consumption..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Daily Target Rate" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="DailyTargetRate" class="w-100" @bind-Value="@Item.DailyTargetRate" Disabled=@isViewing
+                            Placeholder="Enter daily target rate..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Well Injection Target" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="WellInjectionTarget" class="w-100" @bind-Value="@Item.WellInjectionTarget" Disabled=@isViewing
+                            Placeholder="Enter well injection target..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Well Actual Injection" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="WellActualInjection" class="w-100" @bind-Value="@Item.WellActualInjection" Disabled=@isViewing
+                            Placeholder="Enter well actual injection..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Trunk Line Injection Target" />
+                    </div>
+                    <div class="col-8">
+                       <RadzenNumeric Name="TrunkLineInjectionTarget" class="w-100" @bind-Value="@Item.TrunkLineInjectionTarget" Disabled=@isViewing
+                            Placeholder="Enter trunk line injection target..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Trunk Line Actual Target" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="TrunkLineActualInjection" class="w-100" @bind-Value="@Item.TrunkLineActualInjection" Disabled=@isViewing
+                            Placeholder="Enter trunk line actual target..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="LWP Injection Target" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="LWPInjectionTarget" class="w-100" @bind-Value="@Item.LWPInjectionTarget" Disabled=@isViewing
+                            Placeholder="Enter LWP injection target..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="LWP Actual Target" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="LWPActualInjection" class="w-100" @bind-Value="@Item.LWPActualInjection" Disabled=@isViewing
+                            Placeholder="Enter LWP actual target..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Tote Tank" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="ToteTank" class="w-100" @bind-Value="@Item.ToteTank" Disabled=@isViewing
+                            Placeholder="Enter tote tank..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Drums" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="Drum" class="w-100" @bind-Value="@Item.Drum" Disabled=@isViewing
+                            Placeholder="Enter drums..."></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Date" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                    </div>
+                </div>
+                 <div class="row justify-content-center py-4" hidden=@isViewing>
+                    <div class="col-md-12 d-flex align-items-end justify-content-center">
+                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                    </div>
+                </div>
+            </RadzenCard>
+        </div>
+    </div>
+</RadzenTemplateForm>
