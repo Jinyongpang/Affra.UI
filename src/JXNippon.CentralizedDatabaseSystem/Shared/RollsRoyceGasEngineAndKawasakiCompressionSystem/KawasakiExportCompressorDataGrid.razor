@@ -8,8 +8,12 @@
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyKawasakiExportCompressor" 
             ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
-
+            PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu">
+            <EmptyTemplate>                
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>No records to display.</a>
+                </div>                    
+            </EmptyTemplate>
             <Columns>
                 <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="KawasakiExportCompressorName" Title="Name" />
                 <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="SpeedControl" Title="Speed Control" />
@@ -39,10 +43,14 @@
                 <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="NDEJournalBrgTE806" Title="NDE Journal Brg TE-806 °c" />
                 <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEJournalBrgTE807" Title="DE Journal Brg TE-807 °c" />
                 <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEJournalBrgTE808" Title="DE Journal Brg TE-808 °c" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="Remark" Title="Remark" />
+                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="Remark" Title="Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.Remark</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.Date.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
@@ -50,3 +58,44 @@
         </RadzenDataGrid>  
     </div>
 </div>
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyKawasakiExportCompressor>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyKawasakiExportCompressor>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+            </RadzenMenu>
+    );  
+    }
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyKawasakiExportCompressor> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DailyKawasakiExportCompressor() { DateUI = DateTimeOffset.Now.Date }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();      
+        }
+    }
+}
