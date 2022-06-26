@@ -1,27 +1,30 @@
 ﻿@using System.Linq.Dynamic.Core
 @using JXNippon.CentralizedDatabaseSystem.Models
 
+<p>
+  <i class="@Icon"></i>
+    @Title
+</p>
+<hr class="solid">
+
 <RadzenChart @ref="chart">
     @if(items != null)
     {   
+
+
         foreach(var series in ChartSeries)
         {
-            bool isGroup = !string.IsNullOrEmpty(series.GroupProperty);
+            var seriesList = this.GetSeries(series, items);
 
-            var groupItems = items.GroupBy(x => 
-                isGroup 
-                ? (string)GetPropValue(x, series.GroupProperty)
-                : series.Title);
-
-            foreach (var group in groupItems)
-            {           
-                IEnumerable<SeriesItem> seriesItem = GetSeriesItems(series, group);
-                switch (ChartType)
+            foreach (var group in seriesList)
+            {
+                var seriesItem = group.SeriesItems;
+                switch (series.ChartType)
                 {
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.AreaChart:
                     {                           
                         <RadzenAreaSeries Data="@seriesItem" CategoryProperty="Category"
-                            Title="@group.Key" ValueProperty="Value"
+                            Title="@group.Title" ValueProperty="Value"
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
                             Smooth="@series.Smooth">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
@@ -31,17 +34,17 @@
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.LineChart:
                     {                           
                         <RadzenLineSeries Data="@seriesItem" CategoryProperty="Category"
-                            Title="@group.Key" ValueProperty="Value"
+                            Title="@group.Title" ValueProperty="Value"
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
                             Smooth="@series.Smooth">
-                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                        <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenLineSeries>
                         break;
                     };
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.BarChart:
                     {                           
                         <RadzenBarSeries Data="@seriesItem" CategoryProperty="Category"
-                            Title="@group.Key" ValueProperty="Value"
+                            Title="@group.Title" ValueProperty="Value"
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenBarSeries>
@@ -49,8 +52,8 @@
                     };
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.ColumnChart:
                     {                           
-                        <RadzenColumnSeries Data="@seriesItem" CategoryProperty="Category"
-                            Title="@group.Key" ValueProperty="Value"
+                        <RadzenColumnSeries Data="@seriesItem" CategoryProperty="Category" 
+                            Title="@group.Title" ValueProperty="Value" 
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenColumnSeries>
@@ -59,7 +62,7 @@
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.DonutChart:
                     {                           
                         <RadzenDonutSeries Data="@seriesItem" CategoryProperty="Category"
-                            Title="@group.Key" ValueProperty="Value">
+                            Title="@group.Title" ValueProperty="Value">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenDonutSeries>
                         break;
@@ -67,7 +70,7 @@
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.PieChart:
                     {                           
                         <RadzenPieSeries Data="@seriesItem" CategoryProperty="Category"
-                            Title="@group.Key" ValueProperty="Value">
+                            Title="@group.Title" ValueProperty="Value">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenPieSeries>
                         break;
@@ -82,7 +85,7 @@
 
             }
 
-            if (groupItems.Count() == 0)
+            if (seriesList.Count() == 0)
             {
                 <a>No records to display.</a>  
             }
@@ -94,8 +97,8 @@
     }
 
     <RadzenCategoryAxis FormatString="@FormatString" Step="@Step"/>
-    <RadzenValueAxis>
+    <RadzenValueAxis Step="@ValueAxisStep">
         <RadzenGridLines/>
-        <RadzenAxisTitle Text="@AxisTitle" />
+        <RadzenAxisTitle Text="@AxisTitle"/>
     </RadzenValueAxis>
 </RadzenChart>

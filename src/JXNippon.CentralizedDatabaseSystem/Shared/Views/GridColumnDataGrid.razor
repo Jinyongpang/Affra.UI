@@ -1,12 +1,11 @@
-﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
-@using JXNippon.CentralizedDatabaseSystem.Domain.Grids
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Grids
 @using ViewODataService.Affra.Service.View.Domain.Views
 
 <div class="row">
     <div class="col">
-        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+        <RadzenDataGrid @ref="grid" Data="@items"
             FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
-            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="Column" 
+            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="GridColumn" 
             ColumnWidth="20px" AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
             PagerAlwaysVisible="@PagerAlwaysVisible">
@@ -16,11 +15,11 @@
                 </div>                    
             </EmptyTemplate>
             <Columns>
-                <RadzenDataGridColumn TItem="Column" Property="RowSequence" Title="Row Sequence" Width="40px">
+                <RadzenDataGridColumn TItem="GridColumn" Property="Title" Title="Title" Width="20px">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="Column" Property="Sequence" Title="Sequence" Width="40px">
+                <RadzenDataGridColumn TItem="GridColumn" Property="Property" Title="Property" Width="20px">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="Column" Property="ComponentType" Title="Component Type" Width="40px">
+                <RadzenDataGridColumn TItem="GridColumn" Property="FormatString" Title="FormatString" Width="20px">
                 </RadzenDataGridColumn>
             </Columns>
 
@@ -32,39 +31,24 @@
 {
     private void OnCellContextMenu(MouseEventArgs args)
     {
-        bool hasRowData = (args as DataGridCellMouseEventArgs<Column>) != null;
+        bool hasRowData = (args as DataGridCellMouseEventArgs<GridColumn>) != null;
         ContextMenuService.Open(args, ds =>
-           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<Column>, e))">
-                <RadzenMenuItem Text="Add Chart ..." Value="0" Icon="assessment"/>
-                <RadzenMenuItem Text="Add Grid ..." Value="5" Icon="dns"/>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<GridColumn>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
                 <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
                 <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
                 <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
-                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
     </RadzenMenu>
     );  
     }
 
-    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<Column> args, MenuItemEventArgs e)
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<GridColumn> args, MenuItemEventArgs e)
     {
         int i = (int)e.Value;
         if (i == 0)
         {
             await ShowDialogAsync(
-                new Column()
-                {
-                    ComponentType = nameof(Chart),
-                },
-                i,
-                "Add");
-        }
-        else if (i == 5)
-        {
-            await ShowDialogAsync(
-                new Column()
-                {
-                    ComponentType = nameof(Grid),
-                },
+                new GridColumn(),
                 i,
                 "Add");
         }
@@ -79,10 +63,6 @@
         else if (i == 3)
         {
             await ShowDialogAsync(args.Data, i, "View");
-        }
-        else if (i == 4)
-        {
-            await grid.Reload();      
         }
     }
 }

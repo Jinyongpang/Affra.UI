@@ -60,12 +60,21 @@
 .dialogTextSize {
     font-size: 1rem !important;
 }
-
+.rz-datatable-odd > td {
+    background-color: #ffffff;
+}
 .rz-inputtext, .rz-textarea {
     font-size: 1rem !important;
 }
 .rz-datatable-thead th, .rz-grid-table thead th {
-    background-color: #97C4B8 !important;
+    border-bottom: solid 1px #dfe7eb !important;
+    font-weight: bold !important;
+}
+
+.rz-grid-table thead th .rz-column-title {
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    font-size: 1rem !important;
 }
 
 .rz-grid-table thead th .rz-column-title {
@@ -81,7 +90,19 @@
     color: whitesmoke;
     background-color: #5089C6 !important;
 }
+/* lato-regular - latin */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/lato-v23-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''), url('../fonts/lato-v23-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/lato-v23-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/lato-v23-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/lato-v23-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/lato-v23-latin-regular.svg#Lato') format('svg'); /* Legacy iOS */
+}
 
 body {
-    font-family: "Lato", Arial, Helvetica, sans-serif !important;
+    font-family: Inter, sans-serif, Tahoma, Arial, Helvetica !important;
 }

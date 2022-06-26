@@ -1,0 +1,42 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Grids
+@using ViewODataService.Affra.Service.View.Domain.Views
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (GridColumn args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <RadzenCard>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Title" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Item.Title" Disabled=@isViewing></RadzenTextBox>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Property" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDropDown AllowClear="true" Data="@properties" Name="Property" class="w-100" Placeholder="Select property..." @bind-Value="@Item.Property" Disabled=@isViewing></RadzenDropDown>
+                        <RadzenRequiredValidator Component="Property" Text="Property is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Format String" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="FormatString" class="w-100" Placeholder="Enter format string..." @bind-Value="@Item.FormatString" Disabled=@isViewing></RadzenTextBox>
+                    </div>
+                </div>
+            </RadzenCard>
+                <div class="row justify-content-center py-4" hidden=@isViewing>
+                    <div class="col-md-12 d-flex align-items-end justify-content-center">
+                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                    </div>
+                </div>
+        </div>
+    </div>
+</RadzenTemplateForm>

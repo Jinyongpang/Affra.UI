@@ -1,5 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
@@ -43,6 +44,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             using var serviceScope = ServiceProvider.CreateScope();
             var viewService = serviceScope.ServiceProvider.GetRequiredService<IViewService>();
             items = await viewService.GetColumnsAsync(View);
+            items = items
+                .OrderBy(x => x.RowSequence)
+                .ThenBy(x => x.Sequence);
             Count = items.Count();
             isLoading = false;
         }
@@ -82,6 +86,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 if (data.ComponentType == nameof(Chart))
                 {
                     response = await DialogService.OpenAsync<ChartDialog>(title,
+                       new Dictionary<string, object>() { { "Column", data }, { "MenuAction", menuAction }, { "View", View } },
+                       Constant.DialogOptions);
+                }
+                else if (data.ComponentType == nameof(Grid))
+                {
+                    response = await DialogService.OpenAsync<GridDialog>(title,
                        new Dictionary<string, object>() { { "Column", data }, { "MenuAction", menuAction }, { "View", View } },
                        Constant.DialogOptions);
                 }
