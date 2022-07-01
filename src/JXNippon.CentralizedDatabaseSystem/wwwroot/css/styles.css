@@ -22,7 +22,7 @@
 }
 
 .toprow-title {
-    color: #1A3C40;
+    color: #1A3C40 !important;
     font-weight: bold !important;
 }
 .space {
