@@ -4,101 +4,99 @@
 <RadzenTemplateForm Data="@Item" Submit="@( async (ChartSeries args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <RadzenCard>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Title" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Item.Title" Disabled=@isViewing></RadzenTextBox>
-                    </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Title" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Sequence" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="Sequence" class="w-100" Placeholder="Enter sequence..." @bind-Value="@Item.Sequence" Disabled=@isViewing></RadzenNumeric>
-                        <RadzenRequiredValidator Component="Sequence" Text="Sequence is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Item.Title" Disabled=@isViewing></RadzenTextBox>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Chart Type" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDropDown AllowClear="false" Data="@ChartTypes" Name="ChartType" class="w-100" Placeholder="Select chart type..." @bind-Value="@Item.ChartTypeString" Disabled=@isViewing></RadzenDropDown>
-                        <RadzenRequiredValidator Component="ChartType" Text="Chart type is required" Popup=false/>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Sequence" />
                 </div>
-                <div class="row py-2" hidden="@(isAPie)">
-                    <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Group Property" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDropDown AllowClear="true" Data="@groupProperties" Name="GroupProperty" class="w-100" Placeholder="Select group property..." @bind-Value="@Item.GroupProperty" Disabled=@isViewing></RadzenDropDown>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="Sequence" class="w-100" Placeholder="Enter sequence..." @bind-Value="@Item.Sequence" Disabled=@isViewing></RadzenNumeric>
+                    <RadzenRequiredValidator Component="Sequence" Text="Sequence is required" Popup=false/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Category Property" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDropDown AllowClear="false" Data="@categoryProperties" Name="CategoryProperty" class="w-100" Placeholder="Select category property..." @bind-Value="@Item.CategoryProperty" Disabled=@isViewing></RadzenDropDown>
-                        <RadzenRequiredValidator Component="CategoryProperty" Text="Category property is required" Popup=false/>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Chart Type" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Value Property" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDropDown AllowClear="false" Data="@valueProperties" Name="ValueProperty" class="w-100" Placeholder="Select value property..." @bind-Value="@Item.ValueProperty" Disabled=@isViewing></RadzenDropDown>
-                        <RadzenRequiredValidator Component="ValueProperty" Text="Value property is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenDropDown AllowClear="false" Data="@ChartTypes" Name="ChartType" class="w-100" Placeholder="Select chart type..." @bind-Value="@Item.ChartTypeString" Disabled=@isViewing></RadzenDropDown>
+                    <RadzenRequiredValidator Component="ChartType" Text="Chart type is required" Popup=false/>
                 </div>
-                <div class="row py-2" hidden="@(isAPie)">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Line Type" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDropDown AllowClear="false" Data="@lineTypes" Name="LineType" class="w-100" Placeholder="Select line type..." @bind-Value="@Item.LineType" Disabled=@isViewing></RadzenDropDown>
-                        <RadzenRequiredValidator Component="LineType" Text="Line type is required" Popup=false Visible=@(!isAPie)/>
-                    </div>
+            </div>
+            <div class="row py-2" hidden="@(isAPie)">
+                <div class="col-4 align-items-center d-flex">
+                <RadzenLabel class="dialogTextSize" Text="Group Property" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Marker Type" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDropDown AllowClear="false" Data="@markerTypes" Name="MarkerType" class="w-100" Placeholder="Select marker type..." @bind-Value="@Item.MarkerType" Disabled=@isViewing></RadzenDropDown>
-                        <RadzenRequiredValidator Component="MarkerType" Text="Marker type is required" Popup=false />
-                    </div>
+                <div class="col-8">
+                    <RadzenDropDown AllowClear="true" Data="@groupProperties" Name="GroupProperty" class="w-100" Placeholder="Select group property..." @bind-Value="@Item.GroupProperty" Disabled=@isViewing></RadzenDropDown>
                 </div>
-                <div class="row py-2" hidden="@(!isAPie)">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Execution Type" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDropDown AllowClear="false" Data="@executionTypes" Name="ExecutionType" class="w-100" Placeholder="Select execution type..." @bind-Value="@Item.ExecutionTypeString" Disabled=@isViewing></RadzenDropDown>
-                        <RadzenRequiredValidator Component="ExecutionType" Text="Execution type is required" Popup=false Visible=@(isAPie)/>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Category Property" />
                 </div>
-                <div class="row py-2" hidden="@(isAPie)">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Smooth" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenCheckBox Name="Smooth" @bind-Value="@Item.Smooth" Disabled=@isViewing></RadzenCheckBox>
-                    </div>
+                <div class="col-8">
+                    <RadzenDropDown AllowClear="false" Data="@categoryProperties" Name="CategoryProperty" class="w-100" Placeholder="Select category property..." @bind-Value="@Item.CategoryProperty" Disabled=@isViewing></RadzenDropDown>
+                    <RadzenRequiredValidator Component="CategoryProperty" Text="Category property is required" Popup=false/>
                 </div>
-            </RadzenCard>
-                <div class="row justify-content-center py-4" hidden=@isViewing>
-                    <div class="col-md-12 d-flex align-items-end justify-content-center">
-                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Value Property" />
                 </div>
+                <div class="col-8">
+                    <RadzenDropDown AllowClear="false" Data="@valueProperties" Name="ValueProperty" class="w-100" Placeholder="Select value property..." @bind-Value="@Item.ValueProperty" Disabled=@isViewing></RadzenDropDown>
+                    <RadzenRequiredValidator Component="ValueProperty" Text="Value property is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2" hidden="@(isAPie)">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Line Type" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown AllowClear="false" Data="@lineTypes" Name="LineType" class="w-100" Placeholder="Select line type..." @bind-Value="@Item.LineType" Disabled=@isViewing></RadzenDropDown>
+                    <RadzenRequiredValidator Component="LineType" Text="Line type is required" Popup=false Visible=@(!isAPie)/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Marker Type" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown AllowClear="false" Data="@markerTypes" Name="MarkerType" class="w-100" Placeholder="Select marker type..." @bind-Value="@Item.MarkerType" Disabled=@isViewing></RadzenDropDown>
+                    <RadzenRequiredValidator Component="MarkerType" Text="Marker type is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2" hidden="@(!isAPie)">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Execution Type" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown AllowClear="false" Data="@executionTypes" Name="ExecutionType" class="w-100" Placeholder="Select execution type..." @bind-Value="@Item.ExecutionTypeString" Disabled=@isViewing></RadzenDropDown>
+                    <RadzenRequiredValidator Component="ExecutionType" Text="Execution type is required" Popup=false Visible=@(isAPie)/>
+                </div>
+            </div>
+            <div class="row py-2" hidden="@(isAPie)">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Smooth" />
+                </div>
+                <div class="col-8">
+                    <RadzenCheckBox Name="Smooth" @bind-Value="@Item.Smooth" Disabled=@isViewing></RadzenCheckBox>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
         </div>
     </div>
 </RadzenTemplateForm>
