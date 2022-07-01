@@ -22,9 +22,20 @@
     <link rel="stylesheet" href="_content/BlazorDateRangePicker/daterangepicker.min.css" />
 </head>
 <body>
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div class="vh-100 d-flex align-items-center justify-content-center gap-3">
+            <div class="fa-3x">
+                <i class="fas fa-circle-notch fa-spin"></i>
+                <i class="fas fa-sync fa-spin"></i>
+                <i class="fas fa-cog fa-spin"></i>
+                <i class="fas fa-spinner fa-pulse"></i>
+                <i class="fas fa-stroopwafel fa-spin"></i>
+            </div>
+            <div class="h2">Loading...</div>
+        </div>
+    </div>
 
-    <div id="blazor-error-ui">
+    <div id="blazor-error-ui" style="background-color: white;">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>

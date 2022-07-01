@@ -1,18 +1,53 @@
 ﻿<div>
     <RadzenMenu>
-        <RadzenMenuItem Text="General" Icon="home">
-            <RadzenMenuItem Text="Buttons" Path="buttons" Icon="account_circle"></RadzenMenuItem>
-            <RadzenMenuItem Text="Menu" Path="menu" Icon="line_weight"></RadzenMenuItem>
-            <RadzenMenuItem Text="ChildClick" Icon="attach_file"></RadzenMenuItem>
-            <RadzenMenuItem Text="Dialog" Path="dialog" Icon="perm_media"></RadzenMenuItem>
-            <RadzenMenuItem Text="Notification" Path="notification" Icon="announcement"></RadzenMenuItem>
+        <RadzenMenuItem>          
+            <Template>
+                <div><i class="fas fa-globe fa-fw fa-xl"></i> Operation</div>
+            </Template>
+            <ChildContent>
+                <RadzenMenuItem Text="Buttons" Path="buttons" Icon="account_circle"></RadzenMenuItem>
+                <RadzenMenuItem Text="Menu" Path="menu" Icon="line_weight"></RadzenMenuItem>
+                <RadzenMenuItem Text="ChildClick" Icon="attach_file"></RadzenMenuItem>
+                <RadzenMenuItem Text="Dialog" Path="dialog" Icon="perm_media"></RadzenMenuItem>
+                <RadzenMenuItem Text="Notification" Path="notification" Icon="announcement"></RadzenMenuItem>
+            </ChildContent>
         </RadzenMenuItem>
-        <RadzenMenuItem Text="Inputs" Icon="payment">
-            <RadzenMenuItem Text="CheckBox" Path="checkbox" Icon="check_circle"></RadzenMenuItem>
-            <RadzenMenuItem Text="TextBox" Path="textbox" Icon="input"></RadzenMenuItem>
-            <RadzenMenuItem Text="TextArea" Path="textarea" Icon="description"></RadzenMenuItem>
-            <RadzenMenuItem Text="Password" Path="password" Icon="payment"></RadzenMenuItem>
-            <RadzenMenuItem Text="Numeric" Path="numeric" Icon="aspect_ratio"></RadzenMenuItem>
+        <RadzenMenuItem>
+            <Template>
+                <div><i class="fas fa-sitemap fa-fw fa-xl"></i> Well Allocation</div>
+            </Template>
+            <ChildContent>
+                <RadzenMenuItem Text="Buttons" Path="buttons" Icon="account_circle"></RadzenMenuItem>
+                <RadzenMenuItem Text="Menu" Path="menu" Icon="line_weight"></RadzenMenuItem>
+                <RadzenMenuItem Text="ChildClick" Icon="attach_file"></RadzenMenuItem>
+                <RadzenMenuItem Text="Dialog" Path="dialog" Icon="perm_media"></RadzenMenuItem>
+                <RadzenMenuItem Text="Notification" Path="notification" Icon="announcement"></RadzenMenuItem>
+            </ChildContent>
         </RadzenMenuItem>
+        <RadzenMenuItem>
+            <Template>
+                <div><i class="fas fa-hourglass fa-fw fa-xl"></i> Deferment</div>
+            </Template>
+            <ChildContent>
+                <RadzenMenuItem Text="Buttons" Path="buttons" Icon="account_circle"></RadzenMenuItem>
+                <RadzenMenuItem Text="Menu" Path="menu" Icon="line_weight"></RadzenMenuItem>
+                <RadzenMenuItem Text="ChildClick" Icon="attach_file"></RadzenMenuItem>
+                <RadzenMenuItem Text="Dialog" Path="dialog" Icon="perm_media"></RadzenMenuItem>
+                <RadzenMenuItem Text="Notification" Path="notification" Icon="announcement"></RadzenMenuItem>
+            </ChildContent>
+        </RadzenMenuItem>
+        <RadzenMenuItem>
+            <Template>
+                <div><i class="fas fa-toolbox fa-fw fa-xl"></i> More</div>
+            </Template>
+            <ChildContent>
+                <RadzenMenuItem Path="filemanagement">
+                    <Template>
+                        <div><i class="fas fa-laptop-file fa-fw fa-xl"></i> File Management</div>
+                    </Template>
+                </RadzenMenuItem>
+            </ChildContent>
+        </RadzenMenuItem>
+
     </RadzenMenu>
 </div>
