@@ -116,6 +116,9 @@ body {
     border-bottom-style: solid !important;
     border-bottom-color: lightgray !important;
 }
+.navbar {
+    padding-top: 0rem;
+}
 
 .view-header {
     display: flex !important;
