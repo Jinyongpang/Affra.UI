@@ -4,20 +4,34 @@
 <RadzenContextMenu />
 <RadzenDialog />
 <div class="page">
-    <div class="sidebar @NavMenuCssClass">
+    @*<div class="sidebar @NavMenuCssClass">
         <NavMenu />
-    </div>
+    </div>*@
 
     <main>
-        <nav class="navbar navbar-light auth" style="height: 3.5rem;">
-          <div class="container-fluid top-navbar">
-            <div class="navbar-brand"><h3 class="toprow-title">Centralized Database System</h3></div>
-            <div class="d-flex">
-                <LoginDisplay  />
+        <nav class="navbar navbar-light auth" style="height: 4.5rem;">
+          <div class="container-fluid top-navbar" style="height: 4rem;">
+            <div class="d-flex justify-content-left">
+                <div class="navbar-brand align-self-center">
+                    Centralized Database System
+                </div>
+                <TopMenu />
+            </div>
+            <div class="d-flex justify-content-right">
+                <RadzenProfileMenu>
+                    <Template>
+                        <RadzenImage Path="img/avatar.png" Style="height: 40px;width: 40px;" />
+                    </Template>
+                    <ChildContent>
+                        <RadzenProfileMenuItem Text="Settings" Path="buttons" Icon="build"></RadzenProfileMenuItem>
+                        <RadzenProfileMenuItem Text="Logout" Path="menu" Icon="lock"></RadzenProfileMenuItem>
+                    </ChildContent>
+                </RadzenProfileMenu>
+                @*<LoginDisplay  />*@
             </div>
           </div>
         </nav>
-        <article class="content px-4 @(@AppState.CollapseNavMenu ? "expandArticalSize" : "reduceArticalSize")">
+        <article class="content px-4">
             @Body
         </article>
     </main>
