@@ -23,6 +23,7 @@
 
 .toprow-title {
     color: #1A3C40;
+    font-weight: bold !important;
 }
 .space {
     margin: 0;
@@ -120,20 +121,18 @@ body {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
-    font-family: Poppins,Arial,Helvetica,sans-serif !important;
     font-size: 16px !important;
     font-style: normal !important;
     font-weight: bold !important;
-    line-height: 20px !important;
     letter-spacing: -.02em !important;
     color: #0b1835 !important;
-    margin-bottom: 16px !important;
     border-bottom: 1px solid #dbe0ea !important;
-    min-height: 40px !important;
+    min-height: 32px !important;
+    margin-bottom: 16px !important;
 }
 
 .rz-card {
-    padding: 1.25rem 1.5625rem !important;
+    padding: 0.875rem 1.0625rem !important;
     border-radius: 10px !important;
     background-color: #ffffff !important;
     border: 1px solid #dbe0ea !important;
