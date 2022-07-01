@@ -1,4 +1,6 @@
 ﻿@import './styles-generated.css';
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
 .status-online {
     color: #85C88A;
 }
@@ -60,6 +62,15 @@
 .dialogTextSize {
     font-size: 1rem !important;
 }
+
+.rz-group-header {
+    background-color: #ffffff!important;
+}
+
+.rz-datatable-data td:not(:last-child), .rz-datatable-data td.rz-composite-cell, .rz-grid-table td:not(:last-child), .rz-grid-table td.rz-composite-cell {
+    border-right: none;
+}
+
 .rz-datatable-odd > td {
     background-color: #ffffff;
 }
@@ -87,22 +98,49 @@
 }
 
 .rz-dialog-titlebar {
-    color: whitesmoke;
-    background-color: #5089C6 !important;
-}
-/* lato-regular - latin */
-@font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../fonts/lato-v23-latin-regular.eot'); /* IE9 Compat Modes */
-    src: local(''), url('../fonts/lato-v23-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/lato-v23-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-    url('../fonts/lato-v23-latin-regular.woff') format('woff'), /* Modern Browsers */
-    url('../fonts/lato-v23-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-    url('../fonts/lato-v23-latin-regular.svg#Lato') format('svg'); /* Legacy iOS */
+    color: black;
+    font-weight: bold;
+    background-color: #FFFFFF !important;
+    border-bottom-color: lightgray !important;
+    border-bottom-style: solid !important;
 }
 
 body {
-    font-family: Inter, sans-serif, Tahoma, Arial, Helvetica !important;
+    font-family: Poppins,Arial,Helvetica,sans-serif !important;
+    background-color: white !important;
+}
+
+.top-navbar {
+    background-color: #ffffff !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: lightgray !important;
+}
+
+.view-header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    font-family: Poppins,Arial,Helvetica,sans-serif !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    line-height: 20px !important;
+    letter-spacing: -.02em !important;
+    color: #0b1835 !important;
+    margin-bottom: 16px !important;
+    border-bottom: 1px solid #dbe0ea !important;
+    min-height: 40px !important;
+}
+
+.rz-card {
+    padding: 1.25rem 1.5625rem !important;
+    border-radius: 10px !important;
+    background-color: #ffffff !important;
+    border: 1px solid #dbe0ea !important;
+    box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
+}
+
+.rz-datatable {
+    border: 1px solid #dbe0ea !important;
+    box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
 }

@@ -37,7 +37,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributi
 
         protected override async Task OnInitializedAsync()
         {
-            subscription = ContentUpdateNotificationService.Subscribe<object>(nameof(DailyPowerGenerationAndDistribution), OnContentUpdateAsync);
+            subscription = ContentUpdateNotificationService.Subscribe<DailyPowerGenerationAndDistribution>(nameof(DailyPowerGenerationAndDistribution), OnContentUpdateAsync);
             subscription.Reconnecting += HubConnection_Reconnecting;
             subscription.Reconnected += Subscription_Reconnected;
             await subscription.StartAsync();
@@ -61,7 +61,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributi
             return Task.WhenAll(grid.FirstPage(true), Refresh.InvokeAsync());
         }
 
-        private Task OnContentUpdateAsync(object obj)
+        private Task OnContentUpdateAsync(DailyPowerGenerationAndDistribution obj)
         {
             StateHasChanged();
             return this.ReloadAsync();
