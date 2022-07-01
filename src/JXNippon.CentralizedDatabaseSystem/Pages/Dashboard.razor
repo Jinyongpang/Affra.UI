@@ -33,25 +33,27 @@
         <RadzenBreadCrumbItem Path="/" Text="Dashboard" />
     </ChildContent>
 </RadzenBreadCrumb>
-
-<div class="row justify-content-end">
-    <div class="col-3">
-     <DateRangePicker class="form-control form-control-sm" placeholder="Select dates..."
-        OnRangeSelect="OnRangeSelectAsync"
-        @bind-StartDate="startDate" @bind-EndDate="endDate"
-        MinDate="DateTimeOffset.Now.AddYears(-1)" MaxDate="DateTimeOffset.Now"
-        ShowOnlyOneCalendar="true"
-        MaxSpan="TimeSpan.FromDays(62)"
-        onc>
-        <PickerTemplate>
-            <div id="@context.Id" @onclick="context.Toggle" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
-                <i class="oi oi-calendar"></i>&nbsp;
-                <span>@context.FormattedRange @(string.IsNullOrEmpty(context.FormattedRange) ? "Choose dates..." : "")</span>
-                <i class="oi oi-chevron-bottom float-right"></i>
+<div class="py-2">
+    <RadzenCard>
+        <div class="row">
+            <div class="col-3">
+                 <DateRangePicker class="form-control form-control-sm" placeholder="Select dates..."
+                    OnRangeSelect="OnRangeSelectAsync"
+                    @bind-StartDate="startDate" @bind-EndDate="endDate"
+                    MinDate="DateTimeOffset.Now.AddYears(-1)" MaxDate="DateTimeOffset.Now"
+                    ShowOnlyOneCalendar="false"
+                    MaxSpan="TimeSpan.FromDays(62)">
+                    <PickerTemplate>
+                        <div id="@context.Id" @onclick="context.Toggle" class="date-range-picker">
+                            <i class="oi oi-calendar"></i>&nbsp;
+                            <span>@context.FormattedRange @(string.IsNullOrEmpty(context.FormattedRange) ? "Choose dates..." : "")</span>
+                            <i class="oi oi-chevron-bottom float-right"></i>
+                        </div>
+                    </PickerTemplate>    
+                </DateRangePicker>
             </div>
-        </PickerTemplate>    
-    </DateRangePicker>
-    </div>
-</div>
+        </div>
+    </RadzenCard>
 
-<ViewComponent @ref="viewComponent" View=@view StartDate="@startDate" EndDate="@endDate"/>
+    <ViewComponent @ref="viewComponent" View=@view StartDate="@startDate" EndDate="@endDate"/>
+</div>
