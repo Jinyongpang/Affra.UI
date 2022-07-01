@@ -74,5 +74,49 @@ namespace JXNippon.CentralizedDatabaseSystem.Notifications
             });
         }
 
+        public void NotifyWarning(string message, string detail= default)
+        {
+            notificationService.Notify(new()
+            {
+                Summary = stringLocalizer[message],
+                Detail = detail,
+                Severity = NotificationSeverity.Warning,
+                Duration = NotificationDration,
+            });
+        }
+
+        public void NotifyInfo(string message, string detail = default)
+        {
+            notificationService.Notify(new()
+            {
+                Summary = stringLocalizer[message],
+                Detail = detail,
+                Severity = NotificationSeverity.Info,
+                Duration = NotificationDration,
+            });
+        }
+
+        public void NotifyError(string message, string detail = default)
+        {
+            notificationService.Notify(new()
+            {
+                Summary = stringLocalizer[message],
+                Detail = detail,
+                Severity = NotificationSeverity.Error,
+                Duration = NotificationDration,
+            });
+        }
+
+        public void NotifySuccess(string message, string detail = default)
+        {
+            notificationService.Notify(new()
+            {
+                Summary = stringLocalizer[message],
+                Detail = detail,
+                Severity = NotificationSeverity.Success,
+                Duration = NotificationDration,
+            });
+        }
+
     }
 }

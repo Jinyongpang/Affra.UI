@@ -3,15 +3,19 @@ using Affra.Core.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem;
 using JXNippon.CentralizedDatabaseSystem.Configurations;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
+using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Handlers;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements;
+using JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Views;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
 using Microsoft.OData.Extensions.Client;
@@ -36,6 +40,9 @@ builder.Configuration.GetSection(nameof(CentralizedDatabaseSystemConfigurations)
 
 ViewConfigurations viewConfigurations = new ViewConfigurations();
 builder.Configuration.GetSection(nameof(ViewConfigurations)).Bind(viewConfigurations);
+
+ContentUpdateNotificationServiceConfigurations contentUpdateNotificationServiceConfigurations = new ContentUpdateNotificationServiceConfigurations();
+builder.Configuration.GetSection(nameof(ContentUpdateNotificationServiceConfigurations)).Bind(contentUpdateNotificationServiceConfigurations);
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
@@ -66,6 +73,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddScoped<DialogService>()
     .AddScoped<AffraNotificationService>()
     .AddScoped<IViewService, ViewService>()
+    .AddScoped(typeof(IHubClient<>), typeof(SignalRHubClient<>))
+    .AddScoped<IContentUpdateNotificationService, ContentUpdateNotificationService>()
+    .AddSingleton<IOptions<ContentUpdateNotificationServiceConfigurations>>(Options.Create(contentUpdateNotificationServiceConfigurations))
     .AddLocalization();
 
 builder.Services.AddMsalAuthentication(options =>

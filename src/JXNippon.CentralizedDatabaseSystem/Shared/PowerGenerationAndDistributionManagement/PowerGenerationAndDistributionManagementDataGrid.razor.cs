@@ -2,7 +2,9 @@
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
@@ -12,12 +14,13 @@ using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement
 {
-    public partial class PowerGenerationAndDistributionManagementDataGrid
+    public partial class PowerGenerationAndDistributionManagementDataGrid : IAsyncDisposable
     {
         private RadzenDataGrid<DailyPowerGenerationAndDistribution> grid;
         private IEnumerable<DailyPowerGenerationAndDistribution> items;
         private bool isLoading = false;
-
+        private IHubSubscription subscription;
+        private bool isDisposed = false;
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public EventCallback Refresh { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
@@ -28,12 +31,40 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributi
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private ContextMenuService ContextMenuService { get; set; }
+        [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            subscription = ContentUpdateNotificationService.Subscribe<object>(nameof(DailyPowerGenerationAndDistribution), OnContentUpdateAsync);
+            subscription.Reconnecting += HubConnection_Reconnecting;
+            subscription.Reconnected += Subscription_Reconnected;
+            await subscription.StartAsync();
+            await base.OnInitializedAsync();
+        }
+
+        private Task Subscription_Reconnected(string? arg)
+        {
+            AffraNotificationService.NotifySuccess("Reconnected to notification service.", $"Your connection id : {arg}");
+            return Task.CompletedTask;
+        }
+
+        private Task HubConnection_Reconnecting(Exception? arg)
+        {
+            AffraNotificationService.NotifyWarning("Disconnected to notification service.");
+            return Task.CompletedTask;
+        }
 
         public Task ReloadAsync()
         {
             return Task.WhenAll(grid.FirstPage(true), Refresh.InvokeAsync());
+        }
+
+        private Task OnContentUpdateAsync(object obj)
+        {
+            StateHasChanged();
+            return this.ReloadAsync();
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)
@@ -140,6 +171,26 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributi
             }
 
             await grid.Reload();
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            try
+            {
+                if (!isDisposed)
+                {
+                    grid.Dispose();
+                    if (subscription is not null)
+                    {
+                        await subscription.DisposeAsync();
+                    }
+                    isDisposed = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }
