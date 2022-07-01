@@ -2,11 +2,12 @@
 @using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces
 @using JXNippon.CentralizedDatabaseSystem.Models
 
-<p>
-  <i class="@Icon"></i>
-    @Title
-</p>
-<hr class="solid">
+<div class="view-header">
+    <span>
+      <i class="@Icon"></i>
+        @Title
+    </span>
+</div>
 
 <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
     FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="false" AllowFiltering="false" AllowPaging="true" 
