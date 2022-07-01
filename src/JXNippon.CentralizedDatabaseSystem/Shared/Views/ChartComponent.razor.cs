@@ -1,7 +1,7 @@
-﻿using Affra.Core.Domain.Services;
-using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
-using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+﻿using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -12,11 +12,13 @@ using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class ChartComponent
+    public partial class ChartComponent : IAsyncDisposable
     {
         private RadzenChart chart;
         private IEnumerable<IDaily> items;
         private bool isLoading = false;
+        private IHubSubscription subscription;
+        private bool isDisposed = false;
 
         [Parameter] public string Icon { get; set; }
         [Parameter] public string Title { get; set; }
@@ -28,18 +30,29 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public IEnumerable<ChartSeries> ChartSeries { get; set; }
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
         [Parameter] public string TType { get; set; }
+        [Parameter] public string Subscription { get; set; }
         [Parameter] public DateTimeOffset? StartDate { get; set; }
         [Parameter] public DateTimeOffset? EndDate { get; set; }
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
+        [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
-            return ReloadAsync(StartDate, EndDate);
+            subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
+            await subscription.StartAsync();
+            await ReloadAsync(StartDate, EndDate);
+            await base.OnInitializedAsync();
+        }
+        
+        private Task OnContentUpdateAsync(object obj)
+        {
+            StateHasChanged();
+            return this.ReloadAsync();
         }
 
         public async Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
@@ -78,7 +91,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private List<SeriesItem> GetSeriesItems(ChartSeries chartSeries, IEnumerable<IDaily> dailyItems)
         {
             List<SeriesItem> seriesItem = new List<SeriesItem>();
-            bool isAPie = chartSeries.ChartType == ChartType.PieChart|| chartSeries.ChartType == ChartType.DonutChart;
+            bool isAPie = chartSeries.ChartType == ChartType.PieChart || chartSeries.ChartType == ChartType.DonutChart;
             if (dailyItems != null)
             {
                 foreach (var item in dailyItems)
@@ -117,11 +130,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         isGroup
                         ? (string)ViewService.GetPropValue(x, chartSeries.GroupProperty)
                         : chartSeries.Title);
-          
+
                     foreach (IGrouping<string, IDaily>? group in groupItems)
                     {
                         Series series = new()
-                        { 
+                        {
                             Title = group.Key,
                             SeriesItems = GetSeriesItems(chartSeries, group),
                         };
@@ -172,6 +185,26 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private void HandleException(Exception ex)
         {
             AffraNotificationService.NotifyException(ex);
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            try
+            {
+                if (!isDisposed)
+                {
+                    chart.Dispose();
+                    if (subscription is not null)
+                    {
+                        await subscription.DisposeAsync();
+                    }
+                    isDisposed = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }

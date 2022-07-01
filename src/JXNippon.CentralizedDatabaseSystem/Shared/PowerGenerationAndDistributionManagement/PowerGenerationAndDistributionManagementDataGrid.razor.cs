@@ -37,7 +37,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributi
 
         protected override async Task OnInitializedAsync()
         {
-            IHubSubscription? subscription = ContentUpdateNotificationService.Subscribe<object>(nameof(DailyPowerGenerationAndDistribution), OnContentUpdateAsync);
+            subscription = ContentUpdateNotificationService.Subscribe<object>(nameof(DailyPowerGenerationAndDistribution), OnContentUpdateAsync);
             subscription.Reconnecting += HubConnection_Reconnecting;
             subscription.Reconnected += Subscription_Reconnected;
             await subscription.StartAsync();
