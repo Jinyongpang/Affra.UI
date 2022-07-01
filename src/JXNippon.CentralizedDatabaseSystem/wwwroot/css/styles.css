@@ -155,3 +155,11 @@ body {
 .rz-label, .rz-dialog-title {
     font-weight: bold;
 }
+
+.date-range-picker {
+    border: 1px solid #dadfe2 !important;
+    border-radius: 4px !important;
+    box-shadow: inset 0 4px 3px 0 rgb(0 0 0 / 3%) !important;
+    background-color: #ffffff !important;
+    padding: 0.625rem 0.625rem;
+}
