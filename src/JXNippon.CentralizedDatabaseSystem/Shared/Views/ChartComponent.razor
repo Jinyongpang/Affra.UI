@@ -10,7 +10,7 @@
 
 <RadzenChart @ref="chart">
     @if(items != null)
-    {   
+    {   bool haveData = false;
         foreach(var series in ChartSeries)
         {
             var seriesList = this.GetSeries(series, items);
@@ -71,24 +71,26 @@
                         <RadzenPieSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
-                        </RadzenPieSeries>
-                        break;
-                    };
+                            </RadzenPieSeries>
+                            break;
+                        };
                     default:
-                    {
-                        break;       
-                    }
+                        {
+                            break;       
+                        }
 
                 }
 
 
             }
+            haveData = haveData || seriesList.Count() > 0;
 
-            if (seriesList.Count() == 0)
-            {
-                <a>No records to display.</a>  
-            }
         }
+        if (!haveData)
+        {
+            <a>No records to display.</a>  
+        }
+
     }
     else
     {
