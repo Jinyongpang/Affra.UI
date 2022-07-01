@@ -60,6 +60,15 @@
 .dialogTextSize {
     font-size: 1rem !important;
 }
+
+.rz-group-header {
+    background-color: #ffffff!important;
+}
+
+.rz-datatable-data td:not(:last-child), .rz-datatable-data td.rz-composite-cell, .rz-grid-table td:not(:last-child), .rz-grid-table td.rz-composite-cell {
+    border-right: none;
+}
+
 .rz-datatable-odd > td {
     background-color: #ffffff;
 }
@@ -87,8 +96,11 @@
 }
 
 .rz-dialog-titlebar {
-    color: whitesmoke;
-    background-color: #5089C6 !important;
+    color: black;
+    font-weight: bold;
+    background-color: #FFFFFF !important;
+    border-bottom-color: lightgray !important;
+    border-bottom-style: solid !important;
 }
 /* lato-regular - latin */
 @font-face {
@@ -105,4 +117,11 @@
 
 body {
     font-family: Inter, sans-serif, Tahoma, Arial, Helvetica !important;
+    background-color: white !important;
+}
+
+.top-navbar {
+    background-color: #ffffff !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: lightgray !important;
 }
