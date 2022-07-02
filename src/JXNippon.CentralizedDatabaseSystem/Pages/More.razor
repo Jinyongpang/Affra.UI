@@ -1,15 +1,14 @@
-﻿@page "/more/filemanagement"
-@page "/more/viewdesigner"
+﻿@page "/more/{activeKey}"
 
 <PageTitle>Opertion</PageTitle>
-<Tabs ActiveKey="@activeKey" @ref=tabs ActiveKeyChanged=OnActiveKeyChanged>
-    <TabPane Key="more/filemanagement">
+<Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>
+    <TabPane Key="filemanagement">
         <TabTemplate>
             <span>File Management</span>
         </TabTemplate>
         <ChildContent><FileManagement></FileManagement></ChildContent>
     </TabPane>
-    <TabPane Key="more/viewdesigner">
+    <TabPane Key="viewdesigner">
         <TabTemplate>
             <span>View Designer</span>
         </TabTemplate>
