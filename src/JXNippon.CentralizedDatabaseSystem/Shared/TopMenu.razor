@@ -5,11 +5,21 @@
                 <div><i class="fas fa-globe fa-fw fa-xl"></i> Operation</div>
             </Template>
             <ChildContent>
-                <RadzenMenuItem Text="Buttons" Path="buttons" Icon="account_circle"></RadzenMenuItem>
-                <RadzenMenuItem Text="Menu" Path="menu" Icon="line_weight"></RadzenMenuItem>
-                <RadzenMenuItem Text="ChildClick" Icon="attach_file"></RadzenMenuItem>
-                <RadzenMenuItem Text="Dialog" Path="dialog" Icon="perm_media"></RadzenMenuItem>
-                <RadzenMenuItem Text="Notification" Path="notification" Icon="announcement"></RadzenMenuItem>
+                <RadzenMenuItem Path="operation/dashboard">
+                    <Template>
+                        <div><i class="fas fa-dashboard fa-fw fa-xl"></i> Dashboard</div>
+                    </Template>
+                </RadzenMenuItem>
+                 <RadzenMenuItem Path="operation/combineddailyreport">
+                    <Template>
+                        <div><i class="fas fa-table fa-fw fa-xl"></i> Combined Daily Report</div>
+                    </Template>
+                </RadzenMenuItem>
+                 <RadzenMenuItem Path="operation/managementofchange">
+                    <Template>
+                        <div><i class="fas fa-people-roof fa-fw fa-xl"></i> Management Of Change</div>
+                    </Template>
+                </RadzenMenuItem>
             </ChildContent>
         </RadzenMenuItem>
         <RadzenMenuItem>
@@ -41,9 +51,14 @@
                 <div><i class="fas fa-toolbox fa-fw fa-xl"></i> More</div>
             </Template>
             <ChildContent>
-                <RadzenMenuItem Path="filemanagement">
+                <RadzenMenuItem Path="more/filemanagement">
                     <Template>
                         <div><i class="fas fa-laptop-file fa-fw fa-xl"></i> File Management</div>
+                    </Template>
+                </RadzenMenuItem>
+                <RadzenMenuItem Path="more/viewdesigner">
+                    <Template>
+                        <div><i class="fas fa-compass-drafting fa-fw fa-xl"></i> View Designer</div>
                     </Template>
                 </RadzenMenuItem>
             </ChildContent>

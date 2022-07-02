@@ -18,7 +18,7 @@
              </div> 
         }
 
-        @foreach(var col in row.Columns) 
+        @foreach(var col in row.Columns.OrderBy(col => col.Sequence)) 
         {   
             <div class="col py-3">
                 <Card Size="medium">
