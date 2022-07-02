@@ -1,13 +1,6 @@
 ﻿@using System.Linq.Dynamic.Core
 @using JXNippon.CentralizedDatabaseSystem.Models
 
-<div class="view-header">
-    <span>
-      <i class="@Icon"></i>
-        @Title
-    </span>
-</div>
-
 <RadzenChart @ref="chart">
     @if(items != null)
     {   bool haveData = false;

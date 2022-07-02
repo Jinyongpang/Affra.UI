@@ -21,8 +21,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private IHubSubscription subscription;
         private bool isDisposed = false;
 
-        [Parameter] public string Icon { get; set; }
-        [Parameter] public string Title { get; set; }
         [Parameter] public EventCallback<IQueryable<dynamic>> LoadData { get; set; }
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
         [Parameter] public string TType { get; set; }

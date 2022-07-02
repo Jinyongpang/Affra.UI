@@ -3,7 +3,7 @@ using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared
 {
-    public partial class Icon
+    public partial class AffraIcon
     {
         private ElementReference icon;
 

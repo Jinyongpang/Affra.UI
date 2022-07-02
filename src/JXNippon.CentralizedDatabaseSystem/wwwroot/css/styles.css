@@ -134,8 +134,7 @@ body {
     margin-bottom: 16px !important;
 }
 
-.rz-card {
-    padding: 1.275rem 1.0625rem !important;
+.rz-card, .ant-card {
     border-radius: 10px !important;
     background-color: #ffffff !important;
     border: 1px solid #dbe0ea !important;
@@ -166,3 +165,10 @@ body {
     padding: 0.625rem 0.625rem;
 }
 
+.ant-avatar {
+    background-color: #1A3C40 !important;
+}
+
+.ant-card-head-title {
+    font-weight: bold !important;
+}
