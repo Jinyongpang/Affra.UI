@@ -3,11 +3,5 @@
 @using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 
 <PageTitle>File Management</PageTitle>
-<RadzenBreadCrumb>
-    <ChildContent>
-        <RadzenBreadCrumbItem Path="/" Text="Home"/>
-        <RadzenBreadCrumbItem Path="/FileManagement" Text="File Management" />
-    </ChildContent>
-</RadzenBreadCrumb>
 <FileManagementFilterPanel @ref="fileManagementFilterPanel" Change=@(args => OnChangeAsync(args)) />
 <FileManagementDataList @ref="fileManagementDataList" LoadData=@(args => LoadDataAsync(args))/>

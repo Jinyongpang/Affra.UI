@@ -32,19 +32,19 @@
                         <a><i class="fa-solid fa-ellipsis-vertical"></i></a>
                     </Extra>
                     <Body>
-                    @if (col.ComponentType ==  nameof(Chart))
-                    {
-                        Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                        string type = ViewService.GetTypeMapping()[chart.Type];
-                        <ChartComponent @ref="@chartComponentRef" Title=@col.Title StartDate="@StartDate" EndDate="@EndDate" TType="@type" Subscription="@chart.Type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
-                            Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries"></ChartComponent>
-                    }
-                    else if (col.ComponentType ==  nameof(Grid))
-                    {
-                        Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                        string type = ViewService.GetTypeMapping()[grid.Type];
-                        <DataGridComponent @ref="@gridComponentRef" TType="@type" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns"></DataGridComponent>
-                    }
+                        @if (col.ComponentType ==  nameof(Chart))
+                        {
+                            Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
+                            string type = ViewService.GetTypeMapping()[chart.Type];
+                            <ChartComponent @ref="@chartComponentRef" Title=@col.Title StartDate="@StartDate" EndDate="@EndDate" TType="@type" Subscription="@chart.Type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                                Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries"></ChartComponent>
+                        }
+                        else if (col.ComponentType ==  nameof(Grid))
+                        {
+                            Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
+                            string type = ViewService.GetTypeMapping()[grid.Type];
+                            <DataGridComponent @ref="@gridComponentRef" TType="@type" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns"></DataGridComponent>
+                        }
                     </Body>
                </Card>  
            </div> 
