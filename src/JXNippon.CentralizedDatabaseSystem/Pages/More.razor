@@ -1,0 +1,18 @@
+﻿@page "/more/filemanagement"
+@page "/more/viewdesigner"
+
+<PageTitle>Opertion</PageTitle>
+<Tabs ActiveKey="@activeKey" @ref=tabs ActiveKeyChanged=OnActiveKeyChanged>
+    <TabPane Key="more/filemanagement">
+        <TabTemplate>
+            <span>File Management</span>
+        </TabTemplate>
+        <ChildContent><FileManagement></FileManagement></ChildContent>
+    </TabPane>
+    <TabPane Key="more/viewdesigner">
+        <TabTemplate>
+            <span>View Designer</span>
+        </TabTemplate>
+        <ChildContent><ViewDesigner></ViewDesigner></ChildContent>
+    </TabPane>
+</Tabs>

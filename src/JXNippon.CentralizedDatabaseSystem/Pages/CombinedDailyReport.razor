@@ -24,11 +24,6 @@
 @using JXNippon.CentralizedDatabaseSystem.Shared.MaximoWorkOrder
 
 <PageTitle>Home</PageTitle>
-<RadzenBreadCrumb>
-    <ChildContent>
-        <RadzenBreadCrumbItem Path="/" Text="Home" />
-    </ChildContent>
-</RadzenBreadCrumb>
 <DashboardFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args)) />
  <div class="row py-1">
     <div class="col">      

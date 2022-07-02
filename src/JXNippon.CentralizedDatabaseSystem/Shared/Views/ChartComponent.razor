@@ -4,7 +4,7 @@
 <RadzenChart @ref="chart">
     @if(items != null)
     {   bool haveData = false;
-        foreach(var series in ChartSeries)
+        foreach(var series in ChartSeries.OrderBy(x => x.Sequence))
         {
             var seriesList = this.GetSeries(series, items);
 
