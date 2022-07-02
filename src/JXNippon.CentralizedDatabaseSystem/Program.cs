@@ -76,6 +76,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddScoped(typeof(IHubClient<>), typeof(SignalRHubClient<>))
     .AddScoped<IContentUpdateNotificationService, ContentUpdateNotificationService>()
     .AddSingleton<IOptions<ContentUpdateNotificationServiceConfigurations>>(Options.Create(contentUpdateNotificationServiceConfigurations))
+    .AddAntDesign()
     .AddLocalization();
 
 builder.Services.AddMsalAuthentication(options =>

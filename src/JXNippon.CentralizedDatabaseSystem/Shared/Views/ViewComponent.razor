@@ -19,27 +19,35 @@
         }
 
         @foreach(var col in row.Columns) 
-        {      
-            if (col.ComponentType ==  nameof(Chart))
-            {
-                Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                string type = ViewService.GetTypeMapping()[chart.Type];
-                <div class="col py-3">
-                    <RadzenCard>                  
-                        <ChartComponent @ref="@chartComponentRef"  Title=@chart.Title Icon=@chart.Icon StartDate="@StartDate" EndDate="@EndDate" TType="@type" Subscription="@chart.Type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
-                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries"></ChartComponent></RadzenCard>  
-                </div> 
-            }
-            else if (col.ComponentType ==  nameof(Grid))
-            {
-                Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                string type = ViewService.GetTypeMapping()[grid.Type];
-                <div class="col py-3">
-                    <RadzenCard>                  
-                        <DataGridComponent @ref="@gridComponentRef" TType="@type" Subscription="@grid.Type"  Title=@grid.Title Icon=@grid.Icon StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns"></DataGridComponent>   
-                    </RadzenCard>  
-                </div> 
-            }
+        {   
+            <div class="col py-3">
+                <Card Size="medium">
+                    <TitleTemplate>
+                        <span>
+                            <i class="@col.Icon"></i>
+                            @col.Title
+                        </span>
+                    </TitleTemplate>
+                    <Extra>
+                        <a><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    </Extra>
+                    <Body>
+                    @if (col.ComponentType ==  nameof(Chart))
+                    {
+                        Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
+                        string type = ViewService.GetTypeMapping()[chart.Type];
+                        <ChartComponent @ref="@chartComponentRef" Title=@col.Title StartDate="@StartDate" EndDate="@EndDate" TType="@type" Subscription="@chart.Type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                            Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries"></ChartComponent>
+                    }
+                    else if (col.ComponentType ==  nameof(Grid))
+                    {
+                        Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
+                        string type = ViewService.GetTypeMapping()[grid.Type];
+                        <DataGridComponent @ref="@gridComponentRef" TType="@type" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns"></DataGridComponent>
+                    }
+                    </Body>
+               </Card>  
+           </div> 
         }
     </div>
 }

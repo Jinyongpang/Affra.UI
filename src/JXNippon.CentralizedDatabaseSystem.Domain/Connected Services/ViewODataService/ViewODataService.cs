@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 11/6/2022 1:40:59 PM
+// Generation date: 2/7/2022 9:27:07 AM
 namespace ViewODataService.Affra.Service.View.Domain.Views
 {
     /// <summary>
@@ -561,6 +561,48 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         partial void OnComponentTypeChanging(string value);
         partial void OnComponentTypeChanged();
         /// <summary>
+        /// There are no comments for Property Title in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Title
+        {
+            get
+            {
+                return this._Title;
+            }
+            set
+            {
+                this.OnTitleChanging(value);
+                this._Title = value;
+                this.OnTitleChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Title;
+        partial void OnTitleChanging(string value);
+        partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for Property Icon in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Icon
+        {
+            get
+            {
+                return this._Icon;
+            }
+            set
+            {
+                this.OnIconChanging(value);
+                this._Icon = value;
+                this.OnIconChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Icon;
+        partial void OnIconChanging(string value);
+        partial void OnIconChanged();
+        /// <summary>
         /// There are no comments for Property ColumnComponent in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -913,6 +955,8 @@ namespace ViewODataService.Default
         <Property Name=""Sequence"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""RowId"" Type=""Edm.Int64"" />
         <Property Name=""ComponentType"" Type=""Edm.String"" />
+        <Property Name=""Title"" Type=""Edm.String"" />
+        <Property Name=""Icon"" Type=""Edm.String"" />
         <Property Name=""ColumnComponent"" Type=""Edm.String"" />
         <Property Name=""ViewName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />

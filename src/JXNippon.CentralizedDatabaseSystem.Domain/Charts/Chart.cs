@@ -6,10 +6,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
 {
     public class Chart
     {
-        public string Title { get; set; }
-
-        public string Icon { get; set; }
-
         public string Type { get; set; }
 
         public string FormatString { get; set; }
