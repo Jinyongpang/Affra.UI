@@ -133,11 +133,6 @@ main {
     }
 }
 
-@media (min-width: 2160px) {
-    .container {
-        max-width: 2500px !important;
-    }
-}
 
 @media (min-width: 1200px) 
 {
@@ -146,3 +141,8 @@ main {
     }
 }
 
+@media (min-width: 2160px) {
+    .container {
+        max-width: 2500px !important;
+    }
+}

@@ -1,23 +1,20 @@
-﻿@page "/operation/Dashboard"
-@page "/operation/CombinedDailyReport"
-@page "/operation/ManageOfChange"
-
+﻿@page "/operation/{activeKey}"
 
 <PageTitle>Opertion</PageTitle>
-<Tabs ActiveKey="@activeKey" @ref=tabs ActiveKeyChanged=OnActiveKeyChanged>
-    <TabPane Key="operation/dashboard">
+<Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>
+    <TabPane Key="dashboard">
         <TabTemplate>
             <span>Dashboard</span>
         </TabTemplate>
         <ChildContent><Dashboard></Dashboard></ChildContent>
     </TabPane>
-    <TabPane Key="operation/combineddailyreport">
+    <TabPane Key="combineddailyreport">
         <TabTemplate>
             <span>Combined Daily Report</span>
         </TabTemplate>
         <ChildContent><CombinedDailyReport></CombinedDailyReport></ChildContent>
     </TabPane>
-    <TabPane Key="operation/managementofchange">
+    <TabPane Key="managementofchange">
         <TabTemplate>
             <span>Management Of Change</span>
         </TabTemplate>
