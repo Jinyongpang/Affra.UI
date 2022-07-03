@@ -8,28 +8,28 @@
 <div class="page">
     <main>
         <nav class="navbar navbar-light auth sticky-top" style="height: 5.0rem;">
-          <div class="container-fluid top-navbar" style="height: 5.0rem;">
-            <div class="d-flex justify-content-left">
-                <div class="navbar-brand align-self-center toprow-title">
-                    Centralized Database System
+            <div class="container-fluid top-navbar" style="height: 5.0rem;">
+                <div class="d-flex justify-content-left">
+                    <div class="navbar-brand align-self-center toprow-title">
+                        Centralized Database System
+                    </div>
+                    <TopMenu />
                 </div>
-                <TopMenu/>
-            </div>
-            <div class="d-flex justify-content-right">
-                <NotificationMenu />
-                <RadzenProfileMenu>
-                    <Template>
+                <div class="d-flex justify-content-right">
+                    <NotificationMenu />
+                    <RadzenProfileMenu>
+                        <Template>
                             <Avatar Icon="user" Size="large">
                             </Avatar>
-                    </Template>
-                    <ChildContent>
-                        <RadzenProfileMenuItem Text="Settings" Path="buttons" Icon="build"></RadzenProfileMenuItem>
-                        <RadzenProfileMenuItem Text="Logout" Path="menu" Icon="lock"></RadzenProfileMenuItem>
-                    </ChildContent>
-                </RadzenProfileMenu>
-                @*<LoginDisplay  />*@
+                        </Template>
+                        <ChildContent>
+                            <RadzenProfileMenuItem Text="Settings" Path="buttons" Icon="build"></RadzenProfileMenuItem>
+                            <RadzenProfileMenuItem Text="Logout" Path="menu" Icon="lock"></RadzenProfileMenuItem>
+                        </ChildContent>
+                    </RadzenProfileMenu>
+                    @*<LoginDisplay  />*@
+                </div>
             </div>
-          </div>
         </nav>
         <div class="container container-fluid">
             @Body
