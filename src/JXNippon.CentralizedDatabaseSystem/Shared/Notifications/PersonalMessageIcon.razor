@@ -1,0 +1,30 @@
+﻿<div class="align-self-center flex-row order-md-first">
+    <div class="d-none d-md-flex">
+        <div class="nav-item dropdown d-none d-md-flex me-3">
+            <a href="#" class="nav-link px-3" @onclick="_=>open()">
+                <Badge Count="4" OverflowCount="99" ShowZero="true">
+                    <i class="fas fa-bell fa-fw fa-xl"></i>
+                </Badge>
+            </a>
+        </div>
+    </div>
+</div>
+
+<Drawer Closable="true" Visible="visible" Placement="right" Title='("Personal Messages")' OnClose="_=>close()" Width=720>
+    <PersonalMessageList></PersonalMessageList>
+</Drawer>
+
+@code{
+
+    bool visible = false;
+
+    void open()
+    {
+        this.visible = true;
+    }
+
+    void close()
+    {
+        this.visible = false;
+    }
+}

@@ -1,4 +1,6 @@
-﻿@inherits LayoutComponentBase
+﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Notifications
+@inherits LayoutComponentBase
+
 <RadzenNotification />
 <RadzenTooltip />
 <RadzenContextMenu />
@@ -14,11 +16,11 @@
                 <TopMenu />
             </div>
             <div class="d-flex justify-content-right">
-                <NotificationMenu />
+                <PersonalMessageIcon/>
                 <RadzenProfileMenu>
                     <Template>
-                            <Avatar Icon="user" Size="large">
-                            </Avatar>
+                        <Avatar Icon="user" Size="large">
+                        </Avatar>
                     </Template>
                     <ChildContent>
                         <RadzenProfileMenuItem Text="Settings" Path="buttons" Icon="build"></RadzenProfileMenuItem>

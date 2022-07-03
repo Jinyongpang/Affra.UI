@@ -142,6 +142,34 @@ body {
     height: 100% !important;
 }
 
+.dropzone {
+    padding: 30px;
+    border: 1px dashed #75868a;
+    list-style: none;
+}
+
+.no-drop {
+    border: 2px dashed red;
+}
+
+.can-drop {
+    border: 2px dashed green !important;
+}
+
+.draggable {
+    cursor: grab;
+}
+
+.draggable:active {
+    cursor: grabbing;
+    border: 1px dashed #dbe0ea !important;
+}
+
+.dragging {
+    cursor: grabbing;
+    border: 1px dashed #dbe0ea !important;
+}
+
 .rz-datatable {
     border: 1px solid #dbe0ea !important;
     box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
@@ -172,4 +200,15 @@ body {
 
 .ant-card-head-title {
     font-weight: bold !important;
+}
+
+.ant-drawer-title {
+    font-weight: bold !important;
+}
+.ant-drawer-body {
+    padding: 0px !important; 
+}
+
+.sticky-top {
+    z-index: 999;
 }
