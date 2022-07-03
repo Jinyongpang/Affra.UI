@@ -4,10 +4,6 @@
 <RadzenContextMenu />
 <RadzenDialog />
 <div class="page">
-    @*<div class="sidebar @NavMenuCssClass">
-        <NavMenu />
-    </div>*@
-
     <main>
         <nav class="navbar navbar-light auth sticky-top" style="height: 5.0rem;">
           <div class="container-fluid top-navbar" style="height: 5.0rem;">
@@ -18,6 +14,7 @@
                 <TopMenu />
             </div>
             <div class="d-flex justify-content-right">
+                <NotificationMenu />
                 <RadzenProfileMenu>
                     <Template>
                             <Avatar Icon="user" Size="large">
@@ -37,8 +34,3 @@
         </div>
     </main>
 </div>
-@code {
-    [CascadingParameter] private AppState AppState { get; set; }
-
-    private string? NavMenuCssClass => AppState.CollapseNavMenu ? "collapseSideBar" : "expandSideBar";
-}

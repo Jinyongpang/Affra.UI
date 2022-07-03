@@ -1,0 +1,198 @@
+﻿.dropdown-menu {
+    right: 0;
+    top: 100%;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid rgba(98, 105, 118, 0.16);
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.dropdown-menu-card {
+    padding: 0;
+}
+
+.dropdown-menu-card > .card {
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+}
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    font-size: 85.71428571%;
+    font-weight: 500;
+    line-height: 1;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 4px;
+    position: absolute;
+    top: 0.375rem;
+    right: 0.375rem;
+    transform: translate(50%, -50%);
+}
+.badge:empty {
+    display: none;
+}
+.bg-red {
+    color: #ffffff !important;
+    background: #d63939 !important;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #ffffff;
+    background-clip: border-box;
+    border: 1px solid rgba(98, 105, 118, 0.16);
+    border-radius: 4px;
+}
+.card > .card-header + .list-group,
+.card > .list-group + .card-footer {
+    border-top: 0;
+}
+.card-header {
+    padding: 1rem 1.25rem;
+    margin-bottom: 0;
+    color: #626976;
+    background-color: #fafbfc;
+    border-bottom: 1px solid rgba(98, 105, 118, 0.16);
+}
+.card-header:first-child {
+    border-radius: 3px 3px 0 0;
+}
+.card-title {
+    margin-bottom: 1.25rem;
+}
+.card-title {
+    display: block;
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+}
+
+a.card-title:hover {
+    color: inherit;
+}
+
+.card-header .card-title {
+    margin: 0;
+}
+.card > .list-group {
+    border-top: inherit;
+    border-bottom: inherit;
+}
+
+.card > .list-group:first-child {
+    border-top-width: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.card > .list-group:last-child {
+    border-bottom-width: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: 4px;
+}
+.list-group-flush {
+    border-radius: 0;
+}
+
+.list-group-flush > .list-group-item {
+    border-width: 0 0 1px;
+}
+
+.list-group-flush > .list-group-item:last-child {
+    border-bottom-width: 0;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 1rem 1.25rem;
+    color: #0f172a;
+    background-color: inherit;
+    border: 1px solid #e6e7e9;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.list-group-item:last-child {
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+}
+.list-group-item.disabled, .list-group-item:disabled {
+    color: #475569;
+    pointer-events: none;
+    background-color: inherit;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: inherit;
+    background-color: rgba(32, 107, 196, 0.04);
+    border-color: #e6e7e9;
+}
+
+.list-group-hoverable .list-group-item-actions {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .list-group-hoverable .list-group-item-actions {
+        transition: none;
+    }
+}
+
+.list-group-hoverable .list-group-item:hover .list-group-item-actions,
+.list-group-hoverable .list-group-item-actions.show {
+    opacity: 1;
+}
+.status-dot {
+    --tblr-status-dot-color: var(--tblr-status-color, #626976);
+    --tblr-status-size: 0.5rem;
+    position: relative;
+    display: inline-block;
+    width: var(--tblr-status-size);
+    height: var(--tblr-status-size);
+    background: var(--tblr-status-dot-color);
+    border-radius: 100rem;
+}
+/*.status-dot-animated:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: inherit;
+    border-radius: inherit;
+    opacity: 0.6;
+    -webkit-animation: 1s linear 2s backwards infinite status-pulsate-tertiary;
+    animation: 1s linear 2s backwards infinite status-pulsate-tertiary;
+}*/
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.text-body {
+    --tblr-text-opacity: 1;
+    color: rgba(var(--tblr-body-color-rgb), var(--tblr-text-opacity)) !important;
+}
+.text-muted {
+    color: #626976 !important;
+}

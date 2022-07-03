@@ -56,13 +56,6 @@ main {
         flex-direction: row;
     }
 
-    .sidebar {
-        width: 250px;
-        height: 100vh;
-        position: sticky;
-        top: 0;
-    }
-
     .top-row {
         position: sticky;
         top: 0;
@@ -79,70 +72,7 @@ main {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
-
-    .expandSideBar {
-        width: 19rem;
-        transition: 0.5s;
-    }
-
-    .collapseSideBar {
-        width: 6.5rem;
-        transition: 0.5s;
-    }
-
-    .reduceArticalSize {
-        width: 83vw;
-        transition: 0.5s;
-    }
-
-    .expandArticalSize {
-        width: 93vw;
-        transition: 0.5s;
-    }
 }
-
-@media (max-width: 1840px) {
-    .reduceArticalSize {
-        width: 82vw !important;
-        transition: 0.5s;
-    }
-
-    .expandArticalSize {
-        width: 92vw !important;
-        transition: 0.5s;
-    }
-}
-@media (max-width: 1680px) {
-    .reduceArticalSize {
-        width: 81vw !important;
-        transition: 0.5s;
-    }
-
-    .expandArticalSize {
-        width: 92vw !important;
-        transition: 0.5s;
-    }
-}
-@media (max-width: 1590px) {
-    .expandSideBar {
-        height: 100%;
-    }
-
-    .collapseSideBar {
-        height: 3.5rem;
-    }
-}
-
-
-@media (min-width: 1200px) 
-{
-    .container {
-        max-width: 1540px !important;
-    }
-}
-
-@media (min-width: 2160px) {
-    .container {
-        max-width: 2500px !important;
-    }
+.container {
+    max-width: 96vw !important;
 }
