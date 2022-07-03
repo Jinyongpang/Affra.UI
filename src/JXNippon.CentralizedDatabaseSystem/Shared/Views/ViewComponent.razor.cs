@@ -70,13 +70,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 {
                     var service = this.GetGenericService<Column>(serviceScope);
                     await service.DeleteAsync(column);
+                    column.Row.Columns.Remove(column);
                 }
                 else if (data is Row row)
                 {
                     var service = this.GetGenericService<Row>(serviceScope);
                     await service.DeleteAsync(row);
+                    View.Rows.Remove(row);
                 }
 
+                StateHasChanged();
                 AffraNotificationService.NotifyItemDeleted();
             }
         }
