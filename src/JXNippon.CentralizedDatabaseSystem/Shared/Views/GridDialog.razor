@@ -51,15 +51,6 @@
                 </div>
             </div>
             <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Type" />
-                </div>
-                <div class="col-8">
-                    <RadzenDropDown Name="Type" class="w-100" Placeholder="Enter type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@types" @bind-Value="@Item.Type" TValue="string" AllowClear="false" Disabled=@isViewing></RadzenDropDown>
-                    <RadzenRequiredValidator Component="Type" Text="Type is required" Popup=false/>
-                </div>
-            </div>
-            <div class="row py-2">
                 <GridColumnDataGrid Grid="@Item"></GridColumnDataGrid>
             </div>
             <div class="row justify-content-center py-4" hidden=@isViewing>
