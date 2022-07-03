@@ -32,11 +32,16 @@
                 <div><i class="fas fa-sitemap fa-fw fa-xl"></i> Well Allocation</div>
             </Template>
             <ChildContent>
-                <RadzenMenuItem Text="Buttons" Path="buttons" Icon="account_circle"></RadzenMenuItem>
-                <RadzenMenuItem Text="Menu" Path="menu" Icon="line_weight"></RadzenMenuItem>
-                <RadzenMenuItem Text="ChildClick" Icon="attach_file"></RadzenMenuItem>
-                <RadzenMenuItem Text="Dialog" Path="dialog" Icon="perm_media"></RadzenMenuItem>
-                <RadzenMenuItem Text="Notification" Path="notification" Icon="announcement"></RadzenMenuItem>
+                <RadzenMenuItem Path="wellAllocation/dashboard">
+                    <Template>
+                        <div><i class="fas fa-dashboard fa-fw fa-xl"></i> Dashboard</div>
+                    </Template>
+                </RadzenMenuItem>
+                 <RadzenMenuItem Path="wellAllocation/combineddailyreport">
+                    <Template>
+                        <div><i class="fas fa-table fa-fw fa-xl"></i> PE Monthly Report</div>
+                    </Template>
+                </RadzenMenuItem>
             </ChildContent>
         </RadzenMenuItem>
         <RadzenMenuItem>
@@ -44,11 +49,16 @@
                 <div><i class="fas fa-hourglass fa-fw fa-xl"></i> Deferment</div>
             </Template>
             <ChildContent>
-                <RadzenMenuItem Text="Buttons" Path="buttons" Icon="account_circle"></RadzenMenuItem>
-                <RadzenMenuItem Text="Menu" Path="menu" Icon="line_weight"></RadzenMenuItem>
-                <RadzenMenuItem Text="ChildClick" Icon="attach_file"></RadzenMenuItem>
-                <RadzenMenuItem Text="Dialog" Path="dialog" Icon="perm_media"></RadzenMenuItem>
-                <RadzenMenuItem Text="Notification" Path="notification" Icon="announcement"></RadzenMenuItem>
+                <RadzenMenuItem Path="deferment/dashboard">
+                    <Template>
+                        <div><i class="fas fa-dashboard fa-fw fa-xl"></i> Dashboard</div>
+                    </Template>
+                </RadzenMenuItem>
+                 <RadzenMenuItem Path="deferment/combineddailyreport">
+                    <Template>
+                        <div><i class="fas fa-table fa-fw fa-xl"></i> Deferment Report</div>
+                    </Template>
+                </RadzenMenuItem>
             </ChildContent>
         </RadzenMenuItem>
         <RadzenMenuItem>
