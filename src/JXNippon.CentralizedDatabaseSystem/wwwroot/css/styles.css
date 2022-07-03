@@ -201,3 +201,14 @@ body {
 .ant-card-head-title {
     font-weight: bold !important;
 }
+
+.ant-drawer-title {
+    font-weight: bold !important;
+}
+.ant-drawer-body {
+    padding: 0px !important; 
+}
+
+.sticky-top {
+    z-index: 999;
+}
