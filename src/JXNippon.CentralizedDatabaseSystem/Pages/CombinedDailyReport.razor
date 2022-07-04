@@ -32,8 +32,8 @@
     </div>
 </div>
 
-<div class="top-row py-1">
-    <div class="col-12">
+<div class="row py-1">
+    <div class="col">  
         <RadzenCard>
             @*<RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => PanelCollapseChange("Expand")) Collapse=@(() => PanelCollapseChange("Collapse"))>*@
             <RadzenPanel AllowCollapse="true" Collapsed="true">
@@ -43,12 +43,7 @@
                             1. OIM Summary
                         </h4>
                     </div>
-                    <div class="col-5">
-                        <Progress StrokeWidth=15 Percent=60 ShowInfo="false" />
-                    </div>
-                    <div class="col-1">
-                        <h3 class="progressBarTitle">60 %</h3>
-                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=20 ShowInfo=false />
                 </HeaderTemplate>
                 <ChildContent>
                     <Tabs DefaultActiveKey="1" Animated>
@@ -64,8 +59,8 @@
         </RadzenCard>
     </div>
 </div>
-<div class="top-row py-1">
-    <div class="col-12">
+<div class="row py-1">
+    <div class="col">  
         <RadzenCard>
             <RadzenPanel AllowCollapse="true" Collapsed="true">
                 <HeaderTemplate>
@@ -74,12 +69,7 @@
                         2. Health, Safety & Environment
                         </h4>
                     </div>
-                    <div class="col-5">
-                        <Progress StrokeWidth=15 Percent=30 ShowInfo="false" />
-                    </div>
-                    <div class="col-1">
-                        <h3 class="progressBarTitle">30 %</h3>
-                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=25 ShowInfo=false />
                 </HeaderTemplate>
                 <ChildContent>
                     <Tabs DefaultActiveKey="1" Animated>
@@ -104,798 +94,453 @@
         </RadzenCard>
     </div>
 </div>
-@*
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    2. Health, Safety & Environment
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Health, Safety & Environment
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <HealthSafetyAndEnvironmentDataGrid @ref="healthSafetyAndEnvironmentDataGrid" LoadData=@(args => LoadHealthSafetyAndEnvironmentDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@healthSafetyAndEnvironmentDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            3. Daily Production
+                        </h4>
                     </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Loss Of Primary Containment (LOPC) Incident
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <LossOfPrimaryContainmentIncidentDataGrid @ref="lossOfPrimaryContainmentIncidentDataGrid" LoadData=@(args => LoadLossOfPrimaryContainmentIncidentDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@lossOfPrimaryContainmentIncidentDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    LifeBoats
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <LifeBoatsDataGrid @ref="lifeBoatsDataGrid" LoadData=@(args => LoadLifeBoatsDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@lifeBoatsDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Management Of Change (MOC) : Long Term Overrides & Inhibits On Alarm And/Or Trip
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Management Of Change (MOC) : Operating Change
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <OperatingChangeDataGrid @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@operatingChangeDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@(healthSafetyAndEnvironmentDataGrid.Count + lossOfPrimaryContainmentIncidentDataGrid.Count + lifeBoatsDataGrid.Count + longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.Count + operatingChangeDataGrid.Count) record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
-    </div>
-</div>
- <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    3. Daily Production
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    SK10 Production
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <ProductionSK10DataGrid @ref="productionSK10DataGrid" LoadData=@(args => LoadProductionSK10DataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@productionSK10DataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    HIP Production
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <ProductionHIPDataGrid @ref="productionHIPDataGrid" LoadData=@(args => LoadProductionHIPDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@productionHIPDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    FPSO Production
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <ProductionFPSOHelangDataGrid @ref="productionFPSOHelangDataGrid" LoadData=@(args => LoadProductionFPSODataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@productionFPSOHelangDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@(productionSK10DataGrid.Count + productionHIPDataGrid.Count + productionFPSOHelangDataGrid.Count) record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
-    </div>
-</div>
-*@
-@* <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    4. Major Equipment Status
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <MajorEquipmentStatusDataGrid @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args))/>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@majorEquipmentStatusDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
-    </div>
-</div>*@
-@*
-<div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    5. Chemical Injection
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    CI Nalco, EC-1310A (3:7 = CI : Diesel)
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <CINalcoDataGrid @ref="ciNalcoDataGrid" LoadData=@(args => LoadCINalcoDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@ciNalcoDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Inowac SBN-810 Injection
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <InowacInjectionDataGrid @ref="inowacInjectionDataGrid" LoadData=@(args => LoadInowacInjectionDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@inowacInjectionDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@(ciNalcoDataGrid.Count + inowacInjectionDataGrid.Count) record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
-    </div>
-</div>
- <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    6. Wellhead & Separation System
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <WellHeadAndSeparationSystemDataGrid @ref="wellHeadAndSeparationSystemDataGrid" LoadData=@(args => LoadWellHeadAndSeparationSystemDataGridAsync(args))/>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Well Stream Cooler
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <WellStreamCoolerDataGrid @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@wellStreamCoolerDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@wellHeadAndSeparationSystemDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
-    </div>
-</div>
- <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    7. WellHead
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    HIP WellHead Parameter
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <HIPWellHeadParameterDataGrid @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@hipWellHeadParameterDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    LWP WellHead Parameter
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <LWPWellHeadParameterDataGrid @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@lwpWellHeadParameterDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@(hipWellHeadParameterDataGrid.Count + lwpWellHeadParameterDataGrid.Count) record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
-    </div>
-</div>
- <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    8. Rolls Royce Gas Engine & Kawasaki Compression System
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Kawasaki Export Compressor
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <KawasakiExportCompressorDataGrid @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@kawasakiExportCompressorDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Rolls Royce RB211 Engine
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <RollsRoyceRB211EngineDataGrid @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@rollsRoyceRB211EngineDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@(kawasakiExportCompressorDataGrid.Count + rollsRoyceRB211EngineDataGrid.Count) record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+                    <GenericProgressBar StrokeWidth=15 Percentage=85 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="SK10 Production" Key="1">
+                            <ProductionSK10DataGrid @ref="productionSK10DataGrid" LoadData=@(args => LoadProductionSK10DataGridAsync(args))/>
+                        </TabPane>
+                        <TabPane Tab="HIP Production" Key="2">
+                            <ProductionHIPDataGrid @ref="productionHIPDataGrid" LoadData=@(args => LoadProductionHIPDataGridAsync(args))/>
+                        </TabPane>
+                        <TabPane Tab="FPSO Production" Key="3">
+                            <ProductionFPSOHelangDataGrid @ref="productionFPSOHelangDataGrid" LoadData=@(args => LoadProductionFPSODataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    9. Glycol Regeneration System
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Glycol Pump
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <GlycolPumpDataGrid @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@glycolPumpDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            4. Major Equipment Status
+                        </h4>
                     </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Glycol Train
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <GlycolTrainDataGrid @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@glycolTrainDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Glycol Stock
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <GlycolStockDataGrid @ref="glycolStockDataGrid" LoadData=@(args => LoadGlycolStockDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@glycolStockDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@(glycolPumpDataGrid.Count + glycolTrainDataGrid.Count+ glycolStockDataGrid.Count) record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
-    </div>
-</div>
- <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    10. Gas & Condensate Export Sampler & Export Line
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <GasAndCondensateExportSamplersAndExportLineDataGrid @ref="gasAndCondensateExportSamplersDataGrid" LoadData=@(args => LoadGasAndCondensateExportSamplersAndExportLineDataGridAsync(args))/>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@gasAndCondensateExportSamplersDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+                    <GenericProgressBar StrokeWidth=15 Percentage=75 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Major Equipment Status" Key="1">
+                            <MajorEquipmentStatusDataGrid @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    11. Cooling Medium System
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <CoolingMediumSystemDataGrid @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args))/>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Analysis Result
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <AnalysisResultDataGrid @ref="analysisResultDataGrid" LoadData=@(args => LoadAnalysisResultDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@analysisResultDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            5. Chemical Injection
+                        </h4>
                     </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@coolingMediumSystemDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+                    <GenericProgressBar StrokeWidth=15 Percentage=75 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="CI Nalco, EC-1310A (3:7 = CI : Diesel)" Key="1">
+                            <CINalcoDataGrid @ref="ciNalcoDataGrid" LoadData=@(args => LoadCINalcoDataGridAsync(args))/>
+                        </TabPane>
+	                    <TabPane Tab="Inowac SBN-810 Injection" Key="2">
+                            <InowacInjectionDataGrid @ref="inowacInjectionDataGrid" LoadData=@(args => LoadInowacInjectionDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    12. Power Generation & Distrubution
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <PowerGenerationAndDistributionManagementDataGrid @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args))/>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@powerGenerationAndDistributionManagementDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            6. Wellhead & Separation System
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=15 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Wellhead & Separation System" Key="1">
+                            <WellHeadAndSeparationSystemDataGrid @ref="wellHeadAndSeparationSystemDataGrid" LoadData=@(args => LoadWellHeadAndSeparationSystemDataGridAsync(args))/>
+                        </TabPane>
+	                    <TabPane Tab="Well Stream Cooler" Key="2">
+                            <WellStreamCoolerDataGrid @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    13. Living Quarters, Utilities & Others
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Utilities
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            7. WellHead
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=50 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="HIP WellHead Parameter" Key="1">
+                            <HIPWellHeadParameterDataGrid @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args))/>
+                        </TabPane>
+	                    <TabPane Tab="LWP WellHead Parameter" Key="2">
+                            <LWPWellHeadParameterDataGrid @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
+    </div>
+</div>
+<div class="row py-1">
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            8. Rolls Royce Gas Engine & Kawasaki Compression System
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=40 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Kawasaki Export Compressor" Key="1">
+                            <KawasakiExportCompressorDataGrid @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args))/>
+                        </TabPane>
+	                    <TabPane Tab="Rolls Royce RB211 Engine" Key="2">
+                            <RollsRoyceRB211EngineDataGrid @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
+    </div>
+</div>
+<div class="row py-1">
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            9. Glycol Regeneration System
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=10 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Glycol Pump" Key="1">
+                            <GlycolPumpDataGrid @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args))/>
+                        </TabPane>
+	                    <TabPane Tab="Glycol Train" Key="2">
+                            <GlycolTrainDataGrid @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args))/>
+                        </TabPane>
+	                    <TabPane Tab="Glycol Stock" Key="3">
+                            <GlycolStockDataGrid @ref="glycolStockDataGrid" LoadData=@(args => LoadGlycolStockDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
+    </div>
+</div>
+<div class="row py-1">
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            10. Gas & Condensate Export Sampler & Export Line
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=90 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Gas & Condensate Export Sampler & Export Line" Key="1">
+                            <GasAndCondensateExportSamplersAndExportLineDataGrid @ref="gasAndCondensateExportSamplersDataGrid" LoadData=@(args => LoadGasAndCondensateExportSamplersAndExportLineDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
+    </div>
+</div>
+<div class="row py-1">
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            11. Cooling Medium System
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=88 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Cooling Medium System" Key="1">
+                            <CoolingMediumSystemDataGrid @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args))/>
+                        </TabPane>
+	                    <TabPane Tab="Analysis Result" Key="2">
+                            <AnalysisResultDataGrid @ref="analysisResultDataGrid" LoadData=@(args => LoadAnalysisResultDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
+    </div>
+</div>
+<div class="row py-1">
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            12. Power Generation & Distrubution
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=100 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Power Generation & Distrubution" Key="1">
+                            <PowerGenerationAndDistributionManagementDataGrid @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
+    </div>
+</div>
+<div class="row py-1">
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            13. Living Quarters, Utilities & Others
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=100 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Utilities" Key="1">
                                 <UtilitiesDataGrid @ref="UtilitiesDataGrid" LoadData=@(args => LoadUtilitiesDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@UtilitiesDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Water Tank
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
+                        </TabPane>
+	                    <TabPane Tab="Water Tank" Key="2">
                                 <WaterTankDataGrid @ref="waterTankDataGrid" LoadData=@(args => LoadWaterTankDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@waterTankDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    Nitrogen Generator
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
+                        </TabPane>
+	                    <TabPane Tab="Nitrogen Generator" Key="3">
                                 <NitrogenGeneratorDataGrid @ref="nitrogenGeneratorDataGrid" LoadData=@(args => LoadNitrogenGeneratorDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@nitrogenGeneratorDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
-                    </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@(UtilitiesDataGrid.Count + waterTankDataGrid.Count + nitrogenGeneratorDataGrid.Count) record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    14. Tilted Plate Separator V-3000 & Produced Water Treatment System
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <ProducedWaterTreatmentSystemManagementDataGrid @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args))/>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    De-oiler Injection
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            14. Tilted Plate Separator V-3000 & Produced Water Treatment System
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=19 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Produced Water Treatment System" Key="1">
+                            <ProducedWaterTreatmentSystemManagementDataGrid @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args))/>
+                        </TabPane>
+	                    <TabPane Tab="De-oiler Injection" Key="2">
                                 <DeOilerInjectionDataGrid @ref="deOilerInjectionDataGrid" LoadData=@(args => LoadDeOilerInjectionDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@deOilerInjectionDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
+    </div>
+</div>
+<div class="row py-1">
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            15. Sand Disposal From TPS (V-3000) via Desander
+                        </h4>
                     </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@producedWaterTreatmentSystemManagementDataGrid.Count record(s)</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
-    </div>
-</div>
- <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    15. Sand Disposal From TPS (V-3000) via Desander
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <SandDisposalDesanderDataGrid @ref="sandDisposalDesanderDataGrid" LoadData=@(args => LoadSandDisposalDesanderDataGridAsync(args))/>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@sandDisposalDesanderDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+                    <GenericProgressBar StrokeWidth=15 Percentage=20 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Sand Disposal From TPS (V-3000) via Desander" Key="1">
+                            <SandDisposalDesanderDataGrid @ref="sandDisposalDesanderDataGrid" LoadData=@(args => LoadSandDisposalDesanderDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    16. DCS, FGS, ASD & Communication System
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <CommunicationSystemDataGrid @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args))/>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@communicationSystemDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            16. DCS, FGS, ASD & Communication System
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=55 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="DCS, FGS, ASD & Communication System" Key="1">
+                            <CommunicationSystemDataGrid @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    17. Layang Wellhead Platform (LWP) Activities
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <LWPActivityDataGrid @ref="lWPActivityDataGrid" LoadData=@(args => LoadLWPActivityDataGridAsync(args))/>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@lWPActivityDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            17. Layang Wellhead Platform (LWP) Activities
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=62 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Layang Wellhead Platform (LWP) Activities" Key="1">
+                            <LWPActivityDataGrid @ref="lWPActivityDataGrid" LoadData=@(args => LoadLWPActivityDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    18. Vendor Activities
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <VendorActivitiesDataGrid @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args))/>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@vendorActivitiesDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            18. Vendor Activities
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=66 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Vendor Activities" Key="1">
+                            <VendorActivitiesDataGrid @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    19. Logistic
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <LogisticDataGrid @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args))/>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@logisticDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            19. Logistic
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=10 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Logistic" Key="1">
+                            <LogisticDataGrid @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
 <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    20. Maximo Work Order
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <MaximoWorkOrderDataGrid @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args))/>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@maximoWorkOrderDataGrid.Count record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+    <div class="col">  
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            20. Maximo Work Order
+                        </h4>
+                    </div>
+                    <GenericProgressBar StrokeWidth=15 Percentage=0 ShowInfo=false />
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Maximo Work Order" Key="1">
+                            <MaximoWorkOrderDataGrid @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
-*@
