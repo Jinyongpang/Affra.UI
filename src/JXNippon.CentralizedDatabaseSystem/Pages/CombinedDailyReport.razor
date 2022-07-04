@@ -31,62 +31,80 @@
         <RadzenButton Text="Export Combined Daily Report" Icon="grid_on" ButtonStyle="ButtonStyle.Primary" Style="margin-left: 10px;margin-bottom: 20px;"/>
     </div>
 </div>
- <div class="row py-1">
-    <div class="col">
-        <RadzenPanel AllowCollapse="true">
-            <HeaderTemplate>
-                <h4 class="m-0 d-flex align-items-center title">
-                    1. OIM Summary
-                </h4>
-            </HeaderTemplate>
-            <ChildContent>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    HIP / LWP Summary
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <HIPAndLWPSummaryDataGrid @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@hipAndLWPSummaryDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
+
+<div class="top-row py-1">
+    <div class="col-12">
+        <RadzenCard>
+            @*<RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => PanelCollapseChange("Expand")) Collapse=@(() => PanelCollapseChange("Collapse"))>*@
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                            1. OIM Summary
+                        </h4>
                     </div>
-                </div>
-                <div class="row py-1">
-                    <div class="col">
-                        <RadzenPanel AllowCollapse="true">
-                            <HeaderTemplate>
-                                <h4 class="m-0 d-flex align-items-center title">
-                                    FPSO Helang Summary
-                                </h4>
-                            </HeaderTemplate>
-                            <ChildContent>
-                                <FPSOHelangSummaryDataGrid @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args))/>
-                            </ChildContent>
-                            <SummaryTemplate>
-                                <RadzenCard class="mt-3">
-                                    <b>@fpsoHelangSummaryDataGrid.Count record(s)</b>
-                                </RadzenCard>
-                            </SummaryTemplate>
-                        </RadzenPanel>
+                    <div class="col-5">
+                        <Progress StrokeWidth=15 Percent=60 ShowInfo="false" />
                     </div>
-                </div>
-            </ChildContent>
-            <SummaryTemplate>
-                <RadzenCard class="mt-3">
-                    <b>@(hipAndLWPSummaryDataGrid.Count + fpsoHelangSummaryDataGrid.Count) record(s).</b>
-                </RadzenCard>
-            </SummaryTemplate>
-        </RadzenPanel>
+                    <div class="col-1">
+                        <h3 class="progressBarTitle">60 %</h3>
+                    </div>
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="HIP / LWP Summary" Key="1">
+                            <HIPAndLWPSummaryDataGrid @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args))/>
+                        </TabPane>
+                        <TabPane Tab="FPSO Helang Summary" Key="2">
+                            <FPSOHelangSummaryDataGrid @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
     </div>
 </div>
+<div class="top-row py-1">
+    <div class="col-12">
+        <RadzenCard>
+            <RadzenPanel AllowCollapse="true" Collapsed="true">
+                <HeaderTemplate>
+                    <div class="col-5">
+                        <h4 class="m-0 d-flex align-items-center title">
+                        2. Health, Safety & Environment
+                        </h4>
+                    </div>
+                    <div class="col-5">
+                        <Progress StrokeWidth=15 Percent=30 ShowInfo="false" />
+                    </div>
+                    <div class="col-1">
+                        <h3 class="progressBarTitle">30 %</h3>
+                    </div>
+                </HeaderTemplate>
+                <ChildContent>
+                    <Tabs DefaultActiveKey="1" Animated>
+	                    <TabPane Tab="Health, Safety & Environment" Key="1">
+                            <HealthSafetyAndEnvironmentDataGrid @ref="healthSafetyAndEnvironmentDataGrid" LoadData=@(args => LoadHealthSafetyAndEnvironmentDataGridAsync(args))/>
+                        </TabPane>
+                        <TabPane Tab="Loss Of Primary Containment (LOPC) Incident" Key="2">
+                            <LossOfPrimaryContainmentIncidentDataGrid @ref="lossOfPrimaryContainmentIncidentDataGrid" LoadData=@(args => LoadLossOfPrimaryContainmentIncidentDataGridAsync(args))/>
+                        </TabPane>
+                        <TabPane Tab="LifeBoats" Key="3">
+                            <LifeBoatsDataGrid @ref="lifeBoatsDataGrid" LoadData=@(args => LoadLifeBoatsDataGridAsync(args))/>
+                        </TabPane>
+                        <TabPane Tab="Management Of Change (MOC) : Long Term Overrides & Inhibits On Alarm And/Or Trip" Key="4">
+                            <LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args))/>
+                        </TabPane>
+                        <TabPane Tab="Management Of Change (MOC) : Operating Change" Key="5">
+                            <OperatingChangeDataGrid @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args))/>
+                        </TabPane>
+                    </Tabs>
+                </ChildContent>
+            </RadzenPanel>
+        </RadzenCard>
+    </div>
+</div>
+@*
 <div class="row py-1">
     <div class="col">
         <RadzenPanel AllowCollapse="true">
@@ -275,7 +293,8 @@
         </RadzenPanel>
     </div>
 </div>
- <div class="row py-1">
+*@
+@* <div class="row py-1">
     <div class="col">
         <RadzenPanel AllowCollapse="true">
             <HeaderTemplate>
@@ -293,7 +312,8 @@
             </SummaryTemplate>
         </RadzenPanel>
     </div>
-</div>
+</div>*@
+@*
 <div class="row py-1">
     <div class="col">
         <RadzenPanel AllowCollapse="true">
@@ -878,3 +898,4 @@
         </RadzenPanel>
     </div>
 </div>
+*@

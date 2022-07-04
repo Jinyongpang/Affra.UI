@@ -201,3 +201,7 @@ body {
 .ant-card-head-title {
     font-weight: bold !important;
 }
+.progressBarTitle {
+    font-weight: bold;
+    color: #0AA1DD;
+}
