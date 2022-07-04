@@ -91,11 +91,11 @@
 
 .rz-grid-table thead th .rz-column-title {
     text-transform: capitalize !important;
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
 }
 
 .rz-grid-table td .rz-cell-data {
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
 }
 
 .rz-dialog-titlebar {
@@ -200,4 +200,23 @@ body {
 
 .ant-card-head-title {
     font-weight: bold !important;
+}
+.progressBarTitle {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.pb-green {
+    color: #00FF00;
+}
+.pb-blue {
+    color: #007BFF;
+}
+.pb-yellow {
+    color: #FFC107;
+}
+.pb-orange {
+    color: #F3880B;
+}
+.pb-red {
+    color: #FF0000;
 }
