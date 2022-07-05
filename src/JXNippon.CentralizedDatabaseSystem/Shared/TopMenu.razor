@@ -1,83 +1,45 @@
-﻿<div>
-    <RadzenMenu>
-         <RadzenMenuItem Path="#">          
-            <Template>
-                <div><i class="fas fa-home fa-fw fa-xl"></i> Home</div>
-            </Template>
-        </RadzenMenuItem>
-        <RadzenMenuItem>          
-            <Template>
-                <div><i class="fas fa-globe fa-fw fa-xl"></i> Operation</div>
-            </Template>
-            <ChildContent>
-                <RadzenMenuItem Path="operation/dashboard">
-                    <Template>
-                        <div><i class="fas fa-dashboard fa-fw fa-xl"></i> Dashboard</div>
-                    </Template>
-                </RadzenMenuItem>
-                 <RadzenMenuItem Path="operation/combineddailyreport">
-                    <Template>
-                        <div><i class="fas fa-table fa-fw fa-xl"></i> Combined Daily Report</div>
-                    </Template>
-                </RadzenMenuItem>
-                 <RadzenMenuItem Path="operation/managementofchange">
-                    <Template>
-                        <div><i class="fas fa-people-roof fa-fw fa-xl"></i> Management Of Change</div>
-                    </Template>
-                </RadzenMenuItem>
-            </ChildContent>
-        </RadzenMenuItem>
-        <RadzenMenuItem>
-            <Template>
-                <div><i class="fas fa-sitemap fa-fw fa-xl"></i> Well Allocation</div>
-            </Template>
-            <ChildContent>
-                <RadzenMenuItem Path="wellAllocation/dashboard">
-                    <Template>
-                        <div><i class="fas fa-dashboard fa-fw fa-xl"></i> Dashboard</div>
-                    </Template>
-                </RadzenMenuItem>
-                 <RadzenMenuItem Path="wellAllocation/combineddailyreport">
-                    <Template>
-                        <div><i class="fas fa-table fa-fw fa-xl"></i> PE Monthly Report</div>
-                    </Template>
-                </RadzenMenuItem>
-            </ChildContent>
-        </RadzenMenuItem>
-        <RadzenMenuItem>
-            <Template>
-                <div><i class="fas fa-hourglass fa-fw fa-xl"></i> Deferment</div>
-            </Template>
-            <ChildContent>
-                <RadzenMenuItem Path="deferment/dashboard">
-                    <Template>
-                        <div><i class="fas fa-dashboard fa-fw fa-xl"></i> Dashboard</div>
-                    </Template>
-                </RadzenMenuItem>
-                 <RadzenMenuItem Path="deferment/combineddailyreport">
-                    <Template>
-                        <div><i class="fas fa-table fa-fw fa-xl"></i> Deferment Report</div>
-                    </Template>
-                </RadzenMenuItem>
-            </ChildContent>
-        </RadzenMenuItem>
-        <RadzenMenuItem>
-            <Template>
-                <div><i class="fas fa-toolbox fa-fw fa-xl"></i> More</div>
-            </Template>
-            <ChildContent>
-                <RadzenMenuItem Path="more/filemanagement">
-                    <Template>
-                        <div><i class="fas fa-laptop-file fa-fw fa-xl"></i> File Management</div>
-                    </Template>
-                </RadzenMenuItem>
-                <RadzenMenuItem Path="more/viewdesigner">
-                    <Template>
-                        <div><i class="fas fa-compass-drafting fa-fw fa-xl"></i> View Designer</div>
-                    </Template>
-                </RadzenMenuItem>
-            </ChildContent>
-        </RadzenMenuItem>
-
-    </RadzenMenu>
-</div>
+﻿<Menu Mode=MenuMode.Horizontal>
+    <MenuItem Key="Home">
+         <a href="#"><i class="fas fa-home fa-fw fa-xl"></i> Home</a>
+    </MenuItem>
+    <SubMenu>
+        <TitleTemplate><div><i class="fas fa-globe fa-fw fa-xl"></i> Operation</div></TitleTemplate>
+        <ChildContent>
+            <MenuItemGroup Title="Operation">
+                <MenuItem Key="OperationDashboard"><a href="operation/dashboard"><i class="fas fa-dashboard fa-fw fa-xl"></i> Dashboard</a></MenuItem>
+                <MenuItem Key="OperationCombinedDailyReport"><a href="operation/combineddailyreport"><i class="fas fa-table fa-fw fa-xl"></i> Combined Daily Report</a></MenuItem>
+            </MenuItemGroup>
+            <MenuItemGroup Title="Management Of Change">
+                <MenuItem Key="OperationManagementOfChange"><a href="operation/managementofchange"><i class="fas fa-people-roof fa-fw fa-xl"></i> Management Of Change</a></MenuItem>
+                <MenuItem Key="OperationManagementOfChangeSummary"><a href="operation/managementofchangesummary"><i class="fas fa-book fa-fw fa-xl"></i> Management Of Change Summary</a></MenuItem>
+            </MenuItemGroup>
+        </ChildContent>
+    </SubMenu>
+     <SubMenu>
+        <TitleTemplate><div><i class="fas fa-sitemap fa-fw fa-xl"></i> Well Allocation</div></TitleTemplate>
+        <ChildContent>
+            <MenuItem Key="WellAllocationDashboard"><a href="wellallocation/dashboard"><i class="fas fa-dashboard fa-fw fa-xl"></i> Dashboard</a></MenuItem>
+            <MenuItem Key="WellAllocationPEReport"><a href="wellallocation/pereport"><i class="fas fa-table fa-fw fa-xl"></i> PE Report</a></MenuItem>
+        </ChildContent>
+    </SubMenu>
+    <SubMenu>
+        <TitleTemplate><div><i class="fas fa-hourglass fa-fw fa-xl"></i> Deferment</div></TitleTemplate>
+        <ChildContent>
+            <MenuItem Key="DefermentDashboard"><a href="deferment/dashboard"><i class="fas fa-dashboard fa-fw fa-xl"></i> Dashboard</a></MenuItem>
+            <MenuItem Key="DefermentReport"><a href="deferment/report"><i class="fas fa-table fa-fw fa-xl"></i> Deferment Report</a></MenuItem>
+        </ChildContent>
+    </SubMenu>
+    <SubMenu>
+        <TitleTemplate><div><i class="fas fa-toolbox fa-fw fa-xl"></i> More</div></TitleTemplate>
+        <ChildContent>
+            <MenuItemGroup Title="Management">
+                <MenuItem Key="FileManagement"><a href="more/filemanagement"><i class="fas fa-laptop-file fa-fw fa-xl"></i> File Management</a></MenuItem>
+                <MenuItem Key="UserManagement"><a href="more/usermanagement"><i class="fas fa-users-gear fa-fw fa-xl"></i> User Management</a></MenuItem>
+                <MenuItem Key="TemplateManagement"><a href="more/templatemanagement"><i class="fas fa-table-columns fa-fw fa-xl"></i> Template Management</a></MenuItem>
+            </MenuItemGroup>
+            <MenuItemGroup Title="Tool">
+               <MenuItem Key="ViewDesigner"><a href="more/viewdesigner"><i class="fas fa-compass-drafting fa-fw fa-xl"></i> View Designer</a></MenuItem>            
+            </MenuItemGroup>
+        </ChildContent>
+    </SubMenu>
+</Menu>
