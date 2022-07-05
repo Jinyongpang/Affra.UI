@@ -1,27 +1,25 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Models;
-using JXNippon.CentralizedDatabaseSystem.Shared;
-using JXNippon.CentralizedDatabaseSystem.Shared.Logistic;
-using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary;
-using JXNippon.CentralizedDatabaseSystem.Shared.Dashboard;
-using JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment;
+using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction;
-using JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem;
-using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem;
-using JXNippon.CentralizedDatabaseSystem.Shared.WellHead;
+using JXNippon.CentralizedDatabaseSystem.Shared.Dashboard;
+using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine;
+using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
+using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers;
+using JXNippon.CentralizedDatabaseSystem.Shared.Logistic;
+using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
+using JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment;
+using JXNippon.CentralizedDatabaseSystem.Shared.MaximoWorkOrder;
+using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary;
 using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement;
-using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement;
-using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
-using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
-using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
-using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
-using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine;
-using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
-using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers;
+using JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander;
 using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities;
-using JXNippon.CentralizedDatabaseSystem.Shared.MaximoWorkOrder;
+using JXNippon.CentralizedDatabaseSystem.Shared.WellHead;
+using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -179,7 +177,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             glycolTrainDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
-        
+
         private async Task LoadGlycolStockDataGridAsync(LoadDataArgs args)
         {
             glycolStockDataGrid.CommonFilter = filterPanel.CommonFilter;
@@ -229,44 +227,44 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         private Task ReloadAsync()
         {
-            return Task.WhenAll(powerGenerationAndDistributionManagementDataGrid.ReloadAsync(),
-                producedWaterTreatmentSystemManagementDataGrid.ReloadAsync(),
-                deOilerInjectionDataGrid.ReloadAsync(),
-                majorEquipmentStatusDataGrid.ReloadAsync(),
-                productionSK10DataGrid.ReloadAsync(),
-                productionHIPDataGrid.ReloadAsync(),
-                productionFPSOHelangDataGrid.ReloadAsync(),
-                wellHeadAndSeparationSystemDataGrid.ReloadAsync(),
-                wellStreamCoolerDataGrid.ReloadAsync(),
-                logisticDataGrid.ReloadAsync(),
-                lWPActivityDataGrid.ReloadAsync(),
-                communicationSystemDataGrid.ReloadAsync(),
-                lwpWellHeadParameterDataGrid.ReloadAsync(),
-                hipWellHeadParameterDataGrid.ReloadAsync(),
-                rollsRoyceRB211EngineDataGrid.ReloadAsync(),
-                kawasakiExportCompressorDataGrid.ReloadAsync(),
-                fpsoHelangSummaryDataGrid.ReloadAsync(),
-                lwpWellHeadParameterDataGrid.ReloadAsync(),
-                hipAndLWPSummaryDataGrid.ReloadAsync(),
-                healthSafetyAndEnvironmentDataGrid.ReloadAsync(),
-                lossOfPrimaryContainmentIncidentDataGrid.ReloadAsync(),
-                lifeBoatsDataGrid.ReloadAsync(),
-                longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.ReloadAsync(),
-                operatingChangeDataGrid.ReloadAsync(),
-                ciNalcoDataGrid.ReloadAsync(),
-                inowacInjectionDataGrid.ReloadAsync(),
-                glycolPumpDataGrid.ReloadAsync(),
-                glycolStockDataGrid.ReloadAsync(),
-                glycolTrainDataGrid.ReloadAsync(),
-                gasAndCondensateExportSamplersDataGrid.ReloadAsync(),
-                analysisResultDataGrid.ReloadAsync(),
-                coolingMediumSystemDataGrid.ReloadAsync(),
-                UtilitiesDataGrid.ReloadAsync(),
-                waterTankDataGrid.ReloadAsync(),
-                nitrogenGeneratorDataGrid.ReloadAsync(),
-                sandDisposalDesanderDataGrid.ReloadAsync(),
-                vendorActivitiesDataGrid.ReloadAsync(),
-                maximoWorkOrderDataGrid.ReloadAsync());
+            return Task.WhenAll(powerGenerationAndDistributionManagementDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                producedWaterTreatmentSystemManagementDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                deOilerInjectionDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                majorEquipmentStatusDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                productionSK10DataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                productionHIPDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                productionFPSOHelangDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                wellHeadAndSeparationSystemDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                wellStreamCoolerDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                logisticDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                lWPActivityDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                communicationSystemDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                lwpWellHeadParameterDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                hipWellHeadParameterDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                rollsRoyceRB211EngineDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                kawasakiExportCompressorDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                fpsoHelangSummaryDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                lwpWellHeadParameterDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                hipAndLWPSummaryDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                healthSafetyAndEnvironmentDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                lossOfPrimaryContainmentIncidentDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                lifeBoatsDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                operatingChangeDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                ciNalcoDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                inowacInjectionDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                glycolPumpDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                glycolStockDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                glycolTrainDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                gasAndCondensateExportSamplersDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                analysisResultDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                coolingMediumSystemDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                UtilitiesDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                waterTankDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                nitrogenGeneratorDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                sandDisposalDesanderDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                vendorActivitiesDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                maximoWorkOrderDataGrid?.ReloadAsync() ?? Task.CompletedTask);
         }
     }
 }
