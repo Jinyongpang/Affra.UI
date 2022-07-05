@@ -39,7 +39,7 @@
                 MaxSpan="TimeSpan.FromDays(62)">
                 <PickerTemplate>
                     <div id="@context.Id" @onclick="context.Toggle" class="date-range-picker">
-                        <i class="oi oi-calendar"></i>&nbsp;
+                        <i class="fa-solid fa-calendar"></i>&nbsp;
                         <span>@context.FormattedRange @(string.IsNullOrEmpty(context.FormattedRange) ? "Choose dates..." : "")</span>
                         <i class="oi oi-chevron-bottom float-right"></i>
                     </div>
