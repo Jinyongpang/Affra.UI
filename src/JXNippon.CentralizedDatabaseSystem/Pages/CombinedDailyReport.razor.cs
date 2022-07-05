@@ -28,6 +28,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
     public partial class CombinedDailyReport
     {
+        private readonly bool[] isRadzenPanelExpandedList = new bool[20];
         private DashboardFilterPanel filterPanel;
         private PowerGenerationAndDistributionManagementDataGrid powerGenerationAndDistributionManagementDataGrid;
         private ProducedWaterTreatmentSystemManagementDataGrid producedWaterTreatmentSystemManagementDataGrid;
@@ -66,16 +67,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private SandDisposalDesanderDataGrid sandDisposalDesanderDataGrid;
         private VendorActivitiesDataGrid vendorActivitiesDataGrid;
         private MaximoWorkOrderDataGrid maximoWorkOrderDataGrid;
-        //public bool PanelCollapsed { get; set; }
 
-        //private void PanelCollapseChange(string Command)
-        //{
-        //    if (Command == "Expand")
-        //        PanelCollapsed = false;
-        //    if (Command == "Collapse")
-        //        PanelCollapsed = true;
-
-        //}
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
             powerGenerationAndDistributionManagementDataGrid.CommonFilter = filterPanel.CommonFilter;
