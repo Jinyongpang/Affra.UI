@@ -1,4 +1,6 @@
-﻿@using ViewODataService.Affra.Service.View.Domain.Views
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
+@using JXNippon.CentralizedDatabaseSystem.Domain.Grids
+@using ViewODataService.Affra.Service.View.Domain.Views
 
 <div class="row">
     <div class="col">
@@ -14,20 +16,22 @@
     </div>
 </div>
 
-<div class="title py-3">Rows</div>
-<div class="row py-1">
-    <div class="col">
-       <RowDataGrid View=@view @ref=rowDataGrid LoadData=@(args => LoadDataAsync(args))/>
+@if (false)
+{    <div class="title py-3">Rows</div>
+    <div class="row py-1">
+        <div class="col">
+           <RowDataGrid View=@view @ref=rowDataGrid LoadData=@(args => LoadDataAsync(args))/>
+        </div>
     </div>
-</div>
 
-<hr class="solid"><div class="title">Columns</div>
-<div class="row py-2">
-    <div class="col">
-        <ColumnDataGrid View=@view @ref=columnDataGrid LoadData=@(args => LoadDataAsync(args))/>
+    <hr class="solid"><div class="title">Columns</div>
+    <div class="row py-2">
+        <div class="col">
+            <ColumnDataGrid View=@view @ref=columnDataGrid LoadData=@(args => LoadDataAsync(args))/>
         
+        </div>
     </div>
-</div>
+}
 
 <hr class="solid"><div class="title">Preview</div>
 <div class="row py-2">
@@ -35,3 +39,31 @@
         <ViewComponent View=@view @ref=viewComponent IsDesignMode="true"/>
     </div>
 </div>
+
+@if (radzenDropDown?.SelectedItem is not null)
+{    <div class="fixed-widgets">
+        <Popover>
+            <ContentTemplate>
+                <Menu Mode=MenuMode.Vertical>
+                    <MenuItem Key="AddRow"><a @onclick=AddRowAsync><i class="fas fa-diagram-next fa-fw fa-xl"></i> Add Row</a></MenuItem>
+                    <MenuDivider />
+                    <MenuItem Key="AddChart"><a @onclick=@(args => ShowDialogAsync(
+                    new Column()
+                    {
+                        ComponentType = nameof(Chart),
+                    },
+                    "Add"))><i class="fas fa-chart-line fa-fw fa-xl"></i> Add Chart...</a></MenuItem>
+                    <MenuItem Key="AddTable" @onclick=@(args => ShowDialogAsync(
+                    new Column()
+                    {
+                        ComponentType = nameof(Grid),
+                    },
+                    "Add"))><a><i class="fas fa-table fa-fw fa-xl"></i> Add Table...</a></MenuItem>
+                </Menu>
+            </ContentTemplate>
+            <ChildContent> 
+                <Avatar Size="large" Class="fixed-widgets-avatar"><Content><i class="fa-solid fa-wand-magic-sparkles"></i></Content></Avatar>
+            </ChildContent>
+        </Popover>
+    </div>
+}

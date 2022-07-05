@@ -29,7 +29,7 @@
                         <Extra>
                             @if (IsDesignMode)
                             {
-                                <a @onclick=@(args => ShowDeleteDialogAsync(args, row)) class="px-2"><i class="fa-solid fa-trash fa-lg"></i></a>
+                                <a @onclick=@(args => ShowDeleteDialogAsync(args, row)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
                             }
                         </Extra>
                     <Body> <EmptySimpleImg/></Body>
@@ -53,8 +53,8 @@
                     <Extra>
                         @if (IsDesignMode)
                         {
-                            <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
-                            <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg"></i></a>
+                            <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg text-info"></i></a>
+                            <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
                         }
                     </Extra>
                     <Body>
