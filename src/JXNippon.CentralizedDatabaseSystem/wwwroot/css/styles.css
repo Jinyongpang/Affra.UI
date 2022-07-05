@@ -196,6 +196,7 @@ body {
 
 .ant-avatar {
     background-color: #1A3C40;
+    cursor: pointer;
 }
 
 .ant-card-head-title {
