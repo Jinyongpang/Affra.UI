@@ -59,7 +59,8 @@
                          <div class="col py-3 px-3 can-drop" ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave(j))" @ondrop=@(args => HandleDropOnColumnAsync(args, col))/> 
                     }
 
-                    <div class="col py-3 @draggableClass" draggable="@isDraggable"
+                    <div class="col py-3 @draggableClass" draggable="@isDraggable" ondragover="event.preventDefault();"
+                        @ondrop=@(args => HandleDropOnColumnAsync(args, col))
                         @ondragstart=@(args => HandleDragStart(args, row, col, j))         
                         @ondragenter="@(args => HandleDragEnter(j))"
                         @ondragend=@(args => this.enteredId = -1)> 

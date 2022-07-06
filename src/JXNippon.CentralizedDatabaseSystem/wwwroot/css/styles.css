@@ -153,7 +153,7 @@ body {
 }
 
 .can-drop {
-    border: 2px dashed green !important;
+    border: 2px dashed #37E2D5 !important;
 }
 
 .draggable {
@@ -162,7 +162,7 @@ body {
 
 .draggable:active {
     cursor: grabbing;
-    border: 1px dashed #dbe0ea !important;
+    opacity: 0.3;
 }
 
 .dragging {
