@@ -13,17 +13,17 @@
 @inject IServiceProvider ServiceProvider
 @inject AffraNotificationService AffraNotificationService
 
-@foreach(var row in View.Rows)
-{
-    <div class="row">
-
-        @if (row.Columns is null
-            || row.Columns.Count == 0)
-        {
-             <div class="col py-3" ondragover="event.preventDefault();" @ondrop=@(args => HandleDropOnRowAsync(args, row))
-                    @ondragenter="HandleDragEnter"
-                    @ondragleave="HandleDragLeave">
-                    <Card Style="min-height: 200px; text-align: center;'"> 
+@{
+    int id = 0;
+    foreach(var row in View.Rows)
+    {
+        <div class="row">
+            @if (row.Columns is null
+                || row.Columns.Count == 0)
+            {
+                int j = id;
+                 <div class="col py-3" ondragover="event.preventDefault();" @ondrop=@(args => HandleDropOnRowAsync(args, row)) @ondragenter="@(args => HandleDragEnter(j))">
+                    <Card Style="min-height: 200px; text-align: center;"> 
                         <TitleTemplate>
                         </TitleTemplate>
                         <Extra>
@@ -32,51 +32,77 @@
                                 <a @onclick=@(args => ShowDeleteDialogAsync(args, row)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
                             }
                         </Extra>
-                    <Body> <EmptySimpleImg/></Body>
-                </Card>  
-             </div> 
-        }
+                        <Body>
+                            @if (this.enteredId == j)
+                            {
+                                <div class="col py-3 px-3 can-drop" ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave(j))" @ondrop=@(args => HandleDropOnRowAsync(args, row))/>
+                            }
+                            else
+                            {
+                                <EmptySimpleImg/>
+                            }
+                        </Body>
+                    </Card>  
+                 </div> 
+                 id++;
+            }
        
-        @foreach(var col in row.Columns.OrderBy(col => col.Sequence)) 
-        {
-            this.UpdateColumnDictionary(col);
-            <div class="col py-3 @draggableClass" draggable="@isDraggable" ondragover="event.preventDefault();" @ondragstart=@(args => HandleDragStart(args, row, col)) @ondrop=@(args => HandleDropOnColumnAsync(args, col))
-                    @ondragenter="HandleDragEnter"
-                    @ondragleave="HandleDragLeave"> 
-                <Card Size="medium">
-                    <TitleTemplate>
-                        <span>
-                            <i class="@col.Icon"></i>
-                            @col.Title
-                        </span>
-                    </TitleTemplate>
-                    <Extra>
-                        @if (IsDesignMode)
-                        {
-                            <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg text-info"></i></a>
-                            <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
-                        }
-                    </Extra>
-                    <Body>
-                        @if (col.ComponentType ==  nameof(Chart))
-                        {
-                            Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                            string type = ViewService.GetTypeMapping()[chart.Type];
-                            <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@type" Subscription="@chart.Type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
-                                Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries"></ChartComponent>
-                        }
-                        else if (col.ComponentType ==  nameof(Grid))
-                        {
-                            Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                            string type = ViewService.GetTypeMapping()[grid.Type];
-                            <DataGridComponent @ref="@gridComponentRef" TType="@type" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns"></DataGridComponent>
-                        }
-                    </Body>
-                </Card>               
-           </div> 
-        }
-    </div>
+            @{
+                foreach(var col in row.Columns.OrderBy(col => col.Sequence)) 
+                {
+                    this.UpdateColumnDictionary(col);
+                    cardClasses.Add(string.Empty);
+                    int j = id;
+
+                    @if (this.enteredId == j && this.draggedId != j && (col.RowId != draggingItem.RowId || col.Sequence != draggingItem.Sequence + 1))
+                    {
+                         <div class="col py-3 px-3 can-drop" ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave(j))" @ondrop=@(args => HandleDropOnColumnAsync(args, col))/> 
+                    }
+
+                    <div class="col py-3 @draggableClass" draggable="@isDraggable"
+                        @ondragstart=@(args => HandleDragStart(args, row, col, j))         
+                        @ondragenter="@(args => HandleDragEnter(j))"
+                        @ondragend=@(args => this.enteredId = -1)> 
+
+                        <Card Size="medium" Id=@j.ToString() Class="pointer-event: none;">
+                            <TitleTemplate>
+                                <span>
+                                    <i class="@col.Icon"></i>
+                                    @col.Title
+                                </span>
+                            </TitleTemplate>
+                            <Extra>
+                                @if (IsDesignMode)
+                                {
+                                    <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg text-info"></i></a>
+                                    <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
+                                }
+                            </Extra>
+                            <Body>
+                                @if (col.ComponentType ==  nameof(Chart))
+                                {
+                                    Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
+                                    string type = ViewService.GetTypeMapping()[chart.Type];
+                                    <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@type" Subscription="@chart.Type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries"></ChartComponent>
+                                }
+                                else if (col.ComponentType ==  nameof(Grid))
+                                {
+                                    Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
+                                    string type = ViewService.GetTypeMapping()[grid.Type];
+                                    <DataGridComponent @ref="@gridComponentRef" TType="@type" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns"></DataGridComponent>
+                                }
+                            </Body>
+                        </Card>               
+                    </div> 
+                  
+                   id++;
+                }
+            }
+        </div>
+    }
 }
+
 
 @code
 {
