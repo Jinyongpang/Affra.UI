@@ -15,7 +15,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private Column draggingItem;
 
+        private int enteredId = -1;
+
+        private int draggedId = -1;
+
         private readonly IDictionary<long, Column> columnDictionary = new Dictionary<long, Column>();
+
+        private readonly IList<string> cardClasses = new List<string>();
 
         [Parameter] public View View { get; set; }
 
@@ -149,20 +155,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
-        private void HandleDragEnter()
+        private void HandleDragEnter(int i)
         {
-            // AffraNotificationService.NotifyInfo("HandleDragEnter");
+            cardClasses[i] = "can-drop";
+            enteredId = i;
         }
 
-        private void HandleDragLeave()
+        private void HandleDragLeave(int i)
         {
-            // AffraNotificationService.NotifyInfo("HandleDragLeave");
+            cardClasses[i] = string.Empty;
+            enteredId = -1;
         }
 
-        private void HandleDragStart(DragEventArgs arg, Row row, Column column)
+        
+        private void HandleDragStart(DragEventArgs arg, Row row, Column column, int draggedId)
         {
             arg.DataTransfer.DropEffect = "move";
             draggingItem = this.columnDictionary[column.Id];
+            this.draggedId = draggedId;
         }
 
         private async Task HandleDropOnColumnAsync(DragEventArgs arg, Column column)
@@ -180,7 +190,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 using var serviceScope = ServiceProvider.CreateScope();
                 await this.GetGenericService<Column>(serviceScope).UpdateAsync(draggingItem, draggingItem.Id);
                 await RefreshViewAsync();
-
                 
                 AffraNotificationService.NotifyInfo(ViewUpdated);
             }
