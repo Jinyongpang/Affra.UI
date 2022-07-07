@@ -85,13 +85,13 @@
                                     Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
                                     string type = ViewService.GetTypeMapping()[chart.Type];
                                     <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@type" Subscription="@chart.Type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
-                                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries"></ChartComponent>
+                                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col"></ChartComponent>
                                 }
                                 else if (col.ComponentType ==  nameof(Grid))
                                 {
                                     Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
                                     string type = ViewService.GetTypeMapping()[grid.Type];
-                                    <DataGridComponent @ref="@gridComponentRef" TType="@type" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns"></DataGridComponent>
+                                    <DataGridComponent @ref="@gridComponentRef" TType="@type" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns" Column="@col"></DataGridComponent>
                                 }
                             </Body>
                         </Card>               

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.OData.Client;
 using Radzen;
 using Radzen.Blazor;
+using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
@@ -32,6 +33,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
+        [Parameter] public Column Column { get; set; }
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
