@@ -76,13 +76,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             StartDate = startDate ?? StartDate;
             EndDate = endDate ?? EndDate;
             StateHasChanged();
+            var allColumns = this.View.Rows.SelectMany(x => x.Columns);
             List<Task> tasks = new List<Task>();
             tasks.AddRange(chartComponents
-                .Where(x => x.Column.ViewName == this.View.Name)
+                .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
                 .Select(x => x.ReloadAsync(StartDate, EndDate))
                 .ToList());
             tasks.AddRange(gridComponents
-                .Where(x => x.Column.ViewName == this.View.Name)
+                .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
                 .Select(x => x.ReloadAsync(StartDate, EndDate))
                 .ToList());
             return Task.WhenAll(tasks);
