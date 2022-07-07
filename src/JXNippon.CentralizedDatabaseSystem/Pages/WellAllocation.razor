@@ -1,0 +1,18 @@
+﻿@page "/wellallocation/{activeKey}"
+
+<PageTitle>Well Allocation</PageTitle>
+
+<Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>
+    <TabPane Key="dashboard">
+        <TabTemplate>
+            <span>Dashboard</span>
+        </TabTemplate>
+        <ChildContent>Dashboard</ChildContent>
+    </TabPane>
+    <TabPane Key="pereport">
+        <TabTemplate>
+            <span>PE Report</span>
+        </TabTemplate>
+        <ChildContent>PE Report</ChildContent>
+    </TabPane>
+</Tabs>

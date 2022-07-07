@@ -1,6 +1,6 @@
 ﻿@page "/more/{activeKey}"
 
-<PageTitle>Opertion</PageTitle>
+<PageTitle>More</PageTitle>
 
 <Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>
     <TabPane Key="filemanagement">
@@ -8,6 +8,18 @@
             <span>File Management</span>
         </TabTemplate>
         <ChildContent><FileManagement></FileManagement></ChildContent>
+    </TabPane>
+    <TabPane Key="usermanagement">
+        <TabTemplate>
+            <span>User Management</span>
+        </TabTemplate>
+        <ChildContent>User Management</ChildContent>
+    </TabPane>
+    <TabPane Key="templatemanagement">
+        <TabTemplate>
+            <span>Template Management</span>
+        </TabTemplate>
+        <ChildContent>Template Management</ChildContent>
     </TabPane>
     <TabPane Key="viewdesigner">
         <TabTemplate>
