@@ -43,12 +43,16 @@
 </div>
 
 @{
-    var hasItem = radzenDropDown?.SelectedItem is not null;
-    
+    var hasItem = radzenDropDown?.SelectedItem is not null
+        && !string.IsNullOrEmpty(this.view?.Name);
+
     <div class="fixed-widgets">
         <Popover>
             <ContentTemplate>
-                <Menu Mode=MenuMode.Vertical>
+                <Menu Mode=MenuMode.Vertical>                   
+                    <MenuItem Key="AddView" Disabled=@(!hasItem)><a @onclick=AddViewAsync><i class="fas fa-plus fa-fw fa-xl"></i> Add View...</a></MenuItem>                 
+                    <MenuItem Key="DeleteView" Disabled=@(!hasItem)><a @onclick=DeleteViewAsync><i class="fas fa-eraser fa-fw fa-xl"></i> Delete View...</a></MenuItem>
+                    <MenuDivider />
                     <MenuItem Key="AddRow" Disabled=@(!hasItem)><a @onclick=AddRowAsync><i class="fas fa-diagram-next fa-fw fa-xl"></i> Add Row</a></MenuItem>
                     <MenuDivider />
                     <MenuItem Key="AddChart" Disabled=@(!hasItem)><a @onclick=@(args => ShowDialogAsync(
@@ -64,10 +68,11 @@
                     },
                     "Add")) Disabled=@(!hasItem)><a><i class="fas fa-table fa-fw fa-xl"></i> Add Table...</a></MenuItem>
                     <MenuDivider />
+                    <MenuDivider />
                     <MenuItem Key="Export" Disabled=@(!hasItem)><a @onclick=ExportAsync><i class="fas fa-download fa-fw fa-xl"></i> Export</a></MenuItem>
                     <MenuItem Key="Import">
                         <Upload>
-                            <label><InputFile id="fileInput" OnChange="ImportAsync" hidden/><i class="fas fa-upload fa-fw fa-xl"></i> Import</label>
+                            <label><InputFile id="fileInput" OnChange="ImportAsync" hidden/><i class="fas fa-upload fa-fw fa-xl"></i> Import...</label>
                         </Upload>           
                     </MenuItem>
                 </Menu>

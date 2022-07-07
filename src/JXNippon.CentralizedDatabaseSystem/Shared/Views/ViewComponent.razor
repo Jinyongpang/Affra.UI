@@ -13,7 +13,8 @@
 @inject IServiceProvider ServiceProvider
 @inject AffraNotificationService AffraNotificationService
 
-@{
+@if (View is not null)
+{
     int id = 0;
     foreach(var row in View.Rows)
     {
