@@ -100,6 +100,52 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             StateHasChanged();
         }
 
+        private async Task AddViewAsync()
+        {
+            View newView = new View();
+            dynamic? response = await DialogService.OpenAsync<ViewDialog>("Add View",
+                           new Dictionary<string, object>() { { "Item", newView } },
+                           Constant.DialogOptions);
+
+            if (response == true)
+            {
+                try
+                {
+                    using var serviceScope = ServiceProvider.CreateScope();
+                    var genericService = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<View, IViewUnitOfWork>>();
+                    await genericService.InsertAsync(newView);
+                    this.views = (await GetViewsAsync()).ToList();
+                    this.view = this.views.LastOrDefault();
+                    StateHasChanged();
+                    AffraNotificationService.NotifyItemCreated();
+
+                }
+                catch (Exception ex)
+                {
+                    AffraNotificationService.NotifyException(ex);
+                }
+                finally
+                {
+                }
+            }
+        }
+
+        private async Task DeleteViewAsync()
+        {
+            if (await DialogService.OpenAsync<GenericConfirmationDialog>($"Deleting view: {view.Name}",
+                    new Dictionary<string, object>() { },
+                    new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true }))
+            {
+                using var serviceScope = ServiceProvider.CreateScope();
+                var genericService = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<View, IViewUnitOfWork>>();
+                await genericService.DeleteAsync(this.view);
+                this.views = (await GetViewsAsync()).ToList();
+                this.view = new View();
+                StateHasChanged();
+                AffraNotificationService.NotifyItemDeleted();
+            }
+        }
+
         private IGenericService<T> GetGenericService<T>(IServiceScope serviceScope)
             where T : class
         {
