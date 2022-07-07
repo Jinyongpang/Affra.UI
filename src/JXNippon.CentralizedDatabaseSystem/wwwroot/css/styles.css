@@ -108,7 +108,7 @@
 
 body {
     font-family: Poppins,Arial,Helvetica,sans-serif !important;
-    background-color: white !important;
+    background-color: #f7f8fb !important;
 }
 
 .top-navbar {
@@ -248,4 +248,9 @@ body {
 
 .sticky-top {
     z-index: 999;
+}
+
+.rz-button.btn-primary, .btn-primary.rz-paginator-element {
+    background-color: #147b77;
+    color: #ffffff;
 }
