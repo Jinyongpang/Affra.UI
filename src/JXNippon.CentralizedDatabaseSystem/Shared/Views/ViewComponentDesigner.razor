@@ -51,6 +51,7 @@
             <ContentTemplate>
                 <Menu Mode=MenuMode.Vertical>                   
                     <MenuItem Key="AddView" Disabled=@(!hasItem)><a @onclick=AddViewAsync><i class="fas fa-plus fa-fw fa-xl"></i> Add View...</a></MenuItem>                 
+                    <MenuItem Key="DuplicateView" Disabled=@(!hasItem)><a @onclick=DuplicateViewAsync><i class="fas fa-clone fa-fw fa-xl"></i> Duplicate View...</a></MenuItem>     
                     <MenuItem Key="DeleteView" Disabled=@(!hasItem)><a @onclick=DeleteViewAsync><i class="fas fa-eraser fa-fw fa-xl"></i> Delete View...</a></MenuItem>
                     <MenuDivider />
                     <MenuItem Key="AddRow" Disabled=@(!hasItem)><a @onclick=AddRowAsync><i class="fas fa-diagram-next fa-fw fa-xl"></i> Add Row</a></MenuItem>

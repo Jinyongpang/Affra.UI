@@ -111,12 +111,65 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 try
                 {
-                    using var serviceScope = ServiceProvider.CreateScope();
-                    var genericService = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<View, IViewUnitOfWork>>();
-                    await genericService.InsertAsync(newView);
+                    await this.AddViewAsync(newView);
                     this.views = (await GetViewsAsync()).ToList();
                     this.view = this.views.LastOrDefault();
                     StateHasChanged();
+                    AffraNotificationService.NotifyItemCreated();
+                }
+                catch (Exception ex)
+                {
+                    AffraNotificationService.NotifyException(ex);
+                }
+                finally
+                {
+                }
+            }
+        }
+
+        private async Task EditViewAsync()
+        {
+            dynamic? response = await DialogService.OpenAsync<ViewDialog>("Edit View",
+                           new Dictionary<string, object>() { { "Item", this.view } },
+                           Constant.DialogOptions);
+
+            if (response == true)
+            {
+                try
+                {
+                    using var serviceScope = ServiceProvider.CreateScope();
+                    var service = this.GetGenericService<View>(serviceScope);
+                    await service.UpdateAsync(this.view, this.view.Id);
+                    this.views = (await GetViewsAsync()).ToList();
+                    this.view = this.views.LastOrDefault();
+                    StateHasChanged();
+                    AffraNotificationService.NotifyItemCreated();
+                }
+                catch (Exception ex)
+                {
+                    AffraNotificationService.NotifyException(ex);
+                }
+                finally
+                {
+                }
+            }
+        }
+
+        private async Task DuplicateViewAsync()
+        {
+            View newView = new View();
+            dynamic? response = await DialogService.OpenAsync<ViewDialog>("Duplicate View",
+                           new Dictionary<string, object>() { { "Item", newView } },
+                           Constant.DialogOptions);
+
+            if (response == true)
+            {
+                try
+                {
+                    await this.AddViewAsync(this.view, newView.Name);
+                    this.views = (await GetViewsAsync()).ToList();
+                    this.view = this.views.LastOrDefault();
+                    await this.ReloadAsync(view);
                     AffraNotificationService.NotifyItemCreated();
 
                 }
@@ -242,27 +295,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         }
                     }
 
-                    view.Id = 0;
-                    unitOfWork.ViewRepository.Insert(view);
-                    await unitOfWork.SaveAsync();
-                    foreach (var row in view.Rows)
-                    {
-                        row.Id = 0;
-                        row.ViewName = view.Name;
-                        unitOfWork.RowRepository.Insert(row);
-                        await unitOfWork.SaveAsync();
-                        foreach (var column in row.Columns)
-                        {
-                            column.Id = 0;
-                            column.ViewName = view.Name;
-                            column.RowId = row.Id;
-                            unitOfWork.ColumnRepository.Insert(column);
-                            await unitOfWork.SaveAsync();
-                        }
-                    }       
-                    
-                    views = (await GetViewsAsync()).ToList();
-                    await this.ReloadAsync(view);             
+                    await this.AddViewAsync(view);
+                    await this.ReloadAsync(view);
                     AffraNotificationService.NotifyItemCreated();
                 }
             }
@@ -270,6 +304,33 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 AffraNotificationService.NotifyException(ex);
             }
+        }
+
+        private async Task AddViewAsync(View view, string viewName = null)
+        {
+            using var serviceScope = ServiceProvider.CreateScope();
+            var unitOfWork = serviceScope.ServiceProvider.GetRequiredService<IViewUnitOfWork>();
+            view.Id = 0;
+            view.Name = viewName ?? view.Name;
+            unitOfWork.ViewRepository.Insert(view);
+            await unitOfWork.SaveAsync();
+            foreach (var row in view.Rows)
+            {
+                row.Id = 0;
+                row.ViewName = view.Name;
+                unitOfWork.RowRepository.Insert(row);
+                await unitOfWork.SaveAsync();
+                foreach (var column in row.Columns)
+                {
+                    column.Id = 0;
+                    column.ViewName = view.Name;
+                    column.RowId = row.Id;
+                    unitOfWork.ColumnRepository.Insert(column);
+                    await unitOfWork.SaveAsync();
+                }
+            }
+
+            views = (await GetViewsAsync()).ToList(); 
         }
 
         public async ValueTask DisposeAsync()
