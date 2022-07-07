@@ -9,8 +9,10 @@ using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class ViewComponent
+    public partial class ViewComponent : IAsyncDisposable
     {
+        private bool _disposed = false;
+
         private const string ViewUpdated = "View updated.";
 
         private Column draggingItem;
@@ -34,11 +36,40 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Inject] private NavigationManager NavigationManager { get; set; }
 
         private List<ChartComponent> chartComponents = new();
-        public ChartComponent chartComponentRef { set => chartComponents.Add(value); }
+        public ChartComponent chartComponentRef 
+        {       
+            set 
+            {
+                var existingComponent = chartComponents
+                    .Where(x => x.Column.Id == value.Column.Id)
+                    .FirstOrDefault();
 
+                if (existingComponent is not null)
+                {
+                    chartComponents.Remove(existingComponent);
+                }
+
+                chartComponents.Add(value);
+            } 
+        }
 
         private List<DataGridComponent> gridComponents = new();
-        public DataGridComponent gridComponentRef { set => gridComponents.Add(value); }
+        public DataGridComponent gridComponentRef
+        {
+            set
+            {
+                var existingComponent = gridComponents
+                    .Where(x => x.Column.Id == value.Column.Id)
+                    .FirstOrDefault();
+
+                if (existingComponent is not null)
+                {
+                    gridComponents.Remove(existingComponent);
+                }
+
+                gridComponents.Add(value);
+            }
+        }
 
         public Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
         {
@@ -46,9 +77,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             EndDate = endDate ?? EndDate;
             StateHasChanged();
             List<Task> tasks = new List<Task>();
-            tasks.AddRange(chartComponents.Select(x => x.ReloadAsync(StartDate, EndDate)).ToList());
-            tasks.AddRange(gridComponents.Select(x => x.ReloadAsync(StartDate, EndDate)).ToList());
+            tasks.AddRange(chartComponents
+                .Where(x => x.Column.ViewName == this.View.Name)
+                .Select(x => x.ReloadAsync(StartDate, EndDate))
+                .ToList());
+            tasks.AddRange(gridComponents
+                .Where(x => x.Column.ViewName == this.View.Name)
+                .Select(x => x.ReloadAsync(StartDate, EndDate))
+                .ToList());
             return Task.WhenAll(tasks);
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
         }
 
         private async Task OnEditAsync(MouseEventArgs args, Column column)
@@ -262,6 +303,25 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 target.xmin = source.xmin;
                 target.Row = source.Row;
             }         
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+           if (_disposed)
+            {
+                foreach (var component in chartComponents)
+                { 
+                    await component.DisposeAsync();
+                }
+
+                foreach (var component in gridComponents)
+                {
+                    await component.DisposeAsync();
+                }
+                chartComponents.Clear();
+                gridComponents.Clear();
+                _disposed = true;
+            }
         }
     }
 }

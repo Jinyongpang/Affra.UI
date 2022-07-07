@@ -1,22 +1,24 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using Affra.Core.Domain.Services;
+using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.JSInterop;
 using Radzen;
 using Radzen.Blazor;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class ViewComponentDesigner
+    public partial class ViewComponentDesigner : IAsyncDisposable
     {
-        [Inject] private IServiceProvider ServiceProvider { get; set; }
-        [Inject] private AffraNotificationService AffraNotificationService { get; set; }
-        [Inject] private DialogService DialogService { get; set; }
-
+        private bool _disposed = false;
         private IEnumerable<View> views = new List<View>();
         private RadzenDropDown<View> radzenDropDown;
         private View view = new View();
@@ -24,9 +26,25 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private ColumnDataGrid columnDataGrid;
         private RowDataGrid rowDataGrid;
 
+        [Inject] private IJSRuntime JSRuntime { get; set; }
+        [Inject] private IServiceProvider ServiceProvider { get; set; }
+        [Inject] private AffraNotificationService AffraNotificationService { get; set; }
+        [Inject] private DialogService DialogService { get; set; }
+
+        public async Task ReloadAsync(View value = null)
+        {
+            value ??= this.view;
+            await this.GetViewDetailAsync(value);
+            this.view = value;
+            StateHasChanged();
+            await viewComponent.ReloadAsync();
+        }
+
         protected override async Task OnInitializedAsync()
         {
             views = (await GetViewsAsync()).ToList();
+            this.view = views.FirstOrDefault();
+            await this.GetViewDetailAsync();
         }
 
         protected async Task<IEnumerable<View>> GetViewsAsync()
@@ -37,19 +55,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         }
 
-        private async Task OnChangeAsync(object value)
-        {
-            view = value as View;
-            await this.ReloadAsync();
-        }
-
-        public async Task ReloadAsync(View value = null)
+        private async Task GetViewDetailAsync(View value = null)
         {
             view = value ?? this.view;
             using var serviceScope = ServiceProvider.CreateScope();
             IViewService viewService = serviceScope.ServiceProvider.GetService<IViewService>();
             await viewService.GetViewDetailAsync(view);
-            await viewComponent.ReloadAsync();
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)
@@ -67,6 +78,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 await viewService.GetViewDetailAsync(view);
                 await viewComponent.ReloadAsync();
             }
+        }
+
+        private async Task OnChangeAsync(object value)
+        {
+            view = value as View;
+            await this.ReloadAsync();
         }
 
         private async Task AddRowAsync()
@@ -133,6 +150,88 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 {
                     await this.ReloadAsync();
                 }
+            }
+        }
+
+        private async Task ExportAsync()
+        {
+            var content = JsonSerializer.SerializeToUtf8Bytes(view, options: new() { ReferenceHandler = ReferenceHandler.IgnoreCycles });
+            var fileName = $"{view.Name}.json";
+
+            using var streamRef = new DotNetStreamReference(stream: new MemoryStream(content));
+
+            await JSRuntime.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+        }
+
+        private async Task ImportAsync(InputFileChangeEventArgs e)
+        {
+            try
+            {
+                var view = await JsonSerializer.DeserializeAsync<View>(e.File.OpenReadStream());
+
+                if (await DialogService.OpenAsync<GenericConfirmationDialog>($"Importing view: {view.Name}",
+                    new Dictionary<string, object>() { },
+                    new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true }))
+                {
+                    using var serviceScope = ServiceProvider.CreateScope();
+                    var unitOfWork = serviceScope.ServiceProvider.GetRequiredService<IViewUnitOfWork>();
+
+                    View existingView = (await unitOfWork.ViewRepository.Get()
+                        .Where(predicate: x => x.Name == view.Name)
+                        .ToQueryOperationResponseAsync<View>())
+                        .FirstOrDefault();
+
+                    if (existingView is not null)
+                    {
+                        if (await DialogService.OpenAsync<GenericConfirmationDialog>($"Replacing existing view? View: {view.Name}",
+                        new Dictionary<string, object>() { },
+                        new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true }) == false)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            unitOfWork.ViewRepository.Delete(existingView);
+                            await unitOfWork.SaveAsync();
+                        }
+                    }
+
+                    view.Id = 0;
+                    unitOfWork.ViewRepository.Insert(view);
+                    await unitOfWork.SaveAsync();
+                    foreach (var row in view.Rows)
+                    {
+                        row.Id = 0;
+                        row.ViewName = view.Name;
+                        unitOfWork.RowRepository.Insert(row);
+                        await unitOfWork.SaveAsync();
+                        foreach (var column in row.Columns)
+                        {
+                            column.Id = 0;
+                            column.ViewName = view.Name;
+                            column.RowId = row.Id;
+                            unitOfWork.ColumnRepository.Insert(column);
+                            await unitOfWork.SaveAsync();
+                        }
+                    }       
+                    
+                    views = (await GetViewsAsync()).ToList();
+                    await this.ReloadAsync(view);             
+                    AffraNotificationService.NotifyItemCreated();
+                }
+            }
+            catch (Exception ex)
+            {
+                AffraNotificationService.NotifyException(ex);
+            }
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            if (!this._disposed)
+            { 
+                await this.viewComponent.DisposeAsync();           
+                this._disposed = true;
             }
         }
     }

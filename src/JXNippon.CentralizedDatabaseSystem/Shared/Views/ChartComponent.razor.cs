@@ -9,6 +9,7 @@ using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 using Microsoft.OData.Client;
 using Radzen.Blazor;
+using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
@@ -31,7 +32,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public string Subscription { get; set; }
         [Parameter] public DateTimeOffset? StartDate { get; set; }
         [Parameter] public DateTimeOffset? EndDate { get; set; }
-
+        [Parameter] public Column Column { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
@@ -49,7 +50,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         
         private Task OnContentUpdateAsync(object obj)
         {
-            StateHasChanged();
+            StateHasChanged(); 
             return this.ReloadAsync();
         }
 
