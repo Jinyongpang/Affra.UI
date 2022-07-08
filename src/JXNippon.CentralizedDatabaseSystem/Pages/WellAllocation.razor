@@ -1,5 +1,5 @@
 ﻿@page "/wellallocation/{activeKey}"
-
+@attribute [Authorize]
 <PageTitle>Well Allocation</PageTitle>
 
 <Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>

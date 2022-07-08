@@ -1,4 +1,4 @@
-﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Notifications
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 @inherits LayoutComponentBase
 
 <RadzenNotification />
@@ -16,19 +16,7 @@
                     <div class="d-none d-md-block"><TopMenu /></div>                 
                 </div>
                 <div class="d-flex justify-content-right">
-                    <NotificationMenu />
-                    <RadzenProfileMenu>
-                        <Template>
-                            <Avatar Style="vertical-align: middle;"  Size="large">
-                                A
-                            </Avatar>
-                        </Template>
-                        <ChildContent>
-                            <RadzenProfileMenuItem Text="Settings" Path="buttons" Icon="build"></RadzenProfileMenuItem>
-                            <RadzenProfileMenuItem Text="Logout" Path="menu" Icon="lock"></RadzenProfileMenuItem>
-                        </ChildContent>
-                    </RadzenProfileMenu>
-                    @*<LoginDisplay  />*@
+                    <LoginDisplay  />
                 </div>
             </div>
         </nav>

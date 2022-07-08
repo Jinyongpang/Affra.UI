@@ -1,5 +1,5 @@
 ﻿@page "/more/{activeKey}"
-
+@attribute [Authorize]
 <PageTitle>More</PageTitle>
 
 <Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>
