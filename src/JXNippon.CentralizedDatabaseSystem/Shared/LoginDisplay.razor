@@ -17,17 +17,17 @@
             <ChildContent>
                 <Menu Mode=MenuMode.Vertical>
                     <MenuItem Key="Settings">
-                            <a href="#"><i class="top-row-icon fas fa-home fa-fw fa-xl"></i><span class="toprow-nav-title d-none d-lg-inline">Settings</span></a>
+                        <a href="#"><i class="top-row-icon fas fa-user-gear fa-fw fa-xl"></i><span class="toprow-nav-title d-none d-lg-inline">Settings</span></a>
                     </MenuItem>
                     <MenuItem Key="Logout">
-                            <a @onclick="BeginLogout"><i class="top-row-icon fas fa-home fa-fw fa-xl"></i><span class="toprow-nav-title d-none d-lg-inline">Logout</span></a>
+                        <a @onclick="BeginLogout"><i class="top-row-icon fas fa-sign-out fa-fw fa-xl"></i><span class="toprow-nav-title d-none d-lg-inline">Logout</span></a>
                     </MenuItem>
                 </Menu>
             </ChildContent>
         </RadzenProfileMenu>
     </Authorized>
-    <NotAuthorized>
-        <a href="authentication/login">Log in</a>
+    <NotAuthorized>      
+        <a href="authentication/login"><i class="top-row-icon fa-solid fa-arrow-right-to-bracket fa-fw fa-xl"></i></a>
     </NotAuthorized>
 </AuthorizeView>
 
