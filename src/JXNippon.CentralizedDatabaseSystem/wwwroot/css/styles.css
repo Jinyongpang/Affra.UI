@@ -37,11 +37,8 @@
 }
 
 .toprow-title {
-    font-weight: bold !important;
-}
-
-.toprow-title, toprow-nav-title {
     color: #1A3C40 !important;
+    font-weight: bold !important;
 }
 
 .space {
