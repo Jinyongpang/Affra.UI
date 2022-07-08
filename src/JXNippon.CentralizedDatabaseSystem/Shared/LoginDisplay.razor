@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
+﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Notifications
+@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 
 @inject NavigationManager Navigation
@@ -6,8 +7,24 @@
 
 <AuthorizeView>
     <Authorized>
-        Hello, @context.User.Identity?.Name!
-        <button class="nav-link btn btn-link" @onclick="BeginLogout">Log out</button>
+        <NotificationMenu/>
+        <RadzenProfileMenu>
+            <Template>
+                <Avatar Style="vertical-align: middle;"  Size="large">
+                    @context.User.Identity?.Name[0]
+                </Avatar>
+            </Template>
+            <ChildContent>
+                <Menu Mode=MenuMode.Vertical>
+                    <MenuItem Key="Settings">
+                            <a href="#"><i class="top-row-icon fas fa-home fa-fw fa-xl"></i><span class="toprow-nav-title d-none d-lg-inline">Settings</span></a>
+                    </MenuItem>
+                    <MenuItem Key="Logout">
+                            <a @onclick="BeginLogout"><i class="top-row-icon fas fa-home fa-fw fa-xl"></i><span class="toprow-nav-title d-none d-lg-inline">Logout</span></a>
+                    </MenuItem>
+                </Menu>
+            </ChildContent>
+        </RadzenProfileMenu>
     </Authorized>
     <NotAuthorized>
         <a href="authentication/login">Log in</a>
