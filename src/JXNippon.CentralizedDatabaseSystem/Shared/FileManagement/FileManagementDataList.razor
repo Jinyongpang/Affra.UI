@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col">
         <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;"/>
-        <RadzenCard>
+        <Card>
             @if (count == 0 && !isLoading)
             {  
                 <div>No records to display.</div>
@@ -11,7 +11,7 @@
             <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate" Visible="@isLoading"/>
             <RadzenDataList Visible="@isNotLoading" WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadDataAsync" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="8" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true" PagerAlwaysVisible="true">
                 <Template Context="file">
-                    <RadzenCard class="dataFileCard">
+                    <Card Class="dataFileCard">
                         <div class="d-flex flex-row align-items-center">
                                 <div>
                                 <h4 class="mb-0 title" href="#"><i class="oi oi-spreadsheet"></i> @(file.FileName)</h4>
@@ -22,10 +22,10 @@
                         <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
                         <div class="row">
                             <div class="col-md-8 text-truncate card-time">
-                                <b>@String.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Modified : {0:d}", file.LastModifiedDateTime.ToLocalTime())</b>
+                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Modified : {0:d}", file.LastModifiedDateTime.ToLocalTime())</b>
                             </div>
                             <div class="col-md-8 text-truncate card-time">
-                                <b>@String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", file.LastModifiedDateTime.ToLocalTime())</b>
+                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", file.LastModifiedDateTime.ToLocalTime())</b>
                             </div>
                             <div class="col-md-4 text-right">
                                 @if (file.ProcessStatus == FileProcessStatus.Completed)
@@ -47,9 +47,9 @@
                                     
                             </div>
                         </div>
-                    </RadzenCard>
+                    </Card>
                 </Template>                    
             </RadzenDataList>
-        </RadzenCard>
+        </Card>
     </div>
 </div>
