@@ -22,9 +22,9 @@
             @if (row.Columns is null
                 || row.Columns.Count == 0)
             {
-                int j = id;
+                 int j = id;
                  <div class="col py-3" ondragover="event.preventDefault();" @ondrop=@(args => HandleDropOnRowAsync(args, row)) @ondragenter="@(args => HandleDragEnter(j))">
-                    <Card Style="min-height: 200px; text-align: center;"> 
+                    <Card Style="text-align: center;" Class="h-100"> 
                         <TitleTemplate>
                         </TitleTemplate>
                         <Extra>
@@ -66,7 +66,7 @@
                         @ondragenter="@(args => HandleDragEnter(j))"
                         @ondragend=@(args => this.enteredId = -1)> 
 
-                        <Card Size="medium" Id=@j.ToString() Class="pointer-event: none;">
+                        <Card Size="medium" Id=@j.ToString() Style="pointer-event: none;" Class="h-100">
                             <TitleTemplate>
                                 <span>
                                     <i class="@col.Icon"></i>
