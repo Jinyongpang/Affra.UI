@@ -270,3 +270,11 @@ body {
     background-color: #147b77;
     color: #ffffff;
 }
+
+.in-progress {
+    color: #1A3C40;
+}
+
+.result-view {
+    height: 85vh;
+}

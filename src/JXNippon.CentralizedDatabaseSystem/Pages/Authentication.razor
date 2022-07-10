@@ -1,7 +1,49 @@
 ﻿@page "/authentication/{action}"
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-<RemoteAuthenticatorView Action="@Action" />
+<RemoteAuthenticatorView Action="@Action">
+    <LogInFailed>
+        <div class="result-view d-flex align-items-center justify-content-center gap-3">
+        <Result Status="403"
+                Title="Unauthorized"
+                SubTitle="Sorry, you are not authorized to access this page. Please contact administrator or try again."
+                Extra="loginButton" />
+        </div>
+    </LogInFailed>
+    <LogOut>
+       <div class="result-view d-flex align-items-center justify-content-center gap-3">
+            <div class="fa-3x in-progress">
+                <i class="fas fa-circle-notch fa-spin "></i>
+            </div>
+            <div class="h2 in-progress">Logging out...</div>
+        </div>
+    </LogOut>
+    <LogOutSucceeded>
+        <div class="result-view d-flex align-items-center justify-content-center gap-3">
+            <Result
+                Title="You have been successfully logged out."
+                Extra=loginButton/>
+        </div>
+    </LogOutSucceeded>
+    <LoggingIn>
+       <div class="result-view d-flex align-items-center justify-content-center gap-3">
+            <div class="fa-3x in-progress">
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </div>
+            <div class="h2 in-progress">Redirecting...</div>
+        </div>
+    </LoggingIn>
+    <CompletingLoggingIn>
+      <div class="result-view d-flex align-items-center justify-content-center gap-3">
+            <div class="fa-3x in-progress">
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </div>
+            <div class="h2 in-progress">Welcome...</div>
+        </div>
+    </CompletingLoggingIn>
+</RemoteAuthenticatorView>
 
-@code{
-    [Parameter] public string? Action { get; set; }
+@code {
+    [Parameter] public string Action { get; set; }
+
+     RenderFragment loginButton =@<a type="button" class="btn btn-primary" href="authentication/login">Login</a>;
 }
