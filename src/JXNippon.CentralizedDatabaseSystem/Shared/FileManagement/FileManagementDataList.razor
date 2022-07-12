@@ -6,7 +6,7 @@
         <Card>
             @if (count == 0 && !isLoading)
             {  
-                <div>No records to display.</div>
+                <Empty/>
             }
             <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate" Visible="@isLoading"/>
             <RadzenDataList Visible="@isNotLoading" WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadDataAsync" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="8" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true" PagerAlwaysVisible="true">
