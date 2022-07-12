@@ -31,20 +31,31 @@
 <div class="px-2">
     <div class="row">
         <div class="col-md-6 col-lg-3 col">
-                <DateRangePicker class="form-control form-control-sm" placeholder="Select dates..."
-                OnRangeSelect="OnRangeSelectAsync"
-                @bind-StartDate="startDate" @bind-EndDate="endDate"
-                MinDate="DateTimeOffset.Now.AddYears(-1)" MaxDate="DateTimeOffset.Now"
-                ShowOnlyOneCalendar="false"
-                MaxSpan="TimeSpan.FromDays(62)">
-                <PickerTemplate>
-                    <div id="@context.Id" @onclick="context.Toggle" class="date-range-picker">
-                        <i class="fa-solid fa-calendar"></i>&nbsp;
-                        <span>@context.FormattedRange @(string.IsNullOrEmpty(context.FormattedRange) ? "Choose dates..." : "")</span>
-                        <i class="oi oi-chevron-bottom float-right"></i>
-                    </div>
-                </PickerTemplate>    
-            </DateRangePicker>
+            <Space>
+                <SpaceItem>
+                    <span>Period:</span>
+                </SpaceItem>
+                <SpaceItem>
+                    <RangePicker @ref=rangePicker TValue="DateTime?[]" Size="large" OnChange=OnRangeSelectAsync AllowClear=false DisabledDate="date => date >= DateTime.Now" DefaultValue="@(new [] { startDate?.ToLocalTime().DateTime, endDate?.ToLocalTime().DateTime })">
+                        <RenderExtraFooter>
+                            <Space>
+                                <SpaceItem>
+                                    <Button @onclick=@(args => SetDateAsync(0))>Today</Button>
+                                </SpaceItem>
+                                <SpaceItem>
+                                    <Button @onclick=@(args => SetDateAsync(-6))>Last 7 days</Button> 
+                                </SpaceItem>
+                                <SpaceItem>
+                                    <Button @onclick=@(args => SetDateAsync(-29))>Last 30 days</Button> 
+                                </SpaceItem>
+                                <SpaceItem>
+                                    <Button @onclick=@(args => SetDateAsync(-59))>Last 60 days</Button> 
+                                </SpaceItem>
+                            </Space>  
+                        </RenderExtraFooter>
+                    </RangePicker>
+                </SpaceItem>
+            </Space>       
         </div>
     </div>
 

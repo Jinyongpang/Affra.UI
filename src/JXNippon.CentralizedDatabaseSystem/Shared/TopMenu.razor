@@ -1,9 +1,9 @@
 ﻿
-<Menu Mode=MenuMode.Horizontal>
+<Menu @ref=menu Mode=MenuMode.Horizontal DefaultSelectedKeys="@(new string[] { "Home" })">
     <MenuItem Key="Home">
-         <a href="#"><Icon Type="home" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Home</span></a>
+         <a href="#"><Icon Type="home" Theme="@GetTheme("Home")"  Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Home</span></a>
     </MenuItem>
-    <SubMenu>
+    <SubMenu Key="Operation">
         <TitleTemplate><div><Icon Type="global" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Operation</span></div></TitleTemplate>
         <ChildContent>
             <MenuItemGroup Title="Operation">
@@ -16,31 +16,43 @@
             </MenuItemGroup>
         </ChildContent>
     </SubMenu>
-     <SubMenu>
+     <SubMenu Key="WellAllocation">
         <TitleTemplate><div><Icon Type="cluster" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Well Allocation</span></div></TitleTemplate>
         <ChildContent>
             <MenuItem Key="WellAllocationDashboard"><a href="wellallocation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
             <MenuItem Key="WellAllocationPEReport"><a href="wellallocation/pereport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">PE Report</span></a></MenuItem>
         </ChildContent>
     </SubMenu>
-    <SubMenu>
-        <TitleTemplate><div><Icon Type="hourglass" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
+    <SubMenu Key="Deferment">
+        <TitleTemplate><div><Icon Type="hourglass" Theme="@GetTheme("Deferment")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
         <ChildContent>
             <MenuItem Key="DefermentDashboard"><a href="deferment/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
             <MenuItem Key="DefermentReport"><a href="deferment/report"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Deferment Report</span></a></MenuItem>
         </ChildContent>
     </SubMenu>
-    <SubMenu>
-        <TitleTemplate><div><Icon Type="appstore" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">More</span></div></TitleTemplate>
+    <SubMenu Key="More">
+        <TitleTemplate><div><Icon Type="appstore" Theme="@GetTheme("More")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">More</span></div></TitleTemplate>
         <ChildContent>
             <MenuItemGroup Title="Management">
-                <MenuItem Key="FileManagement"><a href="more/filemanagement"><Icon Type="file-sync" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">File Management</span></a></MenuItem>
-                <MenuItem Key="UserManagement"><a href="more/usermanagement"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">User Management</span></a></MenuItem>
-                <MenuItem Key="TemplateManagement"><a href="more/templatemanagement"><Icon Type="experiment" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Template Management</span></a></MenuItem>
+                <MenuItem Key="MoreFileManagement"><a href="more/filemanagement"><Icon Type="file-sync" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">File Management</span></a></MenuItem>
+                <MenuItem Key="MoreUserManagement"><a href="more/usermanagement"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">User Management</span></a></MenuItem>
+                <MenuItem Key="MoreTemplateManagement"><a href="more/templatemanagement"><Icon Type="experiment" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Template Management</span></a></MenuItem>
             </MenuItemGroup>
             <MenuItemGroup Title="Tool">
-               <MenuItem Key="ViewDesigner"><a href="more/viewdesigner"><Icon Type="dot-chart" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">View Designer</span></a></MenuItem>            
+               <MenuItem Key="MoreViewDesigner"><a href="more/viewdesigner"><Icon Type="dot-chart" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">View Designer</span></a></MenuItem>            
             </MenuItemGroup>
         </ChildContent>
     </SubMenu>
 </Menu>
+
+@code
+{
+    private Menu menu;
+
+    private string GetTheme(string key)
+    {
+        return menu.SelectedKeys.Any(x => x.Contains(key))
+            ? "fill"
+            : "outline";
+    }
+}
