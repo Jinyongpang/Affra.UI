@@ -20,6 +20,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander;
 using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities;
 using JXNippon.CentralizedDatabaseSystem.Shared.WellHead;
 using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem;
+using Microsoft.AspNetCore.Components;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -27,7 +28,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
     public partial class CombinedDailyReport
     {
         private readonly bool[] isRadzenPanelExpandedList = new bool[20];
-        private DashboardFilterPanel filterPanel;
         private PowerGenerationAndDistributionManagementDataGrid powerGenerationAndDistributionManagementDataGrid;
         private ProducedWaterTreatmentSystemManagementDataGrid producedWaterTreatmentSystemManagementDataGrid;
         private MajorEquipmentStatusDataGrid majorEquipmentStatusDataGrid;
@@ -66,159 +66,176 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private VendorActivitiesDataGrid vendorActivitiesDataGrid;
         private MaximoWorkOrderDataGrid maximoWorkOrderDataGrid;
 
+        [Inject] private NavigationManager NavManager { get; set; }
+        private CommonFilter CommonFilter { get; set; }
+
+        protected override Task OnInitializedAsync()
+        {
+            CommonFilter = new CommonFilter(NavManager);
+            CommonFilter.Date = DateTime.Today;
+
+            return Task.CompletedTask;
+        }
+
+        private async Task OnChangeAsync(object value)
+        {
+            CommonFilter.AppendQuery(NavManager);
+            await this.ReloadAsync();
+        }
+
         private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
         {
-            powerGenerationAndDistributionManagementDataGrid.CommonFilter = filterPanel.CommonFilter;
+            powerGenerationAndDistributionManagementDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadProducedWaterTreatmentSystemManagementDataGridAsync(LoadDataArgs args)
         {
-            producedWaterTreatmentSystemManagementDataGrid.CommonFilter = filterPanel.CommonFilter;
+            producedWaterTreatmentSystemManagementDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadDeOilerInjectionDataGridAsync(LoadDataArgs args)
         {
-            deOilerInjectionDataGrid.CommonFilter = filterPanel.CommonFilter;
+            deOilerInjectionDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadMajorEquipmentDataGridAsync(LoadDataArgs args)
         {
-            majorEquipmentStatusDataGrid.CommonFilter = filterPanel.CommonFilter;
+            majorEquipmentStatusDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadProductionSK10DataGridAsync(LoadDataArgs args)
         {
-            productionSK10DataGrid.CommonFilter = filterPanel.CommonFilter;
+            productionSK10DataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadProductionHIPDataGridAsync(LoadDataArgs args)
         {
-            productionHIPDataGrid.CommonFilter = filterPanel.CommonFilter;
+            productionHIPDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadProductionFPSODataGridAsync(LoadDataArgs args)
         {
-            productionFPSOHelangDataGrid.CommonFilter = filterPanel.CommonFilter;
+            productionFPSOHelangDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadWellHeadAndSeparationSystemDataGridAsync(LoadDataArgs args)
         {
-            wellHeadAndSeparationSystemDataGrid.CommonFilter = filterPanel.CommonFilter;
+            wellHeadAndSeparationSystemDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadWellStreamCoolerDataGridAsync(LoadDataArgs args)
         {
-            wellStreamCoolerDataGrid.CommonFilter = filterPanel.CommonFilter;
+            wellStreamCoolerDataGrid.CommonFilter = CommonFilter;
         }
 
         private async Task LoadLogisticDataGridAsync(LoadDataArgs args)
         {
-            logisticDataGrid.CommonFilter = filterPanel.CommonFilter;
+            logisticDataGrid.CommonFilter = CommonFilter;
         }
 
         private async Task LoadLWPActivityDataGridAsync(LoadDataArgs args)
         {
-            lWPActivityDataGrid.CommonFilter = filterPanel.CommonFilter;
+            lWPActivityDataGrid.CommonFilter = CommonFilter;
         }
 
         private async Task LoadCommunicationSystemDataGridAsync(LoadDataArgs args)
         {
-            communicationSystemDataGrid.CommonFilter = filterPanel.CommonFilter;
+            communicationSystemDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadHIPWellHeadParameterDataGridAsync(LoadDataArgs args)
         {
-            hipWellHeadParameterDataGrid.CommonFilter = filterPanel.CommonFilter;
+            hipWellHeadParameterDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadLWPWellHeadParameterDataGridAsync(LoadDataArgs args)
         {
-            lwpWellHeadParameterDataGrid.CommonFilter = filterPanel.CommonFilter;
+            lwpWellHeadParameterDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadRollsRoyceRB211EngineDataGridAsync(LoadDataArgs args)
         {
-            rollsRoyceRB211EngineDataGrid.CommonFilter = filterPanel.CommonFilter;
+            rollsRoyceRB211EngineDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadKawasakiExportCompressorDataGridAsync(LoadDataArgs args)
         {
-            kawasakiExportCompressorDataGrid.CommonFilter = filterPanel.CommonFilter;
+            kawasakiExportCompressorDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadFPSOHelangSummaryDataGridAsync(LoadDataArgs args)
         {
-            fpsoHelangSummaryDataGrid.CommonFilter = filterPanel.CommonFilter;
+            fpsoHelangSummaryDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadHIPAndLWPSummaryDataGridAsync(LoadDataArgs args)
         {
-            hipAndLWPSummaryDataGrid.CommonFilter = filterPanel.CommonFilter;
+            hipAndLWPSummaryDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadHealthSafetyAndEnvironmentDataGridAsync(LoadDataArgs args)
         {
-            healthSafetyAndEnvironmentDataGrid.CommonFilter = filterPanel.CommonFilter;
+            healthSafetyAndEnvironmentDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadLossOfPrimaryContainmentIncidentDataGridAsync(LoadDataArgs args)
         {
-            lossOfPrimaryContainmentIncidentDataGrid.CommonFilter = filterPanel.CommonFilter;
+            lossOfPrimaryContainmentIncidentDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadLifeBoatsDataGridAsync(LoadDataArgs args)
         {
-            lifeBoatsDataGrid.CommonFilter = filterPanel.CommonFilter;
+            lifeBoatsDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(LoadDataArgs args)
         {
-            longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.CommonFilter = filterPanel.CommonFilter;
+            longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadOperatingChangeDataGridAsync(LoadDataArgs args)
         {
-            operatingChangeDataGrid.CommonFilter = filterPanel.CommonFilter;
+            operatingChangeDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadCINalcoDataGridAsync(LoadDataArgs args)
         {
-            ciNalcoDataGrid.CommonFilter = filterPanel.CommonFilter;
+            ciNalcoDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadInowacInjectionDataGridAsync(LoadDataArgs args)
         {
-            inowacInjectionDataGrid.CommonFilter = filterPanel.CommonFilter;
+            inowacInjectionDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadGlycolPumpDataGridAsync(LoadDataArgs args)
         {
-            glycolPumpDataGrid.CommonFilter = filterPanel.CommonFilter;
+            glycolPumpDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadGlycolTrainDataGridAsync(LoadDataArgs args)
         {
-            glycolTrainDataGrid.CommonFilter = filterPanel.CommonFilter;
+            glycolTrainDataGrid.CommonFilter = CommonFilter;
         }
 
         private async Task LoadGlycolStockDataGridAsync(LoadDataArgs args)
         {
-            glycolStockDataGrid.CommonFilter = filterPanel.CommonFilter;
+            glycolStockDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadGasAndCondensateExportSamplersAndExportLineDataGridAsync(LoadDataArgs args)
         {
-            gasAndCondensateExportSamplersDataGrid.CommonFilter = filterPanel.CommonFilter;
+            gasAndCondensateExportSamplersDataGrid.CommonFilter = CommonFilter;
         }
 
         private async Task LoadAnalysisResultDataGridAsync(LoadDataArgs args)
         {
-            analysisResultDataGrid.CommonFilter = filterPanel.CommonFilter;
+            analysisResultDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadCoolingMediumSystemDataGridAsync(LoadDataArgs args)
         {
-            coolingMediumSystemDataGrid.CommonFilter = filterPanel.CommonFilter;
+            coolingMediumSystemDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadUtilitiesDataGridAsync(LoadDataArgs args)
         {
-            UtilitiesDataGrid.CommonFilter = filterPanel.CommonFilter;
+            UtilitiesDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadWaterTankDataGridAsync(LoadDataArgs args)
         {
-            waterTankDataGrid.CommonFilter = filterPanel.CommonFilter;
+            waterTankDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadNitrogenGeneratorDataGridAsync(LoadDataArgs args)
         {
-            nitrogenGeneratorDataGrid.CommonFilter = filterPanel.CommonFilter;
+            nitrogenGeneratorDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadSandDisposalDesanderDataGridAsync(LoadDataArgs args)
         {
-            sandDisposalDesanderDataGrid.CommonFilter = filterPanel.CommonFilter;
+            sandDisposalDesanderDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadVendorActivitiesDataGridAsync(LoadDataArgs args)
         {
-            vendorActivitiesDataGrid.CommonFilter = filterPanel.CommonFilter;
+            vendorActivitiesDataGrid.CommonFilter = CommonFilter;
         }
 
         private async Task LoadMaximoWorkOrderDataGridAsync(LoadDataArgs args)
         {
-            maximoWorkOrderDataGrid.CommonFilter = filterPanel.CommonFilter;
+            maximoWorkOrderDataGrid.CommonFilter = CommonFilter;
         }
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
