@@ -1,46 +1,58 @@
 ﻿
-<Menu Mode=MenuMode.Horizontal>
+<Menu @ref=menu Mode=MenuMode.Horizontal DefaultSelectedKeys="@(new string[] { "Home" })">
     <MenuItem Key="Home">
-         <a href="#"><i class="top-row-icon fas fa-home fa-fw fa-xl"></i><span class="toprow-nav-title d-none d-lg-inline">Home</span></a>
+         <a href="#"><Icon Type="home" Theme="@GetTheme("Home")"  Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Home</span></a>
     </MenuItem>
-    <SubMenu>
-        <TitleTemplate><div><i class="top-row-icon fas fa-globe fa-fw fa-xl"></i><span class="toprow-nav-title d-none d-lg-inline">Operation</span></div></TitleTemplate>
+    <SubMenu Key="Operation">
+        <TitleTemplate><div><Icon Type="global" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Operation</span></div></TitleTemplate>
         <ChildContent>
             <MenuItemGroup Title="Operation">
-                <MenuItem Key="OperationDashboard"><a href="operation/dashboard"><i class="top-row-icon fas fa-dashboard fa-fw fa-xl"></i><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-                <MenuItem Key="OperationCombinedDailyReport"><a href="operation/combineddailyreport"><i class="top-row-icon fas fa-table fa-fw fa-xl"></i> <span class="toprow-nav-title">Combined Daily Report</span></a></MenuItem>
+                <MenuItem Key="OperationDashboard"><a href="operation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+                <MenuItem Key="OperationCombinedDailyReport"><a href="operation/combineddailyreport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Combined Daily Report</span></a></MenuItem>
             </MenuItemGroup>
             <MenuItemGroup Title="Management Of Change">
-                <MenuItem Key="OperationManagementOfChange"><a href="operation/managementofchange"><i class="top-row-icon fas fa-people-roof fa-fw fa-xl"></i><span class="toprow-nav-title">Management Of Change</span></a></MenuItem>
-                <MenuItem Key="OperationManagementOfChangeSummary"><a href="operation/managementofchangesummary"><i class="top-row-icon fas fa-book fa-fw fa-xl"></i><span class="toprow-nav-title">Management Of Change Summary</span></a></MenuItem>
+                <MenuItem Key="OperationManagementOfChange"><a href="operation/managementofchange"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change</span></a></MenuItem>
+                <MenuItem Key="OperationManagementOfChangeSummary"><a href="operation/managementofchangesummary"><Icon Type="reconciliation" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change Summary</span></a></MenuItem>
             </MenuItemGroup>
         </ChildContent>
     </SubMenu>
-     <SubMenu>
-        <TitleTemplate><div><i class="top-row-icon fas fa-sitemap fa-fw fa-xl"></i> <span class="toprow-nav-title d-none d-lg-inline">Well Allocation</span></div></TitleTemplate>
+     <SubMenu Key="WellAllocation">
+        <TitleTemplate><div><Icon Type="cluster" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Well Allocation</span></div></TitleTemplate>
         <ChildContent>
-            <MenuItem Key="WellAllocationDashboard"><a href="wellallocation/dashboard"><i class="top-row-icon fas fa-dashboard fa-fw fa-xl"></i><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-            <MenuItem Key="WellAllocationPEReport"><a href="wellallocation/pereport"><i class="top-row-icon fas fa-table fa-fw fa-xl"></i><span class="toprow-nav-title">PE Report</span></a></MenuItem>
+            <MenuItem Key="WellAllocationDashboard"><a href="wellallocation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+            <MenuItem Key="WellAllocationPEReport"><a href="wellallocation/pereport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">PE Report</span></a></MenuItem>
         </ChildContent>
     </SubMenu>
-    <SubMenu>
-        <TitleTemplate><div><i class="top-row-icon fa-regular fa-hourglass fa-fw fa-xl"></i><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
+    <SubMenu Key="Deferment">
+        <TitleTemplate><div><Icon Type="hourglass" Theme="@GetTheme("Deferment")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
         <ChildContent>
-            <MenuItem Key="DefermentDashboard"><a href="deferment/dashboard"><i class="top-row-icon fas fa-dashboard fa-fw fa-xl"></i><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-            <MenuItem Key="DefermentReport"><a href="deferment/report"><i class="top-row-icon fas fa-table fa-fw fa-xl"></i><span class="toprow-nav-title">Deferment Report</span></a></MenuItem>
+            <MenuItem Key="DefermentDashboard"><a href="deferment/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+            <MenuItem Key="DefermentReport"><a href="deferment/report"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Deferment Report</span></a></MenuItem>
         </ChildContent>
     </SubMenu>
-    <SubMenu>
-        <TitleTemplate><div><i class="top-row-icon fas fa-toolbox fa-fw fa-xl"></i> <span class="toprow-nav-title d-none d-lg-inline">More</span></div></TitleTemplate>
+    <SubMenu Key="More">
+        <TitleTemplate><div><Icon Type="appstore" Theme="@GetTheme("More")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">More</span></div></TitleTemplate>
         <ChildContent>
             <MenuItemGroup Title="Management">
-                <MenuItem Key="FileManagement"><a href="more/filemanagement"><i class="top-row-icon fas fa-laptop-file fa-fw fa-xl"></i><span class="toprow-nav-title">File Management</span></a></MenuItem>
-                <MenuItem Key="UserManagement"><a href="more/usermanagement"><i class="top-row-icon fas fa-users-gear fa-fw fa-xl"></i><span class="toprow-nav-title">User Management</span></a></MenuItem>
-                <MenuItem Key="TemplateManagement"><a href="more/templatemanagement"><i class="top-row-icon fas fa-table-columns fa-fw fa-xl"></i><span class="toprow-nav-title">Template Management</span></a></MenuItem>
+                <MenuItem Key="MoreFileManagement"><a href="more/filemanagement"><Icon Type="file-sync" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">File Management</span></a></MenuItem>
+                <MenuItem Key="MoreUserManagement"><a href="more/usermanagement"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">User Management</span></a></MenuItem>
+                <MenuItem Key="MoreTemplateManagement"><a href="more/templatemanagement"><Icon Type="experiment" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Template Management</span></a></MenuItem>
             </MenuItemGroup>
             <MenuItemGroup Title="Tool">
-               <MenuItem Key="ViewDesigner"><a href="more/viewdesigner"><i class="top-row-icon fas fa-compass-drafting fa-fw fa-xl"></i><span class="toprow-nav-title">View Designer</span></a></MenuItem>            
+               <MenuItem Key="MoreViewDesigner"><a href="more/viewdesigner"><Icon Type="dot-chart" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">View Designer</span></a></MenuItem>            
             </MenuItemGroup>
         </ChildContent>
     </SubMenu>
 </Menu>
+
+@code
+{
+    private Menu menu;
+
+    private string GetTheme(string key)
+    {
+        return menu.SelectedKeys.Any(x => x.Contains(key))
+            ? "fill"
+            : "outline";
+    }
+}

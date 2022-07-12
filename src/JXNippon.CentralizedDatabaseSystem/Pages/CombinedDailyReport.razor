@@ -28,9 +28,16 @@
 
 <div class="px-2">
     <div class="row">
-        <div class="col-sm-12 col-md-4 col-lg-2 py-2">      
-            <RadzenDatePicker Placeholder="Date" TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear="false" DateFormat="d" Class="w-100" Change=@(args => OnChangeAsync(args))>
-            </RadzenDatePicker>    
+        <div class="col-sm-12 col-md-4 col-lg-2 py-2">
+            <Space>
+                <SpaceItem>
+                    <span>Date:</span>
+                </SpaceItem>
+                <SpaceItem>
+                    <RadzenDatePicker Placeholder="Date" TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear="false" DateFormat="d" Class="w-100" Change=@(args => OnChangeAsync(args))>
+                    </RadzenDatePicker>    
+                </SpaceItem>
+            </Space>      
         </div>
         <div class="col-sm-12 col-md-4 col-lg-2 py-2">      
             <RadzenButton  Style="width: 100%;" Text="Export" Icon="grid_on" ButtonStyle="ButtonStyle.Primary"/>

@@ -1,4 +1,4 @@
-﻿using BlazorDateRangePicker;
+﻿using AntDesign;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Shared.Views;
 using Microsoft.AspNetCore.Components;
@@ -17,6 +17,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         private ViewComponent viewComponent;
 
+        private RangePicker<DateTime?[]> rangePicker;
+
         protected override async Task OnInitializedAsync()
         {
             using var serviceScope = ServiceProvider.CreateScope();
@@ -24,9 +26,20 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             view = await viewService.GetViewAsync(nameof(Dashboard));
         }
 
-        public async Task OnRangeSelectAsync(DateRange range)
+        public Task OnRangeSelectAsync(DateRangeChangedEventArgs args)
         {
-            await viewComponent.ReloadAsync(range.Start, range.End);
+            startDate = args.Dates[0];
+            endDate = args.Dates[1];
+            return viewComponent.ReloadAsync(startDate, endDate);
+        }
+
+        private Task SetDateAsync(int days)
+        {
+            endDate = DateTime.Now.Date;
+            startDate = endDate.Value.AddDays(days);
+            rangePicker.Value = new DateTime?[] { startDate.Value.DateTime, endDate.Value.DateTime };
+            rangePicker.Close();
+            return viewComponent.ReloadAsync(startDate, endDate);
         }
     }
 }
