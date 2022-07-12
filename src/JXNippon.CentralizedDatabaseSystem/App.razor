@@ -3,6 +3,14 @@
         <Router AppAssembly="@typeof(App).Assembly">
             <Found Context="routeData">
                 <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                    <Authorizing>
+                       <div class="result-view d-flex align-items-center justify-content-center gap-3">
+                            <div class="fa-3x in-progress">
+                                <i class="fas fa-circle-notch fa-spin"></i>
+                            </div>
+                            <div class="h2 in-progress">Logging you in...</div>
+                        </div>
+                    </Authorizing>
                     <NotAuthorized>
                         @if (context.User.Identity?.IsAuthenticated != true)
                         {

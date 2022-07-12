@@ -1,16 +1,17 @@
 ﻿<div class="align-self-center flex-row order-md-first">
     <div class="d-none d-md-flex">
         <div class="nav-item dropdown d-none d-md-flex me-3">
-            <a class="nav-link px-3" @onclick="_=>open()">
-                <Badge Count="4" OverflowCount="99" ShowZero="true">
-                    <i class="fas fa-bell fa-fw fa-xl"></i>
+            <a>
+                <Badge Count=4 Dot>
+                    <a  @onclick="_=>open()"><i class="notification-icon fas fa-bell fa-fw fa-xl"></i></a>
                 </Badge>
             </a>
         </div>
     </div>
 </div>
 
-<Drawer Closable="true" Visible="visible" Placement="right" Title='("Personal Messages")' OnClose="_=>close()" Width=720>
+<Drawer Closable="true" Visible="visible" Placement="right" Title='("Personal Messages")' OnClose="_=>close()" Width=540>
+    <PersonalMessageList></PersonalMessageList>
 </Drawer>
 
 @code{
