@@ -33,7 +33,15 @@
 }
 
 .top-row-icon {
-    padding: 0 5px 0 0;
+    padding: 0 5px 0 0 !important;
+    font-size: 1.7em !important;
+    line-height: .0416666682em !important;
+    vertical-align: -0.05em
+}
+
+.top-row-alert {
+    font-size: 1.6em;
+    line-height: .0416666682em;
 }
 
 .toprow-title, .ant-drawer-title {
@@ -281,3 +289,4 @@ body {
 .notification-icon {
     color: #1890ff;
 }
+
