@@ -36,7 +36,7 @@
     padding: 0 5px 0 0;
 }
 
-.toprow-title {
+.toprow-title, .ant-drawer-title {
     color: #1A3C40 !important;
     font-weight: bold !important;
 }
@@ -266,7 +266,7 @@ body {
 }
 
 .rz-button.btn-primary, .btn-primary.rz-paginator-element {
-    background-color: #147b77;
+    background-color: #1890ff;
     color: #ffffff;
 }
 
