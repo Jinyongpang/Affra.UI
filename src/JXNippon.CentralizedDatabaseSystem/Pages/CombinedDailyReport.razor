@@ -29,13 +29,12 @@
 <div class="px-2">
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-2 py-2">
-            <Space>
+            <Space Class="w-100">
                 <SpaceItem>
                     <span>Date:</span>
                 </SpaceItem>
-                <SpaceItem>
-                    <RadzenDatePicker Placeholder="Date" TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear="false" DateFormat="d" Class="w-100" Change=@(args => OnChangeAsync(args))>
-                    </RadzenDatePicker>    
+                <SpaceItem Class="w-100">
+                    <DatePicker  Class="w-100" Size="medium" DisabledDate="date => date >= DateTime.Now" Placeholder=@("Date") TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear="false" Format="d" OnChange=@(args => OnChangeAsync(args))/>   
                 </SpaceItem>
             </Space>      
         </div>
