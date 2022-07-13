@@ -4,254 +4,322 @@
 <RadzenTemplateForm Data="@Item" Submit="@( async (DailyInowacInjection args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <RadzenCard>
-                <h3>Total Target (l/d)</h3>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="V-2010" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="V2010" class="w-100" @bind-Value="@Item.V2010" Disabled=@isViewing
-                            Placeholder="Enter V-2010..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A LP" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCALP" class="w-100" @bind-Value="@Item.TCALP" Disabled=@isViewing
-                            Placeholder="Enter TC-A LP..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A HP" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCAHP" class="w-100" @bind-Value="@Item.TCAHP" Disabled=@isViewing
-                            Placeholder="Enter TC-A HP..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B LP" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCBLP" class="w-100" @bind-Value="@Item.TCBLP" Disabled=@isViewing
-                            Placeholder="Enter TC-B LP..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B HP" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCBHP" class="w-100" @bind-Value="@Item.TCBHP" Disabled=@isViewing
-                            Placeholder="Enter TC-B HP..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Target" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="Target" class="w-100" @bind-Value="@Item.Target" Disabled=@isViewing
-                            Placeholder="Enter target..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Actual Injection" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="ActualInjection" class="w-100" @bind-Value="@Item.ActualInjection" Disabled=@isViewing
-                            Placeholder="Enter actual injection..."></RadzenNumeric>
-                    </div>
+            <Tabs DefaultActiveKey="1" Animated>
+                <TabPane Key="1">
+                    <TabTemplate>
+                        <span>Total Target (l/d)</span>
+                    </TabTemplate>
+                    <ChildContent>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="V-2010" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="V2010" class="w-100" @bind-Value="@Item.V2010" Disabled=@isViewing
+                                    Placeholder="Enter V-2010..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A LP" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCALP" class="w-100" @bind-Value="@Item.TCALP" Disabled=@isViewing
+                                    Placeholder="Enter TC-A LP..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A HP" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCAHP" class="w-100" @bind-Value="@Item.TCAHP" Disabled=@isViewing
+                                    Placeholder="Enter TC-A HP..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B LP" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCBLP" class="w-100" @bind-Value="@Item.TCBLP" Disabled=@isViewing
+                                    Placeholder="Enter TC-B LP..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B HP" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCBHP" class="w-100" @bind-Value="@Item.TCBHP" Disabled=@isViewing
+                                    Placeholder="Enter TC-B HP..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Target" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="Target" class="w-100" @bind-Value="@Item.Target" Disabled=@isViewing
+                                    Placeholder="Enter target..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Actual Injection" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="ActualInjection" class="w-100" @bind-Value="@Item.ActualInjection" Disabled=@isViewing
+                                    Placeholder="Enter actual injection..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Date" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                    </ChildContent>
+                </TabPane>
+                <TabPane Key="2">
+                    <TabTemplate>
+                        <span>TC-A</span>
+                    </TabTemplate>
+                    <ChildContent>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A DE pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_DE_PH" class="w-100" @bind-Value="@Item.TCA_DE_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-A DE pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A DE Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_DE_FE" class="w-100" @bind-Value="@Item.TCA_DE_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-A DE Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A NDE pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_NDE_PH" class="w-100" @bind-Value="@Item.TCA_NDE_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-A NDE pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A NDE Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_NDE_FE" class="w-100" @bind-Value="@Item.TCA_NDE_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-A NDE Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A V-2400 pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_V2400_PH" class="w-100" @bind-Value="@Item.TCA_V2400_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-A V-2400 pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A V-2400 Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_V2400_FE" class="w-100" @bind-Value="@Item.TCA_V2400_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-A V-2400 Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A V-2430 pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_V2430_PH" class="w-100" @bind-Value="@Item.TCA_V2430_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-A V-2430 pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A V-2430 Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_V2430_FE" class="w-100" @bind-Value="@Item.TCA_V2430_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-A V-2430 Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A LP pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_TCALP_PH" class="w-100" @bind-Value="@Item.TCA_TCALP_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-A LP pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A LP Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_TCALP_FE" class="w-100" @bind-Value="@Item.TCA_TCALP_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-A LP Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A V-2200 pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_V2200_PH" class="w-100" @bind-Value="@Item.TCA_V2200_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-A V-2200 pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-A V-2200 Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCA_V2200_FE" class="w-100" @bind-Value="@Item.TCA_V2200_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-A V-2200 Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                    </ChildContent>
+                </TabPane>
+                <TabPane Key="3">
+                    <TabTemplate>
+                        <span>TC-B</span>
+                    </TabTemplate>
+                    <ChildContent>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B DE pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_DE_PH" class="w-100" @bind-Value="@Item.TCB_DE_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-B DE pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B DE Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_DE_FE" class="w-100" @bind-Value="@Item.TCB_DE_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-B DE Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B NDE pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_NDE_PH" class="w-100" @bind-Value="@Item.TCB_NDE_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-B NDE pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B NDE Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_NDE_FE" class="w-100" @bind-Value="@Item.TCB_NDE_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-B NDE Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B V-2500 pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_V2500_PH" class="w-100" @bind-Value="@Item.TCB_V2500_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-B V-2500 pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B V-2500 Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_V2500_FE" class="w-100" @bind-Value="@Item.TCB_V2500_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-B V-2500 Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B V-2530 pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_V2530_PH" class="w-100" @bind-Value="@Item.TCB_V2530_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-B V-2530 pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B V-2530 Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_V2530_FE" class="w-100" @bind-Value="@Item.TCB_V2530_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-B V-2530 Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B LP pH" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_TCBLP_PH" class="w-100" @bind-Value="@Item.TCB_TCBLP_PH" Disabled=@isViewing
+                                    Placeholder="Enter TC-B LP pH..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="TC-B LP Fe" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TCB_TCBLP_FE" class="w-100" @bind-Value="@Item.TCB_TCBLP_FE" Disabled=@isViewing
+                                    Placeholder="Enter TC-B LP Fe..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Level Drop" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="LevelDrop" class="w-100" @bind-Value="@Item.LevelDrop" Disabled=@isViewing
+                                    Placeholder="Enter level drop..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Stock (Drums)" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="Stock" class="w-100" @bind-Value="@Item.Stock" Disabled=@isViewing
+                                    Placeholder="Enter stock (Drums)..."></RadzenNumeric>
+                            </div>
+                        </div>
+                    </ChildContent>
+                </TabPane>
+            </Tabs>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
                 </div>
-            </RadzenCard>
-            <RadzenCard>
-                <h3>TC-A</h3>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A DE pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_DE_PH" class="w-100" @bind-Value="@Item.TCA_DE_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-A DE pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A DE Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_DE_FE" class="w-100" @bind-Value="@Item.TCA_DE_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-A DE Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A NDE pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_NDE_PH" class="w-100" @bind-Value="@Item.TCA_NDE_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-A NDE pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A NDE Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_NDE_FE" class="w-100" @bind-Value="@Item.TCA_NDE_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-A NDE Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A V-2400 pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_V2400_PH" class="w-100" @bind-Value="@Item.TCA_V2400_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-A V-2400 pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A V-2400 Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_V2400_FE" class="w-100" @bind-Value="@Item.TCA_V2400_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-A V-2400 Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A V-2430 pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_V2430_PH" class="w-100" @bind-Value="@Item.TCA_V2430_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-A V-2430 pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A V-2430 Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_V2430_FE" class="w-100" @bind-Value="@Item.TCA_V2430_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-A V-2430 Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A LP pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_TCALP_PH" class="w-100" @bind-Value="@Item.TCA_TCALP_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-A LP pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A LP Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_TCALP_FE" class="w-100" @bind-Value="@Item.TCA_TCALP_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-A LP Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A V-2200 pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_V2200_PH" class="w-100" @bind-Value="@Item.TCA_V2200_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-A V-2200 pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-A V-2200 Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCA_V2200_FE" class="w-100" @bind-Value="@Item.TCA_V2200_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-A V-2200 Fe..."></RadzenNumeric>
-                    </div>
-                </div>
-            </RadzenCard>
-            <RadzenCard>
-                <h3>TC-B</h3>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B DE pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_DE_PH" class="w-100" @bind-Value="@Item.TCB_DE_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-B DE pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B DE Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_DE_FE" class="w-100" @bind-Value="@Item.TCB_DE_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-B DE Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B NDE pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_NDE_PH" class="w-100" @bind-Value="@Item.TCB_NDE_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-B NDE pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B NDE Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_NDE_FE" class="w-100" @bind-Value="@Item.TCB_NDE_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-B NDE Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B V-2500 pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_V2500_PH" class="w-100" @bind-Value="@Item.TCB_V2500_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-B V-2500 pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B V-2500 Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_V2500_FE" class="w-100" @bind-Value="@Item.TCB_V2500_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-B V-2500 Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B V-2530 pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_V2530_PH" class="w-100" @bind-Value="@Item.TCB_V2530_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-B V-2530 pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B V-2530 Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_V2530_FE" class="w-100" @bind-Value="@Item.TCB_V2530_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-B V-2530 Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B LP pH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_TCBLP_PH" class="w-100" @bind-Value="@Item.TCB_TCBLP_PH" Disabled=@isViewing
-                            Placeholder="Enter TC-B LP pH..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TC-B LP Fe" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCB_TCBLP_FE" class="w-100" @bind-Value="@Item.TCB_TCBLP_FE" Disabled=@isViewing
-                            Placeholder="Enter TC-B LP Fe..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Level Drop" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="LevelDrop" class="w-100" @bind-Value="@Item.LevelDrop" Disabled=@isViewing
-                            Placeholder="Enter level drop..."></RadzenNumeric>
-                    </div>
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Stock (Drums)" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="Stock" class="w-100" @bind-Value="@Item.Stock" Disabled=@isViewing
-                            Placeholder="Enter stock (Drums)..."></RadzenNumeric>
-                    </div>
-                </div>
-            </RadzenCard>
-            <RadzenCard>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                 <div class="row justify-content-center py-4" hidden=@isViewing>
-                    <div class="col-md-12 d-flex align-items-end justify-content-center">
-                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                    </div>
-                </div>
-            </RadzenCard>
+            </div>
         </div>
     </div>
 </RadzenTemplateForm>

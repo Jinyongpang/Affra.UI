@@ -4,103 +4,101 @@
 <RadzenTemplateForm Data="@Item" Submit="@( async (DailyAnalysisResult args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <RadzenCard>
-                 <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Ph Reading" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="PhReading" class="w-100" @bind-Value="@Item.PhReading" Disabled=@isViewing
-                            Placeholder="Enter ph reading..."></RadzenNumeric>
-                    </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Ph Reading" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Ph Reading Range" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextBox Name="PhReadingRange" class="w-100" Placeholder="Enter ph reading range..." @bind-Value="@Item.PhReadingRange" Disabled=@isViewing></RadzenTextBox>
-                        <RadzenRequiredValidator Component="PhReadingRange" Text="Ph reading range is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="PhReading" class="w-100" @bind-Value="@Item.PhReading" Disabled=@isViewing
+                        Placeholder="Enter ph reading..."></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Iron" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="Iron" class="w-100" @bind-Value="@Item.Iron" Disabled=@isViewing
-                            Placeholder="Enter iron..."></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Ph Reading Range" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Iron Range" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextBox Name="IronRange" class="w-100" Placeholder="Enter iron range..." @bind-Value="@Item.IronRange" Disabled=@isViewing></RadzenTextBox>
-                        <RadzenRequiredValidator Component="IronRange" Text="Iron range is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="PhReadingRange" class="w-100" Placeholder="Enter ph reading range..." @bind-Value="@Item.PhReadingRange" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="PhReadingRange" Text="Ph reading range is required" Popup=false/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Salinity" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="Salinity" class="w-100" @bind-Value="@Item.Salinity" Disabled=@isViewing
-                            Placeholder="Enter salinity..."></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Iron" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Nitrite" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="Nitrite" class="w-100" @bind-Value="@Item.Nitrite" Disabled=@isViewing
-                            Placeholder="Enter nitrite..."></RadzenNumeric>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="Iron" class="w-100" @bind-Value="@Item.Iron" Disabled=@isViewing
+                        Placeholder="Enter iron..."></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Nitrite Range" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextBox Name="NitriteRange" class="w-100" Placeholder="Enter nitrite range..." @bind-Value="@Item.NitriteRange" Disabled=@isViewing></RadzenTextBox>
-                        <RadzenRequiredValidator Component="NitriteRange" Text="Nitrite range is required" Popup=false/>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Iron Range" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="CMFilterS6970" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="CMFilterS6970" class="w-100" @bind-Value="@Item.CMFilterS6970" Disabled=@isViewing
-                            Placeholder="Enter CM filter S-6970..."></RadzenNumeric>
-                    </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="IronRange" class="w-100" Placeholder="Enter iron range..." @bind-Value="@Item.IronRange" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="IronRange" Text="Iron range is required" Popup=false/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="CMFilterS6970 Range" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextBox Name="CMFilterS6970Range" class="w-100" Placeholder="Enter CM filter S-6970 range..." @bind-Value="@Item.CMFilterS6970Range" Disabled=@isViewing></RadzenTextBox>
-                        <RadzenRequiredValidator Component="CMFilterS6970Range" Text="CM filter S-6970 range is required" Popup=false/>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Salinity" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="Salinity" class="w-100" @bind-Value="@Item.Salinity" Disabled=@isViewing
+                        Placeholder="Enter salinity..."></RadzenNumeric>
                 </div>
-                 <div class="row justify-content-center py-4" hidden=@isViewing>
-                    <div class="col-md-12 d-flex align-items-end justify-content-center">
-                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Nitrite" />
                 </div>
-            </RadzenCard>
+                <div class="col-8">
+                    <RadzenNumeric Name="Nitrite" class="w-100" @bind-Value="@Item.Nitrite" Disabled=@isViewing
+                        Placeholder="Enter nitrite..."></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Nitrite Range" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="NitriteRange" class="w-100" Placeholder="Enter nitrite range..." @bind-Value="@Item.NitriteRange" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="NitriteRange" Text="Nitrite range is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="CMFilterS6970" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CMFilterS6970" class="w-100" @bind-Value="@Item.CMFilterS6970" Disabled=@isViewing
+                        Placeholder="Enter CM filter S-6970..."></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="CMFilterS6970 Range" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="CMFilterS6970Range" class="w-100" Placeholder="Enter CM filter S-6970 range..." @bind-Value="@Item.CMFilterS6970Range" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="CMFilterS6970Range" Text="CM filter S-6970 range is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Date" />
+                </div>
+                <div class="col-8">
+                    <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                </div>
+            </div>
+                <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
         </div>
     </div>
 </RadzenTemplateForm>
