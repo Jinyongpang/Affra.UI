@@ -1,6 +1,6 @@
 ﻿<AntList DataSource="@data" TItem="BasicItem" Class="px-3">
     <ListItem OnClick="()=>ItemClick(context.Title)">
-        <ListItemMeta AvatarTemplate="avatar" Description="Ant Design, a design language for background applications, is refined by Ant UED Team">
+        <ListItemMeta AvatarTemplate="avatar" Description="@context.Detail">
             <TitleTemplate>
                 <a href="#">@context.Title</a>
             </TitleTemplate>
@@ -15,14 +15,13 @@
     public class BasicItem
     {
         public string Title { get; set; }
+        public string Detail { get; set; }
     }
 
     public List<BasicItem> data = new List<BasicItem>
     {
-        new BasicItem { Title = "Ant Design Title 1"},
-        new BasicItem { Title = "Ant Design Title 2"},
-        new BasicItem { Title = "Ant Design Title 3"},
-        new BasicItem { Title = "Ant Design Title 4"},
+        new BasicItem { Title = "Management of change", Detail = "Approval required."},
+        new BasicItem { Title = "Management of change", Detail = "Mangement of change extended."},
     };
 
     public void ItemClick(string title)

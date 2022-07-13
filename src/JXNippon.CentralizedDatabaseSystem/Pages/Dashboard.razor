@@ -36,7 +36,7 @@
                     <span>Period:</span>
                 </SpaceItem>
                 <SpaceItem>
-                    <RangePicker @ref=rangePicker TValue="DateTime?[]" Size="large" OnChange=OnRangeSelectAsync AllowClear=false DisabledDate="date => date >= DateTime.Now" DefaultValue="@(new [] { startDate?.ToLocalTime().DateTime, endDate?.ToLocalTime().DateTime })">
+                    <RangePicker @ref=rangePicker TValue="DateTime?[]" Size="medium" OnChange=OnRangeSelectAsync AllowClear=false DisabledDate="date => date >= DateTime.Now" DefaultValue="@(new [] { startDate?.ToLocalTime().DateTime, endDate?.ToLocalTime().DateTime })">
                         <RenderExtraFooter>
                             <Space>
                                 <SpaceItem>
