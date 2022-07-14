@@ -4,96 +4,94 @@
 <RadzenTemplateForm Data="@Item" Submit="@( async (DailyGlycolTrain args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <RadzenCard>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Glycol Train Name" />
+                </div>
+                <div class="col-8">
+                    <RadzenAutoComplete Name="GlycolTrainName" class="w-100" @bind-Value="@Item.GlycolTrainName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                        Placeholder="Enter glycol train name..." TextProperty="Name"></RadzenAutoComplete>
+                    <RadzenRequiredValidator Component="GlycolTrainName" Text="Glycol train name is required" Popup=false/>
+                </div>
+            </div>
                 <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Glycol Train Name" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenAutoComplete Name="GlycolTrainName" class="w-100" @bind-Value="@Item.GlycolTrainName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
-                            Placeholder="Enter glycol train name..." TextProperty="Name"></RadzenAutoComplete>
-                       <RadzenRequiredValidator Component="GlycolTrainName" Text="Glycol train name is required" Popup=false/>
-                    </div>
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Previous Day Level" />
                 </div>
-                 <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Previous Day Level" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="PreviousDayLevel" class="w-100" @bind-Value="@Item.PreviousDayLevel" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter previous day level ..." TextProperty="PreviousDayLevel"></RadzenNumeric>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="PreviousDayLevel" class="w-100" @bind-Value="@Item.PreviousDayLevel" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter previous day level ..." TextProperty="PreviousDayLevel"></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Today Report Level" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TodayReportLevel" class="w-100" @bind-Value="@Item.TodayReportLevel" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter today report level ..." TextProperty="TodayReportLevel"></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Today Report Level" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Level Drop" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="LevelDrop" class="w-100" @bind-Value="@Item.LevelDrop" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter level drop ..." TextProperty="LevelDrop"></RadzenNumeric>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="TodayReportLevel" class="w-100" @bind-Value="@Item.TodayReportLevel" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter today report level ..." TextProperty="TodayReportLevel"></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Indicator" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="Indicator" class="w-100" @bind-Value="@Item.Indicator" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter indicator ..." TextProperty="Indicator"></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Level Drop" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Indicator Guide" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenAutoComplete Name="IndicatorGuide" class="w-100" @bind-Value="@Item.IndicatorGuide" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
-                            Placeholder="Enter indicator guide..." TextProperty="Name"></RadzenAutoComplete>
-                       <RadzenRequiredValidator Component="IndicatorGuide" Text="Indicator guide is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="LevelDrop" class="w-100" @bind-Value="@Item.LevelDrop" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter level drop ..." TextProperty="LevelDrop"></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Flow Rate" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="FlowRate" class="w-100" @bind-Value="@Item.FlowRate" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter flow rate ..." TextProperty="FlowRate"></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Indicator" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="PH" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="PH" class="w-100" @bind-Value="@Item.PH" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter PH ..." TextProperty="PH"></RadzenNumeric>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="Indicator" class="w-100" @bind-Value="@Item.Indicator" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter indicator ..." TextProperty="Indicator"></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Indicator Guide" />
                 </div>
-                <div class="row justify-content-center py-4" hidden=@isViewing>
-                    <div class="col-md-12 d-flex align-items-end justify-content-center">
-                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                    </div>
+                <div class="col-8">
+                    <RadzenAutoComplete Name="IndicatorGuide" class="w-100" @bind-Value="@Item.IndicatorGuide" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                        Placeholder="Enter indicator guide..." TextProperty="Name"></RadzenAutoComplete>
+                    <RadzenRequiredValidator Component="IndicatorGuide" Text="Indicator guide is required" Popup=false/>
                 </div>
-            </RadzenCard>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Flow Rate" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="FlowRate" class="w-100" @bind-Value="@Item.FlowRate" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter flow rate ..." TextProperty="FlowRate"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="PH" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="PH" class="w-100" @bind-Value="@Item.PH" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter PH ..." TextProperty="PH"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Date" />
+                </div>
+                <div class="col-8">
+                    <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
         </div>
     </div>
 </RadzenTemplateForm>

@@ -4,50 +4,48 @@
 <RadzenTemplateForm Data="@Item" Submit="@( async (DailyGlycolPump args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <RadzenCard>
-                 <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Glycol Pump Name" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenAutoComplete Name="GlycolPumpName" class="w-100" @bind-Value="@Item.GlycolPumpName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
-                            Placeholder="Enter glycol pump name..." TextProperty="Name"></RadzenAutoComplete>
-                       <RadzenRequiredValidator Component="GlycolPumpName" Text="Glycol pump name is required" Popup=false/>
-                    </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Glycol Pump Name" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Status" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenDropDown Name="Status" class="w-100"  @bind-Value="@Item.Status" Data="@(StatusFilter.Statuses)" TValue="string" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
-                            Placeholder="Enter status..."></RadzenDropDown>
-                       <RadzenRequiredValidator Component="Status" Text="Status is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenAutoComplete Name="GlycolPumpName" class="w-100" @bind-Value="@Item.GlycolPumpName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                        Placeholder="Enter glycol pump name..." TextProperty="Name"></RadzenAutoComplete>
+                    <RadzenRequiredValidator Component="GlycolPumpName" Text="Glycol pump name is required" Popup=false/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Remarks" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="Remark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark" Disabled=@isViewing></RadzenTextArea>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Status" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
+                <div class="col-8">
+                    <RadzenDropDown Name="Status" class="w-100"  @bind-Value="@Item.Status" Data="@(StatusFilter.Statuses)" TValue="string" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                        Placeholder="Enter status..."></RadzenDropDown>
+                    <RadzenRequiredValidator Component="Status" Text="Status is required" Popup=false/>
                 </div>
-                <div class="row justify-content-center py-4" hidden=@isViewing>
-                    <div class="col-md-12 d-flex align-items-end justify-content-center">
-                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Remarks" />
                 </div>
-            </RadzenCard>
+                <div class="col-8">
+                    <RadzenTextArea Name="Remark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark" Disabled=@isViewing></RadzenTextArea>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Date" />
+                </div>
+                <div class="col-8">
+                    <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
         </div>
     </div>
 </RadzenTemplateForm>

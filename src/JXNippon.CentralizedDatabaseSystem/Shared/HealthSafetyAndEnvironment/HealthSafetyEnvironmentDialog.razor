@@ -4,228 +4,234 @@
 <RadzenTemplateForm Data="@Item" Submit="@( async (DailyHealthSafetyEnvironment args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <RadzenCard>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Last LTI Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.LastLTIDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
+            <Tabs DefaultActiveKey="1" Animated>
+                <TabPane Key="1">
+                    <TabTemplate>
+                        <span>Page 1</span>
+                    </TabTemplate>
+                    <ChildContent>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Last LTI Date" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.LastLTIDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="SK-10 Days LTI Free" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="SK10DaysLTIFree" class="w-100" @bind-Value="@Item.SK10DaysLTIFree" Disabled=@isViewing
+                                    Placeholder="Enter SK-10 days LTI free..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Last Drill Exercise Conducted" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.LastDrillExerciseConductedDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Last Annual ESD Test" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.LastAnnualESDTestDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Next Annual ESD Test" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.NextAnnualESDTestDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Injurious/MTC/FAC Count" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="Injurious_MTC_FACCount" class="w-100" @bind-Value="@Item.Injurious_MTC_FACCount" Disabled=@isViewing
+                                    Placeholder="Enter Injurious/MTC/FAC count..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Injurious/MTC/FAC Date" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.Injurious_MTC_FACDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Near Miss Count" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="NearMissCount" class="w-100" @bind-Value="@Item.NearMissCount" Disabled=@isViewing
+                                    Placeholder="Enter near miss count..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Near Miss Date" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.NearMissDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Property Damage Count" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="PropertyDamageCount" class="w-100" @bind-Value="@Item.PropertyDamageCount" Disabled=@isViewing
+                                    Placeholder="Enter property damage count..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Property Damage Date" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.PropertyDamageDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Total UCUX Today" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="TotalUCUXToday" class="w-100" @bind-Value="@Item.TotalUCUXToday" Disabled=@isViewing
+                                    Placeholder="Enter total UCUX today..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Total UCUX Report Month" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="TotalUCUXThisMonth" class="w-100" @bind-Value="@Item.TotalUCUXThisMonth" Disabled=@isViewing
+                                    Placeholder="Enter total UCUX report month..."></RadzenNumeric>
+                            </div>
+                        </div>
+                    </ChildContent>
+                </TabPane>
+                <TabPane Key="2">
+                    <TabTemplate>
+                        <span>Page 2</span>
+                    </TabTemplate>
+                    <ChildContent>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="HIP LQ" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="HIP_LQ" class="w-100" @bind-Value="@Item.HIP_LQ" Disabled=@isViewing
+                                    Placeholder="Enter HIP LQ..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="HIP ALQ" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="HIP_ALQ" class="w-100" @bind-Value="@Item.HIP_ALQ" Disabled=@isViewing
+                                    Placeholder="Enter HIP ALQ..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Total HIP POB" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="Total_HIP_POB" class="w-100" @bind-Value="@Item.Total_HIP_POB" Disabled=@isViewing
+                                    Placeholder="Enter total HIP POB..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Available Bedding" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="AvailableBedding" class="w-100" @bind-Value="@Item.AvailableBedding" Disabled=@isViewing
+                                    Placeholder="Enter available bedding..."></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Operation:Catering:NonEssential" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenTextArea Name="Operation_Catering_NonEssential" class="w-100" Placeholder="Enter Operation:Catering:NonEssential..." @bind-Value="@Item.Operation_Catering_NonEssential" Disabled=@isViewing></RadzenTextArea>
+                                <RadzenRequiredValidator Component="Operation_Catering_NonEssential" Text="Operation:Catering:NonEssential is required" Popup=false/>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Weather" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenTextArea Name="Weather" class="w-100" Placeholder="Enter weather..." @bind-Value="@Item.Weather" Disabled=@isViewing></RadzenTextArea>
+                                <RadzenRequiredValidator Component="Weather" Text="Weather is required" Popup=false/>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Wind Speed (knots)" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="WindSpeed" class="w-100" Placeholder="Enter wind speed..." @bind-Value="@Item.WindSpeed" Disabled=@isViewing></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Wind Direction" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenTextArea Name="WindDirection" class="w-100" Placeholder="Enter wind direction..." @bind-Value="@Item.WindDirection" Disabled=@isViewing></RadzenTextArea>
+                                <RadzenRequiredValidator Component="WindDirection" Text="Wind direction is required" Popup=false/>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Swell/Wave Height" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenTextArea Name="SwellWaveHeight" class="w-100" Placeholder="Enter Swell/Wave height..." @bind-Value="@Item.SwellWaveHeight" Disabled=@isViewing></RadzenTextArea>
+                                <RadzenRequiredValidator Component="SwellWaveHeight" Text="Swell/Wave height is required" Popup=false/>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Visibility (NM)" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenNumeric Name="Visibility" class="w-100" Placeholder="Enter visibility (NM)..." @bind-Value="@Item.Visibility" Disabled=@isViewing></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Date" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                    </ChildContent>
+                </TabPane>
+            </Tabs>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="SK-10 Days LTI Free" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="SK10DaysLTIFree" class="w-100" @bind-Value="@Item.SK10DaysLTIFree" Disabled=@isViewing
-                            Placeholder="Enter SK-10 days LTI free..."></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Last Drill Exercise Conducted" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.LastDrillExerciseConductedDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Last Annual ESD Test" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.LastAnnualESDTestDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Next Annual ESD Test" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.NextAnnualESDTestDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Injurious/MTC/FAC Count" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="Injurious_MTC_FACCount" class="w-100" @bind-Value="@Item.Injurious_MTC_FACCount" Disabled=@isViewing
-                            Placeholder="Enter Injurious/MTC/FAC count..."></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Injurious/MTC/FAC Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.Injurious_MTC_FACDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Near Miss Count" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="NearMissCount" class="w-100" @bind-Value="@Item.NearMissCount" Disabled=@isViewing
-                            Placeholder="Enter near miss count..."></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Near Miss Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.NearMissDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Property Damage Count" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="PropertyDamageCount" class="w-100" @bind-Value="@Item.PropertyDamageCount" Disabled=@isViewing
-                            Placeholder="Enter property damage count..."></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Property Damage Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.PropertyDamageDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Total UCUX Today" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="TotalUCUXToday" class="w-100" @bind-Value="@Item.TotalUCUXToday" Disabled=@isViewing
-                            Placeholder="Enter total UCUX today..."></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Total UCUX Report Month" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="TotalUCUXThisMonth" class="w-100" @bind-Value="@Item.TotalUCUXThisMonth" Disabled=@isViewing
-                            Placeholder="Enter total UCUX report month..."></RadzenNumeric>
-                    </div>
-                </div>
-            </RadzenCard>
-        </div>
-        <div class="col">
-            <RadzenCard>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="HIP LQ" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="HIP_LQ" class="w-100" @bind-Value="@Item.HIP_LQ" Disabled=@isViewing
-                            Placeholder="Enter HIP LQ..."></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="HIP ALQ" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="HIP_ALQ" class="w-100" @bind-Value="@Item.HIP_ALQ" Disabled=@isViewing
-                            Placeholder="Enter HIP ALQ..."></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Total HIP POB" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="Total_HIP_POB" class="w-100" @bind-Value="@Item.Total_HIP_POB" Disabled=@isViewing
-                            Placeholder="Enter total HIP POB..."></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Available Bedding" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="AvailableBedding" class="w-100" @bind-Value="@Item.AvailableBedding" Disabled=@isViewing
-                            Placeholder="Enter available bedding..."></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Operation:Catering:NonEssential" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="Operation_Catering_NonEssential" class="w-100" Placeholder="Enter Operation:Catering:NonEssential..." @bind-Value="@Item.Operation_Catering_NonEssential" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="Operation_Catering_NonEssential" Text="Operation:Catering:NonEssential is required" Popup=false/>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Weather" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="Weather" class="w-100" Placeholder="Enter weather..." @bind-Value="@Item.Weather" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="Weather" Text="Weather is required" Popup=false/>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Wind Speed (knots)" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="WindSpeed" class="w-100" Placeholder="Enter wind speed..." @bind-Value="@Item.WindSpeed" Disabled=@isViewing></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Wind Direction" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="WindDirection" class="w-100" Placeholder="Enter wind direction..." @bind-Value="@Item.WindDirection" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="WindDirection" Text="Wind direction is required" Popup=false/>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Swell/Wave Height" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="SwellWaveHeight" class="w-100" Placeholder="Enter Swell/Wave height..." @bind-Value="@Item.SwellWaveHeight" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="SwellWaveHeight" Text="Swell/Wave height is required" Popup=false/>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Visibility (NM)" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="Visibility" class="w-100" Placeholder="Enter visibility (NM)..." @bind-Value="@Item.Visibility" Disabled=@isViewing></RadzenNumeric>
-                    </div>
-                </div>
-            </RadzenCard>
-        </div>
-        <div>
-            <RadzenCard>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                <div class="row justify-content-center py-4" hidden=@isViewing>
-                    <div class="col-md-12 d-flex align-items-end justify-content-center">
-                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                    </div>
-                </div>
-        </RadzenCard>
+            </div>
         </div>
     </div>
 </RadzenTemplateForm>
