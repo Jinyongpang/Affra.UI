@@ -4,141 +4,139 @@
 <RadzenTemplateForm Data="@Item" Submit="@( async (DailyLWPWellHeadParameter args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <RadzenCard>
-                 <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="LWP Well Head Name" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenAutoComplete Name="LWPWellHeadName" class="w-100" @bind-Value="@Item.LWPWellHeadName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
-                            Placeholder="Enter LWP well head name..." TextProperty="Name"></RadzenAutoComplete>
-                       <RadzenRequiredValidator Component="LWPWellHeadName" Text="Well head name is required" Popup=false/>
-                    </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="LWP Well Head Name" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Status" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDropDown Name="Status" Placeholder="Status" @bind-Value="@Item.Status" Disabled=@isViewing 
-                        Data=@(StatusFilter.Statuses) />
-                        <RadzenRequiredValidator Component="Status" Text="Status is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenAutoComplete Name="LWPWellHeadName" class="w-100" @bind-Value="@Item.LWPWellHeadName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                        Placeholder="Enter LWP well head name..." TextProperty="Name"></RadzenAutoComplete>
+                    <RadzenRequiredValidator Component="LWPWellHeadName" Text="Well head name is required" Popup=false/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="THP bar" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="THP" class="w-100" @bind-Value="@Item.THP" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter THP ..." TextProperty="THP"></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Status" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="THT °c" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="THT" class="w-100" @bind-Value="@Item.THT" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter THT ..." TextProperty="THT"></RadzenNumeric>
-                    </div>
+                <div class="col-8">
+                    <RadzenDropDown Name="Status" Placeholder="Status" @bind-Value="@Item.Status" Disabled=@isViewing 
+                    Data=@(StatusFilter.Statuses) />
+                    <RadzenRequiredValidator Component="Status" Text="Status is required" Popup=false/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Choke %" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="ChokePercentage" class="w-100" @bind-Value="@Item.ChokePercentage" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter choke % ..." TextProperty="ChokePercentage"></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="THP bar" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Choke Mode" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDropDown Name="ChokeMode" Placeholder="ChokeMode" @bind-Value="@Item.ChokeMode" Disabled=@isViewing 
-                        Data=@(ModeFilter.Modes) />
-                        <RadzenRequiredValidator Component="ChokeMode" Text="Mode is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="THP" class="w-100" @bind-Value="@Item.THP" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter THP ..." TextProperty="THP"></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="PCP bar" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="PCP" class="w-100" @bind-Value="@Item.PCP" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter PCP ..." TextProperty="PCP"></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="THT °c" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="SCP bar" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="SCP" class="w-100" @bind-Value="@Item.SCP" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter SCP ..." TextProperty="SCP"></RadzenNumeric>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="THT" class="w-100" @bind-Value="@Item.THT" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter THT ..." TextProperty="THT"></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="CCP bar" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="CCP" class="w-100" @bind-Value="@Item.CCP" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter CCP ..." TextProperty="CCP"></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Choke %" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Uptime hr:mm" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="UpTime" class="w-100" Placeholder="Enter up time..." @bind-Value="@Item.UpTime" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="UpTime" Text="Up time is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="ChokePercentage" class="w-100" @bind-Value="@Item.ChokePercentage" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter choke % ..." TextProperty="ChokePercentage"></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="CI ltr/day" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="CI" class="w-100" @bind-Value="@Item.CI" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter CI ..." TextProperty="CI"></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Choke Mode" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="TCP bar" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TCP" class="w-100" @bind-Value="@Item.TCP" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter TCP ..." TextProperty="TCP"></RadzenNumeric>
-                    </div>
+                <div class="col-8">
+                    <RadzenDropDown Name="ChokeMode" Placeholder="ChokeMode" @bind-Value="@Item.ChokeMode" Disabled=@isViewing 
+                    Data=@(ModeFilter.Modes) />
+                    <RadzenRequiredValidator Component="ChokeMode" Text="Mode is required" Popup=false/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Remarks" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="Remark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark" Disabled=@isViewing></RadzenTextArea>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="PCP bar" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="PCP" class="w-100" @bind-Value="@Item.PCP" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter PCP ..." TextProperty="PCP"></RadzenNumeric>
                 </div>
-                <div class="row justify-content-center py-4" hidden=@isViewing>
-                    <div class="col-md-12 d-flex align-items-end justify-content-center">
-                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="SCP bar" />
                 </div>
-            </RadzenCard>
+                <div class="col-8">
+                    <RadzenNumeric Name="SCP" class="w-100" @bind-Value="@Item.SCP" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter SCP ..." TextProperty="SCP"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="CCP bar" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CCP" class="w-100" @bind-Value="@Item.CCP" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter CCP ..." TextProperty="CCP"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Uptime hr:mm" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextArea Name="UpTime" class="w-100" Placeholder="Enter up time..." @bind-Value="@Item.UpTime" Disabled=@isViewing></RadzenTextArea>
+                    <RadzenRequiredValidator Component="UpTime" Text="Up time is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="CI ltr/day" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CI" class="w-100" @bind-Value="@Item.CI" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter CI ..." TextProperty="CI"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="TCP bar" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="TCP" class="w-100" @bind-Value="@Item.TCP" Data="@datas" Disabled=@isViewing
+                    Placeholder="Enter TCP ..." TextProperty="TCP"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Remarks" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextArea Name="Remark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark" Disabled=@isViewing></RadzenTextArea>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Date" />
+                </div>
+                <div class="col-8">
+                    <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
         </div>
     </div>
 </RadzenTemplateForm>

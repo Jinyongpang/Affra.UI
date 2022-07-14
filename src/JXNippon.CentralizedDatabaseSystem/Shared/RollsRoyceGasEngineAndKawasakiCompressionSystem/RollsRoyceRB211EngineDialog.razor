@@ -4,165 +4,172 @@
 <RadzenTemplateForm Data="@Item" Submit="@( async (DailyRollsRoyceRB211Engine args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <RadzenCard>
-                 <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Name" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenAutoComplete Name="RollsRoyceRB211EngineName" class="w-100" @bind-Value="@Item.RollsRoyceRB211EngineName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
-                            Placeholder="Enter name..." TextProperty="Name"></RadzenAutoComplete>
-                       <RadzenRequiredValidator Component="RollsRoyceRB211EngineName" Text="Name is required" Popup=false/>
-                    </div>
+            <Tabs DefaultActiveKey="1" Animated>
+                <TabPane Key="1">
+                    <TabTemplate>
+                        <span>Page 1</span>
+                    </TabTemplate>
+                    <ChildContent>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Name" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenAutoComplete Name="RollsRoyceRB211EngineName" class="w-100" @bind-Value="@Item.RollsRoyceRB211EngineName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                                    Placeholder="Enter name..." TextProperty="Name"></RadzenAutoComplete>
+                               <RadzenRequiredValidator Component="RollsRoyceRB211EngineName" Text="Name is required" Popup=false/>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="GG N1" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="GGN1" class="w-100" @bind-Value="@Item.GGN1" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter GG N1 ..." TextProperty="GGN1"></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="GG N2" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="GGN2" class="w-100" @bind-Value="@Item.GGN2" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter GG N2 ..." TextProperty="GGN2"></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="PT N3" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="PTN3" class="w-100" @bind-Value="@Item.PTN3" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter PT N3 ..." TextProperty="PTN3"></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="GG CT Brg L.O ΔP" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="GGCTBrgLO" class="w-100" @bind-Value="@Item.GGCTBrgLO" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter GG CT Brg L.O ..." TextProperty="GGCTBrgLO"></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="T6 (732)" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="T6" class="w-100" @bind-Value="@Item.T6" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter T6 (732) ..." TextProperty="T6"></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="CDP" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="CDP" class="w-100" @bind-Value="@Item.CDP" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter CDP ..." TextProperty="CDP"></RadzenNumeric>
+                            </div>
+                        </div>
+                    </ChildContent>
+                </TabPane>
+                <TabPane Key="2">
+                    <TabTemplate>
+                        <span>Page 2</span>
+                    </TabTemplate>
+                    <ChildContent>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="GG Air Intake ΔP" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="GGAirIntake" class="w-100" @bind-Value="@Item.GGAirIntake" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter GG air intake ..." TextProperty="GGAirIntake"></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Running Hours" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="RunningHours" class="w-100" @bind-Value="@Item.RunningHours" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter running hours ..." TextProperty="RunningHours"></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Start Attempt" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="StartAttempt" class="w-100" @bind-Value="@Item.StartAttempt" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter start attempt ..." TextProperty="StartAttempt"></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Successful Starts" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="SuccessfulStarts" class="w-100" @bind-Value="@Item.SuccessfulStarts" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter successful starts ..." TextProperty="SuccessfulStarts"></RadzenNumeric>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="DE Sample Colour" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenTextArea Name="DESampleColour" class="w-100" Placeholder="Enter DE sample colour..." @bind-Value="@Item.DESampleColour" Disabled=@isViewing></RadzenTextArea>
+                                <RadzenRequiredValidator Component="DESampleColour" Text="DE sample colour is required" Popup=false/>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="NDE Sample Colour" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenTextArea Name="NDESampleColour" class="w-100" Placeholder="Enter NDE sample colour..." @bind-Value="@Item.NDESampleColour" Disabled=@isViewing></RadzenTextArea>
+                                <RadzenRequiredValidator Component="NDESampleColour" Text="NDE sample colour is required" Popup=false/>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Turbine Wash Date" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.TurbineWashDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Turbine Wash Running Hours" />
+                            </div>
+                            <div class="col-8">
+                               <RadzenNumeric Name="TurbineWashRunnningHours" class="w-100" @bind-Value="@Item.TurbineWashRunnningHours" Data="@datas" Disabled=@isViewing
+                               Placeholder="Enter turbine wash running hours ..." TextProperty="TurbineWashRunnningHours"></RadzenNumeric>
+                            </div>
+                        </div>
+                        
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Date" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                            </div>
+                        </div>
+                    </ChildContent>
+                </TabPane>
+            </Tabs>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="GG N1" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="GGN1" class="w-100" @bind-Value="@Item.GGN1" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter GG N1 ..." TextProperty="GGN1"></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="GG N2" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="GGN2" class="w-100" @bind-Value="@Item.GGN2" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter GG N2 ..." TextProperty="GGN2"></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="PT N3" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="PTN3" class="w-100" @bind-Value="@Item.PTN3" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter PT N3 ..." TextProperty="PTN3"></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="GG CT Brg L.O ΔP" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="GGCTBrgLO" class="w-100" @bind-Value="@Item.GGCTBrgLO" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter GG CT Brg L.O ..." TextProperty="GGCTBrgLO"></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="T6 (732)" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="T6" class="w-100" @bind-Value="@Item.T6" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter T6 (732) ..." TextProperty="T6"></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="CDP" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="CDP" class="w-100" @bind-Value="@Item.CDP" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter CDP ..." TextProperty="CDP"></RadzenNumeric>
-                    </div>
-                </div>
-            </RadzenCard>
-        </div>
-        <div class="col">
-            <RadzenCard>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="GG Air Intake ΔP" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="GGAirIntake" class="w-100" @bind-Value="@Item.GGAirIntake" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter GG air intake ..." TextProperty="GGAirIntake"></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Running Hours" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="RunningHours" class="w-100" @bind-Value="@Item.RunningHours" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter running hours ..." TextProperty="RunningHours"></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Start Attempt" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="StartAttempt" class="w-100" @bind-Value="@Item.StartAttempt" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter start attempt ..." TextProperty="StartAttempt"></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Successful Starts" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="SuccessfulStarts" class="w-100" @bind-Value="@Item.SuccessfulStarts" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter successful starts ..." TextProperty="SuccessfulStarts"></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="DE Sample Colour" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="DESampleColour" class="w-100" Placeholder="Enter DE sample colour..." @bind-Value="@Item.DESampleColour" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="DESampleColour" Text="DE sample colour is required" Popup=false/>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="NDE Sample Colour" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="NDESampleColour" class="w-100" Placeholder="Enter NDE sample colour..." @bind-Value="@Item.NDESampleColour" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="NDESampleColour" Text="NDE sample colour is required" Popup=false/>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Turbine Wash Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.TurbineWashDateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Turbine Wash Running Hours" />
-                    </div>
-                    <div class="col-8">
-                       <RadzenNumeric Name="TurbineWashRunnningHours" class="w-100" @bind-Value="@Item.TurbineWashRunnningHours" Data="@datas" Disabled=@isViewing
-                       Placeholder="Enter turbine wash running hours ..." TextProperty="TurbineWashRunnningHours"></RadzenNumeric>
-                    </div>
-                </div>
-            </RadzenCard>
-        </div>
-        <div>
-            <RadzenCard>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
-                </div>
-                <div class="row justify-content-center py-4" hidden=@isViewing>
-                    <div class="col-md-12 d-flex align-items-end justify-content-center">
-                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                    </div>
-                </div>
-        </RadzenCard>
+            </div>
         </div>
     </div>
 </RadzenTemplateForm>

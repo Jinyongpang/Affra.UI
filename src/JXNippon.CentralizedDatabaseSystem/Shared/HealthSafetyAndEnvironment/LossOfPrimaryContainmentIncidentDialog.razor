@@ -4,76 +4,74 @@
 <RadzenTemplateForm Data="@Item" Submit="@( async (DailyLossOfPrimaryContainmentIncident args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <RadzenCard>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Major LOPC" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="MajorLOPC" class="w-100" @bind-Value="@Item.MajorLOPC" Disabled=@isViewing
-                            Placeholder="Enter major LOPC..."></RadzenNumeric>
-                    </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Major LOPC" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Last Major LOPC" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="LastMajorLOPC" class="w-100" Placeholder="Enter last major LOPC..." @bind-Value="@Item.LastMajorLOPC" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="LastMajorLOPC" Text="Last major LOPC is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="MajorLOPC" class="w-100" @bind-Value="@Item.MajorLOPC" Disabled=@isViewing
+                        Placeholder="Enter major LOPC..."></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Minor LOPC" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="MinorLOPC" class="w-100" @bind-Value="@Item.MinorLOPC" Disabled=@isViewing
-                            Placeholder="Enter minor LOPC..."></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Last Major LOPC" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Last Minor LOPC" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="LastMinorLOPC" class="w-100" Placeholder="Enter last minor LOPC..." @bind-Value="@Item.LastMinorLOPC" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="LastMinorLOPC" Text="Last minor LOPC is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenTextArea Name="LastMajorLOPC" class="w-100" Placeholder="Enter last major LOPC..." @bind-Value="@Item.LastMajorLOPC" Disabled=@isViewing></RadzenTextArea>
+                    <RadzenRequiredValidator Component="LastMajorLOPC" Text="Last major LOPC is required" Popup=false/>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Other LOPC" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Name="OtherLOPC" class="w-100" @bind-Value="@Item.OtherLOPC" Disabled=@isViewing
-                            Placeholder="Enter other LOPC..."></RadzenNumeric>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Minor LOPC" />
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Last Other LOPC" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextArea Name="LastOtherLOPC" class="w-100" Placeholder="Enter last other LOPC..." @bind-Value="@Item.LastOtherLOPC" Disabled=@isViewing></RadzenTextArea>
-                        <RadzenRequiredValidator Component="LastOtherLOPC" Text="Last other LOPC is required" Popup=false/>
-                    </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="MinorLOPC" class="w-100" @bind-Value="@Item.MinorLOPC" Disabled=@isViewing
+                        Placeholder="Enter minor LOPC..."></RadzenNumeric>
                 </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Date" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
-                    </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Last Minor LOPC" />
                 </div>
-                <div class="row justify-content-center py-4" hidden=@isViewing>
-                    <div class="col-md-12 d-flex align-items-end justify-content-center">
-                        <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                        <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                    </div>
+                <div class="col-8">
+                    <RadzenTextArea Name="LastMinorLOPC" class="w-100" Placeholder="Enter last minor LOPC..." @bind-Value="@Item.LastMinorLOPC" Disabled=@isViewing></RadzenTextArea>
+                    <RadzenRequiredValidator Component="LastMinorLOPC" Text="Last minor LOPC is required" Popup=false/>
                 </div>
-            </RadzenCard>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Other LOPC" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="OtherLOPC" class="w-100" @bind-Value="@Item.OtherLOPC" Disabled=@isViewing
+                        Placeholder="Enter other LOPC..."></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Last Other LOPC" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextArea Name="LastOtherLOPC" class="w-100" Placeholder="Enter last other LOPC..." @bind-Value="@Item.LastOtherLOPC" Disabled=@isViewing></RadzenTextArea>
+                    <RadzenRequiredValidator Component="LastOtherLOPC" Text="Last other LOPC is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Date" />
+                </div>
+                <div class="col-8">
+                    <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
         </div>
     </div>
 </RadzenTemplateForm>
