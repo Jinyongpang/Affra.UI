@@ -199,12 +199,20 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private void HandleDragEnter(int i)
         {
+            if (!IsDesignMode)
+            {
+                return;
+            }
             cardClasses[i] = "can-drop";
             enteredId = i;
         }
 
         private void HandleDragLeave(int i)
         {
+            if (!IsDesignMode)
+            {
+                return;
+            }
             cardClasses[i] = string.Empty;
             enteredId = -1;
         }

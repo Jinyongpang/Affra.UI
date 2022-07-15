@@ -102,18 +102,18 @@
 .rz-inputtext, .rz-textarea {
     font-size: 1rem !important;
 }
-.rz-datatable-thead th, .rz-grid-table thead th {
+.rz-datatable-thead th, .rz-grid-table thead th, .rz-grid-table-fixed .rz-frozen-cell, .ant-table-thead > tr > th, .ant-layout-header {
     border-bottom: solid 1px #dfe7eb !important;
     font-weight: bold !important;
+    background-color: #fafafa;
+}
+
+.ant-layout-header {
+    padding: 0 24px;
 }
 
 .rz-grid-table thead th .rz-column-title {
     font-weight: bold !important;
-    text-transform: uppercase !important;
-    font-size: 1rem !important;
-}
-
-.rz-grid-table thead th .rz-column-title {
     text-transform: capitalize !important;
     font-size: 0.9rem !important;
 }
@@ -191,6 +191,10 @@ body {
 .dragging {
     cursor: grabbing;
     border: 1px dashed #dbe0ea !important;
+}
+
+.draggable-target {
+    opacity: 0.3;
 }
 
 .rz-datatable {
@@ -292,4 +296,23 @@ body {
 
 .ant-picker {
     font-size: 24px;
+}
+
+.min-vh-80 {
+    min-height: 80vh;
+}
+
+.min-vh-70 {
+    min-height: 70vh;
+}
+
+
+.vh-80 {
+    height: 80vh;
+}
+
+.layout-view {
+    background-color: #ffffff !important;
+    border: 1px solid #dbe0ea !important;
+    box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
 }

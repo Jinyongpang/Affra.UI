@@ -1,43 +1,51 @@
 ﻿@page "/authentication/{action}"
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
 <RemoteAuthenticatorView Action="@Action">
     <LogInFailed>
         <div class="result-view d-flex align-items-center justify-content-center gap-3">
-        <Result Status="403"
-                Title="Unauthorized"
-                SubTitle="Sorry, you are not authorized to access this page. Please contact administrator or try again."
-                Extra="loginButton" />
+            <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.ErrorForbidden" Description="Sorry, you are not authorized to access this page. Please contact administrator or try again.">
+                <ChildContent>
+                    <a type="button" class="btn btn-primary" href="authentication/login">Login</a>
+                </ChildContent>
+            </GenericDescription>
         </div>
     </LogInFailed>
     <LogOut>
-       <div class="result-view d-flex align-items-center justify-content-center gap-3">
-            <div class="fa-3x in-progress">
-                <i class="fas fa-circle-notch fa-spin "></i>
-            </div>
-            <div class="h2 in-progress">Logging out...</div>
+        <div class="result-view d-flex align-items-center justify-content-center gap-3">
+            <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.Departing" Description="Logging out...">
+                <ChildContent>
+                    <Spin size="large" />
+                </ChildContent>
+            </GenericDescription>
         </div>
     </LogOut>
     <LogOutSucceeded>
         <div class="result-view d-flex align-items-center justify-content-center gap-3">
-            <Result
-                Title="You have been successfully logged out."
-                Extra=loginButton/>
+            <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.LowBattery" Description="You have been successfully logged out.">
+                <ChildContent>
+                    <a type="button" class="btn btn-primary" href="authentication/login">Login</a>
+                </ChildContent>
+            </GenericDescription>
         </div>
     </LogOutSucceeded>
     <LoggingIn>
        <div class="result-view d-flex align-items-center justify-content-center gap-3">
-            <div class="fa-3x in-progress">
-                <i class="fas fa-circle-notch fa-spin"></i>
-            </div>
-            <div class="h2 in-progress">Redirecting...</div>
+           <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.Teleport" Description="Redirecting...">
+                <ChildContent>
+                    <Spin size="large" />
+                </ChildContent>
+            </GenericDescription>
         </div>
     </LoggingIn>
     <CompletingLoggingIn>
-      <div class="result-view d-flex align-items-center justify-content-center gap-3">
-            <div class="fa-3x in-progress">
-                <i class="fas fa-circle-notch fa-spin"></i>
-            </div>
-            <div class="h2 in-progress">Welcome...</div>
+        <div class="result-view d-flex align-items-center justify-content-center gap-3">
+           <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.CompleteLogin" Description="Completing your login to centralized database system...">
+                <ChildContent>
+                    <Spin size="large" />
+                </ChildContent>
+            </GenericDescription>
         </div>
     </CompletingLoggingIn>
 </RemoteAuthenticatorView>

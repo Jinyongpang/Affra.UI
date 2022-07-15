@@ -1,0 +1,83 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Views
+@using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
+@inject IViewService ViewService
+
+<Layout Class="layout-view" Style="height: 80vh;">
+    <Sider Style="overflow: auto; height: 100%" Width=400>
+        <Layout>
+            <Header Style="position: fixed; z-index: 1; width:400px;">Table</Header>
+            <Content Style="margin-top: 64px; ">
+                <Menu @ref=menu Mode="MenuMode.Inline">
+                    @{
+                        var types = ViewService.GetTypeMapping()
+                                    .Select(x => x.Key)
+                                    .ToHashSet();
+                        foreach (var type in types)
+                        {
+                            <MenuItem Key=@type>@type</MenuItem>
+                        }
+                    }
+                </Menu>
+            </Content>
+        </Layout>
+    </Sider>
+    <Layout>
+        <Header Style="border-left: 1px solid #dbe0ea">Custom Columns</Header>
+        <Content>
+            <TemplateManagementGrid TableName="@tableName"/>
+        </Content>
+    </Layout>
+</Layout>
+
+@code {
+
+    ITable table;
+    Menu menu;
+    string tableName { get { return menu?.SelectedKeys?.FirstOrDefault() ?? null; } }
+
+    class Column
+    {
+        public string Name { get; set; }
+
+        public int Age { get; set; }
+
+        public string Address { get; set; }
+    }
+
+    Column[] data =
+    {
+        new Column()
+        {
+            Name = "John Brown",
+            Age = 32,
+            Address = "New York No. 1 Lake Park",
+        },
+        new Column()
+        {
+            Name = "Jim Green",
+            Age = 42,
+            Address = "London No. 1 Lake Park",
+        },
+        new Column()
+        {
+            Name = "Joe Black",
+            Age = 32,
+            Address = "Sidney No. 1 Lake Park",
+        },
+        new Column()
+        {
+            Name = "Disabled User",
+            Age = 99,
+            Address = "Sidney No. 1 Lake Park",
+        }
+    };
+
+    IEnumerable<Column> selectedRows;
+    string selectionType = "checkbox";
+
+    public void RemoveSelection(string key)
+    {
+        var selected = selectedRows.Where(x => x.Name != key).ToList();
+        table.SetSelection(selected.Select(x => x.Name).ToArray());
+    }
+}

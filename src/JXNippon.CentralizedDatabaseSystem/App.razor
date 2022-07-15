@@ -1,14 +1,16 @@
-﻿<CascadingAuthenticationState>
+﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+<CascadingAuthenticationState>
     <AppState>
         <Router AppAssembly="@typeof(App).Assembly">
             <Found Context="routeData">
                 <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                     <Authorizing>
-                       <div class="result-view d-flex align-items-center justify-content-center gap-3">
-                            <div class="fa-3x in-progress">
-                                <i class="fas fa-circle-notch fa-spin"></i>
-                            </div>
-                            <div class="h2 in-progress">Logging you in...</div>
+                        <div class="result-view d-flex align-items-center justify-content-center gap-3">
+                            <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.CompleteLogin" Description="Logging in...">
+                                <ChildContent>
+                                    <Spin size="large" />
+                                </ChildContent>
+                            </GenericDescription>
                         </div>
                     </Authorizing>
                     <NotAuthorized>
@@ -19,10 +21,12 @@
                         else
                         {
                             <div class="result-view d-flex align-items-center justify-content-center gap-3">
-                                <Result Status="403"
-                                    Title="403"
-                                    SubTitle="Sorry, you are not authorized to access this page."/>
-                            </div>    
+                                <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.ErrorForbidden" Description="Sorry, you are not authorized to access this page. Please contact administrator or try again.">
+                                    <ChildContent>
+                                        <a type="button" class="btn btn-primary" href="authentication/login">Login</a>
+                                    </ChildContent>
+                                </GenericDescription>
+                            </div>
                         }
                     </NotAuthorized>
                 </AuthorizeRouteView>
@@ -32,10 +36,9 @@
                 <PageTitle>Not found</PageTitle>
                 <LayoutView Layout="@typeof(MainLayout)">
                     <div class="result-view d-flex align-items-center justify-content-center gap-3">
-                        <Result Status="404"
-                            Title="404"
-                            SubTitle="Sorry, the page you visited does not exist."/>
-                    </div>    
+                        <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.ErrorNotFound" Description="Sorry, the page you visited does not exist.">
+                        </GenericDescription>
+                    </div> 
                 </LayoutView>
             </NotFound>
         </Router>

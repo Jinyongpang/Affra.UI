@@ -16,7 +16,7 @@
     "GenerateOperationImports": false,
     "ServiceName": "ViewODataService",
     "AcceptAllUntrustedCertificates": false,
-    "Endpoint": "https://localhost:7200/View-api/odata/$metadata",
+    "Endpoint": "http://localhost:50002/View-api/odata/$metadata",
     "EdmxVersion": {
       "Major": 4,
       "Minor": 0,

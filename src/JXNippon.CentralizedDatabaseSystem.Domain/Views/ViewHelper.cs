@@ -13,6 +13,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             return TypeMappings ??= assembly.GetTypes()
                 .DistinctBy(t => t.Name)
                 .Where(t => t.GetInterface(nameof(IDaily)) != null)
+                .OrderBy(t => t.Name)
                 .ToDictionary(x => x.Name, x => x.AssemblyQualifiedName);
         }
     }

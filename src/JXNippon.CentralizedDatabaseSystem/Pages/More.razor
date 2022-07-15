@@ -1,5 +1,8 @@
 ﻿@page "/more/{activeKey}"
+@using JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
+
 @attribute [Authorize]
+
 <PageTitle>More</PageTitle>
 
 <Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>
@@ -19,7 +22,7 @@
         <TabTemplate>
             <span>Template Management</span>
         </TabTemplate>
-        <ChildContent>Template Management</ChildContent>
+        <ChildContent><TemplateManagement/></ChildContent>
     </TabPane>
     <TabPane Key="viewdesigner">
         <TabTemplate>
