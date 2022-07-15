@@ -193,6 +193,10 @@ body {
     border: 1px dashed #dbe0ea !important;
 }
 
+.draggable-target {
+    opacity: 0.3;
+}
+
 .rz-datatable {
     border: 1px solid #dbe0ea !important;
     box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
@@ -297,6 +301,11 @@ body {
 .min-vh-80 {
     min-height: 80vh;
 }
+
+.min-vh-70 {
+    min-height: 70vh;
+}
+
 
 .vh-80 {
     height: 80vh;

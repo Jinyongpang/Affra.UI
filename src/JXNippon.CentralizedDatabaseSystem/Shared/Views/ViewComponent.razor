@@ -5,6 +5,7 @@
 @using JXNippon.CentralizedDatabaseSystem.Domain.Charts
 @using JXNippon.CentralizedDatabaseSystem.Notifications
 @using JXNippon.CentralizedDatabaseSystem.Shared.Constants
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
 @using ViewODataService.Affra.Service.View.Domain.Views
 @using Row = ViewODataService.Affra.Service.View.Domain.Views.Row
 
@@ -34,14 +35,18 @@
                             }
                         </Extra>
                         <Body>
-                            @if (this.enteredId == j)
-                            {
-                                <div class="col py-3 px-3 can-drop" ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave(j))" @ondrop=@(args => HandleDropOnRowAsync(args, row))/>
-                            }
-                            else
-                            {
-                                <EmptySimpleImg/>
-                            }
+                            @{
+                                var isDropped = this.enteredId == j;
+                                var targetclass = isDropped && IsDesignMode ? "draggable-target can-drop" : string.Empty;
+                                var message = IsDesignMode 
+                                    ? "Drag and drop a component to this empty row."
+                                    : "This is an empty row.";
+
+                                <div class="d-flex align-items-center justify-content-center gap-3 @targetclass" ondragover="event.preventDefault();" draggable="false" @ondragleave="@(args => HandleDragLeave(j))" @ondrop=@(args => HandleDropOnRowAsync(args, row))>
+                                    <JXNippon.CentralizedDatabaseSystem.Shared.Description.GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.Piechart" Description=@message>
+                                    </JXNippon.CentralizedDatabaseSystem.Shared.Description.GenericDescription>                                 
+                                </div>
+                            }                           
                         </Body>
                     </Card>  
                  </div> 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 2/7/2022 9:27:07 AM
+// Generation date: 14/7/2022 10:39:49 PM
 namespace ViewODataService.Affra.Service.View.Domain.Views
 {
     /// <summary>
@@ -784,6 +784,211 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         }
     }
 }
+namespace ViewODataService.Affra.Service.View.Domain.Templates
+{
+    /// <summary>
+    /// There are no comments for CustomColumnSingle in the schema.
+    /// </summary>
+    public partial class CustomColumnSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<CustomColumn>
+    {
+        /// <summary>
+        /// Initialize a new CustomColumnSingle object.
+        /// </summary>
+        public CustomColumnSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new CustomColumnSingle object.
+        /// </summary>
+        public CustomColumnSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new CustomColumnSingle object.
+        /// </summary>
+        public CustomColumnSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<CustomColumn> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for CustomColumn in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class CustomColumn : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new CustomColumn object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static CustomColumn CreateCustomColumn(long ID, long xmin)
+        {
+            CustomColumn customColumn = new CustomColumn();
+            customColumn.Id = ID;
+            customColumn.xmin = xmin;
+            return customColumn;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Table in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Table
+        {
+            get
+            {
+                return this._Table;
+            }
+            set
+            {
+                this.OnTableChanging(value);
+                this._Table = value;
+                this.OnTableChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Table;
+        partial void OnTableChanging(string value);
+        partial void OnTableChanged();
+        /// <summary>
+        /// There are no comments for Property PropertyName in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string PropertyName
+        {
+            get
+            {
+                return this._PropertyName;
+            }
+            set
+            {
+                this.OnPropertyNameChanging(value);
+                this._PropertyName = value;
+                this.OnPropertyNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _PropertyName;
+        partial void OnPropertyNameChanging(string value);
+        partial void OnPropertyNameChanged();
+        /// <summary>
+        /// There are no comments for Property Title in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Title
+        {
+            get
+            {
+                return this._Title;
+            }
+            set
+            {
+                this.OnTitleChanging(value);
+                this._Title = value;
+                this.OnTitleChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Title;
+        partial void OnTitleChanging(string value);
+        partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for Property Type in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Type
+        {
+            get
+            {
+                return this._Type;
+            }
+            set
+            {
+                this.OnTypeChanging(value);
+                this._Type = value;
+                this.OnTypeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Type;
+        partial void OnTypeChanging(string value);
+        partial void OnTypeChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// Class containing all extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumn as global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumnSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumnSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumn> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumnSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumn as global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumnSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumnSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumn> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumnSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+    }
+}
 namespace ViewODataService.Default
 {
     /// <summary>
@@ -813,7 +1018,12 @@ namespace ViewODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.View.Domain.Views", "ViewODataService.Affra.Service.View.Domain.Views");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.View.Domain.Templates", "ViewODataService.Affra.Service.View.Domain.Templates");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.View.Domain.Views", "ViewODataService.Affra.Service.View.Domain.Views");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -833,6 +1043,10 @@ namespace ViewODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
+            if (clientType.Namespace.Equals("ViewODataService.Affra.Service.View.Domain.Templates", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.View.Domain.Templates.", clientType.Name);
+            }
             if (clientType.Namespace.Equals("ViewODataService.Affra.Service.View.Domain.Views", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.View.Domain.Views.", clientType.Name);
@@ -895,6 +1109,23 @@ namespace ViewODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Views.Column> _Column;
         /// <summary>
+        /// There are no comments for CustomColumn in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumn> CustomColumn
+        {
+            get
+            {
+                if ((this._CustomColumn == null))
+                {
+                    this._CustomColumn = base.CreateQuery<global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumn>("CustomColumn");
+                }
+                return this._CustomColumn;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumn> _CustomColumn;
+        /// <summary>
         /// There are no comments for View in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -917,6 +1148,14 @@ namespace ViewODataService.Default
         public void AddToColumn(global::ViewODataService.Affra.Service.View.Domain.Views.Column column)
         {
             base.AddObject("Column", column);
+        }
+        /// <summary>
+        /// There are no comments for CustomColumn in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToCustomColumn(global::ViewODataService.Affra.Service.View.Domain.Templates.CustomColumn customColumn)
+        {
+            base.AddObject("CustomColumn", customColumn);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -966,6 +1205,19 @@ namespace ViewODataService.Default
         <NavigationProperty Name=""View"" Type=""Affra.Service.View.Domain.Views.View"" />
       </EntityType>
     </Schema>
+    <Schema Namespace=""Affra.Service.View.Domain.Templates"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""CustomColumn"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Table"" Type=""Edm.String"" />
+        <Property Name=""PropertyName"" Type=""Edm.String"" />
+        <Property Name=""Title"" Type=""Edm.String"" />
+        <Property Name=""Type"" Type=""Edm.String"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+      </EntityType>
+    </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityContainer Name=""Container"">
         <EntitySet Name=""View"" EntityType=""Affra.Service.View.Domain.Views.View"">
@@ -988,6 +1240,13 @@ namespace ViewODataService.Default
         <EntitySet Name=""Column"" EntityType=""Affra.Service.View.Domain.Views.Column"">
           <NavigationPropertyBinding Path=""Row"" Target=""Row"" />
           <NavigationPropertyBinding Path=""View"" Target=""View"" />
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""CustomColumn"" EntityType=""Affra.Service.View.Domain.Templates.CustomColumn"">
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

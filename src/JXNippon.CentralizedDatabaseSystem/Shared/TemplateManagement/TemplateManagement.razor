@@ -2,12 +2,12 @@
 @using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
 @inject IViewService ViewService
 
-<Layout Class="layout-view">
-    <Sider Style="overflow: auto;height: 80vh;" Width=400>
+<Layout Class="layout-view" Style="height: 80vh;">
+    <Sider Style="overflow: auto; height: 100%" Width=400>
         <Layout>
             <Header Style="position: fixed; z-index: 1; width:400px;">Table</Header>
             <Content Style="margin-top: 64px; ">
-                <Menu Mode="MenuMode.Inline">
+                <Menu @ref=menu Mode="MenuMode.Inline">
                     @{
                         var types = ViewService.GetTypeMapping()
                                     .Select(x => x.Key)
@@ -24,7 +24,7 @@
     <Layout>
         <Header Style="border-left: 1px solid #dbe0ea">Custom Columns</Header>
         <Content>
-            <HIPAndLWPSummaryDataGrid/>
+            <TemplateManagementGrid TableName="@tableName"/>
         </Content>
     </Layout>
 </Layout>
@@ -32,6 +32,8 @@
 @code {
 
     ITable table;
+    Menu menu;
+    string tableName { get { return menu?.SelectedKeys?.FirstOrDefault() ?? null; } }
 
     class Column
     {
