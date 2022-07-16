@@ -1,4 +1,5 @@
-﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Views
+﻿@using AntDesign;
+@using JXNippon.CentralizedDatabaseSystem.Domain.Views
 @using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
 @inject IViewService ViewService
 
@@ -7,7 +8,7 @@
         <Layout>
             <Header Style="position: fixed; z-index: 1; width:400px;">Table</Header>
             <Content Style="margin-top: 64px; ">
-                <Menu @ref=menu Mode="MenuMode.Inline">
+                <Menu @ref=menu Mode="MenuMode.Inline" OnMenuItemClicked=OnSelectAsync>
                     @{
                         var types = ViewService.GetTypeMapping()
                                     .Select(x => x.Key)
@@ -21,10 +22,10 @@
             </Content>
         </Layout>
     </Sider>
-    <Layout>
+    <Layout Style="height:100%;">
         <Header Style="border-left: 1px solid #dbe0ea">Custom Columns</Header>
-        <Content>
-            <TemplateManagementGrid TableName="@tableName"/>
+        <Content Style="height:100%;">
+            <TemplateManagementGrid TableName="@tableName" @ref=templateManagementGrid/>
         </Content>
     </Layout>
 </Layout>
@@ -33,6 +34,7 @@
 
     ITable table;
     Menu menu;
+    TemplateManagementGrid templateManagementGrid;
     string tableName { get { return menu?.SelectedKeys?.FirstOrDefault() ?? null; } }
 
     class Column
@@ -79,5 +81,11 @@
     {
         var selected = selectedRows.Where(x => x.Name != key).ToList();
         table.SetSelection(selected.Select(x => x.Name).ToArray());
+    }
+
+    private Task OnSelectAsync(MenuItem menuItem)
+    {
+        templateManagementGrid.TableName = menuItem.Key;
+        return templateManagementGrid.ReloadAsync();
     }
 }

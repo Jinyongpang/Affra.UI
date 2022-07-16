@@ -306,6 +306,10 @@ body {
     min-height: 70vh;
 }
 
+.min-vh-65 {
+    min-height: 65vh;
+}
+
 
 .vh-80 {
     height: 80vh;
