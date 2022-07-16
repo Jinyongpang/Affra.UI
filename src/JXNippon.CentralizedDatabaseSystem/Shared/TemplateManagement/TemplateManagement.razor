@@ -4,10 +4,10 @@
 @inject IViewService ViewService
 
 <Layout Class="layout-view" Style="height: 80vh;">
-    <Sider Style="overflow: auto; height: 100%" Width=400>
-        <Layout>
-            <Header Style="position: fixed; z-index: 1; width:400px;">Table</Header>
-            <Content Style="margin-top: 64px; ">
+    <Sider Width=400>
+        <Layout Style="height: 100%;">
+            <Header>Table</Header>
+            <Content style="overflow: auto; max-height: 100%;">
                 <Menu @ref=menu Mode="MenuMode.Inline" OnMenuItemClicked=OnSelectAsync>
                     @{
                         var types = ViewService.GetTypeMapping()
@@ -18,7 +18,7 @@
                             <MenuItem Key=@type>@type</MenuItem>
                         }
                     }
-                </Menu>
+                </Menu>             
             </Content>
         </Layout>
     </Sider>
