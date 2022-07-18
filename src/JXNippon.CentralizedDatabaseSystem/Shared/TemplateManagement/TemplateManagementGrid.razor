@@ -15,7 +15,7 @@
                 <div class="min-vh-58 d-flex align-items-center justify-content-center gap-3">
                     <GenericDescription Height="250px" ImageFile="@ImageFile.ColumnConfig" Description="No custom template for this table created.">
                         <ChildContent>
-                            <Button OnClick=@(args => ShowDialogAsync(
+                            <Button Type="primary" OnClick=@(args => ShowDialogAsync(
                                 new CustomColumn() { Table = this.TableName },
                                 0,
                                 "Add"))>Create Now</Button>
