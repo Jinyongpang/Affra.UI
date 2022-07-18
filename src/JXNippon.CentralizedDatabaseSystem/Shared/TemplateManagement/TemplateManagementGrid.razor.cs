@@ -64,7 +64,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<T, IViewUnitOfWork>>();
         }
 
-        private async Task ShowDialogAsync(CustomColumn data, int menuAction, string title)
+        public async Task ShowDialogAsync(CustomColumn data, int menuAction, string title)
         {
             ContextMenuService.Close();
             dynamic? response;

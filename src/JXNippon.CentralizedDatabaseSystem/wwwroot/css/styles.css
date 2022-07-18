@@ -331,3 +331,8 @@ body {
 ul.rz-profile-menu .rz-navigation-item-icon-children {
     display: none;
 }
+
+.anticon {
+    font-size: 24px !important;
+    vertical-align: baseline !important;
+}
