@@ -23,9 +23,14 @@
         </Layout>
     </Sider>
     <Layout Style="height:100%;">
-        <Header Style="border-left: 1px solid #dbe0ea">Custom Columns</Header>
+        <Header Style="border-left: 1px solid #dbe0ea">
+            <div>
+                <span>Custom columns</span>    
+                <Button Class="float-right align-items-center" Type="primary" Icon="@IconType.Outline.PlusCircle" Size="@("large")" Shape="@ButtonShape.Round" >Add</Button>
+            </div>
+        </Header>
         <Content Style="height:100%;">
-            <TemplateManagementGrid TableName="@tableName" @ref=templateManagementGrid/>
+            <TemplateManagementGrid @ref=templateManagementGrid PagerAlwaysVisible/>
         </Content>
     </Layout>
 </Layout>

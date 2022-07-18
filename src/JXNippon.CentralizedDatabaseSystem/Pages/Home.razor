@@ -1,19 +1,168 @@
 ﻿@page "/"
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
 @attribute [Authorize]
 
 <PageTitle>Home</PageTitle>
 
-<div class="row py-4">
-    <div class="col-3">
-        <Card Size="small" Class="h-100"><Statistic Title="Active Users" Value="112893" /></Card> 
+<div class="container">
+    <div class="row">
+        <AuthorizeView>
+            <Authorized>
+                <div class="home-title">Welcome to Centralized Database System, @context.User.Identity.Name!</div>
+            </Authorized>
+        </AuthorizeView>    
     </div>
-    <div class="col-3">
-        <Card Size="small" Class="h-100"><Statistic Title="Account Balance (CNY)" Value="112893" Precision="2"/></Card> 
+    <div class="row py-2">
+        <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+            <Card Hoverable>
+                <div class="d-flex align-items-center justify-content-center gap-3 h-100">
+                    <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.Gauge" Description="View statistics, chart and more via dashboard.">
+                        <ChildContent>
+                            <Button Type="primary">View</Button>
+                        </ChildContent>
+                    </GenericDescription>
+                </div>
+            </Card>
+        </div> 
+        <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+            <Card Hoverable>
+                <div class="d-flex align-items-center justify-content-center gap-3 h-100">
+                    <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.DatePicker" Description="Validate and export combined daily report.">
+                       <ChildContent>
+                            <Button Type="primary">Start now</Button>
+                        </ChildContent>
+                    </GenericDescription>
+                </div>
+            </Card>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+            <Card Hoverable>
+                <div class="d-flex align-items-center justify-content-center gap-3">
+                    <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.TodoList" Description="Submit or approve management of change.">
+                        <ChildContent>
+                            <Button Type="primary">Manage</Button>
+                        </ChildContent>
+                    </GenericDescription>
+                </div>
+            </Card>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+            <Card Hoverable>
+                <div class="d-flex align-items-center justify-content-center gap-3">
+                    <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.WorkInProgress" Description="Check out management of change's summary.">
+                         <ChildContent>
+                            <Button Type="primary">Check out</Button>
+                        </ChildContent>
+                    </GenericDescription>
+                </div>
+            </Card>
+        </div>
     </div>
-    <div class="col-3">
-        <Card Size="small" Class="h-100"><Statistic Title="Account Balance (CNY)" Value="112893" Precision="2"/></Card>    
-    </div>
-    <div class="col-3">
-        <Card Size="small" Class="h-100"><Progress Type="ProgressType.Circle" Percent=75 /></Card>    
+    <div class="row mt-1">
+        <div class="col py-2 px-2 h-100">
+            <Card>
+                <Carousel Autoplay="TimeSpan.FromSeconds(5)" DotPosition="Bottom">
+                    <ChildContent>
+                        <CarouselSlick>
+                            <div class="row py-2">
+                                <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+                                    <Card Class="sub-card" Hoverable>
+                                        <div class="d-flex align-items-center justify-content-center gap-3 h-100">
+                                            <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.Gauge" Description="View statistics, chart and more via dashboard.">
+                                                <ChildContent>
+                                                    <Button Type="primary">View</Button>
+                                                </ChildContent>
+                                            </GenericDescription>
+                                        </div>
+                                    </Card>
+                                </div> 
+                                <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+                                    <Card Hoverable>
+                                        <div class="d-flex align-items-center justify-content-center gap-3 h-100">
+                                            <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.DatePicker" Description="Validate and export combined daily report.">
+                                               <ChildContent>
+                                                    <Button Type="primary">Start now</Button>
+                                                </ChildContent>
+                                            </GenericDescription>
+                                        </div>
+                                    </Card>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+                                    <Card Hoverable>
+                                        <div class="d-flex align-items-center justify-content-center gap-3">
+                                            <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.TodoList" Description="Submit or approve management of change.">
+                                                <ChildContent>
+                                                    <Button Type="primary">Manage</Button>
+                                                </ChildContent>
+                                            </GenericDescription>
+                                        </div>
+                                    </Card>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+                                    <Card Hoverable>
+                                        <div class="d-flex align-items-center justify-content-center gap-3">
+                                            <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.WorkInProgress" Description="Check out management of change's summary.">
+                                                 <ChildContent>
+                                                    <Button Type="primary">Check out</Button>
+                                                </ChildContent>
+                                            </GenericDescription>
+                                        </div>
+                                    </Card>
+                                </div>
+                            </div>
+                        </CarouselSlick>
+                        <CarouselSlick>
+                            <div class="row py-2">
+                                <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+                                    <Card Hoverable>
+                                        <div class="d-flex align-items-center justify-content-center gap-3 h-100">
+                                            <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.Gauge" Description="View statistics, chart and more via dashboard.">
+                                                <ChildContent>
+                                                    <Button Type="primary">View</Button>
+                                                </ChildContent>
+                                            </GenericDescription>
+                                        </div>
+                                    </Card>
+                                </div> 
+                                <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+                                    <Card Hoverable>
+                                        <div class="d-flex align-items-center justify-content-center gap-3 h-100">
+                                            <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.DatePicker" Description="Validate and export combined daily report.">
+                                               <ChildContent>
+                                                    <Button Type="primary">Start now</Button>
+                                                </ChildContent>
+                                            </GenericDescription>
+                                        </div>
+                                    </Card>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+                                    <Card Hoverable>
+                                        <div class="d-flex align-items-center justify-content-center gap-3">
+                                            <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.TodoList" Description="Submit or approve management of change.">
+                                                <ChildContent>
+                                                    <Button Type="primary">Manage</Button>
+                                                </ChildContent>
+                                            </GenericDescription>
+                                        </div>
+                                    </Card>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-3 py-2 px-2 h-100">
+                                    <Card Hoverable>
+                                        <div class="d-flex align-items-center justify-content-center gap-3">
+                                            <GenericDescription Height="200px" Width="200px" ImageFile="@ImageFile.WorkInProgress" Description="Check out management of change's summary.">
+                                                 <ChildContent>
+                                                    <Button Type="primary">Check out</Button>
+                                                </ChildContent>
+                                            </GenericDescription>
+                                        </div>
+                                    </Card>
+                                </div>
+                            </div>
+                        </CarouselSlick>
+                    </ChildContent>
+                </Carousel>
+            </Card>
+        </div>
+
     </div>
 </div>

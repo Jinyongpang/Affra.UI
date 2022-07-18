@@ -1,0 +1,25 @@
+﻿.home-title {
+    font-size: 20px;
+    line-height: 28px;
+    margin-top: 16px;
+    font-weight: 600;
+}
+
+.home-subtitle {
+    height: 18px;
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.fxs-home-title {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 16px;
+    min-width: 300px;
+}
+
+.sub-card {
+    background-color: #eef4f9 !important;
+}

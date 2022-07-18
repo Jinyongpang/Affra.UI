@@ -1,4 +1,5 @@
 ﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using System.Text.Json
 @using ViewODataService.Affra.Service.View.Domain.Templates
 @using ViewODataService.Affra.Service.View.Domain.Views
 
@@ -11,10 +12,13 @@
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <EmptyTemplate>    
-                <div class="min-vh-65 d-flex align-items-center justify-content-center gap-3">
+                <div class="min-vh-58 d-flex align-items-center justify-content-center gap-3">
                     <GenericDescription Height="250px" ImageFile="@ImageFile.ColumnConfig" Description="No custom template for this table created.">
                         <ChildContent>
-                            <Button Type="Primary">Create Now</Button>
+                            <Button OnClick=@(args => ShowDialogAsync(
+                                new CustomColumn() { Table = this.TableName },
+                                0,
+                                "Add"))>Create Now</Button>
                         </ChildContent>
                     </GenericDescription>
                 </div>
@@ -35,12 +39,15 @@
 {
     private void OnCellContextMenu(MouseEventArgs args)
     {
+        Console.WriteLine(JsonSerializer.Serialize(args));
         bool hasRowData = (args as DataGridCellMouseEventArgs<CustomColumn>) != null;
         ContextMenuService.Open(args, ds =>
            @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<CustomColumn>, e))">
                 <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
-                <RadzenMenuItem Text="Delete ..." Value="1" Icon="delete" Visible=@hasRowData/>
-                <RadzenMenuItem Text="Refresh" Value="2" Icon="refresh"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
     </RadzenMenu>
     );  
     }
@@ -50,15 +57,21 @@
         int i = (int)e.Value;
         if (i == 0)
         {
-            AffraNotificationService.NotifyItemCreated();
-            await grid.Reload();
-            ContextMenuService.Close();
+            await ShowDialogAsync(new CustomColumn() { Table = this.TableName }, i, "Add");
         }
         else if (i == 1)
         {
-            await ShowDialogAsync(args.Data, i, "Delete");
+            await ShowDialogAsync(args.Data, i, "Edit");
         }
         else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
         {
             await grid.Reload();      
         }

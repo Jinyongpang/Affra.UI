@@ -68,7 +68,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
         {
             ContextMenuService.Close();
             dynamic? response;
-            if (menuAction == 1)
+            if (menuAction == 2)
             {
                 response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
                            new Dictionary<string, object>() { },
@@ -81,6 +81,43 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
                     await service.DeleteAsync(data);
 
                     AffraNotificationService.NotifyItemDeleted();
+                }
+            }
+            else
+            {
+                response = await DialogService.OpenAsync<CustomColumnDialog>(title,
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, },
+                           Constant.DialogOptions);
+
+                if (response == true)
+                {
+                    try
+                    {
+                        using var serviceScope = ServiceProvider.CreateScope();
+                        var service = this.GetGenericService<CustomColumn>(serviceScope);
+
+                        if (data.Id > 0)
+                        {
+                            isLoading = true;
+                            await service.UpdateAsync(data, data.Id);
+                            AffraNotificationService.NotifyItemUpdated();
+                        }
+                        else
+                        {
+                            isLoading = true;
+                            await service.InsertAsync(data);
+                            AffraNotificationService.NotifyItemCreated();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        AffraNotificationService.NotifyException(ex);
+                    }
+                    finally
+                    {
+                        isLoading = false;
+                    }
                 }
             }
 
