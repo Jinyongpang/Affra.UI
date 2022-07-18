@@ -8,7 +8,18 @@
 
 <AuthorizeView>
     <Authorized>
-        <PersonalMessageIcon/>
+        <Space>
+            <SpaceItem>
+                <div class="align-self-center flex-row order-md-first">
+                    <div class="nav-item dropdown d-lg-none d-xl-flex me-3">
+                        <Search Placeholder="Search" ClassicSearchIcon/>
+                    </div>
+                </div>               
+            </SpaceItem>
+            <SpaceItem>
+                <PersonalMessageIcon/>
+            </SpaceItem>
+        </Space>
         <RadzenProfileMenu>
             <Template>
                 <Avatar Style="vertical-align: middle;" Size="large">

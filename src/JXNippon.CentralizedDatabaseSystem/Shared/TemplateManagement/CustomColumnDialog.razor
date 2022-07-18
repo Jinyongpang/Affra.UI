@@ -1,0 +1,41 @@
+﻿@using ViewODataService.Affra.Service.View.Domain.Templates
+@using ViewODataService.Affra.Service.View.Domain.Views
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (CustomColumn args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Title" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Item.Title" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="Title" Text="Title is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                <RadzenLabel class="dialogTextSize" Text="Property" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="Property" class="w-100" Placeholder="Enter property name..." @bind-Value="@Item.PropertyName" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="Property" Text="Property name is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Format String" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown Data="@types" Name="Type" class="w-100" Placeholder="Enter type..." @bind-Value="@Item.Type" Disabled=@isViewing></RadzenDropDown>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</RadzenTemplateForm>

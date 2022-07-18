@@ -160,8 +160,11 @@ body {
 
 .rz-card, .ant-card {
     border-radius: 10px !important;
-    background-color: #ffffff !important;
+    background-color: #ffffff;
     border: 1px solid #dbe0ea !important;
+}
+
+.card-shadow {
     box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
 }
 
@@ -222,7 +225,7 @@ body {
 }
 
 .ant-avatar {
-    background-color: #1A3C40;
+    background-color: rebeccapurple;
     cursor: pointer;
 }
 
@@ -306,6 +309,10 @@ body {
     min-height: 70vh;
 }
 
+.min-vh-58 {
+    min-height: 58vh;
+}
+
 
 .vh-80 {
     height: 80vh;
@@ -315,4 +322,17 @@ body {
     background-color: #ffffff !important;
     border: 1px solid #dbe0ea !important;
     box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
+}
+
+.ant-carousel .slick-dots-bottom {
+    bottom: -28px !important;
+}
+
+ul.rz-profile-menu .rz-navigation-item-icon-children {
+    display: none;
+}
+
+.anticon {
+    font-size: 24px !important;
+    vertical-align: baseline !important;
 }
