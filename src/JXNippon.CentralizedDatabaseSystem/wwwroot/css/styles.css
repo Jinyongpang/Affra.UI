@@ -336,3 +336,22 @@ ul.rz-profile-menu .rz-navigation-item-icon-children {
     font-size: 24px !important;
     vertical-align: baseline !important;
 }
+p.moh-cardbody {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.ant-card.moh-card {
+    height: 100%;
+}
+.moh-step-div {
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
+    top: -20px;
+    padding-top: 10px;
+}
+.moh-disable-div {
+    pointer-events: none;
+    opacity: 0.4;
+}
