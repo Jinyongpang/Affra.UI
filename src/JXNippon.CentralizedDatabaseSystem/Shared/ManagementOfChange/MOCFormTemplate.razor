@@ -74,10 +74,7 @@
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="SCE(s) Affected">
-                                        <RadioGroup @bind-Value="@strSCEAffected">
-                                            <Radio Value="@("Yes")">Yes</Radio>
-                                            <Radio Value="@("No")">No</Radio>
-                                        </RadioGroup>
+                                        <Switch Checked="@strSCEAffected" CheckedChildren="Yes" UnCheckedChildren="No" />
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="SCE(s) Tag Number">
                                         <Input @bind-Value="@strSCETagNumber" />
@@ -221,7 +218,7 @@
     string strDetailsOfChange { get; set; }
     string strCategoriesOfChange { get; set; }
     string strPriorityOfChange { get; set; }
-    string strSCEAffected { get; set; }
+    bool strSCEAffected { get; set; }
     string strSCETagNumber { get; set; } = "LS004";
     string strInherentRiskLikelihood { get; set; } = "C";
     string strInherentRiskConsequence { get; set; } = "2";
