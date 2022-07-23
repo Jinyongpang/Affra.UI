@@ -10,24 +10,26 @@
             </div>
         </div>       
     </Header>
-    <Layout>
+    <Layout Style="height: 100%;">
         <Sider Width=200>
-            <Menu DefaultSelectedKeys=@(new[] { "All" }) style="height: 100vh;" Mode=@MenuMode.Inline OnMenuItemClicked=onMenuItemClicked>
+            <Menu DefaultSelectedKeys=@(new[] { "All" }) Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=onMenuItemClicked>
                 <MenuItem Key="All"><span style="font-size: 16px; margin-left: 0px;">All</span></MenuItem>
                 <MenuItem Key="Pending"><span style="font-size: 16px; margin-left: 0px;">Pending</span></MenuItem>
                 <MenuItem Key="Closed"><span style="font-size: 16px; margin-left: 0px;">Closed</span></MenuItem>
             </Menu>
         </Sider>
-        <Content style="overflow-y: auto;overflow-x: hidden; max-height: 100%;">
-            <Row>
-                @{
-                    foreach (var mohDetail in mohDetails)
-                    {
-                        <ManagementOfChangeCardTemplate RecordCode=@mohDetail.RecordCode Description=@mohDetail.Description />
+        <Layout>
+            <Content>
+                <Row>
+                    @{
+                        foreach (var mohDetail in mohDetails)
+                        {
+                            <ManagementOfChangeCardTemplate RecordCode=@mohDetail.RecordCode Description=@mohDetail.Description />
+                        }
                     }
-                }
-            </Row>
-        </Content>
+                </Row>
+            </Content>
+        </Layout>
     </Layout>
 </Layout>
 
