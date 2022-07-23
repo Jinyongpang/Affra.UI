@@ -2,6 +2,7 @@
 {
     public enum ImageFile
     {
+        AcceptTasks,
         AllApproved,
         CalendarAnalysis,
         ColumnConfig,
@@ -15,9 +16,15 @@
         ErrorNotFound,
         Gauge,
         LowBattery,
+        Merger,
+        NewTasks,
         NoData,
         Piechart,
         RangePicker,
+        Research,
+        Search,
+        Stats,
+        Steps,
         Tasks,
         Teleport,
         TodoList,

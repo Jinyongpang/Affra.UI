@@ -1,0 +1,83 @@
+﻿<Layout Class="layout-view" Style="height: 80vh;">
+    <Header>
+        <div class="row">
+            <div class="col-12 float-right align-items-center text-right mt-1">
+                <Button Type="primary" Icon="@IconType.Outline.PlusCircle" Size="@("large")" Shape="@ButtonShape.Round" >
+                    <ChildContent>
+                        <span style="font-size: 18px; margin-left: 0px;">Add</span>
+                    </ChildContent>
+                </Button>
+            </div>
+        </div>       
+    </Header>
+    <Layout Style="height: 100%;">
+        <Sider Width=200>
+            <Menu DefaultSelectedKeys=@(new[] { "All" }) Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=onMenuItemClicked>
+                <MenuItem Key="All"><span style="font-size: 16px; margin-left: 0px;">All</span></MenuItem>
+                <MenuItem Key="Pending"><span style="font-size: 16px; margin-left: 0px;">Pending</span></MenuItem>
+                <MenuItem Key="Closed"><span style="font-size: 16px; margin-left: 0px;">Closed</span></MenuItem>
+            </Menu>
+        </Sider>
+        <Layout>
+            <Content>
+                <Row>
+                    @{
+                        foreach (var mohDetail in mohDetails)
+                        {
+                            <ManagementOfChangeCardTemplate RecordCode=@mohDetail.RecordCode Description=@mohDetail.Description />
+                        }
+                    }
+                </Row>
+            </Content>
+        </Layout>
+    </Layout>
+</Layout>
+
+@code {
+    public class MOHDetail
+    {
+        public string RecordCode { get; set; }
+        public string Description { get; set; }
+    }
+
+    private IEnumerable<MOHDetail> mohDetails = new[]
+    {
+        new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-002", Description = "HM4 annulus pressure increased from 50 psi to 744.3 psi after last bled off activity, which indicates the possibility of packer/tibing leak.Regular monitoring is required to ensure the A annulus pressure not to exceed MAWOP." },
+        new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-003", Description = "HM5 annulus pressure increased from 50 psi to 1200 psi after last bled off activity, which indicates the possibility of packer/tibing leak. Regular monitoring is required to ensure the A annulus pressure not to exceed MAWOP." },
+        new MOHDetail { RecordCode = "#HIP-PRD-OCR-S20-011", Description = "V-2000 TSEP drain spectacle blind rotated to prevent content flow into Closed Drain." },
+        new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-007", Description = "Flow HL-10 well with tubing stopper installed downhole." },
+        new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-008", Description = "HL-02 Leaking Christmas Tree Valve." }
+    };
+
+    private void onMenuItemClicked(MenuItem menuItem)
+    {
+        if(menuItem.Key == "All")
+        {
+            mohDetails = new[]
+            {
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-002", Description = "HM4 annulus pressure increased from 50 psi to 744.3 psi after last bled off activity, which indicates the possibility of packer/tibing leak.Regular monitoring is required to ensure the A annulus pressure not to exceed MAWOP." },
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-003", Description = "HM5 annulus pressure increased from 50 psi to 1200 psi after last bled off activity, which indicates the possibility of packer/tibing leak. Regular monitoring is required to ensure the A annulus pressure not to exceed MAWOP." },
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S20-011", Description = "V-2000 TSEP drain spectacle blind rotated to prevent content flow into Closed Drain." },
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-007", Description = "Flow HL-10 well with tubing stopper installed downhole." },
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-008", Description = "HL-02 Leaking Christmas Tree Valve." }
+            };
+        }
+        else if(menuItem.Key == "Pending")
+        {
+            mohDetails = new[]
+            {
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-002", Description = "HM4 annulus pressure increased from 50 psi to 744.3 psi after last bled off activity, which indicates the possibility of packer/tibing leak.Regular monitoring is required to ensure the A annulus pressure not to exceed MAWOP." },
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-003", Description = "HM5 annulus pressure increased from 50 psi to 1200 psi after last bled off activity, which indicates the possibility of packer/tibing leak. Regular monitoring is required to ensure the A annulus pressure not to exceed MAWOP." }
+            };
+        }
+        else if(menuItem.Key == "Closed")
+        {
+            mohDetails = new[]
+            {
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S20-011", Description = "V-2000 TSEP drain spectacle blind rotated to prevent content flow into Closed Drain." },
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-007", Description = "Flow HL-10 well with tubing stopper installed downhole." },
+                new MOHDetail { RecordCode = "#HIP-PRD-OCR-S01-008", Description = "HL-02 Leaking Christmas Tree Valve." }
+            };
+        }
+    }
+}

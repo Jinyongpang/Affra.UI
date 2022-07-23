@@ -1,4 +1,5 @@
 ﻿@page "/operation/{activeKey}"
+@using JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 @attribute [Authorize]
 <PageTitle>Operation</PageTitle>
 
@@ -19,7 +20,7 @@
         <TabTemplate>
             <span>Management Of Change</span>
         </TabTemplate>
-        <ChildContent>Management Of Change</ChildContent>
+        <ChildContent><ManagementOfChange/></ChildContent>
     </TabPane>
     <TabPane Key="managementofchangesummary">
         <TabTemplate>
