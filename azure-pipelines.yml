@@ -1,0 +1,101 @@
+name: '$(Date:yyyyMMdd)-$(SourceBranchName)$(Rev:.r)'
+
+trigger:
+- master
+- rel/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  Major: '1'
+  Minor: '0'
+  Patch: $[counter(variables['csprojVersion'], 0)]
+  packageVersion: ""
+  frameworkVersion: "net6.0"
+  serviceName: "JXNippon.CentralizedDatabaseSystem"
+  entryProject: '$(Build.SourcesDirectory)/src/$(serviceName)/$(serviceName).csproj' 
+
+steps:
+- task: PowerShell@2
+  displayName: 'Generate Package Version'
+  name: GeneratePackageVersion
+  inputs:
+      targetType: 'inline'
+      script: |
+        $refsHeadsBranchPrefix = "refs/heads/"
+        $sourceBranchHead = "$(Build.SourceBranch)".substring($refsHeadsBranchPrefix.length)
+        $packageVersion = "$(Major).$(Minor).$(Patch)"
+        Write-Host "##vso[task.setvariable variable=packageVersion;]$packageVersion"
+        Write-Output "##vso[task.setvariable variable=packageVersion;isOutput=true;]$packageVersion"         
+        $sanitizedSourceBranchName = ($sourceBranchHead -replace '([\\\/\-_])','.')
+        $updatebuildnumber = "$packageVersion-$sanitizedSourceBranchName"
+        Write-Host "##vso[build.updatebuildnumber]$updatebuildnumber"
+
+- task: PowerShell@2
+  displayName: 'Build Package Info'
+  inputs:
+      targetType: 'inline'
+      script: |
+        Write-Host "Build.SourceBranch "$(Build.SourceBranch)
+        Write-Host "Build.SourceBranchName "$(Build.SourceBranchName)
+        Write-Host "packageVersion "$(packageVersion)
+        Write-Host "Build.BuildNumber "$(Build.BuildNumber)
+
+- task: NuGetToolInstaller@1
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore project'
+  inputs:
+    command: 'restore'
+    projects: '$(solution)'
+    arguments: '--use-lock-file'
+    feedsToUse: 'select'
+    vstsFeed: '4ee0bb20-fbf3-4b8a-9f8b-51596098383e'
+    includeNuGetOrg: false
+    
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet unit tests project'
+  inputs:
+    command: test
+    projects: '**/*Test/*.csproj'
+    testRunTitle: '$(serviceName) V$(packageVersion)'
+    arguments: '--configuration Release -f $(frameworkVersion)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet Publish API project'
+  inputs:
+    command: 'publish'
+    projects: '$(entryProject)'
+    arguments: '-o publish -c release -f $(frameworkVersion)'
+    publishWebProjects: true
+    zipAfterPublish: false
+    modifyOutputPath: false
+    versioningScheme: off
+    majorVersion: '$(Major)'
+    minorVersion: '$(Minor)'
+    patchVersion: '$(Patch)'
+
+- task: OctopusPack@4
+  inputs:
+    PackageId: '$(serviceName)'
+    PackageFormat: 'NuPkg'
+    PackageVersion: '$(packageVersion)'
+    NuGetAuthor: 'Affra Technologies'
+    SourcePath: 'publish'
+    OutputPath: '$(Build.ArtifactStagingDirectory)'
+    NuGetDescription: 'JXNippon Centralized Database System UI.'
+    NuGetTitle: '$(serviceName)'
+
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    publishVstsFeed: 'Affra-Release'
+    allowPackageConflicts: true
