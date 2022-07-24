@@ -1,0 +1,69 @@
+﻿<Layout Class="layout-view" Style="height: 80vh;">
+    <Header>
+        <div class="row">
+            <div class="col-12 float-right align-items-center text-right mt-1">
+                <Space Size="@("middle")">
+                    <SpaceItem>
+                        <Search Size="@("large")" Placeholder="Search file..." Style="width: 300px;" OnChange=@(args => ReloadAsync(null)) @bind-Value=search ClassicSearchIcon/>
+                    </SpaceItem>
+                    <SpaceItem>
+                        <Button Type="primary" Icon="@IconType.Outline.Reload" Size="@("large")" Shape="@ButtonShape.Round" OnClick=@(args => ReloadAsync(null))>
+                            <ChildContent>
+                                <span style="font-size: 18px; margin-left: 0px;">Reload</span>
+                            </ChildContent>
+                        </Button>
+                    </SpaceItem>
+                </Space>
+            </div>
+        </div>       
+    </Header>
+    <Layout Style="height: 100%;">
+        <Sider Width=200>
+            <Menu DefaultSelectedKeys=@(new[] { "All" }) Style="height: 100%;" Mode=@MenuMode.Inline @ref=menu OnMenuItemClicked=OnMenuItemSelectAsync>
+                <MenuItem Key="All">         
+                    <IconTemplate>
+                        <Icon Type="file" Theme="outline"/>
+                    </IconTemplate>
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">All</span>
+                    </ChildContent>
+                </MenuItem>
+                <MenuItem Key="Processing">
+                    <IconTemplate>
+                        <Icon Type="loading" Theme="outline"/>
+                    </IconTemplate>
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">Processing</span>
+                    </ChildContent>                
+                </MenuItem>
+                <MenuItem Key="Completed">
+                    <IconTemplate>
+                        <Icon Type="file-done" Theme="outline"/>
+                    </IconTemplate>
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">Completed</span>
+                    </ChildContent>            
+                </MenuItem>
+                <MenuItem Key="Pending">
+                    <IconTemplate>
+                        <Icon Type="field-time" Theme="outline"/>
+                    </IconTemplate>
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">Pending</span>
+                    </ChildContent>          
+                </MenuItem>
+                <MenuItem Key="Failed">
+                    <IconTemplate>
+                        <Icon Type="file-exclamation" Theme="outline"/>
+                    </IconTemplate>
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">Failed</span>
+                    </ChildContent>          
+                </MenuItem>
+            </Menu>
+        </Sider>
+        <Content Style="overflow-y: auto; overflow-x:hidden; height:100%;">
+            <FileManagementDataList @ref=fileManagementDataList></FileManagementDataList>
+        </Content>
+    </Layout>
+</Layout>
