@@ -1,55 +1,77 @@
 ﻿@using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
 
 <div class="row">
     <div class="col">
-        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;"/>
-        <Card>
-            @if (count == 0 && !isLoading)
-            {  
-                <Empty/>
-            }
-            <RadzenProgressBar Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate" Visible="@isLoading"/>
-            <RadzenDataList Visible="@isNotLoading" WrapItems="true" @ref="_dataList" Count="@count" LoadData="@LoadDataAsync" AllowPaging="true" Data="@files" TItem="DataFile" PageSize="8" PagerHorizontalAlign="HorizontalAlign.Center" ShowPagingSummary="true" PagerAlwaysVisible="true">
-                <Template Context="file">
-                    <Card Class="dataFileCard">
-                        <div class="d-flex flex-row align-items-center">
+        @if (!isLoading && count == 0)
+        {       
+            <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                <GenericDescription Height="300px" ImageFile="@ImageFile.NoData" Description="No result found.">
+                </GenericDescription>
+            </div>
+      
+        }
+        <AntList Class="py-3 px-3" Loading=isLoading @ref="_dataList" DataSource="@files" TItem="DataFile" Grid=grid>
+            <ChildContent>
+                <ListItem>
+                    <Card Style="min-height:200px;">
+                        <TitleTemplate>
+                           <div class="d-flex flex-row align-items-center">
                                 <div>
-                                <h4 class="mb-0 title" href="#"><i class="oi oi-spreadsheet"></i> @(file.FileName)</h4>
-                                <div>Folder : @file.FolderName</div>
-                                <div style="font-size: .8em">Attempts: @(file.NumberOfAttempts)</div>
+                                    <h4 class="mb-0 title" href="#"><i class="oi oi-spreadsheet"></i> @(context.FileName)</h4>
+                                </div>
+                           </div>
+                        </TitleTemplate>
+                        <Body>
+                           <div class="d-flex flex-row align-items-center">
+                                <div>
+                                     <div>Folder : @context.FolderName</div>
+                                    <div style="font-size: .8em">Attempts: @(context.NumberOfAttempts)</div>
+                                </div>
                             </div>
-                        </div>
-                        <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
-                        <div class="row">
-                            <div class="col-md-8 text-truncate card-time">
-                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Modified : {0:d}", file.LastModifiedDateTime.ToLocalTime())</b>
-                            </div>
-                            <div class="col-md-8 text-truncate card-time">
-                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", file.LastModifiedDateTime.ToLocalTime())</b>
-                            </div>
-                            <div class="col-md-4 text-right">
-                                @if (file.ProcessStatus == FileProcessStatus.Completed)
-                                {
-                                    <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(file.ProcessStatus.ToString())"/>
-                                }
-                                else if (file.ProcessStatus == FileProcessStatus.Failed)
-                                {
-                                    <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(file.ProcessStatus.ToString())"/>
-                                }
-                                else if (file.ProcessStatus == FileProcessStatus.Pending)
-                                {
-                                    <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(file.ProcessStatus.ToString())"/>
-                                }
-                                else
-                                {
-                                    <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(file.ProcessStatus.ToString())"/>
-                                }
+                            <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
+                            <div class="row">
+                                <div class="col-md-8 text-truncate card-time">
+                                    <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Modified : {0:d}", context.LastModifiedDateTime.ToLocalTime())</b>
+                                </div>
+                                <div class="col-md-8 text-truncate card-time">
+                                    <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.LastModifiedDateTime.ToLocalTime())</b>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    @if (context.ProcessStatus == FileProcessStatus.Completed)
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.ProcessStatus.ToString())"/>
+                                    }
+                                    else if (context.ProcessStatus == FileProcessStatus.Failed)
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.ProcessStatus.ToString())"/>
+                                    }
+                                    else if (context.ProcessStatus == FileProcessStatus.Pending)
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(context.ProcessStatus.ToString())"/>
+                                    }
+                                    else
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.ProcessStatus.ToString())"/>
+                                    }
                                     
+                                </div>
                             </div>
-                        </div>
-                    </Card>
-                </Template>                    
-            </RadzenDataList>
-        </Card>
+                        </Body>
+                        <Extra>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </Extra>
+                    </Card>            
+                </ListItem>      
+            </ChildContent>
+            <LoadMore>
+                @if (!initLoading && !isLoading && currentCount < count)
+                {
+                    <div class="loadmore-btn-content">
+                        <Button OnClick="OnLoadMoreAsync">loading more</Button>
+                    </div>
+                }
+            </LoadMore>
+        </AntList>
     </div>
 </div>

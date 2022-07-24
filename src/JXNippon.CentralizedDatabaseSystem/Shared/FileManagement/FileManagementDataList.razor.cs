@@ -1,45 +1,66 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using AntDesign;
 using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
-using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
-using Radzen;
-using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 {
     public partial class FileManagementDataList
     {
-
-        private RadzenDataList<DataFile> _dataList;
-        private IEnumerable<DataFile> files;
+        private const int loadSize = 9;
+        private AntList<DataFile> _dataList;
+        private List<DataFile> files;
         private int count;
+        private int currentCount;
         private bool isLoading = false;
+        private bool initLoading = true;
+        private ListGridType grid = new()
+        {
+            Gutter = 16,
+            Xs = 1,
+            Sm = 1,
+            Md = 1,
+            Lg = 3,
+            Xl = 3,
+            Xxl = 3,
+        };
 
-        [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
+        [Inject] private NavigationManager navigationManager { get; set; }
 
         public CommonFilter FileManagementFilter { get; set; }
 
-        private bool isNotLoading => !isLoading;
-
-        protected override void OnInitialized()
+        protected override Task OnInitializedAsync()
         {
+            this.FileManagementFilter = new CommonFilter(navigationManager);
+            initLoading = false;
+            return this.LoadDataAsync();
         }
 
-        public async Task ReloadAsync()
+        public Task ReloadAsync()
         {
-            await _dataList.FirstPage(true);
+            return this.LoadDataAsync();
         }
 
-        private async Task LoadDataAsync(LoadDataArgs args)
+        public Task OnLoadMoreAsync()
+        {
+            return this.LoadDataAsync(true);
+        }
+
+        private async Task LoadDataAsync(bool isLoadMore = false)
         {
             isLoading = true;
-            await LoadData.InvokeAsync();
+            StateHasChanged();
+            if (!isLoadMore)
+            {
+                currentCount = 0;
+            }
+
             using var serviceScope = ServiceProvider.CreateScope();
             IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
             var query = fileService.Get();
@@ -60,14 +81,35 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
                     .Where(dataFile => dataFile.LastModifiedDateTime >= start)
                     .Where(dataFile => dataFile.LastModifiedDateTime < end);
             }
+            
+
             Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
                 .OrderByDescending(file => file.LastModifiedDateTime)
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
+                .Skip(currentCount)
+                .Take(loadSize)
                 .ToQueryOperationResponseAsync<DataFile>();
 
             count = (int)filesResponse.Count;
-            files = filesResponse.ToList();
+            currentCount += loadSize;
+            var filesList = filesResponse.ToList();
+
+            if (isLoadMore)
+            {
+                files.AddRange(filesList);
+            }
+            else
+            { 
+                files = filesList;
+            }
+
             isLoading = false;
+
+            if (filesList.DistinctBy(x => x.Id).Count() != filesList.Count)
+            {
+                AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
+            }
+
+            StateHasChanged();
         }
 
         private void HandleException(Exception ex)

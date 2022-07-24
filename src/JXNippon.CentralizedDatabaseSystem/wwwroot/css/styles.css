@@ -70,9 +70,7 @@
 }
 
 @media (min-width: 2560px) {
-    .dataFileCard {
-        width: 600px;
-    }
+
 }
 
 @media (min-width: 1450px) {
@@ -364,4 +362,11 @@ p.moh-cardbody {
 
 .ant-descriptions-item-label {
     font-weight: bold;
+}
+
+.loadmore-btn-content {
+    text-align: center;
+    margin-top: 12px;
+    height: 32px;
+    line-height: 32px;
 }

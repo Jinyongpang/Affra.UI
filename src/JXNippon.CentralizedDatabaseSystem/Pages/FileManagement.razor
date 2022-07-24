@@ -4,7 +4,4 @@
 @attribute [Authorize]
 <PageTitle>File Management</PageTitle>
 
-<div class="px-2">
-    <FileManagementFilterPanel @ref="fileManagementFilterPanel" Change=@(args => OnChangeAsync(args)) />
-    <FileManagementDataList @ref="fileManagementDataList" LoadData=@(args => LoadDataAsync(args))/>
-</div>
+<JXNippon.CentralizedDatabaseSystem.Shared.FileManagement.FileManagement/>
