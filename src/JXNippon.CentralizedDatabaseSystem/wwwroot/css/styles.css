@@ -361,3 +361,7 @@ p.moh-cardbody {
     background: rgb(238,174,202) !important;
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%) !important;
 }
+
+.ant-descriptions-item-label {
+    font-weight: bold;
+}
