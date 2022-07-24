@@ -25,16 +25,39 @@
         <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("operation dashboard stat chart table") ImageFile="@ImageFile.Stats" Description="View statistics, chart and more via dashboard."
             ButtonText="Operation Dashboard" OnButtonClick=@(args => this.Navigate("operation/dashboard"))>
         </HomePageCard>  
-        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("operation daily combined report") ImageFile="@ImageFile.DataExtraction" Description="Validate, view and export combined daily report."
+        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("operation daily combined report cdr") ImageFile="@ImageFile.DataExtraction" Description="Validate, view and export combined daily report."
             ButtonText="Get Started" OnButtonClick=@(args => this.Navigate("operation/combineddailyreport"))>
         </HomePageCard> 
         <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("operation management of change moc") ImageFile="@ImageFile.Steps" Description="Create, approve or extend management of change."
             ButtonText="Management Of Change" OnButtonClick=@(args => this.Navigate("operation/managementofchange"))>
         </HomePageCard> 
         <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("operation management of change moc summary")  ImageFile="@ImageFile.Merger" Description="View management of change summary."
-            ButtonText="View summary" OnButtonClick=@(args => this.Navigate("operation/managementofchangesummary"))>
+            ButtonText="View Summary" OnButtonClick=@(args => this.Navigate("operation/managementofchangesummary"))>
         </HomePageCard>
-
+        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("well allocation dashboard")  ImageFile="@ImageFile.Filter" Description="View statistics, chart and more via dashboard."
+            ButtonText="Well Allocation Dashboard" OnButtonClick=@(args => this.Navigate("wellallocation/dashboard"))>
+        </HomePageCard>
+        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("well allocation pe report")  ImageFile="@ImageFile.Dashboard" Description="View and export PE report."
+            ButtonText="View PE Report" OnButtonClick=@(args => this.Navigate("wellallocation/pereport"))>
+        </HomePageCard>
+        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("deferment dashboard")  ImageFile="@ImageFile.Piechart" Description="View statistics, chart and more via dashboard."
+            ButtonText="Deferment Dashboard" OnButtonClick=@(args => this.Navigate("deferment/dashboard"))>
+        </HomePageCard>
+        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("deferment report")  ImageFile="@ImageFile.FeatureOverview" Description="View and export deferment report."
+            ButtonText="View Deferment Report" OnButtonClick=@(args => this.Navigate("deferment/report"))>
+        </HomePageCard>
+        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("file management")  ImageFile="@ImageFile.FileSearch" Description="View status and progress of data extraction."
+            ButtonText="Manage File" OnButtonClick=@(args => this.Navigate("more/filemanagement"))>
+        </HomePageCard>
+        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("user management")  ImageFile="@ImageFile.People" Description="View and manage users."
+            ButtonText="Manage User" OnButtonClick=@(args => this.Navigate("more/usermanagement"))>
+        </HomePageCard>
+        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("template column management")  ImageFile="@ImageFile.ColumnConfig" Description="Create your own custom template."
+            ButtonText="Manage Template" OnButtonClick=@(args => this.Navigate("more/templatemanagement"))>
+        </HomePageCard>
+        <HomePageCard @ref=homePageCardRef Visible=@IsVisibleSearch("view designer")  ImageFile="@ImageFile.Designer" Description="Design your own dashboard or view."
+            ButtonText="Start Design Now" OnButtonClick=@(args => this.Navigate("more/viewdesigner"))>
+        </HomePageCard>
         @if (this.isSearchEmpty)
         {
             <div class="d-flex align-items-center justify-content-center gap-3">
