@@ -43,7 +43,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
             using var serviceScope = ServiceProvider.CreateScope();
             var service = this.GetGenericService<CustomColumn>(serviceScope);
             var query = service.Get();
-
             var response = await query
                 .Where(item => item.Table == this.TableName)
                 .ToQueryOperationResponseAsync<CustomColumn>();

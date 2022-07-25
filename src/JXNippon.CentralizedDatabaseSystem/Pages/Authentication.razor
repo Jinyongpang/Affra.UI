@@ -5,7 +5,7 @@
 <RemoteAuthenticatorView Action="@Action">
     <LogInFailed>
         <div class="result-view d-flex align-items-center justify-content-center gap-3">
-            <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.ErrorForbidden" Description="Sorry, you are not authorized to access this page. Please contact administrator or try again.">
+            <GenericDescription Height="300px" ImageFile="@ImageFile.ErrorForbidden" Description="Sorry, you are not authorized to access this page. Please contact administrator or try again.">
                 <ChildContent>
                     <a type="button" class="btn btn-primary" href="authentication/login">Login</a>
                 </ChildContent>
@@ -14,7 +14,7 @@
     </LogInFailed>
     <LogOut>
         <div class="result-view d-flex align-items-center justify-content-center gap-3">
-            <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.Departing" Description="Logging out...">
+            <GenericDescription Height="300px" ImageFile="@ImageFile.Departing" Description="Logging out...">
                 <ChildContent>
                     <Spin size="large" />
                 </ChildContent>
@@ -32,7 +32,7 @@
     </LogOutSucceeded>
     <LoggingIn>
        <div class="result-view d-flex align-items-center justify-content-center gap-3">
-           <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.Teleport" Description="Redirecting...">
+           <GenericDescription Height="300px" ImageFile="@ImageFile.Teleport" Description="Redirecting...">
                 <ChildContent>
                     <Spin size="large" />
                 </ChildContent>
@@ -41,7 +41,7 @@
     </LoggingIn>
     <CompletingLoggingIn>
         <div class="result-view d-flex align-items-center justify-content-center gap-3">
-           <GenericDescription Height="300px" Width="300px" ImageFile="@ImageFile.CompleteLogin" Description="Completing your login to centralized database system...">
+           <GenericDescription Height="300px" ImageFile="@ImageFile.CompleteLogin" Description="Completing your login to centralized database system...">
                 <ChildContent>
                     <Spin size="large" />
                 </ChildContent>
