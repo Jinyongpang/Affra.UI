@@ -1,5 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
@@ -45,6 +46,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
             var query = service.Get();
             var response = await query
                 .Where(item => item.Table == this.TableName)
+                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<CustomColumn>();
 
             Count = (int)response.Count;
