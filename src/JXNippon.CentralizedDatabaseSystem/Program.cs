@@ -93,7 +93,6 @@ builder.Services.AddMsalAuthentication(options =>
     {
         options.ProviderOptions.DefaultAccessTokenScopes.Add(scope);
     }
-    options.ProviderOptions.LoginMode = "redirect";
 });
 
 await builder.Build().RunAsync();
