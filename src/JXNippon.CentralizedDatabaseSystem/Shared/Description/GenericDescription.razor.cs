@@ -32,6 +32,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
             [ImageFile.Gauge] = "img/gauge.svg",
             [ImageFile.LowBattery] = "img/low-battery.svg",
             [ImageFile.Merger] = "img/merger.svg",
+            [ImageFile.Message] = "img/message.svg",
             [ImageFile.NewTasks] = "img/new_task.svg",
             [ImageFile.NoData] = "img/no-data.svg",
             [ImageFile.People] = "img/people.svg",

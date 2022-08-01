@@ -21,6 +21,7 @@
         Gauge,
         LowBattery,
         Merger,
+        Message,
         NewTasks,
         NoData,
         People,

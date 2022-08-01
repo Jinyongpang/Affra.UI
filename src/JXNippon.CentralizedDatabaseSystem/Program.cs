@@ -6,18 +6,20 @@ using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemService
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
+using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
+using JXNippon.CentralizedDatabaseSystem.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Handlers;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs;
+using JXNippon.CentralizedDatabaseSystem.Infrastructure.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Views;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
-using Microsoft.OData.Extensions.Client;
 using Radzen;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -31,20 +33,26 @@ CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(cultureConfiguration
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-DataExtractorConfigurations dataExtractorConfigurations = new DataExtractorConfigurations();
+DataExtractorConfigurations dataExtractorConfigurations = new();
 builder.Configuration.GetSection(nameof(DataExtractorConfigurations)).Bind(dataExtractorConfigurations);
 
-CentralizedDatabaseSystemConfigurations centralizedDatabaseSystemConfigurations = new CentralizedDatabaseSystemConfigurations();
+CentralizedDatabaseSystemConfigurations centralizedDatabaseSystemConfigurations = new();
 builder.Configuration.GetSection(nameof(CentralizedDatabaseSystemConfigurations)).Bind(centralizedDatabaseSystemConfigurations);
 
-ViewConfigurations viewConfigurations = new ViewConfigurations();
+ViewConfigurations viewConfigurations = new();
 builder.Configuration.GetSection(nameof(ViewConfigurations)).Bind(viewConfigurations);
 
 ContentUpdateNotificationServiceConfigurations contentUpdateNotificationServiceConfigurations = new ContentUpdateNotificationServiceConfigurations();
 builder.Configuration.GetSection(nameof(ContentUpdateNotificationServiceConfigurations)).Bind(contentUpdateNotificationServiceConfigurations);
 
-AzureAdConfigurations azureAdConfigurations = new AzureAdConfigurations();
+AzureAdConfigurations azureAdConfigurations = new();
 builder.Configuration.GetSection(nameof(AzureAdConfigurations)).Bind(azureAdConfigurations);
+
+NotificationConfigurations notificationConfigurations = new();
+builder.Configuration.GetSection(nameof(NotificationConfigurations)).Bind(notificationConfigurations);
+
+PersonalMessageNotificationServiceConfigurations personalMessageServiceConfigurations = new();
+builder.Configuration.GetSection(nameof(PersonalMessageNotificationServiceConfigurations)).Bind(personalMessageServiceConfigurations);
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
@@ -53,22 +61,13 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<CentralizedDatabaseSystemConfigurations>>(Options.Create(centralizedDatabaseSystemConfigurations))
     .AddScoped<IViewUnitOfWork, ViewUnitOfWork>()
     .AddSingleton<IOptions<ViewConfigurations>>(Options.Create(viewConfigurations))
+    .AddScoped<INotificationUnitOfWork, NotificationUnitOfWork>()
+    .AddSingleton<IOptions<NotificationConfigurations>>(Options.Create(notificationConfigurations))
     .AddUnitGenericService()
-    .AddODataClient(nameof(DataExtractorUnitOfWork))
-    .AddHttpClient()
-    .AddHttpMessageHandler<CreateActivityHandler>()
-    .AddHttpMessageHandler<JXNippon.CentralizedDatabaseSystem.Handlers.AuthorizationMessageHandler>()
-    .Services
-    .AddODataClient(nameof(CentralizedDatabaseSystemUnitOfWork))
-    .AddHttpClient()
-    .AddHttpMessageHandler<CreateActivityHandler>()
-    .AddHttpMessageHandler<JXNippon.CentralizedDatabaseSystem.Handlers.AuthorizationMessageHandler>()
-    .Services
-    .AddODataClient(nameof(ViewUnitOfWork))
-    .AddHttpClient()
-    .AddHttpMessageHandler<CreateActivityHandler>()
-    .AddHttpMessageHandler<JXNippon.CentralizedDatabaseSystem.Handlers.AuthorizationMessageHandler>()
-    .Services
+    .AddODataHttpClient(nameof(DataExtractorUnitOfWork))
+    .AddODataHttpClient(nameof(CentralizedDatabaseSystemUnitOfWork))
+    .AddODataHttpClient(nameof(ViewUnitOfWork))
+    .AddODataHttpClient(nameof(NotificationUnitOfWork))
     .AddScoped<CreateActivityHandler>()
     .AddScoped<JXNippon.CentralizedDatabaseSystem.Handlers.AuthorizationMessageHandler>()
     .AddScoped<NotificationService>()
@@ -82,6 +81,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddScoped(typeof(IHubClient<>), typeof(SignalRHubClient<>))
     .AddScoped<IContentUpdateNotificationService, ContentUpdateNotificationService>()
     .AddSingleton<IOptions<ContentUpdateNotificationServiceConfigurations>>(Options.Create(contentUpdateNotificationServiceConfigurations))
+    .AddScoped<IPersonalMessageNotificationService, PersonalMessageNotificationService>()
+    .AddSingleton<IOptions<PersonalMessageNotificationServiceConfigurations>>(Options.Create(personalMessageServiceConfigurations))
     .AddSingleton<IOptions<AzureAdConfigurations>>(Options.Create(azureAdConfigurations))
     .AddAntDesign()
     .AddLocalization();

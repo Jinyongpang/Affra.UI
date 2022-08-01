@@ -1,0 +1,21 @@
+﻿@using NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages
+<Tabs Type="@TabType.Card" Size="@TabSize.Large" OnTabClick=OnTabClickAsync>
+    <TabPane Key="All">
+        <TabTemplate>
+            <span><Icon Type="message" Theme="outline"/>All</span>
+        </TabTemplate>
+        <ChildContent><PersonalMessageList @ref=allPersonalMessageList></PersonalMessageList></ChildContent>
+    </TabPane>
+    <TabPane Key="Unread">
+        <TabTemplate>
+            <span><Icon Type="clock-circle" Theme="outline"/>Unread</span>
+        </TabTemplate>
+        <ChildContent><PersonalMessageList @ref=unreadPersonalMessageList PersonalMessageStatus=PersonalMessageStatus.Unread></PersonalMessageList></ChildContent>
+    </TabPane>
+    <TabPane Key="Read">
+        <TabTemplate>
+            <span><Icon Type="check-circle" Theme="outline"/>Read</span>
+        </TabTemplate>
+        <ChildContent><PersonalMessageList @ref=readPersonalMessageList PersonalMessageStatus=PersonalMessageStatus.Read></PersonalMessageList></ChildContent>
+    </TabPane>
+</Tabs>
