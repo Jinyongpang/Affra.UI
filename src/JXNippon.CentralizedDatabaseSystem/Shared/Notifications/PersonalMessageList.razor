@@ -1,28 +1,46 @@
-﻿<AntList DataSource="@data" TItem="BasicItem" Class="px-3">
-    <ListItem OnClick="()=>ItemClick(context.Title)">
-        <ListItemMeta AvatarTemplate="avatar" Description="@context.Detail">
-            <TitleTemplate>
-                <a href="#">@context.Title</a>
-            </TitleTemplate>
-        </ListItemMeta>
-    </ListItem>
+﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages
+
+@if (!isLoading && count == 0)
+{       
+    <div class="min-vh-80 d-flex align-items-center justify-content-center gap-3">
+        <GenericDescription Height="300px" ImageFile="@ImageFile.Message" Description="No notification.">
+        </GenericDescription>
+    </div>
+      
+}
+
+
+<AntList DataSource="@personalMessages" TItem="PersonalMessage" Class="px-3" @ref=_dataList>
+    <ChildContent>
+        <ListItem OnClick="()=>ItemClick(context.Subject)">
+            <ListItemMeta Description="@context.MessageContent">
+                <AvatarTemplate>
+                    <Avatar Style="vertical-align: middle;" Size="large">
+                        <span style="font-size: 16px;">@context.CreatedBy[0]</span>
+                    </Avatar>
+                </AvatarTemplate>
+                <TitleTemplate>
+                    <a href="@context.Extra">@context.Subject</a>
+                </TitleTemplate>
+            </ListItemMeta>
+        </ListItem>
+    </ChildContent>
+    <LoadMore>
+        @if (!initLoading && !isLoading && currentCount < count)
+        {
+            <div class="loadmore-btn-content">
+                <Button Type="primary" OnClick="OnLoadMoreAsync">loading more</Button>
+            </div>
+        }
+    </LoadMore>
 </AntList>
+
+
 
 @code{
 
     RenderFragment avatar = @<Avatar Icon="user" Size="large"></Avatar>;
-
-    public class BasicItem
-    {
-        public string Title { get; set; }
-        public string Detail { get; set; }
-    }
-
-    public List<BasicItem> data = new List<BasicItem>
-    {
-        new BasicItem { Title = "Management of change", Detail = "Approval required."},
-        new BasicItem { Title = "Management of change", Detail = "Mangement of change extended."},
-    };
 
     public void ItemClick(string title)
     {

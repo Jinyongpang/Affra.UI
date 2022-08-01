@@ -370,3 +370,7 @@ p.moh-cardbody {
     height: 32px;
     line-height: 32px;
 }
+
+.ant-scroll-number-only {
+    margin-top: 2px;
+}
