@@ -68,5 +68,6 @@
   </ItemGroup>
   <Target Name="PublishServiceWorker" AfterTargets="CopyFilesToPublishDirectory">
     <WriteLinesToFile File="$(PublishDir)wwwroot\service-worker.js" Lines="/* $([System.Guid]::NewGuid()) */" />
+    <WriteLinesToFile File="$(PublishDir)wwwroot\service-worker.published.js" Lines="/* $([System.Guid]::NewGuid()) */" />
   </Target>
 </Project>
