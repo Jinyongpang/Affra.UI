@@ -5,7 +5,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 using Microsoft.OData.Client;
-using NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages;
+using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
 {
@@ -94,11 +94,28 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
         {
             AffraNotificationService.NotifyException(ex);
         }
-
-        private IGenericService<PersonalMessage> GetGenericService(IServiceScope serviceScope)
+        private async Task MarkAsReadAsync(PersonalMessage personalMessage)
         {
+            if (personalMessage is null
+                || personalMessage.Status == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Read)
+            {
+                return;
+            }
+            using var serviceScope = ServiceProvider.CreateScope();
+            var service = serviceScope.ServiceProvider.GetRequiredService<IPersonalMessageService>();
+            await service.MarkAsReadAsync(personalMessage);
+
+            if (this.PersonalMessageStatus == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Unread)
+            {
+                count--;
+                currentCount--;
+                this.personalMessages.Remove(personalMessage);
+                this.StateHasChanged();
+            }
+        }
+        private IGenericService<PersonalMessage> GetGenericService(IServiceScope serviceScope)
+        {       
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PersonalMessage, INotificationUnitOfWork>>();
         }
-
     }
 }

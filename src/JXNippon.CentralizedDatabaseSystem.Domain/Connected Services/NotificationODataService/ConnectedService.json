@@ -27,7 +27,7 @@
     },
     "GeneratedFileNamePrefix": "NotificationODataService",
     "UseNameSpacePrefix": true,
-    "NamespacePrefix": "NotficationODataService",
+    "NamespacePrefix": "NotificationODataService",
     "UseDataServiceCollection": false,
     "UseAsyncDataServiceCollection": false,
     "OpenGeneratedFilesOnComplete": false,

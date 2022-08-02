@@ -374,3 +374,19 @@ p.moh-cardbody {
 .ant-scroll-number-only {
     margin-top: 2px;
 }
+
+.dot-item {
+    display: block;
+    width: 9px;
+    height: 9px;
+    background-color: #1890ff;
+    border-radius: 100%;
+    transform: scale(.75);
+    transform-origin: 50% 50%;
+    opacity: .3;
+    animation: antSpinMove 1s infinite linear alternate;
+}
+
+.anticon-close {
+    padding-right: .5rem !important; 
+}

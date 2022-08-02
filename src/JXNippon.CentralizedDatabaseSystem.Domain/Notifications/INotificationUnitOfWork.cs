@@ -1,5 +1,5 @@
 ﻿using Affra.Core.Domain.UnitOfWorks;
-using NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages;
+using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Notifications
 {

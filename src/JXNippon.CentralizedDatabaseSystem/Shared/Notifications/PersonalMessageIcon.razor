@@ -1,6 +1,6 @@
 ﻿@using Affra.Core.Domain.Services
 @using JXNippon.CentralizedDatabaseSystem.Domain.Notifications
-@using NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages
+@using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages
 <div class="align-self-center flex-row order-md-first">
     <div class="nav-item dropdown me-3">
         <a>
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<Drawer Closable="true" Visible="visible" Placement="right" OnClose="_=>Close()" Width=420>
+<Drawer Closable="true" Visible="visible" Placement="right" OnClose="CloseAsync" Width=420>
     <Title><h4 style="font-weight: bold;"><Icon Type="bell" Theme="outline" Class="top-row-alert"/> Personal Message</h4></Title>
     <PersonalMessageTab @ref=personalMessageTab></PersonalMessageTab>
 </Drawer>

@@ -84,6 +84,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddScoped<IPersonalMessageNotificationService, PersonalMessageNotificationService>()
     .AddSingleton<IOptions<PersonalMessageNotificationServiceConfigurations>>(Options.Create(personalMessageServiceConfigurations))
     .AddSingleton<IOptions<AzureAdConfigurations>>(Options.Create(azureAdConfigurations))
+    .AddScoped<IPersonalMessageService, PersonalMessageService>()
     .AddAntDesign()
     .AddLocalization();
 
