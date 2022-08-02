@@ -8,8 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 31/7/2022 10:52:35 PM
-namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages
+// Generation date: 2/8/2022 11:50:42 AM
+namespace NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages
 {
     /// <summary>
     /// There are no comments for MessageSingle in the schema.
@@ -38,7 +38,7 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
         /// There are no comments for PersonalMessages in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> PersonalMessages
+        public global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> PersonalMessages
         {
             get
             {
@@ -48,13 +48,13 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
                 }
                 if ((this._PersonalMessages == null))
                 {
-                    this._PersonalMessages = Context.CreateQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage>(GetPath("PersonalMessages"));
+                    this._PersonalMessages = Context.CreateQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage>(GetPath("PersonalMessages"));
                 }
                 return this._PersonalMessages;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _PersonalMessages;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _PersonalMessages;
     }
     /// <summary>
     /// There are no comments for Message in the schema.
@@ -231,7 +231,7 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
         /// There are no comments for Property PersonalMessages in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> PersonalMessages
+        public global::System.Collections.ObjectModel.Collection<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> PersonalMessages
         {
             get
             {
@@ -245,8 +245,8 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Collections.ObjectModel.Collection<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _PersonalMessages = new global::System.Collections.ObjectModel.Collection<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage>();
-        partial void OnPersonalMessagesChanging(global::System.Collections.ObjectModel.Collection<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> value);
+        private global::System.Collections.ObjectModel.Collection<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _PersonalMessages = new global::System.Collections.ObjectModel.Collection<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage>();
+        partial void OnPersonalMessagesChanging(global::System.Collections.ObjectModel.Collection<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> value);
         partial void OnPersonalMessagesChanged();
     }
     /// <summary>
@@ -276,7 +276,7 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
         /// There are no comments for Message in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle Message
+        public global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle Message
         {
             get
             {
@@ -286,13 +286,13 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
                 }
                 if ((this._Message == null))
                 {
-                    this._Message = new global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle(this.Context, GetPath("Message"));
+                    this._Message = new global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle(this.Context, GetPath("Message"));
                 }
                 return this._Message;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle _Message;
+        private global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle _Message;
     }
     /// <summary>
     /// There are no comments for PersonalMessage in the schema.
@@ -311,7 +311,7 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
         /// <param name="status">Initial value of Status.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static PersonalMessage CreatePersonalMessage(global::System.Guid ID, global::System.DateTimeOffset createdDateTime, global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus status, long xmin)
+        public static PersonalMessage CreatePersonalMessage(global::System.Guid ID, global::System.DateTimeOffset createdDateTime, global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus status, long xmin)
         {
             PersonalMessage personalMessage = new PersonalMessage();
             personalMessage.Id = ID;
@@ -429,7 +429,7 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
         /// There are no comments for Property Status in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus Status
+        public global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus Status
         {
             get
             {
@@ -443,8 +443,8 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus _Status;
-        partial void OnStatusChanging(global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus value);
+        private global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus _Status;
+        partial void OnStatusChanging(global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus value);
         partial void OnStatusChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
@@ -471,7 +471,7 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
         /// There are no comments for Property Message in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message Message
+        public global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message Message
         {
             get
             {
@@ -485,8 +485,8 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message _Message;
-        partial void OnMessageChanging(global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message value);
+        private global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message _Message;
+        partial void OnMessageChanging(global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message value);
         partial void OnMessageChanged();
     }
     /// <summary>
@@ -503,54 +503,54 @@ namespace NotficationODataService.Affra.Service.Notification.Domain.PersonalMess
     public static class ExtensionMethods
     {
         /// <summary>
-        /// Get an entity of type global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message as global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle specified by key from an entity set
+        /// Get an entity of type global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message as global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        public static global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
         {
-            return new global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message as global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle specified by key from an entity set
+        /// Get an entity of type global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message as global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message> _source,
+        public static global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message> _source,
             global::System.Guid id)
         {
             global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.MessageSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage as global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle specified by key from an entity set
+        /// Get an entity of type global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage as global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        public static global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
         {
-            return new global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage as global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle specified by key from an entity set
+        /// Get an entity of type global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage as global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _source,
+        public static global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _source,
             global::System.Guid id)
         {
             global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
-namespace NotficationODataService.Default
+namespace NotificationODataService.Default
 {
     /// <summary>
     /// There are no comments for Container in the schema.
@@ -579,12 +579,12 @@ namespace NotficationODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.Notification.Domain.PersonalMessages", "NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.Notification.Domain.PersonalMessages", "NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages");
             if ((resolvedType != null))
             {
                 return resolvedType;
             }
-            resolvedType = this.DefaultResolveType(typeName, "Default", "NotficationODataService.Default");
+            resolvedType = this.DefaultResolveType(typeName, "Default", "NotificationODataService.Default");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -599,11 +599,11 @@ namespace NotficationODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
-            if (clientType.Namespace.Equals("NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages", global::System.StringComparison.Ordinal))
+            if (clientType.Namespace.Equals("NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.Notification.Domain.PersonalMessages.", clientType.Name);
             }
-            if (clientType.Namespace.Equals("NotficationODataService.Default", global::System.StringComparison.Ordinal))
+            if (clientType.Namespace.Equals("NotificationODataService.Default", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Default.", clientType.Name);
             }
@@ -613,41 +613,41 @@ namespace NotficationODataService.Default
         /// There are no comments for Message in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message> Message
+        public global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message> Message
         {
             get
             {
                 if ((this._Message == null))
                 {
-                    this._Message = base.CreateQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message>("Message");
+                    this._Message = base.CreateQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message>("Message");
                 }
                 return this._Message;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message> _Message;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message> _Message;
         /// <summary>
         /// There are no comments for PersonalMessage in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> PersonalMessage
+        public global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> PersonalMessage
         {
             get
             {
                 if ((this._PersonalMessage == null))
                 {
-                    this._PersonalMessage = base.CreateQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage>("PersonalMessage");
+                    this._PersonalMessage = base.CreateQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage>("PersonalMessage");
                 }
                 return this._PersonalMessage;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _PersonalMessage;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage> _PersonalMessage;
         /// <summary>
         /// There are no comments for Message in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToMessage(global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message message)
+        public void AddToMessage(global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message message)
         {
             base.AddObject("Message", message);
         }
@@ -655,7 +655,7 @@ namespace NotficationODataService.Default
         /// There are no comments for PersonalMessage in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToPersonalMessage(global::NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage personalMessage)
+        public void AddToPersonalMessage(global::NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessage personalMessage)
         {
             base.AddObject("PersonalMessage", personalMessage);
         }

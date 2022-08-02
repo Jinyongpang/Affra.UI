@@ -1,5 +1,5 @@
 ﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Description
-@using NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages
+@using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages
 
 @if (!isLoading && count == 0)
 {       
@@ -10,20 +10,24 @@
       
 }
 
-
 <AntList DataSource="@personalMessages" TItem="PersonalMessage" Class="px-3" @ref=_dataList>
     <ChildContent>
-        <ListItem OnClick="()=>ItemClick(context.Subject)">
-            <ListItemMeta Description="@context.MessageContent">
-                <AvatarTemplate>
-                    <Avatar Style="vertical-align: middle;" Size="large">
-                        <span style="font-size: 16px;">@context.CreatedBy[0]</span>
-                    </Avatar>
-                </AvatarTemplate>
-                <TitleTemplate>
-                    <a href="@context.Extra">@context.Subject</a>
-                </TitleTemplate>
-            </ListItemMeta>
+        <ListItem OnClick="@(() => MarkAsReadAsync(context))">
+            <ChildContent>
+                <ListItemMeta Description="@context.MessageContent">
+                    <AvatarTemplate>
+                        <Avatar Style="vertical-align: middle;" Size="large">
+                            <span style="font-size: 16px;">@context.CreatedBy[0]</span>
+                        </Avatar>
+                    </AvatarTemplate>
+                    <TitleTemplate>
+                        <a href="@context.Extra">@context.Subject</a>
+                    </TitleTemplate>
+                </ListItemMeta>
+            </ChildContent>
+            <Extra>
+                <i class="dot-item" hidden="@(context.Status == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Read)"></i>
+            </Extra>
         </ListItem>
     </ChildContent>
     <LoadMore>
@@ -35,15 +39,3 @@
         }
     </LoadMore>
 </AntList>
-
-
-
-@code{
-
-    RenderFragment avatar = @<Avatar Icon="user" Size="large"></Avatar>;
-
-    public void ItemClick(string title)
-    {
-        Console.WriteLine($"item was clicked: {title}");
-    }
-}

@@ -3,8 +3,8 @@ using Affra.Core.Infrastructure.OData.UnitOfWorks;
 using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
 using Microsoft.Extensions.Options;
 using Microsoft.OData.Extensions.Client;
-using NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages;
-using NotficationODataService.Default;
+using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages;
+using NotificationODataService.Default;
 
 namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Notifications
 {

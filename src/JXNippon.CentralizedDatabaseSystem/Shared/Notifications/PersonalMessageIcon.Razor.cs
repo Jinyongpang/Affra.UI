@@ -5,7 +5,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 using Microsoft.OData.Client;
-using NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages;
+using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
 {
@@ -40,9 +40,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             this.visible = true;
         }
 
-        private void Close()
+        private Task CloseAsync()
         {
             this.visible = false;
+            return this.GetUnreadCountAsync();
         }
 
         private IGenericService<PersonalMessage> GetGenericService(IServiceScope serviceScope)

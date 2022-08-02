@@ -1,5 +1,5 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
-using NotficationODataService.Affra.Service.Notification.Domain.PersonalMessages;
+using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Notifications
 {
