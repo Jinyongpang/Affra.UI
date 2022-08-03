@@ -24,8 +24,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
         protected override async Task OnInitializedAsync()
         {
             subscription = PersonalMessageNotificationService.Subscribe(OnMessageReceivedAsync);
-            await subscription.StartAsync();
-            await this.GetUnreadCountAsync();
+
+            try
+            {
+                await subscription.StartAsync();
+                await this.GetUnreadCountAsync();
+            }
+            catch (Exception ex)
+            { 
+                this.AffraNotificationService.NotifyException(ex);
+            }
         }
 
         private Task OnMessageReceivedAsync(Message obj)
