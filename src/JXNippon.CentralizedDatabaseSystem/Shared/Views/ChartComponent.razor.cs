@@ -76,6 +76,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     .Where(item => item.Date >= StartDate.Value.ToUniversalTime())
                     .Where(item => item.Date <= EndDate.Value.ToUniversalTime());
             }
+            else
+            {
+                Queryable = Queryable.Take(100);
+            }
             await LoadData.InvokeAsync(Queryable);
             var q = (DataServiceQuery)Queryable;
 
