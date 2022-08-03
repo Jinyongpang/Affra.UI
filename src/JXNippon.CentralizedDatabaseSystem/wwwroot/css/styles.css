@@ -390,3 +390,7 @@ p.moh-cardbody {
 .anticon-close {
     padding-right: .5rem !important; 
 }
+
+.rz-panel-content {
+    margin: 0!important;
+}
