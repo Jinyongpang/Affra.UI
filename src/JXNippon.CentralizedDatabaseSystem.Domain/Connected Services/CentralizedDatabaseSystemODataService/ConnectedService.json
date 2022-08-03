@@ -16,7 +16,7 @@
     "GenerateOperationImports": false,
     "ServiceName": "CentralizedDatabaseSystemODataService",
     "AcceptAllUntrustedCertificates": false,
-    "Endpoint": "https://localhost:7200/CentralizedDatabaseSystem-api/odata/$metadata",
+    "Endpoint": "http://localhost:50001/CentralizedDatabaseSystem-api/odata/$metadata",
     "EdmxVersion": {
       "Major": 4,
       "Minor": 0,

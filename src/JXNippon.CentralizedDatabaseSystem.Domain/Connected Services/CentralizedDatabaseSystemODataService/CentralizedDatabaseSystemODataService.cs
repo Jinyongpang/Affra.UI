@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 18/6/2022 4:31:09 PM
+// Generation date: 3/8/2022 10:03:37 AM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -103,6 +103,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -531,6 +552,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property ProducedWaterTreatmentSystemName in the schema.
         /// </summary>
@@ -985,6 +1027,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property InjectionPoint in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -1408,6 +1471,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -1811,6 +1895,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -1985,6 +2090,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -2496,6 +2622,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -3044,6 +3191,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -3325,6 +3493,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -3699,33 +3888,13 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
-        /// <param name="lastPiggingDate">Initial value of LastPiggingDate.</param>
-        /// <param name="nextPiggingDate">Initial value of NextPiggingDate.</param>
-        /// <param name="lastChangeOut">Initial value of LastChangeOut.</param>
-        /// <param name="nextChangeOut">Initial value of NextChangeOut.</param>
-        /// <param name="lastSampling">Initial value of LastSampling.</param>
-        /// <param name="nextSampling">Initial value of NextSampling.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyGasCondensateExportSamplerAndExportLine CreateDailyGasCondensateExportSamplerAndExportLine(long ID, 
-                    global::System.DateTimeOffset date, 
-                    global::System.DateTimeOffset lastPiggingDate, 
-                    global::System.DateTimeOffset nextPiggingDate, 
-                    global::System.DateTimeOffset lastChangeOut, 
-                    global::System.DateTimeOffset nextChangeOut, 
-                    global::System.DateTimeOffset lastSampling, 
-                    global::System.DateTimeOffset nextSampling, 
-                    long xmin)
+        public static DailyGasCondensateExportSamplerAndExportLine CreateDailyGasCondensateExportSamplerAndExportLine(long ID, global::System.DateTimeOffset date, long xmin)
         {
             DailyGasCondensateExportSamplerAndExportLine dailyGasCondensateExportSamplerAndExportLine = new DailyGasCondensateExportSamplerAndExportLine();
             dailyGasCondensateExportSamplerAndExportLine.Id = ID;
             dailyGasCondensateExportSamplerAndExportLine.Date = date;
-            dailyGasCondensateExportSamplerAndExportLine.LastPiggingDate = lastPiggingDate;
-            dailyGasCondensateExportSamplerAndExportLine.NextPiggingDate = nextPiggingDate;
-            dailyGasCondensateExportSamplerAndExportLine.LastChangeOut = lastChangeOut;
-            dailyGasCondensateExportSamplerAndExportLine.NextChangeOut = nextChangeOut;
-            dailyGasCondensateExportSamplerAndExportLine.LastSampling = lastSampling;
-            dailyGasCondensateExportSamplerAndExportLine.NextSampling = nextSampling;
             dailyGasCondensateExportSamplerAndExportLine.xmin = xmin;
             return dailyGasCondensateExportSamplerAndExportLine;
         }
@@ -3751,6 +3920,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -3775,7 +3965,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property LastPiggingDate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset LastPiggingDate
+        public global::System.Nullable<global::System.DateTimeOffset> LastPiggingDate
         {
             get
             {
@@ -3789,14 +3979,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _LastPiggingDate;
-        partial void OnLastPiggingDateChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _LastPiggingDate;
+        partial void OnLastPiggingDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnLastPiggingDateChanged();
         /// <summary>
         /// There are no comments for Property NextPiggingDate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset NextPiggingDate
+        public global::System.Nullable<global::System.DateTimeOffset> NextPiggingDate
         {
             get
             {
@@ -3810,8 +4000,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _NextPiggingDate;
-        partial void OnNextPiggingDateChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _NextPiggingDate;
+        partial void OnNextPiggingDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnNextPiggingDateChanged();
         /// <summary>
         /// There are no comments for Property TrunkLinePressure in the schema.
@@ -3880,7 +4070,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property LastChangeOut in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset LastChangeOut
+        public global::System.Nullable<global::System.DateTimeOffset> LastChangeOut
         {
             get
             {
@@ -3894,8 +4084,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _LastChangeOut;
-        partial void OnLastChangeOutChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _LastChangeOut;
+        partial void OnLastChangeOutChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnLastChangeOutChanged();
         /// <summary>
         /// There are no comments for Property GasSamplerContent in the schema.
@@ -3922,7 +4112,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property NextChangeOut in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset NextChangeOut
+        public global::System.Nullable<global::System.DateTimeOffset> NextChangeOut
         {
             get
             {
@@ -3936,8 +4126,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _NextChangeOut;
-        partial void OnNextChangeOutChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _NextChangeOut;
+        partial void OnNextChangeOutChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnNextChangeOutChanged();
         /// <summary>
         /// There are no comments for Property CondySamplerId in the schema.
@@ -3964,7 +4154,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property LastSampling in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset LastSampling
+        public global::System.Nullable<global::System.DateTimeOffset> LastSampling
         {
             get
             {
@@ -3978,8 +4168,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _LastSampling;
-        partial void OnLastSamplingChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _LastSampling;
+        partial void OnLastSamplingChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnLastSamplingChanged();
         /// <summary>
         /// There are no comments for Property CondySamplerContent in the schema.
@@ -4006,7 +4196,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property NextSampling in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset NextSampling
+        public global::System.Nullable<global::System.DateTimeOffset> NextSampling
         {
             get
             {
@@ -4020,8 +4210,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _NextSampling;
-        partial void OnNextSamplingChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _NextSampling;
+        partial void OnNextSamplingChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnNextSamplingChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
@@ -4169,6 +4359,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property HIPWellHeadName in the schema.
         /// </summary>
@@ -4792,6 +5003,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property LWPWellHeadName in the schema.
         /// </summary>
@@ -5474,6 +5706,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property KawasakiExportCompressorName in the schema.
         /// </summary>
@@ -6394,6 +6647,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property RollsRoyceRB211EngineName in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -7118,6 +7392,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -7488,6 +7783,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -7942,6 +8258,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -8395,6 +8732,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -8624,6 +8982,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -8948,6 +9327,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -9397,6 +9797,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -10063,6 +10484,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -10844,6 +11286,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -11116,6 +11579,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -11281,6 +11765,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -11445,6 +11950,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -11851,6 +12377,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -12702,6 +13249,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -13273,6 +13841,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -13405,6 +13994,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -13562,36 +14172,13 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
-        /// <param name="lastLTIDate">Initial value of LastLTIDate.</param>
-        /// <param name="lastDrillExerciseConducted">Initial value of LastDrillExerciseConducted.</param>
-        /// <param name="lastAnnualESDTest">Initial value of LastAnnualESDTest.</param>
-        /// <param name="nextAnnualESDTest">Initial value of NextAnnualESDTest.</param>
-        /// <param name="injurious_MTC_FACDate">Initial value of Injurious_MTC_FACDate.</param>
-        /// <param name="nearMissDate">Initial value of NearMissDate.</param>
-        /// <param name="propertyDamageDate">Initial value of PropertyDamageDate.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyHealthSafetyEnvironment CreateDailyHealthSafetyEnvironment(long ID, 
-                    global::System.DateTimeOffset date, 
-                    global::System.DateTimeOffset lastLTIDate, 
-                    global::System.DateTimeOffset lastDrillExerciseConducted, 
-                    global::System.DateTimeOffset lastAnnualESDTest, 
-                    global::System.DateTimeOffset nextAnnualESDTest, 
-                    global::System.DateTimeOffset injurious_MTC_FACDate, 
-                    global::System.DateTimeOffset nearMissDate, 
-                    global::System.DateTimeOffset propertyDamageDate, 
-                    long xmin)
+        public static DailyHealthSafetyEnvironment CreateDailyHealthSafetyEnvironment(long ID, global::System.DateTimeOffset date, long xmin)
         {
             DailyHealthSafetyEnvironment dailyHealthSafetyEnvironment = new DailyHealthSafetyEnvironment();
             dailyHealthSafetyEnvironment.Id = ID;
             dailyHealthSafetyEnvironment.Date = date;
-            dailyHealthSafetyEnvironment.LastLTIDate = lastLTIDate;
-            dailyHealthSafetyEnvironment.LastDrillExerciseConducted = lastDrillExerciseConducted;
-            dailyHealthSafetyEnvironment.LastAnnualESDTest = lastAnnualESDTest;
-            dailyHealthSafetyEnvironment.NextAnnualESDTest = nextAnnualESDTest;
-            dailyHealthSafetyEnvironment.Injurious_MTC_FACDate = injurious_MTC_FACDate;
-            dailyHealthSafetyEnvironment.NearMissDate = nearMissDate;
-            dailyHealthSafetyEnvironment.PropertyDamageDate = propertyDamageDate;
             dailyHealthSafetyEnvironment.xmin = xmin;
             return dailyHealthSafetyEnvironment;
         }
@@ -13617,6 +14204,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -13641,7 +14249,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property LastLTIDate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset LastLTIDate
+        public global::System.Nullable<global::System.DateTimeOffset> LastLTIDate
         {
             get
             {
@@ -13655,8 +14263,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _LastLTIDate;
-        partial void OnLastLTIDateChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _LastLTIDate;
+        partial void OnLastLTIDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnLastLTIDateChanged();
         /// <summary>
         /// There are no comments for Property SK10DaysLTIFree in the schema.
@@ -13683,7 +14291,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property LastDrillExerciseConducted in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset LastDrillExerciseConducted
+        public global::System.Nullable<global::System.DateTimeOffset> LastDrillExerciseConducted
         {
             get
             {
@@ -13697,14 +14305,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _LastDrillExerciseConducted;
-        partial void OnLastDrillExerciseConductedChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _LastDrillExerciseConducted;
+        partial void OnLastDrillExerciseConductedChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnLastDrillExerciseConductedChanged();
         /// <summary>
         /// There are no comments for Property LastAnnualESDTest in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset LastAnnualESDTest
+        public global::System.Nullable<global::System.DateTimeOffset> LastAnnualESDTest
         {
             get
             {
@@ -13718,14 +14326,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _LastAnnualESDTest;
-        partial void OnLastAnnualESDTestChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _LastAnnualESDTest;
+        partial void OnLastAnnualESDTestChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnLastAnnualESDTestChanged();
         /// <summary>
         /// There are no comments for Property NextAnnualESDTest in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset NextAnnualESDTest
+        public global::System.Nullable<global::System.DateTimeOffset> NextAnnualESDTest
         {
             get
             {
@@ -13739,8 +14347,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _NextAnnualESDTest;
-        partial void OnNextAnnualESDTestChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _NextAnnualESDTest;
+        partial void OnNextAnnualESDTestChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnNextAnnualESDTestChanged();
         /// <summary>
         /// There are no comments for Property Injurious_MTC_FACCount in the schema.
@@ -13767,7 +14375,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property Injurious_MTC_FACDate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Injurious_MTC_FACDate
+        public global::System.Nullable<global::System.DateTimeOffset> Injurious_MTC_FACDate
         {
             get
             {
@@ -13781,8 +14389,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Injurious_MTC_FACDate;
-        partial void OnInjurious_MTC_FACDateChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _Injurious_MTC_FACDate;
+        partial void OnInjurious_MTC_FACDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnInjurious_MTC_FACDateChanged();
         /// <summary>
         /// There are no comments for Property NearMissCount in the schema.
@@ -13809,7 +14417,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property NearMissDate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset NearMissDate
+        public global::System.Nullable<global::System.DateTimeOffset> NearMissDate
         {
             get
             {
@@ -13823,8 +14431,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _NearMissDate;
-        partial void OnNearMissDateChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _NearMissDate;
+        partial void OnNearMissDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnNearMissDateChanged();
         /// <summary>
         /// There are no comments for Property PropertyDamageCount in the schema.
@@ -13851,7 +14459,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property PropertyDamageDate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset PropertyDamageDate
+        public global::System.Nullable<global::System.DateTimeOffset> PropertyDamageDate
         {
             get
             {
@@ -13865,8 +14473,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _PropertyDamageDate;
-        partial void OnPropertyDamageDateChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _PropertyDamageDate;
+        partial void OnPropertyDamageDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnPropertyDamageDateChanged();
         /// <summary>
         /// There are no comments for Property TotalUCUXToday in the schema.
@@ -14235,6 +14843,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -14477,6 +15106,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -14714,6 +15364,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -14977,6 +15648,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
@@ -17437,6 +18129,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""PowerGeneratorName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -17460,6 +18153,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""ProducedWaterTreatmentSystemName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -17486,6 +18180,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""InjectionPoint"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""InjectionStatus"" Type=""Edm.String"" />
@@ -17506,6 +18201,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""MajorEquipmentName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -17529,6 +18225,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""SK10CumulativeGasExport"" Type=""Edm.Decimal"" />
         <Property Name=""SK10GasExportGODCPlan"" Type=""Edm.Decimal"" />
@@ -17540,6 +18237,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""HIPCumulativeGasExport"" Type=""Edm.Decimal"" />
         <Property Name=""HIPCumulativeGasExportRemark"" Type=""Edm.String"" />
@@ -17567,6 +18265,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""FPSOCumulativeGasExport"" Type=""Edm.Decimal"" />
         <Property Name=""FPSOCumulativeGasExportRemark"" Type=""Edm.String"" />
@@ -17594,6 +18293,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""StationRecyclePV2015"" Type=""Edm.Decimal"" />
         <Property Name=""StationRecyclePV2015Control"" Type=""Edm.String"" />
@@ -17609,6 +18309,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""WellStreamCoolerName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""WellStreamCoolerTemparature"" Type=""Edm.Decimal"" />
@@ -17631,19 +18332,20 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""LastPiggingDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""NextPiggingDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""LastPiggingDate"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""NextPiggingDate"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""TrunkLinePressure"" Type=""Edm.Decimal"" />
         <Property Name=""PV2901SP"" Type=""Edm.Decimal"" />
         <Property Name=""GasSamplerId"" Type=""Edm.String"" />
-        <Property Name=""LastChangeOut"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""LastChangeOut"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""GasSamplerContent"" Type=""Edm.Decimal"" />
-        <Property Name=""NextChangeOut"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""NextChangeOut"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""CondySamplerId"" Type=""Edm.String"" />
-        <Property Name=""LastSampling"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""LastSampling"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""CondySamplerContent"" Type=""Edm.Decimal"" />
-        <Property Name=""NextSampling"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""NextSampling"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
     </Schema>
@@ -17653,6 +18355,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""HIPWellHeadName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -17686,6 +18389,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""LWPWellHeadName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -17719,6 +18423,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""KawasakiExportCompressorName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""SpeedControl"" Type=""Edm.String"" />
@@ -17766,6 +18471,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""RollsRoyceRB211EngineName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""GGN1"" Type=""Edm.Int32"" />
@@ -17801,6 +18507,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""GlycolPumpName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -17822,6 +18529,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""GlycolTrainName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""PreviousDayLevel"" Type=""Edm.Decimal"" />
@@ -17848,6 +18556,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""GlycolStockInToteTank"" Type=""Edm.Int32"" />
         <Property Name=""GlycolStockInDrum"" Type=""Edm.Int32"" />
@@ -17869,6 +18578,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""LogisticName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
@@ -17882,6 +18592,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""PhReading"" Type=""Edm.Decimal"" />
         <Property Name=""PhReadingRange"" Type=""Edm.String"" />
@@ -17899,6 +18610,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""CoolingMediumSystemName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -17922,6 +18634,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Period"" Type=""Edm.String"" />
         <Property Name=""WorkOrderTypeName"" Type=""Edm.String"" Nullable=""false"" />
@@ -17959,6 +18672,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""UtilityName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -17989,6 +18703,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""VendorName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Title"" Type=""Edm.String"" />
@@ -18004,6 +18719,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -18015,6 +18731,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -18026,6 +18743,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""YesterdayLevel"" Type=""Edm.Decimal"" />
         <Property Name=""TodayLevel"" Type=""Edm.Decimal"" />
@@ -18048,6 +18766,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""V2010"" Type=""Edm.Decimal"" />
         <Property Name=""TCALP"" Type=""Edm.Decimal"" />
@@ -18089,6 +18808,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""SandDisposalDesanderName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -18120,6 +18840,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -18129,6 +18850,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -18140,18 +18862,19 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""LastLTIDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""LastLTIDate"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""SK10DaysLTIFree"" Type=""Edm.Int32"" />
-        <Property Name=""LastDrillExerciseConducted"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""LastAnnualESDTest"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""NextAnnualESDTest"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""LastDrillExerciseConducted"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""LastAnnualESDTest"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""NextAnnualESDTest"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""Injurious_MTC_FACCount"" Type=""Edm.Int32"" />
-        <Property Name=""Injurious_MTC_FACDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Injurious_MTC_FACDate"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""NearMissCount"" Type=""Edm.Int32"" />
-        <Property Name=""NearMissDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""NearMissDate"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""PropertyDamageCount"" Type=""Edm.Int32"" />
-        <Property Name=""PropertyDamageDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""PropertyDamageDate"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""TotalUCUXToday"" Type=""Edm.Int32"" />
         <Property Name=""TotalUCUXThisMonth"" Type=""Edm.Int32"" />
         <Property Name=""HIP_LQ"" Type=""Edm.Int32"" />
@@ -18171,6 +18894,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""LifeBoatName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
@@ -18184,6 +18908,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""TagName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""RaisedDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
@@ -18198,6 +18923,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""MajorLOPC"" Type=""Edm.Int32"" />
         <Property Name=""LastMajorLOPC"" Type=""Edm.String"" />
@@ -18212,6 +18938,7 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""TagName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""RaisedDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
