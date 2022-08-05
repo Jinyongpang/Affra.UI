@@ -1,4 +1,5 @@
 ﻿using Affra.Core.Infrastructure.OData.Models;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using Microsoft.Extensions.Localization;
 using Radzen;
@@ -10,15 +11,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Notifications
         private const int NotificationDration = 10000;
         private readonly NotificationService notificationService;
         private readonly IStringLocalizer<Resource> stringLocalizer;
+        private readonly IGlobalDataSource globalDataSource;
 
-        public AffraNotificationService(NotificationService notificationService, IStringLocalizer<Resource> stringLocalizer)
+        public AffraNotificationService(NotificationService notificationService, IStringLocalizer<Resource> stringLocalizer, IGlobalDataSource globalDataSource)
         { 
             this.notificationService = notificationService;
             this.stringLocalizer = stringLocalizer;
+            this.globalDataSource = globalDataSource;
         }
 
         public void NotifyException(Exception exception)
         {
+            this.globalDataSource.AddException(exception);
             if (exception is AffraODataException odataEx)
             {
                 notificationService.Notify(new()

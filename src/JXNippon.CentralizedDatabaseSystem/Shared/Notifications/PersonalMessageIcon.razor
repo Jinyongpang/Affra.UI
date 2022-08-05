@@ -1,10 +1,13 @@
 ﻿@using Affra.Core.Domain.Services
+@using JXNippon.CentralizedDatabaseSystem.Domain.DataSources
 @using JXNippon.CentralizedDatabaseSystem.Domain.Notifications
 @using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages
+@inject IGlobalDataSource GlobalDataSource;
+
 <div class="align-self-center flex-row order-md-first">
     <div class="nav-item dropdown me-3">
         <a>
-            <Badge Count=@this.unreadCount OverflowCount=99>
+            <Badge Count=@GlobalDataSource.UnreadCount OverflowCount=99>
                 <a @onclick="_=>Open()"><Icon Type="bell" Theme="outline" Class="top-row-alert"/></a>
             </Badge>
         </a>

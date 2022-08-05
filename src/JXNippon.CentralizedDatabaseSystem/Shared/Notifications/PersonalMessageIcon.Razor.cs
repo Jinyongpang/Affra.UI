@@ -19,7 +19,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
         private bool isDisposed = false;
         private PersonalMessageTab personalMessageTab;
         private bool visible = false;
-        private int unreadCount = 0;
 
         protected override async Task OnInitializedAsync()
         {
@@ -32,7 +31,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             }
             catch (Exception ex)
             { 
-                this.AffraNotificationService.NotifyException(ex);
+                Console.WriteLine(ex.ToString());
+                GlobalDataSource.AddException(ex);    
             }
         }
 
@@ -72,7 +72,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
                 .Take(0)
                 .ToQueryOperationResponseAsync<PersonalMessage>();
 
-            unreadCount = (int)response.Count;
+            GlobalDataSource.UnreadCount = (int)response.Count;
             StateHasChanged();
         }
 

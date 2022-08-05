@@ -4,6 +4,7 @@ using JXNippon.CentralizedDatabaseSystem;
 using JXNippon.CentralizedDatabaseSystem.Configurations;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChange;
@@ -93,6 +94,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<PersonalMessageNotificationServiceConfigurations>>(Options.Create(personalMessageServiceConfigurations))
     .AddSingleton<IOptions<AzureAdConfigurations>>(Options.Create(azureAdConfigurations))
     .AddScoped<IPersonalMessageService, PersonalMessageService>()
+    .AddSingleton<IGlobalDataSource, GlobalDataSource>()
     .AddAntDesign()
     .AddLocalization();
 
