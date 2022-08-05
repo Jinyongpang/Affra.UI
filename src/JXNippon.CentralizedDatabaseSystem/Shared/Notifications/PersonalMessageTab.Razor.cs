@@ -28,8 +28,11 @@
                 case "Unread":
                     await (this.unreadPersonalMessageList?.ReloadAsync() ?? Task.CompletedTask);
                     break;
-                default:
+                case "Read":
                     await (this.readPersonalMessageList?.ReloadAsync() ?? Task.CompletedTask);
+                    break;
+                default:
+                    StateHasChanged();
                     break;
             }
         }

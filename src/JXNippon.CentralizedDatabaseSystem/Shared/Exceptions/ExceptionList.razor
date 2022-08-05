@@ -1,0 +1,29 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.DataSources
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages
+@inject IGlobalDataSource GlobalDataSource;
+
+<AntList DataSource="@GlobalDataSource.Exceptions" TItem="Exception" Class="px-3">
+    <ChildContent>
+        <ListItem>
+            <ChildContent>
+                <ListItemMeta Description="@context.Message">
+                    <TitleTemplate>
+                        <a>@context.StackTrace</a>
+                    </TitleTemplate>
+                </ListItemMeta>
+            </ChildContent>
+        </ListItem>
+    </ChildContent>
+    <LoadMore>
+        <Button Type="primary" OnClick=ClearExceptions>loading more</Button>
+    </LoadMore>
+</AntList>
+
+@code{
+    private void ClearExceptions()
+    {
+        this.GlobalDataSource.Exceptions.Clear();
+        this.StateHasChanged();
+    }
+}
