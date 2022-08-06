@@ -1,0 +1,45 @@
+﻿@foreach(var customColumn in this.CustomColumns)
+{
+    <div class="row py-2">
+        <div class="col-4 align-items-center d-flex">
+            <RadzenLabel class="dialogTextSize" Text="@customColumn.Title" />
+        </div>
+        <div class="col-8">
+            @{
+                Type type = this.ExtraColumnService.GetType(customColumn.Type);
+                if (type == typeof(string))
+                {
+                    string value = (string)extraObject[customColumn.PropertyName];
+                    <RadzenTextBox class="w-100" @bind-Value="@value" Disabled=@IsViewing Change=@((arg) => this.UpdateValue(customColumn.PropertyName, arg))></RadzenTextBox>
+                }
+                else if (type == typeof(bool))
+                {
+                    bool value = ((bool?)extraObject[customColumn.PropertyName]) ?? false;
+                    <RadzenCheckBox @bind-Value="@value" TValue=bool Disabled=@IsViewing Change=@((arg) => this.UpdateValue(customColumn.PropertyName, arg))></RadzenCheckBox>
+                }
+                else if (type == typeof(decimal))
+                {
+                    decimal? value = ((decimal?)extraObject[customColumn.PropertyName]);
+                    <RadzenNumeric class="w-100" @bind-Value="@value" TValue=decimal? Disabled=@IsViewing Change=@((arg) => this.UpdateValue(customColumn.PropertyName, arg))></RadzenNumeric>
+                }
+                else if (type == typeof(int))
+                {
+                    int? value = ((int?)extraObject[customColumn.PropertyName]);
+                    <RadzenNumeric class="w-100" @bind-Value="@value" TValue=int?  Disabled=@IsViewing Change=@((arg) => this.UpdateValue(customColumn.PropertyName, arg))></RadzenNumeric>
+                }
+                 else if (type == typeof(DateTime))
+                {
+                    DateTime? value = (DateTime?)extraObject[customColumn.PropertyName];
+                    bool isDateTime = customColumn.Type == "datetime";
+                    string format = isDateTime
+                        ? "dd/MM/yyyy HH:mm"
+                        : "d";
+                    DateTime? localTime = value.HasValue
+                        ? value.Value.ToLocalTime()
+                        : null;
+                    <RadzenDatePicker TValue=DateTime? DateFormat="@format" ShowTime=@isDateTime class="w-100" Value=localTime Disabled=@IsViewing Change=@((arg) => this.UpdateValue(customColumn.PropertyName, arg.Value.ToUniversalTime()))></RadzenDatePicker>
+                }
+            }         
+        </div>
+    </div>
+}

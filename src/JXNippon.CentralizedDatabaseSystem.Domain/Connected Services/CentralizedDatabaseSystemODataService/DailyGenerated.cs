@@ -1,4 +1,6 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+﻿using System.Text.Json;
+using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Domain.Helpers;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using Microsoft.OData.Client;
 
@@ -110,7 +112,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries { public partial class DailyHIPAndLWPSummary : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries 
+{ 
+    public partial class DailyHIPAndLWPSummary : IDaily 
+    { 
+        [IgnoreClientProperty] public DateTime DateUI 
+        { 
+            get { return this.Date.ToLocalDateTime(); } 
+            set { this.Date = value.ToUniversalTime(); } 
+        } 
+
+        [IgnoreClientProperty]
+        public IDictionary<string, object>? ExtraDictionary
+        {
+            get 
+            {
+                return this.Extras.ToExtrasObject();
+            }
+        }
+    } 
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries { public partial class DailyFPSOHelangSummary : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders 
 { 
@@ -138,7 +159,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections { public partial class DailyCiNalco : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections 
+{ 
+    public partial class DailyCiNalco : IDaily 
+    { 
+        [IgnoreClientProperty] public DateTime DateUI 
+        { 
+            get { return this.Date.ToLocalDateTime(); } 
+            set { this.Date = value.ToUniversalTime(); } 
+        }
+
+        [IgnoreClientProperty]
+        public IDictionary<string, object>? ExtraDictionary
+        {
+            get
+            {
+                return this.Extras.ToExtrasObject();
+            }
+        }
+    } 
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections { public partial class DailyInowacInjection : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems { public partial class DailyCommunicationSystem : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities { public partial class DailyLWPActivity : IDaily { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
