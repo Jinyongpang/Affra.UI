@@ -30,6 +30,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private ContextMenuService ContextMenuService { get; set; }
         [Inject] private IExtraColumnService ExtraColumnService { get; set; }
+
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
@@ -105,7 +106,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection
             else
             {
                 response = await DialogService.OpenAsync<InowacInjectionDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction } },
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "CustomColumns", this.customColumns } },
                            Constant.DialogOptions);
 
                 if (response == true)

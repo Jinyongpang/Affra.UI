@@ -56,7 +56,7 @@
                 {
                     foreach(var customColumn in this.customColumns)
                     {
-                        <RadzenDataGridColumn Context="item" TItem="DailyCiNalco" Property="@customColumn.PropertyName" Title="@customColumn.Title" Type="@this.ExtraColumnService.GetType(customColumn.Type)" Sortable=false Filterable=false>
+                        <RadzenDataGridColumn Context="item" TItem="DailyInowacInjection" Property="@customColumn.PropertyName" Title="@customColumn.Title" Type="@this.ExtraColumnService.GetType(customColumn.Type)" Sortable=false Filterable=false>
                             <Template Context="item">
                                 @((MarkupString)this.ExtraColumnService.GetStringValue(customColumn, item.AsIExtras().ExtraDictionary))
                             </Template>
