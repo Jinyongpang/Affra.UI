@@ -1,4 +1,5 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries
+@using JXNippon.CentralizedDatabaseSystem.Domain.Extensions
 @using JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
 
 <div class="row py-2">
@@ -32,7 +33,7 @@
                     {
                         <RadzenDataGridColumn Context="item" TItem="DailyHIPAndLWPSummary" Property="@customColumn.PropertyName" Title="@customColumn.Title" Type="@this.ExtraColumnService.GetType(customColumn.Type)" Sortable=false Filterable=false>
                             <Template Context="item">
-                                @((MarkupString)this.ExtraColumnService.GetStringValue(customColumn, item.ExtraDictionary))
+                                @((MarkupString)this.ExtraColumnService.GetStringValue(customColumn, item.AsIExtras().ExtraDictionary))
                             </Template>
                         </RadzenDataGridColumn>
                     }
