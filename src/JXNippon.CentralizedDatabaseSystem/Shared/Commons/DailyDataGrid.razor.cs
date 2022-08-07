@@ -15,7 +15,7 @@ using ViewODataService.Affra.Service.View.Domain.Templates;
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
 {
     public partial class DailyDataGrid<TItem, TDialog>
-        where TItem : class
+        where TItem : class, IDaily, IExtras, IEntity
         where TDialog : ComponentBase
     {
         private RadzenDataGrid<TItem> grid;
@@ -111,7 +111,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             else
             {
                 response = await DialogService.OpenAsync<TDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "CustomColumns", this.customColumns } },
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction } },
                            Constant.DialogOptions);
 
                 if (response == true)

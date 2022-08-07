@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid LoadData="@LoadData" TItem="DailyCommunicationSystem" TDialog="CommunicationSystemDialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyCommunicationSystem" TDialog="CommunicationSystemDialog"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyCommunicationSystem" Property="Remark" Title="Remark" Width="100px" />

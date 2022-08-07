@@ -132,7 +132,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         private async Task LoadCommunicationSystemDataGridAsync(LoadDataArgs args)
         {
-            communicationSystemDataGrid.CommonFilter = CommonFilter;
+            communicationSystemDataGrid.DailyDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadHIPWellHeadParameterDataGridAsync(LoadDataArgs args)
         {
@@ -255,7 +255,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 wellStreamCoolerDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 logisticDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 lWPActivityDataGrid?.ReloadAsync() ?? Task.CompletedTask,
-                communicationSystemDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                communicationSystemDataGrid?.DailyDataGrid.ReloadAsync() ?? Task.CompletedTask,
                 lwpWellHeadParameterDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 hipWellHeadParameterDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 rollsRoyceRB211EngineDataGrid?.ReloadAsync() ?? Task.CompletedTask,
