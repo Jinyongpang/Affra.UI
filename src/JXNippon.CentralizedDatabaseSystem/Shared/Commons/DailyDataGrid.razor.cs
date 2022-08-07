@@ -16,7 +16,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
 {
     public partial class DailyDataGrid<TItem, TDialog>
         where TItem : class, IDaily, IExtras, IEntity
-        where TDialog : ComponentBase
+        where TDialog : ComponentBase, IDailyDialog<TItem>
     {
         private RadzenDataGrid<TItem> grid;
         private IEnumerable<TItem> items;
@@ -24,10 +24,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         private IEnumerable<CustomColumn> customColumns;
 
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
-        [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
-        [Parameter] public bool ShowDateColumn { get; set; }
         [Parameter] public RenderFragment Columns { get; set; }
+        [Parameter] public EventCallback<IQueryable<TItem>> QueryFilter { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
@@ -63,12 +62,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
                     var start = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value);
                     var end = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value.AddDays(1));
                     query = query
-                        .Cast<IDaily>()
                         .Where(x => x.Date >= start)
-                        .Where(x => x.Date < end)
-                        .Cast<TItem>();
+                        .Where(x => x.Date < end);
                 }
             }
+            await QueryFilter.InvokeAsync(query);
 
             var response = await query
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
@@ -111,7 +109,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             else
             {
                 response = await DialogService.OpenAsync<TDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction } },
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "CustomColumns", this.customColumns } },
                            Constant.DialogOptions);
 
                 if (response == true)

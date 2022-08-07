@@ -1,19 +1,10 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
 <div class="row">
     <div class="col">
-        <RadzenButton Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light" Style="margin-bottom: 20px;" Visible="@ShowRefreshButton" />
-        <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
-            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
-            PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DailyGasCondensateExportSamplerAndExportLine" 
-            ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
-            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
-            PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu">
-            <EmptyTemplate>                
-                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
-                    <a>No records to display.</a>
-                </div>                    
-            </EmptyTemplate>
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyGasCondensateExportSamplerAndExportLine" TDialog="GasCondensateExportSamplerAndExportLineDialog"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="LastPiggingDate" Title="Last Pigging Date" Visible="@ShowDateColumn">
                     <Template Context="dailyGasCondensateExportSamplerAndExportLine">
@@ -58,56 +49,6 @@
                 </RadzenDataGridColumn>
             </Columns>
 
-        </RadzenDataGrid>  
+        </DailyDataGrid>  
     </div>
 </div>
-
-@code
-{
-    private void OnCellContextMenu(MouseEventArgs args)
-    {
-        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyGasCondensateExportSamplerAndExportLine>) != null;
-        ContextMenuService.Open(args, ds =>
-           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyGasCondensateExportSamplerAndExportLine>, e))">
-                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
-                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
-                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
-                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
-                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
-            </RadzenMenu>
-    );  
-    }
-    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyGasCondensateExportSamplerAndExportLine> args, MenuItemEventArgs e)
-    {
-        int i = (int)e.Value;
-        if (i == 0)
-        {
-            await ShowDialogAsync(new DailyGasCondensateExportSamplerAndExportLine() 
-                { 
-                    DateUI = DateTimeOffset.Now.Date,
-                    LastPiggingDateUI = DateTimeOffset.Now.Date,
-                    NextPiggingDateUI = DateTimeOffset.Now.Date,
-                    LastSamplingDateUI = DateTimeOffset.Now.Date,
-                    NextSamplingDateUI = DateTimeOffset.Now.Date,
-                    LastChangeOutDateUI = DateTimeOffset.Now.Date,
-                    NextChangeOutDateUI = DateTimeOffset.Now.Date,
-                }, i, "Add");
-        }
-        else if (i == 1)
-        {
-            await ShowDialogAsync(args.Data, i, "Edit");
-        }
-        else if (i == 2)
-        {
-            await ShowDialogAsync(args.Data, i, "Delete");
-        }
-        else if (i == 3)
-        {
-            await ShowDialogAsync(args.Data, i, "View");
-        }
-        else if (i == 4)
-        {
-            await grid.Reload();      
-        }
-    }
-}

@@ -101,15 +101,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         }
         private async Task LoadProductionSK10DataGridAsync(LoadDataArgs args)
         {
-            productionSK10DataGrid.CommonFilter = CommonFilter;
+            productionSK10DataGrid.DailyDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadProductionHIPDataGridAsync(LoadDataArgs args)
         {
-            productionHIPDataGrid.CommonFilter = CommonFilter;
+            productionHIPDataGrid.DailyDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadProductionFPSODataGridAsync(LoadDataArgs args)
         {
-            productionFPSOHelangDataGrid.CommonFilter = CommonFilter;
+            productionFPSOHelangDataGrid.DailyDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadWellHeadAndSeparationSystemDataGridAsync(LoadDataArgs args)
         {
@@ -206,11 +206,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         private async Task LoadAnalysisResultDataGridAsync(LoadDataArgs args)
         {
-            analysisResultDataGrid.CommonFilter = CommonFilter;
+            analysisResultDataGrid.DailyDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadCoolingMediumSystemDataGridAsync(LoadDataArgs args)
         {
-            coolingMediumSystemDataGrid.CommonFilter = CommonFilter;
+            coolingMediumSystemDataGrid.DailyDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadUtilitiesDataGridAsync(LoadDataArgs args)
         {
@@ -248,14 +248,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 producedWaterTreatmentSystemManagementDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 deOilerInjectionDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 majorEquipmentStatusDataGrid?.ReloadAsync() ?? Task.CompletedTask,
-                productionSK10DataGrid?.ReloadAsync() ?? Task.CompletedTask,
-                productionHIPDataGrid?.ReloadAsync() ?? Task.CompletedTask,
-                productionFPSOHelangDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                productionSK10DataGrid?.DailyDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                productionHIPDataGrid?.DailyDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                productionFPSOHelangDataGrid?.DailyDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 wellHeadAndSeparationSystemDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 wellStreamCoolerDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 logisticDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 lWPActivityDataGrid?.ReloadAsync() ?? Task.CompletedTask,
-                communicationSystemDataGrid?.DailyDataGrid.ReloadAsync() ?? Task.CompletedTask,
+                communicationSystemDataGrid?.DailyDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 lwpWellHeadParameterDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 hipWellHeadParameterDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 rollsRoyceRB211EngineDataGrid?.ReloadAsync() ?? Task.CompletedTask,
@@ -274,8 +274,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 glycolStockDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 glycolTrainDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 gasAndCondensateExportSamplersDataGrid?.ReloadAsync() ?? Task.CompletedTask,
-                analysisResultDataGrid?.ReloadAsync() ?? Task.CompletedTask,
-                coolingMediumSystemDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                analysisResultDataGrid?.DailyDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                coolingMediumSystemDataGrid?.DailyDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 UtilitiesDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 waterTankDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 nitrogenGeneratorDataGrid?.ReloadAsync() ?? Task.CompletedTask,
