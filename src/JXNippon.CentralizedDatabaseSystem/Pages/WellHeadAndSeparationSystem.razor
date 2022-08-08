@@ -13,8 +13,7 @@
 
 <WellHeadAndSeparationSystemFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
 <WellHeadAndSeparationSystemDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
-    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"
-    Refresh=@(args => wellStreamCoolerDataGrid.ReloadAsync())/>
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
 
 
 <hr class="solid"><div class="title">Well Stream Coolers Temperature</div>

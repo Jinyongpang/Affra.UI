@@ -1,9 +1,9 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
 @using JXNippon.CentralizedDatabaseSystem.Models
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
-<RadzenTemplateForm Data="@Item" Submit="@( async (DailySK10Production args) => { await SubmitAsync(args); })">
-    <div class="row">
-        <div class="col">
+<DailyDialog TItem=DailySK10Production Item="@Item" CustomColumns=@CustomColumns MenuAction=@MenuAction IsViewing=@isViewing>
+    <ChildContent>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
                     <RadzenLabel class="dialogTextSize" Text="SK10 Cumulative Gas Export (MMscf)" />
@@ -38,12 +38,5 @@
                     <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
                 </div>
             </div>
-            <div class="row justify-content-center py-4" hidden=@isViewing>
-                <div class="col-md-12 d-flex align-items-end justify-content-center">
-                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</RadzenTemplateForm>
+    </ChildContent>
+</DailyDialog>

@@ -1,9 +1,9 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems
 @using JXNippon.CentralizedDatabaseSystem.Models
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
-<RadzenTemplateForm Data="@Item" Submit="@( async (DailyKawasakiExportCompressor args) => { await SubmitAsync(args); })">
-    <div class="row">
-        <div class="col">
+<DailyDialog TItem=DailyKawasakiExportCompressor Item="@Item" CustomColumns=@CustomColumns MenuAction=@MenuAction IsViewing=@isViewing>
+    <ChildContent>
             <Tabs DefaultActiveKey="1" Animated>
                 <TabPane Key="1">
                     <TabTemplate>
@@ -15,7 +15,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Name" />
                             </div>
                             <div class="col-8">
-                               <RadzenAutoComplete Name="KawasakiExportCompressorName" class="w-100" @bind-Value="@Item.KawasakiExportCompressorName" Data="@datas" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                               <RadzenAutoComplete Name="KawasakiExportCompressorName" class="w-100" @bind-Value="@Item.KawasakiExportCompressorName" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
                                     Placeholder="Enter name..." TextProperty="Name"></RadzenAutoComplete>
                                <RadzenRequiredValidator Component="KawasakiExportCompressorName" Text="Name is required" Popup=false/>
                             </div>
@@ -34,7 +34,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Speed" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="Speed" class="w-100" @bind-Value="@Item.Speed" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="Speed" class="w-100" @bind-Value="@Item.Speed" Disabled=@isViewing
                                Placeholder="Enter speed ..." TextProperty="Speed"></RadzenNumeric>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Pressure (bar) Suct (LP)" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="PressureSuct" class="w-100" @bind-Value="@Item.PressureSuct" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="PressureSuct" class="w-100" @bind-Value="@Item.PressureSuct" Disabled=@isViewing
                                Placeholder="Enter pressure suct ..." TextProperty="PressureSuct"></RadzenNumeric>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Pressure (bar) Disc (HP)" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="PressureDisc" class="w-100" @bind-Value="@Item.PressureDisc" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="PressureDisc" class="w-100" @bind-Value="@Item.PressureDisc" Disabled=@isViewing
                                Placeholder="Enter pressure disc ..." TextProperty="PressureDisc"></RadzenNumeric>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Throughput MMscfd" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="ThroughPut" class="w-100" @bind-Value="@Item.ThroughPut" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="ThroughPut" class="w-100" @bind-Value="@Item.ThroughPut"  Disabled=@isViewing
                                Placeholder="Enter throughput ..." TextProperty="ThroughPut"></RadzenNumeric>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="After Cooler Disch LP" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="AfterCoolerDischLP" class="w-100" @bind-Value="@Item.AfterCoolerDischLP" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="AfterCoolerDischLP" class="w-100" @bind-Value="@Item.AfterCoolerDischLP" Disabled=@isViewing
                                Placeholder="Enter after cooler disch LP ..." TextProperty="AfterCoolerDischLP"></RadzenNumeric>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="After Cooler Disch HP" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="AfterCoolerDischHP" class="w-100" @bind-Value="@Item.AfterCoolerDischHP" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="AfterCoolerDischHP" class="w-100" @bind-Value="@Item.AfterCoolerDischHP" Disabled=@isViewing
                                Placeholder="Enter after cooler disch HP ..." TextProperty="AfterCoolerDischHP"></RadzenNumeric>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Recycle Value LP %" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="RecycleValueLP" class="w-100" @bind-Value="@Item.RecycleValueLP" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="RecycleValueLP" class="w-100" @bind-Value="@Item.RecycleValueLP" Disabled=@isViewing
                                Placeholder="Enter recycle value LP % ..." TextProperty="RecycleValueLP"></RadzenNumeric>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Recycle Value HP %" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="RecycleValueHP" class="w-100" @bind-Value="@Item.RecycleValueHP" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="RecycleValueHP" class="w-100" @bind-Value="@Item.RecycleValueHP" Disabled=@isViewing
                                Placeholder="Enter recycle value HP % ..." TextProperty="RecycleValueHP"></RadzenNumeric>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Surge Deviation LP %" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="SurgeDeviationLP" class="w-100" @bind-Value="@Item.SurgeDeviationLP" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="SurgeDeviationLP" class="w-100" @bind-Value="@Item.SurgeDeviationLP" Disabled=@isViewing
                                Placeholder="Enter surge deviation LP % ..." TextProperty="SurgeDeviationLP"></RadzenNumeric>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Surge Deviation HP %" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="SurgeDeviationHP" class="w-100" @bind-Value="@Item.SurgeDeviationHP" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="SurgeDeviationHP" class="w-100" @bind-Value="@Item.SurgeDeviationHP" Disabled=@isViewing
                                Placeholder="Enter surge deviation HP % ..." TextProperty="SurgeDeviationHP"></RadzenNumeric>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Axial Disp. mm #1" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="AxialDisp1" class="w-100" @bind-Value="@Item.AxialDisp1" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="AxialDisp1" class="w-100" @bind-Value="@Item.AxialDisp1" Disabled=@isViewing
                                Placeholder="Enter Axial Disp. mm #1 ..." TextProperty="AxialDisp1"></RadzenNumeric>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Axial Disp. mm #2" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="AxialDisp2" class="w-100" @bind-Value="@Item.AxialDisp2" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="AxialDisp2" class="w-100" @bind-Value="@Item.AxialDisp2" Disabled=@isViewing
                                Placeholder="Enter Axial Disp. mm #2 ..." TextProperty="AxialDisp2"></RadzenNumeric>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Primary Vent DE (kPa)" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="PrimaryVentDE" class="w-100" @bind-Value="@Item.PrimaryVentDE" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="PrimaryVentDE" class="w-100" @bind-Value="@Item.PrimaryVentDE" Disabled=@isViewing
                                Placeholder="Enter primary vent DE ..." TextProperty="PrimaryVentDE"></RadzenNumeric>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Primary Vent NDE (kPa)" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="PrimaryVentNDE" class="w-100" @bind-Value="@Item.PrimaryVentNDE" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="PrimaryVentNDE" class="w-100" @bind-Value="@Item.PrimaryVentNDE" Disabled=@isViewing
                                Placeholder="Enter primary vent NDE ..." TextProperty="PrimaryVentNDE"></RadzenNumeric>
                             </div>
                         </div>
@@ -167,7 +167,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="DE Vibration X" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="DEVibrationX" class="w-100" @bind-Value="@Item.DEVibrationX" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="DEVibrationX" class="w-100" @bind-Value="@Item.DEVibrationX" Disabled=@isViewing
                                Placeholder="Enter DE vibration X ..." TextProperty="DEVibrationX"></RadzenNumeric>
                             </div>
                         </div>
@@ -176,7 +176,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="DE Vibration Y" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="DEVibrationY" class="w-100" @bind-Value="@Item.DEVibrationY" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="DEVibrationY" class="w-100" @bind-Value="@Item.DEVibrationY" Disabled=@isViewing
                                Placeholder="Enter DE vibration Y ..." TextProperty="DEVibrationY"></RadzenNumeric>
                             </div>
                         </div>
@@ -185,7 +185,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="NDE Vibration X" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="NDEVibrationX" class="w-100" @bind-Value="@Item.NDEVibrationX" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="NDEVibrationX" class="w-100" @bind-Value="@Item.NDEVibrationX" Disabled=@isViewing
                                Placeholder="Enter NDE vibration X ..." TextProperty="NDEVibrationX"></RadzenNumeric>
                             </div>
                         </div>
@@ -194,7 +194,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="NDE Vibration Y" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="NDEVibrationY" class="w-100" @bind-Value="@Item.NDEVibrationY" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="NDEVibrationY" class="w-100" @bind-Value="@Item.NDEVibrationY" Disabled=@isViewing
                                Placeholder="Enter NDE vibration Y ..." TextProperty="NDEVibrationY"></RadzenNumeric>
                             </div>
                         </div>
@@ -203,7 +203,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Outboard Thrust Brg TE-801 °c" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="OutboardThrustBrgTE801" class="w-100" @bind-Value="@Item.OutboardThrustBrgTE801" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="OutboardThrustBrgTE801" class="w-100" @bind-Value="@Item.OutboardThrustBrgTE801" Disabled=@isViewing
                                Placeholder="Enter outboard thrust brg TE-801 °c ..." TextProperty="OutboardThrustBrgTE801"></RadzenNumeric>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Outboard Thrust Brg TE-802 °c" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="OutboardThrustBrgTE802" class="w-100" @bind-Value="@Item.OutboardThrustBrgTE802" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="OutboardThrustBrgTE802" class="w-100" @bind-Value="@Item.OutboardThrustBrgTE802" Disabled=@isViewing
                                Placeholder="Enter outboard thrust brg TE-802 °c ..." TextProperty="OutboardThrustBrgTE802"></RadzenNumeric>
                             </div>
                         </div>
@@ -221,7 +221,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Inboard Thrust Brg TE-803 °c" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="InboardThrustBrgTE803" class="w-100" @bind-Value="@Item.InboardThrustBrgTE803" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="InboardThrustBrgTE803" class="w-100" @bind-Value="@Item.InboardThrustBrgTE803" Disabled=@isViewing
                                Placeholder="Enter inboard thrust brg TE-803 °c ..." TextProperty="InboardThrustBrgTE803"></RadzenNumeric>
                             </div>
                         </div>
@@ -230,7 +230,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="Inboard Thrust Brg TE-804 °c" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="InboardThrustBrgTE804" class="w-100" @bind-Value="@Item.InboardThrustBrgTE804" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="InboardThrustBrgTE804" class="w-100" @bind-Value="@Item.InboardThrustBrgTE804" Disabled=@isViewing
                                Placeholder="Enter inboard thrust brg TE-804 °c ..." TextProperty="InboardThrustBrgTE804"></RadzenNumeric>
                             </div>
                         </div>
@@ -239,7 +239,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="NDE Journal Brg TE-805 °c" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="NDEJournalBrgTE805" class="w-100" @bind-Value="@Item.NDEJournalBrgTE805" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="NDEJournalBrgTE805" class="w-100" @bind-Value="@Item.NDEJournalBrgTE805" Disabled=@isViewing
                                Placeholder="Enter NDE journal brg TE-805 °c ..." TextProperty="NDEJournalBrgTE805"></RadzenNumeric>
                             </div>
                         </div>
@@ -248,7 +248,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="NDE Journal Brg TE-806 °c" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="NDEJournalBrgTE806" class="w-100" @bind-Value="@Item.NDEJournalBrgTE806" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="NDEJournalBrgTE806" class="w-100" @bind-Value="@Item.NDEJournalBrgTE806" Disabled=@isViewing
                                Placeholder="Enter NDE journal brg TE-806 °c ..." TextProperty="NDEJournalBrgTE806"></RadzenNumeric>
                             </div>
                         </div>
@@ -257,7 +257,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="DE Journal Brg TE-807 °c" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="DEJournalBrgTE807" class="w-100" @bind-Value="@Item.DEJournalBrgTE807" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="DEJournalBrgTE807" class="w-100" @bind-Value="@Item.DEJournalBrgTE807" Disabled=@isViewing
                                Placeholder="Enter DE journal brg TE-807 °c ..." TextProperty="DEJournalBrgTE807"></RadzenNumeric>
                             </div>
                         </div>
@@ -266,7 +266,7 @@
                                 <RadzenLabel class="dialogTextSize" Text="DE Journal Brg TE-808 °c" />
                             </div>
                             <div class="col-8">
-                               <RadzenNumeric Name="DEJournalBrgTE808" class="w-100" @bind-Value="@Item.DEJournalBrgTE808" Data="@datas" Disabled=@isViewing
+                               <RadzenNumeric Name="DEJournalBrgTE808" class="w-100" @bind-Value="@Item.DEJournalBrgTE808" Disabled=@isViewing
                                Placeholder="Enter DE journal brg TE-808 °c ..." TextProperty="DEJournalBrgTE808"></RadzenNumeric>
                             </div>
                         </div>
@@ -289,12 +289,5 @@
                     </ChildContent>
                 </TabPane>
             </Tabs>
-            <div class="row justify-content-center py-4" hidden=@isViewing>
-                <div class="col-md-12 d-flex align-items-end justify-content-center">
-                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</RadzenTemplateForm>
+    </ChildContent>
+</DailyDialog>

@@ -1,9 +1,9 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders
 @using JXNippon.CentralizedDatabaseSystem.Models
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
-<RadzenTemplateForm Data="@Item" Submit="@( async (DailySandDisposalDesander args) => { await SubmitAsync(args); })">
-    <div class="row">
-        <div class="col">
+<DailyDialog TItem=DailySandDisposalDesander Item="@Item" CustomColumns=@CustomColumns MenuAction=@MenuAction IsViewing=@isViewing>
+    <ChildContent>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
                     <RadzenLabel class="dialogTextSize" Text="Sand Disposal Desander Name" />
@@ -54,7 +54,7 @@
                     <RadzenLabel class="dialogTextSize" Text="No. of East Cluster Jetting Cycle" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="EastClusterJettingCycleNumber" class="w-100" @bind-Value="@Item.EastClusterJettingCycleNumber" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="EastClusterJettingCycleNumber" class="w-100" @bind-Value="@Item.EastClusterJettingCycleNumber"  Disabled=@isViewing
                     Placeholder="Enter no. of east cluster jetting cycle ..." TextProperty="EastClusterJettingCycleNumber"></RadzenNumeric>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                     <RadzenLabel class="dialogTextSize" Text="No. of West Cluster Jetting Cycle" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="WestClusterJettingCycleNumber" class="w-100" @bind-Value="@Item.WestClusterJettingCycleNumber" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="WestClusterJettingCycleNumber" class="w-100" @bind-Value="@Item.WestClusterJettingCycleNumber"  Disabled=@isViewing
                     Placeholder="Enter no. of west cluster jetting cycle ..." TextProperty="WestClusterJettingCycleNumber"></RadzenNumeric>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                     <RadzenLabel class="dialogTextSize" Text="No. of Drum Collected" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="DrumCollectedNumber" class="w-100" @bind-Value="@Item.DrumCollectedNumber" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="DrumCollectedNumber" class="w-100" @bind-Value="@Item.DrumCollectedNumber"  Disabled=@isViewing
                     Placeholder="Enter no. of drum collected ..." TextProperty="DrumCollectedNumber"></RadzenNumeric>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     <RadzenLabel class="dialogTextSize" Text="Accumulated Sand Disposed" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="AccumulatedSandDisposed" class="w-100" @bind-Value="@Item.AccumulatedSandDisposed" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="AccumulatedSandDisposed" class="w-100" @bind-Value="@Item.AccumulatedSandDisposed"  Disabled=@isViewing
                     Placeholder="Enter accumulated sand disposed ..." TextProperty="AccumulatedSandDisposed"></RadzenNumeric>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                     <RadzenLabel class="dialogTextSize" Text="Highest Mercury Reading" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="HighestMercuryReading" class="w-100" @bind-Value="@Item.HighestMercuryReading" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="HighestMercuryReading" class="w-100" @bind-Value="@Item.HighestMercuryReading"  Disabled=@isViewing
                     Placeholder="Enter highest mercury reading ..." TextProperty="HighestMercuryReading"></RadzenNumeric>
                 </div>
             </div>
@@ -111,12 +111,5 @@
                     <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
                 </div>
             </div>
-            <div class="row justify-content-center py-4" hidden=@isViewing>
-                <div class="col-md-12 d-flex align-items-end justify-content-center">
-                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</RadzenTemplateForm>
+    </ChildContent>
+</DailyDialog>

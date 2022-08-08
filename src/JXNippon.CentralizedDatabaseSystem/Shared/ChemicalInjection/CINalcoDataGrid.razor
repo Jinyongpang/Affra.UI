@@ -1,4 +1,5 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
+@using JXNippon.CentralizedDatabaseSystem.Domain.Extensions
 
 <div class="row">
     <div class="col">
@@ -33,6 +34,17 @@
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
                 </RadzenDataGridColumn>
+                @if (this.customColumns is not null)
+                {
+                    foreach(var customColumn in this.customColumns)
+                    {
+                        <RadzenDataGridColumn Context="item" TItem="DailyCiNalco" Property="@customColumn.PropertyName" Title="@customColumn.Title" Type="@this.ExtraColumnService.GetType(customColumn.Type)" Sortable=false Filterable=false>
+                            <Template Context="item">
+                                @((MarkupString)this.ExtraColumnService.GetStringValue(customColumn, item.AsIExtras().ExtraDictionary))
+                            </Template>
+                        </RadzenDataGridColumn>
+                    }
+                }
             </Columns>
 
         </RadzenDataGrid>  

@@ -1,139 +1,34 @@
-﻿using Affra.Core.Domain.Services;
-using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems;
-using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
-using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems;
 using JXNippon.CentralizedDatabaseSystem.Models;
-using JXNippon.CentralizedDatabaseSystem.Notifications;
-using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
+using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 using Microsoft.AspNetCore.Components;
 using Radzen;
-using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement
 {
     public partial class DeOilerInjectionDataGrid
     {
-        private RadzenDataGrid<DailyDeOilerInjection> grid;
-        private IEnumerable<DailyDeOilerInjection> items;
-        private bool isLoading = false;
-
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool ShowDateColumn { get; set; }
-        [Inject] private IServiceProvider ServiceProvider { get; set; }
-        [Inject] private AffraNotificationService AffraNotificationService { get; set; }
-        [Inject] private DialogService DialogService { get; set; }
-        [Inject] private ContextMenuService ContextMenuService { get; set; }
-        public CommonFilter CommonFilter { get; set; }
-        public int Count { get; set; }
-
-        public async Task ReloadAsync()
+        public CommonFilter CommonFilter
         {
-            await grid.FirstPage(true);
-        }
-
-        private async Task LoadDataAsync(LoadDataArgs args)
-        {
-            isLoading = true;
-            await LoadData.InvokeAsync();
-            using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.GetGenericService(serviceScope);
-            var query = service.Get();
-            if (CommonFilter != null)
+            get
             {
-                if (CommonFilter.Status != null)
-                {
-                    query = query.Where(x => x.InjectionStatus.ToUpper() == CommonFilter.Status.ToUpper());
-                }
-                if (CommonFilter.Date != null)
-                {
-                    var start = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value);
-                    var end = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value.AddDays(1));
-                    query = query
-                        .Where(x => x.Date >= start)
-                        .Where(x => x.Date < end);
-                }
+                return this.DailyDataGrid.CommonFilter;
             }
-
-            var response = await query
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DailyDeOilerInjection>();
-
-            Count = (int)response.Count;
-            items = response.ToList();
-            isLoading = false;
-        }
-
-        private void HandleException(Exception ex)
-        {
-            AffraNotificationService.NotifyException(ex);
-        }
-
-        private IGenericService<DailyDeOilerInjection> GetGenericService(IServiceScope serviceScope)
-        {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyDeOilerInjection, ICentralizedDatabaseSystemUnitOfWork>>();
-        }
-
-        private async Task ShowDialogAsync(DailyDeOilerInjection data, int menuAction, string title)
-        {
-            ContextMenuService.Close();
-            dynamic? response;
-            if (menuAction == 2)
+            set
             {
-                response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
-                           new Dictionary<string, object>() { },
-                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
-
-                if (response == true)
-                {
-                    using var serviceScope = ServiceProvider.CreateScope();
-                    var service = this.GetGenericService(serviceScope);
-                    await service.DeleteAsync(data);
-
-                    AffraNotificationService.NotifyItemDeleted();
-                }
+                this.DailyDataGrid.CommonFilter = value;
             }
-            else
-            {
-                response = await DialogService.OpenAsync<DeOilerInjectionDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction } },
-                           Constant.DialogOptions);
+        }
 
-                if (response == true)
-                {
-                    try
-                    {
-                        using var serviceScope = ServiceProvider.CreateScope();
-                        var service = this.GetGenericService(serviceScope);
+        public DailyDataGrid<DailyDeOilerInjection, DeOilerInjectionDialog> DailyDataGrid { get; set; }
 
-                        if (data.Id > 0)
-                        {
-                            isLoading = true;
-                            await service.UpdateAsync(data, data.Id);
-                            AffraNotificationService.NotifyItemUpdated();
-                        }
-                        else
-                        {
-                            isLoading = true;
-                            await service.InsertAsync(data);
-                            AffraNotificationService.NotifyItemCreated();
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        AffraNotificationService.NotifyException(ex);
-                    }
-                    finally
-                    {
-                        isLoading = false;
-                    }
-                }
-            }
-
-            await grid.Reload();
+        public Task ReloadAsync()
+        {
+            return this.DailyDataGrid.ReloadAsync();
         }
     }
 }

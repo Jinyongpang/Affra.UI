@@ -1,9 +1,9 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads
 @using JXNippon.CentralizedDatabaseSystem.Models
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
-<RadzenTemplateForm Data="@Item" Submit="@( async (DailyHIPWellHeadParameter args) => { await SubmitAsync(args); })">
-    <div class="row">
-        <div class="col">
+<DailyDialog TItem=DailyHIPWellHeadParameter Item="@Item" CustomColumns=@CustomColumns MenuAction=@MenuAction IsViewing=@isViewing>
+    <ChildContent>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
                     <RadzenLabel class="dialogTextSize" Text="HIP Well Head Name" />
@@ -29,7 +29,7 @@
                     <RadzenLabel class="dialogTextSize" Text="THP bar" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="THP" class="w-100" @bind-Value="@Item.THP" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="THP" class="w-100" @bind-Value="@Item.THP" Disabled=@isViewing
                     Placeholder="Enter THP ..." TextProperty="THP"></RadzenNumeric>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     <RadzenLabel class="dialogTextSize" Text="THT °c" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="THT" class="w-100" @bind-Value="@Item.THT" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="THT" class="w-100" @bind-Value="@Item.THT" Disabled=@isViewing
                     Placeholder="Enter THT ..." TextProperty="THT"></RadzenNumeric>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <RadzenLabel class="dialogTextSize" Text="Choke %" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="ChokePercentage" class="w-100" @bind-Value="@Item.ChokePercentage" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="ChokePercentage" class="w-100" @bind-Value="@Item.ChokePercentage" Disabled=@isViewing
                     Placeholder="Enter choke % ..." TextProperty="ChokePercentage"></RadzenNumeric>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                     <RadzenLabel class="dialogTextSize" Text="Choke Base" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="ChokeBase" class="w-100" @bind-Value="@Item.ChokeBase" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="ChokeBase" class="w-100" @bind-Value="@Item.ChokeBase" Disabled=@isViewing
                     Placeholder="Enter choke base ..." TextProperty="ChokeBase"></RadzenNumeric>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     <RadzenLabel class="dialogTextSize" Text="PCP bar" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="PCP" class="w-100" @bind-Value="@Item.PCP" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="PCP" class="w-100" @bind-Value="@Item.PCP" Disabled=@isViewing
                     Placeholder="Enter PCP ..." TextProperty="PCP"></RadzenNumeric>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     <RadzenLabel class="dialogTextSize" Text="SCP bar" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="SCP" class="w-100" @bind-Value="@Item.SCP" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="SCP" class="w-100" @bind-Value="@Item.SCP" Disabled=@isViewing
                     Placeholder="Enter SCP ..." TextProperty="SCP"></RadzenNumeric>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     <RadzenLabel class="dialogTextSize" Text="CCP bar" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="CCP" class="w-100" @bind-Value="@Item.CCP" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="CCP" class="w-100" @bind-Value="@Item.CCP" Disabled=@isViewing
                     Placeholder="Enter CCP ..." TextProperty="CCP"></RadzenNumeric>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     <RadzenLabel class="dialogTextSize" Text="CI ltr/day" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="CI" class="w-100" @bind-Value="@Item.CI" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="CI" class="w-100" @bind-Value="@Item.CI" Disabled=@isViewing
                     Placeholder="Enter CI ..." TextProperty="CI"></RadzenNumeric>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                     <RadzenLabel class="dialogTextSize" Text="TCP bar" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="TCP" class="w-100" @bind-Value="@Item.TCP" Data="@datas" Disabled=@isViewing
+                    <RadzenNumeric Name="TCP" class="w-100" @bind-Value="@Item.TCP" Disabled=@isViewing
                     Placeholder="Enter TCP ..." TextProperty="TCP"></RadzenNumeric>
                 </div>
             </div>
@@ -150,12 +150,5 @@
                     <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
                 </div>
             </div>
-            <div class="row justify-content-center py-4" hidden=@isViewing>
-                <div class="col-md-12 d-flex align-items-end justify-content-center">
-                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</RadzenTemplateForm>
+    </ChildContent>
+</DailyDialog>

@@ -3,12 +3,14 @@ using Affra.Core.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem;
 using JXNippon.CentralizedDatabaseSystem.Configurations;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.CommonHelpers;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChange;
 using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Domain.TemplateManagements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Handlers;
@@ -95,6 +97,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<AzureAdConfigurations>>(Options.Create(azureAdConfigurations))
     .AddScoped<IPersonalMessageService, PersonalMessageService>()
     .AddSingleton<IGlobalDataSource, GlobalDataSource>()
+    .AddScoped<IExtraColumnService, ExtraColumnService>()
+    .AddScoped<ICommonHelper, CommonHelper>()
     .AddAntDesign()
     .AddLocalization();
 
