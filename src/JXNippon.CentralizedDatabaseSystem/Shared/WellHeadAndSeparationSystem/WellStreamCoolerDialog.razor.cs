@@ -2,18 +2,19 @@
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 using Microsoft.AspNetCore.Components;
-using Radzen;
+using ViewODataService.Affra.Service.View.Domain.Templates;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
 {
-    public partial class WellStreamCoolerDialog
+    public partial class WellStreamCoolerDialog : IDailyDialog<DailyWellStreamCooler>
     {
         private IEnumerable<WellStreamCooler> datas;
         [Parameter] public DailyWellStreamCooler Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
+        [Parameter] public IEnumerable<CustomColumn> CustomColumns { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
-        [Inject] private DialogService DialogService { get; set; }
 
         private bool isViewing { get => MenuAction == 3; }
 
@@ -26,17 +27,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
                     .Get()
                     .ToQueryOperationResponseAsync<WellStreamCooler>()).ToList();
             }
-        }
-
-        protected Task SubmitAsync(DailyWellStreamCooler arg)
-        {
-            DialogService.Close(true);
-            return Task.CompletedTask;
-        }
-
-        private void Cancel()
-        {
-            DialogService.Close(false);
         }
     }
 }

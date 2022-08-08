@@ -1,19 +1,21 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 using Microsoft.AspNetCore.Components;
-using Radzen;
+using ViewODataService.Affra.Service.View.Domain.Templates;
 using SandDisposalDesanders = CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander
 {
-    public partial class SandDisposalDesanderDialog
+    public partial class SandDisposalDesanderDialog : IDailyDialog<DailySandDisposalDesander>
     {
         private IEnumerable<SandDisposalDesanders.SandDisposalDesander> datas;
-        [Parameter] public SandDisposalDesanders.DailySandDisposalDesander Item { get; set; }
+        [Parameter] public DailySandDisposalDesander Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
+        [Parameter] public IEnumerable<CustomColumn> CustomColumns { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
-        [Inject] private DialogService DialogService { get; set; }
 
         private bool isViewing { get => MenuAction == 3; }
 
@@ -26,17 +28,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander
                     .Get()
                     .ToQueryOperationResponseAsync<SandDisposalDesanders.SandDisposalDesander>()).ToList();
             }
-        }
-
-        protected Task SubmitAsync(SandDisposalDesanders.DailySandDisposalDesander arg)
-        {
-            DialogService.Close(true);
-            return Task.CompletedTask;
-        }
-
-        private void Cancel()
-        {
-            DialogService.Close(false);
         }
     }
 }
