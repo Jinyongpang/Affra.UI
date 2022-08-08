@@ -117,6 +117,120 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DailyHealthSafetyEnvironment" xml:space="preserve">
+    <value>Health, Safety &amp; Environment</value>
+  </data>
+  <data name="DailyLifeBoat" xml:space="preserve">
+    <value>LifeBoats</value>
+  </data>
+  <data name="DailyLongTermOverridesInhibitsOnAlarmTrip" xml:space="preserve">
+    <value>Management Of Change (MOC) : Long Term Overrides &amp; Inhibits On Alarm And/Or Trip</value>
+  </data>
+  <data name="DailyLossOfPrimaryContainmentIncident" xml:space="preserve">
+    <value>Loss Of Primary Containment (LOPC) Incident</value>
+  </data>
+  <data name="DailyOperatingChange" xml:space="preserve">
+    <value>Management Of Change (MOC) : Operating Change</value>
+  </data>
+  <data name="DailyHIPAndLWPSummary" xml:space="preserve">
+    <value>HIP / LWP Summary</value>
+  </data>
+  <data name="DailyFPSOHelangSummary" xml:space="preserve">
+    <value>FPSO Helang Summary</value>
+  </data>
+  <data name="DailySandDisposalDesander" xml:space="preserve">
+    <value>Sand Disposal From TPS (V-3000) via Desander</value>
+  </data>
+  <data name="DailyCiNalco" xml:space="preserve">
+    <value>CI Nalco, EC-1310A (3:7 = CI : Diesel)</value>
+  </data>
+  <data name="DailyInowacInjection" xml:space="preserve">
+    <value>Inowac SBN-810 Injection</value>
+  </data>
+  <data name="DailyCommunicationSystem" xml:space="preserve">
+    <value>DCS, FGS, ASD &amp; Communication System</value>
+  </data>
+  <data name="DailyLWPActivity" xml:space="preserve">
+    <value>Layang Wellhead Platform (LWP) Activities</value>
+  </data>
+  <data name="DailyVendorActivity" xml:space="preserve">
+    <value>Vendor Activities</value>
+  </data>
+  <data name="DailyUtilityBase" xml:space="preserve">
+    <value>DailyUtilityBase</value>
+  </data>
+  <data name="DailyUtility" xml:space="preserve">
+    <value>Utilities</value>
+  </data>
+  <data name="DailyWaterTank" xml:space="preserve">
+    <value>Water Tank</value>
+  </data>
+  <data name="DailyNitrogenGenerator" xml:space="preserve">
+    <value>Nitrogen Generator</value>
+  </data>
+  <data name="DailyMaximoWorkOrder" xml:space="preserve">
+    <value>Maximo Work Order</value>
+  </data>
+  <data name="DailyAnalysisResult" xml:space="preserve">
+    <value>Analysis Result</value>
+  </data>
+  <data name="DailyCoolingMediumSystem" xml:space="preserve">
+    <value>Cooling Medium System</value>
+  </data>
+  <data name="DailyLogistic" xml:space="preserve">
+    <value>Logistic</value>
+  </data>
+  <data name="DailyGlycolPump" xml:space="preserve">
+    <value>Glycol Pump</value>
+  </data>
+  <data name="DailyGlycolTrain" xml:space="preserve">
+    <value>Glycol Train</value>
+  </data>
+  <data name="DailyGlycolStock" xml:space="preserve">
+    <value>Glycol Stock</value>
+  </data>
+  <data name="DailyKawasakiExportCompressor" xml:space="preserve">
+    <value>Kawasaki Export Compressor</value>
+  </data>
+  <data name="DailyRollsRoyceRB211Engine" xml:space="preserve">
+    <value>Rolls Royce RB211 Engine</value>
+  </data>
+  <data name="DailyHIPWellHeadParameter" xml:space="preserve">
+    <value>HIP WellHead Parameter</value>
+  </data>
+  <data name="DailyLWPWellHeadParameter" xml:space="preserve">
+    <value>LWP WellHead Parameter</value>
+  </data>
+  <data name="DailyGasCondensateExportSamplerAndExportLine" xml:space="preserve">
+    <value>Gas &amp; Condensate Export Sampler &amp; Export Line</value>
+  </data>
+  <data name="DailyWellHeadAndSeparationSystem" xml:space="preserve">
+    <value>Wellhead &amp; Separation System</value>
+  </data>
+  <data name="DailyWellStreamCooler" xml:space="preserve">
+    <value>Well Stream Cooler</value>
+  </data>
+  <data name="DailySK10Production" xml:space="preserve">
+    <value>SK10 Production</value>
+  </data>
+  <data name="DailyHIPProduction" xml:space="preserve">
+    <value>HIP Production</value>
+  </data>
+  <data name="DailyFPSOHelangProduction" xml:space="preserve">
+    <value>FPSO Production</value>
+  </data>
+  <data name="DailyMajorEquipmentStatus" xml:space="preserve">
+    <value>Major Equipment Status</value>
+  </data>
+  <data name="DailyProducedWaterTreatmentSystem" xml:space="preserve">
+    <value>Produced Water Treatment System</value>
+  </data>
+  <data name="DailyDeOilerInjection" xml:space="preserve">
+    <value>De-oiler Injection</value>
+  </data>
+  <data name="DailyPowerGenerationAndDistribution" xml:space="preserve">
+    <value>Power Generation &amp; Distrubution</value>
+  </data>
   <data name="DuplicatePrimaryKey" xml:space="preserve">
     <value>Item exists.</value>
   </data>
