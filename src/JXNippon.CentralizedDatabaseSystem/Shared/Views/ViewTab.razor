@@ -33,7 +33,7 @@
             </Space>       
         </div>
     </div>
-    @if (this.views?.Count() > 0)
+    @if (this.views?.Count() > 1)
     {
         <Tabs Class="py-2" Size="@TabSize.Small" OnTabClick=OnTabClickAsync>
             @foreach(var v in this.views)
