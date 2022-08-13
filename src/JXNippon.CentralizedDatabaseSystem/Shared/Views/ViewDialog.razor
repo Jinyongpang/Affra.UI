@@ -9,10 +9,18 @@
                     <RadzenLabel class="dialogTextSize" Text="View Name" />
                 </div>
                 <div class="col-8">
-                    <RadzenTextBox Name="ViewName" class="w-100" Placeholder="Enter view name..." @bind-Value="@Item.Name"></RadzenTextBox>
+                    <RadzenTextBox Name="ViewName" Disabled="@(this.Item.Id > 0)" class="w-100" Placeholder="Enter view name..." @bind-Value="@Item.Name"></RadzenTextBox>
                     <RadzenRequiredValidator Component="ViewName" Text="View name is required" Popup=false/>
                 </div>
             </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Page" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown Name="PageName" class="w-100" Placeholder="Select page..." Data=@datas @bind-Value="@Item.Page"></RadzenDropDown>
+                </div>
+            </div>          
             <div class="row justify-content-center py-4">
                 <div class="col-md-12 d-flex align-items-end justify-content-center">
                     <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save"/>

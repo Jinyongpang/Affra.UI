@@ -140,10 +140,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     using var serviceScope = ServiceProvider.CreateScope();
                     var service = this.GetGenericService<View>(serviceScope);
                     await service.UpdateAsync(this.view, this.view.Id);
-                    this.views = (await GetViewsAsync()).ToList();
-                    this.view = this.views.LastOrDefault();
                     StateHasChanged();
-                    AffraNotificationService.NotifyItemCreated();
+                    AffraNotificationService.NotifyItemUpdated();
                 }
                 catch (Exception ex)
                 {
@@ -236,6 +234,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     }
                     else
                     {
+                        var row = this.view.Rows.LastOrDefault();
+                        if (row is null)
+                        {
+                            await this.AddRowAsync();
+                            row = this.view.Rows.LastOrDefault();
+                        }
+                        data.RowId = row.Id;
+                        data.Sequence = row.Columns.Count;
                         await service.InsertAsync(data);
                         AffraNotificationService.NotifyItemCreated();
                     }

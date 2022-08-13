@@ -20,6 +20,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private IEnumerable<string> types;
         private bool isViewing { get => MenuAction == 3; }
+        private int current { get; set; } = 0;
+        private AntDesign.Steps steps;
 
         protected override Task OnInitializedAsync()
         {
@@ -43,8 +45,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected Task SubmitAsync(Grid arg)
         {
-            Column.ColumnComponent = JsonSerializer.Serialize(Item);
-            DialogService.Close(true);
+            if (this.current == 0)
+            {
+                this.MovePage(1);
+            }
+            else
+            {
+                Column.ColumnComponent = JsonSerializer.Serialize(Item);
+                DialogService.Close(true);
+            }     
             return Task.CompletedTask;
         }
 
@@ -59,6 +68,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             Column.RowId = row.Id;
             Column.Row = row;
             Column.Sequence = row.Columns.Count;
+        }
+
+        private void MovePage(int i)
+        {
+            this.current += i;
         }
     }
 }

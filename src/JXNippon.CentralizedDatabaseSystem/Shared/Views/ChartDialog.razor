@@ -1,99 +1,114 @@
 ﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
 @using Row = ViewODataService.Affra.Service.View.Domain.Views.Row
 
-<RadzenTemplateForm Data="@Item" Submit="@( async (Chart args) => { await SubmitAsync(args); })">
-    <div class="row">
-        <div class="col">
-                <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Row Number" />
-                </div>
-                <div class="col-8">
-                    <RadzenDropDown Name="RowNumber" class="w-100" Data="@View.Rows" TextProperty="Sequence" @bind-Value="@Column.Row" AllowClear="false" TValue="Row" Change=@(args => OnChange(args)) Disabled=@isViewing></RadzenDropDown>
-                    <RadzenRequiredValidator Component="RowNumber" Text="Row number is required" Popup=false/>
-                </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Sequence" />
-                </div>
-                <div class="col-8">
-                    <RadzenNumeric Name="Sequence" class="w-100" Placeholder="Enter sequence..." @bind-Value="@Column.Sequence" Disabled=@isViewing></RadzenNumeric>
-                    <RadzenRequiredValidator Component="Sequence" Text="Sequence is required" Popup=false/>
-                </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Title" />
-                </div>
-                <div class="col-8">
-                    <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Column.Title" Disabled=@isViewing></RadzenTextBox>
-                    <RadzenRequiredValidator Component="Title" Text="Title is required" Popup=false/>
-                </div>
-            </div>
-            <div class="row py-2">
-                
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Icon" />
-                </div>
-                <div class="col-8">
-                    <RadzenTextBox Name="Icon" class="w-100" Placeholder="Enter icon..." @bind-Value="@Column.Icon" Disabled=@isViewing></RadzenTextBox>
-                </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Type" />
-                </div>
-                <div class="col-8">
-                    <RadzenDropDown Name="Type" class="w-100" Placeholder="Enter type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@types" @bind-Value="@Item.Type" TValue="string" AllowClear="false" Disabled=@isViewing></RadzenDropDown>
-                    <RadzenRequiredValidator Component="Type" Text="Type is required" Popup=false/>
-                </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Format String" />
-                </div>
-                <div class="col-8">
-                    <RadzenTextBox Name="FormatString" class="w-100" Placeholder="Enter format string..." @bind-Value="@Item.FormatString" Disabled=@isViewing></RadzenTextBox>
-                </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Axis Title" />
-                </div>
-                <div class="col-8">
-                    <RadzenTextBox Name="AxisTitle" class="w-100" Placeholder="Enter axis title..." @bind-Value="@Item.AxisTitle" Disabled=@isViewing></RadzenTextBox>
-                    <RadzenRequiredValidator Component="AxisTitle" Text="axis title is required" Popup=false/>
-                </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Value Axis Step" />
-                </div>
-                <div class="col-8">
-                    <RadzenNumeric Name="ValueAxisStep" class="w-100" Placeholder="Enter value axis step..." @bind-Value="@Item.ValueAxisStep" Disabled=@isViewing></RadzenNumeric>
-                </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Category Axis Step In Minutes" />
-                </div>
-                <div class="col-8">
-                    <RadzenNumeric Name="StepInMinutes" class="w-100" Placeholder="Enter category axis step in minutes..." @bind-Value="@Item.StepInMinutes" Disabled=@isViewing></RadzenNumeric>
-                </div>
-            </div>
-            <div class="row py-2">
-                <ChartSeriesDataGrid Chart="@Item"></ChartSeriesDataGrid>
-            </div>
-            <div class="row justify-content-center py-4" hidden=@isViewing>
-                <div class="col-md-12 d-flex align-items-end justify-content-center">
-                    <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
-                    <RadzenButton ButtonStyle="Radzen.ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
-                </div>
-            </div>
+<RadzenTemplateForm Data="@Item" Submit="@(async (Chart args) => { await SubmitAsync(args); })">
+    <div class="row py-2">
+        <div>
+            <Steps ShowProgressDot Current="current" @ref=@this.steps>
+                <Step Title="Configurations" />
+                <Step Title="Chart Series" />
+                <Step Title="Preview" />
+            </Steps>
         </div>
-    </div>
-    <div>
-        
+        <Divider />
+        <div class="col">
+            @if (this.current == 0)
+            {
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Title" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Column.Title" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenRequiredValidator Component="Title" Text="Title is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Icon" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Icon" class="w-100" Placeholder="Enter icon..." @bind-Value="@Column.Icon" Disabled=@isViewing></RadzenTextBox>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Type" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDropDown Name="Type" class="w-100" Placeholder="Enter type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@types" @bind-Value="@Item.Type" TValue="string" AllowClear="false" Disabled=@isViewing></RadzenDropDown>
+                        <RadzenRequiredValidator Component="Type" Text="Type is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Format String" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="FormatString" class="w-100" Placeholder="Enter format string..." @bind-Value="@Item.FormatString" Disabled=@isViewing></RadzenTextBox>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Axis Title" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="AxisTitle" class="w-100" Placeholder="Enter axis title..." @bind-Value="@Item.AxisTitle" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenRequiredValidator Component="AxisTitle" Text="Axis title is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Value Axis Step" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="ValueAxisStep" class="w-100" Placeholder="Enter value axis step..." @bind-Value="@Item.ValueAxisStep" Disabled=@isViewing></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Category Axis Step In Minutes" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Name="StepInMinutes" class="w-100" Placeholder="Enter category axis step in minutes..." @bind-Value="@Item.StepInMinutes" Disabled=@isViewing></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-4">
+                    <div class="col-md-12 d-flex justify-content-end">
+                        <RadzenButton ButtonType="Radzen.ButtonType.Submit">Next</RadzenButton>             
+                    </div>
+                </div> 
+            }
+            else if (this.current == 1)
+            {
+                <div class="row py-2">
+                    <ChartSeriesDataGrid Chart="@Item"></ChartSeriesDataGrid>
+                </div>
+                <div class="row py-4">
+                    <div class="col d-flex justify-content-start">
+                        <RadzenButton ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton>             
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <RadzenButton Click="@(() => MovePage(1))">Next</RadzenButton>             
+                    </div>
+                </div> 
+            }
+            else
+            {
+                string type = ViewService.GetTypeMapping()[Item.Type];
+                <ChartComponent TType="@type" AxisTitle="@Item.AxisTitle" FormatString="@Item.FormatString" 
+                    Step="@TimeSpan.FromMinutes(Item.StepInMinutes)" ValueAxisStep="@Item.ValueAxisStep" ChartSeries="@Item.ChartSeries"></ChartComponent>
+                <div class="row py-4">
+                    <div class="col d-flex justify-content-start">
+                        <RadzenButton ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton>             
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>            
+                    </div>
+                </div>  
+            }
+           
+        </div>
     </div>
 </RadzenTemplateForm>

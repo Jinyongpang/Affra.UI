@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 14/7/2022 10:39:49 PM
+// Generation date: 12/8/2022 8:58:21 PM
 namespace ViewODataService.Affra.Service.View.Domain.Views
 {
     /// <summary>
@@ -122,6 +122,27 @@ namespace ViewODataService.Affra.Service.View.Domain.Views
         private string _Name;
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property Page in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Page
+        {
+            get
+            {
+                return this._Page;
+            }
+            set
+            {
+                this.OnPageChanging(value);
+                this._Page = value;
+                this.OnPageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Page;
+        partial void OnPageChanging(string value);
+        partial void OnPageChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -1172,6 +1193,7 @@ namespace ViewODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Name"" Type=""Edm.String"" Nullable=""false"" />
+        <Property Name=""Page"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""Rows"" Type=""Collection(Affra.Service.View.Domain.Views.Row)"" />
       </EntityType>

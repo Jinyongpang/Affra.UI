@@ -6,7 +6,7 @@
         <RadzenDataGrid @ref="grid" Data="@items"
             FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="GridColumn" 
-            ColumnWidth="20px" AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
+            AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <EmptyTemplate>                
@@ -15,11 +15,11 @@
                 </div>                    
             </EmptyTemplate>
             <Columns>
-                <RadzenDataGridColumn TItem="GridColumn" Property="Title" Title="Title" Width="20px">
+                <RadzenDataGridColumn TItem="GridColumn" Property="Title" Title="Title">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="GridColumn" Property="Property" Title="Property" Width="20px">
+                <RadzenDataGridColumn TItem="GridColumn" Property="Property" Title="Property">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="GridColumn" Property="FormatString" Title="FormatString" Width="20px">
+                <RadzenDataGridColumn TItem="GridColumn" Property="FormatString" Title="FormatString">
                 </RadzenDataGridColumn>
             </Columns>
 

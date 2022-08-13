@@ -6,9 +6,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
     public partial class ViewDialog
     {
+        private string[] datas = new[] { "Operation", "WellAllocation", "Deferment", };
         [Parameter] public View Item { get; set; }
 
         [Inject] private DialogService DialogService { get; set; }
+ 
 
         protected Task SubmitAsync(View arg)
         {
