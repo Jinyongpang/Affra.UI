@@ -234,6 +234,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     }
                     else
                     {
+                        var row = this.view.Rows.LastOrDefault();
+                        if (row is null)
+                        {
+                            await this.AddRowAsync();
+                            row = this.view.Rows.LastOrDefault();
+                        }
+                        data.RowId = row.Id;
+                        data.Sequence = row.Columns.Count;
                         await service.InsertAsync(data);
                         AffraNotificationService.NotifyItemCreated();
                     }

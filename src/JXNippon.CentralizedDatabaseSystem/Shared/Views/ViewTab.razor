@@ -33,15 +33,19 @@
             </Space>       
         </div>
     </div>
-    <Tabs Class="py-2" Size="@TabSize.Small" OnTabClick=OnTabClickAsync>
-        @foreach(var v in this.views)
-        {
-            <TabPane Key="@v.Name">
-                <TabTemplate>
-                    <span>@v.Name</span>
-                </TabTemplate>
-            </TabPane>
-        }
-    </Tabs>
+    @if (this.views?.Count() > 0)
+    {
+        <Tabs Class="py-2" Size="@TabSize.Small" OnTabClick=OnTabClickAsync>
+            @foreach(var v in this.views)
+            {
+                <TabPane Key="@v.Name">
+                    <TabTemplate>
+                        <span>@v.Name</span>
+                    </TabTemplate>
+                </TabPane>
+            }
+        </Tabs>
+    }
+   
     <ViewComponent @ref="viewComponent" View=@view StartDate="@startDate" EndDate="@endDate"/>
 </div>

@@ -42,8 +42,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
-            subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
-            await subscription.StartAsync();
+            if (!string.IsNullOrEmpty(this.Subscription))
+            {
+                subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
+                await subscription.StartAsync();
+            }
             await ReloadAsync(StartDate, EndDate);
             await base.OnInitializedAsync();
         }
