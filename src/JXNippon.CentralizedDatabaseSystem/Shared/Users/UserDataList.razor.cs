@@ -4,7 +4,9 @@ using AntDesign;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
+using Radzen;
 using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
@@ -32,6 +34,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
+
+        [Inject] private DialogService DialogService { get; set; }
 
         public CommonFilter CommonFilter { get; set; }
 
@@ -62,7 +66,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
             }
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<User>? userService = this.GetGenericFileService(serviceScope);
+            IGenericService<User>? userService = this.GetGenericService(serviceScope);
             var query = userService.Get();
             if (!string.IsNullOrEmpty(CommonFilter.Search))
             {
@@ -99,6 +103,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
             StateHasChanged();
         }
 
+        private async Task ShowActivityDialogAsync(User user)
+        {
+            await this.DialogService.OpenAsync<UserActivityTable>("View activities",
+            new Dictionary<string, object>() { ["User"] = user },
+            new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+
+        }
+
         private string GetAvatarName(string name)
         {
             string[] names = name.Split(' ');
@@ -117,7 +129,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
             AffraNotificationService.NotifyException(ex);
         }
 
-        private IGenericService<User> GetGenericFileService(IServiceScope serviceScope)
+        private IGenericService<User> GetGenericService(IServiceScope serviceScope)
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<User, IUserUnitOfWork>>();
         }

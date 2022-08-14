@@ -58,7 +58,16 @@
                             </div>
                         </Body>
                         <Extra>
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <Popover Placement="@Placement.RightBottom" Trigger="@(new AntDesign.Trigger[] { AntDesign.Trigger.Click})">
+                                <ContentTemplate>
+                                    <Menu Mode=MenuMode.Vertical>                   
+                                        <MenuItem Key="ViewActivity"><a @onclick="@(() => ShowActivityDialogAsync(context))"><i class="fas fa-eye fa-fw fa-xl"></i> View Activities...</a></MenuItem> 
+                                    </Menu>
+                                </ContentTemplate>
+                                <ChildContent> 
+                                    <AntDesign.Button><i class="fa-solid fa-ellipsis-vertical"></i></AntDesign.Button>                                  
+                                </ChildContent>
+                            </Popover>         
                         </Extra>
                     </Card>            
                 </ListItem>      
