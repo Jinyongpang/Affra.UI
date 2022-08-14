@@ -1,0 +1,76 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using UserODataService.Affra.Service.User.Domain.Users
+
+<div class="row">
+    <div class="col">
+        @if (!isLoading && count == 0)
+        {       
+            <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                <GenericDescription Height="400px" ImageFile="@ImageFile.People" Description="No result found.">
+                </GenericDescription>
+            </div>
+      
+        }
+        <AntList Class="py-3 px-3" Loading=isLoading @ref="_dataList" DataSource="@users" TItem="User" Grid=grid>
+            <ChildContent>
+                <ListItem>
+                    <Card Style="min-height:200px;">
+                        <TitleTemplate>
+                           <div class="d-flex flex-row align-items-center">
+                                <div>
+                                    <span class="mb-0 title" href="#"><Icon Type="user" Theme="outline"/> @(context.Name)</span>
+                                </div>
+                           </div>
+                        </TitleTemplate>
+                        <Body>
+                           <div class="d-flex flex-row align-items-center">
+                                <div>
+                                    <Space>
+                                        <SpaceItem>
+                                            <Avatar Style="vertical-align: middle;" Size="64">
+                                            <span style="font-size: 32px;">@this.GetAvatarName(context.Name)</span>
+                                         </Avatar>
+                                        </SpaceItem>
+                                        <SpaceItem>                                                                             
+                                            <div>Email : @context.Email</div>
+                                            <div>Role : @context.Role</div>
+                                        </SpaceItem>
+                                    </Space>
+
+                                </div>
+                            </div>
+                            <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
+                            <div class="row">
+                                <div class="col-md-8 text-truncate card-time">
+                                    <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Created : {0:d}", context.CreatedDateTime.ToLocalTime())</b>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    @if (context.Status == UserStatus.Active)
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.Status.ToString())"/>
+                                    }
+                                    else
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.Status.ToString())"/>
+                                    }
+                                    
+                                </div>
+                            </div>
+                        </Body>
+                        <Extra>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </Extra>
+                    </Card>            
+                </ListItem>      
+            </ChildContent>
+            <LoadMore>
+                @if (!initLoading && !isLoading && currentCount < count)
+                {
+                    <div class="loadmore-btn-content">
+                        <Button Type="primary" OnClick="OnLoadMoreAsync">loading more</Button>
+                    </div>
+                }
+            </LoadMore>
+        </AntList>
+    </div>
+</div>
