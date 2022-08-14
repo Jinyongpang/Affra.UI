@@ -105,7 +105,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         private async Task ShowActivityDialogAsync(User user)
         {
-            await this.DialogService.OpenAsync<UserActivityTable>("View activities",
+            await this.DialogService.OpenAsync<UserActivityTable>("View Activities",
             new Dictionary<string, object>() { ["User"] = user },
             new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
 

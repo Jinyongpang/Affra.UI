@@ -58,7 +58,7 @@
                             </div>
                         </Body>
                         <Extra>
-                            <Popover Placement="@Placement.RightBottom" Trigger="@(new AntDesign.Trigger[] { AntDesign.Trigger.Click})">
+                            <Popover Placement="@Placement.RightBottom">
                                 <ContentTemplate>
                                     <Menu Mode=MenuMode.Vertical>                   
                                         <MenuItem Key="ViewActivity"><a @onclick="@(() => ShowActivityDialogAsync(context))"><i class="fas fa-eye fa-fw fa-xl"></i> View Activities...</a></MenuItem> 
