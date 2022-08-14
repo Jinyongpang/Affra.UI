@@ -1,298 +1,227 @@
-﻿<div class="row py-2">
-    <div class="col">
-        <Card>
+﻿@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges
+@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications
+@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.AuthorisationAndApprovals
+@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts
+@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations
+@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Endorsements
+@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Extensions
+@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.RiskEvaluations
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (ManagementOfChangeRecord args) => { await SubmitAsync(args); })">
+    <div class="row py-2 px-2">
+        <div class="col">
+            <div class="sticky-top moh-step-div">
+                <Steps Current=@CurrentStep OnChange=OnStepChange>
+                    <Step Title="IDENTIFICATION" />
+                    <Step Title="RISK EVALUATION" />
+                    <Step Title="ENDORSEMENT" />
+                    <Step Title="AUTHORISATION AND APPROVAL" />
+                    <Step Title="COMMUNICATION AND IMPLEMENTATION" />
+                    <Step Title="EXTENSION AND CLOSE-OUT" />
+                </Steps>
+                <Divider />
+            </div>
             <div>
-                <div class="sticky-top moh-step-div">
-                    <Steps ShowProgressDot Current=current OnChange=onChange>
-                        <Step Title="Part 1" Description="IDENTIFICATION" />
-                        <Step Title="Part 2" Description="RISK EVALUATION" />
-                        <Step Title="Part 3" Description="ENDORSEMENT" />
-                        <Step Title="Part 4" Description="AUTHORISATION AND APPROVAL" />
-                        <Step Title="Part 5" Description="COMMUNICATION AND IMPLEMENTATION" />
-                        <Step Title="Part 6" Description="EXTENSION AND CLOSE-OUT" />
-                    </Steps>
-                    <Divider />
-                </div>
                 <div class="steps-content">
                     @{
-                        if(@current == 0)
+                        if(@CurrentStep == 0)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="4" Title="Title Of Change"><TextArea @bind-Value="@strTitleOfChange" /></DescriptionsItem>
-                                    <DescriptionsItem Span="4" Title="Record No."><Input @bind-Value="@strRecordNo" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Title Of Change"><TextArea @bind-Value="Item.TitleOfChange" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Record No."><Input @bind-Value="Item.RecordNumber" /></DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Field">
-                                        <RadioGroup @bind-Value="@strField">
-                                            <Radio Value="@("HIP")">HIP</Radio>
-                                            <Radio Value="@("LWP")">LWP</Radio>
-                                            <Radio Value="@("Others")">Others</Radio>
-                                        </RadioGroup>
+                                        <EnumRadioGroup TEnum="ManagementOfChangeField" @bind-Value="Item.ManagementOfChangeField"></EnumRadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Duration of Change">
-                                        <RadzenNumeric @bind-Value="@intDurationOfChange" TValue="int" /> Days
+                                        <RadzenNumeric @bind-Value="Item.Identification.DurationOfChange" TValue="int" /> Days
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Expiry Date">
-                                        <DatePicker @bind-Value="@dtExpiryDate" Format="yyyy/MM/dd" />
+                                        <DatePicker @bind-Value="Item.Identification.ExpiryDateUI" Format="yyyy/MM/dd" />
                                     </DescriptionsItem>
-                                    <DescriptionsItem Span="4" Title="Description of Change"><TextArea @bind-Value="@strDescriptionOfChange" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Description of Change"><TextArea @bind-Value="Item.Identification.DescriptionOfChange" /></DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Reason for Change">
-                                        <RadioGroup @bind-Value="@strReasonForChange">
-                                            <Radio Value="@("Deviation")">Deviation</Radio>
-                                            <Radio Value="@("Deferment")">Deferment</Radio>
-                                            <Radio Value="@("Improvement")">Improvement</Radio>
-                                            <Radio Value="@("Deficiency")">Deficiency</Radio>
-                                            <Radio Value="@("Decommissioning")">Decommissioning</Radio>
-                                            <Radio Value="@("Others")">
-                                                Others
-                                                @if (strReasonForChange == "Others")
+                                        <EnumRadioGroup TEnum="ReasonForChange" @bind-Value="Item.Identification.ReasonForChange">
+                                        </EnumRadioGroup>
+                                            @if (Item.Identification.ReasonForChange.ToString() == "Others")
                                                 {
-                                                    <Input type="text" TValue="string" />
+                                                    <Input type="text" TValue="string" @bind-Value="Item.Identification.OtherReasonForChange" />
                                                 }
-                                            </Radio>
-                                        </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Details of Change">
-                                        <RadioGroup @bind-Value="@strDetailsOfChange">
-                                            <Radio Value="@("FacilitiesImprovemen")">Facilities Improvement Plan</Radio>
-                                            <Radio Value="@("OperatingChange")">Operating Change and Non-Routine Operations</Radio>
-                                            <Radio Value="@("PlantControl")">Plant Control and Safety System Change</Radio>
-                                        </RadioGroup>
+                                        <EnumRadioGroup TEnum="DetailOfChange" @bind-Value="Item.Identification.DetailOfChange"></EnumRadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Categories for Change">
-                                        <RadioGroup @bind-Value="@strCategoriesOfChange">
-                                            <Radio Value="@("Permanent")">Permanent</Radio>
-                                            <Radio Value="@("Temporary")">Temporary</Radio>
-                                        </RadioGroup>
+                                        <EnumRadioGroup TEnum="CategoriesOfChange" @bind-Value="Item.Identification.CategoriesOfChange"></EnumRadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Priority for Change">
-                                        <RadioGroup @bind-Value="@strPriorityOfChange">
-                                            <Radio Value="@("Normal")">Normal</Radio>
-                                            <Radio Value="@("Emergency")">Emergency</Radio>
-                                        </RadioGroup>
+                                        <EnumRadioGroup TEnum="PriorityOfChange" @bind-Value="Item.Identification.PriorityOfChange"></EnumRadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="SCE(s) Affected">
-                                        <Switch Checked="@strSCEAffected" CheckedChildren="Yes" UnCheckedChildren="No" />
+                                        <Switch Checked="Item.Identification.SCEAffected" CheckedChildren="Yes" UnCheckedChildren="No" />
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="SCE(s) Tag Number">
-                                        <Input @bind-Value="@strSCETagNumber" />
+                                        <Input @bind-Value="Item.Identification.SCETagNumber" />
                                     </DescriptionsItem>
                                 </Descriptions>
                             </div>
                         }
-                        else if(@current == 1)
+                        else if(@CurrentStep == 1)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Title="Inherent Risk" Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="4" Title="Likelihood"><Input @bind-Value="@strInherentRiskLikelihood" /></DescriptionsItem>
-                                    <DescriptionsItem Span="4" Title="Consequence"><Input @bind-Value="@strInherentRiskConsequence" /></DescriptionsItem>
-                                    <DescriptionsItem Span="4" Title="Risk Level"><Input @bind-Value="@strInherentRiskRiskLevel" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Likelihood"><Input @bind-Value="Item.RiskEvaluation.InheritRiskLikelihood" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Consequence"><Input @bind-Value="Item.RiskEvaluation.InheritRiskConsequence" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Risk Level"><Input @bind-Value="Item.RiskEvaluation.InheritRiskRiskLevel" /></DescriptionsItem>
                                 </Descriptions>
                                 <Descriptions Title="Residual Risk" Bordered Column="@responsiveColumn" Style="padding-top:20px">
-                                    <DescriptionsItem Span="4" Title="Likelihood"><Input @bind-Value="@strResidualRiskLikelihood" /></DescriptionsItem>
-                                    <DescriptionsItem Span="4" Title="Consequence"><Input @bind-Value="@strResidualRiskConsequence" /></DescriptionsItem>
-                                    <DescriptionsItem Span="4" Title="Risk Level"><Input @bind-Value="@strResidualRiskRiskLevel" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Likelihood"><Input @bind-Value="Item.RiskEvaluation.ResidualRiskLikelihood" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Consequence"><Input @bind-Value="Item.RiskEvaluation.ResidualRiskConsequence" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Risk Level"><Input @bind-Value="Item.RiskEvaluation.ResidualRiskRiskLevel" /></DescriptionsItem>
                                 </Descriptions>
-                                <Descriptions Title="Recommendation / Countermeasure from Risk Assessment" Bordered Column="@responsiveColumn" Style="padding-top:20px">
-                                    <DescriptionsItem Span="4" Title="Summary 1"><TextArea Rows="3"  @bind-Value="@strRecommendationSummary1" /></DescriptionsItem>
-                                    <DescriptionsItem Span="4" Title="Summary 2"><TextArea Rows="3" @bind-Value="@strRecommendationSummary2" /></DescriptionsItem>
-                                    <DescriptionsItem Span="4" Title="Summary 3"><TextArea Rows="3" @bind-Value="@strRecommendationSummary3" /></DescriptionsItem>
+                                <Descriptions Class="borderedTitlelessDescription" Title="Recommendation / Countermeasure from Risk Assessment" Bordered Column="@responsiveColumn" Style="padding-top:20px">
+                                    <DescriptionsItem Span="4"><RadzenHtmlEditor style="height: 500px;" @bind-Value="Item.RiskEvaluation.RecommendationAndCountermeasure"></RadzenHtmlEditor></DescriptionsItem>
                                 </Descriptions>
                             </div>
                         }
-                        else if(@current == 2)
+                        else if(@CurrentStep == 2)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="4" Title="Line Manager Comment"><TextArea Rows="3"  @bind-Value="@strLineManagerComment" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Name"><Input @bind-Value="@strEndorserName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Designation"><Input @bind-Value="@strEndorserDesignation" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="@dtEndorsemetDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="@strEndorserSignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Line Manager Comment"><TextArea Rows="5"  @bind-Value="Item.Endorsement.LineManagerComment" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Name"><Input @bind-Value="Item.Endorsement.Name" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Designation"><Input @bind-Value="Item.Endorsement.Designation" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="Item.Endorsement.DateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="Item.Endorsement.Signature" /></DescriptionsItem>
                                 </Descriptions>
                             </div>
                         }
-                        else if(@current == 3)
+                        else if(@CurrentStep == 3)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="4" Title="Approving Authority Comment"><TextArea Rows="3"  @bind-Value="@strApproverComment" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Name"><Input @bind-Value="@strApproverName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Designation"><Input @bind-Value="@strApproverDesignation" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="@dtApprovalDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="@strApproverSignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Approving Authority Comment"><TextArea Rows="5"  @bind-Value="Item.AuthorisationAndApproval.ApprovingAuthorityComment" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Name"><Input @bind-Value="Item.AuthorisationAndApproval.Name" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Designation"><Input @bind-Value="Item.AuthorisationAndApproval.Designation" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="Item.AuthorisationAndApproval.DateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="Item.AuthorisationAndApproval.Signature" /></DescriptionsItem>
                                 </Descriptions>
                                 <h3 style="text-align:center;padding-top:20px;">APPROVING AUTHORITY SHALL FOLLOW RISK LEVEL</h3>
                             </div>
                         }
-                        else if(@current == 4)
+                        else if(@CurrentStep == 4)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="4" Title="Comments"><TextArea Rows="6"  @bind-Value="@strCommunicationNImplementationComment" /></DescriptionsItem>
-                                    <DescriptionsItem Span="4" Title="Prepared by: (MOC Initiator)"><Input @bind-Value="@strPreparerName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="@dtPreparerDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="@strPreparerComment" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Comments"><TextArea Rows="5"  @bind-Value="Item.CommunicationAndImplementation.Comments" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Prepared by: (MOC Initiator)"><Input @bind-Value="Item.CommunicationAndImplementation.PreparedBySignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="Item.CommunicationAndImplementation.PreparedByDateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="Item.CommunicationAndImplementation.PreparedBySignature" /></DescriptionsItem>
                                     
-                                    <DescriptionsItem Span="4" Title="Agreed by: (Approving Authority)"><Input @bind-Value="@strAgreerName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="@dtAgreerDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="@strAgreerSignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Agreed by: (Approving Authority)"><Input @bind-Value="Item.CommunicationAndImplementation.AgreedByName" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="Item.CommunicationAndImplementation.AgreedByDateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="Item.CommunicationAndImplementation.AgreedBySignature" /></DescriptionsItem>
                                 </Descriptions>
                             </div>
                         }
-                        else if(@current == 5)
+                        else if(@CurrentStep == 5)
                         {
                             <div class="py-2 px-5">
-                                <Checkbox Checked="@boolExtension1Value" CheckedChange="@CheckExtension1CB">Extension 1</Checkbox>
+                                <Checkbox @bind-Checked="Item.Extension1.IsEnabled" CheckedChange="@CheckExtension1CB">Extension 1</Checkbox>
                                 <Descriptions Bordered Column="@responsiveColumn" Class=@strExtension1Class>
-                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="@intExtension1Duration" TValue="int" /> Days on</DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="@dtExtension1ReviewDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="@strExtension1ApproverName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="@strExtension1ApproverSignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="Item.Extension1.DurationExtended" TValue="int" /> Days on</DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="Item.Extension1.ReviewDateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="Item.Extension1.ApproverName" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="Item.Extension1.ApprovalSignature" /></DescriptionsItem>
                                 </Descriptions>
-                                <Checkbox Style="padding-top:20px" Checked="@boolExtension2Value" CheckedChange="@CheckExtension2CB">Extension 2</Checkbox>
+                                <Checkbox Style="padding-top:20px" @bind-Checked="Item.Extension2.IsEnabled" CheckedChange="@CheckExtension2CB">Extension 2</Checkbox>
                                 <Descriptions Bordered Column="@responsiveColumn" Class=@strExtension2Class>
-                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="@intExtension2Duration" TValue="int" /> Days on</DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="@dtExtension2ReviewDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="@strExtension2ApproverName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="@strExtension2ApproverSignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="Item.Extension2.DurationExtended" TValue="int" /> Days on</DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="Item.Extension2.ReviewDateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="Item.Extension2.ApproverName" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="Item.Extension2.ApprovalSignature" /></DescriptionsItem>
                                 </Descriptions>
-                                <Checkbox Style="padding-top:20px" Checked="@boolExtension3Value" CheckedChange="@CheckExtension3CB">Extension 3</Checkbox>
+                                <Checkbox Style="padding-top:20px" @bind-Checked="Item.Extension3.IsEnabled" CheckedChange="@CheckExtension3CB">Extension 3</Checkbox>
                                 <Descriptions Bordered Column="@responsiveColumn" Class=@strExtension3Class>
-                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="@intExtension3Duration" TValue="int" /> Days on</DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="@dtExtension3ReviewDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="@strExtension3ApproverName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="@strExtension3ApproverSignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="Item.Extension3.DurationExtended" TValue="int" /> Days on</DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="Item.Extension3.ReviewDateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="Item.Extension3.ApproverName" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="Item.Extension3.ApprovalSignature" /></DescriptionsItem>
                                 </Descriptions>
-                                <Checkbox Style="padding-top:20px" Checked="@boolExtension4Value" CheckedChange="@CheckExtension4CB">Extension 4</Checkbox>
+                                <Checkbox Style="padding-top:20px" @bind-Checked="Item.Extension4.IsEnabled" CheckedChange="@CheckExtension4CB">Extension 4</Checkbox>
                                 <Descriptions Bordered Column="@responsiveColumn" Class=@strExtension4Class>
-                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="@intExtension4Duration" TValue="int" /> Days on</DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="@dtExtension4ReviewDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="@strExtension4ApproverName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="@strExtension4ApproverSignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="Item.Extension4.DurationExtended" TValue="int" /> Days on</DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="Item.Extension4.ReviewDateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="Item.Extension4.ApproverName" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="Item.Extension4.ApprovalSignature" /></DescriptionsItem>
                                 </Descriptions>
-                                <Checkbox Style="padding-top:20px" Checked="@boolExtension5Value" CheckedChange="@CheckExtension5CB">Extension 5</Checkbox>
+                                <Checkbox Style="padding-top:20px" @bind-Checked="Item.Extension5.IsEnabled" CheckedChange="@CheckExtension5CB">Extension 5</Checkbox>
                                 <Descriptions Bordered Column="@responsiveColumn" Class=@strExtension5Class>
-                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="@intExtension5Duration" TValue="int" /> Days on</DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="@dtExtension5ReviewDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="@strExtension5ApproverName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="@strExtension5ApproverSignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Duration extended by "><RadzenNumeric @bind-Value="Item.Extension5.DurationExtended" TValue="int" /> Days on</DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker @bind-Value="Item.Extension5.ReviewDateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Name"><Input @bind-Value="Item.Extension5.ApproverName" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Approver Signature"><Input @bind-Value="Item.Extension5.ApprovalSignature" /></DescriptionsItem>
                                 </Descriptions>
                                 <Descriptions Title="MOC Close-out (Approving Authority)" Style="padding-top:20px" Bordered Column="@responsiveColumn">
                                     <DescriptionsItem Span="4" Title="">
-                                        <RadioGroup @bind-Value="@strCloseOutResult">
-                                            <Radio Value="@("Revert")">This change is hereby reverted to original state</Radio>
-                                            <Radio Value="@("Changed")">This change is hereby made permanent</Radio>
-                                        </RadioGroup>
+                                        <EnumRadioGroup TEnum="CloseOutState" @bind-Value="Item.CloseOut.CloseOutState"></EnumRadioGroup>
                                     </DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Name"><Input @bind-Value="@strCloseOutName" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Designation"><Input @bind-Value="@strCloseOutDesignation" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="@dtCloseOutDate" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="@strCloseOutSignature" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Name"><Input @bind-Value="Item.CloseOut.Name" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Designation"><Input @bind-Value="Item.CloseOut.Designation" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Date"><DatePicker @bind-Value="Item.CloseOut.DateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Signature"><Input @bind-Value="Item.CloseOut.Signature" /></DescriptionsItem>
                                 </Descriptions>
                             </div>
                         }
                     }
+                    <Divider />
+
+                    <div class="row">
+                        <div class="col-6 offset-3 text-center">
+                            @{
+                                if(CurrentStep != 0)
+                                {
+                                    <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnPreviousButtonClick">
+                                        <ChildContent>
+                                            <Icon Type="left" Theme="outline"/>
+                                            <span style="font-size: 18px; margin-left: 0px;">Previous</span>
+                                        </ChildContent>
+                                    </Button>
+                                }
+                                if(CurrentStep != 5)
+                                {
+                                    <Button Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnNextButtonClick">
+                                        <ChildContent>
+                                            <span style="font-size: 18px; margin-left: 0px;">Next</span>
+                                            <Icon Type="right" Theme="outline"/>
+                                        </ChildContent>
+                                    </Button>
+                                }
+                                if(CurrentStep == 5)
+                                {
+                                    <Button HtmlType="submit" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round">
+                                        <ChildContent>
+                                            <span style="font-size: 18px; margin-left: 0px;">Submit</span>
+                                            <Icon Type="right" Theme="outline"/>
+                                        </ChildContent>
+                                    </Button>
+                                }
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
-        </Card>
+        </div>
     </div>
-</div>
+</RadzenTemplateForm>
+
 @code{
-    int current;
-
-    string strTitleOfChange { get; set; } = "HM4 annulus pressure increased from 50 psi to 744.3 psi after last bled off activity, which indicates the possibility of packer/tibing leak.Regular monitoring is required to ensure the A annulus pressure not to exceed MAWOP.";
-    string strRecordNo { get; set; } = "HIP-PRD-OCR-S01-002";
-    string strField { get; set; }
-    DateTime dtExpiryDate { get; set; } = DateTime.Now;
-    int intDurationOfChange { get; set; } = 90;
-    string strDescriptionOfChange { get; set; } = "2 nos. 20-pax capacity liferafts located at HIP Lower Deck East are temporarily downtime due to liferafts reported damaged (canopy in bad condition and CO2 inlet valve flexible hose cracked) and beyond service. The liferafts’ lifespan (19 years) have also reached the manufacturer recommended lifespan of 15 to 20 years. These 2 nos. liferafts will be on downtime until the new liferafts arrived, approx. in 10-week time upon PO issuance. ";
-    string strReasonForChange { get; set; }
-    string strDetailsOfChange { get; set; }
-    string strCategoriesOfChange { get; set; }
-    string strPriorityOfChange { get; set; }
-    bool strSCEAffected { get; set; }
-    string strSCETagNumber { get; set; } = "LS004";
-    string strInherentRiskLikelihood { get; set; } = "C";
-    string strInherentRiskConsequence { get; set; } = "2";
-    string strInherentRiskRiskLevel { get; set; } = "C2 (Low)";
-    string strResidualRiskLikelihood { get; set; } = "C";
-    string strResidualRiskConsequence { get; set; } = "2";
-    string strResidualRiskRiskLevel { get; set; } = "C2 (Low)";
-    string strRecommendationSummary1  { get; set; } = "There is no risk of inadequate liferaft capacity during emergencies as the installed capacity is more than the 50% of max POB in addition to the lifeboat as per PTS 16.72.01 requirement. ";
-    string strRecommendationSummary2  { get; set; } = "Total liferaft capacity of 100 pax is more than 50% of max. POB (72 pax with Games Room in operation). ";
-    string strRecommendationSummary3 { get; set; } = "Besides, no change in means of evacuation during emergency (Primary: TEMPSC, Secondary: Liferaft at alternative muster station). Alternative muster station located at HIP South End is still equipped with 3 nos. 25-pax capacity liferaft. Any change of alternative muster station during SIMOPS activity (i.e. utilize HIP East Liferaft Station as alternative muster station) shall be specified in site specific procedure. ";
-    string strLineManagerComment { get; set; }
-    string strEndorserName { get; set; } = "Romy Bin Hashim";
-    string strEndorserDesignation { get; set; } = "Manager, Operations";
-    string strEndorserSignature { get; set; }
-    DateTime dtEndorsemetDate { get; set; } = DateTime.Now;
-
-    string strApproverComment { get; set; }
-    string strApproverName { get; set; } = "Benjamin Anyie Wan";
-    string strApproverDesignation { get; set; } = "Offshore Installation Manager";
-    string strApproverSignature { get; set; }
-    DateTime dtApprovalDate { get; set; } = DateTime.Now;
-    
-    string strCommunicationNImplementationComment { get; set; } = @"All HIP personnel are made aware of the temporarily unavailability of liferafts by: -
-        (1)	HIP to conduct emergency drill to ensure all personnel aware of the location of muster & alternative muster station. 
-        (2)	HIP Medic to inform the personnel on unavailability of liferaft at HIP East during arrival Safety Video Briefing
-        (3)	SWDC to consider liferaft rental/spare liferaft installation for 22S1, subject to total POB during planned shutdown period. ";
-    
-    string strPreparerComment { get; set; }
-    string strPreparerName { get; set; } = "Peng Pei Fen";
-    string strPreparerSignature { get; set; }
-    DateTime dtPreparerDate { get; set; } = DateTime.Now;
-
-    string strAgreerName { get; set; } = "Benjamin Anyie Wan";
-    string strAgreerSignature { get; set; }
-    DateTime dtAgreerDate { get; set; } = DateTime.Now;
-    
-    
-    bool boolExtension1Value { get; set; } = false;
     string strExtension1Class { get; set; } = "moh-disable-div";
-    int intExtension1Duration { get; set; }
-    string strExtension1ApproverName { get; set; }
-    string strExtension1ApproverSignature { get; set; }
-    DateTime dtExtension1ReviewDate { get; set; } = DateTime.Now;
-    
-    bool boolExtension2Value { get; set; } = false;
     string strExtension2Class { get; set; } = "moh-disable-div";
-    int intExtension2Duration { get; set; }
-    string strExtension2ApproverName { get; set; }
-    string strExtension2ApproverSignature { get; set; }
-    DateTime dtExtension2ReviewDate { get; set; } = DateTime.Now;
-    
-    bool boolExtension3Value { get; set; } = false;
     string strExtension3Class { get; set; } = "moh-disable-div";
-    int intExtension3Duration { get; set; }
-    string strExtension3ApproverName { get; set; }
-    string strExtension3ApproverSignature { get; set; }
-    DateTime dtExtension3ReviewDate { get; set; } = DateTime.Now;
-    
-    bool boolExtension4Value { get; set; } = false;
     string strExtension4Class { get; set; } = "moh-disable-div";
-    int intExtension4Duration { get; set; }
-    string strExtension4ApproverName { get; set; }
-    string strExtension4ApproverSignature { get; set; }
-    DateTime dtExtension4ReviewDate { get; set; } = DateTime.Now;
-    
-    bool boolExtension5Value { get; set; } = false;
     string strExtension5Class { get; set; } = "moh-disable-div";
-    int intExtension5Duration { get; set; }
-    string strExtension5ApproverName { get; set; }
-    string strExtension5ApproverSignature { get; set; }
-    DateTime dtExtension5ReviewDate { get; set; } = DateTime.Now;
 
-    string strCloseOutResult { get; set; }
-    string strCloseOutName { get; set; }
-    string strCloseOutDesignation { get; set; }
-    string strCloseOutSignature { get; set; }
-    DateTime dtCloseOutDate { get; set; } = DateTime.Now;
-
-    void onChange(int current)
-    {
-        this.current = current;
-    } 
     private Dictionary<string, int> responsiveColumn = new Dictionary<string, int> {
         { "xxl", 2 },
         { "xl", 2},
@@ -303,67 +232,57 @@
     };
     void CheckExtension1CB()
     {
-        if (boolExtension1Value)
+        if (Item.Extension1.IsEnabled)
         {
-            strExtension1Class = "moh-disable-div";
-            boolExtension1Value = false;
+            strExtension1Class = "";
         }
         else
         {
-            strExtension1Class = "";
-            boolExtension1Value = true;
+            strExtension1Class = "moh-disable-div";
         }
     }
     void CheckExtension2CB()
     {
-        if (boolExtension2Value)
+        if (Item.Extension2.IsEnabled)
         {
-            strExtension2Class = "moh-disable-div";
-            boolExtension2Value = false;
+            strExtension2Class = "";
         }
         else
         {
-            strExtension2Class = "";
-            boolExtension2Value = true;
+            strExtension2Class = "moh-disable-div";
         }
     }
     void CheckExtension3CB()
     {
-        if (boolExtension3Value)
+        if (Item.Extension3.IsEnabled)
         {
-            strExtension3Class = "moh-disable-div";
-            boolExtension3Value = false;
+            strExtension3Class = "";
         }
         else
         {
-            strExtension3Class = "";
-            boolExtension3Value = true;
+            strExtension3Class = "moh-disable-div";
         }
     }
     void CheckExtension4CB()
     {
-        if (boolExtension4Value)
+        if (Item.Extension4.IsEnabled)
         {
-            strExtension4Class = "moh-disable-div";
-            boolExtension4Value = false;
+            strExtension4Class = "";
         }
         else
         {
-            strExtension4Class = "";
-            boolExtension4Value = true;
+            strExtension4Class = "moh-disable-div";
         }
     }
     void CheckExtension5CB()
     {
-        if (boolExtension5Value)
+        if (Item.Extension5.IsEnabled)
         {
-            strExtension5Class = "moh-disable-div";
-            boolExtension5Value = false;
+            strExtension5Class = "";
         }
         else
         {
-            strExtension5Class = "";
-            boolExtension5Value = true;
+            strExtension5Class = "moh-disable-div";
         }
     }
 }

@@ -394,3 +394,13 @@ p.moh-cardbody {
 .rz-panel-content {
     margin: 0!important;
 }
+.ant-steps-item-title {
+    white-space: normal;
+    max-width: 140px;
+}
+.moc-previous-button {
+    margin-right: 50px;
+}
+.borderedTitlelessDescription > div > table > tbody > tr > td.ant-descriptions-item-label {
+    display: none !important;
+}

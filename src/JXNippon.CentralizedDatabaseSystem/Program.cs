@@ -7,7 +7,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
-using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChange;
+using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
 using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Extensions;
@@ -69,14 +69,14 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<ViewConfigurations>>(Options.Create(viewConfigurations))
     .AddScoped<INotificationUnitOfWork, NotificationUnitOfWork>()
     .AddSingleton<IOptions<NotificationConfigurations>>(Options.Create(notificationConfigurations))
-    .AddScoped<IManagemenOfChangeUnitOfWork, ManagemenOfChangeUnitOfWork>()
+    .AddScoped<IManagementOfChangeUnitOfWork, ManagementOfChangeUnitOfWork>()
     .AddSingleton<IOptions<ManagementOfChangeConfigurations>>(Options.Create(managementOfChangeConfigurations))
     .AddUnitGenericService()
     .AddODataHttpClient(nameof(DataExtractorUnitOfWork))
     .AddODataHttpClient(nameof(CentralizedDatabaseSystemUnitOfWork))
     .AddODataHttpClient(nameof(ViewUnitOfWork))
     .AddODataHttpClient(nameof(NotificationUnitOfWork))
-    .AddODataHttpClient(nameof(ManagemenOfChangeUnitOfWork))
+    .AddODataHttpClient(nameof(ManagementOfChangeUnitOfWork))
     .AddScoped<CreateActivityHandler>()
     .AddScoped<JXNippon.CentralizedDatabaseSystem.Handlers.AuthorizationMessageHandler>()
     .AddScoped<NotificationService>()
