@@ -23,6 +23,7 @@ using JXNippon.CentralizedDatabaseSystem.Infrastructure.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Users;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Views;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Options;
@@ -67,6 +68,9 @@ builder.Configuration.GetSection(nameof(ManagementOfChangeConfigurations)).Bind(
 UserConfigurations userConfigurations = new();
 builder.Configuration.GetSection(nameof(UserConfigurations)).Bind(userConfigurations);
 
+RoleAuthorizationConfigurations roleAuthorizationConfigurations = new();
+builder.Configuration.GetSection(nameof(RoleAuthorizationConfigurations)).Bind(roleAuthorizationConfigurations);
+
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
     .AddSingleton<IOptions<DataExtractorConfigurations>>(Options.Create(dataExtractorConfigurations))
@@ -107,6 +111,20 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IGlobalDataSource, GlobalDataSource>()
     .AddScoped<IExtraColumnService, ExtraColumnService>()
     .AddScoped<ICommonHelper, CommonHelper>()
+    .AddSingleton<IOptions<RoleAuthorizationConfigurations>>(Options.Create(roleAuthorizationConfigurations))
+    .AddScoped<IUserService, UserService>()
+    .AddSingleton<IAuthorizationHandler, UserRoleAuthorizeHandler>()
+    .AddAuthorizationCore(options =>
+    {
+        options.AddPolicy("RolePageOperation", policy =>
+            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.Operation)));
+        options.AddPolicy("RolePageWellAllocation", policy =>
+            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.WellAllocation)));
+        options.AddPolicy("RolePageDeferment", policy =>
+            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.Deferment)));
+        options.AddPolicy("RolePageAdministration", policy =>
+            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.Administration)));
+    })
     .AddAntDesign()
     .AddLocalization();
 

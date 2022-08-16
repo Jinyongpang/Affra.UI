@@ -47,13 +47,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             {
                 await this.LogUserActivityAsync(ActivityType.Login, user);
                 using var serviceScope = this._serviceProvider.CreateScope();
-                var service = this.GetGenericService<User>(serviceScope);
-                var email = this.GetEmail(user).ToLower();
-                var userFromService = (await service.Get()
-                    .Where(x => x.Username == email)
-                    .ToQueryOperationResponseAsync<User>())
-                    .ToList()
-                    .FirstOrDefault();
+                var service = serviceScope.ServiceProvider.GetRequiredService<IUserService>();
+                var userFromService = await service.GetUserAsync(user);
                 this._globalDataSource.User = userFromService;
             }
         }
@@ -61,18 +56,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         public void OnLogOutSucceededAsync(RemoteAuthenticationState remoteAutenticationState)
         {
             this._loggedIn = false;
-        }
-        private string GetEmail(ClaimsPrincipal user)
-        {
-            return this.GetValue(user, "preferred_username");
-        }
-
-        private string GetValue(ClaimsPrincipal user, string key)
-        {
-            return user.Claims
-                .Where(x => x.Type.Contains(key))
-                .FirstOrDefault()?
-                .Value;
         }
 
         private async Task LogUserActivityAsync(ActivityType activityType, ClaimsPrincipal? user = null)

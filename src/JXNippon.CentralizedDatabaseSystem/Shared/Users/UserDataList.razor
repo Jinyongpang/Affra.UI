@@ -28,7 +28,7 @@
                                     <Space>
                                         <SpaceItem>
                                             <Avatar Style="vertical-align: middle;" Size="64">
-                                            <span style="font-size: 32px;">@this.GetAvatarName(context.Name)</span>
+                                            <span style="font-size: 32px;">@this.UserService.GetAvatarName(context.Name)</span>
                                          </Avatar>
                                         </SpaceItem>
                                         <SpaceItem>                                                                             
@@ -62,6 +62,7 @@
                                 <ContentTemplate>
                                     <Menu Mode=MenuMode.Vertical>                   
                                         <MenuItem Key="ViewActivity"><a @onclick="@(() => ShowActivityDialogAsync(context))"><i class="fas fa-eye fa-fw fa-xl"></i> View Activities...</a></MenuItem> 
+                                        <MenuItem Key="EditUser"><a @onclick="@(() => ShowDialogAsync(context, 1, "Edit"))"><i class="fas fa-edit fa-fw fa-xl"></i> Edit User...</a></MenuItem> 
                                     </Menu>
                                 </ContentTemplate>
                                 <ChildContent> 

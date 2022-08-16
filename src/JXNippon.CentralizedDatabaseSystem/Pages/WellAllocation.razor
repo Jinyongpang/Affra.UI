@@ -1,6 +1,8 @@
 ﻿@page "/wellallocation/{activeKey}"
 @using JXNippon.CentralizedDatabaseSystem.Shared.Views
-@attribute [Authorize]
+
+@attribute [Authorize(Policy = "RolePageWellAllocation")]
+
 <PageTitle>Well Allocation</PageTitle>
 
 <Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>

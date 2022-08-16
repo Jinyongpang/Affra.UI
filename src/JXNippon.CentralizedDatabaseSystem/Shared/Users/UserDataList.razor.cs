@@ -34,8 +34,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
-
         [Inject] private DialogService DialogService { get; set; }
+        [Inject] private IUserService UserService { get; set; }
 
         public CommonFilter CommonFilter { get; set; }
 
@@ -111,19 +111,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         }
 
-        private string GetAvatarName(string name)
-        {
-            string[] names = name.Split(' ');
-            string result = string.Empty;
-            result += names[0][0];
-            if (names.Length > 1)
-            {
-                result += names[1][0];
-            }
-
-            return result;
-        }
-
         private void HandleException(Exception ex)
         {
             AffraNotificationService.NotifyException(ex);
@@ -133,5 +120,62 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<User, IUserUnitOfWork>>();
         }
+        public async Task ShowDialogAsync(User data, int menuAction, string title)
+        {
+            dynamic? response;
+            if (menuAction == 2)
+            {
+                response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
+                           new Dictionary<string, object>() { },
+                           new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+
+                if (response == true)
+                {
+                    using var serviceScope = ServiceProvider.CreateScope();
+                    var service = this.GetGenericService(serviceScope);
+                    await service.DeleteAsync(data);
+
+                    AffraNotificationService.NotifyItemDeleted();
+                }
+            }
+            else
+            {
+                response = await DialogService.OpenAsync<UserDialog>(title,
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, },
+                           Constant.DialogOptions);
+
+                if (response == true)
+                {
+                    try
+                    {
+                        using var serviceScope = ServiceProvider.CreateScope();
+                        var service = this.GetGenericService(serviceScope);
+
+                        if (data.Id != Guid.Empty)
+                        {
+                            isLoading = true;
+                            await service.UpdateAsync(data, data.Id);
+                            AffraNotificationService.NotifyItemUpdated();
+                        }
+                        else
+                        {
+                            isLoading = true;
+                            await service.InsertAsync(data);
+                            AffraNotificationService.NotifyItemCreated();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        AffraNotificationService.NotifyException(ex);
+                    }
+                    finally
+                    {
+                        isLoading = false;
+                    }
+                }
+            }
+        }
+
     }
 }

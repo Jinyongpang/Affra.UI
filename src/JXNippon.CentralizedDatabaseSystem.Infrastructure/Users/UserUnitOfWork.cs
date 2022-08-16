@@ -15,7 +15,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Users
         {
         }
 
-        public IGenericRepository<User> ViewRepository => this.GetGenericRepository<User>();
-        public IGenericRepository<UserActivity> RowRepository => this.GetGenericRepository<UserActivity>();
+        public IGenericRepository<User> UserRepository => this.GetGenericRepository<User>();
+        public IGenericRepository<UserActivity> UserActivityRepository => this.GetGenericRepository<UserActivity>();
     }
 }
