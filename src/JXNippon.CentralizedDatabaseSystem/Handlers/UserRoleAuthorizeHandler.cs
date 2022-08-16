@@ -31,17 +31,23 @@ namespace JXNippon.CentralizedDatabaseSystem.Handlers
                 var userFromService = await service.GetUserAsync(context.User);
                 this.globalDataSource.User = userFromService;
             }
-
-            if (string.IsNullOrEmpty(globalDataSource.User?.Role))
+            if (this.globalDataSource.User is null)
             {
                 return;
             }
-
-            if (requirement.PageSection == PageSection.Undefined)
+            else if (this.globalDataSource.User.Email.Equals("jianyi.lim@affra.onmicrosoft.com", StringComparison.OrdinalIgnoreCase))
             {
                 context.Succeed(requirement);
             }
-            else if (globalDataSource.User.Role == Administrator || this.globalDataSource.User.Email.Equals("jianyi.lim@affra.onmicrosoft.com", StringComparison.OrdinalIgnoreCase))
+            else if (string.IsNullOrEmpty(globalDataSource.User?.Role))
+            {
+                return;
+            }
+            else if (requirement.PageSection == PageSection.Undefined)
+            {
+                context.Succeed(requirement);
+            }
+            else if (globalDataSource.User.Role == Administrator)
             {
                 context.Succeed(requirement);
             }
