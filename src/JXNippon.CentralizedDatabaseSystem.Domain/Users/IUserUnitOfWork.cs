@@ -5,7 +5,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
 {
     public interface IUserUnitOfWork : IUnitOfWork
     {
-        IGenericRepository<User> ViewRepository { get; }
-        IGenericRepository<UserActivity> RowRepository { get; }
+        IGenericRepository<User> UserRepository { get; }
+        IGenericRepository<UserActivity> UserActivityRepository { get; }
     }
 }

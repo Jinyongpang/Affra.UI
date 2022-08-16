@@ -1,6 +1,8 @@
 ﻿@page "/deferment/{activeKey}"
 @using JXNippon.CentralizedDatabaseSystem.Shared.Views
-@attribute [Authorize]
+
+@attribute [Authorize(Policy = "RolePageDeferment")]
+
 <PageTitle>Deferment</PageTitle>
 
 <Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>

@@ -1,7 +1,7 @@
 ﻿@page "/more/{activeKey}"
 @using JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
 
-@attribute [Authorize]
+@attribute [Authorize(Policy = "RolePageAdministration")]
 
 <PageTitle>More</PageTitle>
 

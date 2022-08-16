@@ -3,9 +3,7 @@ using Affra.Core.Domain.Services;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared
@@ -22,37 +20,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         [Inject]
         private AffraNotificationService _affraNotificationService { get; set; }
 
+        [Inject]
+        private IUserService _userService { get; set; }
+
         private async Task BeginLogout(MouseEventArgs args)
         {
             await this.LogUserActivityAsync(ActivityType.Logout);
             await SignOutManager.SetSignOutState();
             Navigation.NavigateTo("authentication/logout");
-        }
-
-        private string GetAvatarName(string name)
-        {
-            string[] names = name.Split(' ');
-            string result = string.Empty;
-            result += names[0][0];
-            if (names.Length > 1)
-            {
-                result += names[1][0];
-            }
-
-            return result;
-        }
-
-        private string GetEmail(ClaimsPrincipal user)
-        {
-            return this.GetValue(user, "preferred_username");
-        }
-
-        private string GetValue(ClaimsPrincipal user, string key)
-        {
-            return user.Claims
-                .Where(x => x.Type.Contains(key))
-                .FirstOrDefault()?
-                .Value;
         }
 
         private async Task LogUserActivityAsync(ActivityType activityType, ClaimsPrincipal? user = null)
