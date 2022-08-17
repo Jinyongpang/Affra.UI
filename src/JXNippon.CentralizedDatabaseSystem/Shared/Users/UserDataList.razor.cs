@@ -107,7 +107,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         {
             await this.DialogService.OpenAsync<UserActivityTable>("View Activities",
             new Dictionary<string, object>() { ["User"] = user },
-            new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+            new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true, CloseDialogOnOverlayClick = true, });
 
         }
 
