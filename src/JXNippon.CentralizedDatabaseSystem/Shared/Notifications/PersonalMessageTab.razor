@@ -3,7 +3,7 @@
 @using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages
 @inject IGlobalDataSource GlobalDataSource;
 
-<Tabs Type="@TabType.Card" Size="@TabSize.Large" OnTabClick=OnTabClickAsync>
+<Tabs Type="@TabType.Card" Class="h-100 overflow-tab" Size="@TabSize.Large" OnTabClick=OnTabClickAsync @bind-ActiveKey=@this.currentKey>
     <TabPane Key="All">
         <TabTemplate>
             <span><Icon Type="message" Theme="outline" Class="anticon-big"/>All</span>
@@ -21,7 +21,7 @@
             <span><Icon Type="check-circle" Theme="outline" Class="anticon-big"/>Read</span>
         </TabTemplate>
         <ChildContent><PersonalMessageList @ref=readPersonalMessageList PersonalMessageStatus=PersonalMessageStatus.Read></PersonalMessageList></ChildContent>
-    </TabPane>
+    </TabPane>    
     @if (GlobalDataSource.IsDevelopment && GlobalDataSource.Exceptions.Count > 0)
     {
         <TabPane Key="Exception">

@@ -394,3 +394,49 @@ p.moh-cardbody {
 .rz-panel-content {
     margin: 0!important;
 }
+
+.overflow-tab > div.ant-tabs-content-holder {
+    overflow: auto;
+    max-height: 88%;
+}
+.fixed-drawer > div > div > div.ant-drawer-body,
+.fixed-drawer > div.ant-drawer-content {
+    height: 100%;
+    overflow: hidden;
+}
+
+.personal-message-drawer {
+    width: 60vw !important;
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+    .personal-message-drawer {
+        width: 40vw !important;
+    }
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+    .personal-message-drawer {
+        width: 80vw !important;
+    }
+
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+    .personal-message-drawer {
+        width: 100vw !important;
+    }
+}

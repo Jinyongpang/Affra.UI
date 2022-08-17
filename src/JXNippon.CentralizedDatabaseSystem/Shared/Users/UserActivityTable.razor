@@ -1,7 +1,7 @@
 ﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Description
 @using UserODataService.Affra.Service.User.Domain.Users
 
-<Table Size="@(TableSize.Small)" TItem="UserActivity" DataSource="@_data" @bind-PageIndex="@_pageIndex" @bind-PageSize="@_pageSize" Total="@_total"
+<Table Size="@(TableSize.Middle)" TItem="UserActivity" DataSource="@_data" @bind-PageIndex="@_pageIndex" @bind-PageSize="@_pageSize" Total="@_total"
     Loading="_loading" OnChange="HandleTableChangeAsync" RemoteDataSource Responsive>
     <Column Title="Date Time" @bind-Field="@context.CreatedDateTime" Sortable DefaultSortOrder="SortDirection.Descending">@context.CreatedDateTime.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</Column>
     <Column Title="Activity" @bind-Field="@context.ActivityType">
