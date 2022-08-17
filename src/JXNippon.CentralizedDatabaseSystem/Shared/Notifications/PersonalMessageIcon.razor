@@ -14,7 +14,8 @@
     </div>
 </div>
 
-<Drawer Closable="true" Visible="visible" Placement="right" OnClose="CloseAsync" Width=420>
+
+<Drawer WrapClassName="personal-message-drawer h-100 fixed-drawer" Closable="true" Visible="visible" Placement="right" OnClose="CloseAsync">
     <Title><h4 style="font-weight: bold;"><Icon Type="bell" Theme="outline" Class="top-row-alert"/> Personal Message</h4></Title>
     <PersonalMessageTab @ref=personalMessageTab></PersonalMessageTab>
 </Drawer>
