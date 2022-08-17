@@ -26,7 +26,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
             Xs = 1,
             Sm = 1,
             Md = 1,
-            Lg = 3,
+            Lg = 2,
             Xl = 3,
             Xxl = 3,
         };
