@@ -1,5 +1,7 @@
-﻿using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
+﻿using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
+using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
@@ -8,20 +10,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
     {
         [Parameter] public ManagementOfChangeRecord Item { get; set; }
         [Inject] private DialogService DialogService { get; set; }
+        [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
 
-        private int CurrentStep;
+        private int currentStep;
 
         private void OnNextButtonClick()
         {
-            CurrentStep++;
+            currentStep++;
         }
         private void OnPreviousButtonClick()
         {
-            CurrentStep--;
+            currentStep--;
         }
         private void OnStepChange(int current)
         {
-            this.CurrentStep = current;
+            this.currentStep = current;
         }
         protected Task SubmitAsync(ManagementOfChangeRecord args)
         {

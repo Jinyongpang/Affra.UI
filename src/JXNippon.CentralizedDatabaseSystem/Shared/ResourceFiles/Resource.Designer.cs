@@ -70,6 +70,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Facilities Improvement Plan.
+        /// </summary>
+        public static string FacilitiesImprovementPlan {
+            get {
+                return ResourceManager.GetString("FacilitiesImprovementPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction conflicts with another user..
         /// </summary>
         public static string InvalidToken {
@@ -79,11 +88,47 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This change is hereby made permanent.
+        /// </summary>
+        public static string MadePermanentState {
+            get {
+                return ResourceManager.GetString("MadePermanentState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item not found..
         /// </summary>
         public static string NotFound {
             get {
                 return ResourceManager.GetString("NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operating Change and Non-Routine Operations.
+        /// </summary>
+        public static string OperatingChangeAndNonRoutineOperations {
+            get {
+                return ResourceManager.GetString("OperatingChangeAndNonRoutineOperations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plant Control and Safety System Change.
+        /// </summary>
+        public static string PlantControlAndSafetySystemChange {
+            get {
+                return ResourceManager.GetString("PlantControlAndSafetySystemChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This change is hereby reverted to original state.
+        /// </summary>
+        public static string RevertOriginalState {
+            get {
+                return ResourceManager.GetString("RevertOriginalState", resourceCulture);
             }
         }
         

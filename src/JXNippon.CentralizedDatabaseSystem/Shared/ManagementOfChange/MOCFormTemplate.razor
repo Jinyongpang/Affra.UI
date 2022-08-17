@@ -11,7 +11,7 @@
     <div class="row py-2 px-2">
         <div class="col">
             <div class="sticky-top moh-step-div">
-                <Steps Current=@CurrentStep OnChange=OnStepChange>
+                <Steps Current=@currentStep OnChange=OnStepChange>
                     <Step Title="IDENTIFICATION" />
                     <Step Title="RISK EVALUATION" />
                     <Step Title="ENDORSEMENT" />
@@ -24,7 +24,7 @@
             <div>
                 <div class="steps-content">
                     @{
-                        if(@CurrentStep == 0)
+                        if(@currentStep == 0)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
@@ -42,14 +42,20 @@
                                     <DescriptionsItem Span="4" Title="Description of Change"><TextArea @bind-Value="Item.Identification.DescriptionOfChange" /></DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Reason for Change">
                                         <EnumRadioGroup TEnum="ReasonForChange" @bind-Value="Item.Identification.ReasonForChange">
-                                        </EnumRadioGroup>
-                                            @if (Item.Identification.ReasonForChange.ToString() == "Others")
+                                            <ChildContent>
+                                                @if (Item.Identification.ReasonForChange.ToString() == "Others")
                                                 {
-                                                    <Input type="text" TValue="string" @bind-Value="Item.Identification.OtherReasonForChange" />
+                                                    <Input type="text" Style="margin-top: 10px;" TValue="string" @bind-Value="Item.Identification.OtherReasonForChange" />
                                                 }
+                                            </ChildContent>
+                                        </EnumRadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Details of Change">
-                                        <EnumRadioGroup TEnum="DetailOfChange" @bind-Value="Item.Identification.DetailOfChange"></EnumRadioGroup>
+                                        <RadioGroup TValue="DetailOfChange" Name="DetailOfChange" @bind-Value="Item.Identification.DetailOfChange" @bind-CheckedValue="Item.Identification.DetailOfChange">
+                                            @foreach (var val in Enum.GetValues(typeof(DetailOfChange)).Cast<DetailOfChange>()) {
+                                                <Radio TValue="DetailOfChange" Value="@val">@(stringLocalizer[val.ToString()])</Radio>
+                                            }
+                                        </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Categories for Change">
                                         <EnumRadioGroup TEnum="CategoriesOfChange" @bind-Value="Item.Identification.CategoriesOfChange"></EnumRadioGroup>
@@ -66,7 +72,7 @@
                                 </Descriptions>
                             </div>
                         }
-                        else if(@CurrentStep == 1)
+                        else if(@currentStep == 1)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Title="Inherent Risk" Bordered Column="@responsiveColumn">
@@ -84,7 +90,7 @@
                                 </Descriptions>
                             </div>
                         }
-                        else if(@CurrentStep == 2)
+                        else if(@currentStep == 2)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
@@ -96,7 +102,7 @@
                                 </Descriptions>
                             </div>
                         }
-                        else if(@CurrentStep == 3)
+                        else if(@currentStep == 3)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
@@ -109,7 +115,7 @@
                                 <h3 style="text-align:center;padding-top:20px;">APPROVING AUTHORITY SHALL FOLLOW RISK LEVEL</h3>
                             </div>
                         }
-                        else if(@CurrentStep == 4)
+                        else if(@currentStep == 4)
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
@@ -124,7 +130,7 @@
                                 </Descriptions>
                             </div>
                         }
-                        else if(@CurrentStep == 5)
+                        else if(@currentStep == 5)
                         {
                             <div class="py-2 px-5">
                                 <Checkbox @bind-Checked="Item.Extension1.IsEnabled" CheckedChange="@CheckExtension1CB">Extension 1</Checkbox>
@@ -164,7 +170,11 @@
                                 </Descriptions>
                                 <Descriptions Title="MOC Close-out (Approving Authority)" Style="padding-top:20px" Bordered Column="@responsiveColumn">
                                     <DescriptionsItem Span="4" Title="">
-                                        <EnumRadioGroup TEnum="CloseOutState" @bind-Value="Item.CloseOut.CloseOutState"></EnumRadioGroup>
+                                        <RadioGroup TValue="CloseOutState" Name="CloseOutState" @bind-Value="Item.CloseOut.CloseOutState" @bind-CheckedValue="Item.CloseOut.CloseOutState">
+                                            @foreach (var val in Enum.GetValues(typeof(CloseOutState)).Cast<CloseOutState>()) {
+                                                <Radio TValue="CloseOutState" Value="@val">@(stringLocalizer[val.ToString()])</Radio>
+                                            }
+                                        </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Name"><Input @bind-Value="Item.CloseOut.Name" /></DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Designation"><Input @bind-Value="Item.CloseOut.Designation" /></DescriptionsItem>
@@ -179,7 +189,7 @@
                     <div class="row">
                         <div class="col-6 offset-3 text-center">
                             @{
-                                if(CurrentStep != 0)
+                                if(currentStep != 0)
                                 {
                                     <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnPreviousButtonClick">
                                         <ChildContent>
@@ -188,7 +198,7 @@
                                         </ChildContent>
                                     </Button>
                                 }
-                                if(CurrentStep != 5)
+                                if(currentStep != 5)
                                 {
                                     <Button Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnNextButtonClick">
                                         <ChildContent>
@@ -197,7 +207,7 @@
                                         </ChildContent>
                                     </Button>
                                 }
-                                if(CurrentStep == 5)
+                                if(currentStep == 5)
                                 {
                                     <Button HtmlType="submit" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round">
                                         <ChildContent>
