@@ -3,12 +3,15 @@ using Affra.Core.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem;
 using JXNippon.CentralizedDatabaseSystem.Configurations;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.CommonHelpers;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
 using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Domain.TemplateManagements;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Handlers;
@@ -17,8 +20,10 @@ using JXNippon.CentralizedDatabaseSystem.Infrastructure.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.ManagementOfChanges;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Infrastructure.Users;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Views;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Options;
@@ -60,6 +65,12 @@ builder.Configuration.GetSection(nameof(PersonalMessageNotificationServiceConfig
 ManagementOfChangeConfigurations managementOfChangeConfigurations = new();
 builder.Configuration.GetSection(nameof(ManagementOfChangeConfigurations)).Bind(managementOfChangeConfigurations);
 
+UserConfigurations userConfigurations = new();
+builder.Configuration.GetSection(nameof(UserConfigurations)).Bind(userConfigurations);
+
+RoleAuthorizationConfigurations roleAuthorizationConfigurations = new();
+builder.Configuration.GetSection(nameof(RoleAuthorizationConfigurations)).Bind(roleAuthorizationConfigurations);
+
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
     .AddSingleton<IOptions<DataExtractorConfigurations>>(Options.Create(dataExtractorConfigurations))
@@ -71,12 +82,15 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<NotificationConfigurations>>(Options.Create(notificationConfigurations))
     .AddScoped<IManagementOfChangeUnitOfWork, ManagementOfChangeUnitOfWork>()
     .AddSingleton<IOptions<ManagementOfChangeConfigurations>>(Options.Create(managementOfChangeConfigurations))
+    .AddScoped<IUserUnitOfWork, UserUnitOfWork>()
+    .AddSingleton<IOptions<UserConfigurations>>(Options.Create(userConfigurations))
     .AddUnitGenericService()
     .AddODataHttpClient(nameof(DataExtractorUnitOfWork))
     .AddODataHttpClient(nameof(CentralizedDatabaseSystemUnitOfWork))
     .AddODataHttpClient(nameof(ViewUnitOfWork))
     .AddODataHttpClient(nameof(NotificationUnitOfWork))
-    .AddODataHttpClient(nameof(ManagementOfChangeUnitOfWork))
+    .AddODataHttpClient(nameof(ManagemenOfChangeUnitOfWork))
+    .AddODataHttpClient(nameof(UserUnitOfWork))
     .AddScoped<CreateActivityHandler>()
     .AddScoped<JXNippon.CentralizedDatabaseSystem.Handlers.AuthorizationMessageHandler>()
     .AddScoped<NotificationService>()
@@ -95,6 +109,22 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<AzureAdConfigurations>>(Options.Create(azureAdConfigurations))
     .AddScoped<IPersonalMessageService, PersonalMessageService>()
     .AddSingleton<IGlobalDataSource, GlobalDataSource>()
+    .AddScoped<IExtraColumnService, ExtraColumnService>()
+    .AddScoped<ICommonHelper, CommonHelper>()
+    .AddSingleton<IOptions<RoleAuthorizationConfigurations>>(Options.Create(roleAuthorizationConfigurations))
+    .AddScoped<IUserService, UserService>()
+    .AddSingleton<IAuthorizationHandler, UserRoleAuthorizeHandler>()
+    .AddAuthorizationCore(options =>
+    {
+        options.AddPolicy("RolePageOperation", policy =>
+            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.Operation)));
+        options.AddPolicy("RolePageWellAllocation", policy =>
+            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.WellAllocation)));
+        options.AddPolicy("RolePageDeferment", policy =>
+            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.Deferment)));
+        options.AddPolicy("RolePageAdministration", policy =>
+            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.Administration)));
+    })
     .AddAntDesign()
     .AddLocalization();
 

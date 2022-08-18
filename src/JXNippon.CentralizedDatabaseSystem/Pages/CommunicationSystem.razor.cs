@@ -11,12 +11,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private DateFilterPanel filterPanel;
         private async Task LoadDataAsync(LoadDataArgs args)
         {
-            dataGrid.CommonFilter = filterPanel.CommonFilter;
+            dataGrid.DailyDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
 
         private async Task OnChangeAsync(CommonFilter commonFilter)
         {
-            await dataGrid.ReloadAsync();
+            await dataGrid.DailyDataGrid.ReloadAsync();
         }
     }
 }

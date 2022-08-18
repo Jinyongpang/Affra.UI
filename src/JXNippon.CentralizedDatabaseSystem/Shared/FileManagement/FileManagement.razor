@@ -4,12 +4,12 @@
             <div class="col-12 float-right align-items-center text-right mt-1">
                 <Space Size="@("middle")">
                     <SpaceItem>
-                        <Search Size="@("large")" Placeholder="Search file..." Style="width: 300px;" OnChange=@(args => ReloadAsync(null)) @bind-Value=search ClassicSearchIcon/>
+                        <Search Size="@("large")" Placeholder="Search file..." Style="width: 20vw;" OnChange=@(args => ReloadAsync(null)) @bind-Value=search ClassicSearchIcon/>
                     </SpaceItem>
                     <SpaceItem>
-                        <Button Type="primary" Icon="@IconType.Outline.Reload" Size="@("large")" Shape="@ButtonShape.Round" OnClick=@(args => ReloadAsync(null))>
+                        <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick=@(args => ReloadAsync(null))>
                             <ChildContent>
-                                <span style="font-size: 18px; margin-left: 0px;">Reload</span>
+                                <Icon Type="reload" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Reload</span>
                             </ChildContent>
                         </Button>
                     </SpaceItem>
@@ -18,11 +18,11 @@
         </div>       
     </Header>
     <Layout Style="height: 100%;">
-        <Sider Width=200>
+        <Sider Class="d-none d-lg-inline">
             <Menu DefaultSelectedKeys=@(new[] { "All" }) Style="height: 100%;" Mode=@MenuMode.Inline @ref=menu OnMenuItemClicked=OnMenuItemSelectAsync>
                 <MenuItem Key="All">         
                     <IconTemplate>
-                        <Icon Type="file" Theme="outline"/>
+                        <Icon Type="file" Theme="outline" Class="anticon-big"/>
                     </IconTemplate>
                     <ChildContent>
                         <span style="font-size: 16px; margin-left: 0px;">All</span>
@@ -30,7 +30,7 @@
                 </MenuItem>
                 <MenuItem Key="Processing">
                     <IconTemplate>
-                        <Icon Type="loading" Theme="outline"/>
+                        <Icon Type="loading" Theme="outline" Class="anticon-big"/>
                     </IconTemplate>
                     <ChildContent>
                         <span style="font-size: 16px; margin-left: 0px;">Processing</span>
@@ -38,7 +38,7 @@
                 </MenuItem>
                 <MenuItem Key="Completed">
                     <IconTemplate>
-                        <Icon Type="file-done" Theme="outline"/>
+                        <Icon Type="file-done" Theme="outline" Class="anticon-big"/>
                     </IconTemplate>
                     <ChildContent>
                         <span style="font-size: 16px; margin-left: 0px;">Completed</span>
@@ -46,7 +46,7 @@
                 </MenuItem>
                 <MenuItem Key="Pending">
                     <IconTemplate>
-                        <Icon Type="field-time" Theme="outline"/>
+                        <Icon Type="field-time" Theme="outline" Class="anticon-big"/>
                     </IconTemplate>
                     <ChildContent>
                         <span style="font-size: 16px; margin-left: 0px;">Pending</span>
@@ -54,7 +54,7 @@
                 </MenuItem>
                 <MenuItem Key="Failed">
                     <IconTemplate>
-                        <Icon Type="file-exclamation" Theme="outline"/>
+                        <Icon Type="file-exclamation" Theme="outline" Class="anticon-big"/>
                     </IconTemplate>
                     <ChildContent>
                         <span style="font-size: 16px; margin-left: 0px;">Failed</span>

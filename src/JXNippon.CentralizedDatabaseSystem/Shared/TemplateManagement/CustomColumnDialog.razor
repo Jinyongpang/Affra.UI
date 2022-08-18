@@ -20,6 +20,7 @@
                 <div class="col-8">
                     <RadzenTextBox Name="Property" class="w-100" Placeholder="Enter property name..." @bind-Value="@Item.PropertyName" Disabled=@isViewing></RadzenTextBox>
                     <RadzenRequiredValidator Component="Property" Text="Property name is required" Popup=false/>
+                    <RadzenRegexValidator Component="Property" Text="Must be a valid property name" Pattern="^[a-zA-Z_]\w*(\.[a-zA-Z_]\w*)*$" Popup=false/>
                 </div>
             </div>
             <div class="row py-2">

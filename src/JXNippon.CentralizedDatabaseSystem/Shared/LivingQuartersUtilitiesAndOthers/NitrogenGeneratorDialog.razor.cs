@@ -1,27 +1,16 @@
 ﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities;
+using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 using Microsoft.AspNetCore.Components;
-using Radzen;
+using ViewODataService.Affra.Service.View.Domain.Templates;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers
 {
-    public partial class NitrogenGeneratorDialog
+    public partial class NitrogenGeneratorDialog : IDailyDialog<DailyNitrogenGenerator>
     {
         [Parameter] public DailyNitrogenGenerator Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
-        [Inject] private IServiceProvider ServiceProvider { get; set; }
-        [Inject] private DialogService DialogService { get; set; }
+        [Parameter] public IEnumerable<CustomColumn> CustomColumns { get; set; }
 
         private bool isViewing { get => MenuAction == 3; }
-
-        protected Task SubmitAsync(DailyNitrogenGenerator arg)
-        {
-            DialogService.Close(true);
-            return Task.CompletedTask;
-        }
-
-        private void Cancel()
-        {
-            DialogService.Close(false);
-        }
     }
 }

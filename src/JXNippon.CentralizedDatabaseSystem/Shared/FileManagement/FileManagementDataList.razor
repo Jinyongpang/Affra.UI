@@ -17,7 +17,7 @@
                     <Card Style="min-height:200px;">
                         <TitleTemplate>
                            <div class="d-flex flex-row align-items-center">
-                                <div>
+                                <div style="word-break:break-word;">
                                     <span class="mb-0 title" href="#"><i class="oi oi-spreadsheet"></i> @(context.FileName)</span>
                                 </div>
                            </div>
@@ -25,7 +25,7 @@
                         <Body>
                            <div class="d-flex flex-row align-items-center">
                                 <div>
-                                     <div>Folder : @context.FolderName</div>
+                                     <div style="word-break:break-word;">Folder : @context.FolderName</div>
                                     <div style="font-size: .8em">Attempts: @(context.NumberOfAttempts)</div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                 <div class="col-md-8 text-truncate card-time">
                                     <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.LastModifiedDateTime.ToLocalTime())</b>
                                 </div>
-                                <div class="col-md-4 text-right">
+                                <div class="col-md-4 text-right" style="word-break:break-word;">
                                     @if (context.ProcessStatus == FileProcessStatus.Completed)
                                     {
                                         <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.ProcessStatus.ToString())"/>

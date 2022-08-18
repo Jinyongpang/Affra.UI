@@ -1,33 +1,8 @@
-﻿@page "/dashboard"
-@using BlazorDateRangePicker
+﻿@using BlazorDateRangePicker
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
 @using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
-@using JXNippon.CentralizedDatabaseSystem.Models
-@using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
-@using JXNippon.CentralizedDatabaseSystem.Shared.Logistic
-@using JXNippon.CentralizedDatabaseSystem.Shared.Dashboard
-@using JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment
-@using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem
-@using JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction
-@using JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem
-@using JXNippon.CentralizedDatabaseSystem.Shared.Views
-@using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
-@using JXNippon.CentralizedDatabaseSystem.Shared.WellHead
-@using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement
-@using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement
-@using JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
-@using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity
-@using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
-@using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection
-@using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem
-@using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine
-@using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem
-@using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers
-@using JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander
-@using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities
 @using ViewODataService.Affra.Service.View.Domain.Views
-@attribute [Authorize]
-<PageTitle>Dashboard</PageTitle>
+
 <div class="px-2">
     <div class="row">
         <div class="col-md-6 col-xl-3 col">
@@ -58,6 +33,19 @@
             </Space>       
         </div>
     </div>
-
+    @if (this.views?.Count() > 1)
+    {
+        <Tabs Class="py-2" Size="@TabSize.Small" OnTabClick=OnTabClickAsync>
+            @foreach(var v in this.views)
+            {
+                <TabPane Key="@v.Name">
+                    <TabTemplate>
+                        <span>@v.Name</span>
+                    </TabTemplate>
+                </TabPane>
+            }
+        </Tabs>
+    }
+   
     <ViewComponent @ref="viewComponent" View=@view StartDate="@startDate" EndDate="@endDate"/>
 </div>

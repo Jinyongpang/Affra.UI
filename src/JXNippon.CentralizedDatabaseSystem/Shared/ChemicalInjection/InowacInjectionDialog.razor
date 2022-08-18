@@ -1,5 +1,7 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
+@using JXNippon.CentralizedDatabaseSystem.Domain.Extensions
 @using JXNippon.CentralizedDatabaseSystem.Models
+@using JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
 
 <RadzenTemplateForm Data="@Item" Submit="@( async (DailyInowacInjection args) => { await SubmitAsync(args); })">
     <div class="row">
@@ -313,8 +315,19 @@
                         </div>
                     </ChildContent>
                 </TabPane>
+                @if(this.CustomColumns is not null && this.CustomColumns.Count() > 0)
+                {                  
+                    <TabPane Key="4">
+                        <TabTemplate>
+                            <span>More</span>
+                        </TabTemplate>
+                        <ChildContent>
+                            <ExtraColumnEditor @ref=extraColumnEditor IsViewing=@isViewing CustomColumns=this.CustomColumns ExtraDictionary=Item.AsIExtras().ExtraDictionary></ExtraColumnEditor>
+                        </ChildContent>
+                     </TabPane>
+                }
             </Tabs>
-            <div class="row justify-content-center py-4" hidden=@isViewing>
+             <div class="row justify-content-center py-4" hidden=@isViewing>
                 <div class="col-md-12 d-flex align-items-end justify-content-center">
                     <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
                     <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
@@ -323,3 +336,6 @@
         </div>
     </div>
 </RadzenTemplateForm>
+
+
+                

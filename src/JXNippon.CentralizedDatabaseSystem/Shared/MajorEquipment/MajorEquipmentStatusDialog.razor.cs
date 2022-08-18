@@ -1,26 +1,16 @@
-﻿using Microsoft.AspNetCore.Components;
-using Radzen;
-using MajorEquipmentStatuses = CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses;
+﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses;
+using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
+using Microsoft.AspNetCore.Components;
+using ViewODataService.Affra.Service.View.Domain.Templates;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment
 {
-    public partial class MajorEquipmentStatusDialog
+    public partial class MajorEquipmentStatusDialog : IDailyDialog<DailyMajorEquipmentStatus>
     {
-        [Parameter] public MajorEquipmentStatuses.DailyMajorEquipmentStatus Item { get; set; }
+        [Parameter] public DailyMajorEquipmentStatus Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
-        [Inject] private DialogService DialogService { get; set; }
+        [Parameter] public IEnumerable<CustomColumn> CustomColumns { get; set; }
 
         private bool isViewing { get => MenuAction == 3; }
-
-        protected Task SubmitAsync(MajorEquipmentStatuses.DailyMajorEquipmentStatus arg)
-        {
-            DialogService.Close(true);
-            return Task.CompletedTask;
-        }
-
-        private void Cancel()
-        {
-            DialogService.Close(false);
-        }
     }
 }

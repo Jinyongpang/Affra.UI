@@ -3,46 +3,62 @@
     <MenuItem Key="Home" RouterLink="#" RouterMatch="NavLinkMatch.Prefix">
          <a href="#"><Icon Type="home" Theme="@GetTheme("Home")"  Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Home</span></a>
     </MenuItem>
-    <SubMenu Key="Operation">
-        <TitleTemplate><div><Icon Type="global" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Operation</span></div></TitleTemplate>
-        <ChildContent>
-            <MenuItemGroup Title="Operation">
-                <MenuItem RouterLink="operation/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="OperationDashboard"><a href="operation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-                <MenuItem RouterLink="operation/combineddailyreport" RouterMatch="NavLinkMatch.Prefix" Key="OperationCombinedDailyReport"><a href="operation/combineddailyreport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Combined Daily Report</span></a></MenuItem>
-            </MenuItemGroup>
-            <MenuItemGroup Title="Management Of Change">
-                <MenuItem RouterLink="operation/managementofchange" RouterMatch="NavLinkMatch.Prefix" Key="OperationManagementOfChange"><a href="operation/managementofchange"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change</span></a></MenuItem>
-                <MenuItem RouterLink="operation/managementofchangesummary" RouterMatch="NavLinkMatch.Prefix" Key="OperationManagementOfChangeSummary"><a href="operation/managementofchangesummary"><Icon Type="reconciliation" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change Summary</span></a></MenuItem>
-            </MenuItemGroup>
-        </ChildContent>
-    </SubMenu>
-     <SubMenu Key="WellAllocation">
-        <TitleTemplate><div><Icon Type="cluster" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Well Allocation</span></div></TitleTemplate>
-        <ChildContent>
-            <MenuItem RouterLink="wellallocation/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationDashboard"><a href="wellallocation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-            <MenuItem RouterLink="wellallocation/pereport" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationPEReport"><a href="wellallocation/pereport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">PE Report</span></a></MenuItem>
-        </ChildContent>
-    </SubMenu>
-    <SubMenu Key="Deferment">
-        <TitleTemplate><div><Icon Type="hourglass" Theme="@GetTheme("Deferment")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
-        <ChildContent>
-            <MenuItem RouterLink="deferment/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="DefermentDashboard"><a href="deferment/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-            <MenuItem RouterLink="deferment/report" RouterMatch="NavLinkMatch.Prefix" Key="DefermentReport"><a href="deferment/report"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Deferment Report</span></a></MenuItem>
-        </ChildContent>
-    </SubMenu>
-    <SubMenu Key="More">
-        <TitleTemplate><div><Icon Type="appstore" Theme="@GetTheme("More")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">More</span></div></TitleTemplate>
-        <ChildContent>
-            <MenuItemGroup Title="Management">
-                <MenuItem RouterLink="more/filemanagement" RouterMatch="NavLinkMatch.Prefix" Key="MoreFileManagement"><a href="more/filemanagement"><Icon Type="file-sync" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">File Management</span></a></MenuItem>
-                <MenuItem RouterLink="more/usermanagement" RouterMatch="NavLinkMatch.Prefix" Key="MoreUserManagement"><a href="more/usermanagement"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">User Management</span></a></MenuItem>
-                <MenuItem RouterLink="more/templatemanagement" RouterMatch="NavLinkMatch.Prefix" Key="MoreTemplateManagement"><a href="more/templatemanagement"><Icon Type="experiment" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Template Management</span></a></MenuItem>
-            </MenuItemGroup>
-            <MenuItemGroup Title="Tool">
-               <MenuItem RouterLink="more/viewdesigner" RouterMatch="NavLinkMatch.Prefix" Key="MoreViewDesigner"><a href="more/viewdesigner"><Icon Type="dot-chart" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">View Designer</span></a></MenuItem>            
-            </MenuItemGroup>
-        </ChildContent>
-    </SubMenu>
+        <AuthorizeView Policy="RolePageOperation">
+            <Authorized>
+                <SubMenu Key="Operation">
+                    <TitleTemplate><div><Icon Type="global" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Operation</span></div></TitleTemplate>
+                    <ChildContent>
+                        <MenuItemGroup Title="Operation">
+                            <MenuItem RouterLink="operation/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="OperationDashboard"><a href="operation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+                            <MenuItem RouterLink="operation/combineddailyreport" RouterMatch="NavLinkMatch.Prefix" Key="OperationCombinedDailyReport"><a href="operation/combineddailyreport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Combined Daily Report</span></a></MenuItem>
+                        </MenuItemGroup>
+                        <MenuItemGroup Title="Management Of Change">
+                            <MenuItem RouterLink="operation/managementofchange" RouterMatch="NavLinkMatch.Prefix" Key="OperationManagementOfChange"><a href="operation/managementofchange"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change</span></a></MenuItem>
+                            <MenuItem RouterLink="operation/managementofchangesummary" RouterMatch="NavLinkMatch.Prefix" Key="OperationManagementOfChangeSummary"><a href="operation/managementofchangesummary"><Icon Type="reconciliation" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change Summary</span></a></MenuItem>
+                        </MenuItemGroup>
+                    </ChildContent>
+                </SubMenu>
+             </Authorized>
+        </AuthorizeView>
+        <AuthorizeView Policy="RolePageWellAllocation">
+            <Authorized>
+                 <SubMenu Key="WellAllocation">
+                    <TitleTemplate><div><Icon Type="cluster" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Well Allocation</span></div></TitleTemplate>
+                    <ChildContent>
+                        <MenuItem RouterLink="wellallocation/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationDashboard"><a href="wellallocation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+                        <MenuItem RouterLink="wellallocation/pereport" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationPEReport"><a href="wellallocation/pereport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">PE Report</span></a></MenuItem>
+                    </ChildContent>
+                </SubMenu>
+            </Authorized>
+        </AuthorizeView>
+        <AuthorizeView Policy="RolePageDeferment">
+            <Authorized>
+                <SubMenu Key="Deferment">
+                    <TitleTemplate><div><Icon Type="hourglass" Theme="@GetTheme("Deferment")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
+                    <ChildContent>
+                        <MenuItem RouterLink="deferment/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="DefermentDashboard"><a href="deferment/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+                        <MenuItem RouterLink="deferment/report" RouterMatch="NavLinkMatch.Prefix" Key="DefermentReport"><a href="deferment/report"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Deferment Report</span></a></MenuItem>
+                    </ChildContent>
+                </SubMenu>
+            </Authorized>
+    </AuthorizeView>
+    <AuthorizeView Policy="RolePageAdministration">
+        <Authorized>
+           <SubMenu Key="More">
+                <TitleTemplate><div><Icon Type="appstore" Theme="@GetTheme("More")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">More</span></div></TitleTemplate>
+                <ChildContent>
+                    <MenuItemGroup Title="Management">
+                        <MenuItem RouterLink="more/filemanagement" RouterMatch="NavLinkMatch.Prefix" Key="MoreFileManagement"><a href="more/filemanagement"><Icon Type="file-sync" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">File Management</span></a></MenuItem>
+                        <MenuItem RouterLink="more/usermanagement" RouterMatch="NavLinkMatch.Prefix" Key="MoreUserManagement"><a href="more/usermanagement"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">User Management</span></a></MenuItem>
+                        <MenuItem RouterLink="more/templatemanagement" RouterMatch="NavLinkMatch.Prefix" Key="MoreTemplateManagement"><a href="more/templatemanagement"><Icon Type="experiment" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Template Management</span></a></MenuItem>
+                    </MenuItemGroup>
+                    <MenuItemGroup Title="Tool">
+                       <MenuItem RouterLink="more/viewdesigner" RouterMatch="NavLinkMatch.Prefix" Key="MoreViewDesigner"><a href="more/viewdesigner"><Icon Type="dot-chart" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">View Designer</span></a></MenuItem>            
+                    </MenuItemGroup>
+                </ChildContent>
+            </SubMenu>
+        </Authorized>
+    </AuthorizeView>
 </Menu>
 
 @code

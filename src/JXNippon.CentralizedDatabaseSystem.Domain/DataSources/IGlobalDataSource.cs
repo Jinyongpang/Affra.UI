@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
 {
@@ -9,5 +10,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
         bool IsDevelopment { get; }
 
         void AddException(Exception exception);
+
+        User User { get; set; }
     }
 }

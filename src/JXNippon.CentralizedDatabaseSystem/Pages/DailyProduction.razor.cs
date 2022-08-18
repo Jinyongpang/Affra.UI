@@ -16,22 +16,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         private async Task LoadDataAsync(LoadDataArgs args)
         {
-            sk10DataGrid.CommonFilter = filterPanel.CommonFilter;
-            hipDataGrid.CommonFilter = filterPanel.CommonFilter;
-            fpsoDataGrid.CommonFilter = filterPanel.CommonFilter;
+            sk10DataGrid.DailyDataGrid.CommonFilter = filterPanel.CommonFilter;
+            hipDataGrid.DailyDataGrid.CommonFilter = filterPanel.CommonFilter;
+            fpsoDataGrid.DailyDataGrid.CommonFilter = filterPanel.CommonFilter;
         }
 
         private async Task OnChangeAsync(CommonFilter commonFilter)
         {
-            await Task.WhenAll(sk10DataGrid.ReloadAsync(),
-                hipDataGrid.ReloadAsync(),
-                fpsoDataGrid.ReloadAsync());
+            await Task.WhenAll(sk10DataGrid.DailyDataGrid.ReloadAsync(),
+                hipDataGrid.DailyDataGrid.ReloadAsync(),
+                fpsoDataGrid.DailyDataGrid.ReloadAsync());
         }
         private async Task ReloadAsync()
         {
-            await Task.WhenAll(sk10DataGrid.ReloadAsync(),
-                hipDataGrid.ReloadAsync(),
-                fpsoDataGrid.ReloadAsync());
+            await Task.WhenAll(sk10DataGrid.DailyDataGrid.ReloadAsync(),
+                hipDataGrid.DailyDataGrid.ReloadAsync(),
+                fpsoDataGrid.DailyDataGrid.ReloadAsync());
         }
     }
 }

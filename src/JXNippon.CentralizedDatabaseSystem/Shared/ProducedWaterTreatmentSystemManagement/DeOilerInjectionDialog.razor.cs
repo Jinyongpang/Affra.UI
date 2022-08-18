@@ -1,26 +1,16 @@
 ﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems;
+using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 using Microsoft.AspNetCore.Components;
-using Radzen;
+using ViewODataService.Affra.Service.View.Domain.Templates;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement
 {
-    public partial class DeOilerInjectionDialog
+    public partial class DeOilerInjectionDialog : IDailyDialog<DailyDeOilerInjection>
     {
         [Parameter] public DailyDeOilerInjection Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
-        [Inject] private DialogService DialogService { get; set; }
+        [Parameter] public IEnumerable<CustomColumn> CustomColumns { get; set; }
 
         private bool isViewing { get => MenuAction == 3; }
-
-        protected Task SubmitAsync(DailyDeOilerInjection arg)
-        {
-            DialogService.Close(true);
-            return Task.CompletedTask;
-        }
-
-        private void Cancel()
-        {
-            DialogService.Close(false);
-        }
     }
 }

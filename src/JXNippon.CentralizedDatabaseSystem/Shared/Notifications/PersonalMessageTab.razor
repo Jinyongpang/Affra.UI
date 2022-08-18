@@ -3,25 +3,25 @@
 @using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages
 @inject IGlobalDataSource GlobalDataSource;
 
-<Tabs Type="@TabType.Card" Size="@TabSize.Large" OnTabClick=OnTabClickAsync>
+<Tabs Type="@TabType.Card" Class="h-100 overflow-tab" Size="@TabSize.Large" OnTabClick=OnTabClickAsync @bind-ActiveKey=@this.currentKey>
     <TabPane Key="All">
         <TabTemplate>
-            <span><Icon Type="message" Theme="outline"/>All</span>
+            <span><Icon Type="message" Theme="outline" Class="anticon-big"/>All</span>
         </TabTemplate>
         <ChildContent><PersonalMessageList @ref=allPersonalMessageList></PersonalMessageList></ChildContent>
     </TabPane>
     <TabPane Key="Unread">
         <TabTemplate>
-            <span><Icon Type="clock-circle" Theme="outline"/>Unread</span>
+            <span><Icon Type="clock-circle" Theme="outline" Class="anticon-big"/>Unread</span>
         </TabTemplate>
         <ChildContent><PersonalMessageList @ref=unreadPersonalMessageList PersonalMessageStatus=PersonalMessageStatus.Unread></PersonalMessageList></ChildContent>
     </TabPane>
     <TabPane Key="Read">
         <TabTemplate>
-            <span><Icon Type="check-circle" Theme="outline"/>Read</span>
+            <span><Icon Type="check-circle" Theme="outline" Class="anticon-big"/>Read</span>
         </TabTemplate>
         <ChildContent><PersonalMessageList @ref=readPersonalMessageList PersonalMessageStatus=PersonalMessageStatus.Read></PersonalMessageList></ChildContent>
-    </TabPane>
+    </TabPane>    
     @if (GlobalDataSource.IsDevelopment && GlobalDataSource.Exceptions.Count > 0)
     {
         <TabPane Key="Exception">

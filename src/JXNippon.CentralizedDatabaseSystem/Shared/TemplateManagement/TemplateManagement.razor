@@ -1,22 +1,26 @@
 ﻿@using AntDesign;
 @using JXNippon.CentralizedDatabaseSystem.Domain.Views
 @using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
+@using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles
 @using ViewODataService.Affra.Service.View.Domain.Templates
+
 @inject IViewService ViewService
+@inject IStringLocalizer<Resource> StringLocalizer
 
 <Layout Class="layout-view" Style="height: 80vh;">
     <Sider Width=400>
         <Layout Style="height: 100%;">
             <Header>Table</Header>
             <Content style="overflow: auto; max-height: 100%;">
-                <Menu @ref=menu Mode="MenuMode.Inline" OnMenuItemClicked=OnSelectAsync>
+                <Menu @ref=menu Mode="MenuMode.Inline" OnMenuItemClicked=OnSelectAsync DefaultSelectedKeys="@(new string[] { "DailyAnalysisResult"})">
                     @{
                         var types = ViewService.GetTypeMapping()
                                     .Select(x => x.Key)
                                     .ToHashSet();
-                        foreach (var type in types)
+                        foreach (var type in types
+                            .Where(x => x != "DailyUtilityBase"))
                         {
-                            <MenuItem Key=@type>@type</MenuItem>
+                            <MenuItem Key=@type>@this.StringLocalizer[type]</MenuItem>
                         }
                     }
                 </Menu>             
@@ -30,10 +34,10 @@
                     <span>Custom columns</span>
                 </div>    
                 <div class="col-6 float-right align-items-center text-right mt-1">
-                    <Button Type="primary" Icon="@IconType.Outline.PlusCircle" Size="@("large")" Shape="@ButtonShape.Round"
+                    <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round"
                      OnClick=AddDialogAsync>
                        <ChildContent>
-                           <span style="font-size: 18px; margin-left: 0px;">Add</span>
+                           <Icon Type="plus-circle" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Add</span>
                        </ChildContent>
                     </Button>
                 </div>

@@ -1,10 +1,13 @@
 ﻿using System.Collections.Concurrent;
+using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
 {
     public class GlobalDataSource : IGlobalDataSource
     {
         private int _unreadCount;
+        private User _user;
+        private object _usertLock = new object();
         private object _unreadCountLock = new object();
         public ConcurrentBag<Exception> Exceptions { get; } = new ConcurrentBag<Exception>();
 
@@ -16,7 +19,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
             }
             set
             {
-                lock (_unreadCountLock)
+                lock (this._unreadCountLock)
                 {
                     this._unreadCount = value;
                 }
@@ -24,6 +27,20 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
         }
 
         public bool IsDevelopment { get; } = true;
+        public User User
+        {
+            get
+            {
+                return this._user;
+            }
+            set
+            {
+                lock (this._usertLock)
+                {
+                    this._user = value;
+                }
+            }
+        }
 
         public void AddException(Exception exception)
         { 

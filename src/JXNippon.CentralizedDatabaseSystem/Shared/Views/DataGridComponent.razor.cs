@@ -48,8 +48,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
-            subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
-            await subscription.StartAsync();
+            if (!string.IsNullOrEmpty(this.Subscription))
+            {
+                subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
+                await subscription.StartAsync();
+            }           
             await ReloadAsync(StartDate, EndDate);
         }
 
@@ -58,11 +61,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             StateHasChanged();
             return this.ReloadAsync();
         }
-        public async Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
+        public Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
         {
             StartDate = startDate ?? StartDate;
             EndDate = endDate ?? EndDate;
-            await grid.Reload();
+            return grid?.Reload() ?? Task.CompletedTask;
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)

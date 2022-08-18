@@ -49,6 +49,7 @@
                    .ToDictionary(x => x.Name, x => x.Namespace);
             foreach (var type in a)
             {
+
                 var res = @"namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
 {
     public partial class DailyDeOilerInjection : IDaily
@@ -71,4 +72,13 @@
                 res = res.Replace("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems", type.Value);
                 <a>@res</a>
             }
+            foreach (var type in a)
+            {
+
+                var res = "<data name=\"DailyHIPAndLWPSummary\" xml:space=\"preserve\">\n<value>HIP / LWP Summary</value>\n</data>";
+                res = res.Replace("DailyHIPAndLWPSummary", type.Key);
+                res = res.Replace("HIP / LWP Summary", type.Key);
+                <a>@res</a>
+            }
+            
 }

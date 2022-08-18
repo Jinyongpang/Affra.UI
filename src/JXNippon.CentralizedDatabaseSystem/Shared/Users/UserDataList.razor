@@ -1,0 +1,86 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using UserODataService.Affra.Service.User.Domain.Users
+
+<div class="row">
+    <div class="col">
+        @if (!isLoading && count == 0)
+        {       
+            <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                <GenericDescription Height="400px" ImageFile="@ImageFile.People" Description="No result found.">
+                </GenericDescription>
+            </div>
+      
+        }
+        <AntList Class="py-3 px-3" Loading=isLoading @ref="_dataList" DataSource="@users" TItem="User" Grid=grid>
+            <ChildContent>
+                <ListItem>
+                    <Card Style="min-height:200px;">
+                        <TitleTemplate>
+                           <div class="d-flex flex-row align-items-center">
+                                <div>
+                                    <span class="mb-0 title" href="#"><Icon Type="user" Theme="outline" Class="anticon-big"/> @(context.Name)</span>
+                                </div>
+                           </div>
+                        </TitleTemplate>
+                        <Body>
+                           <div class="d-flex flex-row align-items-center">
+                                <div>
+                                    <Space>
+                                        <SpaceItem>
+                                            <Avatar Style="vertical-align: middle;" Size="64">
+                                            <span style="font-size: 32px;">@this.UserService.GetAvatarName(context.Name)</span>
+                                         </Avatar>
+                                        </SpaceItem>
+                                        <SpaceItem>                                                                             
+                                            <div style="word-break:break-word;">Email : @context.Email</div>
+                                            <div style="word-break:break-word;">Role : @context.Role</div>
+                                        </SpaceItem>
+                                    </Space>
+
+                                </div>
+                            </div>
+                            <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
+                            <div class="row">
+                                <div class="col-md-8 text-truncate card-time">
+                                    <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Created : {0:d}", context.CreatedDateTime.ToLocalTime())</b>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    @if (context.Status == UserStatus.Active)
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.Status.ToString())"/>
+                                    }
+                                    else
+                                    {
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.Status.ToString())"/>
+                                    }
+                                    
+                                </div>
+                            </div>
+                        </Body>
+                        <Extra>
+                            <Popover Placement="@Placement.RightBottom">
+                                <ContentTemplate>
+                                    <Menu Mode=MenuMode.Vertical>                   
+                                        <MenuItem Key="ViewActivity"><a @onclick="@(() => ShowActivityDialogAsync(context))"><i class="fas fa-eye fa-fw fa-xl"></i> View Activities...</a></MenuItem> 
+                                        <MenuItem Key="EditUser"><a @onclick="@(() => ShowDialogAsync(context, 1, "Edit"))"><i class="fas fa-edit fa-fw fa-xl"></i> Edit User...</a></MenuItem> 
+                                    </Menu>
+                                </ContentTemplate>
+                                <ChildContent> 
+                                    <AntDesign.Button><i class="fa-solid fa-ellipsis-vertical"></i></AntDesign.Button>                                  
+                                </ChildContent>
+                            </Popover>         
+                        </Extra>
+                    </Card>            
+                </ListItem>      
+            </ChildContent>
+            <LoadMore>
+                @if (!initLoading && !isLoading && currentCount < count)
+                {
+                    <div class="loadmore-btn-content">
+                        <Button Type="primary" OnClick="OnLoadMoreAsync">loading more</Button>
+                    </div>
+                }
+            </LoadMore>
+        </AntList>
+    </div>
+</div>

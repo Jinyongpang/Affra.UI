@@ -1,6 +1,9 @@
 ﻿@page "/operation/{activeKey}"
 @using JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
-@attribute [Authorize]
+@using JXNippon.CentralizedDatabaseSystem.Shared.Views
+
+@attribute [Authorize(Policy = "RolePageOperation")]
+
 <PageTitle>Operation</PageTitle>
 
 <Tabs ActiveKey="@activeKey" DefaultActiveKey="@activeKey" @ref=tabs OnTabClick=OnActiveKeyChanged>
@@ -8,7 +11,7 @@
         <TabTemplate>
             <span>Dashboard</span>
         </TabTemplate>
-        <ChildContent><Dashboard></Dashboard></ChildContent>
+        <ChildContent><ViewTab Page="Operation"></ViewTab></ChildContent>
     </TabPane>
     <TabPane Key="combineddailyreport">
         <TabTemplate>

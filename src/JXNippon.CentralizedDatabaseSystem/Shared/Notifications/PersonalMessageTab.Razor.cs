@@ -5,6 +5,7 @@
         private PersonalMessageList allPersonalMessageList;
         private PersonalMessageList unreadPersonalMessageList;
         private PersonalMessageList readPersonalMessageList;
+        private string currentKey { get; set; } = "All";
 
         public int Count => this.allPersonalMessageList.Count;
         public int UnreadCount => this.unreadPersonalMessageList.Count;

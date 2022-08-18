@@ -48,6 +48,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             return view;
         }
 
+        public async Task<IEnumerable<View>> GetPageViewsAsync(string page)
+        {
+            DataServiceQuery<View> query = (DataServiceQuery<View>)viewUnitOfWork.ViewRepository.Get();
+            return (await query
+                .Where(view => view.Page == page)
+                .ExecuteAsync<View>())
+                .ToList();
+        }
+
         public async Task GetViewDetailAsync(View view)
         {
             if (view != null)

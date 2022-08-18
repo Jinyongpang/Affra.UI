@@ -2,13 +2,10 @@
 @using JXNippon.CentralizedDatabaseSystem.Shared.Description
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 
-<RemoteAuthenticatorView Action="@Action">
+<RemoteAuthenticatorView Action="@Action" OnLogInSucceeded=@this.OnLogInSucceededAsync OnLogOutSucceeded=@this.OnLogOutSucceededAsync>
     <LogInFailed>
         <div class="result-view d-flex align-items-center justify-content-center gap-3">
             <GenericDescription Height="300px" ImageFile="@ImageFile.ErrorForbidden" Description="Sorry, you are not authorized to access this page. Please contact administrator or try again.">
-                <ChildContent>
-                    <a type="button" class="btn btn-primary" href="authentication/login">Login</a>
-                </ChildContent>
             </GenericDescription>
         </div>
     </LogInFailed>
@@ -51,7 +48,6 @@
 </RemoteAuthenticatorView>
 
 @code {
-    [Parameter] public string Action { get; set; }
 
      RenderFragment loginButton =@<a type="button" class="btn btn-primary" href="authentication/login">Login</a>;
 }

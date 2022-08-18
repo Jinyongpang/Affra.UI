@@ -34,7 +34,7 @@
                     <span>Date:</span>
                 </SpaceItem>
                 <SpaceItem Class="w-100">
-                    <DatePicker  Class="w-100" Size="medium" DisabledDate="date => date >= DateTime.Now" Placeholder=@("Date") TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear="false" Format="d" OnChange=@(args => OnChangeAsync(args))/>   
+                    <DatePicker Class="w-100" Size="medium" DisabledDate="date => date >= DateTime.Now" Placeholder=@("Date") TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear="false" OnChange=@(args => OnChangeAsync(args))/>   
                 </SpaceItem>
             </Space>      
         </div>
@@ -613,7 +613,6 @@
                             </Tabs>
                         }
                     </ChildContent>
-                
                 </RadzenPanel>
             </RadzenCard>
         </div>
