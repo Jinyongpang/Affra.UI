@@ -7,7 +7,9 @@
 @using JXNippon.CentralizedDatabaseSystem.Domain.Views
 @using JXNippon.CentralizedDatabaseSystem.Shared.Views
 @using ViewODataService.Affra.Service.View.Domain.Views
-@attribute [Authorize]
+
+@attribute [Authorize(Policy = "RolePageAdministration")]
+
 <PageTitle>Debug</PageTitle>
 
 <RadzenBreadCrumb>
