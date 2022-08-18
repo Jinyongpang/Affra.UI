@@ -89,7 +89,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddODataHttpClient(nameof(CentralizedDatabaseSystemUnitOfWork))
     .AddODataHttpClient(nameof(ViewUnitOfWork))
     .AddODataHttpClient(nameof(NotificationUnitOfWork))
-    .AddODataHttpClient(nameof(ManagemenOfChangeUnitOfWork))
+    .AddODataHttpClient(nameof(ManagementOfChangeUnitOfWork))
     .AddODataHttpClient(nameof(UserUnitOfWork))
     .AddScoped<CreateActivityHandler>()
     .AddScoped<JXNippon.CentralizedDatabaseSystem.Handlers.AuthorizationMessageHandler>()
