@@ -234,11 +234,26 @@
   <data name="DuplicatePrimaryKey" xml:space="preserve">
     <value>Item exists.</value>
   </data>
+  <data name="FacilitiesImprovementPlan" xml:space="preserve">
+    <value>Facilities Improvement Plan</value>
+  </data>
   <data name="InvalidToken" xml:space="preserve">
     <value>Transaction conflicts with another user.</value>
   </data>
+  <data name="MadePermanentState" xml:space="preserve">
+    <value>This change is hereby made permanent</value>
+  </data>
   <data name="NotFound" xml:space="preserve">
     <value>Item not found.</value>
+  </data>
+  <data name="OperatingChangeAndNonRoutineOperations" xml:space="preserve">
+    <value>Operating Change and Non-Routine Operations</value>
+  </data>
+  <data name="PlantControlAndSafetySystemChange" xml:space="preserve">
+    <value>Plant Control and Safety System Change</value>
+  </data>
+  <data name="RevertOriginalState" xml:space="preserve">
+    <value>This change is hereby reverted to original state</value>
   </data>
   <data name="UniqueKeyViolation" xml:space="preserve">
     <value>Item with the same information already exists.</value>
