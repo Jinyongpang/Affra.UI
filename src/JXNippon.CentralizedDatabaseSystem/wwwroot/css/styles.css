@@ -454,3 +454,11 @@ p.moh-cardbody {
 .borderedTitlelessDescription > div > table > tbody > tr > td.ant-descriptions-item-label {
     display: none !important;
 }
+
+.view-chart > div.ant-card-body {
+    height: 100%;
+}
+
+.view-chart > div > div.rz-chart {
+    height: 90%;
+}

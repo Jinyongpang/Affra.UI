@@ -75,7 +75,7 @@
                         @ondragenter="@(args => HandleDragEnter(j))"
                         @ondragend=@(args => this.enteredId = -1)> 
 
-                        <Card Size="medium" Id=@j.ToString() Style="pointer-event: none;" Class="h-100 card-shadow">
+                        <Card Size="medium" Id=@j.ToString() Style="pointer-event: none;" Class="h-100 card-shadow view-chart">
                             <TitleTemplate>
                                 <span>
                                     <i class="@col.Icon"></i>
