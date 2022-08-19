@@ -64,8 +64,12 @@
                     {
                          <div class="col py-3 px-3 can-drop" ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave(j))" @ondrop=@(args => HandleDropOnColumnAsync(args, col))/> 
                     }
+                    ColumnComponent columnComponent = JsonSerializer.Deserialize<ColumnComponent>(col.ColumnComponent);
+                    var widthGridSize = columnComponent.WidthGridSize is null
+                        ? "col-md"
+                        : $"col-md-{columnComponent.WidthGridSize}";
 
-                    <div class="col-sm-12 col-md py-3 @draggableClass" draggable="@isDraggable" ondragover="event.preventDefault();"
+                    <div class="col-sm-12 @widthGridSize py-3 @draggableClass" draggable="@isDraggable" ondragover="event.preventDefault();"
                         @ondrop=@(args => HandleDropOnColumnAsync(args, col))
                         @ondragstart=@(args => HandleDragStart(args, row, col, j))         
                         @ondragenter="@(args => HandleDragEnter(j))"
