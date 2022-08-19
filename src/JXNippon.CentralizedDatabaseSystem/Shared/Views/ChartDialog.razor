@@ -74,6 +74,14 @@
                         <RadzenNumeric Name="StepInMinutes" class="w-100" Placeholder="Enter category axis step in minutes..." @bind-Value="@Item.StepInMinutes" Disabled=@isViewing></RadzenNumeric>
                     </div>
                 </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Width Size" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Max=12 Min=1 Name="WidthGridSize" class="w-100" Placeholder="Enter width size..." @bind-Value="@Item.WidthGridSize" Disabled=@isViewing></RadzenNumeric>
+                    </div>
+                </div>
                 <div class="row py-4">
                     <div class="col-md-12 d-flex justify-content-end">
                         <RadzenButton ButtonType="Radzen.ButtonType.Submit">Next</RadzenButton>             

@@ -4,7 +4,7 @@ using Microsoft.OData.Client;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Grids
 {
-    public class Grid
+    public class Grid : ColumnComponent
     {
         public string Type { get; set; }
 

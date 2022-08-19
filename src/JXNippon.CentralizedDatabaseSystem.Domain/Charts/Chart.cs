@@ -4,7 +4,7 @@ using Microsoft.OData.Client;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
 {
-    public class Chart
+    public class Chart : ColumnComponent
     {
         public string Type { get; set; }
 
