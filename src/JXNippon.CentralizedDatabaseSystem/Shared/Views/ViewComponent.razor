@@ -69,7 +69,7 @@
                         ? "col-md"
                         : $"col-md-{columnComponent.WidthGridSize}";
 
-                    <div class="col-sm-12 @widthGridSize py-3 @draggableClass" draggable="@isDraggable" ondragover="event.preventDefault();"
+                    <div class="view-column-card col-sm-12 @widthGridSize py-3 @draggableClass" draggable="@isDraggable" ondragover="event.preventDefault();"
                         @ondrop=@(args => HandleDropOnColumnAsync(args, col))
                         @ondragstart=@(args => HandleDragStart(args, row, col, j))         
                         @ondragenter="@(args => HandleDragEnter(j))"
