@@ -462,3 +462,7 @@ p.moh-cardbody {
 .view-chart > div > div.rz-chart {
     height: 90%;
 }
+
+.view-column-card {
+    min-height : 40vh;
+}
