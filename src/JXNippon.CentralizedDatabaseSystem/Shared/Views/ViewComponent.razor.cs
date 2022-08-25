@@ -21,9 +21,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private int draggedId = -1;
 
+        private int focusId = -1;
+
         private readonly IDictionary<long, Column> columnDictionary = new Dictionary<long, Column>();
 
         private readonly IList<string> cardClasses = new List<string>();
+
+        [Parameter]
+        public bool HasFocus { get; set; }
+
+        [Parameter]
+        public EventCallback<bool> HasFocusChanged { get; set; }
 
         [Parameter] public View View { get; set; }
 
@@ -92,6 +100,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         protected override async Task OnInitializedAsync()
         {
         }
+
+        private Task OnFocusAsync(int i)
+        {
+            this.focusId = i; 
+            this.HasFocus = i != -1;
+            return HasFocusChanged.InvokeAsync(i != -1);
+        }
+
 
         private async Task OnEditAsync(MouseEventArgs args, Column column)
         {
@@ -217,7 +233,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             enteredId = -1;
         }
 
-        
+        private string GetFocusClass(int? i, string widthGridSize)
+        {
+            if (this.focusId == -1)
+            {
+                return widthGridSize;
+            }
+            else if (this.focusId == i)
+            {
+                return $"focused-card col";
+            }
+            else
+            {
+                return $"hidden-card";
+            }
+        }
+
         private void HandleDragStart(DragEventArgs arg, Row row, Column column, int draggedId)
         {
             arg.DataTransfer.DropEffect = "move";

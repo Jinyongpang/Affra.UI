@@ -69,7 +69,7 @@
                         ? "col-md"
                         : $"col-md-{columnComponent.WidthGridSize}";
 
-                    <div class="view-column-card col-sm-12 @widthGridSize py-3 @draggableClass" draggable="@isDraggable" ondragover="event.preventDefault();"
+                    <div class="view-column-card col-sm-12 py-3 @draggableClass @this.GetFocusClass(j, @widthGridSize)" draggable="@isDraggable" ondragover="event.preventDefault();"
                         @ondrop=@(args => HandleDropOnColumnAsync(args, col))
                         @ondragstart=@(args => HandleDragStart(args, row, col, j))         
                         @ondragenter="@(args => HandleDragEnter(j))"
@@ -87,6 +87,14 @@
                                 {
                                     <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg text-info"></i></a>
                                     <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
+                                }
+                                else if(this.focusId == -1)
+                                {
+                                    <AntDesign.Button OnClick="@(() => this.OnFocusAsync(j))"><i class="fa-solid fa-up-right-and-down-left-from-center extra-icon"></i></AntDesign.Button>
+                                }
+                                else
+                                {
+                                    <AntDesign.Button OnClick="@(() => this.OnFocusAsync(-1))"><i class="fa-solid fa-down-left-and-up-right-to-center extra-icon"></i></AntDesign.Button>
                                 }
                             </Extra>
                             <Body>
