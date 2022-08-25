@@ -157,7 +157,7 @@ body {
 }
 
 .rz-card, .ant-card {
-    border-radius: 10px !important;
+    border-radius: 5px !important;
     background-color: #ffffff;
     border: 1px solid #dbe0ea !important;
 }
@@ -460,11 +460,15 @@ p.moh-cardbody {
 }
 
 .view-chart > div > div.rz-chart {
-    height: 90%;
+    min-height: 90%;
+}
+
+.view-grid > div > div.rz-data-grid {
+    min-height: 80%;
 }
 
 .view-column-card {
-    min-height : 40vh;
+    min-height : 45vh;
 }
 
 .focused-card {
