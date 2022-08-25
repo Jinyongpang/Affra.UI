@@ -58,8 +58,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             using var serviceScope = ServiceProvider.CreateScope();
             IViewService viewService = serviceScope.ServiceProvider.GetService<IViewService>();
             view = await viewService.GetViewAsync(key);
-            await this.viewComponent.ReloadAsync(startDate, endDate);
             StateHasChanged();
+            await this.viewComponent.ReloadAsync(startDate, endDate);      
         }
     }
 }
