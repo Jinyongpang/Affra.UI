@@ -37,6 +37,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
+        private IEnumerable<int> pageSizeOptions = new int[] { 5, 10, 15 };
+
         private Type Type
         {
             get
