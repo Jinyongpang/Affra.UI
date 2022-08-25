@@ -82,7 +82,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     .Where(item => item.Date >= StartDate.Value.ToUniversalTime())
                     .Where(item => item.Date <= EndDate.Value.ToUniversalTime());
             }
-            Queryable = (IQueryable<dynamic>)Queryable.AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy);
+            Queryable = (IQueryable<dynamic>)Queryable
+                .Cast<IDaily>()
+                .OrderBy(x => x.Date)
+                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy);
+
             await LoadData.InvokeAsync(Queryable);
             var q = (DataServiceQuery)Queryable;
             var response = (await q
@@ -92,7 +96,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
             items = response
                 .Cast<IDaily>()
-                .OrderByDescending(item => item.Date)
                 .ToList();
 
             isLoading = false;

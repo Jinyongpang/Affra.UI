@@ -466,3 +466,16 @@ p.moh-cardbody {
 .view-column-card {
     min-height : 40vh;
 }
+
+.focused-card {
+    min-height: 80vh;
+}
+
+.hidden-card {
+    visibility: hidden;
+    display: none !important;
+}
+
+.extra-icon {
+    color: gray;
+}

@@ -1,11 +1,6 @@
-﻿using Affra.Core.Domain.Services;
-using AntDesign;
-using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
-using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
+﻿using AntDesign;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
-using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
@@ -26,6 +21,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private ViewComponent viewComponent;
 
         private RangePicker<DateTime?[]> rangePicker;
+
+        private bool hasFocus { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
