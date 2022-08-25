@@ -55,6 +55,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         public async Task OnTabClickAsync(string key)
         {
+            this.selectedTabKey = key;
             using var serviceScope = ServiceProvider.CreateScope();
             IViewService viewService = serviceScope.ServiceProvider.GetService<IViewService>();
             view = await viewService.GetViewAsync(key);

@@ -38,7 +38,7 @@
         </div>
         @if (this.views?.Count() > 1)
         {
-            <Tabs Class="py-2" Size="@TabSize.Small" OnTabClick=OnTabClickAsync @bind-ActiveKey=@this.selectedTabKey>
+            <Tabs Class="py-2" Size="@TabSize.Small" OnTabClick=OnTabClickAsync DefaultActiveKey=@this.selectedTabKey>
                 @foreach(var v in this.views)
                 {
                     <TabPane Key="@v.Name">
