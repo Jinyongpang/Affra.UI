@@ -49,7 +49,7 @@
     <div class="fixed-widgets">
         <Popover>
             <ContentTemplate>
-                <Menu Mode=MenuMode.Vertical>                   
+                <Menu Mode=MenuMode.Vertical Class="popup-menu">                   
                     <MenuItem Key="AddView"><a @onclick=AddViewAsync><i class="fas fa-plus fa-fw fa-xl"></i> Add View...</a></MenuItem> 
                     <MenuItem Key="EditView" Disabled=@(!hasItem)><a @onclick=EditViewAsync><i class="fas fa-edit fa-fw fa-xl"></i> Edit View...</a></MenuItem>     
                     <MenuItem Key="DuplicateView" Disabled=@(!hasItem)><a @onclick=DuplicateViewAsync><i class="fas fa-clone fa-fw fa-xl"></i> Duplicate View...</a></MenuItem>     
@@ -69,7 +69,6 @@
                         ComponentType = nameof(Grid),
                     },
                     "Add")) Disabled=@(!hasItem)><a><i class="fas fa-table fa-fw fa-xl"></i> Add Table...</a></MenuItem>
-                    <MenuDivider />
                     <MenuDivider />
                     <MenuItem Key="Export" Disabled=@(!hasItem)><a @onclick=ExportAsync><i class="fas fa-download fa-fw fa-xl"></i> Export</a></MenuItem>
                     <MenuItem Key="Import">
