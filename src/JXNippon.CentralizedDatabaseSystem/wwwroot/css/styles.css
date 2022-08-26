@@ -159,7 +159,7 @@ body {
 .rz-card, .ant-card {
     border-radius: 5px !important;
     background-color: #ffffff;
-    border: 1px solid #dbe0ea !important;
+    border: 1px solid #dbe0ea;
 }
 
 .card-shadow {
@@ -359,8 +359,8 @@ p.moh-cardbody {
 }
 
 .top-card {
-    background: rgb(238,174,202) !important;
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%) !important;
+    background: transparent;
+    border: 0;
 }
 
 .ant-descriptions-item-label {
@@ -522,4 +522,14 @@ input:focus {
 
 .rz-legend-item {
     padding-right: 10px;
+}
+
+.home {
+    background-image: url(../img/background.svg);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 50% -130px;
+}
+a {
+    text-decoration: none !important;
 }

@@ -31,16 +31,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
         }
 
-        private void OnSearchChange()
+        private void OnSearchChange(string value)
         {
-            isSearchEmpty = homePageCards.All(x => !x.Visible);
+            this.search = value;
+            this.isSearchEmpty = homePageCards.All(x => !x.CheckIsVisible(value));
+            this.StateHasChanged();
         }
 
-        private bool IsVisibleSearch(string contains)
-        {
-            return this.search is null
-                || contains.Contains(this.search, StringComparison.InvariantCultureIgnoreCase);
-        }
 
         private void Navigate(string path)
         {

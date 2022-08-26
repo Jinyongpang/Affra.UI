@@ -1,15 +1,15 @@
 ﻿.home-title {
-    font-size: 20px;
+    font-size: 28px;
     line-height: 28px;
     font-weight: 600;
-    color: white;
+    color: black;
 }
 
 .home-subtitle {
     height: 18px;
     font-size: 13px;
     line-height: 18px;
-    color: white;
+    color: black;
 }
 
 .fxs-home-title {
@@ -21,5 +21,9 @@
 }
 
 .sub-card {
-    background-color: #eef4f9 !important;
+    background-color: transparent;
+}
+
+a {
+    text-decoration: none !important;
 }
