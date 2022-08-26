@@ -1,9 +1,13 @@
 ﻿@using System.Linq.Dynamic.Core
 @using JXNippon.CentralizedDatabaseSystem.Models
+@using System.Collections.Concurrent
 
 <RadzenChart @ref="chart">
     @if(items != null)
-    {   bool haveData = false;
+    {   bool haveData = false;    
+        string[] colors = this.Colors.ToArray();
+        int i = -1;
+
         foreach(var series in ChartSeries.OrderBy(x => x.Sequence))
         {
             var seriesList = this.GetSeries(series, items);
@@ -11,13 +15,20 @@
             foreach (var group in seriesList)
             {
                 var seriesItem = group.SeriesItems;
+                i++;
+                if (i >= colors.Count())
+                {
+                    i = 0;
+                }
                 switch (series.ChartType)
                 {
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.AreaChart:
-                    {                           
-                        <RadzenAreaSeries Data="@seriesItem" CategoryProperty="Category"
+                    {
+                            <RadzenAreaSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value"
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
+                            Stroke=@colors[i]
+                            Fill=@colors[i]
                             Smooth="@series.Smooth">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenAreaSeries>
@@ -27,8 +38,10 @@
                     {                           
                         <RadzenLineSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value"
+                            Stroke=@colors[i]
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
-                            Smooth="@series.Smooth">
+                            Smooth="@series.Smooth" 
+                            >
                         <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenLineSeries>
                         break;
@@ -37,6 +50,7 @@
                     {                           
                         <RadzenBarSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value"
+                            Fills=@colors
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenBarSeries>
@@ -46,6 +60,7 @@
                     {                           
                         <RadzenColumnSeries Data="@seriesItem" CategoryProperty="Category" 
                             Title="@group.Title" ValueProperty="Value" 
+                            Fills=@colors
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenColumnSeries>
@@ -62,7 +77,8 @@
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.PieChart:
                     {                           
                         <RadzenPieSeries Data="@seriesItem" CategoryProperty="Category"
-                            Title="@group.Title" ValueProperty="Value">
+                            Title="@group.Title" ValueProperty="Value"
+                            Fills=@colors>
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                             </RadzenPieSeries>
                             break;

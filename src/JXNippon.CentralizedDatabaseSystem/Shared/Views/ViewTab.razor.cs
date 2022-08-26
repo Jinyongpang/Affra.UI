@@ -26,6 +26,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private string selectedTabKey;
 
+
+        private ICollection<ICollection<string>> colorsGroups = new List<ICollection<string>>();
+
         protected override async Task OnInitializedAsync()
         {
             using var serviceScope = ServiceProvider.CreateScope();
@@ -59,6 +62,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             using var serviceScope = ServiceProvider.CreateScope();
             IViewService viewService = serviceScope.ServiceProvider.GetService<IViewService>();
             view = await viewService.GetViewAsync(key);
+            colorsGroups = new List<ICollection<string>>();
+            foreach (var row in view.Rows)
+                foreach(var col in row.Columns)
+                {
+                    colorsGroups.Add(Constants.Constant.GetRandomColors());
+                }
+
             StateHasChanged();
             await this.viewComponent.ReloadAsync(startDate, endDate);      
         }

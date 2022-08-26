@@ -33,12 +33,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public DateTimeOffset? StartDate { get; set; }
         [Parameter] public DateTimeOffset? EndDate { get; set; }
         [Parameter] public Column Column { get; set; }
+        [Parameter] public ICollection<string> Colors { get; set; } = Array.Empty<string>();
+
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
+
 
         protected override async Task OnInitializedAsync()
         {
