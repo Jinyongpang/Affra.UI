@@ -4,7 +4,7 @@
 
 <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
     FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="false" AllowFiltering="false" AllowPaging="true" 
-    PageSizeOptions=@this.pageSizeOptions PagerHorizontalAlign="HorizontalAlign.Center" AllowColumnResize="true" ShowPagingSummary="true" 
+    PageSize=5 PageSizeText="Items" PageSizeOptions=@this.pageSizeOptions PagerHorizontalAlign="HorizontalAlign.Center" AllowColumnResize="true" ShowPagingSummary="true" 
     AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
     PagerAlwaysVisible="false">
 

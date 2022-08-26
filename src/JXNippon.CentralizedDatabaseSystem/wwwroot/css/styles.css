@@ -459,9 +459,17 @@ p.moh-cardbody {
     height: 100%;
 }
 
-.view-chart > div > div.rz-chart, .view-grid > div > div.rz-data-grid {
-        min-height: 80%;
-    }
+.view-chart > div > div.rz-chart {
+    min-height: 85%;
+}
+
+.view-grid > div > div.rz-data-grid {
+    min-height: 80%;
+}
+
+.view-grid.focused > div > div.rz-data-grid {
+    min-height: 90%;
+}
 
 .view-column-card {
     min-height : 45vh;
@@ -506,4 +514,12 @@ input:focus {
 
 .form-group {
     margin-bottom: 15px;
+}
+
+.rz-legend-bottom {
+    bottom: -10px;
+}
+
+.rz-legend-item {
+    padding-right: 10px;
 }

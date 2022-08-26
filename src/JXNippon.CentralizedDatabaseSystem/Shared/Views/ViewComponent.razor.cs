@@ -241,12 +241,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
             else if (this.focusId == i)
             {
-                return $"focused-card col";
+                return "focused-card col";
             }
             else
             {
-                return $"hidden-card";
+                return "hidden-card";
             }
+        }
+
+        private string GetCardFocusClass(int? i)
+        {
+            return this.focusId == i
+                ? "focused"
+                : string.Empty;
         }
 
         private void HandleDragStart(DragEventArgs arg, Row row, Column column, int draggedId)
