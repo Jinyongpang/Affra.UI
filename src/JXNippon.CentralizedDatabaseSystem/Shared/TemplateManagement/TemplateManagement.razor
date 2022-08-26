@@ -11,7 +11,7 @@
     <Sider Width=400>
         <Layout Style="height: 100%;">
             <Header>Table</Header>
-            <Content style="overflow: auto; max-height: 100%;">
+            <Content style="overflow-y: auto; max-height: 100%;">
                 <Menu @ref=menu Mode="MenuMode.Inline" OnMenuItemClicked=OnSelectAsync DefaultSelectedKeys="@(new string[] { "DailyAnalysisResult"})">
                     @{
                         var types = ViewService.GetTypeMapping()
