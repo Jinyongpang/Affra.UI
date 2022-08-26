@@ -103,7 +103,7 @@
                                     Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
                                     string type = ViewService.GetTypeMapping()[chart.Type];
                                     <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@type" Subscription="@chart.Type" AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
-                                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col"></ChartComponent>
+                                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col" Colors=@(this.ColorsGroups.ElementAt(j))></ChartComponent>
                                 }
                                 else if (col.ComponentType ==  nameof(Grid))
                                 {
