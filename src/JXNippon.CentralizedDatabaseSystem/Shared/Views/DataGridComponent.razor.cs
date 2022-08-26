@@ -84,6 +84,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     .Where(item => item.Date >= StartDate.Value.ToUniversalTime())
                     .Where(item => item.Date <= EndDate.Value.ToUniversalTime());
             }
+            args.OrderBy = args.OrderBy.Replace("UI", string.Empty);
             Queryable = (IQueryable<dynamic>)Queryable
                 .Cast<IDaily>()
                 .OrderBy(x => x.Date)
