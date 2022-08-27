@@ -25,6 +25,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private ViewComponent viewComponent;
         private ColumnDataGrid columnDataGrid;
         private RowDataGrid rowDataGrid;
+        private ICollection<ICollection<string>> colorsGroups = new List<ICollection<string>>();
 
         [Inject] private IJSRuntime JSRuntime { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
@@ -35,6 +36,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         {
             value ??= this.view;
             await this.GetViewDetailAsync(value);
+            colorsGroups = new List<ICollection<string>>();
+            foreach (var row in view.Rows)
+                foreach (var col in row.Columns)
+                {
+                    colorsGroups.Add(Constants.Constant.GetRandomColors());
+                }
             this.view = value;
             StateHasChanged();
             await viewComponent.ReloadAsync();

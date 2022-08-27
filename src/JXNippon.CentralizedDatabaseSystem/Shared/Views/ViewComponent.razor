@@ -20,8 +20,9 @@
     foreach(var row in View.Rows)
     {
         <div class="row">
-            @if (row.Columns is null
-                || row.Columns.Count == 0)
+            @if (IsDesignMode 
+                && (row.Columns is null
+                || row.Columns.Count == 0))
             {
                  int j = id;
                  <div class="col py-1" ondragover="event.preventDefault();" @ondrop=@(args => HandleDropOnRowAsync(args, row)) @ondragenter="@(args => HandleDragEnter(j))">

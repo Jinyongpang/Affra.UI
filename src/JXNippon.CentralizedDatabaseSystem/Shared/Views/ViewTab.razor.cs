@@ -26,7 +26,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private string selectedTabKey;
 
-
         private ICollection<ICollection<string>> colorsGroups = new List<ICollection<string>>();
 
         protected override async Task OnInitializedAsync()
