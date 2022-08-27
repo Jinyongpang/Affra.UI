@@ -35,16 +35,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         public async Task ReloadAsync(View value = null)
         {
             value ??= this.view;
-            await this.GetViewDetailAsync(value);
+            await this.GetViewDetailAsync(value);   
+            this.view = value;
+            this.ReloadColorGroup();
+            StateHasChanged();
+            await viewComponent.ReloadAsync();
+        }
+
+        private void ReloadColorGroup()
+        {
             colorsGroups = new List<ICollection<string>>();
             foreach (var row in view.Rows)
                 foreach (var col in row.Columns)
                 {
                     colorsGroups.Add(Constants.Constant.GetRandomColors());
                 }
-            this.view = value;
-            StateHasChanged();
-            await viewComponent.ReloadAsync();
         }
 
         protected override async Task OnInitializedAsync()
@@ -52,6 +57,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             views = (await GetViewsAsync()).ToList();
             this.view = views.FirstOrDefault();
             await this.GetViewDetailAsync();
+            this.ReloadColorGroup();
+
         }
 
         protected async Task<IEnumerable<View>> GetViewsAsync()
