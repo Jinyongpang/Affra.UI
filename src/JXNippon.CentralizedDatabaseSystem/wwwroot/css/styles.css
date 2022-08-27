@@ -535,10 +535,21 @@ a {
 }
 
 .page-content {
-    height: 90vh;
+    height: calc(100vh - 5rem);
     overflow: auto;
 }
 
 .popup-menu {
     border: 0;
+}
+
+.top-menu {
+    border-color: lightgray;
+}
+
+.top-menu-header {
+    padding: 0;
+    height: 5rem;
+    line-height: 5rem;
+    z-index: 3;
 }
