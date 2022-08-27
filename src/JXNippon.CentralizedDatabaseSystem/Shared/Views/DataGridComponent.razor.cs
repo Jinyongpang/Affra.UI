@@ -67,7 +67,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         {
             StartDate = startDate ?? StartDate;
             EndDate = endDate ?? EndDate;
-            return grid?.FirstPage() ?? Task.CompletedTask;
+            return grid?.FirstPage(true) ?? Task.CompletedTask;
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)

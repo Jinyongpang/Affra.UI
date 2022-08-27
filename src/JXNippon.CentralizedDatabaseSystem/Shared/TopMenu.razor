@@ -1,11 +1,12 @@
-﻿
-<Menu @ref=menu Mode=MenuMode.Horizontal DefaultSelectedKeys="@(new string[] { "Home" })">
+﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Notifications
+
+<Menu @ref=menu Mode=MenuMode.Horizontal DefaultSelectedKeys="@(new string[] { "Home" })" Class="top-menu">
     <MenuItem Key="Home" RouterLink="#" RouterMatch="NavLinkMatch.Prefix">
          <a href="#"><Icon Type="home" Theme="@GetTheme("Home")"  Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Home</span></a>
     </MenuItem>
         <AuthorizeView Policy="RolePageOperation">
             <Authorized>
-                <SubMenu Key="Operation">
+                <SubMenu Key="Operation" Class="d-none d-md-inline-block">
                     <TitleTemplate><div><Icon Type="global" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Operation</span></div></TitleTemplate>
                     <ChildContent>
                         <MenuItemGroup Title="Operation">
@@ -22,7 +23,7 @@
         </AuthorizeView>
         <AuthorizeView Policy="RolePageWellAllocation">
             <Authorized>
-                 <SubMenu Key="WellAllocation">
+                 <SubMenu Key="WellAllocation" Class="d-none d-md-inline-block">
                     <TitleTemplate><div><Icon Type="cluster" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Well Allocation</span></div></TitleTemplate>
                     <ChildContent>
                         <MenuItem RouterLink="wellallocation/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationDashboard"><a href="wellallocation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
@@ -33,7 +34,7 @@
         </AuthorizeView>
         <AuthorizeView Policy="RolePageDeferment">
             <Authorized>
-                <SubMenu Key="Deferment">
+                <SubMenu Key="Deferment" Class="d-none d-md-inline-block">
                     <TitleTemplate><div><Icon Type="hourglass" Theme="@GetTheme("Deferment")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
                     <ChildContent>
                         <MenuItem RouterLink="deferment/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="DefermentDashboard"><a href="deferment/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
@@ -44,7 +45,7 @@
     </AuthorizeView>
     <AuthorizeView Policy="RolePageAdministration">
         <Authorized>
-           <SubMenu Key="More">
+           <SubMenu Key="More" Class="d-none d-md-inline-block">
                 <TitleTemplate><div><Icon Type="appstore" Theme="@GetTheme("More")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">More</span></div></TitleTemplate>
                 <ChildContent>
                     <MenuItemGroup Title="Management">
@@ -59,6 +60,9 @@
             </SubMenu>
         </Authorized>
     </AuthorizeView>
+    <div style="float: right;">
+         <LoginDisplay/>
+    </div> 
 </Menu>
 
 @code

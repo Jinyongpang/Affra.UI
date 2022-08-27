@@ -6,19 +6,14 @@
 <RadzenContextMenu />
 <RadzenDialog />
 <div class="page">
-    <main>
-        <nav class="navbar navbar-light auth sticky-top" style="height: 5.0rem;">
-            <div class="container-fluid top-navbar" style="height: 5.0rem;">
-                <div class="d-flex justify-content-left">
-                    <div class="d-none d-md-block"><TopMenu /></div>                 
-                </div>
-                <div class="d-flex justify-content-right">
-                    <LoginDisplay  />
-                </div>
+    <Layout>
+        <Header Class="top-menu-header">
+            <TopMenu />
+        </Header>
+        <Content>
+            <div class="page-content">
+                @Body
             </div>
-        </nav>
-        <div class="page-content">
-            @Body
-        </div>
-    </main>
+        </Content>
+    </Layout>
 </div>
