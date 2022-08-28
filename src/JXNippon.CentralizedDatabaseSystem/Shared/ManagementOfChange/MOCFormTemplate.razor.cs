@@ -88,12 +88,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             IGenericService<User>? userService = this.GetGenericService(serviceScope);
             var query = userService.Get();
 
-            //Microsoft.OData.Client.QueryOperationResponse<User>? usersResponse = await query
-            //    .Where(x => x.Role == "XX")
-            //    .OrderByDescending(user => user.Id)
-            //    .Take(loadSize)
-            //    .ToQueryOperationResponseAsync<User>();
-
             Microsoft.OData.Client.QueryOperationResponse<User>? usersResponse = await query
                 .OrderByDescending(x => x.Role)
                 .ToQueryOperationResponseAsync<User>();
