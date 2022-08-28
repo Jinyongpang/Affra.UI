@@ -47,6 +47,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         protected override async Task OnInitializedAsync()
         {
             var actualTypes = new HashSet<Type>();
+            types = new HashSet<string>();
             actualTypes.Add(this.TType);
             types.Add(this.TType.AssemblyQualifiedName);
             foreach (var series in this.ChartSeries)
@@ -89,6 +90,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         {
             isLoading = true;
             items = new Dictionary<string, IEnumerable<IDaily>>();
+            this.types = this.types.Distinct().ToHashSet();
             foreach (var type in this.types)
             {
                 using var serviceScope = ServiceProvider.CreateScope();
