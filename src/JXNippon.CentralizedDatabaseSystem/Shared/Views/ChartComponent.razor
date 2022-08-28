@@ -119,7 +119,7 @@
         <Empty/>  
     }
 
-    <RadzenCategoryAxis FormatString="@FormatString" Step="@Step" Visible="@(items?.Count() < 10)"/>
+    <RadzenCategoryAxis FormatString="@FormatString" Step="@Step" Visible="@(items?.All(x => x.Value.Count() < 10) == true)"/>
     <RadzenValueAxis Step="@ValueAxisStep">
         <RadzenGridLines/>
         <RadzenAxisTitle Text="@AxisTitle"/>
