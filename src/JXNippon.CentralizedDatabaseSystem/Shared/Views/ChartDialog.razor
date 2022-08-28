@@ -37,7 +37,7 @@
                         <RadzenLabel class="dialogTextSize" Text="Type" />
                     </div>
                     <div class="col-8">
-                        <RadzenDropDown Name="Type" class="w-100" Placeholder="Enter type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@types" @bind-Value="@Item.Type" TValue="string" AllowClear="false" Disabled=@isViewing></RadzenDropDown>
+                        <RadzenDropDown Name="Type" class="w-100" Placeholder="Select type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@types" @bind-Value="@Item.Type" TValue="string" AllowClear="false" Disabled=@isViewing></RadzenDropDown>
                         <RadzenRequiredValidator Component="Type" Text="Type is required" Popup=false/>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
             else if (this.current == 1)
             {
                 <div class="row py-2">
-                    <ChartSeriesDataGrid Chart="@Item"></ChartSeriesDataGrid>
+                    <ChartSeriesDataGrid Chart="@Item" Types=@this.types></ChartSeriesDataGrid>
                 </div>
                 <div class="row py-4">
                     <div class="col d-flex justify-content-start">
@@ -104,9 +104,8 @@
             }
             else
             {
-                string type = ViewService.GetTypeMapping()[Item.Type];
-                <ChartComponent TType="@type" AxisTitle="@Item.AxisTitle" FormatString="@Item.FormatString" 
-                    Step="@TimeSpan.FromMinutes(Item.StepInMinutes)" ValueAxisStep="@Item.ValueAxisStep" ChartSeries="@Item.ChartSeries"></ChartComponent>
+                <ChartComponent TType="@Item.ActualType" AxisTitle="@Item.AxisTitle" FormatString="@Item.FormatString" 
+                    Step="@TimeSpan.FromMinutes(Item.StepInMinutes)" ValueAxisStep="@Item.ValueAxisStep" ChartSeries="@Item.ChartSeries" Colors=@Constants.Constant.Colors></ChartComponent>
                 <div class="row py-4">
                     <div class="col d-flex justify-content-start">
                         <RadzenButton ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton>             

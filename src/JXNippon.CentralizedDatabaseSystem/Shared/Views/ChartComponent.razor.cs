@@ -16,10 +16,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     public partial class ChartComponent : IAsyncDisposable
     {
         private RadzenChart chart;
-        private IEnumerable<IDaily> items;
+        private IDictionary<string, IEnumerable<IDaily>> items;
         private bool isLoading = false;
-        private IHubSubscription subscription;
+        private List<IHubSubscription> subscriptions = new List<IHubSubscription>();
         private bool isDisposed = false;
+        private HashSet<string> types = new HashSet<string>();
 
         [Parameter] public EventCallback<IQueryable<dynamic>> LoadData { get; set; }
         [Parameter] public string FormatString { get; set; }
@@ -28,8 +29,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public string AxisTitle { get; set; }
         [Parameter] public IEnumerable<ChartSeries> ChartSeries { get; set; }
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
-        [Parameter] public string TType { get; set; }
-        [Parameter] public string Subscription { get; set; }
+        [Parameter] public Type TType { get; set; }
+        [Parameter] public bool HasSubscription { get; set; }
         [Parameter] public DateTimeOffset? StartDate { get; set; }
         [Parameter] public DateTimeOffset? EndDate { get; set; }
         [Parameter] public Column Column { get; set; }
@@ -45,10 +46,26 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
-            if (!string.IsNullOrEmpty(this.Subscription))
+            var actualTypes = new HashSet<Type>();
+            actualTypes.Add(this.TType);
+            types.Add(this.TType.AssemblyQualifiedName);
+            foreach (var series in this.ChartSeries)
             {
-                subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
-                await subscription.StartAsync();
+                if (series.ActualType is not null
+                    && !types.Contains(series.ActualType.AssemblyQualifiedName))
+                {
+                    types.Add(series.ActualType.AssemblyQualifiedName);
+                    actualTypes.Add(series.ActualType);
+                }
+            }
+            if (this.HasSubscription)
+            {
+                foreach (var type in actualTypes)
+                {
+                    var subscription = ContentUpdateNotificationService.Subscribe<object>(type.Name, OnContentUpdateAsync);
+                    await subscription.StartAsync();
+                    subscriptions.Add(subscription);
+                }
             }
             await ReloadAsync(StartDate, EndDate);
             await base.OnInitializedAsync();
@@ -71,28 +88,32 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private async Task LoadDataAsync()
         {
             isLoading = true;
-
-            using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.ViewService.GetGenericService(serviceScope, TType);
-            Queryable = service.Get();
-            if (StartDate != null && EndDate != null)
+            items = new Dictionary<string, IEnumerable<IDaily>>();
+            foreach (var type in this.types)
             {
-                Queryable = Queryable
+                using var serviceScope = ServiceProvider.CreateScope();
+                var service = this.ViewService.GetGenericService(serviceScope, type);
+                Queryable = service.Get();
+                if (StartDate != null && EndDate != null)
+                {
+                    Queryable = Queryable
+                        .Cast<IDaily>()
+                        .Where(item => item.Date >= StartDate.Value.ToUniversalTime())
+                        .Where(item => item.Date <= EndDate.Value.ToUniversalTime());
+                }
+                else
+                {
+                    Queryable = Queryable.Take(100);
+                }
+                await LoadData.InvokeAsync(Queryable);
+                var q = (DataServiceQuery)Queryable;
+
+                var typeItems = (await q.ExecuteAsync())
                     .Cast<IDaily>()
-                    .Where(item => item.Date >= StartDate.Value.ToUniversalTime())
-                    .Where(item => item.Date <= EndDate.Value.ToUniversalTime());
+                    .OrderBy(x => x.Date)
+                    .ToList();
+                this.items.Add(type, typeItems);
             }
-            else
-            {
-                Queryable = Queryable.Take(100);
-            }
-            await LoadData.InvokeAsync(Queryable);
-            var q = (DataServiceQuery)Queryable;
-
-            items = (await q.ExecuteAsync())
-                .Cast<IDaily>()
-                .OrderBy(x => x.Date)
-                .ToList();
 
             isLoading = false;
         }
@@ -135,12 +156,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 if (!isAPie)
                 {
                     bool isGroup = !string.IsNullOrEmpty(chartSeries.GroupProperty);
-                    var groupItems = items.GroupBy(x =>
+                    var groupItems = dailyItems.GroupBy(x =>
                         isGroup
                         ? (string)ViewService.GetPropValue(x, chartSeries.GroupProperty)
                         : chartSeries.Title);
 
-                    foreach (IGrouping<string, IDaily>? group in groupItems)
+                    foreach (var group in groupItems)
                     {
                         Series series = new()
                         {
@@ -203,10 +224,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 if (!isDisposed)
                 {
                     chart.Dispose();
-                    if (subscription is not null)
+                    foreach (var subscription in this.subscriptions)
                     {
-                        await subscription.DisposeAsync();
-                    }
+                        if (subscription is not null)
+                        {
+                            await subscription.DisposeAsync();
+                        }
+                    }                  
                     isDisposed = true;
                 }
             }

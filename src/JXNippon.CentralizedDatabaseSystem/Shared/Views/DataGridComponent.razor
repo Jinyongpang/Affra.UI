@@ -14,7 +14,11 @@
             var isSortable = gridColumn.Property == "Date"
                 || gridColumn.Property == "DateUI";
 
-            <RadzenDataGridColumn TItem="IDaily" Property="@(gridColumn.Property)" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)" Sortable=@isSortable>
+            var sortString = gridColumn.Property == "DateUI"
+                ? "Date"
+                : gridColumn.Property;
+
+            <RadzenDataGridColumn TItem="IDaily" Property="@(gridColumn.Property)" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)" Sortable=@isSortable SortProperty="@sortString">
                 </RadzenDataGridColumn>
         }             
     </Columns>

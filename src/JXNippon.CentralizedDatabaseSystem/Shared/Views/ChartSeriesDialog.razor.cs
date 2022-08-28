@@ -10,6 +10,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public ChartSeries Item { get; set; }
         [Parameter] public Chart Chart { get; set; }
         [Parameter] public int MenuAction { get; set; }
+        [Parameter] public IEnumerable<string> Types { get; set; }
+
         [Inject] private DialogService DialogService { get; set; }
 
         private IEnumerable<string> groupProperties;
@@ -57,18 +59,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override Task OnInitializedAsync()
         {
-            categoryProperties = Chart.ActualType.GetProperties()
-                .Select(prop => prop.Name)
-                .ToList();
-
-            valueProperties = Chart.ActualType.GetProperties()
-                .Where(prop => valueTypes.Contains(prop.PropertyType))
-                .Select(prop => prop.Name)
-                .ToList();
-
-            groupProperties = Chart.ActualType.GetProperties()
-                .Select(prop => prop.Name)
-                .ToList();
+            this.RefreshTypeProperties();
 
             return Task.CompletedTask;
         }
@@ -77,6 +68,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         {
             DialogService.Close(true);
             return Task.CompletedTask;
+        }
+
+        private void RefreshTypeProperties()
+        {
+            Type type = this.Item.ActualType ?? Chart.ActualType;
+
+            categoryProperties = type.GetProperties()
+                .Select(prop => prop.Name)
+                .ToList();
+
+            valueProperties = type.GetProperties()
+                .Where(prop => valueTypes.Contains(prop.PropertyType))
+                .Select(prop => prop.Name)
+                .ToList();
+
+            groupProperties = type.GetProperties()
+                .Select(prop => prop.Name)
+                .ToList();
         }
 
         private void Cancel()

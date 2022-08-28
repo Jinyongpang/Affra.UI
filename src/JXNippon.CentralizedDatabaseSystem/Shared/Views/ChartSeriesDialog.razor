@@ -91,6 +91,22 @@
                     <RadzenCheckBox Name="Smooth" @bind-Value="@Item.Smooth" Disabled=@isViewing></RadzenCheckBox>
                 </div>
             </div>
+            <div class="row py-2" hidden="@(isAPie)">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Color" />
+                </div>
+                <div class="col-8">
+                    <RadzenColorPicker Name="Color" @bind-Value="@Item.Color" Disabled=@isViewing></RadzenColorPicker>
+                </div>
+            </div>
+            <div class="row py-2" hidden="@(isAPie)">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Override Type" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown Name="Type" class="w-100" Placeholder="Select type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@this.Types" @bind-Value="@Item.Type" TValue="string" AllowClear="false" Disabled=@isViewing Change=RefreshTypeProperties></RadzenDropDown>
+                </div>
+            </div>
             <div class="row justify-content-center py-4" hidden=@isViewing>
                 <div class="col-md-12 d-flex align-items-end justify-content-center">
                     <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
