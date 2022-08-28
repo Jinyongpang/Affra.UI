@@ -1,4 +1,5 @@
 ﻿@using System.Linq.Dynamic.Core
+@using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces
 @using JXNippon.CentralizedDatabaseSystem.Models
 @using System.Collections.Concurrent
 
@@ -8,9 +9,14 @@
         string[] colors = this.Colors.ToArray();
         int i = -1;
 
-        foreach(var series in ChartSeries.OrderBy(x => x.Sequence))
+        foreach (var series in ChartSeries.OrderBy(x => x.Sequence))
         {
-            var seriesList = this.GetSeries(series, items);
+            var type = series.ActualType ?? TType;
+            IEnumerable<IDaily> dailyItems = null;
+            if (items is not null && items.TryGetValue(type.AssemblyQualifiedName, out dailyItems))
+            {
+            }
+            var seriesList = this.GetSeries(series, dailyItems);
 
             foreach (var group in seriesList)
             {
@@ -24,21 +30,28 @@
                 {
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.AreaChart:
                     {
-                            <RadzenAreaSeries Data="@seriesItem" CategoryProperty="Category"
+                        string color = string.IsNullOrEmpty(series.Color)
+                            ? colors[i]
+                            : series.Color;
+
+                        <RadzenAreaSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value"
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
-                            Stroke=@colors[i]
-                            Fill=@colors[i]
+                            Stroke=@color
+                            Fill=@color
                             Smooth="@series.Smooth">
                             <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                         </RadzenAreaSeries>
                         break;
                     }
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.LineChart:
-                    {                           
+                    {              
+                        string color = string.IsNullOrEmpty(series.Color)
+                            ? colors[i]
+                            : series.Color;
                         <RadzenLineSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value"
-                            Stroke=@colors[i]
+                            Stroke=@color
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
                             Smooth="@series.Smooth" 
                             >

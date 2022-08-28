@@ -24,7 +24,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
         {
             get
             {
-                return System.Type.GetType(ViewHelper.GetTypeMapping()[this.Type]);
+                return string.IsNullOrEmpty(this.Type)
+                    ? null
+                    : System.Type.GetType(ViewHelper.GetTypeMapping()[this.Type]);
             }
             set
             {

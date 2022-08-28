@@ -4,9 +4,9 @@
 <div class="row">
     <div class="col">
         <RadzenDataGrid @ref="grid" Data="@items"
-            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="false" AllowFiltering="false" AllowPaging="true" 
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="ChartSeries" 
-            ColumnWidth="20px" AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
+            ColumnWidth="20px" AllowColumnResize="false" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <EmptyTemplate>                
@@ -32,6 +32,13 @@
                 <RadzenDataGridColumn TItem="ChartSeries" Property="LineType" Title="LineType" Width="20px">
                 </RadzenDataGridColumn>
                  <RadzenDataGridColumn TItem="ChartSeries" Property="MarkerType" Title="MarkerType" Width="20px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="ChartSeries" Property="Color" Title="Color" Width="20px">
+                     <Template Context="item">
+                         <span style="background-color: @item.Color;">@item.Color</span>
+                     </Template>
+                </RadzenDataGridColumn>
+                 <RadzenDataGridColumn TItem="ChartSeries" Property="Type" Title="Type" Width="20px">
                 </RadzenDataGridColumn>
             </Columns>
 

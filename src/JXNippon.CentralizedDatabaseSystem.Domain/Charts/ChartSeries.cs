@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.OData.Client;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
@@ -24,6 +25,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
         public string GroupProperty { get; set; }
 
         public ExecutionType ExecutionType { get; set; }
+
+        public string Type { get; set; }
+
+        public string Color { get; set; }
 
         public string ExecutionTypeString 
         {
@@ -50,6 +55,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
             set
             {
                 this.ChartType = (ChartType)Enum.Parse(typeof(ChartType), value, true);
+            }
+        }
+
+        [IgnoreClientProperty]
+        [JsonIgnore]
+        public Type ActualType
+        {
+            get
+            {
+                return string.IsNullOrEmpty(this.Type)
+                    ? null
+                    : System.Type.GetType(ViewHelper.GetTypeMapping()[this.Type]);
+            }
+            set
+            {
+                this.Type = value.Name;
             }
         }
     }
