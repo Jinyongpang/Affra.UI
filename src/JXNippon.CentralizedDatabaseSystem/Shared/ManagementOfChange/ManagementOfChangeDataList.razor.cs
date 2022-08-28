@@ -8,6 +8,7 @@ using JXNippon.CentralizedDatabaseSystem.Models;
 using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 {
@@ -129,7 +130,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                         await service.InsertAsync(data);
                         AffraNotificationService.NotifyItemCreated();
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -153,7 +153,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private int GetPercentage(double step)
         {
-            double enumLength = Enum.GetNames(typeof(ManagementOfChangeCurrentStep)).Length;
+            double enumLength = Enum.GetNames(typeof(ManagementOfChangeCurrentStep)).Length - 1;
             return (int)((step / enumLength) * 100);
         }
     }
