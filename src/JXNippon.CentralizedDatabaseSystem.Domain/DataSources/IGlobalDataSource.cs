@@ -12,5 +12,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
         void AddException(Exception exception);
 
         User User { get; set; }
+
+        object LoginDisplay { get; set; }
     }
 }

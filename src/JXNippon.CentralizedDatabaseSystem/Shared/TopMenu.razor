@@ -1,4 +1,6 @@
-﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Notifications
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.DataSources
+@using JXNippon.CentralizedDatabaseSystem.Shared.Notifications
+@inject IGlobalDataSource GlobalDataSource
 
 <Menu @ref=menu Mode=MenuMode.Horizontal DefaultSelectedKeys="@(new string[] { "Home" })" Class="top-menu">
     <MenuItem Key="Home" RouterLink="#" RouterMatch="NavLinkMatch.Prefix">
@@ -61,7 +63,7 @@
         </Authorized>
     </AuthorizeView>
     <div style="float: right;">
-         <LoginDisplay/>
+         <LoginDisplay @ref=GlobalDataSource.LoginDisplay/>
     </div> 
 </Menu>
 
