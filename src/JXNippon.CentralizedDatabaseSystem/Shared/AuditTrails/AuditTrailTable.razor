@@ -22,40 +22,44 @@
         </Column>
     </RowTemplate>
     <ExpandTemplate>
-        @foreach(var detail in @context.Data.AuditTrailDetails)
-        {          
-            <div class="row">
-                <div class="col">
-                    <Space>
-                        <SpaceItem>
-                            <span style="font-weight: bold;">@detail.Column</span>
-                        </SpaceItem>
-                        <SpaceItem>
-                            @if (@detail.OldValue is null)
-                            {
-                                <Tag PresetColor="@PresetColor.Yellow">null</Tag>
-                            }
-                            else
-                            {
-                                <Tag>@detail.OldValue</Tag>
-                            }
-                        </SpaceItem>
-                        <SpaceItem>
-                            <Icon Type="arrow-right" Theme="outline" Style="font-weight: bold;"/>
-                        </SpaceItem>
-                        <SpaceItem>
-                             @if (@detail.NewValue is null)
-                            {
-                                <Tag PresetColor="@PresetColor.Yellow">null</Tag>
-                            }
-                            else
-                            {
-                                <Tag PresetColor="@PresetColor.GeekBlue">@detail.NewValue</Tag>
-                            } 
-                        </SpaceItem>
-                    </Space>
+        @{
+
+            foreach (var detail in @context.Data.AuditTrailDetails
+                .Where(x => x.OldValue != x.NewValue && x.OldValue?.ToString()?.Trim()?.Replace("\": ", "\":") != x.NewValue?.ToString()?.Trim()?.Replace("\": ",  "\":")))
+            {   
+                <div class="row">
+                    <div class="col">
+                        <Space>
+                            <SpaceItem>
+                                <span style="font-weight: bold;">@detail.Column</span>
+                            </SpaceItem>
+                            <SpaceItem>
+                                @if (@detail.OldValue is null)
+                                {
+                                    <Tag PresetColor="@PresetColor.Yellow">null</Tag>
+                                }
+                                else
+                                {
+                                    <Tag>@detail.OldValue</Tag>
+                                }
+                            </SpaceItem>
+                            <SpaceItem>
+                                <Icon Type="arrow-right" Theme="outline" Style="font-weight: bold;"/>
+                            </SpaceItem>
+                            <SpaceItem>
+                                 @if (@detail.NewValue is null)
+                                {
+                                    <Tag PresetColor="@PresetColor.Yellow">null</Tag>
+                                }
+                                else
+                                {
+                                    <Tag PresetColor="@PresetColor.GeekBlue">@detail.NewValue</Tag>
+                                } 
+                            </SpaceItem>
+                        </Space>
+                    </div>
                 </div>
-            </div>
+            }
         }
     </ExpandTemplate>
 </Table>
