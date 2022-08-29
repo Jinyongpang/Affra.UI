@@ -18,7 +18,31 @@
                         <TitleTemplate>
                            <div class="d-flex flex-row align-items-center">
                                 <div style="word-break:break-word;">
-                                    <span class="mb-0 title" href="#"><i class="oi oi-spreadsheet"></i> @(context.FileName)</span>
+                                    <span class="mb-0 title" href="#">
+                                        <Space>
+                                            <SpaceItem>
+                                                 @if (context.FileName.EndsWith(".xlsx", StringComparison.InvariantCultureIgnoreCase))
+                                                {
+                                                    <Icon Class="anticon-big" Type="file-excel" Theme="outline"/>
+                                                }
+                                                else if (context.FileName.EndsWith(".doc", StringComparison.InvariantCultureIgnoreCase))
+                                                {
+                                                    <Icon Class="anticon-big" Type="file-word" Theme="outline"/>
+                                                }
+                                                else if (context.FileName.EndsWith(".pdf", StringComparison.InvariantCultureIgnoreCase))
+                                                {
+                                                    <Icon Class="anticon-big" Type="file-pdf" Theme="outline"/>
+                                                }
+                                                else
+                                                {
+                                                    <Icon Class="anticon-big"  Type="file-text" Theme="outline"/>
+                                                }
+                                            </SpaceItem>
+                                            <SpaceItem>
+                                                @(context.FileName)
+                                            </SpaceItem>
+                                        </Space>                                 
+                                    </span>
                                 </div>
                            </div>
                         </TitleTemplate>
