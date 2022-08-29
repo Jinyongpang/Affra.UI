@@ -83,7 +83,16 @@
                             </div>
                         </Body>
                         <Extra>
-                            <i class="fa-solid fa-ellipsis-vertical extra-icon"></i>
+                            <Popover Placement="@Placement.RightBottom">
+                                <ContentTemplate>
+                                    <Menu Mode=MenuMode.Vertical Class="popup-menu">                   
+                                        <MenuItem Key="Resync"><a @onclick="@(() => this.ResyncFile(context))"><i class="fas fa-fw fa-xl fa-repeat"></i> Reset To Pending</a></MenuItem>
+                                    </Menu>
+                                </ContentTemplate>
+                                <ChildContent> 
+                                    <AntDesign.Button><i class="fa-solid fa-ellipsis-vertical extra-icon"></i></AntDesign.Button>                                  
+                                </ChildContent>
+                            </Popover>         
                         </Extra>
                     </Card>            
                 </ListItem>      
