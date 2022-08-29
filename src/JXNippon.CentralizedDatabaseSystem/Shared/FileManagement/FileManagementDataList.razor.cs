@@ -121,5 +121,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DataFile, IDataExtractorUnitOfWork>>();
         }
+
+        public async Task ResyncFile(DataFile dataFile)
+        {
+            using var serviceScope = ServiceProvider.CreateScope();
+            IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
+            dataFile.NumberOfAttempts = 0;
+            dataFile.ProcessStatus = FileProcessStatus.Pending;
+            await fileService.UpdateAsync(dataFile, dataFile.Id);
+        }
     }
 }
