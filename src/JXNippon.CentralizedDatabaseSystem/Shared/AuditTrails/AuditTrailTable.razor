@@ -1,0 +1,61 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails
+@using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles
+
+<Table Size="@(TableSize.Middle)" TItem="AuditTrail" DataSource="@_data" @bind-PageIndex="@_pageIndex" @bind-PageSize="@_pageSize" Total="@_total"
+    Loading="_loading" OnChange="HandleTableChangeAsync" RemoteDataSource Responsive>
+    <RowTemplate>
+        <Column Title="Date Time" @bind-Field="@context.UpdatedDate" Sortable DefaultSortOrder="SortDirection.Descending">@context.UpdatedDate.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</Column>
+        <Column Title="Updated By" @bind-Field="@context.UpdatedBy" Sortable></Column>
+        <Column Title="Action" @bind-Field="@context.Action" Sortable>        
+            @if (context.Action == CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.Action.Create)
+            {
+                <Tag Color="green">@context.Action</Tag>
+            }
+            else if (context.Action == CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.Action.Update)
+            {
+                <Tag PresetColor="@PresetColor.GeekBlue">@context.Action</Tag>
+            }
+            else
+            {
+                <Tag PresetColor="@PresetColor.Volcano">@context.Action</Tag>
+            }
+        </Column>
+    </RowTemplate>
+    <ExpandTemplate>
+        @foreach(var detail in @context.Data.AuditTrailDetails)
+        {          
+            <div class="row">
+                <div class="col">
+                    <Space>
+                        <SpaceItem>
+                            <span style="font-weight: bold;">@detail.Column</span>
+                        </SpaceItem>
+                        <SpaceItem>
+                            @if (@detail.OldValue is null)
+                            {
+                                <Tag PresetColor="@PresetColor.Yellow">null</Tag>
+                            }
+                            else
+                            {
+                                <Tag>@detail.OldValue</Tag>
+                            }
+                        </SpaceItem>
+                        <SpaceItem>
+                            <Icon Type="arrow-right" Theme="outline" Style="font-weight: bold;"/>
+                        </SpaceItem>
+                        <SpaceItem>
+                             @if (@detail.NewValue is null)
+                            {
+                                <Tag PresetColor="@PresetColor.Yellow">null</Tag>
+                            }
+                            else
+                            {
+                                <Tag PresetColor="@PresetColor.GeekBlue">@detail.NewValue</Tag>
+                            } 
+                        </SpaceItem>
+                    </Space>
+                </div>
+            </div>
+        }
+    </ExpandTemplate>
+</Table>

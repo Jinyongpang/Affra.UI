@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 3/8/2022 10:03:37 AM
+// Generation date: 29/8/2022 1:53:03 AM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -16485,6 +16485,359 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
+namespace CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails
+{
+    /// <summary>
+    /// There are no comments for AuditTrailSingle in the schema.
+    /// </summary>
+    public partial class AuditTrailSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<AuditTrail>
+    {
+        /// <summary>
+        /// Initialize a new AuditTrailSingle object.
+        /// </summary>
+        public AuditTrailSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new AuditTrailSingle object.
+        /// </summary>
+        public AuditTrailSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new AuditTrailSingle object.
+        /// </summary>
+        public AuditTrailSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<AuditTrail> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for AuditTrail in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class AuditTrail : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new AuditTrail object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="tableName">Initial value of TableName.</param>
+        /// <param name="action">Initial value of Action.</param>
+        /// <param name="updatedBy">Initial value of UpdatedBy.</param>
+        /// <param name="updatedDate">Initial value of UpdatedDate.</param>
+        /// <param name="ownerId">Initial value of OwnerId.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static AuditTrail CreateAuditTrail(long ID, 
+                    string tableName, 
+                    global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.Action action, 
+                    string updatedBy, 
+                    global::System.DateTimeOffset updatedDate, 
+                    long ownerId, 
+                    long xmin)
+        {
+            AuditTrail auditTrail = new AuditTrail();
+            auditTrail.Id = ID;
+            auditTrail.TableName = tableName;
+            auditTrail.Action = action;
+            auditTrail.UpdatedBy = updatedBy;
+            auditTrail.UpdatedDate = updatedDate;
+            auditTrail.OwnerId = ownerId;
+            auditTrail.xmin = xmin;
+            return auditTrail;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property TableName in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string TableName
+        {
+            get
+            {
+                return this._TableName;
+            }
+            set
+            {
+                this.OnTableNameChanging(value);
+                this._TableName = value;
+                this.OnTableNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _TableName;
+        partial void OnTableNameChanging(string value);
+        partial void OnTableNameChanged();
+        /// <summary>
+        /// There are no comments for Property Action in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.Action Action
+        {
+            get
+            {
+                return this._Action;
+            }
+            set
+            {
+                this.OnActionChanging(value);
+                this._Action = value;
+                this.OnActionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.Action _Action;
+        partial void OnActionChanging(global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.Action value);
+        partial void OnActionChanged();
+        /// <summary>
+        /// There are no comments for Property UpdatedBy in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string UpdatedBy
+        {
+            get
+            {
+                return this._UpdatedBy;
+            }
+            set
+            {
+                this.OnUpdatedByChanging(value);
+                this._UpdatedBy = value;
+                this.OnUpdatedByChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _UpdatedBy;
+        partial void OnUpdatedByChanging(string value);
+        partial void OnUpdatedByChanged();
+        /// <summary>
+        /// There are no comments for Property UpdatedDate in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset UpdatedDate
+        {
+            get
+            {
+                return this._UpdatedDate;
+            }
+            set
+            {
+                this.OnUpdatedDateChanging(value);
+                this._UpdatedDate = value;
+                this.OnUpdatedDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _UpdatedDate;
+        partial void OnUpdatedDateChanging(global::System.DateTimeOffset value);
+        partial void OnUpdatedDateChanged();
+        /// <summary>
+        /// There are no comments for Property OwnerId in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long OwnerId
+        {
+            get
+            {
+                return this._OwnerId;
+            }
+            set
+            {
+                this.OnOwnerIdChanging(value);
+                this._OwnerId = value;
+                this.OnOwnerIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _OwnerId;
+        partial void OnOwnerIdChanging(long value);
+        partial void OnOwnerIdChanged();
+        /// <summary>
+        /// There are no comments for Property AuditTrailDetails in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailDetail> AuditTrailDetails
+        {
+            get
+            {
+                return this._AuditTrailDetails;
+            }
+            set
+            {
+                this.OnAuditTrailDetailsChanging(value);
+                this._AuditTrailDetails = value;
+                this.OnAuditTrailDetailsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailDetail> _AuditTrailDetails = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailDetail>();
+        partial void OnAuditTrailDetailsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailDetail> value);
+        partial void OnAuditTrailDetailsChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for AuditTrailDetail in the schema.
+    /// </summary>
+    public partial class AuditTrailDetail
+    {
+        /// <summary>
+        /// Create a new AuditTrailDetail object.
+        /// </summary>
+        /// <param name="column">Initial value of Column.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static AuditTrailDetail CreateAuditTrailDetail(string column)
+        {
+            AuditTrailDetail auditTrailDetail = new AuditTrailDetail();
+            auditTrailDetail.Column = column;
+            return auditTrailDetail;
+        }
+        /// <summary>
+        /// There are no comments for Property Column in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Column
+        {
+            get
+            {
+                return this._Column;
+            }
+            set
+            {
+                this.OnColumnChanging(value);
+                this._Column = value;
+                this.OnColumnChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Column;
+        partial void OnColumnChanging(string value);
+        partial void OnColumnChanged();
+        /// <summary>
+        /// There are no comments for Property OldValue in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string OldValue
+        {
+            get
+            {
+                return this._OldValue;
+            }
+            set
+            {
+                this.OnOldValueChanging(value);
+                this._OldValue = value;
+                this.OnOldValueChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _OldValue;
+        partial void OnOldValueChanging(string value);
+        partial void OnOldValueChanged();
+        /// <summary>
+        /// There are no comments for Property NewValue in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string NewValue
+        {
+            get
+            {
+                return this._NewValue;
+            }
+            set
+            {
+                this.OnNewValueChanging(value);
+                this._NewValue = value;
+                this.OnNewValueChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _NewValue;
+        partial void OnNewValueChanging(string value);
+        partial void OnNewValueChanged();
+    }
+    /// <summary>
+    /// There are no comments for Action in the schema.
+    /// </summary>
+    public enum Action
+    {
+        None = 0,
+        Create = 1,
+        Update = 2,
+        Delete = 3
+    }
+    /// <summary>
+    /// Class containing all extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail as global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail as global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Default
 {
     /// <summary>
@@ -16614,6 +16967,11 @@ namespace CentralizedDatabaseSystemODataService.Default
             {
                 return resolvedType;
             }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Core.Domain.AuditTrails", "CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
             resolvedType = this.DefaultResolveType(typeName, "Default", "CentralizedDatabaseSystemODataService.Default");
             if ((resolvedType != null))
             {
@@ -16708,6 +17066,10 @@ namespace CentralizedDatabaseSystemODataService.Default
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.", clientType.Name);
+            }
+            if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Core.Domain.AuditTrails.", clientType.Name);
             }
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Default", global::System.StringComparison.Ordinal))
             {
@@ -17668,6 +18030,23 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.OperatingChange> _OperatingChange;
         /// <summary>
+        /// There are no comments for AuditTrail in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail> AuditTrail
+        {
+            get
+            {
+                if ((this._AuditTrail == null))
+                {
+                    this._AuditTrail = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail>("AuditTrail");
+                }
+                return this._AuditTrail;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail> _AuditTrail;
+        /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -18114,6 +18493,14 @@ namespace CentralizedDatabaseSystemODataService.Default
         public void AddToOperatingChange(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.OperatingChange operatingChange)
         {
             base.AddObject("OperatingChange", operatingChange);
+        }
+        /// <summary>
+        /// There are no comments for AuditTrail in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToAuditTrail(global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail auditTrail)
+        {
+            base.AddObject("AuditTrail", auditTrail);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -18976,6 +19363,32 @@ namespace CentralizedDatabaseSystemODataService.Default
         <NavigationProperty Name=""DailyOperatingChanges"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyOperatingChange)"" />
       </EntityType>
     </Schema>
+    <Schema Namespace=""Affra.Core.Domain.AuditTrails"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""AuditTrail"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""TableName"" Type=""Edm.String"" Nullable=""false"" />
+        <Property Name=""Action"" Type=""Affra.Core.Domain.AuditTrails.Action"" Nullable=""false"" />
+        <Property Name=""UpdatedBy"" Type=""Edm.String"" Nullable=""false"" />
+        <Property Name=""UpdatedDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""OwnerId"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""AuditTrailDetails"" Type=""Collection(Affra.Core.Domain.AuditTrails.AuditTrailDetail)"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+      </EntityType>
+      <ComplexType Name=""AuditTrailDetail"">
+        <Property Name=""Column"" Type=""Edm.String"" Nullable=""false"" />
+        <Property Name=""OldValue"" Type=""Edm.String"" />
+        <Property Name=""NewValue"" Type=""Edm.String"" />
+      </ComplexType>
+      <EnumType Name=""Action"">
+        <Member Name=""None"" Value=""0"" />
+        <Member Name=""Create"" Value=""1"" />
+        <Member Name=""Update"" Value=""2"" />
+        <Member Name=""Delete"" Value=""3"" />
+      </EnumType>
+    </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityContainer Name=""Container"">
         <EntitySet Name=""DailyPowerGenerationAndDistribution"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution"">
@@ -19403,6 +19816,13 @@ namespace CentralizedDatabaseSystemODataService.Default
         </EntitySet>
         <EntitySet Name=""OperatingChange"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.OperatingChange"">
           <NavigationPropertyBinding Path=""DailyOperatingChanges"" Target=""DailyOperatingChange"" />
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""AuditTrail"" EntityType=""Affra.Core.Domain.AuditTrails.AuditTrail"">
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

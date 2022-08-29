@@ -6,6 +6,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.TemplateManagements;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.AuditTrails;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Radzen;
@@ -105,6 +106,20 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
                     AffraNotificationService.NotifyItemDeleted();
                 }
+            }
+            else if (menuAction == 5)
+            {
+                _ = await DialogService.OpenAsync<AuditTrailTable>(title,
+                           new Dictionary<string, object>() { ["Id"] = data.Id, ["TableName"] = typeof(TItem).Name },
+                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+                return;
+            }
+            else if (menuAction == 6)
+            {
+                _ = await DialogService.OpenAsync<AuditTrailTable>(title,
+                           new Dictionary<string, object>() { ["Action"] = CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.Action.Delete, ["TableName"] = typeof(TItem).Name },
+                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+                return;
             }
             else
             {

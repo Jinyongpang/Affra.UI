@@ -43,6 +43,9 @@
                 <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
                 <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
                 <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+                <hr style="color: lightgray;"/>
+                <RadzenMenuItem Text="History..." Value="5" Icon="history" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete History..." Value="6" Icon="dns"/>
     </RadzenMenu>
     );  
     }
@@ -66,6 +69,14 @@
         else if (i == 3)
         {
             await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 5)
+        {
+            await ShowDialogAsync(args.Data, i, "History");
+        }
+        else if (i == 6)
+        {
+            await ShowDialogAsync(null, i, "Delete History");
         }
         else if (i == 4)
         {
