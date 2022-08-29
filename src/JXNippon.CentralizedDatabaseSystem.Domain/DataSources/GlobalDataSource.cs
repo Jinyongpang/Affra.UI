@@ -42,6 +42,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
             }
         }
 
+        public object LoginDisplay { get; set; }
+
         public void AddException(Exception exception)
         { 
             this.Exceptions.Add(exception);

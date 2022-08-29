@@ -8,48 +8,50 @@
 
 <AuthorizeView>
     <Authorized>
-        <Space>
-            <SpaceItem>
-                <PersonalMessageIcon/>
-            </SpaceItem>
-            <SpaceItem>
-                <RadzenProfileMenu Style="line-height: 2rem;">
-                    <Template>
-                        <Avatar Style="vertical-align: middle;" Size="large">
-                            <span style="font-size: 16px;">@this._userService.GetAvatarName(context.User.Identity.Name)</span>
-                        </Avatar>
-                    </Template>
-                    <ChildContent>
-                        <Card Size="large" Style="min-width:380px;">
-                            <TitleTemplate>
+        @{
+            var avatarColor = this.GlobalDataSource.User?.UserPersonalization?.AvatarColor; 
+            <Space>
+                <SpaceItem>
+                    <PersonalMessageIcon/>
+                </SpaceItem>
+                <SpaceItem>
+                    <RadzenProfileMenu Style="line-height: 2rem;">
+                        <Template>                     
+                            <Avatar Style=@($"vertical-align: middle; background-color: {avatarColor};") Size="large">
+                                <span style="font-size: 16px;">@this._userService.GetAvatarName(context.User.Identity.Name)</span>
+                            </Avatar>
+                        </Template>
+                        <ChildContent>
+                            <Card Size="large" Style="min-width:380px;">
+                                <TitleTemplate>
 
-                            </TitleTemplate>
-                            <Extra>
-                                <a @onclick="BeginLogout"><span class="toprow-nav-title">Logout</span></a>
-                            </Extra>
-                            <Body>
-                                <div class="row min-w-100">
-                                    <div class="col">
-                                         <Avatar Style="vertical-align: middle;" Size="64">
-                                            <span style="font-size: 32px;">@this._userService.GetAvatarName(context.User.Identity.Name)</span>
-                                         </Avatar>
-                                    </div>
-                                    <div class="col">
-                                        <div class="row">
-                                            <h3 style="font-weight:bold; word-break:break-word;">@context.User.Identity.Name</h3>
+                                </TitleTemplate>
+                                <Extra>
+                                    <a @onclick="BeginLogout"><span class="toprow-nav-title">Logout</span></a>
+                                </Extra>
+                                <Body>
+                                    <div class="row min-w-100">
+                                        <div class="col"  @onclick=ShowDialogAsync>
+                                             <Avatar Style=@($"vertical-align: middle; background-color: {avatarColor};") Size="64">
+                                                <span style="font-size: 32px;">@this._userService.GetAvatarName(context.User.Identity.Name)</span>
+                                             </Avatar>
                                         </div>
-                                        <div class="row">
-                                            <span style="word-break:break-word;">@this._userService.GetEmail(@context.User)</span>
+                                        <div class="col">
+                                            <div class="row">
+                                                <h3 style="font-weight:bold; word-break:break-word;">@context.User.Identity.Name</h3>
+                                            </div>
+                                            <div class="row">
+                                                <span style="word-break:break-word;">@this._userService.GetEmail(@context.User)</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div> 
-                            </Body>
-                        </Card>
-                    </ChildContent>
-                </RadzenProfileMenu>
-            </SpaceItem>
-        </Space>
-        
+                                    </div> 
+                                </Body>
+                            </Card>
+                        </ChildContent>
+                    </RadzenProfileMenu>
+                </SpaceItem>
+            </Space>  
+        }
 
     </Authorized>
 </AuthorizeView>

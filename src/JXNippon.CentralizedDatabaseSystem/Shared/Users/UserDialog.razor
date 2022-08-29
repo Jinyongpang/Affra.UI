@@ -1,17 +1,33 @@
-﻿@using UserODataService.Affra.Service.User.Domain.Users
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Users
+@using UserODataService.Affra.Service.User.Domain.Users
 
 <RadzenTemplateForm Data="@Item" Submit="@( async (User args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
-            <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Role" />
+            @if (this.IsUserEdit)
+            {
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Avatar color" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenColorPicker Name="AvatarColor" class="w-100" Placeholder="Select color..." @bind-Value="@this.userPersonalization.AvatarColor" Disabled=@isViewing></RadzenColorPicker>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <RadzenTextBox Name="Role" class="w-100" Placeholder="Enter title..." @bind-Value="@Item.Role" Disabled=@isViewing></RadzenTextBox>
-                    <RadzenRequiredValidator Component="Role" Text="Role is required" Popup=false/>
+            }
+            else
+            {
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Role" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Role" class="w-100" Placeholder="Enter title..." @bind-Value="@Item.Role" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenRequiredValidator Component="Role" Text="Role is required" Popup=false/>
+                    </div>
                 </div>
-            </div>
+            }
+            
             <div class="row justify-content-center py-4" hidden=@isViewing>
                 <div class="col-md-12 d-flex align-items-end justify-content-center">
                     <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>

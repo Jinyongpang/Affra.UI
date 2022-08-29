@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using System.Text.Json;
 using Microsoft.OData.Client;
 using UserODataService.Affra.Service.User.Domain.Users;
 
@@ -51,6 +52,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
             }
 
             return result;
+        }
+
+        public UserPersonalization GetUserPersonalization(User user)
+        {
+            return JsonSerializer.Deserialize<UserPersonalization>(user.Personalization);
         }
     }
 }

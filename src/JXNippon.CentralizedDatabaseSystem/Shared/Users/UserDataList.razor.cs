@@ -120,7 +120,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<User, IUserUnitOfWork>>();
         }
-        public async Task ShowDialogAsync(User data, int menuAction, string title)
+
+        private async Task ShowDialogAsync(User data, int menuAction, string title)
         {
             dynamic? response;
             if (menuAction == 2)
@@ -141,7 +142,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
             else
             {
                 response = await DialogService.OpenAsync<UserDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, },
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "IsUserEdit", false }, },
                            Constant.DialogOptions);
 
                 if (response == true)

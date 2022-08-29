@@ -323,6 +323,7 @@ body {
     background-color: #ffffff !important;
     border: 1px solid #dbe0ea !important;
     box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
+    height: calc(90vh - 5rem);
 }
 
 .ant-carousel .slick-dots-bottom {
@@ -552,4 +553,8 @@ a {
     height: 5rem;
     line-height: 5rem;
     z-index: 3;
+}
+
+.page-tab {
+
 }

@@ -1,9 +1,9 @@
 ﻿using System.Security.Claims;
 using Affra.Core.Domain.Services;
-using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -50,6 +50,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 var service = serviceScope.ServiceProvider.GetRequiredService<IUserService>();
                 var userFromService = await service.GetUserAsync(user);
                 this._globalDataSource.User = userFromService;
+                var loginDisplay = this._globalDataSource.LoginDisplay as LoginDisplay;
+                await loginDisplay.ReloadAsync();
             }
         }
 

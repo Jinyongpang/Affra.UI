@@ -1,6 +1,5 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using AntDesign;
 using AntDesign.TableModels;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -41,10 +40,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
                 .Take(this._pageSize)
                 .ToQueryOperationResponseAsync<UserActivity>();
 
-            _total = (int)response.Count; 
+            _total = (int)response.Count;
             _loading = false;
             _data = response.ToArray();
-            
+
         }
         private void HandleException(Exception ex)
         {
