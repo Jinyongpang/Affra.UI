@@ -546,6 +546,9 @@ a {
 
 .top-menu {
     border-color: lightgray;
+    position: relative;
+    display: flex;
+    justify-content: left;
 }
 
 .top-menu-header {
