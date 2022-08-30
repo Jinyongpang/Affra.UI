@@ -421,6 +421,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to High.
+        /// </summary>
+        public static string HighRisk {
+            get {
+                return ResourceManager.GetString("HighRisk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction conflicts with another user..
         /// </summary>
         public static string InvalidToken {
@@ -430,11 +439,29 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Low.
+        /// </summary>
+        public static string LowRisk {
+            get {
+                return ResourceManager.GetString("LowRisk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This change is hereby made permanent.
         /// </summary>
         public static string MadePermanentState {
             get {
                 return ResourceManager.GetString("MadePermanentState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium.
+        /// </summary>
+        public static string MediumRisk {
+            get {
+                return ResourceManager.GetString("MediumRisk", resourceCulture);
             }
         }
         
@@ -489,6 +516,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string Unknown {
             get {
                 return ResourceManager.GetString("Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to High Risk.
+        /// </summary>
+        public static string VeryHighRisk {
+            get {
+                return ResourceManager.GetString("VeryHighRisk", resourceCulture);
             }
         }
     }

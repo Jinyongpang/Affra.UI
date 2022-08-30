@@ -455,6 +455,10 @@ p.moh-cardbody {
 .borderedTitlelessDescription > div > table > tbody > tr > td.ant-descriptions-item-label {
     display: none !important;
 }
+.stepAntIconBig > div > div.ant-steps-item-icon > span.ant-steps-icon > span {
+    font-size: 24px !important;
+    vertical-align: baseline !important;
+}
 
 .view-chart > div.ant-card-body {
     height: 100%;
@@ -559,5 +563,23 @@ a {
 }
 
 .page-tab {
-
+    height: 90%;
+}
+.approveButtonStyle {
+    border-color: #5dbf74 !important;
+    background: #5dbf74 !important;
+    margin-right: 20px;
+}
+.rejectButtonStyle {
+    border-color: #ff6d41 !important;
+    background: #ff6d41 !important;
+}
+.ant-modal-mask {
+    z-index: 1002 !important;
+}
+.ant-modal-wrap {
+    z-index: 1002 !important;
+}
+.moc-extension-description {
+    margin-top: 20px;
 }

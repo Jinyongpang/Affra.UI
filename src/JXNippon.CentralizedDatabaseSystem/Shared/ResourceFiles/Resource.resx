@@ -261,4 +261,16 @@
   <data name="Unknown" xml:space="preserve">
     <value>Unknown error!</value>
   </data>
+  <data name="HighRisk" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="LowRisk" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="MediumRisk" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="VeryHighRisk" xml:space="preserve">
+    <value>High Risk</value>
+  </data>
 </root>

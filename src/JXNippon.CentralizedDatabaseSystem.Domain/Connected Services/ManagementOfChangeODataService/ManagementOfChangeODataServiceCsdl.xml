@@ -1,0 +1,162 @@
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="ManagementOfChangeRecord">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="TitleOfChange" Type="Edm.String" />
+        <Property Name="RecordNumber" Type="Edm.String" />
+        <Property Name="ManagementOfChangeField" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeField" Nullable="false" />
+        <Property Name="CreatedDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.String" />
+        <Property Name="ManagementOfChangeStatus" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeStatus" Nullable="false" />
+        <Property Name="ManagementOfChangeCurrentStep" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeCurrentStep" Nullable="false" />
+        <Property Name="Identification" Type="Affra.Service.ManagementOfChange.Domain.Identifications.Identification" />
+        <Property Name="RiskEvaluation" Type="Affra.Service.ManagementOfChange.Domain.RiskEvaluations.RiskEvaluation" />
+        <Property Name="Endorsement" Type="Affra.Service.ManagementOfChange.Domain.Endorsements.Endorsement" />
+        <Property Name="AuthorisationAndApproval" Type="Affra.Service.ManagementOfChange.Domain.AuthorisationAndApprovals.AuthorisationAndApproval" />
+        <Property Name="CommunicationAndImplementation" Type="Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations.CommunicationAndImplementation" />
+        <Property Name="Extensions" Type="Collection(Affra.Service.ManagementOfChange.Domain.Extensions.Extension)" />
+        <Property Name="CloseOut" Type="Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOut" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+      </EntityType>
+      <EnumType Name="ManagementOfChangeField">
+        <Member Name="HIP" Value="0" />
+        <Member Name="LWP" Value="1" />
+        <Member Name="Others" Value="2" />
+      </EnumType>
+      <EnumType Name="ManagementOfChangeStatus">
+        <Member Name="New" Value="0" />
+        <Member Name="Pending" Value="1" />
+        <Member Name="Extension" Value="2" />
+        <Member Name="Completed" Value="3" />
+        <Member Name="Deleted" Value="4" />
+      </EnumType>
+      <EnumType Name="ManagementOfChangeCurrentStep">
+        <Member Name="InitialCreation" Value="0" />
+        <Member Name="RiskEvaluation" Value="1" />
+        <Member Name="EndorsementSubmitForApproval" Value="2" />
+        <Member Name="EndorsementPendingForApproval" Value="3" />
+        <Member Name="AuthorisationAndApprovalSubmitForApproval" Value="4" />
+        <Member Name="AuthorisationAndApprovalPendingForApproval" Value="5" />
+        <Member Name="ExtensionSubmitForApproval" Value="6" />
+        <Member Name="ExtensionPendingForApproval" Value="7" />
+        <Member Name="CloseOutSubmitForApproval" Value="8" />
+        <Member Name="CloseoutPendingForApproval" Value="9" />
+        <Member Name="Completed" Value="10" />
+      </EnumType>
+      <EnumType Name="RiskLevels">
+        <Member Name="LowRisk" Value="0" />
+        <Member Name="MediumRisk" Value="1" />
+        <Member Name="HighRisk" Value="2" />
+        <Member Name="VeryHighRisk" Value="3" />
+      </EnumType>
+    </Schema>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.Identifications" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <ComplexType Name="Identification">
+        <Property Name="DurationOfChange" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ExpiryDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="DescriptionOfChange" Type="Edm.String" />
+        <Property Name="ReasonForChange" Type="Affra.Service.ManagementOfChange.Domain.Identifications.ReasonForChange" Nullable="false" />
+        <Property Name="OtherReasonForChange" Type="Edm.String" />
+        <Property Name="DetailOfChange" Type="Affra.Service.ManagementOfChange.Domain.Identifications.DetailOfChange" Nullable="false" />
+        <Property Name="CategoriesOfChange" Type="Affra.Service.ManagementOfChange.Domain.Identifications.CategoriesOfChange" Nullable="false" />
+        <Property Name="PriorityOfChange" Type="Affra.Service.ManagementOfChange.Domain.Identifications.PriorityOfChange" Nullable="false" />
+        <Property Name="SCEAffected" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="SCETagNumber" Type="Edm.String" />
+      </ComplexType>
+      <EnumType Name="ReasonForChange">
+        <Member Name="Deviation" Value="0" />
+        <Member Name="Deferment" Value="1" />
+        <Member Name="Improvement" Value="2" />
+        <Member Name="Deficiency" Value="3" />
+        <Member Name="Decommissioning" Value="4" />
+        <Member Name="Others" Value="5" />
+      </EnumType>
+      <EnumType Name="DetailOfChange">
+        <Member Name="FacilitiesImprovementPlan" Value="0" />
+        <Member Name="OperatingChangeAndNonRoutineOperations" Value="1" />
+        <Member Name="PlantControlAndSafetySystemChange" Value="2" />
+      </EnumType>
+      <EnumType Name="CategoriesOfChange">
+        <Member Name="Permanent" Value="0" />
+        <Member Name="Temporary" Value="1" />
+      </EnumType>
+      <EnumType Name="PriorityOfChange">
+        <Member Name="Normal" Value="0" />
+        <Member Name="Emergency" Value="1" />
+      </EnumType>
+    </Schema>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.RiskEvaluations" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <ComplexType Name="RiskEvaluation">
+        <Property Name="InheritRiskLikelihood" Type="Edm.String" />
+        <Property Name="InheritRiskConsequence" Type="Edm.String" />
+        <Property Name="InheritRiskRiskLevel" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels" Nullable="false" />
+        <Property Name="ResidualRiskLikelihood" Type="Edm.String" />
+        <Property Name="ResidualRiskConsequence" Type="Edm.String" />
+        <Property Name="ResidualRiskRiskLevel" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels" Nullable="false" />
+        <Property Name="RecommendationAndCountermeasure" Type="Edm.String" />
+      </ComplexType>
+    </Schema>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.Endorsements" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <ComplexType Name="Endorsement">
+        <Property Name="LineManagerComment" Type="Edm.String" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Designation" Type="Edm.String" />
+        <Property Name="Signature" Type="Edm.String" />
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+      </ComplexType>
+    </Schema>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.AuthorisationAndApprovals" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <ComplexType Name="AuthorisationAndApproval">
+        <Property Name="ApprovingAuthorityComment" Type="Edm.String" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Designation" Type="Edm.String" />
+        <Property Name="Signature" Type="Edm.String" />
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+      </ComplexType>
+    </Schema>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <ComplexType Name="CommunicationAndImplementation">
+        <Property Name="Comments" Type="Edm.String" />
+        <Property Name="PreparedByName" Type="Edm.String" />
+        <Property Name="PreparedBySignature" Type="Edm.String" />
+        <Property Name="PreparedByDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="AgreedByName" Type="Edm.String" />
+        <Property Name="AgreedBySignature" Type="Edm.String" />
+        <Property Name="AgreedByDate" Type="Edm.DateTimeOffset" Nullable="false" />
+      </ComplexType>
+    </Schema>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.Extensions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <ComplexType Name="Extension">
+        <Property Name="ExtensionNo" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DurationExtended" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ReviewDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ApproverNameColection" Type="Edm.String" />
+        <Property Name="ApproverName" Type="Edm.String" />
+        <Property Name="ApproverDesignation" Type="Edm.String" />
+        <Property Name="ApprovalSignature" Type="Edm.String" />
+      </ComplexType>
+    </Schema>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.CloseOuts" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <ComplexType Name="CloseOut">
+        <Property Name="CloseOutState" Type="Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOutState" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Designation" Type="Edm.String" />
+        <Property Name="Signature" Type="Edm.String" />
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+      </ComplexType>
+      <EnumType Name="CloseOutState">
+        <Member Name="RevertOriginalState" Value="0" />
+        <Member Name="MadePermanentState" Value="1" />
+      </EnumType>
+    </Schema>
+    <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="Container">
+        <EntitySet Name="ManagementOfChangeRecord" EntityType="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
