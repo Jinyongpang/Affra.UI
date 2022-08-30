@@ -1,8 +1,9 @@
-﻿<Layout Class="layout-view" Style="height: 80vh;">
+﻿@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges
+<Layout Class="layout-view">
     <Header>
         <div class="row">
             <div class="col-12 float-right align-items-center text-right mt-1">
-                <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" >
+                <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick="@(() => ShowDialogAsync(new ManagementOfChangeRecord()))">
                     <ChildContent>
                         <Icon Type="plus-circle" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Add</span>
                     </ChildContent>
@@ -12,7 +13,7 @@
     </Header>
     <Layout Style="height: 100%;">
         <Sider Width=200>
-            <Menu DefaultSelectedKeys=@(new[] { "All" }) Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
+            <Menu DefaultSelectedKeys=@(new[] { "All" }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
                 <MenuItem Key="All"><span style="font-size: 16px; margin-left: 0px;">All</span></MenuItem>
                 <MenuItem Key="New"><span style="font-size: 16px; margin-left: 0px;">New</span></MenuItem>
                 <MenuItem Key="Pending"><span style="font-size: 16px; margin-left: 0px;">Pending</span></MenuItem>
@@ -21,16 +22,6 @@
             </Menu>
         </Sider>
         <Layout>
-            @*<Content>
-                <Row>
-                    @{
-                        foreach (var mohDetail in mohDetails)
-                        {
-                            <ManagementOfChangeDataList RecordCode=@mohDetail.RecordCode Description=@mohDetail.Description />
-                        }
-                    }
-                </Row>
-            </Content>*@
             <Content Style="overflow-y: auto; overflow-x:hidden; height:100%;">
                 <ManagementOfChangeDataList @ref=managementOfChangeDataList></ManagementOfChangeDataList>
             </Content>
