@@ -125,8 +125,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                     using var serviceScope = ServiceProvider.CreateScope();
                     var service = this.GetGenericMOCService(serviceScope);
 
-                    await service.InsertAsync(data);
-                    AffraNotificationService.NotifyItemCreated();
+                    if (data.Id > 0)
+                    {
+                        await service.UpdateAsync(data, data.Id);
+                        AffraNotificationService.NotifyItemUpdated();
+                    }
+                    else
+                    {
+                        await service.InsertAsync(data);
+                        AffraNotificationService.NotifyItemCreated();
+                    }
 
                 }
                 catch (Exception ex)

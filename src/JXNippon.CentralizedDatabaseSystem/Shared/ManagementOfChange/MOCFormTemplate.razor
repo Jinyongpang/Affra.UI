@@ -9,6 +9,11 @@
 @using UserODataService.Affra.Service.User.Domain.Users
 
 <RadzenTemplateForm Data="@Item" Submit="@( async (ManagementOfChangeRecord args) => { await SubmitAsync(args); })">
+    <Button Class="sticky-top moc-close-dialog-btn" Danger Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Circle" OnClick="OnCloseDialogClicked">
+        <ChildContent>
+            <Icon Class="anticon-big" Type="close-circle" Theme="outline"/>
+        </ChildContent>
+    </Button>
     <div class="row py-2 px-2">
         <div class="col">
             <div class="sticky-top moh-step-div">
@@ -90,7 +95,7 @@
                                             {
                                                 <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnCreateButtonClick">
                                                     <ChildContent>
-                                                        <span style="font-size: 18px; margin-left: 0px;">Create Form</span>
+                                                        <span style="font-size: 18px; margin-left: 0px;">Next</span>
                                                         <Icon Class="anticon-big" Type="form" Theme="outline"/>
                                                     </ChildContent>
                                                 </Button>

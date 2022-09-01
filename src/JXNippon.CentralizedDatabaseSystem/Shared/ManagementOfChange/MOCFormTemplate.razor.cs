@@ -15,6 +15,8 @@ using Microsoft.Extensions.Localization;
 using Microsoft.OData.UriParser;
 using Radzen;
 using UserODataService.Affra.Service.User.Domain.Users;
+using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
+using Microsoft.OData.Edm;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 {
@@ -26,6 +28,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private IUserService UserService { get; set; }
         [Inject] private ConfirmService ConfirmService { get; set; }
+        [Inject] private AffraNotificationService AffraNotificationService { get; set; }
 
         private List<string> userDesignation;
         private List<string> lineManagerUsername;
@@ -211,14 +214,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 Item.CloseOut.CloseOutState = CloseOutState.MadePermanentState;
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseOutSubmitForApproval;
+                currentStep = 4;
             }
             else
             {
                 Item.CloseOut.CloseOutState = CloseOutState.RevertOriginalState;
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.RiskEvaluation;
+                currentStep = 1;
             }
 
-            await SubmitAsync(Item);
+            using var serviceScope = ServiceProvider.CreateScope();
+            var service = this.GetGenericMOCService(serviceScope);
+
+            await service.InsertAsync(Item);
+            AffraNotificationService.NotifyItemCreated(); 
+        }
+        private void OnCloseDialogClicked()
+        {
+            DialogService.Close(false);
         }
         private async void OnEndorsementSubmitButtonClick()
         {
@@ -274,10 +287,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         {
             DialogService.Close(true);
             return Task.CompletedTask;
-        }
-        private void Cancel()
-        {
-            DialogService.Close(false);
         }
         private void OnIdentificationExpiryDateChange(DateTimeChangedEventArgs args)
         {
@@ -414,6 +423,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
             }
+        }
+        private IGenericService<ManagementOfChangeRecord> GetGenericMOCService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<ManagementOfChangeRecord, IManagementOfChangeUnitOfWork>>();
         }
     }
 }
