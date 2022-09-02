@@ -583,3 +583,14 @@ a {
 .moc-extension-description {
     margin-top: 20px;
 }
+
+.focused-cdr{
+}
+
+.focused-tab > div > div > div > div > div > div.rz-data-grid {
+    height: 60vh;
+}
+
+.clickable-icon {
+    cursor: pointer;
+}
