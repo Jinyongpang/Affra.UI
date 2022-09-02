@@ -1,5 +1,6 @@
 ﻿@page "/CombinedDailyReport"
 @using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 @using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
 @using JXNippon.CentralizedDatabaseSystem.Shared.Logistic
 @using JXNippon.CentralizedDatabaseSystem.Shared.Dashboard
@@ -28,45 +29,62 @@
 
 <div class="px-2">
     <div class="row">
-        <div class="col-sm-12 col-md-4 col-xl-2 py-2">
-            <Space Class="w-100">
-                <SpaceItem>
-                    <span>Date:</span>
-                </SpaceItem>
-                <SpaceItem Class="w-100">
-                    <DatePicker Class="w-100" Size="medium" DisabledDate="date => date >= DateTime.Now" Placeholder=@("Date") TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear="false" OnChange=@(args => OnChangeAsync(args))/>   
-                </SpaceItem>
-            </Space>      
-        </div>
-        <div class="col-sm-12 col-md-4 col-xl-2 py-2">      
-            <RadzenButton  Style="width: 100%;" Text="Export" Icon="grid_on" ButtonStyle="ButtonStyle.Primary"/>
-        </div>
-        <div class="col-sm-12 col-md-4 col-xl-2 py-2">      
-            <RadzenButton Style="width: 100%;" Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light"/>
-        </div>
+         @if (!this.HasFocus)
+        { 
+            <div class="col-sm-12 col-md-4 col-xl-2 py-2">
+                <Space Class="w-100">
+                    <SpaceItem>
+                        <span>Date:</span>
+                    </SpaceItem>
+                    <SpaceItem Class="w-100">
+                        <DatePicker Class="w-100" Size="medium" DisabledDate="date => date >= DateTime.Now" Placeholder=@("Date") TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear=@this.HasFocus OnChange=@(args => OnChangeAsync(args))/>   
+                    </SpaceItem>
+                </Space>      
+            </div>         
+            <div class="col-sm-12 col-md-4 col-xl-2 py-2">      
+                <RadzenButton  Style="width: 100%;" Text="Export" Icon="grid_on" ButtonStyle="ButtonStyle.Primary"/>
+            </div>
+            <div class="col-sm-12 col-md-4 col-xl-2 py-2">      
+                <RadzenButton Style="width: 100%;" Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light"/>
+            </div>  
+        }
     </div>
 
-    <div class="row py-2">
+    <div class="row py-2 @this.GetFocusClass(0)">
         <div class="col">  
-            <RadzenCard>
-               <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[0] = true)>
+            <RadzenCard Style="height: 100%;">
+               <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(0))" Collapsed="@(!this.CheckIsFocused(0))" Expand=@(() => isRadzenPanelExpandedList[0] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
-                            <h4 class="m-0 d-flex align-items-center title">
-                                1. OIM Summary
-                            </h4>
+                            <Space>
+                                <SpaceItem>
+                                    <h4 class="m-0 d-flex align-items-center title">
+                                        1. OIM Summary
+                                    </h4>
+                                </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(0))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=20 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[0])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(0))"  DefaultActiveKey="1" Animated>
 	                            <TabPane Tab="HIP / LWP Summary" Key="1">
-                                    <HIPAndLWPSummaryDataGrid @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args))/>
+                                    <HIPAndLWPSummaryDataGrid @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(0) PagerAlwaysVisible=@CheckIsFocused(0)/>
                                 </TabPane>
                                 <TabPane Tab="FPSO Helang Summary" Key="2">
-                                    <FPSOHelangSummaryDataGrid @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args))/>
+                                    <FPSOHelangSummaryDataGrid @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(0) PagerAlwaysVisible=@CheckIsFocused(0)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -75,36 +93,50 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(1)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[1] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(1))" Collapsed="@(!this.CheckIsFocused(1))" Expand=@(() => isRadzenPanelExpandedList[1] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                             2. Health, Safety & Environment
                             </h4>
+                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(1))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=25 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[1])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(1))"  DefaultActiveKey="1" Animated>
 	                            <TabPane Tab="Health, Safety & Environment" Key="1">
-                                    <HealthSafetyAndEnvironmentDataGrid @ref="healthSafetyAndEnvironmentDataGrid" LoadData=@(args => LoadHealthSafetyAndEnvironmentDataGridAsync(args))/>
+                                    <HealthSafetyAndEnvironmentDataGrid @ref="healthSafetyAndEnvironmentDataGrid" LoadData=@(args => LoadHealthSafetyAndEnvironmentDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(1) PagerAlwaysVisible=@CheckIsFocused(1)/>
                                 </TabPane>
                                 <TabPane Tab="Loss Of Primary Containment (LOPC) Incident" Key="2">
-                                    <LossOfPrimaryContainmentIncidentDataGrid @ref="lossOfPrimaryContainmentIncidentDataGrid" LoadData=@(args => LoadLossOfPrimaryContainmentIncidentDataGridAsync(args))/>
+                                    <LossOfPrimaryContainmentIncidentDataGrid @ref="lossOfPrimaryContainmentIncidentDataGrid" LoadData=@(args => LoadLossOfPrimaryContainmentIncidentDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(1) PagerAlwaysVisible=@CheckIsFocused(1)/>
                                 </TabPane>
                                 <TabPane Tab="LifeBoats" Key="3">
-                                    <LifeBoatsDataGrid @ref="lifeBoatsDataGrid" LoadData=@(args => LoadLifeBoatsDataGridAsync(args))/>
+                                    <LifeBoatsDataGrid @ref="lifeBoatsDataGrid" LoadData=@(args => LoadLifeBoatsDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(1) PagerAlwaysVisible=@CheckIsFocused(1)/>
                                 </TabPane>
                                 <TabPane Tab="Management Of Change (MOC) : Long Term Overrides & Inhibits On Alarm And/Or Trip" Key="4">
-                                    <LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args))/>
+                                    <LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(1) PagerAlwaysVisible=@CheckIsFocused(1)/>
                                 </TabPane>
                                 <TabPane Tab="Management Of Change (MOC) : Operating Change" Key="5">
-                                    <OperatingChangeDataGrid @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args))/>
+                                    <OperatingChangeDataGrid @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(1) PagerAlwaysVisible=@CheckIsFocused(1)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -113,30 +145,44 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(2)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[2] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(2))" Collapsed="@(!this.CheckIsFocused(2))" Expand=@(() => isRadzenPanelExpandedList[2] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 3. Daily Production
                             </h4>
+                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(2))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=85 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[2])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(2))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="SK10 Production" Key="1">
-                                    <ProductionSK10DataGrid @ref="productionSK10DataGrid" LoadData=@(args => LoadProductionSK10DataGridAsync(args))/>
+                                    <ProductionSK10DataGrid @ref="productionSK10DataGrid" LoadData=@(args => LoadProductionSK10DataGridAsync(args)) ShowDateColumn=@CheckIsFocused(2) PagerAlwaysVisible=@CheckIsFocused(2)/>
                                 </TabPane>
                                 <TabPane Tab="HIP Production" Key="2">
-                                    <ProductionHIPDataGrid @ref="productionHIPDataGrid" LoadData=@(args => LoadProductionHIPDataGridAsync(args))/>
+                                    <ProductionHIPDataGrid @ref="productionHIPDataGrid" LoadData=@(args => LoadProductionHIPDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(2) PagerAlwaysVisible=@CheckIsFocused(2)/>
                                 </TabPane>
                                 <TabPane Tab="FPSO Production" Key="3">
-                                    <ProductionFPSOHelangDataGrid @ref="productionFPSOHelangDataGrid" LoadData=@(args => LoadProductionFPSODataGridAsync(args))/>
+                                    <ProductionFPSOHelangDataGrid @ref="productionFPSOHelangDataGrid" LoadData=@(args => LoadProductionFPSODataGridAsync(args)) ShowDateColumn=@CheckIsFocused(2) PagerAlwaysVisible=@CheckIsFocused(2)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -145,24 +191,38 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(3)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[3] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(3))" Collapsed="@(!this.CheckIsFocused(3))" Expand=@(() => isRadzenPanelExpandedList[3] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 4. Major Equipment Status
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(3))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=75 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[3])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(3))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Major Equipment Status" Key="1">
-                                    <MajorEquipmentStatusDataGrid @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args))/>
+                                    <MajorEquipmentStatusDataGrid @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(3) PagerAlwaysVisible=@CheckIsFocused(3)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -171,27 +231,41 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(4)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[4] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(4))" Collapsed="@(!this.CheckIsFocused(4))" Expand=@(() => isRadzenPanelExpandedList[4] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 5. Chemical Injection
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(4))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=75 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[4])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(4))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="CI Nalco, EC-1310A (3:7 = CI : Diesel)" Key="1">
-                                    <CINalcoDataGrid @ref="ciNalcoDataGrid" LoadData=@(args => LoadCINalcoDataGridAsync(args))/>
+                                    <CINalcoDataGrid @ref="ciNalcoDataGrid" LoadData=@(args => LoadCINalcoDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(4) PagerAlwaysVisible=@CheckIsFocused(4)/>
                                 </TabPane>
 	                            <TabPane Tab="Inowac SBN-810 Injection" Key="2">
-                                    <InowacInjectionDataGrid @ref="inowacInjectionDataGrid" LoadData=@(args => LoadInowacInjectionDataGridAsync(args))/>
+                                    <InowacInjectionDataGrid @ref="inowacInjectionDataGrid" LoadData=@(args => LoadInowacInjectionDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(4) PagerAlwaysVisible=@CheckIsFocused(4)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -200,27 +274,41 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(5)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[5] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(5))" Collapsed="@(!this.CheckIsFocused(5))" Expand=@(() => isRadzenPanelExpandedList[5] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 6. Wellhead & Separation System
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(5))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=15 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[5])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(5))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Wellhead & Separation System" Key="1">
-                                    <WellHeadAndSeparationSystemDataGrid @ref="wellHeadAndSeparationSystemDataGrid" LoadData=@(args => LoadWellHeadAndSeparationSystemDataGridAsync(args))/>
+                                    <WellHeadAndSeparationSystemDataGrid @ref="wellHeadAndSeparationSystemDataGrid" LoadData=@(args => LoadWellHeadAndSeparationSystemDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(5) PagerAlwaysVisible=@CheckIsFocused(5)/>
                                 </TabPane>
 	                            <TabPane Tab="Well Stream Cooler" Key="2">
-                                    <WellStreamCoolerDataGrid @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args))/>
+                                    <WellStreamCoolerDataGrid @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(5) PagerAlwaysVisible=@CheckIsFocused(5)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -229,27 +317,41 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(6)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[6] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(6))" Collapsed="@(!this.CheckIsFocused(6))" Expand=@(() => isRadzenPanelExpandedList[6] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 7. WellHead
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(6))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=50 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[6])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(6))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="HIP WellHead Parameter" Key="1">
-                                    <HIPWellHeadParameterDataGrid @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args))/>
+                                    <HIPWellHeadParameterDataGrid @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(6) PagerAlwaysVisible=@CheckIsFocused(6)/>
                                 </TabPane>
 	                            <TabPane Tab="LWP WellHead Parameter" Key="2">
-                                    <LWPWellHeadParameterDataGrid @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args))/>
+                                    <LWPWellHeadParameterDataGrid @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(6) PagerAlwaysVisible=@CheckIsFocused(6)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -258,27 +360,41 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(7)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[7] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(7))" Collapsed="@(!this.CheckIsFocused(7))" Expand=@(() => isRadzenPanelExpandedList[7] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 8. Rolls Royce Gas Engine & Kawasaki Compression System
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(7))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=40 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[7])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(7))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Kawasaki Export Compressor" Key="1">
-                                    <KawasakiExportCompressorDataGrid @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args))/>
+                                    <KawasakiExportCompressorDataGrid @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(7) PagerAlwaysVisible=@CheckIsFocused(7)/>
                                 </TabPane>
 	                            <TabPane Tab="Rolls Royce RB211 Engine" Key="2">
-                                    <RollsRoyceRB211EngineDataGrid @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args))/>
+                                    <RollsRoyceRB211EngineDataGrid @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(7) PagerAlwaysVisible=@CheckIsFocused(7)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -287,30 +403,44 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(8)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[8] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(8))" Collapsed="@(!this.CheckIsFocused(8))" Expand=@(() => isRadzenPanelExpandedList[8] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 9. Glycol Regeneration System
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(8))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=10 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[8])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(8))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Glycol Pump" Key="1">
-                                    <GlycolPumpDataGrid @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args))/>
+                                    <GlycolPumpDataGrid @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(8) PagerAlwaysVisible=@CheckIsFocused(8)/>
                                 </TabPane>
 	                            <TabPane Tab="Glycol Train" Key="2">
-                                    <GlycolTrainDataGrid @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args))/>
+                                    <GlycolTrainDataGrid @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(8) PagerAlwaysVisible=@CheckIsFocused(8)/>
                                 </TabPane>
 	                            <TabPane Tab="Glycol Stock" Key="3">
-                                    <GlycolStockDataGrid @ref="glycolStockDataGrid" LoadData=@(args => LoadGlycolStockDataGridAsync(args))/>
+                                    <GlycolStockDataGrid @ref="glycolStockDataGrid" LoadData=@(args => LoadGlycolStockDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(8) PagerAlwaysVisible=@CheckIsFocused(8)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -319,24 +449,38 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(9)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[9] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(9))" Collapsed="@(!this.CheckIsFocused(9))" Expand=@(() => isRadzenPanelExpandedList[9] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 10. Gas & Condensate Export Sampler & Export Line
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(9))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=90 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[9])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(9))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Gas & Condensate Export Sampler & Export Line" Key="1">
-                                    <GasAndCondensateExportSamplersAndExportLineDataGrid @ref="gasAndCondensateExportSamplersDataGrid" LoadData=@(args => LoadGasAndCondensateExportSamplersAndExportLineDataGridAsync(args))/>
+                                    <GasAndCondensateExportSamplersAndExportLineDataGrid @ref="gasAndCondensateExportSamplersDataGrid" LoadData=@(args => LoadGasAndCondensateExportSamplersAndExportLineDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(0) PagerAlwaysVisible=@CheckIsFocused(9)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -345,27 +489,41 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(10)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[10] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(10))" Collapsed="@(!this.CheckIsFocused(10))" Expand=@(() => isRadzenPanelExpandedList[10] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 11. Cooling Medium System
                             </h4>
+                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(10))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=88 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[10])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(10))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Cooling Medium System" Key="1">
-                                    <CoolingMediumSystemDataGrid @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args))/>
+                                    <CoolingMediumSystemDataGrid @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(0) PagerAlwaysVisible=@CheckIsFocused(10)/>
                                 </TabPane>
 	                            <TabPane Tab="Analysis Result" Key="2">
-                                    <AnalysisResultDataGrid @ref="analysisResultDataGrid" LoadData=@(args => LoadAnalysisResultDataGridAsync(args))/>
+                                    <AnalysisResultDataGrid @ref="analysisResultDataGrid" LoadData=@(args => LoadAnalysisResultDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(0) PagerAlwaysVisible=@CheckIsFocused(10)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -374,24 +532,38 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(11)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[11] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(11))" Collapsed="@(!this.CheckIsFocused(11))" Expand=@(() => isRadzenPanelExpandedList[11] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 12. Power Generation & Distrubution
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(11))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=100 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[11])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(11))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Power Generation & Distrubution" Key="1">
-                                <PowerGenerationAndDistributionManagementDataGrid @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args))/>
+                                <PowerGenerationAndDistributionManagementDataGrid @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(11) PagerAlwaysVisible=@CheckIsFocused(11)/>
                             </TabPane>
                         </Tabs>
                         }
@@ -400,30 +572,44 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(12)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[12] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(12))" Collapsed="@(!this.CheckIsFocused(12))" Expand=@(() => isRadzenPanelExpandedList[12] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 13. Living Quarters, Utilities & Others
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(12))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=100 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[12])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(12))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Utilities" Key="1">
-                                    <UtilitiesDataGrid @ref="UtilitiesDataGrid" LoadData=@(args => LoadUtilitiesDataGridAsync(args))/>
+                                    <UtilitiesDataGrid @ref="UtilitiesDataGrid" LoadData=@(args => LoadUtilitiesDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(12) PagerAlwaysVisible=@CheckIsFocused(12)/>
                                 </TabPane>
 	                            <TabPane Tab="Water Tank" Key="2">
-                                    <WaterTankDataGrid @ref="waterTankDataGrid" LoadData=@(args => LoadWaterTankDataGridAsync(args))/>
+                                    <WaterTankDataGrid @ref="waterTankDataGrid" LoadData=@(args => LoadWaterTankDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(12) PagerAlwaysVisible=@CheckIsFocused(12)/>
                                 </TabPane>
 	                            <TabPane Tab="Nitrogen Generator" Key="3">
-                                    <NitrogenGeneratorDataGrid @ref="nitrogenGeneratorDataGrid" LoadData=@(args => LoadNitrogenGeneratorDataGridAsync(args))/>
+                                    <NitrogenGeneratorDataGrid @ref="nitrogenGeneratorDataGrid" LoadData=@(args => LoadNitrogenGeneratorDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(12) PagerAlwaysVisible=@CheckIsFocused(12)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -432,27 +618,41 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(13)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[13] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(13))" Collapsed="@(!this.CheckIsFocused(13))" Expand=@(() => isRadzenPanelExpandedList[13] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 14. Tilted Plate Separator V-3000 & Produced Water Treatment System
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(13))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=19 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[13])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(13))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Produced Water Treatment System" Key="1">
-                                    <ProducedWaterTreatmentSystemManagementDataGrid @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args))/>
+                                    <ProducedWaterTreatmentSystemManagementDataGrid @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(13) PagerAlwaysVisible=@CheckIsFocused(13)/>
                                 </TabPane>
 	                            <TabPane Tab="De-oiler Injection" Key="2">
-                                    <DeOilerInjectionDataGrid @ref="deOilerInjectionDataGrid" LoadData=@(args => LoadDeOilerInjectionDataGridAsync(args))/>
+                                    <DeOilerInjectionDataGrid @ref="deOilerInjectionDataGrid" LoadData=@(args => LoadDeOilerInjectionDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(13) PagerAlwaysVisible=@CheckIsFocused(13)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -461,24 +661,38 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(14)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[14] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(14))" Collapsed="@(!this.CheckIsFocused(14))" Expand=@(() => isRadzenPanelExpandedList[14] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 15. Sand Disposal From TPS (V-3000) via Desander
                             </h4>
+                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(14))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=20 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[14])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(14))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Sand Disposal From TPS (V-3000) via Desander" Key="1">
-                                    <SandDisposalDesanderDataGrid @ref="sandDisposalDesanderDataGrid" LoadData=@(args => LoadSandDisposalDesanderDataGridAsync(args))/>
+                                    <SandDisposalDesanderDataGrid @ref="sandDisposalDesanderDataGrid" LoadData=@(args => LoadSandDisposalDesanderDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(14) PagerAlwaysVisible=@CheckIsFocused(14)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -487,24 +701,38 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(15)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[15] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(15))" Collapsed="@(!this.CheckIsFocused(15))" Expand=@(() => isRadzenPanelExpandedList[15] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 16. DCS, FGS, ASD & Communication System
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(15))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=55 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[15])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(15))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="DCS, FGS, ASD & Communication System" Key="1">
-                                    <CommunicationSystemDataGrid @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args))/>
+                                    <CommunicationSystemDataGrid @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(15) PagerAlwaysVisible=@CheckIsFocused(15)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -513,24 +741,38 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(16)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[16] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(16))" Collapsed="@(!this.CheckIsFocused(16))" Expand=@(() => isRadzenPanelExpandedList[16] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 17. Layang Wellhead Platform (LWP) Activities
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(16))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=62 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[16])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(16))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Layang Wellhead Platform (LWP) Activities" Key="1">
-                                    <LWPActivityDataGrid @ref="lWPActivityDataGrid" LoadData=@(args => LoadLWPActivityDataGridAsync(args))/>
+                                    <LWPActivityDataGrid @ref="lWPActivityDataGrid" LoadData=@(args => LoadLWPActivityDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(16) PagerAlwaysVisible=@CheckIsFocused(16)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -539,24 +781,38 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(17)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[17] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(17))" Collapsed="@(!this.CheckIsFocused(17))" Expand=@(() => isRadzenPanelExpandedList[17] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 18. Vendor Activities
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(17))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=66 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[17])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(17))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Vendor Activities" Key="1">
-                                    <VendorActivitiesDataGrid @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args))/>
+                                    <VendorActivitiesDataGrid @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(17) PagerAlwaysVisible=@CheckIsFocused(17)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -565,24 +821,38 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(18)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[18] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(18))" Collapsed="@(!this.CheckIsFocused(18))" Expand=@(() => isRadzenPanelExpandedList[18] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 19. Logistic
                             </h4>
+                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(18))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=10 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[18])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(18))"  DefaultActiveKey="1" Animated>
                                 <TabPane Tab="Logistic" Key="1">
-                                    <LogisticDataGrid @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args))/>
+                                    <LogisticDataGrid @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(18) PagerAlwaysVisible=@CheckIsFocused(18)/>
                                 </TabPane>
                             </Tabs>
                         }
@@ -591,24 +861,38 @@
             </RadzenCard>
         </div>
     </div>
-    <div class="row py-1">
+    <div class="row py-1 @this.GetFocusClass(19)">
         <div class="col">  
             <RadzenCard>
-                <RadzenPanel AllowCollapse="true" Collapsed="true" Expand=@(() => isRadzenPanelExpandedList[19] = true)>
+                <RadzenPanel AllowCollapse="@(!this.CheckIsFocused(19))" Collapsed="@(!this.CheckIsFocused(19))" Expand=@(() => isRadzenPanelExpandedList[19] = true)>
                     <HeaderTemplate>
                         <div class="col-5">
+                            <Space>
+                                <SpaceItem>
                             <h4 class="m-0 d-flex align-items-center title">
                                 20. Maximo Work Order
                             </h4>
+                                                            </SpaceItem>
+                                <SpaceItem>
+                                     @if (!this.HasFocus)
+                                     {            
+                                        <Icon Type="fullscreen" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(19))/>
+                                     }
+                                     else
+                                     {
+                                        <Icon Type="fullscreen-exit" Theme="outline" Class="anticon-big title clickable-icon" OnClick=@(() => this.OnFocusAsync(-1))/>
+                                     }
+                                </SpaceItem>
+                            </Space>
                         </div>
                         <GenericProgressBar StrokeWidth=15 Percentage=0 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[19])
                         {
-                            <Tabs DefaultActiveKey="1" Animated>
+                            <Tabs Class="@(this.GetTabFocusClass(19))"  DefaultActiveKey="1" Animated>
 	                            <TabPane Tab="Maximo Work Order" Key="1">
-                                    <MaximoWorkOrderDataGrid @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args))/>
+                                    <MaximoWorkOrderDataGrid @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(19) PagerAlwaysVisible=@CheckIsFocused(19)/>
                                 </TabPane>
                             </Tabs>
                         }
