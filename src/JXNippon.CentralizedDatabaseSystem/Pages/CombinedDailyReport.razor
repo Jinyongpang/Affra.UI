@@ -224,6 +224,9 @@
                                 <TabPane Tab="Major Equipment Status" Key="1">
                                     <MajorEquipmentStatusDataGrid @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(3) PagerAlwaysVisible=@CheckIsFocused(3)/>
                                 </TabPane>
+                                <TabPane Tab="Diesel" Key="2">
+                                    <DieselDataGrid @ref="dieselDataGrid" LoadData=@(args => LoadDieselDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(3) PagerAlwaysVisible=@CheckIsFocused(3)/>
+                                </TabPane>
                             </Tabs>
                         }
                     </ChildContent>

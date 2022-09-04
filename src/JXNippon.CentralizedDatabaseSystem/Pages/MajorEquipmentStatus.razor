@@ -14,3 +14,7 @@
 <MajorEquipmentStatusFilterPanel @ref="filterPanel" Change=@(args => OnChangeAsync(args))/>
 <MajorEquipmentStatusDataGrid @ref="dataGrid" LoadData=@(args => LoadDataAsync(args)) 
     ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
+
+<div class="title">Diesel</div>
+<DieselDataGrid @ref="dieselDataGrid" LoadData=@(args => LoadDataAsync(args)) 
+    ShowRefreshButton="true" PagerAlwaysVisible="true" ShowDateColumn="true"/>
