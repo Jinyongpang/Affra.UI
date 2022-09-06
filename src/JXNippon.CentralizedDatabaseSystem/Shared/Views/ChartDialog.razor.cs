@@ -47,7 +47,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected Task SubmitAsync(Chart arg)
         {
-            if (this.current == 0)
+            if (this.current < 2)
             {
                 this.MovePage(1);
             }

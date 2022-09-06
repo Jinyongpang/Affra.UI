@@ -158,13 +158,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 response = await DialogService.OpenAsync<ChartDialog>("Edit",
                     new Dictionary<string, object>() { { "Column", data }, { "View", View } },
-                    Constant.DialogOptions);
+                    Constant.FullScreenDialogOptions);
             }
             else if (data.ComponentType == nameof(Grid))
             {
                 response = await DialogService.OpenAsync<GridDialog>("Edit",
                     new Dictionary<string, object>() { { "Column", data }, { "View", View } },
-                    Constant.DialogOptions);
+                    Constant.FullScreenDialogOptions);
             }
 
 

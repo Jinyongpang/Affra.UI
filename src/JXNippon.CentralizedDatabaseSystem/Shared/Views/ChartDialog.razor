@@ -2,16 +2,22 @@
 @using Row = ViewODataService.Affra.Service.View.Domain.Views.Row
 
 <RadzenTemplateForm Data="@Item" Submit="@(async (Chart args) => { await SubmitAsync(args); })">
-    <div class="row py-2">
-        <div>
-            <Steps ShowProgressDot Current="current" @ref=@this.steps>
+    <div class="fullscreen-dialog  py-2">
+        <div class="fullscreen-dialog-header">
+            <Icon Type="arrow-left" Theme="outline" Class="fullscreen-dialog-back" OnClick=@(() => this.DialogService.Close())/>
+            <Steps ShowProgressDot Current="current" @ref=@this.steps Class="steps-navbar">
                 <Step Title="Configurations" />
                 <Step Title="Chart Series" />
                 <Step Title="Preview" />
             </Steps>
+            <div class="steps-action-buttons">
+                <RadzenButton Visible=@(this.current > 0) Style="margin-right: 10px;" ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton> 
+                <RadzenButton Visible=@(this.current < 2) ButtonType="Radzen.ButtonType.Submit">Next</RadzenButton> 
+                <RadzenButton Visible=@(this.current == 2) ButtonType="Radzen.ButtonType.Submit" Text="Save" Disabled=@isViewing/>            
+             </div>
         </div>
         <Divider />
-        <div class="col">
+        <div class="col view-dialog-content">
             @if (this.current == 0)
             {
                 <div class="row py-2">
@@ -82,38 +88,15 @@
                         <RadzenNumeric Max=12 Min=1 Name="WidthGridSize" class="w-100" Placeholder="Enter width size..." @bind-Value="@Item.WidthGridSize" Disabled=@isViewing></RadzenNumeric>
                     </div>
                 </div>
-                <div class="row py-4">
-                    <div class="col-md-12 d-flex justify-content-end">
-                        <RadzenButton ButtonType="Radzen.ButtonType.Submit">Next</RadzenButton>             
-                    </div>
-                </div> 
             }
             else if (this.current == 1)
             {
-                <div class="row py-2">
-                    <ChartSeriesDataGrid Chart="@Item" Types=@this.types></ChartSeriesDataGrid>
-                </div>
-                <div class="row py-4">
-                    <div class="col d-flex justify-content-start">
-                        <RadzenButton ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton>             
-                    </div>
-                    <div class="col d-flex justify-content-end">
-                        <RadzenButton Click="@(() => MovePage(1))">Next</RadzenButton>             
-                    </div>
-                </div> 
+                <ChartSeriesDataGrid Chart="@Item" Types=@this.types></ChartSeriesDataGrid>
             }
             else
             {
                 <ChartComponent TType="@Item.ActualType" AxisTitle="@Item.AxisTitle" FormatString="@Item.FormatString" 
                     Step="@TimeSpan.FromMinutes(Item.StepInMinutes)" ValueAxisStep="@Item.ValueAxisStep" ChartSeries="@Item.ChartSeries" Colors=@Constants.Constant.Colors></ChartComponent>
-                <div class="row py-4">
-                    <div class="col d-flex justify-content-start">
-                        <RadzenButton ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton>             
-                    </div>
-                    <div class="col d-flex justify-content-end">
-                        <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>            
-                    </div>
-                </div>  
             }
            
         </div>
