@@ -16,6 +16,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public Grid Grid { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
+        [Parameter] public IEnumerable<string> Types { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
@@ -57,7 +58,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             else
             {
                 response = await DialogService.OpenAsync<GridColumnDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "Grid", Grid } },
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "Grid", Grid }, { "Types", Types } },
                            Constant.DialogOptions);
 
                 if (response == true)

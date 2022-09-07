@@ -21,6 +21,8 @@
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="GridColumn" Property="FormatString" Title="FormatString">
                 </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="GridColumn" Property="Type" Title="Type">
+                </RadzenDataGridColumn>
             </Columns>
 
         </RadzenDataGrid>  
@@ -43,7 +45,7 @@
     }
 
     private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<GridColumn> args, MenuItemEventArgs e)
-    {
+    {  
         int i = (int)e.Value;
         if (i == 0)
         {

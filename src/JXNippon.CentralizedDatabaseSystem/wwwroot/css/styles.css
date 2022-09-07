@@ -630,7 +630,6 @@ a {
 }
 
 .steps-action-buttons {
-    margin-right: 25px;
     margin-left: 20px;
     width: 200px;
     justify-content: flex-end;
@@ -640,6 +639,6 @@ a {
 .fullscreen-dialog-back {
     color: #667aa5;
     font-size: 30px;
-    padding: 20px 20px 20px 30px;
+    padding: 0px 20px 0px 0px;
     cursor: pointer;
 }

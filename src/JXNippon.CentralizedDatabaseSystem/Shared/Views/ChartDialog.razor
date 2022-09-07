@@ -2,7 +2,7 @@
 @using Row = ViewODataService.Affra.Service.View.Domain.Views.Row
 
 <RadzenTemplateForm Data="@Item" Submit="@(async (Chart args) => { await SubmitAsync(args); })">
-    <div class="fullscreen-dialog  py-2">
+    <div class="fullscreen-dialog">
         <div class="fullscreen-dialog-header">
             <Icon Type="arrow-left" Theme="outline" Class="fullscreen-dialog-back" OnClick=@(() => this.DialogService.Close())/>
             <Steps ShowProgressDot Current="current" @ref=@this.steps Class="steps-navbar">

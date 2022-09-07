@@ -9,6 +9,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public GridColumn Item { get; set; }
         [Parameter] public Grid Grid { get; set; }
         [Parameter] public int MenuAction { get; set; }
+        [Parameter] public IEnumerable<string> Types { get; set; }
         [Inject] private DialogService DialogService { get; set; }
 
         private IEnumerable<string> properties;
@@ -17,10 +18,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override Task OnInitializedAsync()
         {
-            properties = Grid.ActualType.GetProperties()
-                .Select(prop => prop.Name)
-                .ToList();
-
+            this.RefreshTypeProperties();
             return Task.CompletedTask;
         }
 
@@ -33,6 +31,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private void Cancel()
         {
             DialogService.Close(false);
+        }
+
+        private void RefreshTypeProperties()
+        {
+            Type type = this.Item.ActualType ?? Grid.ActualType;
+
+            properties = type.GetProperties()
+                .Select(prop => prop.Name)
+                .ToList();
+
         }
     }
 }
