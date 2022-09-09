@@ -1,4 +1,5 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
+﻿using System.Dynamic;
+using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
@@ -16,8 +17,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
     public partial class DataGridComponent : IAsyncDisposable
     {
-        private RadzenDataGrid<IDaily> grid;
+        private RadzenDataGrid<IDictionary<string, object>> grid;
         private IEnumerable<IDaily> items;
+        private IEnumerable<IDictionary<string, object>> itemsDictionary;
         private bool isLoading = false;
         private IHubSubscription subscription;
         private bool isDisposed = false;
@@ -29,11 +31,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public DateTimeOffset? StartDate { get; set; }
         [Parameter] public DateTimeOffset? EndDate { get; set; }
         [Parameter] public IEnumerable<GridColumn> GridColumns { get; set; }
+        [Parameter] public Column Column { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
-        [Parameter] public Column Column { get; set; }
+        
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
@@ -73,35 +76,90 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
+            this.items = await this.GetDailyItemsAsync(this.TType, this.StartDate, this.EndDate, args);
+            itemsDictionary = await this.MergeOverridenTypeAsync(this.items) ?? new List<ExpandoObject>();
+            isLoading = false;
+        }
 
+        private async Task<IEnumerable<IDictionary<string, object>>?> MergeOverridenTypeAsync(IEnumerable<IDaily> dailyItems)
+        {
+            var types = this.GridColumns
+                .Where(x => !string.IsNullOrEmpty(x.Type))
+                .Select(x => x.Type)
+                .Distinct();
+            List<IDictionary<string, object>>? result = new List<IDictionary<string, object>>();
+            List<IDaily> list = new List<IDaily>();
+            if (dailyItems.Any())
+            {
+                
+                foreach (var type in types)
+                {
+                    var actualType = ViewHelper.GetActualType(type);
+                    if (actualType is not null)
+                    {
+                        list.AddRange(await this.GetDailyItemsAsync(actualType.AssemblyQualifiedName, dailyItems.First().Date, dailyItems.Last().Date));
+                    }
+                }
+            }
+            foreach (var item in dailyItems)
+            {
+                var dictionaryObject = item.ToDictionaryObject();
+                foreach (var matched in list.Where(x => x.Date == item.Date))
+                {
+                    foreach (var dict in matched.ToDictionaryObject(matched.GetType().Name))
+                    {
+                        dictionaryObject.Add(dict);
+                    }
+                }
+                    
+                result.Add(dictionaryObject);
+            }
+
+            return result;
+            
+        }
+
+        private string GetColumnPropertyExpression(string name, Type type)
+        {
+            var expression = $@"it[""{name}""].ToString()";
+            return type == typeof(int) ? $"int.Parse({expression})" : expression;
+        }
+
+        private async Task<IEnumerable<IDaily>> GetDailyItemsAsync(string type, DateTimeOffset? start, DateTimeOffset? end, LoadDataArgs args = null)
+        {
             using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.ViewService.GetGenericService(serviceScope, TType);
+            var service = this.ViewService.GetGenericService(serviceScope, type);
             Queryable = service.Get();
-            if (StartDate != null && EndDate != null)
+            if (start != null && end != null)
             {
                 Queryable = Queryable
                     .Cast<IDaily>()
-                    .Where(item => item.Date >= StartDate.Value.ToUniversalTime())
-                    .Where(item => item.Date <= EndDate.Value.ToUniversalTime());
+                    .Where(item => item.Date >= start.Value.ToUniversalTime())
+                    .Where(item => item.Date <= end.Value.ToUniversalTime());
             }
 
             Queryable = (IQueryable<dynamic>)Queryable
                 .Cast<IDaily>()
                 .OrderBy(x => x.Date)
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy);
+                .AppendQuery(args?.Filter, args?.Skip, args?.Top, args?.OrderBy);
 
-            await LoadData.InvokeAsync(Queryable);
+            if (args is not null)
+            {
+                await LoadData.InvokeAsync(Queryable);
+            }
+            
             var q = (DataServiceQuery)Queryable;
             var response = (await q
                 .ExecuteAsync()) as QueryOperationResponse;
 
-            Count = (int)response.Count;
+            if (args is not null)
+            {
+                this.Count = (int)response.Count;
+            }
 
-            items = response
+            return response
                 .Cast<IDaily>()
                 .ToList();
-
-            isLoading = false;
         }
 
         private void HandleException(Exception ex)
