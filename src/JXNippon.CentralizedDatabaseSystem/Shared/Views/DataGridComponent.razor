@@ -23,19 +23,25 @@
 
             var propertyName = $"{gridColumn.Type}{gridColumn.Property}";
             <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@this.GetColumnPropertyExpression(propertyName, typeof(string))" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)" Sortable=@isSortable SortProperty="@sortString">
-                <Template>
+                <Template>                  
                     @if(context.TryGetValue(propertyName, out object value))
                     {
+                        var result = string.Empty;
                         if (!string.IsNullOrEmpty(gridColumn.FormatString))
                         {
-                            @string.Format(gridColumn.FormatString, value)
+                            result = string.Format(gridColumn.FormatString, value);
                         }
                         else
                         {
-                            @value
+                            result = value?.ToString();
                         }
-                    }
-                    
+                        var style = this.GetStyle(gridColumn, result);
+                        <div style=@style>
+                            <span style=@style>
+                                 @result
+                            </span>
+                        </div>
+                    }                  
                 </Template>
             </RadzenDataGridColumn>
         }             

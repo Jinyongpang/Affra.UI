@@ -30,5 +30,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Grids
             }
         }
 
+        public ICollection<ConditionalStyling> ConditionalStylings { get; set; }
+
     }
 }

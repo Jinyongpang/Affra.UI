@@ -104,7 +104,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             foreach (var item in dailyItems)
             {
                 var dictionaryObject = item.ToDictionaryObject();
-                foreach (var matched in list.Where(x => x.Date == item.Date))
+                foreach (var matched in list.Where(x => x.Date.ToLocalTime().Date == item.Date.ToLocalTime().Date))
                 {
                     foreach (var dict in matched.ToDictionaryObject(matched.GetType().Name))
                     {
@@ -173,6 +173,56 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return properties;
         }
 
+        private string GetStyle(GridColumn gridColumn, string value)
+        {
+            if (gridColumn.ConditionalStylings is null)
+            { 
+                return string.Empty;
+            }
+
+            foreach (var style in gridColumn.ConditionalStylings)
+            {
+                switch (style.Operator)
+                {
+                    case ConditionalStylingOperator.Equal:
+                        {
+                            if (value.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                    return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    case ConditionalStylingOperator.NotEqual:
+                        {
+                            if (!value.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    case ConditionalStylingOperator.Contains:
+                        {
+                            if (value.Contains(style.Value, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    case ConditionalStylingOperator.NotContains:
+                        {
+                            if (!value.Contains(style.Value, StringComparison.InvariantCultureIgnoreCase))
+                            {
+                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    default:
+                        return string.Empty;
+                }
+            }
+
+            return string.Empty;
+        }
         public async ValueTask DisposeAsync()
         {
             try

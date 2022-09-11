@@ -1,0 +1,76 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Grids
+@using ViewODataService.Affra.Service.View.Domain.Views
+
+<RadzenDataGrid @ref="grid" Data="@items"
+    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+    PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="ConditionalStyling" 
+    AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
+    AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
+    PagerAlwaysVisible="@PagerAlwaysVisible">
+    <EmptyTemplate>                
+        <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+            <a>No records to display.</a>
+        </div>                    
+    </EmptyTemplate>
+    <Columns>
+        <RadzenDataGridColumn TItem="ConditionalStyling" Property="Operator" Title="Operator">
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="ConditionalStyling" Property="Value" Title="Value">
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="ConditionalStyling" Property="BackgroundColor" Title="Background Color">
+                <Template Context="item">
+                    <span style="background-color: @item.BackgroundColor;">@item.BackgroundColor</span>
+                </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="ConditionalStyling" Property="FontColor" Title="Font Color">
+                <Template Context="item">
+                    <span style="color: @item.FontColor;">@item.FontColor</span>
+                </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="ConditionalStyling" Property="Style" Title="Style">
+                <Template Context="item">
+                    <span style="@item.Style">@item.Style</span>
+                </Template>
+        </RadzenDataGridColumn>
+    </Columns>
+</RadzenDataGrid>  
+
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<ConditionalStyling>) != null;
+        ContextMenuService.Open(args, ds =>
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<ConditionalStyling>, e))">
+                <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+    </RadzenMenu>
+    );  
+    }
+
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<ConditionalStyling> args, MenuItemEventArgs e)
+    {  
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(
+                new ConditionalStyling(),
+                i,
+                "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+    }
+}

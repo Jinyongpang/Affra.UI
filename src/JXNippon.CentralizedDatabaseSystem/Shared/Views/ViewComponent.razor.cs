@@ -41,7 +41,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         [Parameter] public bool IsDesignMode { get; set; }
 
-
         [Parameter] public ICollection<ICollection<string>> ColorsGroups { get; set; } = new List<ICollection<string>>();
 
         [Inject] private NavigationManager NavigationManager { get; set; }
