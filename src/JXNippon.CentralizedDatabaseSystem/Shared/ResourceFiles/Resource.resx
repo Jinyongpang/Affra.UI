@@ -273,4 +273,7 @@
   <data name="VeryHighRisk" xml:space="preserve">
     <value>High Risk</value>
   </data>
+  <data name="DailyDiesel" xml:space="preserve">
+    <value>Diesel</value>
+  </data>
 </root>
