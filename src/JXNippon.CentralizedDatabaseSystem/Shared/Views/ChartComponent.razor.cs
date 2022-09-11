@@ -114,7 +114,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     .Cast<IDaily>()
                     .OrderBy(x => x.Date)
                     .ToList();
-                this.items.Add(type, typeItems);
+                this.items.TryAdd(type, typeItems);
             }
 
             isLoading = false;

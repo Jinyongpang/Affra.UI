@@ -1,0 +1,56 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Grids
+@using ViewODataService.Affra.Service.View.Domain.Views
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (ConditionalStyling args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                <RadzenLabel class="dialogTextSize" Text="Operator" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown AllowClear="false" Data="@ConditionalStylingOperators" Name="Operator" class="w-100" Placeholder="Select operator..." @bind-Value="@Item.OperatorString" Disabled=@isViewing></RadzenDropDown>
+                    <RadzenRequiredValidator Component="Operator" Text="Operator is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Value" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="Value" class="w-100" Placeholder="Enter value..." @bind-Value="@Item.Value" Disabled=@isViewing></RadzenTextBox>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Background Color" />
+                </div>
+                <div class="col-8">
+                    <RadzenColorPicker Name="BackgroundColor" class="w-100" Placeholder="Select background color..." @bind-Value="@Item.BackgroundColor" Disabled=@isViewing></RadzenColorPicker>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Font Color" />
+                </div>
+                <div class="col-8">
+                    <RadzenColorPicker Name="FontColor" class="w-100" Placeholder="Select font color..." @bind-Value="@Item.FontColor" Disabled=@isViewing></RadzenColorPicker>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Style" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="Style" class="w-100" Placeholder="Enter style..." @bind-Value="@Item.Style" Disabled=@isViewing></RadzenTextBox>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</RadzenTemplateForm>

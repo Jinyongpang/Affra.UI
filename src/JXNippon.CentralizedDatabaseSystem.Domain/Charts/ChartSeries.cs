@@ -30,6 +30,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
 
         public string Color { get; set; }
 
+        [IgnoreClientProperty]
+        [JsonIgnore]
         public string ExecutionTypeString 
         {
             get

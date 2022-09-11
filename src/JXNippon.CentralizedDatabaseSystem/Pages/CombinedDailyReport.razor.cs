@@ -294,6 +294,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         private Task OnFocusAsync(int i)
         {
+            previousDate = CommonFilter.Date ?? previousDate;
             this.CommonFilter.Date = null;
             this.focusId = i;
             this.HasFocus = i != -1;
@@ -305,7 +306,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             {
                 CommonFilter.Date = previousDate;
             }
-            previousDate = CommonFilter.Date;
+            
             return HasFocusChanged.InvokeAsync(i != -1);
         }
 

@@ -3,85 +3,73 @@
 @using Row = ViewODataService.Affra.Service.View.Domain.Views.Row
 
 <RadzenTemplateForm Data="@Item" Submit="@( async (Grid args) => { await SubmitAsync(args); })">
-     <div class="row py-2">
-        <div>
-            <Steps ShowProgressDot Current="current" @ref=@this.steps>
+     <div class="fullscreen-dialog">
+        <div class="fullscreen-dialog-header">
+            <Icon Type="arrow-left" Theme="outline" Class="fullscreen-dialog-back" OnClick=@(() => this.DialogService.Close())/>
+            <Steps ShowProgressDot Current="current" @ref=@this.steps Class="steps-navbar">
                 <Step Title="Configurations" />
                 <Step Title="Select Properties" />
                 <Step Title="Preview" />
             </Steps>
+            <div class="steps-action-buttons">
+                <RadzenButton Visible=@(this.current > 0) Style="margin-right: 10px;" ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton> 
+                <RadzenButton Visible=@(this.current < 2) ButtonType="Radzen.ButtonType.Submit">Next</RadzenButton> 
+                <RadzenButton Visible=@(this.current == 2) ButtonType="Radzen.ButtonType.Submit" Text="Save" Disabled=@isViewing/> 
+             </div>
         </div>
         <Divider />
-        <div class="col">
+        <div class="fullscreen-dialog-content">
             @if (this.current == 0)
             {
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Type" />
+                <div class="view-dialog-content">                  
+                    <div class="row py-2" >
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Type" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenDropDown Name="Type" class="w-100" Placeholder="Enter type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@types" @bind-Value="@Item.Type" TValue="string" AllowClear="false" Disabled=@isViewing></RadzenDropDown>
+                            <RadzenRequiredValidator Component="Type" Text="Type is required" Popup=false/>
+                        </div>
                     </div>
-                    <div class="col-8">
-                        <RadzenDropDown Name="Type" class="w-100" Placeholder="Enter type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@types" @bind-Value="@Item.Type" TValue="string" AllowClear="false" Disabled=@isViewing></RadzenDropDown>
-                        <RadzenRequiredValidator Component="Type" Text="Type is required" Popup=false/>
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Title" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Column.Title" Disabled=@isViewing></RadzenTextBox>
+                            <RadzenRequiredValidator Component="Title" Text="Title is required" Popup=false/>
+                        </div>
                     </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Title" />
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Icon" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenTextBox Name="Icon" class="w-100" Placeholder="Enter icon..." @bind-Value="@Column.Icon" Disabled=@isViewing></RadzenTextBox>
+                        </div>
                     </div>
-                    <div class="col-8">
-                        <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Column.Title" Disabled=@isViewing></RadzenTextBox>
-                        <RadzenRequiredValidator Component="Title" Text="Title is required" Popup=false/>
-                    </div>
-                </div>
-                <div class="row py-2">
-                
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Icon" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenTextBox Name="Icon" class="w-100" Placeholder="Enter icon..." @bind-Value="@Column.Icon" Disabled=@isViewing></RadzenTextBox>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Width Size" />
-                    </div>
-                    <div class="col-8">
-                        <RadzenNumeric Max=12 Min=1 Name="WidthGridSize" class="w-100" Placeholder="Enter width size..." @bind-Value="@Item.WidthGridSize" Disabled=@isViewing></RadzenNumeric>
-                    </div>
-                </div>
-                <div class="row py-4">
-                    <div class="col d-flex justify-content-end">
-                        <RadzenButton ButtonType="Radzen.ButtonType.Submit">Next</RadzenButton>             
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Width Size" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenNumeric Max=12 Min=1 Name="WidthGridSize" class="w-100" Placeholder="Enter width size..." @bind-Value="@Item.WidthGridSize" Disabled=@isViewing></RadzenNumeric>
+                        </div>
                     </div>
                 </div>
             }
             else if (this.current == 1)
             {
-                <div class="row py-2">
-                    <GridColumnDataGrid Grid="@Item"></GridColumnDataGrid>
+                <div class="row py-2 view-dialog-content">
+                    <GridColumnDataGrid Grid="@Item" Types=@this.types></GridColumnDataGrid>
                 </div>
-                <div class="row py-4">
-                    <div class="col d-flex justify-content-start">
-                        <RadzenButton ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton>             
-                    </div>
-                    <div class="col d-flex justify-content-end">
-                        <RadzenButton Click="@(() => MovePage(1))">Next</RadzenButton>             
-                    </div>
-                </div> 
             }
             else
             {
                 string type = ViewService.GetTypeMapping()[Item.Type];
-                <DataGridComponent TType="@type" GridColumns="@Item.GridColumns"></DataGridComponent>
-                <div class="row py-4">
-                    <div class="col d-flex justify-content-start">
-                        <RadzenButton ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton>             
-                    </div>
-                    <div class="col d-flex justify-content-end">
-                        <RadzenButton ButtonType="Radzen.ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>            
-                    </div>
-                </div>  
+                <div class="row py-2 view-dialog-content">
+                    <DataGridComponent TType="@type" GridColumns="@Item.GridColumns"></DataGridComponent>
+                </div>
             }
            
         </div>
