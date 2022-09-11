@@ -1,0 +1,50 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses
+@using JXNippon.CentralizedDatabaseSystem.Models
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
+
+<DailyDialog TItem=DailyDiesel Item="@Item" CustomColumns=@CustomColumns MenuAction=@MenuAction IsViewing=@isViewing>
+    <ChildContent>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="HIP Diesel Stock" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="HIPDieselStock" class="w-100" @bind-Value="@Item.HIPDieselStock" Disabled=@isViewing
+                    Placeholder="Enter HIP diesel stock ..." TextProperty="HIPDieselStock"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="HIP Diesel Stock Remark" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextArea Name="HIPDieselStockRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.HIPDieselStockRemark" Disabled=@isViewing></RadzenTextArea>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="FPSO Diesel Consumption" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="FPSODieselConsumption" class="w-100" @bind-Value="@Item.FPSODieselConsumption" Disabled=@isViewing
+                    Placeholder="Enter FPSO diesel consumption ..." TextProperty="FPSODieselConsumption"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="FPSO Diesel Consumption Remark" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextArea Name="FPSODieselConsumptionRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.FPSODieselConsumptionRemark" Disabled=@isViewing></RadzenTextArea>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Date" />
+                </div>
+                <div class="col-8">
+                    <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                </div>
+            </div>
+    </ChildContent>
+</DailyDialog>

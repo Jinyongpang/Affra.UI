@@ -67,6 +67,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private SandDisposalDesanderDataGrid sandDisposalDesanderDataGrid;
         private VendorActivitiesDataGrid vendorActivitiesDataGrid;
         private MaximoWorkOrderDataGrid maximoWorkOrderDataGrid;
+        private DieselDataGrid dieselDataGrid;
 
         [Inject] private NavigationManager NavManager { get; set; }
         private CommonFilter CommonFilter { get; set; }
@@ -245,6 +246,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             maximoWorkOrderDataGrid.CommonFilter = CommonFilter;
         }
+
+        private async Task LoadDieselDataGridAsync(LoadDataArgs args)
+        {
+            dieselDataGrid.DailyDataGrid.CommonFilter = CommonFilter;
+        }
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
             return this.ReloadAsync();
@@ -289,7 +295,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 nitrogenGeneratorDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 sandDisposalDesanderDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 vendorActivitiesDataGrid?.ReloadAsync() ?? Task.CompletedTask,
-                maximoWorkOrderDataGrid?.ReloadAsync() ?? Task.CompletedTask);
+                maximoWorkOrderDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                dieselDataGrid?.DailyDataGrid.ReloadAsync() ?? Task.CompletedTask);
         }
 
         private Task OnFocusAsync(int i)
