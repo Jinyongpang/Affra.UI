@@ -23,6 +23,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private bool isLoading = false;
         private IHubSubscription subscription;
         private bool isDisposed = false;
+        private IDictionary<string, GridColumn> gridColumnDictionary;
 
         [Parameter] public EventCallback<IQueryable<dynamic>> LoadData { get; set; }
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
@@ -53,6 +54,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
+            gridColumnDictionary = this.GridColumns.ToDictionary(x => $"{x.Type}{x.Property}");
             if (!string.IsNullOrEmpty(this.Subscription))
             {
                 subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
@@ -121,7 +123,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private string GetColumnPropertyExpression(string name, Type type)
         {
-            var expression = $@"it[""{name}""].ToString()";
+            var expression = $@"it[""{name}""]";
             return type == typeof(int) ? $"int.Parse({expression})" : expression;
         }
 
@@ -173,13 +175,38 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return properties;
         }
 
+        private void CellRender(DataGridCellRenderEventArgs<IDictionary<string, object>> args)
+        {
+            if (this.gridColumnDictionary.TryGetValue(args.Column.Property, out var gridColumn))
+            {
+                if (args.Data.TryGetValue(args.Column.Property, out object value))
+                {
+                    var result = this.GetResultString(gridColumn, value);
+                    args.Attributes.Add("style", this.GetStyle(gridColumn, result));
+                }
+            }  
+        }
+
+        private string GetResultString(GridColumn gridColumn, object input)
+        {
+            var result = string.Empty;
+            if (!string.IsNullOrEmpty(gridColumn.FormatString))
+            {
+                result = string.Format(gridColumn.FormatString, input);
+            }
+            else
+            {
+                result = input?.ToString();
+            }
+            return result;
+        }
+
         private string GetStyle(GridColumn gridColumn, string value)
         {
             if (gridColumn?.ConditionalStylings is null)
             { 
                 return string.Empty;
             }
-
 
             foreach (var style in gridColumn.ConditionalStylings)
             {
@@ -193,14 +220,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                             }
                             break;
                         }
-                    //case ConditionalStylingOperator.IsNull:
-                    //    {
-                    //        if (value is null)
-                    //        {
-                    //            return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
-                    //        }
-                    //        break;
-                    //    }
+                    case ConditionalStylingOperator.IsNull:
+                        {
+                            if (value is null)
+                            {
+                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
                     case ConditionalStylingOperator.Equal:
                         {
                             if (value?.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase) ?? false)
