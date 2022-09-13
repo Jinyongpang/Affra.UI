@@ -10,7 +10,7 @@
     FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
     PageSize=5 PageSizeText="Items" PageSizeOptions=@this.pageSizeOptions PagerHorizontalAlign="HorizontalAlign.Center" AllowColumnResize="true" ShowPagingSummary="true" 
     AllowMultiColumnSorting="false" ShowMultiColumnSortingIndex="false"
-    PagerAlwaysVisible="false">
+    PagerAlwaysVisible="false" CellRender=@this.CellRender>
     <Columns>
         @foreach(var gridColumn in GridColumns)
         {
@@ -22,25 +22,11 @@
                 : gridColumn.Property;
 
             var propertyName = $"{gridColumn.Type}{gridColumn.Property}";
-            <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@this.GetColumnPropertyExpression(propertyName, typeof(string))" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)" Sortable=@isSortable SortProperty="@sortString">
+            <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@propertyName" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)" Sortable=@isSortable SortProperty="@sortString">
                 <Template>                  
                     @if(context.TryGetValue(propertyName, out object value))
                     {
-                        var result = string.Empty;
-                        if (!string.IsNullOrEmpty(gridColumn.FormatString))
-                        {
-                            result = string.Format(gridColumn.FormatString, value);
-                        }
-                        else
-                        {
-                            result = value?.ToString();
-                        }
-                        var style = this.GetStyle(gridColumn, result);
-                        <div style=@style>
-                            <span style=@style>
-                                 @result
-                            </span>
-                        </div>
+                        @this.GetResultString(gridColumn, value);
                     }                  
                 </Template>
             </RadzenDataGridColumn>
