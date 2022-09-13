@@ -106,6 +106,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Diesel.
+        /// </summary>
+        public static string DailyDiesel {
+            get {
+                return ResourceManager.GetString("DailyDiesel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FPSO Production.
         /// </summary>
         public static string DailyFPSOHelangProduction {
