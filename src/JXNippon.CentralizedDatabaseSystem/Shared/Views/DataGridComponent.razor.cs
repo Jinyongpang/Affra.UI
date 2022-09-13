@@ -189,18 +189,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         {
                             if (value is not null)
                             {
-                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                                return $"{style.Style} width: 100% !important; background-color: {style.BackgroundColor}; color: {style.FontColor};";
                             }
                             break;
                         }
-                    case ConditionalStylingOperator.IsNull:
-                        {
-                            if (value is null)
-                            {
-                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
-                            }
-                            break;
-                        }
+                    //case ConditionalStylingOperator.IsNull:
+                    //    {
+                    //        if (value is null)
+                    //        {
+                    //            return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                    //        }
+                    //        break;
+                    //    }
                     case ConditionalStylingOperator.Equal:
                         {
                             if (value?.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase) ?? false)
