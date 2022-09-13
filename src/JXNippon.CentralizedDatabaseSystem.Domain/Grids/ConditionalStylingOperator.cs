@@ -6,5 +6,7 @@
         NotEqual,
         Contains,
         NotContains,
+        IsNull,
+        IsNotNull,
     }
 }
