@@ -175,18 +175,35 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private string GetStyle(GridColumn gridColumn, string value)
         {
-            if (gridColumn.ConditionalStylings is null)
+            if (gridColumn?.ConditionalStylings is null)
             { 
                 return string.Empty;
             }
+
 
             foreach (var style in gridColumn.ConditionalStylings)
             {
                 switch (style.Operator)
                 {
+                    case ConditionalStylingOperator.IsNotNull:
+                        {
+                            if (value is not null)
+                            {
+                                return $"{style.Style} width: 100% !important; background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    //case ConditionalStylingOperator.IsNull:
+                    //    {
+                    //        if (value is null)
+                    //        {
+                    //            return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                    //        }
+                    //        break;
+                    //    }
                     case ConditionalStylingOperator.Equal:
                         {
-                            if (value.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase))
+                            if (value?.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase) ?? false)
                             {
                                     return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
                             }
@@ -194,7 +211,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         }
                     case ConditionalStylingOperator.NotEqual:
                         {
-                            if (!value.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase))
+                            if ((!value?.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase)) ?? false)
                             {
                                 return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
                             }
@@ -202,7 +219,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         }
                     case ConditionalStylingOperator.Contains:
                         {
-                            if (value.Contains(style.Value, StringComparison.InvariantCultureIgnoreCase))
+                            if (value?.Contains(style.Value, StringComparison.InvariantCultureIgnoreCase) ?? false)
                             {
                                 return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
                             }
@@ -210,7 +227,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         }
                     case ConditionalStylingOperator.NotContains:
                         {
-                            if (!value.Contains(style.Value, StringComparison.InvariantCultureIgnoreCase))
+                            if ((!value?.Contains(style.Value, StringComparison.InvariantCultureIgnoreCase)) ?? false)
                             {
                                 return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
                             }
