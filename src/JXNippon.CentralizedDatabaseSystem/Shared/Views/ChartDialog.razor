@@ -19,7 +19,7 @@
         <Divider />
         <div class="col view-dialog-content">
             @if (this.current == 0)
-            {
+            {   
                 <div class="row py-2">
                     <div class="col-4 align-items-center d-flex">
                         <RadzenLabel class="dialogTextSize" Text="Title" />
@@ -86,6 +86,14 @@
                     </div>
                     <div class="col-8">
                         <RadzenNumeric Max=12 Min=1 Name="WidthGridSize" class="w-100" Placeholder="Enter width size..." @bind-Value="@Item.WidthGridSize" Disabled=@isViewing></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Card Style" />
+                    </div>
+                    <div class="col-8">
+                        <Switch Checked="false" CheckedChildren="Simple" UnCheckedChildren="Default" @bind-Value="@Item.IsSimpleCard" Disabled=@isViewing/>      
                     </div>
                 </div>
             }

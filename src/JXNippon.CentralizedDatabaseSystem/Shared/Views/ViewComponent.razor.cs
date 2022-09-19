@@ -1,4 +1,5 @@
 ﻿using Affra.Core.Domain.Services;
+using JXNippon.CentralizedDatabaseSystem.Domain.Announcements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
@@ -81,6 +82,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
+        private List<AnnouncementCardComponent> announcementComponents = new();
+        public AnnouncementCardComponent announcementComponentRef
+        {
+            set
+            {
+                var existingComponent = announcementComponents
+                    .Where(x => x.Column.Id == value.Column.Id)
+                    .FirstOrDefault();
+
+                if (existingComponent is not null)
+                {
+                    announcementComponents.Remove(existingComponent);
+                }
+
+                announcementComponents.Add(value);
+            }
+        }
+
         public Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
         {
             StartDate = startDate ?? StartDate;
@@ -95,6 +114,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             tasks.AddRange(gridComponents
                 .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
                 .Select(x => x.ReloadAsync(StartDate, EndDate))
+                .ToList());
+
+            tasks.AddRange(announcementComponents
+                .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
+                .Select(x => x.ReloadAsync())
                 .ToList());
             return Task.WhenAll(tasks);
         }
@@ -162,6 +186,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             else if (data.ComponentType == nameof(Grid))
             {
                 response = await DialogService.OpenAsync<GridDialog>("Edit",
+                    new Dictionary<string, object>() { { "Column", data }, { "View", View } },
+                    Constant.FullScreenDialogOptions);
+            }
+            else if (data.ComponentType == nameof(AnnouncementCard))
+            {
+                response = await DialogService.OpenAsync<AnnouncementCardDialog>("Edit",
                     new Dictionary<string, object>() { { "Column", data }, { "View", View } },
                     Constant.FullScreenDialogOptions);
             }
