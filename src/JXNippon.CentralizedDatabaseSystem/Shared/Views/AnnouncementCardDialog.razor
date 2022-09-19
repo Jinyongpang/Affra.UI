@@ -1,0 +1,96 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Announcements
+
+<RadzenTemplateForm Data="@Item" Submit="@(async (AnnouncementCard args) => { await SubmitAsync(args); })">
+    <div class="fullscreen-dialog">
+        <div class="fullscreen-dialog-header">
+            <Icon Type="arrow-left" Theme="outline" Class="fullscreen-dialog-back" OnClick=@(() => this.DialogService.Close())/>
+            <Steps ShowProgressDot Current="current" @ref=@this.steps Class="steps-navbar">
+                <Step Title="Configurations" />
+                <Step Title="Content" />
+                <Step Title="Preview" />
+            </Steps>
+            <div class="steps-action-buttons">
+                <RadzenButton Visible=@(this.current > 0) Style="margin-right: 10px;" ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton> 
+                <RadzenButton Visible=@(this.current < 2) ButtonType="Radzen.ButtonType.Submit">Next</RadzenButton> 
+                <RadzenButton Visible=@(this.current == 2) ButtonType="Radzen.ButtonType.Submit" Text="Save" Disabled=@isViewing/>            
+             </div>
+        </div>
+        <Divider />
+        <div class="col view-dialog-content">
+            @if (this.current == 0)
+            {
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Title" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Column.Title" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenRequiredValidator Component="Title" Text="Title is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">       
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Icon" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Icon" class="w-100" Placeholder="Enter icon..." @bind-Value="@Column.Icon" Disabled=@isViewing></RadzenTextBox>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Width Size" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Max=12 Min=1 Name="WidthGridSize" class="w-100" Placeholder="Enter width size..." @bind-Value="@Item.WidthGridSize" Disabled=@isViewing></RadzenNumeric>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Card Style" />
+                    </div>
+                    <div class="col-8">
+                        <Switch Checked="false" CheckedChildren="Simple" UnCheckedChildren="Default" @bind-Value="@Item.IsSimpleCard" Disabled=@isViewing/>      
+                    </div>
+                </div>
+            }
+            else if (this.current == 1)
+            {
+                <div class="row py-2">       
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Show Markup Code" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenSwitch Name="CodeBehind" @bind-Value="@this.isShowingCodeBehind" Disabled=@isViewing></RadzenSwitch>
+                    </div>
+                </div>
+                @if (this.isShowingCodeBehind)
+                {
+                    <div class="row py-2">       
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Content" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenTextArea Name="Content" class="w-100" Placeholder="Enter content..." @bind-Value="@this.Item.Content" Disabled=@isViewing></RadzenTextArea>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row py-2">       
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Content" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenHtmlEditor Name="Content" class="w-100" Placeholder="Enter content..." @bind-Value="@this.Item.Content" Disabled=@isViewing></RadzenHtmlEditor>
+                        </div>
+                    </div>
+                }       
+            }
+            else
+            {
+                <AnnouncementCardComponent AnnouncementCard=@this.Item></AnnouncementCardComponent>
+            }
+           
+        </div>
+    </div>
+</RadzenTemplateForm>

@@ -1,4 +1,5 @@
-﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Announcements
+@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
 @using JXNippon.CentralizedDatabaseSystem.Domain.Grids
 @using ViewODataService.Affra.Service.View.Domain.Views
 
@@ -69,6 +70,12 @@
                         ComponentType = nameof(Grid),
                     },
                     "Add")) Disabled=@(!hasItem)><a><i class="fas fa-table fa-fw fa-xl"></i> Add Table...</a></MenuItem>
+                    <MenuItem Key="AddAnnouncement" @onclick=@(args => ShowDialogAsync(
+                    new Column()
+                    {
+                        ComponentType = nameof(AnnouncementCard),
+                    },
+                    "Add")) Disabled=@(!hasItem)><a><i class="fas fa-bullhorn fa-fw fa-xl"></i> Add Announcement...</a></MenuItem>
                     <MenuDivider />
                     <MenuItem Key="Export" Disabled=@(!hasItem)><a @onclick=ExportAsync><i class="fas fa-download fa-fw fa-xl"></i> Export</a></MenuItem>
                     <MenuItem Key="Import">

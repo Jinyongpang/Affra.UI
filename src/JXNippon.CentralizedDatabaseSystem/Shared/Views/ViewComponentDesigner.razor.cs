@@ -2,6 +2,7 @@
 using System.Text.Json.Serialization;
 using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Domain.Announcements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
@@ -224,13 +225,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 response = await DialogService.OpenAsync<ChartDialog>(title,
                    new Dictionary<string, object>() { { "Column", data }, { "View", view } },
-                   Constant.DialogOptions);
+                   Constant.FullScreenDialogOptions);
             }
             else if (data.ComponentType == nameof(Grid))
             {
                 response = await DialogService.OpenAsync<GridDialog>(title,
                    new Dictionary<string, object>() { { "Column", data }, { "View", view } },
-                   Constant.DialogOptions);
+                   Constant.FullScreenDialogOptions);
+            }
+            else if (data.ComponentType == nameof(AnnouncementCard))
+            {
+                response = await DialogService.OpenAsync<AnnouncementCardDialog>(title,
+                   new Dictionary<string, object>() { { "Column", data }, { "View", view } },
+                   Constant.FullScreenDialogOptions);
             }
 
 
