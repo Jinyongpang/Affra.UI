@@ -8,6 +8,7 @@ using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Ide
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts;
 using Affra.Core.Domain.Services;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
+using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.RiskEvaluations;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 {
@@ -69,11 +70,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 },
                 RiskEvaluation = new()
                 {
-                    InheritRiskLikelihood = string.Empty,
-                    InheritRiskConsequence = string.Empty,
+                    InheritRiskLikelihood = LikelihoodLevels.LikelihoodLevelA,
+                    InheritRiskConsequence = ConsequenceLevels.ConsequenceLevel1,
                     InheritRiskRiskLevel = RiskLevels.LowRisk,
-                    ResidualRiskLikelihood = string.Empty,
-                    ResidualRiskConsequence = string.Empty,
+                    ResidualRiskLikelihood = LikelihoodLevels.LikelihoodLevelA,
+                    ResidualRiskConsequence = ConsequenceLevels.ConsequenceLevel1,
                     ResidualRiskRiskLevel = RiskLevels.LowRisk,
                     RecommendationAndCountermeasure = string.Empty
                 },

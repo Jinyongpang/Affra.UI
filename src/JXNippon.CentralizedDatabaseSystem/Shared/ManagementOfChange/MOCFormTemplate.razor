@@ -9,21 +9,30 @@
 @using UserODataService.Affra.Service.User.Domain.Users
 
 <RadzenTemplateForm Data="@Item" Submit="@( async (ManagementOfChangeRecord args) => { await SubmitAsync(args); })">
-    <Button Class="sticky-top moc-close-dialog-btn" Danger Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Circle" OnClick="OnCloseDialogClicked">
+    @*<Button Class="sticky-top moc-close-dialog-btn" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" OnClick="OnCloseDialogClicked">
         <ChildContent>
             <Icon Class="anticon-big" Type="close-circle" Theme="outline"/>
         </ChildContent>
-    </Button>
+    </Button>*@
     <div class="row py-2 px-2">
         <div class="col">
-            <div class="sticky-top moh-step-div">
-                <Steps Current=@currentStep OnChange="OnStepChange">
-                    <Step Class="stepAntIconBig" Title="IDENTIFICATION" />
-                    <Step Class="stepAntIconBig" Title="RISK EVALUATION" Status="@(((int)Item.ManagementOfChangeCurrentStep > 1) ? "finish" : "wait")"/>
-                    <Step Class="stepAntIconBig" Title="ENDORSEMENT" Status="@(((int)Item.ManagementOfChangeCurrentStep > 2) ? "finish" : "wait")" />
-                    <Step Class="stepAntIconBig" Title="AUTHORISATION AND APPROVAL" Status="@(((int)Item.ManagementOfChangeCurrentStep > 3) ? "finish" : "wait")" />
-                    <Step Class="stepAntIconBig" Title="EXTENSION AND CLOSE-OUT" />
-                </Steps>
+            <div class="row sticky-top moh-step-div">
+                <div class="col-1">
+                    <Button Class="" Type="@AntDesign.ButtonType.Text" Size="@AntDesign.ButtonSize.Large" OnClick="OnCloseDialogClicked">
+                        <ChildContent>
+                            <Icon Class="anticon-big" Type="arrow-left" Theme="outline"/>
+                        </ChildContent>
+                    </Button>
+                </div>
+                <div class="col-11">
+                    <Steps Current=@currentStep OnChange="OnStepChange">
+                        <Step Class="stepAntIconBig" Title="IDENTIFICATION" />
+                        <Step Class="stepAntIconBig" Title="RISK EVALUATION" Status="@(((int)Item.ManagementOfChangeCurrentStep > 1) ? "finish" : "wait")"/>
+                        <Step Class="stepAntIconBig" Title="ENDORSEMENT" Status="@(((int)Item.ManagementOfChangeCurrentStep > 2) ? "finish" : "wait")" />
+                        <Step Class="stepAntIconBig" Title="AUTHORISATION AND APPROVAL" Status="@(((int)Item.ManagementOfChangeCurrentStep > 3) ? "finish" : "wait")" />
+                        <Step Class="stepAntIconBig" Title="EXTENSION AND CLOSE-OUT" />
+                    </Steps>
+                </div>
                 <Divider />
             </div>
             <div>
@@ -85,7 +94,7 @@
                                             <Switch Disabled="disableAllInput" Checked="Item.Identification.SCEAffected" CheckedChildren="Yes" UnCheckedChildren="No" />
                                         </DescriptionsItem>
                                         <DescriptionsItem Span="2" Title="SCE(s) Tag Number">
-                                            <Input Disabled="disableAllInput" @bind-Value="Item.Identification.SCETagNumber" />
+                                            <AutoComplete Disabled="disableAllInput" @bind-Value="Item.Identification.SCETagNumber" Options="sceCodes" Placeholder="Select code..." />
                                         </DescriptionsItem>
                                     </Descriptions>
                                     <Divider />

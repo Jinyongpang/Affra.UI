@@ -1,0 +1,73 @@
+﻿@using AntDesign;
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements
+@using System.Text.Json
+
+<div class="row h-100">
+    <div class="col h-100">
+        <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true"
+                        PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="SCEElementRecord"
+                        ColumnWidth="40px" AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true">
+            <EmptyTemplate>    
+                <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                    <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No SCE element created.">
+                    </GenericDescription>
+                </div>
+            </EmptyTemplate>
+            <Columns>
+                <RadzenDataGridColumn TItem="SCEElementRecord" Property="SCECode" Title="Code" Width="40px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="SCEElementRecord" Property="SCEName" Title="Name" Width="40px">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="SCEElementRecord" Property="SCEDescription" Title="Description" Width="40px">
+                </RadzenDataGridColumn>
+            </Columns>
+        </RadzenDataGrid>  
+    </div>
+</div>
+
+
+@code {
+
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        Console.WriteLine(JsonSerializer.Serialize(args));
+        bool hasRowData = (args as DataGridCellMouseEventArgs<SCEElementRecord>) != null;
+        ContextMenuService.Open(args, ds =>
+    @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<SCEElementRecord>, e))">
+                    <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
+                    <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+    </RadzenMenu>
+    );
+    }
+
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<SCEElementRecord> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new SCEElementRecord() {  }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();
+        }
+    }
+}

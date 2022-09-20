@@ -61,6 +61,51 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1.
+        /// </summary>
+        public static string ConsequenceLevel1 {
+            get {
+                return ResourceManager.GetString("ConsequenceLevel1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2.
+        /// </summary>
+        public static string ConsequenceLevel2 {
+            get {
+                return ResourceManager.GetString("ConsequenceLevel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3.
+        /// </summary>
+        public static string ConsequenceLevel3 {
+            get {
+                return ResourceManager.GetString("ConsequenceLevel3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4.
+        /// </summary>
+        public static string ConsequenceLevel4 {
+            get {
+                return ResourceManager.GetString("ConsequenceLevel4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5.
+        /// </summary>
+        public static string ConsequenceLevel5 {
+            get {
+                return ResourceManager.GetString("ConsequenceLevel5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Analysis Result.
         /// </summary>
         public static string DailyAnalysisResult {
@@ -435,6 +480,51 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string InvalidToken {
             get {
                 return ResourceManager.GetString("InvalidToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A.
+        /// </summary>
+        public static string LikelihoodLevelA {
+            get {
+                return ResourceManager.GetString("LikelihoodLevelA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to B.
+        /// </summary>
+        public static string LikelihoodLevelB {
+            get {
+                return ResourceManager.GetString("LikelihoodLevelB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C.
+        /// </summary>
+        public static string LikelihoodLevelC {
+            get {
+                return ResourceManager.GetString("LikelihoodLevelC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to D.
+        /// </summary>
+        public static string LikelihoodLevelD {
+            get {
+                return ResourceManager.GetString("LikelihoodLevelD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E.
+        /// </summary>
+        public static string LikelihoodLevelE {
+            get {
+                return ResourceManager.GetString("LikelihoodLevelE", resourceCulture);
             }
         }
         

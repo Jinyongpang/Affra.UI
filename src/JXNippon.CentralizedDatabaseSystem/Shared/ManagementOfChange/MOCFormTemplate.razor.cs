@@ -17,6 +17,7 @@ using Radzen;
 using UserODataService.Affra.Service.User.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
 using Microsoft.OData.Edm;
+using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 {
@@ -30,6 +31,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private ConfirmService ConfirmService { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
 
+        private List<string> sceCodes;
         private List<string> userDesignation;
         private List<string> lineManagerUsername;
         private List<string> approveAuthorityUsername;
@@ -37,7 +39,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private int currentStep;
         private bool disableAllInput;
         private bool disableAddExtensionButton;
-        protected override Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
             disableAllInput = false;
             disableAddExtensionButton = false;
@@ -83,7 +85,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                     break;
             }
 
-            return this.LoadUserDataAsync();
+            await this.LoadUserDataAsync();
+            await this.LoadSCECodeAsync();
         }
         private async Task LoadUserDataAsync()
         {
@@ -97,6 +100,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
             userDesignation = usersResponse
                 .Select(x => x.Role)
+                .ToList();
+
+            StateHasChanged();
+        }
+        private async Task LoadSCECodeAsync()
+        {
+            using var serviceScope = ServiceProvider.CreateScope();
+            IGenericService<SCEElementRecord>? sceService = this.GetGenericSCEService(serviceScope);
+            var query = sceService.Get();
+
+            Microsoft.OData.Client.QueryOperationResponse<SCEElementRecord>? sceResponse = await query
+                .OrderBy(x => x.SCECode)
+                .ToQueryOperationResponseAsync<SCEElementRecord>();
+
+            sceCodes = sceResponse
+                .Select(x => x.SCECode)
                 .ToList();
 
             StateHasChanged();
@@ -427,6 +446,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private IGenericService<ManagementOfChangeRecord> GetGenericMOCService(IServiceScope serviceScope)
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<ManagementOfChangeRecord, IManagementOfChangeUnitOfWork>>();
+        }
+        private IGenericService<SCEElementRecord> GetGenericSCEService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<SCEElementRecord, IManagementOfChangeUnitOfWork>>();
         }
     }
 }

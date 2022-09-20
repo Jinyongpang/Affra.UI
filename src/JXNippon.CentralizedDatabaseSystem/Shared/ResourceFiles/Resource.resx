@@ -273,4 +273,34 @@
   <data name="VeryHighRisk" xml:space="preserve">
     <value>High Risk</value>
   </data>
+  <data name="ConsequenceLevel1" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ConsequenceLevel2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ConsequenceLevel3" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="ConsequenceLevel4" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ConsequenceLevel5" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="LikelihoodLevelA" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="LikelihoodLevelB" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="LikelihoodLevelC" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="LikelihoodLevelD" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="LikelihoodLevelE" xml:space="preserve">
+    <value>E</value>
+  </data>
 </root>

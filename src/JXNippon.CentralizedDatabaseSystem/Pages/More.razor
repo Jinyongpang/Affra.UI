@@ -1,4 +1,5 @@
 ﻿@page "/more/{activeKey}"
+@using JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
 @using JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
 
 @attribute [Authorize(Policy = "RolePageAdministration")]
@@ -11,6 +12,12 @@
             <span>File Management</span>
         </TabTemplate>
         <ChildContent><FileManagement></FileManagement></ChildContent>
+    </TabPane>
+    <TabPane Key="scemanagement">
+        <TabTemplate>
+            <span>SCE Management</span>
+        </TabTemplate>
+        <ChildContent><SCEElementManagement></SCEElementManagement></ChildContent>
     </TabPane>
     <TabPane Key="usermanagement">
         <TabTemplate>
