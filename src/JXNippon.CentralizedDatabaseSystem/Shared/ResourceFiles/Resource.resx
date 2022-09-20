@@ -303,4 +303,7 @@
   <data name="LikelihoodLevelE" xml:space="preserve">
     <value>E</value>
   </data>
+  <data name="DailyDiesel" xml:space="preserve">
+    <value>Diesel</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
+﻿using System.Dynamic;
+using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
@@ -16,11 +17,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
     public partial class DataGridComponent : IAsyncDisposable
     {
-        private RadzenDataGrid<IDaily> grid;
+        private RadzenDataGrid<IDictionary<string, object>> grid;
         private IEnumerable<IDaily> items;
+        private IEnumerable<IDictionary<string, object>> itemsDictionary;
         private bool isLoading = false;
         private IHubSubscription subscription;
         private bool isDisposed = false;
+        private IDictionary<string, GridColumn> gridColumnDictionary;
 
         [Parameter] public EventCallback<IQueryable<dynamic>> LoadData { get; set; }
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
@@ -29,11 +32,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public DateTimeOffset? StartDate { get; set; }
         [Parameter] public DateTimeOffset? EndDate { get; set; }
         [Parameter] public IEnumerable<GridColumn> GridColumns { get; set; }
+        [Parameter] public Column Column { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
-        [Parameter] public Column Column { get; set; }
+        
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
@@ -50,6 +54,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
+            gridColumnDictionary = this.GridColumns.ToDictionary(x => $"{x.Type}{x.Property}");
             if (!string.IsNullOrEmpty(this.Subscription))
             {
                 subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
@@ -73,35 +78,90 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
+            this.items = await this.GetDailyItemsAsync(this.TType, this.StartDate, this.EndDate, args);
+            itemsDictionary = await this.MergeOverridenTypeAsync(this.items) ?? new List<ExpandoObject>();
+            isLoading = false;
+        }
 
+        private async Task<IEnumerable<IDictionary<string, object>>?> MergeOverridenTypeAsync(IEnumerable<IDaily> dailyItems)
+        {
+            var types = this.GridColumns
+                .Where(x => !string.IsNullOrEmpty(x.Type))
+                .Select(x => x.Type)
+                .Distinct();
+            List<IDictionary<string, object>>? result = new List<IDictionary<string, object>>();
+            List<IDaily> list = new List<IDaily>();
+            if (dailyItems.Any())
+            {
+                
+                foreach (var type in types)
+                {
+                    var actualType = ViewHelper.GetActualType(type);
+                    if (actualType is not null)
+                    {
+                        list.AddRange(await this.GetDailyItemsAsync(actualType.AssemblyQualifiedName, dailyItems.First().Date, dailyItems.Last().Date));
+                    }
+                }
+            }
+            foreach (var item in dailyItems)
+            {
+                var dictionaryObject = item.ToDictionaryObject();
+                foreach (var matched in list.Where(x => x.Date.ToLocalTime().Date == item.Date.ToLocalTime().Date))
+                {
+                    foreach (var dict in matched.ToDictionaryObject(matched.GetType().Name))
+                    {
+                        dictionaryObject.Add(dict);
+                    }
+                }
+                    
+                result.Add(dictionaryObject);
+            }
+
+            return result;
+            
+        }
+
+        private string GetColumnPropertyExpression(string name, Type type)
+        {
+            var expression = $@"it[""{name}""]";
+            return type == typeof(int) ? $"int.Parse({expression})" : expression;
+        }
+
+        private async Task<IEnumerable<IDaily>> GetDailyItemsAsync(string type, DateTimeOffset? start, DateTimeOffset? end, LoadDataArgs args = null)
+        {
             using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.ViewService.GetGenericService(serviceScope, TType);
+            var service = this.ViewService.GetGenericService(serviceScope, type);
             Queryable = service.Get();
-            if (StartDate != null && EndDate != null)
+            if (start != null && end != null)
             {
                 Queryable = Queryable
                     .Cast<IDaily>()
-                    .Where(item => item.Date >= StartDate.Value.ToUniversalTime())
-                    .Where(item => item.Date <= EndDate.Value.ToUniversalTime());
+                    .Where(item => item.Date >= start.Value.ToUniversalTime())
+                    .Where(item => item.Date <= end.Value.ToUniversalTime());
             }
 
             Queryable = (IQueryable<dynamic>)Queryable
                 .Cast<IDaily>()
                 .OrderBy(x => x.Date)
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy);
+                .AppendQuery(args?.Filter, args?.Skip, args?.Top, args?.OrderBy);
 
-            await LoadData.InvokeAsync(Queryable);
+            if (args is not null)
+            {
+                await LoadData.InvokeAsync(Queryable);
+            }
+            
             var q = (DataServiceQuery)Queryable;
             var response = (await q
                 .ExecuteAsync()) as QueryOperationResponse;
 
-            Count = (int)response.Count;
+            if (args is not null)
+            {
+                this.Count = (int)response.Count;
+            }
 
-            items = response
+            return response
                 .Cast<IDaily>()
                 .ToList();
-
-            isLoading = false;
         }
 
         private void HandleException(Exception ex)
@@ -115,6 +175,98 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return properties;
         }
 
+        private void CellRender(DataGridCellRenderEventArgs<IDictionary<string, object>> args)
+        {
+            if (this.gridColumnDictionary.TryGetValue(args.Column.Property, out var gridColumn))
+            {
+                if (args.Data.TryGetValue(args.Column.Property, out object value))
+                {
+                    var result = this.GetResultString(gridColumn, value);
+                    args.Attributes.Add("style", this.GetStyle(gridColumn, result));
+                }
+            }  
+        }
+
+        private string GetResultString(GridColumn gridColumn, object input)
+        {
+            var result = string.Empty;
+            if (!string.IsNullOrEmpty(gridColumn.FormatString))
+            {
+                result = string.Format(gridColumn.FormatString, input);
+            }
+            else
+            {
+                result = input?.ToString();
+            }
+            return result;
+        }
+
+        private string GetStyle(GridColumn gridColumn, string value)
+        {
+            if (gridColumn?.ConditionalStylings is null)
+            { 
+                return string.Empty;
+            }
+
+            foreach (var style in gridColumn.ConditionalStylings)
+            {
+                switch (style.Operator)
+                {
+                    case ConditionalStylingOperator.IsNotNull:
+                        {
+                            if (value is not null)
+                            {
+                                return $"{style.Style} width: 100% !important; background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    case ConditionalStylingOperator.IsNull:
+                        {
+                            if (value is null)
+                            {
+                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    case ConditionalStylingOperator.Equal:
+                        {
+                            if (value?.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase) ?? false)
+                            {
+                                    return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    case ConditionalStylingOperator.NotEqual:
+                        {
+                            if ((!value?.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase)) ?? false)
+                            {
+                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    case ConditionalStylingOperator.Contains:
+                        {
+                            if (value?.Contains(style.Value, StringComparison.InvariantCultureIgnoreCase) ?? false)
+                            {
+                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    case ConditionalStylingOperator.NotContains:
+                        {
+                            if ((!value?.Contains(style.Value, StringComparison.InvariantCultureIgnoreCase)) ?? false)
+                            {
+                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                            }
+                            break;
+                        }
+                    default:
+                        return string.Empty;
+                }
+            }
+
+            return string.Empty;
+        }
         public async ValueTask DisposeAsync()
         {
             try

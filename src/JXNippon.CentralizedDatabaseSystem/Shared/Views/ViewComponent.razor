@@ -1,5 +1,6 @@
 ﻿@using System.Text.Json;
 @using Affra.Core.Domain.Services
+@using JXNippon.CentralizedDatabaseSystem.Domain.Announcements
 @using JXNippon.CentralizedDatabaseSystem.Domain.Grids
 @using JXNippon.CentralizedDatabaseSystem.Domain.Views
 @using JXNippon.CentralizedDatabaseSystem.Domain.Charts
@@ -76,42 +77,73 @@
                         @ondragenter="@(args => HandleDragEnter(j))"
                         @ondragend=@(args => this.enteredId = -1)> 
 
-                        <Card Size="medium" Id=@j.ToString() Style="pointer-event: none;" Class=@($"h-100 card-shadow view-chart view-grid {this.GetCardFocusClass(j)}")>
-                            <TitleTemplate>
-                                <span>
-                                    <i class="@col.Icon"></i>
-                                    @col.Title
-                                </span>
-                            </TitleTemplate>
-                            <Extra>
-                                @if (IsDesignMode)
-                                {
-                                    <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg text-info"></i></a>
-                                    <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
-                                }
-                                else if(this.focusId == -1)
-                                {
-                                    <AntDesign.Button OnClick="@(() => this.OnFocusAsync(j))"><i class="fa-solid fa-up-right-and-down-left-from-center extra-icon"></i></AntDesign.Button>
-                                }
-                                else
-                                {
-                                    <AntDesign.Button OnClick="@(() => this.OnFocusAsync(-1))"><i class="fa-solid fa-down-left-and-up-right-to-center extra-icon"></i></AntDesign.Button>
-                                }
-                            </Extra>
-                            <Body>
-                                @if (col.ComponentType ==  nameof(Chart))
-                                {
-                                    Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                                    <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
-                                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col" Colors=@(this.ColorsGroups.ElementAt(j))></ChartComponent>
-                                }
-                                else if (col.ComponentType ==  nameof(Grid))
-                                {
-                                    Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                                    <DataGridComponent @ref="@gridComponentRef" TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns" Column="@col"></DataGridComponent>
-                                }
-                            </Body>
-                        </Card>               
+                        @if(columnComponent.IsSimpleCard == true && !this.IsDesignMode)
+                        {
+                            <Card Size="medium" Id=@j.ToString() Style="pointer-event: none;" Class=@($"card-shadow view-chart view-grid {this.GetCardFocusClass(j)}")> 
+                                <Body>
+                                    @if (col.ComponentType ==  nameof(Chart))
+                                    {
+                                        Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
+                                        <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                                            Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col" Colors=@(this.ColorsGroups.ElementAt(j))></ChartComponent>
+                                    }
+                                    else if (col.ComponentType ==  nameof(Grid))
+                                    {
+                                        Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
+                                        <DataGridComponent @ref="@gridComponentRef" TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns" Column="@col"></DataGridComponent>
+                                    }
+                                    else if (col.ComponentType ==  nameof(AnnouncementCard))
+                                    {
+                                        AnnouncementCard component = JsonSerializer.Deserialize<AnnouncementCard>(col.ColumnComponent);
+                                        <AnnouncementCardComponent @ref="@announcementComponentRef" AnnouncementCard=@component Column=@col HasSubscription=@(!this.IsDesignMode)></AnnouncementCardComponent>
+                                    }
+                                </Body>
+                            </Card> 
+                        }
+                        else
+                        {
+                            <Card Size="medium" Id=@j.ToString() Style="pointer-event: none;" Class=@($"h-100 card-shadow view-chart view-grid {this.GetCardFocusClass(j)}")>
+                                <TitleTemplate>
+                                    <span>
+                                        <i class="@col.Icon"></i>
+                                        @col.Title
+                                    </span>
+                                </TitleTemplate>
+                                <Extra>
+                                    @if (IsDesignMode)
+                                    {
+                                        <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg text-info"></i></a>
+                                        <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
+                                    }
+                                    else if(this.focusId == -1)
+                                    {
+                                        <AntDesign.Button OnClick="@(() => this.OnFocusAsync(j))"><i class="fa-solid fa-up-right-and-down-left-from-center extra-icon"></i></AntDesign.Button>
+                                    }
+                                    else
+                                    {
+                                        <AntDesign.Button OnClick="@(() => this.OnFocusAsync(-1))"><i class="fa-solid fa-down-left-and-up-right-to-center extra-icon"></i></AntDesign.Button>
+                                    }
+                                </Extra>
+                                <Body>
+                                    @if (col.ComponentType ==  nameof(Chart))
+                                    {
+                                        Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
+                                        <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                                            Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col" Colors=@(this.ColorsGroups.ElementAt(j))></ChartComponent>
+                                    }
+                                    else if (col.ComponentType ==  nameof(Grid))
+                                    {
+                                        Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
+                                        <DataGridComponent @ref="@gridComponentRef" TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns" Column="@col"></DataGridComponent>
+                                    }
+                                    else if (col.ComponentType ==  nameof(AnnouncementCard))
+                                    {
+                                        AnnouncementCard component = JsonSerializer.Deserialize<AnnouncementCard>(col.ColumnComponent);
+                                        <AnnouncementCardComponent @ref="@announcementComponentRef" AnnouncementCard=@component Column=@col HasSubscription=@(!this.IsDesignMode)></AnnouncementCardComponent>
+                                    }
+                                </Body>
+                            </Card> 
+                        }                                   
                     </div> 
                   
                    id++;

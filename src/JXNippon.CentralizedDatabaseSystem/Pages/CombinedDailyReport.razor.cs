@@ -3,7 +3,6 @@ using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction;
-using JXNippon.CentralizedDatabaseSystem.Shared.Dashboard;
 using JXNippon.CentralizedDatabaseSystem.Shared.GasAndCondensateExportSamplersAndExportLine;
 using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
@@ -27,7 +26,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
     public partial class CombinedDailyReport
     {
+        private int focusId = -1;
+        private DateTime? previousDate;
         private readonly bool[] isRadzenPanelExpandedList = new bool[20];
+
         private PowerGenerationAndDistributionManagementDataGrid powerGenerationAndDistributionManagementDataGrid;
         private ProducedWaterTreatmentSystemManagementDataGrid producedWaterTreatmentSystemManagementDataGrid;
         private MajorEquipmentStatusDataGrid majorEquipmentStatusDataGrid;
@@ -65,9 +67,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private SandDisposalDesanderDataGrid sandDisposalDesanderDataGrid;
         private VendorActivitiesDataGrid vendorActivitiesDataGrid;
         private MaximoWorkOrderDataGrid maximoWorkOrderDataGrid;
+        private DieselDataGrid dieselDataGrid;
 
         [Inject] private NavigationManager NavManager { get; set; }
         private CommonFilter CommonFilter { get; set; }
+
+        [Parameter]
+        public bool HasFocus { get; set; }
+
+        [Parameter]
+        public EventCallback<bool> HasFocusChanged { get; set; }
 
         protected override Task OnInitializedAsync()
         {
@@ -237,6 +246,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         {
             maximoWorkOrderDataGrid.CommonFilter = CommonFilter;
         }
+
+        private async Task LoadDieselDataGridAsync(LoadDataArgs args)
+        {
+            dieselDataGrid.DailyDataGrid.CommonFilter = CommonFilter;
+        }
         private Task OnChangeAsync(CommonFilter commonFilter)
         {
             return this.ReloadAsync();
@@ -281,7 +295,54 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 nitrogenGeneratorDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 sandDisposalDesanderDataGrid?.ReloadAsync() ?? Task.CompletedTask,
                 vendorActivitiesDataGrid?.ReloadAsync() ?? Task.CompletedTask,
-                maximoWorkOrderDataGrid?.ReloadAsync() ?? Task.CompletedTask);
+                maximoWorkOrderDataGrid?.ReloadAsync() ?? Task.CompletedTask,
+                dieselDataGrid?.DailyDataGrid.ReloadAsync() ?? Task.CompletedTask);
+        }
+
+        private Task OnFocusAsync(int i)
+        {
+            previousDate = CommonFilter.Date ?? previousDate;
+            this.CommonFilter.Date = null;
+            this.focusId = i;
+            this.HasFocus = i != -1;
+            if (this.HasFocus)
+            {
+                isRadzenPanelExpandedList[i] = true;
+            }
+            if (i == -1 && CommonFilter.Date is null)
+            {
+                CommonFilter.Date = previousDate;
+            }
+            
+            return HasFocusChanged.InvokeAsync(i != -1);
+        }
+
+        private string GetFocusClass(int? i)
+        {
+            if (this.focusId == -1)
+            {
+                return string.Empty;
+            }
+            else if (this.focusId == i)
+            {
+                return "focused-cdr";
+            }
+            else
+            {
+                return "hidden-card";
+            }
+        }
+
+        private string GetTabFocusClass(int? i)
+        {
+            return this.focusId == i
+                ? "focused-tab"
+                : string.Empty;
+        }
+
+        private bool CheckIsFocused(int i)
+        {
+            return this.focusId == i;
         }
     }
 }

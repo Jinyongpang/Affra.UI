@@ -15,6 +15,15 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="FPSO Gas Export GODC Plan" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="FPSOGasExportGODCPlan" class="w-100" @bind-Value="@Item.FPSOGasExportGODCPlan" Disabled=@isViewing
+                    Placeholder="Enter FPSO gas export GODC plan ..." TextProperty="FPSOGasExportGODCPlan"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
                     <RadzenLabel class="dialogTextSize" Text="FPSO Cumulative Gas Export Remark" />
                 </div>
                 <div class="col-8">
@@ -40,10 +49,28 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="FPSO Crude API reading" />
+                    <RadzenLabel class="dialogTextSize" Text="FPSO Crude API Reading Inlet Sep" />
                 </div>
                 <div class="col-8">
-                    <RadzenTextArea Name="FPSOCrudeAPIReading" class="w-100" Placeholder="Enter FPSO crude API reading..." @bind-Value="@Item.FPSOCrudeAPIReading" Disabled=@isViewing></RadzenTextArea>
+                    <RadzenNumeric Name="FPSOCrudeAPIReadingInletSep" class="w-100" @bind-Value="@Item.FPSOCrudeAPIReadingInletSep" Disabled=@isViewing
+                    Placeholder="Enter FPSO crude API reading inlet sep ..." TextProperty="FPSOCrudeAPIReadingInletSep"></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="FPSO Crude API Reading Receiving Tank COT Number" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextArea Name="FPSOCrudeAPIReadingReceivingTankCOTNumber" class="w-100" Placeholder="Enter FPSO crude API reading receiving tank COT number..." @bind-Value="@Item.FPSOCrudeAPIReadingReceivingTankCOTNumber" Disabled=@isViewing></RadzenTextArea>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="FPSO Crude API Reading Receiving Tank" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="FPSOCrudeAPIReadingReceivingTank" class="w-100" @bind-Value="@Item.FPSOCrudeAPIReadingReceivingTank" Disabled=@isViewing
+                    Placeholder="Enter FPSO crude API reading receiving tank..." TextProperty="FPSOCrudeAPIReadingReceivingTank"></RadzenNumeric>
                 </div>
             </div>
             <div class="row py-2">

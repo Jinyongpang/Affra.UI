@@ -1,5 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json;
+﻿using System.Text.Json;
+using JXNippon.CentralizedDatabaseSystem.Domain.Announcements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.AspNetCore.Components;
@@ -8,11 +8,11 @@ using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class ChartDialog
+    public partial class AnnouncementCardDialog
     {
         [Parameter] public View View { get; set; }
         [Parameter] public Column Column { get; set; }
-        public Chart Item { get; set; }
+        public AnnouncementCard Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private IViewService ViewService { get; set; }
@@ -24,6 +24,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private AntDesign.Steps steps;
 
+        private bool isShowingCodeBehind = false;
+
         protected override Task OnInitializedAsync()
         {
             Column.ViewName = View.Name;
@@ -32,19 +34,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 .Select(x => x.Key)
                 .ToHashSet();
 
-            Item = new Chart()
-            {
-                ChartSeries = new Collection<ChartSeries>(),
-            };
+            Item = new AnnouncementCard();
             if (!string.IsNullOrEmpty(Column.ColumnComponent))
             {
-                Item = JsonSerializer.Deserialize<Chart>(Column.ColumnComponent) ?? Item;
+                Item = JsonSerializer.Deserialize<AnnouncementCard>(Column.ColumnComponent) ?? Item;
             }
-            
+
             return Task.CompletedTask;
         }
 
-        protected Task SubmitAsync(Chart arg)
+        protected Task SubmitAsync(AnnouncementCard arg)
         {
             if (this.current < 2)
             {

@@ -8,15 +8,14 @@ using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class GridColumnDataGrid
+    public partial class GridColumnStyleDataGrid
     {
-        private RadzenDataGrid<GridColumn> grid;
-        private IEnumerable<GridColumn> items;
+        private RadzenDataGrid<ConditionalStyling> grid;
+        private IEnumerable<ConditionalStyling> items;
 
-        [Parameter] public Grid Grid { get; set; }
+        [Parameter] public GridColumn GridColumn { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
-        [Parameter] public IEnumerable<string> Types { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
@@ -26,7 +25,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override void OnInitialized()
         {
-            items = Grid.GridColumns;
+            GridColumn.ConditionalStylings ??= new List<ConditionalStyling>();
+            items = GridColumn.ConditionalStylings;
         }
 
         public Task ReloadAsync()
@@ -39,7 +39,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             AffraNotificationService.NotifyException(ex);
         }
 
-        private async Task ShowDialogAsync(GridColumn data, int menuAction, string title)
+        private async Task ShowDialogAsync(ConditionalStyling data, int menuAction, string title)
         {
             ContextMenuService.Close();
             dynamic? response;
@@ -51,14 +51,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
                 if (response == true)
                 {
-                    Grid.GridColumns.Remove(data);
+                    GridColumn.ConditionalStylings.Remove(data);
                     AffraNotificationService.NotifyItemDeleted();
                 }
             }
             else
             {
-                response = await DialogService.OpenAsync<GridColumnDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "Grid", Grid }, { "Types", Types } },
+                response = await DialogService.OpenAsync<GridColumnStyleDialog>(title,
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, },
                            Constant.DialogOptions);
 
                 if (response == true)
@@ -71,7 +71,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         }
                         else
                         {
-                            Grid.GridColumns.Add(data);
+                            GridColumn.ConditionalStylings.Add(data);
                             AffraNotificationService.NotifyItemCreated();
                         }
 

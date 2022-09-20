@@ -14,6 +14,10 @@
                     <a>No records to display.</a>
                 </div>                    
             </EmptyTemplate>
+            <Template Context="gridColumn">
+                <GridColumnStyleDataGrid GridColumn=gridColumn PagerAlwaysVisible=true>
+                </GridColumnStyleDataGrid>
+            </Template>
             <Columns>
                 <RadzenDataGridColumn TItem="GridColumn" Property="Title" Title="Title">
                 </RadzenDataGridColumn>
@@ -21,8 +25,9 @@
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="GridColumn" Property="FormatString" Title="FormatString">
                 </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="GridColumn" Property="Type" Title="Type">
+                </RadzenDataGridColumn>
             </Columns>
-
         </RadzenDataGrid>  
     </div>
 </div>
@@ -43,7 +48,7 @@
     }
 
     private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<GridColumn> args, MenuItemEventArgs e)
-    {
+    {  
         int i = (int)e.Value;
         if (i == 0)
         {

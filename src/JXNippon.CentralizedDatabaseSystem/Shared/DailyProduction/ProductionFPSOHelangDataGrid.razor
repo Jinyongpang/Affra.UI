@@ -7,6 +7,7 @@
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeGasExport" Title="FPSO Cumulative Gas Export (MMscf)"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOGasExportGODCPlan" Title="FPSO Gas Export FODC Plan"/>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCumulativeGasExportRemark" Title="FPSO Cumulative Gas Export Remark">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.FPSOCumulativeGasExportRemark</p>
@@ -18,11 +19,13 @@
                         <p style="white-space:pre-wrap">@item.FPSOCumulativeCrudeOilRemark</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCrudeAPIReading" Title="FPSO Crude API reading">
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCrudeAPIReadingInletSep" Title="FPSO Crude API reading Inlet Sep"/>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCrudeAPIReadingReceivingTankCOTNumber" Title="FPSO Crude API reading Receiving Tank COT Number">
                     <Template Context="item">
-                        <p style="white-space:pre-wrap">@item.FPSOCrudeAPIReading</p>
+                        <p style="white-space:pre-wrap">@item.FPSOCrudeAPIReadingReceivingTankCOTNumber</p>
                     </Template>
                 </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="FPSOCrudeAPIReadingReceivingTank" Title="FPSO Crude API reading Receiving Tank"/>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedHIPCrudeToFPSO" Title="Estimated HIP Crude to FPSO (bbl)"/>
                 <RadzenDataGridColumn TItem="DailyFPSOHelangProduction" Property="EstimatedHIPCrudeToFPSORemark" Title="Estimated HIP Crude to FPSO Remark">
                     <Template Context="item">

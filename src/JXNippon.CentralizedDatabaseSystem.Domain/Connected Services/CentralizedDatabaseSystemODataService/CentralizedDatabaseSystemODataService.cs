@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 29/8/2022 1:53:03 AM
+// Generation date: 14/9/2022 12:55:27 AM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -1438,15 +1438,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="majorEquipmentName">Initial value of MajorEquipmentName.</param>
+        /// <param name="status">Initial value of Status.</param>
         /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="isValidatedBySystem">Initial value of IsValidatedBySystem.</param>
+        /// <param name="isValidatedByUser">Initial value of IsValidatedByUser.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyMajorEquipmentStatus CreateDailyMajorEquipmentStatus(long ID, global::System.DateTimeOffset date, string majorEquipmentName, long xmin)
+        public static DailyMajorEquipmentStatus CreateDailyMajorEquipmentStatus(long ID, 
+                    global::System.DateTimeOffset date, 
+                    string majorEquipmentName, 
+                    string status, 
+                    long xmin, 
+                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedBySystem, 
+                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedByUser)
         {
             DailyMajorEquipmentStatus dailyMajorEquipmentStatus = new DailyMajorEquipmentStatus();
             dailyMajorEquipmentStatus.Id = ID;
             dailyMajorEquipmentStatus.Date = date;
             dailyMajorEquipmentStatus.MajorEquipmentName = majorEquipmentName;
+            dailyMajorEquipmentStatus.Status = status;
             dailyMajorEquipmentStatus.xmin = xmin;
+            dailyMajorEquipmentStatus.IsValidatedBySystem = isValidatedBySystem;
+            dailyMajorEquipmentStatus.IsValidatedByUser = isValidatedByUser;
             return dailyMajorEquipmentStatus;
         }
         /// <summary>
@@ -1596,6 +1608,111 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedBySystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedBySystem
+        {
+            get
+            {
+                return this._IsValidatedBySystem;
+            }
+            set
+            {
+                this.OnIsValidatedBySystemChanging(value);
+                this._IsValidatedBySystem = value;
+                this.OnIsValidatedBySystemChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedBySystem;
+        partial void OnIsValidatedBySystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedBySystemChanged();
+        /// <summary>
+        /// There are no comments for Property SystemValidateDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> SystemValidateDateTime
+        {
+            get
+            {
+                return this._SystemValidateDateTime;
+            }
+            set
+            {
+                this.OnSystemValidateDateTimeChanging(value);
+                this._SystemValidateDateTime = value;
+                this.OnSystemValidateDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _SystemValidateDateTime;
+        partial void OnSystemValidateDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnSystemValidateDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedByUser in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedByUser
+        {
+            get
+            {
+                return this._IsValidatedByUser;
+            }
+            set
+            {
+                this.OnIsValidatedByUserChanging(value);
+                this._IsValidatedByUser = value;
+                this.OnIsValidatedByUserChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedByUser;
+        partial void OnIsValidatedByUserChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedByUserChanged();
+        /// <summary>
+        /// There are no comments for Property UserValidationDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> UserValidationDateTime
+        {
+            get
+            {
+                return this._UserValidationDateTime;
+            }
+            set
+            {
+                this.OnUserValidationDateTimeChanging(value);
+                this._UserValidationDateTime = value;
+                this.OnUserValidationDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _UserValidationDateTime;
+        partial void OnUserValidationDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnUserValidationDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property ValidationResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ValidationResults
+        {
+            get
+            {
+                return this._ValidationResults;
+            }
+            set
+            {
+                this.OnValidationResultsChanging(value);
+                this._ValidationResults = value;
+                this.OnValidationResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ValidationResults;
+        partial void OnValidationResultsChanging(string value);
+        partial void OnValidationResultsChanged();
         /// <summary>
         /// There are no comments for Property MajorEquipment in the schema.
         /// </summary>
@@ -1771,6 +1888,332 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyMajorEquipmentStatusesChanged();
     }
     /// <summary>
+    /// There are no comments for DailyDieselSingle in the schema.
+    /// </summary>
+    public partial class DailyDieselSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DailyDiesel>
+    {
+        /// <summary>
+        /// Initialize a new DailyDieselSingle object.
+        /// </summary>
+        public DailyDieselSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new DailyDieselSingle object.
+        /// </summary>
+        public DailyDieselSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new DailyDieselSingle object.
+        /// </summary>
+        public DailyDieselSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyDiesel> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for DailyDiesel in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class DailyDiesel : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new DailyDiesel object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="isValidatedBySystem">Initial value of IsValidatedBySystem.</param>
+        /// <param name="isValidatedByUser">Initial value of IsValidatedByUser.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static DailyDiesel CreateDailyDiesel(long ID, global::System.DateTimeOffset date, long xmin, global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedBySystem, global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedByUser)
+        {
+            DailyDiesel dailyDiesel = new DailyDiesel();
+            dailyDiesel.Id = ID;
+            dailyDiesel.Date = date;
+            dailyDiesel.xmin = xmin;
+            dailyDiesel.IsValidatedBySystem = isValidatedBySystem;
+            dailyDiesel.IsValidatedByUser = isValidatedByUser;
+            return dailyDiesel;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property HIPDieselStock in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> HIPDieselStock
+        {
+            get
+            {
+                return this._HIPDieselStock;
+            }
+            set
+            {
+                this.OnHIPDieselStockChanging(value);
+                this._HIPDieselStock = value;
+                this.OnHIPDieselStockChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _HIPDieselStock;
+        partial void OnHIPDieselStockChanging(global::System.Nullable<decimal> value);
+        partial void OnHIPDieselStockChanged();
+        /// <summary>
+        /// There are no comments for Property HIPDieselStockRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string HIPDieselStockRemark
+        {
+            get
+            {
+                return this._HIPDieselStockRemark;
+            }
+            set
+            {
+                this.OnHIPDieselStockRemarkChanging(value);
+                this._HIPDieselStockRemark = value;
+                this.OnHIPDieselStockRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _HIPDieselStockRemark;
+        partial void OnHIPDieselStockRemarkChanging(string value);
+        partial void OnHIPDieselStockRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property FPSODieselConsumption in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> FPSODieselConsumption
+        {
+            get
+            {
+                return this._FPSODieselConsumption;
+            }
+            set
+            {
+                this.OnFPSODieselConsumptionChanging(value);
+                this._FPSODieselConsumption = value;
+                this.OnFPSODieselConsumptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _FPSODieselConsumption;
+        partial void OnFPSODieselConsumptionChanging(global::System.Nullable<decimal> value);
+        partial void OnFPSODieselConsumptionChanged();
+        /// <summary>
+        /// There are no comments for Property FPSODieselConsumptionRemark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FPSODieselConsumptionRemark
+        {
+            get
+            {
+                return this._FPSODieselConsumptionRemark;
+            }
+            set
+            {
+                this.OnFPSODieselConsumptionRemarkChanging(value);
+                this._FPSODieselConsumptionRemark = value;
+                this.OnFPSODieselConsumptionRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FPSODieselConsumptionRemark;
+        partial void OnFPSODieselConsumptionRemarkChanging(string value);
+        partial void OnFPSODieselConsumptionRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedBySystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedBySystem
+        {
+            get
+            {
+                return this._IsValidatedBySystem;
+            }
+            set
+            {
+                this.OnIsValidatedBySystemChanging(value);
+                this._IsValidatedBySystem = value;
+                this.OnIsValidatedBySystemChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedBySystem;
+        partial void OnIsValidatedBySystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedBySystemChanged();
+        /// <summary>
+        /// There are no comments for Property SystemValidateDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> SystemValidateDateTime
+        {
+            get
+            {
+                return this._SystemValidateDateTime;
+            }
+            set
+            {
+                this.OnSystemValidateDateTimeChanging(value);
+                this._SystemValidateDateTime = value;
+                this.OnSystemValidateDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _SystemValidateDateTime;
+        partial void OnSystemValidateDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnSystemValidateDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedByUser in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedByUser
+        {
+            get
+            {
+                return this._IsValidatedByUser;
+            }
+            set
+            {
+                this.OnIsValidatedByUserChanging(value);
+                this._IsValidatedByUser = value;
+                this.OnIsValidatedByUserChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedByUser;
+        partial void OnIsValidatedByUserChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedByUserChanged();
+        /// <summary>
+        /// There are no comments for Property UserValidationDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> UserValidationDateTime
+        {
+            get
+            {
+                return this._UserValidationDateTime;
+            }
+            set
+            {
+                this.OnUserValidationDateTimeChanging(value);
+                this._UserValidationDateTime = value;
+                this.OnUserValidationDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _UserValidationDateTime;
+        partial void OnUserValidationDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnUserValidationDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property ValidationResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ValidationResults
+        {
+            get
+            {
+                return this._ValidationResults;
+            }
+            set
+            {
+                this.OnValidationResultsChanging(value);
+                this._ValidationResults = value;
+                this.OnValidationResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ValidationResults;
+        partial void OnValidationResultsChanging(string value);
+        partial void OnValidationResultsChanged();
+    }
+    /// <summary>
     /// Class containing all extension methods
     /// </summary>
     public static class ExtensionMethods
@@ -1820,6 +2263,29 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 { "Id", id }
             };
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.MajorEquipmentSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDieselSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDieselSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDieselSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDieselSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDieselSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDieselSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
@@ -2000,6 +2466,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnSK10GasExportGODCPlanRemarkChanging(string value);
         partial void OnSK10GasExportGODCPlanRemarkChanged();
         /// <summary>
+        /// There are no comments for Property SK10CumulativeGasExportPerformanceStatus in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus> SK10CumulativeGasExportPerformanceStatus
+        {
+            get
+            {
+                return this._SK10CumulativeGasExportPerformanceStatus;
+            }
+            set
+            {
+                this.OnSK10CumulativeGasExportPerformanceStatusChanging(value);
+                this._SK10CumulativeGasExportPerformanceStatus = value;
+                this.OnSK10CumulativeGasExportPerformanceStatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus> _SK10CumulativeGasExportPerformanceStatus;
+        partial void OnSK10CumulativeGasExportPerformanceStatusChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus> value);
+        partial void OnSK10CumulativeGasExportPerformanceStatusChanged();
+        /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -2153,6 +2640,48 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private global::System.Nullable<decimal> _HIPCumulativeGasExport;
         partial void OnHIPCumulativeGasExportChanging(global::System.Nullable<decimal> value);
         partial void OnHIPCumulativeGasExportChanged();
+        /// <summary>
+        /// There are no comments for Property HIPGasExportGODCPlan in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> HIPGasExportGODCPlan
+        {
+            get
+            {
+                return this._HIPGasExportGODCPlan;
+            }
+            set
+            {
+                this.OnHIPGasExportGODCPlanChanging(value);
+                this._HIPGasExportGODCPlan = value;
+                this.OnHIPGasExportGODCPlanChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _HIPGasExportGODCPlan;
+        partial void OnHIPGasExportGODCPlanChanging(global::System.Nullable<decimal> value);
+        partial void OnHIPGasExportGODCPlanChanged();
+        /// <summary>
+        /// There are no comments for Property HIPCumulativeGasExportPerformanceStatus in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus> HIPCumulativeGasExportPerformanceStatus
+        {
+            get
+            {
+                return this._HIPCumulativeGasExportPerformanceStatus;
+            }
+            set
+            {
+                this.OnHIPCumulativeGasExportPerformanceStatusChanging(value);
+                this._HIPCumulativeGasExportPerformanceStatus = value;
+                this.OnHIPCumulativeGasExportPerformanceStatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus> _HIPCumulativeGasExportPerformanceStatus;
+        partial void OnHIPCumulativeGasExportPerformanceStatusChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus> value);
+        partial void OnHIPCumulativeGasExportPerformanceStatusChanged();
         /// <summary>
         /// There are no comments for Property HIPCumulativeGasExportRemark in the schema.
         /// </summary>
@@ -2686,6 +3215,48 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnFPSOCumulativeGasExportChanging(global::System.Nullable<decimal> value);
         partial void OnFPSOCumulativeGasExportChanged();
         /// <summary>
+        /// There are no comments for Property FPSOGasExportGODCPlan in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> FPSOGasExportGODCPlan
+        {
+            get
+            {
+                return this._FPSOGasExportGODCPlan;
+            }
+            set
+            {
+                this.OnFPSOGasExportGODCPlanChanging(value);
+                this._FPSOGasExportGODCPlan = value;
+                this.OnFPSOGasExportGODCPlanChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _FPSOGasExportGODCPlan;
+        partial void OnFPSOGasExportGODCPlanChanging(global::System.Nullable<decimal> value);
+        partial void OnFPSOGasExportGODCPlanChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOCumulativeGasExportPerformanceStatus in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus> FPSOCumulativeGasExportPerformanceStatus
+        {
+            get
+            {
+                return this._FPSOCumulativeGasExportPerformanceStatus;
+            }
+            set
+            {
+                this.OnFPSOCumulativeGasExportPerformanceStatusChanging(value);
+                this._FPSOCumulativeGasExportPerformanceStatus = value;
+                this.OnFPSOCumulativeGasExportPerformanceStatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus> _FPSOCumulativeGasExportPerformanceStatus;
+        partial void OnFPSOCumulativeGasExportPerformanceStatusChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus> value);
+        partial void OnFPSOCumulativeGasExportPerformanceStatusChanged();
+        /// <summary>
         /// There are no comments for Property FPSOCumulativeGasExportRemark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -2749,26 +3320,68 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnFPSOCumulativeCrudeOilRemarkChanging(string value);
         partial void OnFPSOCumulativeCrudeOilRemarkChanged();
         /// <summary>
-        /// There are no comments for Property FPSOCrudeAPIReading in the schema.
+        /// There are no comments for Property FPSOCrudeAPIReadingInletSep in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string FPSOCrudeAPIReading
+        public global::System.Nullable<decimal> FPSOCrudeAPIReadingInletSep
         {
             get
             {
-                return this._FPSOCrudeAPIReading;
+                return this._FPSOCrudeAPIReadingInletSep;
             }
             set
             {
-                this.OnFPSOCrudeAPIReadingChanging(value);
-                this._FPSOCrudeAPIReading = value;
-                this.OnFPSOCrudeAPIReadingChanged();
+                this.OnFPSOCrudeAPIReadingInletSepChanging(value);
+                this._FPSOCrudeAPIReadingInletSep = value;
+                this.OnFPSOCrudeAPIReadingInletSepChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _FPSOCrudeAPIReading;
-        partial void OnFPSOCrudeAPIReadingChanging(string value);
-        partial void OnFPSOCrudeAPIReadingChanged();
+        private global::System.Nullable<decimal> _FPSOCrudeAPIReadingInletSep;
+        partial void OnFPSOCrudeAPIReadingInletSepChanging(global::System.Nullable<decimal> value);
+        partial void OnFPSOCrudeAPIReadingInletSepChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOCrudeAPIReadingReceivingTankCOTNumber in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FPSOCrudeAPIReadingReceivingTankCOTNumber
+        {
+            get
+            {
+                return this._FPSOCrudeAPIReadingReceivingTankCOTNumber;
+            }
+            set
+            {
+                this.OnFPSOCrudeAPIReadingReceivingTankCOTNumberChanging(value);
+                this._FPSOCrudeAPIReadingReceivingTankCOTNumber = value;
+                this.OnFPSOCrudeAPIReadingReceivingTankCOTNumberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FPSOCrudeAPIReadingReceivingTankCOTNumber;
+        partial void OnFPSOCrudeAPIReadingReceivingTankCOTNumberChanging(string value);
+        partial void OnFPSOCrudeAPIReadingReceivingTankCOTNumberChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOCrudeAPIReadingReceivingTank in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> FPSOCrudeAPIReadingReceivingTank
+        {
+            get
+            {
+                return this._FPSOCrudeAPIReadingReceivingTank;
+            }
+            set
+            {
+                this.OnFPSOCrudeAPIReadingReceivingTankChanging(value);
+                this._FPSOCrudeAPIReadingReceivingTank = value;
+                this.OnFPSOCrudeAPIReadingReceivingTankChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _FPSOCrudeAPIReadingReceivingTank;
+        partial void OnFPSOCrudeAPIReadingReceivingTankChanging(global::System.Nullable<decimal> value);
+        partial void OnFPSOCrudeAPIReadingReceivingTankChanged();
         /// <summary>
         /// There are no comments for Property EstimatedHIPCrudeToFPSO in the schema.
         /// </summary>
@@ -3889,13 +4502,17 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="isValidatedBySystem">Initial value of IsValidatedBySystem.</param>
+        /// <param name="isValidatedByUser">Initial value of IsValidatedByUser.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyGasCondensateExportSamplerAndExportLine CreateDailyGasCondensateExportSamplerAndExportLine(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyGasCondensateExportSamplerAndExportLine CreateDailyGasCondensateExportSamplerAndExportLine(long ID, global::System.DateTimeOffset date, long xmin, global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedBySystem, global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedByUser)
         {
             DailyGasCondensateExportSamplerAndExportLine dailyGasCondensateExportSamplerAndExportLine = new DailyGasCondensateExportSamplerAndExportLine();
             dailyGasCondensateExportSamplerAndExportLine.Id = ID;
             dailyGasCondensateExportSamplerAndExportLine.Date = date;
             dailyGasCondensateExportSamplerAndExportLine.xmin = xmin;
+            dailyGasCondensateExportSamplerAndExportLine.IsValidatedBySystem = isValidatedBySystem;
+            dailyGasCondensateExportSamplerAndExportLine.IsValidatedByUser = isValidatedByUser;
             return dailyGasCondensateExportSamplerAndExportLine;
         }
         /// <summary>
@@ -4234,6 +4851,111 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedBySystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedBySystem
+        {
+            get
+            {
+                return this._IsValidatedBySystem;
+            }
+            set
+            {
+                this.OnIsValidatedBySystemChanging(value);
+                this._IsValidatedBySystem = value;
+                this.OnIsValidatedBySystemChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedBySystem;
+        partial void OnIsValidatedBySystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedBySystemChanged();
+        /// <summary>
+        /// There are no comments for Property SystemValidateDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> SystemValidateDateTime
+        {
+            get
+            {
+                return this._SystemValidateDateTime;
+            }
+            set
+            {
+                this.OnSystemValidateDateTimeChanging(value);
+                this._SystemValidateDateTime = value;
+                this.OnSystemValidateDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _SystemValidateDateTime;
+        partial void OnSystemValidateDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnSystemValidateDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedByUser in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedByUser
+        {
+            get
+            {
+                return this._IsValidatedByUser;
+            }
+            set
+            {
+                this.OnIsValidatedByUserChanging(value);
+                this._IsValidatedByUser = value;
+                this.OnIsValidatedByUserChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedByUser;
+        partial void OnIsValidatedByUserChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedByUserChanged();
+        /// <summary>
+        /// There are no comments for Property UserValidationDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> UserValidationDateTime
+        {
+            get
+            {
+                return this._UserValidationDateTime;
+            }
+            set
+            {
+                this.OnUserValidationDateTimeChanging(value);
+                this._UserValidationDateTime = value;
+                this.OnUserValidationDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _UserValidationDateTime;
+        partial void OnUserValidationDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnUserValidationDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property ValidationResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ValidationResults
+        {
+            get
+            {
+                return this._ValidationResults;
+            }
+            set
+            {
+                this.OnValidationResultsChanging(value);
+                this._ValidationResults = value;
+                this.OnValidationResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ValidationResults;
+        partial void OnValidationResultsChanging(string value);
+        partial void OnValidationResultsChanged();
     }
     /// <summary>
     /// Class containing all extension methods
@@ -13809,14 +14531,25 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="remark">Initial value of Remark.</param>
         /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="isValidatedBySystem">Initial value of IsValidatedBySystem.</param>
+        /// <param name="isValidatedByUser">Initial value of IsValidatedByUser.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyHIPAndLWPSummary CreateDailyHIPAndLWPSummary(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyHIPAndLWPSummary CreateDailyHIPAndLWPSummary(long ID, 
+                    global::System.DateTimeOffset date, 
+                    string remark, 
+                    long xmin, 
+                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedBySystem, 
+                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedByUser)
         {
             DailyHIPAndLWPSummary dailyHIPAndLWPSummary = new DailyHIPAndLWPSummary();
             dailyHIPAndLWPSummary.Id = ID;
             dailyHIPAndLWPSummary.Date = date;
+            dailyHIPAndLWPSummary.Remark = remark;
             dailyHIPAndLWPSummary.xmin = xmin;
+            dailyHIPAndLWPSummary.IsValidatedBySystem = isValidatedBySystem;
+            dailyHIPAndLWPSummary.IsValidatedByUser = isValidatedByUser;
             return dailyHIPAndLWPSummary;
         }
         /// <summary>
@@ -13924,6 +14657,111 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedBySystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedBySystem
+        {
+            get
+            {
+                return this._IsValidatedBySystem;
+            }
+            set
+            {
+                this.OnIsValidatedBySystemChanging(value);
+                this._IsValidatedBySystem = value;
+                this.OnIsValidatedBySystemChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedBySystem;
+        partial void OnIsValidatedBySystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedBySystemChanged();
+        /// <summary>
+        /// There are no comments for Property SystemValidateDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> SystemValidateDateTime
+        {
+            get
+            {
+                return this._SystemValidateDateTime;
+            }
+            set
+            {
+                this.OnSystemValidateDateTimeChanging(value);
+                this._SystemValidateDateTime = value;
+                this.OnSystemValidateDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _SystemValidateDateTime;
+        partial void OnSystemValidateDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnSystemValidateDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedByUser in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedByUser
+        {
+            get
+            {
+                return this._IsValidatedByUser;
+            }
+            set
+            {
+                this.OnIsValidatedByUserChanging(value);
+                this._IsValidatedByUser = value;
+                this.OnIsValidatedByUserChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedByUser;
+        partial void OnIsValidatedByUserChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedByUserChanged();
+        /// <summary>
+        /// There are no comments for Property UserValidationDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> UserValidationDateTime
+        {
+            get
+            {
+                return this._UserValidationDateTime;
+            }
+            set
+            {
+                this.OnUserValidationDateTimeChanging(value);
+                this._UserValidationDateTime = value;
+                this.OnUserValidationDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _UserValidationDateTime;
+        partial void OnUserValidationDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnUserValidationDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property ValidationResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ValidationResults
+        {
+            get
+            {
+                return this._ValidationResults;
+            }
+            set
+            {
+                this.OnValidationResultsChanging(value);
+                this._ValidationResults = value;
+                this.OnValidationResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ValidationResults;
+        partial void OnValidationResultsChanging(string value);
+        partial void OnValidationResultsChanged();
     }
     /// <summary>
     /// There are no comments for DailyFPSOHelangSummarySingle in the schema.
@@ -13963,14 +14801,25 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="remark">Initial value of Remark.</param>
         /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="isValidatedBySystem">Initial value of IsValidatedBySystem.</param>
+        /// <param name="isValidatedByUser">Initial value of IsValidatedByUser.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static DailyFPSOHelangSummary CreateDailyFPSOHelangSummary(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyFPSOHelangSummary CreateDailyFPSOHelangSummary(long ID, 
+                    global::System.DateTimeOffset date, 
+                    string remark, 
+                    long xmin, 
+                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedBySystem, 
+                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedByUser)
         {
             DailyFPSOHelangSummary dailyFPSOHelangSummary = new DailyFPSOHelangSummary();
             dailyFPSOHelangSummary.Id = ID;
             dailyFPSOHelangSummary.Date = date;
+            dailyFPSOHelangSummary.Remark = remark;
             dailyFPSOHelangSummary.xmin = xmin;
+            dailyFPSOHelangSummary.IsValidatedBySystem = isValidatedBySystem;
+            dailyFPSOHelangSummary.IsValidatedByUser = isValidatedByUser;
             return dailyFPSOHelangSummary;
         }
         /// <summary>
@@ -14078,6 +14927,111 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedBySystem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedBySystem
+        {
+            get
+            {
+                return this._IsValidatedBySystem;
+            }
+            set
+            {
+                this.OnIsValidatedBySystemChanging(value);
+                this._IsValidatedBySystem = value;
+                this.OnIsValidatedBySystemChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedBySystem;
+        partial void OnIsValidatedBySystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedBySystemChanged();
+        /// <summary>
+        /// There are no comments for Property SystemValidateDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> SystemValidateDateTime
+        {
+            get
+            {
+                return this._SystemValidateDateTime;
+            }
+            set
+            {
+                this.OnSystemValidateDateTimeChanging(value);
+                this._SystemValidateDateTime = value;
+                this.OnSystemValidateDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _SystemValidateDateTime;
+        partial void OnSystemValidateDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnSystemValidateDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property IsValidatedByUser in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus IsValidatedByUser
+        {
+            get
+            {
+                return this._IsValidatedByUser;
+            }
+            set
+            {
+                this.OnIsValidatedByUserChanging(value);
+                this._IsValidatedByUser = value;
+                this.OnIsValidatedByUserChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus _IsValidatedByUser;
+        partial void OnIsValidatedByUserChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus value);
+        partial void OnIsValidatedByUserChanged();
+        /// <summary>
+        /// There are no comments for Property UserValidationDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> UserValidationDateTime
+        {
+            get
+            {
+                return this._UserValidationDateTime;
+            }
+            set
+            {
+                this.OnUserValidationDateTimeChanging(value);
+                this._UserValidationDateTime = value;
+                this.OnUserValidationDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _UserValidationDateTime;
+        partial void OnUserValidationDateTimeChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnUserValidationDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property ValidationResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ValidationResults
+        {
+            get
+            {
+                return this._ValidationResults;
+            }
+            set
+            {
+                this.OnValidationResultsChanging(value);
+                this._ValidationResults = value;
+                this.OnValidationResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ValidationResults;
+        partial void OnValidationResultsChanging(string value);
+        partial void OnValidationResultsChanged();
     }
     /// <summary>
     /// Class containing all extension methods
@@ -16838,6 +17792,855 @@ namespace CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails
         }
     }
 }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD
+{
+    /// <summary>
+    /// There are no comments for DailyFPSOFieldDSingle in the schema.
+    /// </summary>
+    public partial class DailyFPSOFieldDSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DailyFPSOFieldD>
+    {
+        /// <summary>
+        /// Initialize a new DailyFPSOFieldDSingle object.
+        /// </summary>
+        public DailyFPSOFieldDSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new DailyFPSOFieldDSingle object.
+        /// </summary>
+        public DailyFPSOFieldDSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new DailyFPSOFieldDSingle object.
+        /// </summary>
+        public DailyFPSOFieldDSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyFPSOFieldD> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for DailyFPSOFieldD in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class DailyFPSOFieldD : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new DailyFPSOFieldD object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static DailyFPSOFieldD CreateDailyFPSOFieldD(long ID, global::System.DateTimeOffset date, long xmin)
+        {
+            DailyFPSOFieldD dailyFPSOFieldD = new DailyFPSOFieldD();
+            dailyFPSOFieldD.Id = ID;
+            dailyFPSOFieldD.Date = date;
+            dailyFPSOFieldD.xmin = xmin;
+            return dailyFPSOFieldD;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property UpTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> UpTime
+        {
+            get
+            {
+                return this._UpTime;
+            }
+            set
+            {
+                this.OnUpTimeChanging(value);
+                this._UpTime = value;
+                this.OnUpTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _UpTime;
+        partial void OnUpTimeChanging(global::System.Nullable<decimal> value);
+        partial void OnUpTimeChanged();
+        /// <summary>
+        /// There are no comments for Property GasExport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> GasExport
+        {
+            get
+            {
+                return this._GasExport;
+            }
+            set
+            {
+                this.OnGasExportChanging(value);
+                this._GasExport = value;
+                this.OnGasExportChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _GasExport;
+        partial void OnGasExportChanging(global::System.Nullable<decimal> value);
+        partial void OnGasExportChanged();
+        /// <summary>
+        /// There are no comments for Property GasFuel in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> GasFuel
+        {
+            get
+            {
+                return this._GasFuel;
+            }
+            set
+            {
+                this.OnGasFuelChanging(value);
+                this._GasFuel = value;
+                this.OnGasFuelChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _GasFuel;
+        partial void OnGasFuelChanging(global::System.Nullable<decimal> value);
+        partial void OnGasFuelChanged();
+        /// <summary>
+        /// There are no comments for Property GasFlare in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> GasFlare
+        {
+            get
+            {
+                return this._GasFlare;
+            }
+            set
+            {
+                this.OnGasFlareChanging(value);
+                this._GasFlare = value;
+                this.OnGasFlareChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _GasFlare;
+        partial void OnGasFlareChanging(global::System.Nullable<decimal> value);
+        partial void OnGasFlareChanged();
+        /// <summary>
+        /// There are no comments for Property GasTotal in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> GasTotal
+        {
+            get
+            {
+                return this._GasTotal;
+            }
+            set
+            {
+                this.OnGasTotalChanging(value);
+                this._GasTotal = value;
+                this.OnGasTotalChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _GasTotal;
+        partial void OnGasTotalChanging(global::System.Nullable<decimal> value);
+        partial void OnGasTotalChanged();
+        /// <summary>
+        /// There are no comments for Property LiquidTank in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> LiquidTank
+        {
+            get
+            {
+                return this._LiquidTank;
+            }
+            set
+            {
+                this.OnLiquidTankChanging(value);
+                this._LiquidTank = value;
+                this.OnLiquidTankChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _LiquidTank;
+        partial void OnLiquidTankChanging(global::System.Nullable<decimal> value);
+        partial void OnLiquidTankChanged();
+        /// <summary>
+        /// There are no comments for Property LGR in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> LGR
+        {
+            get
+            {
+                return this._LGR;
+            }
+            set
+            {
+                this.OnLGRChanging(value);
+                this._LGR = value;
+                this.OnLGRChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _LGR;
+        partial void OnLGRChanging(global::System.Nullable<decimal> value);
+        partial void OnLGRChanged();
+        /// <summary>
+        /// There are no comments for Property WaterProcess in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> WaterProcess
+        {
+            get
+            {
+                return this._WaterProcess;
+            }
+            set
+            {
+                this.OnWaterProcessChanging(value);
+                this._WaterProcess = value;
+                this.OnWaterProcessChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _WaterProcess;
+        partial void OnWaterProcessChanging(global::System.Nullable<decimal> value);
+        partial void OnWaterProcessChanged();
+        /// <summary>
+        /// There are no comments for Property WGR in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> WGR
+        {
+            get
+            {
+                return this._WGR;
+            }
+            set
+            {
+                this.OnWGRChanging(value);
+                this._WGR = value;
+                this.OnWGRChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _WGR;
+        partial void OnWGRChanging(global::System.Nullable<decimal> value);
+        partial void OnWGRChanged();
+        /// <summary>
+        /// There are no comments for Property PipelinePressure in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> PipelinePressure
+        {
+            get
+            {
+                return this._PipelinePressure;
+            }
+            set
+            {
+                this.OnPipelinePressureChanging(value);
+                this._PipelinePressure = value;
+                this.OnPipelinePressureChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _PipelinePressure;
+        partial void OnPipelinePressureChanging(global::System.Nullable<decimal> value);
+        partial void OnPipelinePressureChanged();
+        /// <summary>
+        /// There are no comments for Property PipelineTemparature in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> PipelineTemparature
+        {
+            get
+            {
+                return this._PipelineTemparature;
+            }
+            set
+            {
+                this.OnPipelineTemparatureChanging(value);
+                this._PipelineTemparature = value;
+                this.OnPipelineTemparatureChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _PipelineTemparature;
+        partial void OnPipelineTemparatureChanging(global::System.Nullable<decimal> value);
+        partial void OnPipelineTemparatureChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for DailyHIPFieldDSingle in the schema.
+    /// </summary>
+    public partial class DailyHIPFieldDSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DailyHIPFieldD>
+    {
+        /// <summary>
+        /// Initialize a new DailyHIPFieldDSingle object.
+        /// </summary>
+        public DailyHIPFieldDSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new DailyHIPFieldDSingle object.
+        /// </summary>
+        public DailyHIPFieldDSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new DailyHIPFieldDSingle object.
+        /// </summary>
+        public DailyHIPFieldDSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyHIPFieldD> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for DailyHIPFieldD in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class DailyHIPFieldD : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new DailyHIPFieldD object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static DailyHIPFieldD CreateDailyHIPFieldD(long ID, global::System.DateTimeOffset date, long xmin)
+        {
+            DailyHIPFieldD dailyHIPFieldD = new DailyHIPFieldD();
+            dailyHIPFieldD.Id = ID;
+            dailyHIPFieldD.Date = date;
+            dailyHIPFieldD.xmin = xmin;
+            return dailyHIPFieldD;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property UpTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> UpTime
+        {
+            get
+            {
+                return this._UpTime;
+            }
+            set
+            {
+                this.OnUpTimeChanging(value);
+                this._UpTime = value;
+                this.OnUpTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _UpTime;
+        partial void OnUpTimeChanging(global::System.Nullable<decimal> value);
+        partial void OnUpTimeChanged();
+        /// <summary>
+        /// There are no comments for Property GasExport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> GasExport
+        {
+            get
+            {
+                return this._GasExport;
+            }
+            set
+            {
+                this.OnGasExportChanging(value);
+                this._GasExport = value;
+                this.OnGasExportChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _GasExport;
+        partial void OnGasExportChanging(global::System.Nullable<decimal> value);
+        partial void OnGasExportChanged();
+        /// <summary>
+        /// There are no comments for Property GasFuel in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> GasFuel
+        {
+            get
+            {
+                return this._GasFuel;
+            }
+            set
+            {
+                this.OnGasFuelChanging(value);
+                this._GasFuel = value;
+                this.OnGasFuelChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _GasFuel;
+        partial void OnGasFuelChanging(global::System.Nullable<decimal> value);
+        partial void OnGasFuelChanged();
+        /// <summary>
+        /// There are no comments for Property GasVent in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> GasVent
+        {
+            get
+            {
+                return this._GasVent;
+            }
+            set
+            {
+                this.OnGasVentChanging(value);
+                this._GasVent = value;
+                this.OnGasVentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _GasVent;
+        partial void OnGasVentChanging(global::System.Nullable<decimal> value);
+        partial void OnGasVentChanged();
+        /// <summary>
+        /// There are no comments for Property GasTotal in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> GasTotal
+        {
+            get
+            {
+                return this._GasTotal;
+            }
+            set
+            {
+                this.OnGasTotalChanging(value);
+                this._GasTotal = value;
+                this.OnGasTotalChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _GasTotal;
+        partial void OnGasTotalChanging(global::System.Nullable<decimal> value);
+        partial void OnGasTotalChanged();
+        /// <summary>
+        /// There are no comments for Property CondensateExport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> CondensateExport
+        {
+            get
+            {
+                return this._CondensateExport;
+            }
+            set
+            {
+                this.OnCondensateExportChanging(value);
+                this._CondensateExport = value;
+                this.OnCondensateExportChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _CondensateExport;
+        partial void OnCondensateExportChanging(global::System.Nullable<decimal> value);
+        partial void OnCondensateExportChanged();
+        /// <summary>
+        /// There are no comments for Property CGR in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> CGR
+        {
+            get
+            {
+                return this._CGR;
+            }
+            set
+            {
+                this.OnCGRChanging(value);
+                this._CGR = value;
+                this.OnCGRChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _CGR;
+        partial void OnCGRChanging(global::System.Nullable<decimal> value);
+        partial void OnCGRChanged();
+        /// <summary>
+        /// There are no comments for Property WaterProduced in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> WaterProduced
+        {
+            get
+            {
+                return this._WaterProduced;
+            }
+            set
+            {
+                this.OnWaterProducedChanging(value);
+                this._WaterProduced = value;
+                this.OnWaterProducedChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _WaterProduced;
+        partial void OnWaterProducedChanging(global::System.Nullable<decimal> value);
+        partial void OnWaterProducedChanged();
+        /// <summary>
+        /// There are no comments for Property WGR in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> WGR
+        {
+            get
+            {
+                return this._WGR;
+            }
+            set
+            {
+                this.OnWGRChanging(value);
+                this._WGR = value;
+                this.OnWGRChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _WGR;
+        partial void OnWGRChanging(global::System.Nullable<decimal> value);
+        partial void OnWGRChanged();
+        /// <summary>
+        /// There are no comments for Property ProducedSeparatorPressure in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> ProducedSeparatorPressure
+        {
+            get
+            {
+                return this._ProducedSeparatorPressure;
+            }
+            set
+            {
+                this.OnProducedSeparatorPressureChanging(value);
+                this._ProducedSeparatorPressure = value;
+                this.OnProducedSeparatorPressureChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _ProducedSeparatorPressure;
+        partial void OnProducedSeparatorPressureChanging(global::System.Nullable<decimal> value);
+        partial void OnProducedSeparatorPressureChanged();
+        /// <summary>
+        /// There are no comments for Property ProducedSeparatorTemparature in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> ProducedSeparatorTemparature
+        {
+            get
+            {
+                return this._ProducedSeparatorTemparature;
+            }
+            set
+            {
+                this.OnProducedSeparatorTemparatureChanging(value);
+                this._ProducedSeparatorTemparature = value;
+                this.OnProducedSeparatorTemparatureChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _ProducedSeparatorTemparature;
+        partial void OnProducedSeparatorTemparatureChanging(global::System.Nullable<decimal> value);
+        partial void OnProducedSeparatorTemparatureChanged();
+        /// <summary>
+        /// There are no comments for Property PipelinePressure in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> PipelinePressure
+        {
+            get
+            {
+                return this._PipelinePressure;
+            }
+            set
+            {
+                this.OnPipelinePressureChanging(value);
+                this._PipelinePressure = value;
+                this.OnPipelinePressureChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _PipelinePressure;
+        partial void OnPipelinePressureChanging(global::System.Nullable<decimal> value);
+        partial void OnPipelinePressureChanged();
+        /// <summary>
+        /// There are no comments for Property PipelineTemparature in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> PipelineTemparature
+        {
+            get
+            {
+                return this._PipelineTemparature;
+            }
+            set
+            {
+                this.OnPipelineTemparatureChanging(value);
+                this._PipelineTemparature = value;
+                this.OnPipelineTemparatureChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _PipelineTemparature;
+        partial void OnPipelineTemparatureChanging(global::System.Nullable<decimal> value);
+        partial void OnPipelineTemparatureChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// Class containing all extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldDSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldDSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldDSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldDSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldDSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldDSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldDSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldDSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldDSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldDSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldDSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldDSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+    }
+}
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity
+{
+    /// <summary>
+    /// There are no comments for ModelValidationStatus in the schema.
+    /// </summary>
+    public enum ModelValidationStatus
+    {
+        Pending = 0,
+        Failed = 1,
+        Success = 2
+    }
+}
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses
+{
+    /// <summary>
+    /// There are no comments for PerformanceStatus in the schema.
+    /// </summary>
+    public enum PerformanceStatus
+    {
+        AchieveTarget = 0,
+        BelowTarget = 1,
+        MetAcceptableRange = 2
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Default
 {
     /// <summary>
@@ -16937,6 +18740,11 @@ namespace CentralizedDatabaseSystemODataService.Default
             {
                 return resolvedType;
             }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
             resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities");
             if ((resolvedType != null))
             {
@@ -16962,7 +18770,17 @@ namespace CentralizedDatabaseSystemODataService.Default
             {
                 return resolvedType;
             }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.Statuses", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
             resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.Vendors", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.FieldD", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -17043,6 +18861,10 @@ namespace CentralizedDatabaseSystemODataService.Default
             {
                 return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.", clientType.Name);
             }
+            if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.", clientType.Name);
+            }
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.", clientType.Name);
@@ -17063,9 +18885,17 @@ namespace CentralizedDatabaseSystemODataService.Default
             {
                 return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.", clientType.Name);
             }
+            if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Statuses", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.", clientType.Name);
+            }
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.", clientType.Name);
+            }
+            if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.", clientType.Name);
             }
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails", global::System.StringComparison.Ordinal))
             {
@@ -18030,6 +19860,23 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.OperatingChange> _OperatingChange;
         /// <summary>
+        /// There are no comments for DailyDiesel in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel> DailyDiesel
+        {
+            get
+            {
+                if ((this._DailyDiesel == null))
+                {
+                    this._DailyDiesel = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel>("DailyDiesel");
+                }
+                return this._DailyDiesel;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel> _DailyDiesel;
+        /// <summary>
         /// There are no comments for AuditTrail in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -18046,6 +19893,40 @@ namespace CentralizedDatabaseSystemODataService.Default
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail> _AuditTrail;
+        /// <summary>
+        /// There are no comments for DailyFPSOFieldD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD> DailyFPSOFieldD
+        {
+            get
+            {
+                if ((this._DailyFPSOFieldD == null))
+                {
+                    this._DailyFPSOFieldD = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD>("DailyFPSOFieldD");
+                }
+                return this._DailyFPSOFieldD;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD> _DailyFPSOFieldD;
+        /// <summary>
+        /// There are no comments for DailyHIPFieldD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD> DailyHIPFieldD
+        {
+            get
+            {
+                if ((this._DailyHIPFieldD == null))
+                {
+                    this._DailyHIPFieldD = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD>("DailyHIPFieldD");
+                }
+                return this._DailyHIPFieldD;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD> _DailyHIPFieldD;
         /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
@@ -18495,12 +20376,36 @@ namespace CentralizedDatabaseSystemODataService.Default
             base.AddObject("OperatingChange", operatingChange);
         }
         /// <summary>
+        /// There are no comments for DailyDiesel in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToDailyDiesel(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel dailyDiesel)
+        {
+            base.AddObject("DailyDiesel", dailyDiesel);
+        }
+        /// <summary>
         /// There are no comments for AuditTrail in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         public void AddToAuditTrail(global::CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.AuditTrail auditTrail)
         {
             base.AddObject("AuditTrail", auditTrail);
+        }
+        /// <summary>
+        /// There are no comments for DailyFPSOFieldD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToDailyFPSOFieldD(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD dailyFPSOFieldD)
+        {
+            base.AddObject("DailyFPSOFieldD", dailyFPSOFieldD);
+        }
+        /// <summary>
+        /// There are no comments for DailyHIPFieldD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToDailyHIPFieldD(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD dailyHIPFieldD)
+        {
+            base.AddObject("DailyHIPFieldD", dailyHIPFieldD);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -18547,8 +20452,8 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""LastSkimmingDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""AnalyserStatus"" Type=""Edm.String"" />
-        <Property Name=""Iron"" Type=""Edm.Decimal"" />
-        <Property Name=""PH"" Type=""Edm.Decimal"" />
+        <Property Name=""Iron"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""Remark2"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""ProducedWaterTreatmentSystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem"" />
@@ -18572,9 +20477,9 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""InjectionStatus"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
-        <Property Name=""TodayLevel"" Type=""Edm.Decimal"" />
-        <Property Name=""YesterdayLevel"" Type=""Edm.Decimal"" />
-        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" />
+        <Property Name=""TodayLevel"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YesterdayLevel"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""PumpStroke"" Type=""Edm.String"" />
         <Property Name=""PumpDischarge"" Type=""Edm.String"" />
         <Property Name=""TotalTank"" Type=""Edm.Int32"" />
@@ -18591,9 +20496,14 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""MajorEquipmentName"" Type=""Edm.String"" Nullable=""false"" />
-        <Property Name=""Status"" Type=""Edm.String"" />
+        <Property Name=""Status"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""IsValidatedBySystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""SystemValidateDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""IsValidatedByUser"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""UserValidationDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""ValidationResults"" Type=""Edm.String"" />
         <NavigationProperty Name=""MajorEquipment"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.MajorEquipment"" />
       </EntityType>
       <EntityType Name=""MajorEquipment"">
@@ -18605,6 +20515,24 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""DailyMajorEquipmentStatuses"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus)"" />
       </EntityType>
+      <EntityType Name=""DailyDiesel"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""HIPDieselStock"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""HIPDieselStockRemark"" Type=""Edm.String"" />
+        <Property Name=""FPSODieselConsumption"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""FPSODieselConsumptionRemark"" Type=""Edm.String"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""IsValidatedBySystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""SystemValidateDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""IsValidatedByUser"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""UserValidationDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""ValidationResults"" Type=""Edm.String"" />
+      </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityType Name=""DailySK10Production"">
@@ -18614,9 +20542,10 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""SK10CumulativeGasExport"" Type=""Edm.Decimal"" />
-        <Property Name=""SK10GasExportGODCPlan"" Type=""Edm.Decimal"" />
+        <Property Name=""SK10CumulativeGasExport"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""SK10GasExportGODCPlan"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""SK10GasExportGODCPlanRemark"" Type=""Edm.String"" />
+        <Property Name=""SK10CumulativeGasExportPerformanceStatus"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""DailyHIPProduction"">
@@ -18626,24 +20555,26 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""HIPCumulativeGasExport"" Type=""Edm.Decimal"" />
+        <Property Name=""HIPCumulativeGasExport"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""HIPGasExportGODCPlan"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""HIPCumulativeGasExportPerformanceStatus"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus"" />
         <Property Name=""HIPCumulativeGasExportRemark"" Type=""Edm.String"" />
-        <Property Name=""HIPCumulativeCondensateExport"" Type=""Edm.Decimal"" />
+        <Property Name=""HIPCumulativeCondensateExport"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""HIPCumulativeCondensateExportRemark"" Type=""Edm.String"" />
-        <Property Name=""HIPCumulativeWaterProduction"" Type=""Edm.Decimal"" />
+        <Property Name=""HIPCumulativeWaterProduction"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""HIPCumulativeWaterProductionRemark"" Type=""Edm.String"" />
-        <Property Name=""FuelGas"" Type=""Edm.Decimal"" />
+        <Property Name=""FuelGas"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""FuelGasRemark"" Type=""Edm.String"" />
-        <Property Name=""HPVent"" Type=""Edm.Decimal"" />
+        <Property Name=""HPVent"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""HPVentRemark"" Type=""Edm.String"" />
-        <Property Name=""LPVent"" Type=""Edm.Decimal"" />
+        <Property Name=""LPVent"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""LPVentRemark"" Type=""Edm.String"" />
-        <Property Name=""WaterContentInGas"" Type=""Edm.Decimal"" />
+        <Property Name=""WaterContentInGas"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""WaterContentInGasRemark"" Type=""Edm.String"" />
-        <Property Name=""CondensateWaterCutMeterPercentage"" Type=""Edm.Decimal"" />
-        <Property Name=""CondensateWaterCutMeterPPM"" Type=""Edm.Decimal"" />
+        <Property Name=""CondensateWaterCutMeterPercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""CondensateWaterCutMeterPPM"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""CondensateWaterCutMeterRemark"" Type=""Edm.String"" />
-        <Property Name=""OilInWaterReading"" Type=""Edm.Decimal"" />
+        <Property Name=""OilInWaterReading"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""OilInWaterReadingRemark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
@@ -18654,22 +20585,26 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""FPSOCumulativeGasExport"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOCumulativeGasExport"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""FPSOGasExportGODCPlan"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""FPSOCumulativeGasExportPerformanceStatus"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus"" />
         <Property Name=""FPSOCumulativeGasExportRemark"" Type=""Edm.String"" />
-        <Property Name=""FPSOCumulativeCrudeOil"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOCumulativeCrudeOil"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""FPSOCumulativeCrudeOilRemark"" Type=""Edm.String"" />
-        <Property Name=""FPSOCrudeAPIReading"" Type=""Edm.String"" />
-        <Property Name=""EstimatedHIPCrudeToFPSO"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOCrudeAPIReadingInletSep"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""FPSOCrudeAPIReadingReceivingTankCOTNumber"" Type=""Edm.String"" />
+        <Property Name=""FPSOCrudeAPIReadingReceivingTank"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""EstimatedHIPCrudeToFPSO"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""EstimatedHIPCrudeToFPSORemark"" Type=""Edm.String"" />
-        <Property Name=""EstimatedLWPCrudeToFPSO"" Type=""Edm.Decimal"" />
+        <Property Name=""EstimatedLWPCrudeToFPSO"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""EstimatedLWPCrudeToFPSORemark"" Type=""Edm.String"" />
-        <Property Name=""HIPCondyDivertToFPSO"" Type=""Edm.Decimal"" />
+        <Property Name=""HIPCondyDivertToFPSO"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""HIPCondyDivertToFPSORemark"" Type=""Edm.String"" />
-        <Property Name=""FPSOCumulativeWaterProduction"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOCumulativeWaterProduction"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""FPSOCumulativeWaterProductionRemark"" Type=""Edm.String"" />
-        <Property Name=""FPSOFlaring"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOFlaring"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""FPSOFlaringRemark"" Type=""Edm.String"" />
-        <Property Name=""FPSOFuelGasConsumption"" Type=""Edm.Decimal"" />
+        <Property Name=""FPSOFuelGasConsumption"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""FPSOFuelGasConsumptionRemark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
@@ -18682,10 +20617,10 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""StationRecyclePV2015"" Type=""Edm.Decimal"" />
+        <Property Name=""StationRecyclePV2015"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""StationRecyclePV2015Control"" Type=""Edm.String"" />
-        <Property Name=""ProductionSeparatorV2010PV"" Type=""Edm.Decimal"" />
-        <Property Name=""TestSeparatorV2000PV"" Type=""Edm.Decimal"" />
+        <Property Name=""ProductionSeparatorV2010PV"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TestSeparatorV2000PV"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""SayBoltColour"" Type=""Edm.String"" />
         <Property Name=""SandFilterS0400Status"" Type=""Edm.String"" />
         <Property Name=""S0400"" Type=""Edm.String"" />
@@ -18699,7 +20634,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""WellStreamCoolerName"" Type=""Edm.String"" Nullable=""false"" />
-        <Property Name=""WellStreamCoolerTemparature"" Type=""Edm.Decimal"" />
+        <Property Name=""WellStreamCoolerTemparature"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""WellStreamCooler"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.WellStreamCooler"" />
       </EntityType>
@@ -18723,17 +20658,22 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""LastPiggingDate"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""NextPiggingDate"" Type=""Edm.DateTimeOffset"" />
-        <Property Name=""TrunkLinePressure"" Type=""Edm.Decimal"" />
-        <Property Name=""PV2901SP"" Type=""Edm.Decimal"" />
+        <Property Name=""TrunkLinePressure"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PV2901SP"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""GasSamplerId"" Type=""Edm.String"" />
         <Property Name=""LastChangeOut"" Type=""Edm.DateTimeOffset"" />
-        <Property Name=""GasSamplerContent"" Type=""Edm.Decimal"" />
+        <Property Name=""GasSamplerContent"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""NextChangeOut"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""CondySamplerId"" Type=""Edm.String"" />
         <Property Name=""LastSampling"" Type=""Edm.DateTimeOffset"" />
-        <Property Name=""CondySamplerContent"" Type=""Edm.Decimal"" />
+        <Property Name=""CondySamplerContent"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""NextSampling"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""IsValidatedBySystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""SystemValidateDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""IsValidatedByUser"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""UserValidationDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""ValidationResults"" Type=""Edm.String"" />
       </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
@@ -18747,17 +20687,17 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
-        <Property Name=""THP"" Type=""Edm.Decimal"" />
-        <Property Name=""THT"" Type=""Edm.Decimal"" />
-        <Property Name=""ChokePercentage"" Type=""Edm.Decimal"" />
-        <Property Name=""ChokeBase"" Type=""Edm.Decimal"" />
+        <Property Name=""THP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""THT"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ChokePercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ChokeBase"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""ChokeMode"" Type=""Edm.String"" />
-        <Property Name=""PCP"" Type=""Edm.Decimal"" />
-        <Property Name=""SCP"" Type=""Edm.Decimal"" />
-        <Property Name=""CCP"" Type=""Edm.Decimal"" />
+        <Property Name=""PCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""SCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""CCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""UpTime"" Type=""Edm.String"" />
-        <Property Name=""CI"" Type=""Edm.Decimal"" />
-        <Property Name=""TCP"" Type=""Edm.Decimal"" />
+        <Property Name=""CI"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""CIPumpStatus"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""HIPWellHead"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.HIPWellHead"" />
@@ -18781,16 +20721,16 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
-        <Property Name=""THP"" Type=""Edm.Decimal"" />
-        <Property Name=""THT"" Type=""Edm.Decimal"" />
-        <Property Name=""ChokePercentage"" Type=""Edm.Decimal"" />
+        <Property Name=""THP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""THT"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ChokePercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""ChokeMode"" Type=""Edm.String"" />
-        <Property Name=""PCP"" Type=""Edm.Decimal"" />
-        <Property Name=""SCP"" Type=""Edm.Decimal"" />
-        <Property Name=""CCP"" Type=""Edm.Decimal"" />
+        <Property Name=""PCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""SCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""CCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""UpTime"" Type=""Edm.String"" />
-        <Property Name=""CI"" Type=""Edm.Decimal"" />
-        <Property Name=""TCP"" Type=""Edm.Decimal"" />
+        <Property Name=""CI"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""LWPWellHead"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.LWPWellHead"" />
       </EntityType>
@@ -18815,31 +20755,31 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""SpeedControl"" Type=""Edm.String"" />
         <Property Name=""Speed"" Type=""Edm.Int32"" />
-        <Property Name=""PressureSuct"" Type=""Edm.Decimal"" />
-        <Property Name=""PressureDisc"" Type=""Edm.Decimal"" />
-        <Property Name=""ThroughPut"" Type=""Edm.Decimal"" />
-        <Property Name=""AfterCoolerDischLP"" Type=""Edm.Decimal"" />
-        <Property Name=""AfterCoolerDischHP"" Type=""Edm.Decimal"" />
-        <Property Name=""RecycleValueLP"" Type=""Edm.Decimal"" />
-        <Property Name=""RecycleValueHP"" Type=""Edm.Decimal"" />
-        <Property Name=""SurgeDeviationLP"" Type=""Edm.Decimal"" />
-        <Property Name=""SurgeDeviationHP"" Type=""Edm.Decimal"" />
-        <Property Name=""AxialDisp1"" Type=""Edm.Decimal"" />
-        <Property Name=""AxialDisp2"" Type=""Edm.Decimal"" />
-        <Property Name=""PrimaryVentDE"" Type=""Edm.Decimal"" />
-        <Property Name=""PrimaryVentNDE"" Type=""Edm.Decimal"" />
-        <Property Name=""DEVibrationX"" Type=""Edm.Decimal"" />
-        <Property Name=""DEVibrationY"" Type=""Edm.Decimal"" />
-        <Property Name=""NDEVibrationX"" Type=""Edm.Decimal"" />
-        <Property Name=""NDEVibrationY"" Type=""Edm.Decimal"" />
-        <Property Name=""OutboardThrustBrgTE801"" Type=""Edm.Decimal"" />
-        <Property Name=""OutboardThrustBrgTE802"" Type=""Edm.Decimal"" />
-        <Property Name=""InboardThrustBrgTE803"" Type=""Edm.Decimal"" />
-        <Property Name=""InboardThrustBrgTE804"" Type=""Edm.Decimal"" />
-        <Property Name=""NDEJournalBrgTE805"" Type=""Edm.Decimal"" />
-        <Property Name=""NDEJournalBrgTE806"" Type=""Edm.Decimal"" />
-        <Property Name=""DEJournalBrgTE807"" Type=""Edm.Decimal"" />
-        <Property Name=""DEJournalBrgTE808"" Type=""Edm.Decimal"" />
+        <Property Name=""PressureSuct"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PressureDisc"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ThroughPut"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""AfterCoolerDischLP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""AfterCoolerDischHP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""RecycleValueLP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""RecycleValueHP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""SurgeDeviationLP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""SurgeDeviationHP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""AxialDisp1"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""AxialDisp2"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PrimaryVentDE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PrimaryVentNDE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""DEVibrationX"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""DEVibrationY"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""NDEVibrationX"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""NDEVibrationY"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""OutboardThrustBrgTE801"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""OutboardThrustBrgTE802"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""InboardThrustBrgTE803"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""InboardThrustBrgTE804"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""NDEJournalBrgTE805"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""NDEJournalBrgTE806"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""DEJournalBrgTE807"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""DEJournalBrgTE808"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""KawasakiExportCompressor"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.KawasakiExportCompressor"" />
@@ -18864,10 +20804,10 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""GGN1"" Type=""Edm.Int32"" />
         <Property Name=""GGN2"" Type=""Edm.Int32"" />
         <Property Name=""PTN3"" Type=""Edm.Int32"" />
-        <Property Name=""GGCTBrgLO"" Type=""Edm.Decimal"" />
+        <Property Name=""GGCTBrgLO"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""T6"" Type=""Edm.Int32"" />
         <Property Name=""CDP"" Type=""Edm.Int32"" />
-        <Property Name=""GGAirIntake"" Type=""Edm.Decimal"" />
+        <Property Name=""GGAirIntake"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""RunningHours"" Type=""Edm.Int32"" />
         <Property Name=""StartAttempt"" Type=""Edm.Int32"" />
         <Property Name=""SuccessfulStarts"" Type=""Edm.Int32"" />
@@ -18919,13 +20859,13 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""GlycolTrainName"" Type=""Edm.String"" Nullable=""false"" />
-        <Property Name=""PreviousDayLevel"" Type=""Edm.Decimal"" />
-        <Property Name=""TodayReportLevel"" Type=""Edm.Decimal"" />
-        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" />
-        <Property Name=""Indicator"" Type=""Edm.Decimal"" />
+        <Property Name=""PreviousDayLevel"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TodayReportLevel"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""Indicator"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""IndicatorGuide"" Type=""Edm.String"" />
-        <Property Name=""FlowRate"" Type=""Edm.Decimal"" />
-        <Property Name=""PH"" Type=""Edm.Decimal"" />
+        <Property Name=""FlowRate"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""GlycolTrain"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.GlycolTrain"" />
       </EntityType>
@@ -18981,14 +20921,14 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""PhReading"" Type=""Edm.Decimal"" />
+        <Property Name=""PhReading"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""PhReadingRange"" Type=""Edm.String"" />
-        <Property Name=""Iron"" Type=""Edm.Decimal"" />
+        <Property Name=""Iron"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""IronRange"" Type=""Edm.String"" />
-        <Property Name=""Salinity"" Type=""Edm.Decimal"" />
-        <Property Name=""Nitrite"" Type=""Edm.Decimal"" />
+        <Property Name=""Salinity"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""Nitrite"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""NitriteRange"" Type=""Edm.String"" />
-        <Property Name=""CMFilterS6970"" Type=""Edm.Decimal"" />
+        <Property Name=""CMFilterS6970"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""CMFilterS6970Range"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
@@ -19072,7 +21012,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""PH"" Type=""Edm.String"" />
       </EntityType>
       <EntityType Name=""DailyNitrogenGenerator"" BaseType=""Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtilityBase"">
-        <Property Name=""OxygenPercentage"" Type=""Edm.Decimal"" />
+        <Property Name=""OxygenPercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
       </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.Vendors"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
@@ -19132,18 +21072,18 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""YesterdayLevel"" Type=""Edm.Decimal"" />
-        <Property Name=""TodayLevel"" Type=""Edm.Decimal"" />
-        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" />
-        <Property Name=""ActualConsumption"" Type=""Edm.Decimal"" />
-        <Property Name=""DailyTargetRate"" Type=""Edm.Decimal"" />
-        <Property Name=""Deviation"" Type=""Edm.Decimal"" />
-        <Property Name=""WellInjectionTarget"" Type=""Edm.Decimal"" />
-        <Property Name=""WellActualInjection"" Type=""Edm.Decimal"" />
-        <Property Name=""TrunkLineInjectionTarget"" Type=""Edm.Decimal"" />
-        <Property Name=""TrunkLineActualInjection"" Type=""Edm.Decimal"" />
-        <Property Name=""LWPInjectionTarget"" Type=""Edm.Decimal"" />
-        <Property Name=""LWPActualInjection"" Type=""Edm.Decimal"" />
+        <Property Name=""YesterdayLevel"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TodayLevel"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ActualConsumption"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""DailyTargetRate"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""Deviation"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""WellInjectionTarget"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""WellActualInjection"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TrunkLineInjectionTarget"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TrunkLineActualInjection"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""LWPInjectionTarget"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""LWPActualInjection"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""ToteTank"" Type=""Edm.Int32"" />
         <Property Name=""Drum"" Type=""Edm.Int32"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
@@ -19155,37 +21095,37 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""V2010"" Type=""Edm.Decimal"" />
-        <Property Name=""TCALP"" Type=""Edm.Decimal"" />
-        <Property Name=""TCAHP"" Type=""Edm.Decimal"" />
-        <Property Name=""TCBLP"" Type=""Edm.Decimal"" />
-        <Property Name=""TCBHP"" Type=""Edm.Decimal"" />
-        <Property Name=""Target"" Type=""Edm.Decimal"" />
-        <Property Name=""ActualInjection"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_DE_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_DE_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_NDE_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_NDE_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_V2400_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_V2400_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_V2430_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_V2430_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_TCALP_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_TCALP_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_V2200_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCA_V2200_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_DE_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_DE_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_NDE_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_NDE_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_V2500_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_V2500_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_V2530_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_V2530_FE"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_TCBLP_PH"" Type=""Edm.Decimal"" />
-        <Property Name=""TCB_TCBLP_FE"" Type=""Edm.Decimal"" />
+        <Property Name=""V2010"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCALP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCAHP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCBLP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCBHP"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""Target"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ActualInjection"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_DE_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_DE_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_NDE_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_NDE_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_V2400_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_V2400_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_V2430_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_V2430_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_TCALP_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_TCALP_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_V2200_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCA_V2200_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_DE_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_DE_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_NDE_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_NDE_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_V2500_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_V2500_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_V2530_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_V2530_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_TCBLP_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TCB_TCBLP_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""Stock"" Type=""Edm.Int32"" />
-        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" />
+        <Property Name=""LevelDrop"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
     </Schema>
@@ -19204,9 +21144,9 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""NextSandJettingDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""EastClusterJettingCycleNumber"" Type=""Edm.Int32"" />
         <Property Name=""WestClusterJettingCycleNumber"" Type=""Edm.Int32"" />
-        <Property Name=""DrumCollectedNumber"" Type=""Edm.Decimal"" />
-        <Property Name=""AccumulatedSandDisposed"" Type=""Edm.Decimal"" />
-        <Property Name=""HighestMercuryReading"" Type=""Edm.Decimal"" />
+        <Property Name=""DrumCollectedNumber"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""AccumulatedSandDisposed"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""HighestMercuryReading"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""Remark1"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""SandDisposalDesander"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders.SandDisposalDesander"" />
@@ -19229,8 +21169,13 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""Remark"" Type=""Edm.String"" />
+        <Property Name=""Remark"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""IsValidatedBySystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""SystemValidateDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""IsValidatedByUser"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""UserValidationDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""ValidationResults"" Type=""Edm.String"" />
       </EntityType>
       <EntityType Name=""DailyFPSOHelangSummary"">
         <Key>
@@ -19239,8 +21184,13 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Extras"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""Remark"" Type=""Edm.String"" />
+        <Property Name=""Remark"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""IsValidatedBySystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""SystemValidateDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""IsValidatedByUser"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
+        <Property Name=""UserValidationDateTime"" Type=""Edm.DateTimeOffset"" />
+        <Property Name=""ValidationResults"" Type=""Edm.String"" />
       </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
@@ -19387,6 +21337,64 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Member Name=""Create"" Value=""1"" />
         <Member Name=""Update"" Value=""2"" />
         <Member Name=""Delete"" Value=""3"" />
+      </EnumType>
+    </Schema>
+    <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.FieldD"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""DailyFPSOFieldD"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""UpTime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GasExport"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GasFuel"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GasFlare"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GasTotal"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""LiquidTank"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""LGR"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""WaterProcess"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""WGR"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PipelinePressure"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PipelineTemparature"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""DailyHIPFieldD"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Extras"" Type=""Edm.String"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""UpTime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GasExport"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GasFuel"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GasVent"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GasTotal"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""CondensateExport"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""CGR"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""WaterProduced"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""WGR"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ProducedSeparatorPressure"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ProducedSeparatorTemparature"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PipelinePressure"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""PipelineTemparature"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EnumType Name=""ModelValidationStatus"">
+        <Member Name=""Pending"" Value=""0"" />
+        <Member Name=""Failed"" Value=""1"" />
+        <Member Name=""Success"" Value=""2"" />
+      </EnumType>
+    </Schema>
+    <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.Statuses"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EnumType Name=""PerformanceStatus"">
+        <Member Name=""AchieveTarget"" Value=""0"" />
+        <Member Name=""BelowTarget"" Value=""1"" />
+        <Member Name=""MetAcceptableRange"" Value=""2"" />
       </EnumType>
     </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
@@ -19822,7 +21830,28 @@ namespace CentralizedDatabaseSystemODataService.Default
             </Collection>
           </Annotation>
         </EntitySet>
+        <EntitySet Name=""DailyDiesel"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
         <EntitySet Name=""AuditTrail"" EntityType=""Affra.Core.Domain.AuditTrails.AuditTrail"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""DailyFPSOFieldD"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""DailyHIPFieldD"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD"">
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

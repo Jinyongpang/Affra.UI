@@ -1,13 +1,16 @@
 ﻿@using System.Linq.Dynamic.Core
+@using System.Dynamic
+@using System.ComponentModel
+@using AntDesign.TableModels
 @using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces
+@using JXNippon.CentralizedDatabaseSystem.Domain.Views
 @using JXNippon.CentralizedDatabaseSystem.Models
 
-<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@this.Count" Data="@this.itemsDictionary" LoadData="@this.LoadDataAsync" 
     FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
     PageSize=5 PageSizeText="Items" PageSizeOptions=@this.pageSizeOptions PagerHorizontalAlign="HorizontalAlign.Center" AllowColumnResize="true" ShowPagingSummary="true" 
     AllowMultiColumnSorting="false" ShowMultiColumnSortingIndex="false"
-    PagerAlwaysVisible="false">
-
+    PagerAlwaysVisible="false" CellRender=@this.CellRender>
     <Columns>
         @foreach(var gridColumn in GridColumns)
         {
@@ -18,8 +21,15 @@
                 ? "Date"
                 : gridColumn.Property;
 
-            <RadzenDataGridColumn TItem="IDaily" Property="@(gridColumn.Property)" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)" Sortable=@isSortable SortProperty="@sortString">
-                </RadzenDataGridColumn>
+            var propertyName = $"{gridColumn.Type}{gridColumn.Property}";
+            <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@propertyName" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)" Sortable=@isSortable SortProperty="@sortString">
+                <Template>                  
+                    @if(context.TryGetValue(propertyName, out object value))
+                    {
+                        @this.GetResultString(gridColumn, value);
+                    }                  
+                </Template>
+            </RadzenDataGridColumn>
         }             
     </Columns>
 </RadzenDataGrid> 

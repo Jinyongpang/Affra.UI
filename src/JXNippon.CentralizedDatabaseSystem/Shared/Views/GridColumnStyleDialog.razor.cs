@@ -4,25 +4,27 @@ using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class GridColumnDialog
+    public partial class GridColumnStyleDialog
     {
-        [Parameter] public GridColumn Item { get; set; }
-        [Parameter] public Grid Grid { get; set; }
+        [Parameter] public ConditionalStyling Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
-        [Parameter] public IEnumerable<string> Types { get; set; }
         [Inject] private DialogService DialogService { get; set; }
 
         private IEnumerable<string> properties;
 
         private bool isViewing { get => MenuAction == 3; }
 
+        private static IEnumerable<string> ConditionalStylingOperators = Enum.GetValues(typeof(ConditionalStylingOperator))
+            .Cast<ConditionalStylingOperator>()
+            .Select(x => x.ToString())
+            .ToList();
+
         protected override Task OnInitializedAsync()
         {
-            this.RefreshTypeProperties();
             return Task.CompletedTask;
         }
 
-        protected Task SubmitAsync(GridColumn arg)
+        protected Task SubmitAsync(ConditionalStyling arg)
         {
             DialogService.Close(true);
             return Task.CompletedTask;
@@ -31,16 +33,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private void Cancel()
         {
             DialogService.Close(false);
-        }
-
-        private void RefreshTypeProperties()
-        {
-            Type type = this.Item.ActualType ?? Grid.ActualType;
-
-            properties = type.GetProperties()
-                .Select(prop => prop.Name)
-                .ToList();
-
         }
     }
 }

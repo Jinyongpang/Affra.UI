@@ -1,0 +1,29 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
+
+<div class="row">
+    <div class="col">
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyDiesel" TDialog="DieselDialog"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+            <Columns>
+                <RadzenDataGridColumn TItem="DailyDiesel" Property="HIPDieselStock" Title="HIP Diesel Stock"/>
+                <RadzenDataGridColumn TItem="DailyDiesel" Property="HIPDieselStockRemark" Title="HIP Diesel Stock Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.HIPDieselStockRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyDiesel" Property="FPSODieselConsumption" Title="FPSO Diesel Consumption"/>
+                <RadzenDataGridColumn TItem="DailyDiesel" Property="FPSODieselConsumptionRemark" Title="FPSO Diesel Consumption Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.FPSODieselConsumptionRemark</p>
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyDiesel" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+        </DailyDataGrid>  
+    </div>
+</div>

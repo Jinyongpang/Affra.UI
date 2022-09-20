@@ -583,6 +583,65 @@ a {
 .moc-extension-description {
     margin-top: 20px;
 }
+
+.focused-cdr{
+}
+
+.focused-tab > div > div > div > div > div > div.rz-data-grid {
+    height: 60vh;
+}
+
+.clickable-icon {
+    cursor: pointer;
+}
+
+.view-dialog-content {
+    height: 72vh;
+}
+
+.fullscreen-dialog {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.fullscreen-dialog-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-size: 120%;
+    height: 70px;
+    padding-top: 10px;
+}
+
+.fullscreen-dialog-content {
+    min-height: 0;
+}
+.steps-navbar {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.steps-navbar > div{
+    flex: 0;
+}
+
+.steps-action-buttons {
+    margin-left: 20px;
+    width: 200px;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.fullscreen-dialog-back {
+    color: #667aa5;
+    font-size: 30px;
+    padding: 0px 20px 0px 0px;
+    cursor: pointer;
+}
 .moc-close-dialog-btn {
     position: absolute;
     right: 15px;
