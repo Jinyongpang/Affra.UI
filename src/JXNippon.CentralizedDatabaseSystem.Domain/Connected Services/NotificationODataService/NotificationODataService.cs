@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 2/8/2022 11:50:42 AM
+// Generation date: 20/9/2022 5:00:19 PM
 namespace NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages
 {
     /// <summary>
@@ -164,6 +164,27 @@ namespace NotificationODataService.Affra.Service.Notification.Domain.PersonalMes
         private string _Extra;
         partial void OnExtraChanging(string value);
         partial void OnExtraChanged();
+        /// <summary>
+        /// There are no comments for Property Users in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<string> Users
+        {
+            get
+            {
+                return this._Users;
+            }
+            set
+            {
+                this.OnUsersChanging(value);
+                this._Users = value;
+                this.OnUsersChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<string> _Users = new global::System.Collections.ObjectModel.Collection<string>();
+        partial void OnUsersChanging(global::System.Collections.ObjectModel.Collection<string> value);
+        partial void OnUsersChanged();
         /// <summary>
         /// There are no comments for Property CreatedDateTime in the schema.
         /// </summary>
@@ -676,6 +697,7 @@ namespace NotificationODataService.Default
         <Property Name=""Subject"" Type=""Edm.String"" />
         <Property Name=""Content"" Type=""Edm.String"" />
         <Property Name=""Extra"" Type=""Edm.String"" />
+        <Property Name=""Users"" Type=""Collection(Edm.String)"" />
         <Property Name=""CreatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""CreatedBy"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
