@@ -47,12 +47,55 @@
         <Member Name="CloseoutPendingForApproval" Value="9" />
         <Member Name="Completed" Value="10" />
       </EnumType>
+      <EnumType Name="LikelihoodLevels">
+        <Member Name="LikelihoodLevelA" Value="0" />
+        <Member Name="LikelihoodLevelB" Value="1" />
+        <Member Name="LikelihoodLevelC" Value="2" />
+        <Member Name="LikelihoodLevelD" Value="3" />
+        <Member Name="LikelihoodLevelE" Value="4" />
+      </EnumType>
+      <EnumType Name="ConsequenceLevels">
+        <Member Name="ConsequenceLevel1" Value="0" />
+        <Member Name="ConsequenceLevel2" Value="1" />
+        <Member Name="ConsequenceLevel3" Value="2" />
+        <Member Name="ConsequenceLevel4" Value="3" />
+        <Member Name="ConsequenceLevel5" Value="4" />
+      </EnumType>
       <EnumType Name="RiskLevels">
         <Member Name="LowRisk" Value="0" />
         <Member Name="MediumRisk" Value="1" />
         <Member Name="HighRisk" Value="2" />
         <Member Name="VeryHighRisk" Value="3" />
       </EnumType>
+    </Schema>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.SCEElements" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="SCEElementRecord">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="SCECode" Type="Edm.String" />
+        <Property Name="SCEName" Type="Edm.String" />
+        <Property Name="SCEGroupId" Type="Edm.Int64" />
+        <Property Name="SCEDescription" Type="Edm.String" />
+        <Property Name="CreatedDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.String" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="SCEElementGroupRecord" Type="Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord">
+          <ReferentialConstraint Property="SCEGroupId" ReferencedProperty="Id" />
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="SCEElementGroupRecord">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" />
+        <Property Name="CreatedDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.String" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="SCEElementRecords" Type="Collection(Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord)" />
+      </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.ManagementOfChange.Domain.Identifications" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <ComplexType Name="Identification">
@@ -91,11 +134,11 @@
     </Schema>
     <Schema Namespace="Affra.Service.ManagementOfChange.Domain.RiskEvaluations" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <ComplexType Name="RiskEvaluation">
-        <Property Name="InheritRiskLikelihood" Type="Edm.String" />
-        <Property Name="InheritRiskConsequence" Type="Edm.String" />
+        <Property Name="InheritRiskLikelihood" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels" Nullable="false" />
+        <Property Name="InheritRiskConsequence" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels" Nullable="false" />
         <Property Name="InheritRiskRiskLevel" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels" Nullable="false" />
-        <Property Name="ResidualRiskLikelihood" Type="Edm.String" />
-        <Property Name="ResidualRiskConsequence" Type="Edm.String" />
+        <Property Name="ResidualRiskLikelihood" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels" Nullable="false" />
+        <Property Name="ResidualRiskConsequence" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels" Nullable="false" />
         <Property Name="ResidualRiskRiskLevel" Type="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels" Nullable="false" />
         <Property Name="RecommendationAndCountermeasure" Type="Edm.String" />
       </ComplexType>
@@ -156,6 +199,22 @@
     <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <EntityContainer Name="Container">
         <EntitySet Name="ManagementOfChangeRecord" EntityType="Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord" />
+        <EntitySet Name="SCEElementRecord" EntityType="Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord">
+          <NavigationPropertyBinding Path="SCEElementGroupRecord" Target="SCEElementGroupRecord" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="SCEElementGroupRecord" EntityType="Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord">
+          <NavigationPropertyBinding Path="SCEElementRecords" Target="SCEElementRecord" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

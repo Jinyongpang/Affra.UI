@@ -642,3 +642,8 @@ a {
     padding: 0px 20px 0px 0px;
     cursor: pointer;
 }
+.moc-close-dialog-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}

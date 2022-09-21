@@ -1,20 +1,23 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using AntDesign;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
+using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
-using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
-using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts;
+using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Extensions;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
-using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Extensions;
+using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
-using Microsoft.OData.UriParser;
+using OpenAPI.UserService;
 using Radzen;
-using UserODataService.Affra.Service.User.Domain.Users;
+using Message = NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message;
+using User = UserODataService.Affra.Service.User.Domain.Users.User;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 {
@@ -25,8 +28,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private IUserService UserService { get; set; }
+        [Inject] private IUserServiceClient UserServiceClient { get; set; }
+        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
         [Inject] private ConfirmService ConfirmService { get; set; }
+        [Inject] private AffraNotificationService AffraNotificationService { get; set; }
 
+        private List<string> sceCodes;
         private List<string> userDesignation;
         private List<string> lineManagerUsername;
         private List<string> approveAuthorityUsername;
@@ -34,7 +41,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private int currentStep;
         private bool disableAllInput;
         private bool disableAddExtensionButton;
-        protected override Task OnInitializedAsync()
+        private Dictionary<string, RiskLevels> riskMatrixDictionary = new Dictionary<string, RiskLevels>();
+        protected async override Task OnInitializedAsync()
         {
             disableAllInput = false;
             disableAddExtensionButton = false;
@@ -80,7 +88,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                     break;
             }
 
-            return this.LoadUserDataAsync();
+            InitRiskMatrixDictionary();
+            await this.LoadSCECodeAsync();
+            await this.LoadUserDataAsync();
+
+            //Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+            //Console.WriteLine(person.Department);
+            //Console.WriteLine(await UserServiceClient.Department_GetDepartmentsAsync());
         }
         private async Task LoadUserDataAsync()
         {
@@ -94,6 +108,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
             userDesignation = usersResponse
                 .Select(x => x.Role)
+                .ToList();
+
+            StateHasChanged();
+        }
+        private async Task LoadSCECodeAsync()
+        {
+            using var serviceScope = ServiceProvider.CreateScope();
+            IGenericService<SCEElementRecord>? sceService = this.GetGenericSCEService(serviceScope);
+            var query = sceService.Get();
+
+            Microsoft.OData.Client.QueryOperationResponse<SCEElementRecord>? sceResponse = await query
+                .OrderBy(x => x.SCECode)
+                .ToQueryOperationResponseAsync<SCEElementRecord>();
+
+            sceCodes = sceResponse
+                .Select(x => x.SCECode)
                 .ToList();
 
             StateHasChanged();
@@ -211,14 +241,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 Item.CloseOut.CloseOutState = CloseOutState.MadePermanentState;
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseOutSubmitForApproval;
+                currentStep = 4;
             }
             else
             {
                 Item.CloseOut.CloseOutState = CloseOutState.RevertOriginalState;
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.RiskEvaluation;
+                currentStep = 1;
             }
 
-            await SubmitAsync(Item);
+            using var serviceScope = ServiceProvider.CreateScope();
+            var service = this.GetGenericMOCService(serviceScope);
+
+            await service.InsertAsync(Item);
+            AffraNotificationService.NotifyItemCreated();
+        }
+        private void OnCloseDialogClicked()
+        {
+            DialogService.Close(false);
         }
         private async void OnEndorsementSubmitButtonClick()
         {
@@ -226,6 +266,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.EndorsementPendingForApproval;
 
             await SubmitAsync(Item);
+
+
+            using var serviceScope = ServiceProvider.CreateScope();
+            IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+            var query = notificationService.InsertAsync(new Message
+            {
+                Subject = Item.RecordNumber,
+                Content = "Approve now!",
+                Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.Endorsement.Name
+                }
+            });
         }
         private async void OnAuthorisationAndApprovalSubmitButtonClick()
         {
@@ -274,10 +326,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         {
             DialogService.Close(true);
             return Task.CompletedTask;
-        }
-        private void Cancel()
-        {
-            DialogService.Close(false);
         }
         private void OnIdentificationExpiryDateChange(DateTimeChangedEventArgs args)
         {
@@ -414,6 +462,67 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
             }
+        }
+        private void OnInheritRadioChanged()
+        {
+            string inheritLikelihoodLevel = Item.RiskEvaluation.InheritRiskLikelihood.ToString();
+            string inheritConsequenceLevel = Item.RiskEvaluation.InheritRiskConsequence.ToString();
+            string combinedInheritRiskLevel = $"{inheritLikelihoodLevel.Substring(inheritLikelihoodLevel.Length - 1)}{inheritConsequenceLevel.Substring(inheritConsequenceLevel.Length - 1)}";
+
+            Item.RiskEvaluation.InheritRiskRiskLevel = riskMatrixDictionary[combinedInheritRiskLevel];
+        }
+        private void OnResidualRadioChanged()
+        {
+            string residualLikelihoodLevel = Item.RiskEvaluation.ResidualRiskLikelihood.ToString();
+            string residualConsequenceLevel = Item.RiskEvaluation.ResidualRiskConsequence.ToString();
+            string combinedResidualRiskLevel = $"{residualLikelihoodLevel.Substring(residualLikelihoodLevel.Length - 1)}{residualConsequenceLevel.Substring(residualConsequenceLevel.Length - 1)}";
+
+            Item.RiskEvaluation.ResidualRiskRiskLevel = riskMatrixDictionary[combinedResidualRiskLevel];
+        }
+        private void InitRiskMatrixDictionary()
+        {
+            riskMatrixDictionary.Clear();
+
+            riskMatrixDictionary.Add("A1", RiskLevels.LowRisk);
+            riskMatrixDictionary.Add("A2", RiskLevels.LowRisk);
+            riskMatrixDictionary.Add("A3", RiskLevels.LowRisk);
+            riskMatrixDictionary.Add("A4", RiskLevels.LowRisk);
+            riskMatrixDictionary.Add("B1", RiskLevels.LowRisk);
+            riskMatrixDictionary.Add("B2", RiskLevels.LowRisk);
+            riskMatrixDictionary.Add("B3", RiskLevels.LowRisk);
+            riskMatrixDictionary.Add("C1", RiskLevels.LowRisk);
+            riskMatrixDictionary.Add("C2", RiskLevels.LowRisk);
+            riskMatrixDictionary.Add("D1", RiskLevels.LowRisk);
+
+            riskMatrixDictionary.Add("E1", RiskLevels.MediumRisk);
+            riskMatrixDictionary.Add("D2", RiskLevels.MediumRisk);
+            riskMatrixDictionary.Add("C3", RiskLevels.MediumRisk);
+            riskMatrixDictionary.Add("B4", RiskLevels.MediumRisk);
+            riskMatrixDictionary.Add("A5", RiskLevels.MediumRisk);
+
+            riskMatrixDictionary.Add("E2", RiskLevels.HighRisk);
+            riskMatrixDictionary.Add("E3", RiskLevels.HighRisk);
+            riskMatrixDictionary.Add("D3", RiskLevels.HighRisk);
+            riskMatrixDictionary.Add("D4", RiskLevels.HighRisk);
+            riskMatrixDictionary.Add("C4", RiskLevels.HighRisk);
+            riskMatrixDictionary.Add("C5", RiskLevels.HighRisk);
+            riskMatrixDictionary.Add("B5", RiskLevels.HighRisk);
+
+            riskMatrixDictionary.Add("E4", RiskLevels.VeryHighRisk);
+            riskMatrixDictionary.Add("E5", RiskLevels.VeryHighRisk);
+            riskMatrixDictionary.Add("D5", RiskLevels.VeryHighRisk);
+        }
+        private IGenericService<ManagementOfChangeRecord> GetGenericMOCService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<ManagementOfChangeRecord, IManagementOfChangeUnitOfWork>>();
+        }
+        private IGenericService<SCEElementRecord> GetGenericSCEService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<SCEElementRecord, IManagementOfChangeUnitOfWork>>();
+        }
+        private IGenericService<Message> GetGenericNotificationService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<Message, INotificationUnitOfWork>>();
         }
     }
 }

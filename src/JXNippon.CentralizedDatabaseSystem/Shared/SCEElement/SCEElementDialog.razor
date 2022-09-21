@@ -1,0 +1,50 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Models
+@using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (SCEElementRecord args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Group" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown Data="@GroupItem" TextProperty="Name" @bind-value="@ddSelectedValue" ValueProperty="Id" class="w-100" TValue="long" Placeholder="Select group..." Disabled=@isViewing></RadzenDropDown>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Code" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="SCECode" class="w-100" Placeholder="Enter code..." @bind-Value="@Item.SCECode" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="SCECode" Text="SCE code is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Equipment / System Name" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="SCEName" class="w-100" Placeholder="Enter equipment / system name..." @bind-Value="@Item.SCEName" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="SCEName" Text="Equipment or System name is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Level Drop" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextArea Name="SCEDescription" Rows="4" Cols="30" class="w-100" Placeholder="Enter description..." @bind-Value="@Item.SCEDescription" Disabled=@isViewing></RadzenTextArea>
+                    <RadzenRequiredValidator Component="SCEDescription" Text="Equipment or System name is required" Popup=false />
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</RadzenTemplateForm>
