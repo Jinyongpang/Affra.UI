@@ -28,6 +28,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
+using OpenAPI.UserService;
 using Radzen;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -127,6 +128,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     })
     .AddAntDesign()
     .AddLocalization();
+    builder.Services.AddHttpClient<IUserServiceClient, JXNippon.CentralizedDatabaseSystem.Infrastructure.Users.UserServiceClient>()
+        .AddHttpMessageHandler<CreateActivityHandler>()
+        .AddHttpMessageHandler<AuthorizationMessageHandler>();
 
 builder.Services.AddMsalAuthentication(options =>
 {

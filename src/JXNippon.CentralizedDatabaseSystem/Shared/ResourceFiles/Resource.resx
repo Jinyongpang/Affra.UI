@@ -274,34 +274,34 @@
     <value>High Risk</value>
   </data>
   <data name="ConsequenceLevel1" xml:space="preserve">
-    <value>1</value>
+    <value>1 [Insignificant]</value>
   </data>
   <data name="ConsequenceLevel2" xml:space="preserve">
-    <value>2</value>
+    <value>2 [Minor]</value>
   </data>
   <data name="ConsequenceLevel3" xml:space="preserve">
-    <value>3</value>
+    <value>3 [Major]</value>
   </data>
   <data name="ConsequenceLevel4" xml:space="preserve">
-    <value>4</value>
+    <value>4 [Serious]</value>
   </data>
   <data name="ConsequenceLevel5" xml:space="preserve">
-    <value>5</value>
+    <value>5 [Catastropic]</value>
   </data>
   <data name="LikelihoodLevelA" xml:space="preserve">
-    <value>A</value>
+    <value>A [Remotely likely to]</value>
   </data>
   <data name="LikelihoodLevelB" xml:space="preserve">
-    <value>B</value>
+    <value>B [Unlikely]</value>
   </data>
   <data name="LikelihoodLevelC" xml:space="preserve">
-    <value>C</value>
+    <value>C [Possible]</value>
   </data>
   <data name="LikelihoodLevelD" xml:space="preserve">
-    <value>D</value>
+    <value>D [Likely]</value>
   </data>
   <data name="LikelihoodLevelE" xml:space="preserve">
-    <value>E</value>
+    <value>E [Almost Certain]</value>
   </data>
   <data name="DailyDiesel" xml:space="preserve">
     <value>Diesel</value>

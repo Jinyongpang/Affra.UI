@@ -61,7 +61,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.
+        ///   Looks up a localized string similar to 1 [Insignificant].
         /// </summary>
         public static string ConsequenceLevel1 {
             get {
@@ -70,7 +70,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2.
+        ///   Looks up a localized string similar to 2 [Minor].
         /// </summary>
         public static string ConsequenceLevel2 {
             get {
@@ -79,7 +79,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.
+        ///   Looks up a localized string similar to 3 [Major].
         /// </summary>
         public static string ConsequenceLevel3 {
             get {
@@ -88,7 +88,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4.
+        ///   Looks up a localized string similar to 4 [Serious].
         /// </summary>
         public static string ConsequenceLevel4 {
             get {
@@ -97,7 +97,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 5.
+        ///   Looks up a localized string similar to 5 [Catastropic].
         /// </summary>
         public static string ConsequenceLevel5 {
             get {
@@ -493,7 +493,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A.
+        ///   Looks up a localized string similar to A [Remotely likely to].
         /// </summary>
         public static string LikelihoodLevelA {
             get {
@@ -502,7 +502,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to B.
+        ///   Looks up a localized string similar to B [Unlikely].
         /// </summary>
         public static string LikelihoodLevelB {
             get {
@@ -511,7 +511,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C.
+        ///   Looks up a localized string similar to C [Possible].
         /// </summary>
         public static string LikelihoodLevelC {
             get {
@@ -520,7 +520,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D.
+        ///   Looks up a localized string similar to D [Likely].
         /// </summary>
         public static string LikelihoodLevelD {
             get {
@@ -529,7 +529,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E.
+        ///   Looks up a localized string similar to E [Almost Certain].
         /// </summary>
         public static string LikelihoodLevelE {
             get {
