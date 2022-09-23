@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 21/9/2022 10:16:20 PM
+// Generation date: 23/9/2022 10:57:58 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -18657,14 +18657,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        /// <param name="month">Initial value of Month.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static MonthlyFPSOFieldMY CreateMonthlyFPSOFieldMY(long ID, long xmin, global::System.DateTimeOffset month)
+        public static MonthlyFPSOFieldMY CreateMonthlyFPSOFieldMY(long ID, long xmin, global::System.DateTimeOffset date)
         {
             MonthlyFPSOFieldMY monthlyFPSOFieldMY = new MonthlyFPSOFieldMY();
             monthlyFPSOFieldMY.Id = ID;
             monthlyFPSOFieldMY.xmin = xmin;
-            monthlyFPSOFieldMY.Month = month;
+            monthlyFPSOFieldMY.Date = date;
             return monthlyFPSOFieldMY;
         }
         /// <summary>
@@ -18962,26 +18962,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
-        /// There are no comments for Property Month in the schema.
+        /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Month
+        public global::System.DateTimeOffset Date
         {
             get
             {
-                return this._Month;
+                return this._Date;
             }
             set
             {
-                this.OnMonthChanging(value);
-                this._Month = value;
-                this.OnMonthChanged();
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Month;
-        partial void OnMonthChanging(global::System.DateTimeOffset value);
-        partial void OnMonthChanged();
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
     }
     /// <summary>
     /// There are no comments for MonthlyHIPFieldMYSingle in the schema.
@@ -19021,14 +19021,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        /// <param name="month">Initial value of Month.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static MonthlyHIPFieldMY CreateMonthlyHIPFieldMY(long ID, long xmin, global::System.DateTimeOffset month)
+        public static MonthlyHIPFieldMY CreateMonthlyHIPFieldMY(long ID, long xmin, global::System.DateTimeOffset date)
         {
             MonthlyHIPFieldMY monthlyHIPFieldMY = new MonthlyHIPFieldMY();
             monthlyHIPFieldMY.Id = ID;
             monthlyHIPFieldMY.xmin = xmin;
-            monthlyHIPFieldMY.Month = month;
+            monthlyHIPFieldMY.Date = date;
             return monthlyHIPFieldMY;
         }
         /// <summary>
@@ -19326,26 +19326,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
-        /// There are no comments for Property Month in the schema.
+        /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Month
+        public global::System.DateTimeOffset Date
         {
             get
             {
-                return this._Month;
+                return this._Date;
             }
             set
             {
-                this.OnMonthChanging(value);
-                this._Month = value;
-                this.OnMonthChanged();
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Month;
-        partial void OnMonthChanging(global::System.DateTimeOffset value);
-        partial void OnMonthChanged();
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
     }
     /// <summary>
     /// Class containing all extension methods
@@ -19484,16 +19484,16 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="wellName">Initial value of WellName.</param>
         /// <param name="productionZoneName">Initial value of ProductionZoneName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        /// <param name="month">Initial value of Month.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static MonthlyReservoir CreateMonthlyReservoir(long ID, string wellName, string productionZoneName, long xmin, global::System.DateTimeOffset month)
+        public static MonthlyReservoir CreateMonthlyReservoir(long ID, string wellName, string productionZoneName, long xmin, global::System.DateTimeOffset date)
         {
             MonthlyReservoir monthlyReservoir = new MonthlyReservoir();
             monthlyReservoir.Id = ID;
             monthlyReservoir.WellName = wellName;
             monthlyReservoir.ProductionZoneName = productionZoneName;
             monthlyReservoir.xmin = xmin;
-            monthlyReservoir.Month = month;
+            monthlyReservoir.Date = date;
             return monthlyReservoir;
         }
         /// <summary>
@@ -19833,26 +19833,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
-        /// There are no comments for Property Month in the schema.
+        /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Month
+        public global::System.DateTimeOffset Date
         {
             get
             {
-                return this._Month;
+                return this._Date;
             }
             set
             {
-                this.OnMonthChanging(value);
-                this._Month = value;
-                this.OnMonthChanged();
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Month;
-        partial void OnMonthChanging(global::System.DateTimeOffset value);
-        partial void OnMonthChanged();
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
         /// <summary>
         /// There are no comments for Property ProductionZone in the schema.
         /// </summary>
@@ -20422,15 +20422,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="wellName">Initial value of WellName.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        /// <param name="month">Initial value of Month.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static MonthlyWellProduction CreateMonthlyWellProduction(long ID, string wellName, long xmin, global::System.DateTimeOffset month)
+        public static MonthlyWellProduction CreateMonthlyWellProduction(long ID, string wellName, long xmin, global::System.DateTimeOffset date)
         {
             MonthlyWellProduction monthlyWellProduction = new MonthlyWellProduction();
             monthlyWellProduction.Id = ID;
             monthlyWellProduction.WellName = wellName;
             monthlyWellProduction.xmin = xmin;
-            monthlyWellProduction.Month = month;
+            monthlyWellProduction.Date = date;
             return monthlyWellProduction;
         }
         /// <summary>
@@ -20749,26 +20749,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
-        /// There are no comments for Property Month in the schema.
+        /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Month
+        public global::System.DateTimeOffset Date
         {
             get
             {
-                return this._Month;
+                return this._Date;
             }
             set
             {
-                this.OnMonthChanging(value);
-                this._Month = value;
-                this.OnMonthChanged();
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Month;
-        partial void OnMonthChanging(global::System.DateTimeOffset value);
-        partial void OnMonthChanged();
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
         /// <summary>
         /// There are no comments for Property Well in the schema.
         /// </summary>
@@ -20897,7 +20897,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="productionZone_Z3">Initial value of ProductionZone_Z3.</param>
         /// <param name="productionZone_Z4">Initial value of ProductionZone_Z4.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        /// <param name="month">Initial value of Month.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         public static MonthlyWellTest CreateMonthlyWellTest(long ID, 
                     string wellName, 
@@ -20916,7 +20916,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                     bool productionZone_Z3, 
                     bool productionZone_Z4, 
                     long xmin, 
-                    global::System.DateTimeOffset month)
+                    global::System.DateTimeOffset date)
         {
             MonthlyWellTest monthlyWellTest = new MonthlyWellTest();
             monthlyWellTest.Id = ID;
@@ -20936,7 +20936,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             monthlyWellTest.ProductionZone_Z3 = productionZone_Z3;
             monthlyWellTest.ProductionZone_Z4 = productionZone_Z4;
             monthlyWellTest.xmin = xmin;
-            monthlyWellTest.Month = month;
+            monthlyWellTest.Date = date;
             return monthlyWellTest;
         }
         /// <summary>
@@ -21717,26 +21717,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
-        /// There are no comments for Property Month in the schema.
+        /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Month
+        public global::System.DateTimeOffset Date
         {
             get
             {
-                return this._Month;
+                return this._Date;
             }
             set
             {
-                this.OnMonthChanging(value);
-                this._Month = value;
-                this.OnMonthChanged();
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Month;
-        partial void OnMonthChanging(global::System.DateTimeOffset value);
-        partial void OnMonthChanged();
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
         /// <summary>
         /// There are no comments for Property Well in the schema.
         /// </summary>
@@ -44200,14 +44200,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        /// <param name="month">Initial value of Month.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static MonthlyHIPSale CreateMonthlyHIPSale(long ID, long xmin, global::System.DateTimeOffset month)
+        public static MonthlyHIPSale CreateMonthlyHIPSale(long ID, long xmin, global::System.DateTimeOffset date)
         {
             MonthlyHIPSale monthlyHIPSale = new MonthlyHIPSale();
             monthlyHIPSale.Id = ID;
             monthlyHIPSale.xmin = xmin;
-            monthlyHIPSale.Month = month;
+            monthlyHIPSale.Date = date;
             return monthlyHIPSale;
         }
         /// <summary>
@@ -44526,26 +44526,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnTotalNetProductionC5PlusChanging(global::System.Nullable<decimal> value);
         partial void OnTotalNetProductionC5PlusChanged();
         /// <summary>
-        /// There are no comments for Property Month in the schema.
+        /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Month
+        public global::System.DateTimeOffset Date
         {
             get
             {
-                return this._Month;
+                return this._Date;
             }
             set
             {
-                this.OnMonthChanging(value);
-                this._Month = value;
-                this.OnMonthChanged();
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Month;
-        partial void OnMonthChanging(global::System.DateTimeOffset value);
-        partial void OnMonthChanged();
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
     }
     /// <summary>
     /// There are no comments for MonthlyFPSOSaleSingle in the schema.
@@ -44585,14 +44585,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        /// <param name="month">Initial value of Month.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static MonthlyFPSOSale CreateMonthlyFPSOSale(long ID, long xmin, global::System.DateTimeOffset month)
+        public static MonthlyFPSOSale CreateMonthlyFPSOSale(long ID, long xmin, global::System.DateTimeOffset date)
         {
             MonthlyFPSOSale monthlyFPSOSale = new MonthlyFPSOSale();
             monthlyFPSOSale.Id = ID;
             monthlyFPSOSale.xmin = xmin;
-            monthlyFPSOSale.Month = month;
+            monthlyFPSOSale.Date = date;
             return monthlyFPSOSale;
         }
         /// <summary>
@@ -44764,26 +44764,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnGasStreamC5PlusChanging(global::System.Nullable<decimal> value);
         partial void OnGasStreamC5PlusChanged();
         /// <summary>
-        /// There are no comments for Property Month in the schema.
+        /// There are no comments for Property Date in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Month
+        public global::System.DateTimeOffset Date
         {
             get
             {
-                return this._Month;
+                return this._Date;
             }
             set
             {
-                this.OnMonthChanging(value);
-                this._Month = value;
-                this.OnMonthChanged();
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Month;
-        partial void OnMonthChanging(global::System.DateTimeOffset value);
-        partial void OnMonthChanged();
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
     }
     /// <summary>
     /// Class containing all extension methods
@@ -48763,7 +48763,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""WaterProduced"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""WGR"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Month"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""MonthlyHIPFieldMY"">
         <Key>
@@ -48783,7 +48783,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""WaterProduced"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""WGR"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Month"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
       </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
@@ -48807,7 +48807,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""CumulativeProductionCondensate"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""CumulativeProductionWater"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Month"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <NavigationProperty Name=""ProductionZone"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZone"" />
         <NavigationProperty Name=""Well"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.Well"" />
       </EntityType>
@@ -48852,7 +48852,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""CumulativeProductionCondensate"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""CumulativeProductionWater"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Month"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <NavigationProperty Name=""Well"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.Well"" />
       </EntityType>
     </Schema>
@@ -48898,7 +48898,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Category"" Type=""Edm.String"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Month"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <NavigationProperty Name=""Well"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.Well"" />
       </EntityType>
     </Schema>
@@ -50047,7 +50047,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""TotalNetProductionC1_C4_MMscf"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TotalNetProductionC1_C4_MMBtu"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TotalNetProductionC5Plus"" Type=""Edm.Decimal"" Scale=""Variable"" />
-        <Property Name=""Month"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""MonthlyFPSOSale"">
         <Key>
@@ -50061,7 +50061,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""GasStreamC1_C4_MMBtu"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""GasStreamGHV"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""GasStreamC5Plus"" Type=""Edm.Decimal"" Scale=""Variable"" />
-        <Property Name=""Month"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
       </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">

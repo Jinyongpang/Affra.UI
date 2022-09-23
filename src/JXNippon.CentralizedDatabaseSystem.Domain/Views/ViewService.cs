@@ -20,6 +20,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
         {
             return ViewHelper.GetTypeMapping();
         }
+        public IDictionary<string, string> GetExtraTypeMapping()
+        {
+            return ViewHelper.GetExtraTypeMapping();
+        }
 
         public object GetPropValue(object src, string propName)
         {

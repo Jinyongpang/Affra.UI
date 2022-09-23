@@ -82,5 +82,25 @@
                 res = res.Replace("HIP / LWP Summary", type.Key);
                 <a>@res</a>
             }
+
+            a = assembly.GetTypes()
+                   .DistinctBy(t => t.Name)
+                   .Where(t => t.Name.StartsWith("Monthly"))
+                   .Where(t => !t.Name.EndsWith("Single"))
+                   .ToDictionary(x => x.Name, x => x.Namespace);
+            foreach (var type in a)
+            {
+
+                var res = @"namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
+{
+    public partial class DailyDeOilerInjection : IMonthly
+        {
+
+        }
+    }";
+                res = res.Replace("DailyDeOilerInjection", type.Key);
+                res = res.Replace("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems", type.Value);
+                <a>@res</a>
+            }
             
 }
