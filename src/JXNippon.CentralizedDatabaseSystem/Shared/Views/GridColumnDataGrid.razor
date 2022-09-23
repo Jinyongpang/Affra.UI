@@ -92,10 +92,11 @@
 
     private Task MoveAsync(GridColumn column, int offset = 0)
     {
-       var list = this.Grid.GridColumns as List<GridColumn> ?? this.Grid.GridColumns.ToList();
-            var index = list.FindIndex(x => x == column);
-            list.Reverse(index + offset, 2);
-            this.Grid.GridColumns = list;
-       return this.grid.Reload(); 
+        var list = items as List<GridColumn> ?? items.ToList();
+        var index = list.FindIndex(x => x == column);
+        list.Reverse(index + offset, 2);
+        items = list;
+        this.Grid.GridColumns = list;
+        return this.grid.Reload(); 
     }
 }
