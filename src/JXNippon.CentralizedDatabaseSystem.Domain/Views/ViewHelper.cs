@@ -7,6 +7,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
     public static class ViewHelper
     {
         private static IDictionary<string, string> TypeMappings;
+        private static IDictionary<string, string> ExtraTypeMappings;
+        public static IDictionary<string, string> GetExtraTypeMapping()
+        {
+            Assembly assembly = typeof(View).Assembly;
+            return ExtraTypeMappings ??= assembly.GetTypes()
+                .DistinctBy(t => t.Name)
+                .Where(t => t.GetInterface(nameof(IExtras)) != null)
+                .OrderBy(t => t.Name)
+                .ToDictionary(x => x.Name, x => x.AssemblyQualifiedName);
+        }
+
         public static IDictionary<string, string> GetTypeMapping()
         {
             Assembly assembly = typeof(View).Assembly;

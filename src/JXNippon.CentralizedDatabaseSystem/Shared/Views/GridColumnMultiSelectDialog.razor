@@ -1,0 +1,65 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Grids
+@using ViewODataService.Affra.Service.View.Domain.Views
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (Grid args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+             <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Override Type" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown Name="Type" class="w-100" Placeholder="Select type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@this.Types" @bind-Value="@this.overrideType" TValue="string" AllowClear="false" Disabled=@isViewing Change=RefreshTypeProperties></RadzenDropDown>
+                </div>
+            </div>
+            <div class="row py-2">
+                <Table
+                   TItem="GridColumn"
+                   DataSource="@this.gridColumns"
+                   RowClassName="@(_=>"editable-row")"
+                   @ref=@this.table
+                   @bind-PageSize=@this.pageSize
+                   @bind-Total=@this.count
+                   @bind-SelectedRows=@this.selectedRows
+                   HidePagination>
+                   <ChildContent Context="item">
+                       <Selection Key="@(item.Property)" />
+                       <Column Title="Property" @bind-Field="@item.Property">
+                       </Column>
+                       <Column Title="Title" @bind-Field="@item.Title">
+                            @if (editId == item.Property && editColumn == nameof(item.Title))
+                            {
+                                <RadzenTextBox Name="Title" Placeholder="Enter title..." @bind-Value="@item.Title"></RadzenTextBox>
+                            }
+                            else
+                            {
+                                <div class="editable-cell-value-wrap" style="padding-right:24px" @onclick="()=>this.StartEdit(item.Property, nameof(item.Title))">
+                                    @item.Title
+                                </div>
+                            }    
+                       </Column>
+                       <Column Title="Format String" @bind-Field="@item.FormatString">
+                            @if (editId == item.Property && editColumn == nameof(item.FormatString))
+                            {
+                                <RadzenTextBox Name="Format String" Placeholder="Enter format string..." @bind-Value="@item.FormatString"></RadzenTextBox>
+                            }
+                            else
+                            {
+                                <div class="editable-cell-value-wrap" style="padding-right:24px" @onclick="()=>this.StartEdit(item.Property, nameof(item.FormatString))">
+                                    @item.FormatString
+                                </div>
+                            }    
+                       </Column>
+                   </ChildContent>
+                  
+                </Table>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Add" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</RadzenTemplateForm>

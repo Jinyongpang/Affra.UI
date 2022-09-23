@@ -55,6 +55,32 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     AffraNotificationService.NotifyItemDeleted();
                 }
             }
+            else if (menuAction == 4)
+            {
+                response = await DialogService.OpenAsync<GridColumnMultiSelectDialog>(title,
+                           new Dictionary<string, object>() { { "Item", Grid }, { "MenuAction", menuAction }, { "Types", Types } },
+                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+
+                if (response is IEnumerable<GridColumn> gridColumns)
+                {
+                    try
+                    {
+                        foreach (var column in gridColumns)
+                        {
+                            Grid.GridColumns.Add(column);
+                        }
+
+                        AffraNotificationService.NotifyItemCreated();
+                    }
+                    catch (Exception ex)
+                    {
+                        AffraNotificationService.NotifyException(ex);
+                    }
+                    finally
+                    {
+                    }
+                }
+            }
             else
             {
                 response = await DialogService.OpenAsync<GridColumnDialog>(title,
