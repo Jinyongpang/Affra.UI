@@ -71,10 +71,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             await ReloadAsync(StartDate, EndDate);
             await base.OnInitializedAsync();
         }
-        
+
         private Task OnContentUpdateAsync(object obj)
         {
-            StateHasChanged(); 
+            StateHasChanged();
             return this.ReloadAsync();
         }
 
@@ -175,7 +175,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 }
                 else
                 {
-                    var groupItems = items.GroupBy(x => (string)ViewService.GetPropValue(x, chartSeries.CategoryProperty));
+                    var groupItems = dailyItems.GroupBy(x => (string)ViewService.GetPropValue(x, chartSeries.CategoryProperty));
                     var itemsList = new List<SeriesItem>();
                     Series series = new()
                     {
@@ -194,6 +194,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
                         itemsList.Add(seriesItem);
                     }
+
+                    if (chartSeries.Transform == ChartSeriesTransform.Percentage)
+                    {
+                        var total = series.SeriesItems.Sum(x => x.Value);
+                        if (total > 0)
+                        {
+                            series.SeriesItems.ToList().ForEach(x => x.Value = x.Value / total * 100);
+                        }
+                    }
+
                     seriesList.Add(series);
                 }
             }
@@ -232,7 +242,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         {
                             await subscription.DisposeAsync();
                         }
-                    }                  
+                    }
                     isDisposed = true;
                 }
             }

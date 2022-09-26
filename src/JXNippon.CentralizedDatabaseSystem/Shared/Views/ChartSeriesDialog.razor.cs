@@ -33,6 +33,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             .Select(x => x.ToString())
             .ToList();
 
+
+        private static IEnumerable<string> transformTypes = Enum.GetValues(typeof(ChartSeriesTransform))
+            .Cast<ChartSeriesTransform>()
+            .Select(x => x.ToString())
+            .ToList();
+
+
         private static HashSet<Type> valueTypes = new HashSet<Type>()
         {
             typeof(decimal?),

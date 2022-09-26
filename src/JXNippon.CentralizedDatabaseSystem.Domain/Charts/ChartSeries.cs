@@ -30,6 +30,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
 
         public string Color { get; set; }
 
+        public ChartSeriesTransform? Transform { get; set; }
+
+
         [IgnoreClientProperty]
         [JsonIgnore]
         public string ExecutionTypeString 
@@ -73,6 +76,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
             set
             {
                 this.Type = value.Name;
+            }
+        }
+
+        [IgnoreClientProperty]
+        [JsonIgnore]
+        public string TransformString
+        {
+            get
+            {
+                return Transform?.ToString();
+            }
+            set
+            {
+                Transform = value is null
+                    ? null
+                    : (ChartSeriesTransform)Enum.Parse(typeof(ChartSeriesTransform), value);
             }
         }
     }
