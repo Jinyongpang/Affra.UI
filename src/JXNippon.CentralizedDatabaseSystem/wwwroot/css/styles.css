@@ -647,3 +647,7 @@ a {
     right: 15px;
     top: 15px;
 }
+.oi-step-navbar {
+    width: 50%;
+    margin: auto;
+}

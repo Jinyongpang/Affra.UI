@@ -49,7 +49,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             data = new()
             {
                 TitleOfChange = string.Empty,
-                RecordNumber = $"MOC-HIP-{DateTime.Now:yyyyMMddHHmmss}",
+                RecordNumber = "",
                 ManagementOfChangeField = ManagementOfChangeField.HIP,
                 CreateDateTimeUI = DateTimeOffset.Now.Date,
                 CreatedBy = string.Empty,

@@ -93,3 +93,43 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         }
     }
 }
+namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions
+{
+    public partial class OperationInstructionRecord
+    {
+        [IgnoreClientProperty]
+        public DateTime CreateDateTimeUI
+        {
+            get { return this.CreatedDateTime.ToLocalDateTime(); }
+            set { this.CreatedDateTime = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime EstimatedDurationDateTimeUI
+        {
+            get { return this.EstimatedDurationDateTime.ToLocalDateTime(); }
+            set { this.EstimatedDurationDateTime = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime PreparedByDateTimeUI
+        {
+            get { return this.PreparedByDateTime.ToLocalDateTime(); }
+            set { this.PreparedByDateTime = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime EndorsedByDateTimeUI
+        {
+            get { return this.EndorsedByDateTime.ToLocalDateTime(); }
+            set { this.EndorsedByDateTime = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime ApprovedByDateTimeUI
+        {
+            get { return this.ApprovedByDateTime.ToLocalDateTime(); }
+            set { this.ApprovedByDateTime = value.ToUniversalTime(); }
+        }
+    }
+}

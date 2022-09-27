@@ -61,6 +61,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                     break;
                 case ManagementOfChangeCurrentStep.EndorsementSubmitForApproval:
                     currentStep = 2;
+                    await LoadLineManagers();
                     break;
                 case ManagementOfChangeCurrentStep.AuthorisationAndApprovalPendingForApproval:
                     disableAllInput = true;
@@ -68,6 +69,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                     break;
                 case ManagementOfChangeCurrentStep.AuthorisationAndApprovalSubmitForApproval:
                     currentStep = 3;
+                    await LoadApprovingAuthorities();
                     break;
                 case ManagementOfChangeCurrentStep.ExtensionPendingForApproval:
                     disableAddExtensionButton = true;
@@ -81,6 +83,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 case ManagementOfChangeCurrentStep.ExtensionSubmitForApproval:
                 case ManagementOfChangeCurrentStep.CloseOutSubmitForApproval:
                     currentStep = 4;
+                    await LoadCloseOutAuthorities();
                     break;
                 case ManagementOfChangeCurrentStep.Completed:
                     disableAllInput = true;
@@ -91,10 +94,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             InitRiskMatrixDictionary();
             await this.LoadSCECodeAsync();
             await this.LoadUserDataAsync();
-
-            //Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
-            //Console.WriteLine(person.Department);
-            //Console.WriteLine(await UserServiceClient.Department_GetDepartmentsAsync());
         }
         private async Task LoadUserDataAsync()
         {
@@ -128,82 +127,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
             StateHasChanged();
         }
-        private async Task OnLMAutoCompleteSelectionChange(AutoCompleteOption item)
-        {
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<User>? userService = this.GetGenericService(serviceScope);
-            var query = userService.Get();
-
-            Microsoft.OData.Client.QueryOperationResponse<User>? usersResponse = await query
-                .Where(x => x.Role == item.Value.ToString())
-                .OrderByDescending(x => x.Username)
-                .ToQueryOperationResponseAsync<User>();
-
-            lineManagerUsername = usersResponse
-                .Select(x => x.Username)
-                .ToList();
-
-            StateHasChanged();
-        }
-        private async Task OnAAAutoCompleteSelectionChange(AutoCompleteOption item)
-        {
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<User>? userService = this.GetGenericService(serviceScope);
-            var query = userService.Get();
-
-            Microsoft.OData.Client.QueryOperationResponse<User>? usersResponse = await query
-                .Where(x => x.Role == item.Value.ToString())
-                .OrderByDescending(x => x.Username)
-                .ToQueryOperationResponseAsync<User>();
-
-            approveAuthorityUsername = usersResponse
-                .Select(x => x.Username)
-                .ToList();
-
-            StateHasChanged();
-        }
-        private async Task OnCloseOutAutoCompleteSelectionChange(AutoCompleteOption item)
-        {
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<User>? userService = this.GetGenericService(serviceScope);
-            var query = userService.Get();
-
-            Microsoft.OData.Client.QueryOperationResponse<User>? usersResponse = await query
-                .Where(x => x.Role == item.Value.ToString())
-                .OrderByDescending(x => x.Username)
-                .ToQueryOperationResponseAsync<User>();
-
-            closeOutAuthorityUsername = usersResponse
-                .Select(x => x.Username)
-                .ToList();
-
-            StateHasChanged();
-        }
-        private async Task OnExtensionAutoCompleteSelectionChange(AutoCompleteOption item, int currentExtensionNo)
-        {
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<User>? userService = this.GetGenericService(serviceScope);
-            var query = userService.Get();
-
-            Microsoft.OData.Client.QueryOperationResponse<User>? usersResponse = await query
-                .Where(x => x.Role == item.Value.ToString())
-                .OrderByDescending(x => x.Username)
-                .ToQueryOperationResponseAsync<User>();
-
-            var userString = usersResponse
-                .Select(x => x.Username)
-                .ToList();
-
-            Item.Extensions[currentExtensionNo - 1].ApproverNameColection = string.Empty;
-
-            foreach (string user in userString)
-            {
-                Item.Extensions[currentExtensionNo - 1].ApproverNameColection += $"{user},";
-            }
-
-            StateHasChanged();
-        }
-        private void OnNextButtonClick()
+        private async Task OnNextButtonClick()
         {
             if (Item.Identification.DetailOfChange == DetailOfChange.FacilitiesImprovementPlan)
             {
@@ -213,6 +137,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 if (Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.RiskEvaluation)
                 {
+                    await LoadLineManagers();
                     Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.EndorsementSubmitForApproval;
                     currentStep++;
                 }
@@ -235,6 +160,27 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async void OnCreateButtonClick()
         {
+            if(Item.TitleOfChange == string.Empty)
+            {
+                AffraNotificationService.NotifyWarning("Title of change is required.");
+                return;
+            }
+            if (Item.Identification.DescriptionOfChange == string.Empty)
+            {
+                AffraNotificationService.NotifyWarning("Description of change is required.");
+                return;
+            }
+            if (Item.Identification.DurationOfChange <= 0)
+            {
+                AffraNotificationService.NotifyWarning("Duration of change cannot be less than or equal 0.");
+                return;
+            }
+            if (Item.Identification.SCETagNumber  == string.Empty)
+            {
+                AffraNotificationService.NotifyWarning("SCE tag number is required.");
+                return;
+            }
+
             Item.ManagementOfChangeStatus = ManagementOfChangeStatus.New;
 
             if (Item.Identification.DetailOfChange == DetailOfChange.FacilitiesImprovementPlan)
@@ -250,11 +196,101 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 currentStep = 1;
             }
 
+            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+
+            string categoriesOfChange = "";
+            if (Item.Identification.DetailOfChange == DetailOfChange.FacilitiesImprovementPlan)
+                categoriesOfChange = "FIP";
+            else if (Item.Identification.DetailOfChange == DetailOfChange.OperatingChangeAndNonRoutineOperations)
+                categoriesOfChange = "OCR";
+            else
+                categoriesOfChange = "PCSC";
+
+            Item.RecordNumber = $"MOC-{person.Department}-{Item.ManagementOfChangeField.ToString()}-{categoriesOfChange}-{DateTime.Now:yyyy}-{DateTime.Now:yyyyMMddHHmmss}";
+
             using var serviceScope = ServiceProvider.CreateScope();
             var service = this.GetGenericMOCService(serviceScope);
 
             await service.InsertAsync(Item);
+
             AffraNotificationService.NotifyItemCreated();
+        }
+        private async Task LoadLineManagers()
+        {
+            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+
+            lineManagerUsername = new List<string>();
+
+            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
+            {
+                lineManagerUsername.Add(manager);
+
+                foreach(string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+                {
+                    lineManagerUsername.Add(delegation);
+                }
+            }
+
+            lineManagerUsername = lineManagerUsername.Distinct().ToList();
+
+            StateHasChanged();
+        }
+        private async Task LoadApprovingAuthorities()
+        {
+            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+
+            approveAuthorityUsername = new List<string>();
+
+            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
+            {
+                approveAuthorityUsername.Add(manager);
+
+                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+                {
+                    approveAuthorityUsername.Add(delegation);
+                }
+            }
+
+            approveAuthorityUsername = approveAuthorityUsername.Distinct().ToList();
+
+            StateHasChanged();
+        }
+        private async Task LoadCloseOutAuthorities()
+        {
+            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+
+            closeOutAuthorityUsername = new List<string>();
+
+            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
+            {
+                closeOutAuthorityUsername.Add(manager);
+
+                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+                {
+                    closeOutAuthorityUsername.Add(delegation);
+                }
+            }
+
+            closeOutAuthorityUsername = closeOutAuthorityUsername.Distinct().ToList();
+
+            StateHasChanged();
+        }
+        private async Task<string> LoadExtensionAuthorities()
+        {
+            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+
+            string extensionManagers = "";
+
+            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
+            {
+                extensionManagers += $"{manager},";
+
+                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+                {
+                    extensionManagers += $"{delegation},";
+                }
+            }
+            return extensionManagers;
         }
         private void OnCloseDialogClicked()
         {
@@ -262,18 +298,23 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async void OnEndorsementSubmitButtonClick()
         {
+            if (Item.Endorsement.Name == string.Empty)
+            {
+                AffraNotificationService.NotifyWarning("Endorsement approval name is required.");
+                return;
+            }
+
             Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
             Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.EndorsementPendingForApproval;
 
             await SubmitAsync(Item);
-
 
             using var serviceScope = ServiceProvider.CreateScope();
             IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.RecordNumber,
-                Content = "Approve now!",
+                Content = "Approval needed!",
                 Users = new System.Collections.ObjectModel.Collection<string> {
                     Item.Endorsement.Name
                 }
@@ -281,36 +322,100 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async void OnAuthorisationAndApprovalSubmitButtonClick()
         {
+            if(Item.AuthorisationAndApproval.Name == string.Empty)
+            {
+                AffraNotificationService.NotifyWarning("Authorisation approval name is required.");
+                return;
+            }
+
             Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
             Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.AuthorisationAndApprovalPendingForApproval;
 
             await SubmitAsync(Item);
+
+            using var serviceScope = ServiceProvider.CreateScope();
+            IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+            var query = notificationService.InsertAsync(new Message
+            {
+                Subject = Item.RecordNumber,
+                Content = "Approval needed!",
+                Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.AuthorisationAndApproval.Name
+                }
+            });
         }
         private async void OnExtensionSubmitButtonClick()
         {
+            if(Item.Extensions[Item.Extensions.Count - 1].ApproverName == string.Empty)
+            {
+                AffraNotificationService.NotifyWarning("Extension approval name is required.");
+                return;
+            }
+            if (Item.Extensions[Item.Extensions.Count - 1].DurationExtended <= 0)
+            {
+                AffraNotificationService.NotifyWarning("Duration extended cannot less than or equal to 0.");
+                return;
+            }
+
             Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Extension;
             Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.ExtensionPendingForApproval;
 
             await SubmitAsync(Item);
+
+            using var serviceScope = ServiceProvider.CreateScope();
+            IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+            var query = notificationService.InsertAsync(new Message
+            {
+                Subject = Item.RecordNumber,
+                Content = "Approval needed!",
+                Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.Extensions[Item.Extensions.Count - 1].ApproverName
+                }
+            });
+
+            Console.WriteLine(Item.Extensions[Item.Extensions.Count - 1].ApproverName);
         }
         private async void OnCloseOutSubmitButtonClick()
         {
+            if (Item.CloseOut.Name == string.Empty)
+            {
+                AffraNotificationService.NotifyWarning("Manager is required.");
+                return;
+            }
+
             Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
             Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseoutPendingForApproval;
 
             await SubmitAsync(Item);
+
+            using var serviceScope = ServiceProvider.CreateScope();
+            IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+            var query = notificationService.InsertAsync(new Message
+            {
+                Subject = Item.RecordNumber,
+                Content = "Approval needed!",
+                Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.CloseOut.Name
+                }
+            });
         }
-        private void OnAddExtensionButtonClick()
+        private async Task OnAddExtensionButtonClick()
         {
+            if(Item.Extensions.Count == 5)
+            {
+                AffraNotificationService.NotifyWarning("Maximum extension reached.");
+                return;
+            }
+
             Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Extension;
             Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.ExtensionSubmitForApproval;
 
             Item.Extensions.Add(new Extension
             {
                 ExtensionNo = Item.Extensions.Count + 1,
-                DurationExtended = 0,
+                DurationExtended = 180,
                 ReviewDate = System.DateTimeOffset.UtcNow,
-                ApproverNameColection = string.Empty,
+                ApproverNameColection = await LoadExtensionAuthorities(),
                 ApproverName = string.Empty,
                 ApproverDesignation = string.Empty,
                 ApprovalSignature = string.Empty
@@ -322,18 +427,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         {
             this.currentStep = current;
         }
-        protected Task SubmitAsync(ManagementOfChangeRecord args)
+        protected Task SubmitAsync(ManagementOfChangeRecord args, bool closeDialog = true)
         {
-            DialogService.Close(true);
+            if(closeDialog)
+                DialogService.Close(true);
+
             return Task.CompletedTask;
         }
         private void OnIdentificationExpiryDateChange(DateTimeChangedEventArgs args)
         {
             Item.Identification.DurationOfChange = (int)(args.Date - DateTime.Now.AddDays(-1)).TotalDays;
-        }
-        private void OnMOCFieldChange(ManagementOfChangeField args)
-        {
-            Item.RecordNumber = $"MOC-{args}-{DateTime.Now:yyyyMMddHHmmss}";
         }
         private IGenericService<User> GetGenericService(IServiceScope serviceScope)
         {
@@ -397,6 +500,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.EndorsementSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
                 Item.CloseOut.DateUI = DateTime.Now;
+                Item.Endorsement.Name = string.Empty;
                 await SubmitAsync(Item);
             }
         }
@@ -428,6 +532,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.AuthorisationAndApprovalSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
                 Item.CloseOut.DateUI = DateTime.Now;
+                Item.AuthorisationAndApproval.Name = string.Empty;
                 await SubmitAsync(Item);
             }
         }
@@ -440,7 +545,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
             if (confirmResult == ConfirmResult.Yes)
             {
-                Item.Extensions[item.ExtensionNo - 1].ApprovalSignature = item.ApproverName;
+                Item.Extensions[item.ExtensionNo - 1].ApprovalSignature = Item.Extensions[item.ExtensionNo - 1].ApproverName;
 
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseOutSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
@@ -460,6 +565,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.ExtensionSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Extension;
                 Item.CloseOut.DateUI = DateTime.Now;
+                Item.Extensions[item.ExtensionNo - 1].ApproverName = string.Empty;
                 await SubmitAsync(Item);
             }
         }
