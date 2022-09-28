@@ -1,4 +1,5 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+﻿using System;
+using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
@@ -41,7 +42,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
         public int Count { get; set; }
-
+        private object First;
+        private object Last;
+        private object Middle;
 
         protected override async Task OnInitializedAsync()
         {
@@ -94,6 +97,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             isLoading = true;
             items = new Dictionary<string, IEnumerable<IDaily>>();
             this.types = this.types.Distinct().ToHashSet();
+            this.Count = 0;
             foreach (var type in this.types)
             {
                 using var serviceScope = ServiceProvider.CreateScope();
@@ -117,6 +121,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     .Cast<IDaily>()
                     .OrderBy(x => x.Date)
                     .ToList();
+
+                if (this.Count == 0 && typeItems.Count > 0)
+                {
+                    this.Count = typeItems.Count;
+                    this.First = typeItems.FirstOrDefault()?.DateUI;
+                    this.Last = typeItems.LastOrDefault()?.DateUI;
+                    this.Middle = typeItems[this.Count / 2].DateUI;
+                }
                 this.items.TryAdd(type, typeItems);
             }
 
@@ -236,6 +248,31 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         {
             return this.ReloadAsync();
         }
+
+        private string Format(object value)
+        {
+            string formatString = string.IsNullOrEmpty(this.FormatString)
+                ? "{0}"
+                : this.FormatString;
+            if (value != null
+                && value is DateTime dateTime)
+            {
+                if(this.Count < 10
+                    || dateTime.CompareTo(this.First) == 0
+                    || dateTime.CompareTo(this.Last) == 0
+                    || dateTime.CompareTo(this.Middle) == 0)
+                {
+                    return string.Format(formatString, dateTime.ToLocalTime());
+                }       
+            }
+            else if (value != null)
+            {
+                return string.Format(formatString, value);
+            }
+
+            return string.Empty;
+        }
+        
 
         public async ValueTask DisposeAsync()
         {

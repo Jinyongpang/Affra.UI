@@ -23,8 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntDesign" Version="0.11.0" />
-    <PackageReference Include="BlazorDateRangePicker" Version="4.2.0" />
+    <PackageReference Include="AntDesign" Version="0.12.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.3" PrivateAssets="all" />
@@ -38,7 +37,7 @@
 	<PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
 	<PackageReference Include="Microsoft.OData.Extensions.Client" Version="1.0.6" />
 	<PackageReference Include="Microsoft.OData.Extensions.Client.Abstractions" Version="1.0.6" />
-    <PackageReference Include="Radzen.Blazor" Version="3.20.12" />
+    <PackageReference Include="Radzen.Blazor" Version="4.1.4" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.18" />
     <TrimmerRootAssembly Include="Microsoft.Authentication.WebAssembly.Msal" />
   </ItemGroup>
