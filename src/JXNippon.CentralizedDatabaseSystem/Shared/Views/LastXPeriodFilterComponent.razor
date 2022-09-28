@@ -1,0 +1,20 @@
+﻿<Space>
+    @if (!string.IsNullOrEmpty(this.Title))
+    {   
+        <SpaceItem>
+            <span>@this.Title</span>
+        </SpaceItem>
+    }
+    <SpaceItem>
+        <AntDesign.InputNumber Size="large" @bind-Value=@number TValue="int" OnChange=OnChangeAsync></AntDesign.InputNumber>
+    </SpaceItem>
+    <SpaceItem>
+        <RadzenSelectBar @bind-Value=@unit TValue="int" Change=OnChangeAsync>
+            <Items>
+                <RadzenSelectBarItem Text="Days" Value="1" />
+                <RadzenSelectBarItem Text="Months" Value="2" />
+                <RadzenSelectBarItem Text="Years" Value="3" />
+            </Items>
+        </RadzenSelectBar>
+    </SpaceItem>
+</Space>   

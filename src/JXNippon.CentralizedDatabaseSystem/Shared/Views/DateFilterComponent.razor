@@ -8,3 +8,11 @@ else if(this.DateFilter.DateFilterType == DateFilterType.Month)
 {
     <MonthFilterComponent @ref=@Filter Title=@this.Column.Title></MonthFilterComponent>
 }
+else if(this.DateFilter.DateFilterType == DateFilterType.NinetyMonth)
+{
+    <NinetyDaysFilterComponent @ref=@Filter Title=@this.Column.Title></NinetyDaysFilterComponent>
+}
+else if(this.DateFilter.DateFilterType == DateFilterType.LastXPeriod)
+{
+    <LastXPeriodFilterComponent @ref=@Filter Title=@this.Column.Title></LastXPeriodFilterComponent>
+}

@@ -4,5 +4,7 @@
     {
         Range,
         Month,
+        NinetyMonth,
+        LastXPeriod,
     }
 }
