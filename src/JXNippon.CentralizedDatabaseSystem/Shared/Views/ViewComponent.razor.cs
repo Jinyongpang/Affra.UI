@@ -285,7 +285,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 return widthGridSize;
             }
-            else if (this.focusId == i)
+            else if (this.CheckIsFocused(i))
             {
                 return "focused-card col";
             }
@@ -297,9 +297,28 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private string GetCardFocusClass(int? i)
         {
-            return this.focusId == i
+            return this.CheckIsFocused(i)
                 ? "focused"
                 : string.Empty;
+        }
+
+        private int GetPageSize(int? i)
+        {
+            return this.CheckIsFocused(i)
+                ? 10
+                : 5;
+        }
+
+        private int GetPageNumbersCount(int? i)
+        {
+            return this.CheckIsFocused(i)
+                ? 5
+                : 1;
+        }
+
+        private bool CheckIsFocused(int? i)
+        {
+            return this.focusId == i;
         }
 
         private void HandleDragStart(DragEventArgs arg, Row row, Column column, int draggedId)

@@ -33,6 +33,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public string Subscription { get; set; }
         [Parameter] public IEnumerable<GridColumn> GridColumns { get; set; }
         [Parameter] public Column Column { get; set; }
+        [Parameter] public int PageSize { get; set; }
+        [Parameter] public int PageNumbersCount { get; set; }
+        
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }

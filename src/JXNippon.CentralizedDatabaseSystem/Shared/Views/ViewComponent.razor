@@ -19,7 +19,7 @@
 @if (View is not null)
 {
     int id = 0;
-    foreach(var row in View.Rows)
+    foreach (var row in View.Rows)
     {
         <div class="row">
             @if (IsDesignMode 
@@ -152,7 +152,7 @@
                                         var dateFilter = !string.IsNullOrEmpty(grid.DateFilterId)
                                             ? this.dateFilterComponents[grid.DateFilterId].Filter
                                             : null;
-                                        <DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col"></DataGridComponent>
+                                        <DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize(j) PageNumbersCount=GetPageNumbersCount(j)></DataGridComponent>
                                   }
                                     else if (col.ComponentType ==  nameof(AnnouncementCard))
                                     {
