@@ -1,6 +1,7 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
@@ -22,6 +23,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private bool isDisposed = false;
         private HashSet<string> types = new HashSet<string>();
 
+        [Parameter] public IDateFilterComponent DateFilter { get; set; }
         [Parameter] public EventCallback<IQueryable<dynamic>> LoadData { get; set; }
         [Parameter] public string FormatString { get; set; }
         [Parameter] public object Step { get; set; }
@@ -31,8 +33,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
         [Parameter] public Type TType { get; set; }
         [Parameter] public bool HasSubscription { get; set; }
-        [Parameter] public DateTimeOffset? StartDate { get; set; }
-        [Parameter] public DateTimeOffset? EndDate { get; set; }
         [Parameter] public Column Column { get; set; }
         [Parameter] public ICollection<string> Colors { get; set; } = Array.Empty<string>();
 
@@ -40,7 +40,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
-        public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
 
@@ -68,7 +67,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     subscriptions.Add(subscription);
                 }
             }
-            await ReloadAsync(StartDate, EndDate);
+
+            if (DateFilter is not null)
+            {
+                DateFilter.OnDateRangeChanged += this.OnDateRangeChangedAsync;
+            }    
+
+            await ReloadAsync();
             await base.OnInitializedAsync();
         }
 
@@ -78,10 +83,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return this.ReloadAsync();
         }
 
-        public async Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
+        public async Task ReloadAsync()
         {
-            StartDate = startDate ?? StartDate;
-            EndDate = endDate ?? EndDate;
             await LoadDataAsync();
             await chart.Reload();
         }
@@ -96,12 +99,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 using var serviceScope = ServiceProvider.CreateScope();
                 var service = this.ViewService.GetGenericService(serviceScope, type);
                 Queryable = service.Get();
-                if (StartDate != null && EndDate != null)
+                if (DateFilter?.Start != null && DateFilter?.End != null)
                 {
                     Queryable = Queryable
                         .Cast<IDaily>()
-                        .Where(item => item.Date >= StartDate.Value.ToUniversalTime())
-                        .Where(item => item.Date <= EndDate.Value.ToUniversalTime());
+                        .Where(item => item.Date >= DateFilter.Start.Value.ToUniversalTime())
+                        .Where(item => item.Date <= DateFilter.End.Value.ToUniversalTime());
                 }
                 else
                 {
@@ -229,12 +232,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             AffraNotificationService.NotifyException(ex);
         }
 
+        private Task OnDateRangeChangedAsync(DateRange dateRange)
+        {
+            return this.ReloadAsync();
+        }
+
         public async ValueTask DisposeAsync()
         {
             try
             {
                 if (!isDisposed)
                 {
+                    if (DateFilter is not null)
+                    {
+                        DateFilter.OnDateRangeChanged -= this.OnDateRangeChangedAsync;
+                    }
                     chart.Dispose();
                     foreach (var subscription in this.subscriptions)
                     {

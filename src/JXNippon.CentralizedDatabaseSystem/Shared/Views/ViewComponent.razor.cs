@@ -1,6 +1,7 @@
 ﻿using Affra.Core.Domain.Services;
 using JXNippon.CentralizedDatabaseSystem.Domain.Announcements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
@@ -35,10 +36,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         public EventCallback<bool> HasFocusChanged { get; set; }
 
         [Parameter] public View View { get; set; }
-
-        [Parameter] public DateTimeOffset? StartDate { get; set; }
-
-        [Parameter] public DateTimeOffset? EndDate { get; set; }
 
         [Parameter] public bool IsDesignMode { get; set; }
 
@@ -100,20 +97,32 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
-        public Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
+        private IDictionary<string, DateFilterComponent> dateFilterComponents = new Dictionary<string, DateFilterComponent>();
+        public DateFilterComponent dateFilterComponentRef
         {
-            StartDate = startDate ?? StartDate;
-            EndDate = endDate ?? EndDate;
+            set
+            {
+                if (dateFilterComponents.TryGetValue(value.DateFilter.Id, out var existingComponent))
+                {
+                    dateFilterComponents.Remove(value.DateFilter.Id);
+                }
+
+                dateFilterComponents.Add(value.DateFilter.Id, value);
+            }
+        }
+
+        public Task ReloadAsync()
+        {
             StateHasChanged();
             var allColumns = this.View.Rows.SelectMany(x => x.Columns);
             List<Task> tasks = new List<Task>();
             tasks.AddRange(chartComponents
                 .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
-                .Select(x => x.ReloadAsync(StartDate, EndDate))
+                .Select(x => x.ReloadAsync())
                 .ToList());
             tasks.AddRange(gridComponents
                 .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
-                .Select(x => x.ReloadAsync(StartDate, EndDate))
+                .Select(x => x.ReloadAsync())
                 .ToList());
 
             tasks.AddRange(announcementComponents
@@ -195,7 +204,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     new Dictionary<string, object>() { { "Column", data }, { "View", View } },
                     Constant.FullScreenDialogOptions);
             }
-
+            else if (data.ComponentType == nameof(DateFilter))
+            {
+                response = await DialogService.OpenAsync<DateFilterDialog>("Edit",
+                    new Dictionary<string, object>() { { "Column", data }, { "View", View } },
+                    Constant.FullScreenDialogOptions);
+            }
 
             if (response == true)
             {

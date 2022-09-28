@@ -9,53 +9,47 @@ using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class ChartDialog
+    public partial class DateFilterDialog
     {
         [Parameter] public View View { get; set; }
         [Parameter] public Column Column { get; set; }
-        public Chart Item { get; set; }
+        public DateFilter Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
 
-        private IEnumerable<string> types;
         private bool isViewing { get => MenuAction == 3; }
         private int current { get; set; } = 0;
-
         private AntDesign.Steps steps;
 
-        private string[] dateFiltersId;
+
+        private static IEnumerable<string> types = Enum.GetValues(typeof(DateFilterType))
+            .Cast<DateFilterType>()
+            .Select(x => x.ToString())
+            .ToList();
+
 
         protected override Task OnInitializedAsync()
         {
             Column.ViewName = View.Name;
             Column.View = View;
-            types = ViewService.GetTypeMapping()
-                .Select(x => x.Key)
-                .ToHashSet();
 
-            Item = new Chart()
+            Item = new DateFilter()
             {
-                ChartSeries = new Collection<ChartSeries>(),
+                IsSimpleCard = true,
             };
             if (!string.IsNullOrEmpty(Column.ColumnComponent))
             {
-                Item = JsonSerializer.Deserialize<Chart>(Column.ColumnComponent) ?? Item;
+                Item = JsonSerializer.Deserialize<DateFilter>(Column.ColumnComponent) ?? Item;
             }
             
-            dateFiltersId = View.Rows.SelectMany(x => x.Columns)
-                .Where(x => x.ComponentType == nameof(DateFilter))
-                .Select(x => JsonSerializer.Deserialize<DateFilter>(x.ColumnComponent).Id)
-                .Distinct()
-                .ToArray();
-
             return Task.CompletedTask;
         }
 
-        protected Task SubmitAsync(Chart arg)
+        protected Task SubmitAsync(DateFilter arg)
         {
-            if (this.current < 2)
+            if (this.current < 1)
             {
                 this.MovePage(1);
             }

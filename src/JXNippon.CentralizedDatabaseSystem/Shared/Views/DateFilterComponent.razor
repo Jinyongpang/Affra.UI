@@ -1,0 +1,10 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Filters
+
+@if(this.DateFilter.DateFilterType == DateFilterType.Range)
+{
+    <DateRangeFilterComponent @ref=@Filter Title=@this.Column.Title></DateRangeFilterComponent>
+}
+else if(this.DateFilter.DateFilterType == DateFilterType.Month)
+{
+    <MonthFilterComponent @ref=@Filter Title=@this.Column.Title></MonthFilterComponent>
+}

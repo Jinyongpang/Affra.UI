@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Grids
     {
         public string Type { get; set; }
 
+        public string DateFilterId { get; set; }
+
         public ICollection<GridColumn> GridColumns { get; set; }
 
         [IgnoreClientProperty]

@@ -4,6 +4,7 @@ using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Announcements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
@@ -239,7 +240,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                    new Dictionary<string, object>() { { "Column", data }, { "View", view } },
                    Constant.FullScreenDialogOptions);
             }
-
+            else if (data.ComponentType == nameof(DateFilter))
+            {
+                response = await DialogService.OpenAsync<DateFilterDialog>(title,
+                   new Dictionary<string, object>() { { "Column", data }, { "View", view } },
+                   Constant.FullScreenDialogOptions);
+            }
 
             if (response == true)
             {

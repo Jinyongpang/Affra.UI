@@ -16,6 +16,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
 
         public string AxisTitle { get; set; }
 
+        public string DateFilterId { get; set; }
+
         public ICollection<ChartSeries> ChartSeries { get; set; }
 
         [IgnoreClientProperty]

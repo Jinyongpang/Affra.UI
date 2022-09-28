@@ -1,5 +1,6 @@
 ﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Announcements
 @using JXNippon.CentralizedDatabaseSystem.Domain.Charts
+@using JXNippon.CentralizedDatabaseSystem.Domain.Filters
 @using JXNippon.CentralizedDatabaseSystem.Domain.Grids
 @using ViewODataService.Affra.Service.View.Domain.Views
 
@@ -76,6 +77,12 @@
                         ComponentType = nameof(AnnouncementCard),
                     },
                     "Add")) Disabled=@(!hasItem)><a><i class="fas fa-bullhorn fa-fw fa-xl"></i> Add Announcement...</a></MenuItem>
+                    <MenuItem Key="AddDateFilter" @onclick=@(args => ShowDialogAsync(
+                    new Column()
+                    {
+                        ComponentType = nameof(DateFilter),
+                    },
+                    "Add")) Disabled=@(!hasItem)><a><i class="fas fa-bullhorn fa-fw fa-xl"></i> Add Date Filter...</a></MenuItem>
                     <MenuDivider />
                     <MenuItem Key="Export" Disabled=@(!hasItem)><a @onclick=ExportAsync><i class="fas fa-download fa-fw fa-xl"></i> Export</a></MenuItem>
                     <MenuItem Key="Import">
