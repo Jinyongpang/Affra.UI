@@ -18,7 +18,7 @@
         </div>       
     </Header>
     <Layout Style="height: 100%;">
-        <Sider Class="d-none d-lg-inline">
+        <Sider Class="d-none d-lg-inline" Collapsed Collapsible>
             <Menu DefaultSelectedKeys=@(new[] { "All" }) Style="height: 100%;" Mode=@MenuMode.Inline @ref=menu OnMenuItemClicked=OnMenuItemSelectAsync>
                 <MenuItem Key="All">         
                     <IconTemplate>
