@@ -7,7 +7,6 @@
 
         DateTime? End { get; }
 
-
         event OnDateRangeChangedHandler OnDateRangeChanged;
     }
 }
