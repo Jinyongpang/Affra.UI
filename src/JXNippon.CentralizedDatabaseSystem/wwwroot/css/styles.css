@@ -323,7 +323,8 @@ body {
     background-color: #ffffff !important;
     border: 1px solid #dbe0ea !important;
     box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
-    height: calc(90vh - 5rem);
+    height: calc(100vh - 5rem);
+    overflow-x: hidden;
 }
 
 .ant-carousel .slick-dots-bottom {
@@ -541,7 +542,8 @@ a {
 
 .page-content {
     height: calc(100vh - 5rem);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .popup-menu {
