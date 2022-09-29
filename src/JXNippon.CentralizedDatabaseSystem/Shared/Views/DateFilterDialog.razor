@@ -1,0 +1,64 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
+@using JXNippon.CentralizedDatabaseSystem.Domain.Filters
+@using Row = ViewODataService.Affra.Service.View.Domain.Views.Row
+
+<RadzenTemplateForm Data="@Item" Submit="@(async (DateFilter args) => { await SubmitAsync(args); })">
+    <div class="fullscreen-dialog">
+        <div class="fullscreen-dialog-header">
+            <Icon Type="arrow-left" Theme="outline" Class="fullscreen-dialog-back" OnClick=@(() => this.DialogService.Close())/>
+            <Steps ShowProgressDot Current="current" @ref=@this.steps Class="steps-navbar">
+                <Step Title="Configurations" />
+                <Step Title="Preview" />
+            </Steps>
+            <div class="steps-action-buttons">
+                <RadzenButton Visible=@(this.current > 0) Style="margin-right: 10px;" ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton> 
+                <RadzenButton Visible=@(this.current < 1) ButtonType="Radzen.ButtonType.Submit">Next</RadzenButton> 
+                <RadzenButton Visible=@(this.current == 1) ButtonType="Radzen.ButtonType.Submit" Text="Save" Disabled=@isViewing/>            
+             </div>
+        </div>
+        <Divider />
+        <div class="col view-dialog-content">
+            @if (this.current == 0)
+            {   
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Title" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Column.Title" Disabled=@isViewing></RadzenTextBox>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Id" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Id" class="w-100" Placeholder="Enter Id..." @bind-Value="@Item.Id" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenRequiredValidator Component="Id" Text="Id is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Type" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenDropDown Name="Type" class="w-100" Placeholder="Select type..." Data=@types @bind-Value="@Item.DateFilterTypeString" Disabled=@isViewing></RadzenDropDown>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Width Size" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenNumeric Max=12 Min=1 Name="WidthGridSize" class="w-100" Placeholder="Enter width size..." @bind-Value="@Item.WidthGridSize" Disabled=@isViewing></RadzenNumeric>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <DateFilterComponent DateFilter=@Item Column=@Column/>
+            }
+           
+        </div>
+    </div>
+</RadzenTemplateForm>

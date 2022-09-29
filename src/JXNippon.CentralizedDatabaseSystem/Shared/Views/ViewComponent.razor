@@ -1,6 +1,7 @@
 ﻿@using System.Text.Json;
 @using Affra.Core.Domain.Services
 @using JXNippon.CentralizedDatabaseSystem.Domain.Announcements
+@using JXNippon.CentralizedDatabaseSystem.Domain.Filters
 @using JXNippon.CentralizedDatabaseSystem.Domain.Grids
 @using JXNippon.CentralizedDatabaseSystem.Domain.Views
 @using JXNippon.CentralizedDatabaseSystem.Domain.Charts
@@ -18,7 +19,7 @@
 @if (View is not null)
 {
     int id = 0;
-    foreach(var row in View.Rows)
+    foreach (var row in View.Rows)
     {
         <div class="row">
             @if (IsDesignMode 
@@ -71,7 +72,7 @@
                         ? "col-md"
                         : $"col-md-{columnComponent.WidthGridSize}";
 
-                    <div class="view-column-card col-sm-12 py-3 @draggableClass @this.GetFocusClass(j, @widthGridSize)" draggable="@isDraggable" ondragover="event.preventDefault();"
+                    <div class="col-sm-12 py-3 @draggableClass @this.GetFocusClass(j, @widthGridSize)" draggable="@isDraggable" ondragover="event.preventDefault();"
                         @ondrop=@(args => HandleDropOnColumnAsync(args, col))
                         @ondragstart=@(args => HandleDragStart(args, row, col, j))         
                         @ondragenter="@(args => HandleDragEnter(j))"
@@ -81,21 +82,32 @@
                         {
                             <Card Size="medium" Id=@j.ToString() Style="pointer-event: none;" Class=@($"card-shadow view-chart view-grid {this.GetCardFocusClass(j)}")> 
                                 <Body>
-                                    @if (col.ComponentType ==  nameof(Chart))
-                                    {
+                                    @if (col.ComponentType == nameof(Chart))
+                                    {   
                                         Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                                        <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                                        var dateFilter = !string.IsNullOrEmpty(chart.DateFilterId)
+                                            ? this.dateFilterComponents[chart.DateFilterId].Filter
+                                            : null;
+                                        <ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
                                             Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col" Colors=@(this.ColorsGroups.ElementAt(j))></ChartComponent>
                                     }
                                     else if (col.ComponentType ==  nameof(Grid))
                                     {
                                         Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                                        <DataGridComponent @ref="@gridComponentRef" TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns" Column="@col"></DataGridComponent>
+                                        var dateFilter = !string.IsNullOrEmpty(grid.DateFilterId)
+                                            ? this.dateFilterComponents[grid.DateFilterId].Filter
+                                            : null;
+                                        <DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col"></DataGridComponent>
                                     }
                                     else if (col.ComponentType ==  nameof(AnnouncementCard))
                                     {
                                         AnnouncementCard component = JsonSerializer.Deserialize<AnnouncementCard>(col.ColumnComponent);
                                         <AnnouncementCardComponent @ref="@announcementComponentRef" AnnouncementCard=@component Column=@col HasSubscription=@(!this.IsDesignMode)></AnnouncementCardComponent>
+                                    }
+                                    else if (col.ComponentType ==  nameof(DateFilter))
+                                    {
+                                        DateFilter component = JsonSerializer.Deserialize<DateFilter>(col.ColumnComponent);
+                                        <DateFilterComponent @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>
                                     }
                                 </Body>
                             </Card> 
@@ -128,18 +140,29 @@
                                     @if (col.ComponentType ==  nameof(Chart))
                                     {
                                         Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                                        <ChartComponent @ref="@chartComponentRef" StartDate="@StartDate" EndDate="@EndDate" TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                                        var dateFilter = !string.IsNullOrEmpty(chart.DateFilterId)
+                                            ? this.dateFilterComponents[chart.DateFilterId].Filter
+                                            : null;
+                                        <ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
                                             Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col" Colors=@(this.ColorsGroups.ElementAt(j))></ChartComponent>
                                     }
                                     else if (col.ComponentType ==  nameof(Grid))
                                     {
-                                        Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                                        <DataGridComponent @ref="@gridComponentRef" TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" StartDate="@StartDate" EndDate="@EndDate" GridColumns="@grid.GridColumns" Column="@col"></DataGridComponent>
-                                    }
+                                       Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
+                                        var dateFilter = !string.IsNullOrEmpty(grid.DateFilterId)
+                                            ? this.dateFilterComponents[grid.DateFilterId].Filter
+                                            : null;
+                                        <DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize(j) PageNumbersCount=GetPageNumbersCount(j)></DataGridComponent>
+                                  }
                                     else if (col.ComponentType ==  nameof(AnnouncementCard))
                                     {
                                         AnnouncementCard component = JsonSerializer.Deserialize<AnnouncementCard>(col.ColumnComponent);
                                         <AnnouncementCardComponent @ref="@announcementComponentRef" AnnouncementCard=@component Column=@col HasSubscription=@(!this.IsDesignMode)></AnnouncementCardComponent>
+                                    }
+                                    else if (col.ComponentType ==  nameof(DateFilter))
+                                    {
+                                        DateFilter component = JsonSerializer.Deserialize<DateFilter>(col.ColumnComponent);
+                                        <DateFilterComponent @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>
                                     }
                                 </Body>
                             </Card> 

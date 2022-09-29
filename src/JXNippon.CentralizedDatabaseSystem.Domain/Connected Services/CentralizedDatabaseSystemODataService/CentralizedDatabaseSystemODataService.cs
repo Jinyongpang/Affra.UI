@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 23/9/2022 10:57:58 PM
+// Generation date: 29/9/2022 10:12:00 AM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -44838,6 +44838,635 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments
+{
+    /// <summary>
+    /// There are no comments for DailyGasProductionDeliveryScheduleSingle in the schema.
+    /// </summary>
+    public partial class DailyGasProductionDeliveryScheduleSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DailyGasProductionDeliverySchedule>
+    {
+        /// <summary>
+        /// Initialize a new DailyGasProductionDeliveryScheduleSingle object.
+        /// </summary>
+        public DailyGasProductionDeliveryScheduleSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new DailyGasProductionDeliveryScheduleSingle object.
+        /// </summary>
+        public DailyGasProductionDeliveryScheduleSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new DailyGasProductionDeliveryScheduleSingle object.
+        /// </summary>
+        public DailyGasProductionDeliveryScheduleSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyGasProductionDeliverySchedule> query)
+            : base(query) {}
+
+        /// <summary>
+        /// There are no comments for MonthlyGasProductionDeliverySchedule in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle MonthlyGasProductionDeliverySchedule
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._MonthlyGasProductionDeliverySchedule == null))
+                {
+                    this._MonthlyGasProductionDeliverySchedule = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle(this.Context, GetPath("MonthlyGasProductionDeliverySchedule"));
+                }
+                return this._MonthlyGasProductionDeliverySchedule;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle _MonthlyGasProductionDeliverySchedule;
+    }
+    /// <summary>
+    /// There are no comments for DailyGasProductionDeliverySchedule in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class DailyGasProductionDeliverySchedule : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new DailyGasProductionDeliverySchedule object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="monthDate">Initial value of MonthDate.</param>
+        /// <param name="status">Initial value of Status.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static DailyGasProductionDeliverySchedule CreateDailyGasProductionDeliverySchedule(long ID, global::System.DateTimeOffset date, global::System.DateTimeOffset monthDate, global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus status, long xmin)
+        {
+            DailyGasProductionDeliverySchedule dailyGasProductionDeliverySchedule = new DailyGasProductionDeliverySchedule();
+            dailyGasProductionDeliverySchedule.Id = ID;
+            dailyGasProductionDeliverySchedule.Date = date;
+            dailyGasProductionDeliverySchedule.MonthDate = monthDate;
+            dailyGasProductionDeliverySchedule.Status = status;
+            dailyGasProductionDeliverySchedule.xmin = xmin;
+            return dailyGasProductionDeliverySchedule;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property MonthDate in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset MonthDate
+        {
+            get
+            {
+                return this._MonthDate;
+            }
+            set
+            {
+                this.OnMonthDateChanging(value);
+                this._MonthDate = value;
+                this.OnMonthDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _MonthDate;
+        partial void OnMonthDateChanging(global::System.DateTimeOffset value);
+        partial void OnMonthDateChanged();
+        /// <summary>
+        /// There are no comments for Property TotalGas in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<int> TotalGas
+        {
+            get
+            {
+                return this._TotalGas;
+            }
+            set
+            {
+                this.OnTotalGasChanging(value);
+                this._TotalGas = value;
+                this.OnTotalGasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<int> _TotalGas;
+        partial void OnTotalGasChanging(global::System.Nullable<int> value);
+        partial void OnTotalGasChanged();
+        /// <summary>
+        /// There are no comments for Property HIP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<int> HIP
+        {
+            get
+            {
+                return this._HIP;
+            }
+            set
+            {
+                this.OnHIPChanging(value);
+                this._HIP = value;
+                this.OnHIPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<int> _HIP;
+        partial void OnHIPChanging(global::System.Nullable<int> value);
+        partial void OnHIPChanged();
+        /// <summary>
+        /// There are no comments for Property FPSO in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<int> FPSO
+        {
+            get
+            {
+                return this._FPSO;
+            }
+            set
+            {
+                this.OnFPSOChanging(value);
+                this._FPSO = value;
+                this.OnFPSOChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<int> _FPSO;
+        partial void OnFPSOChanging(global::System.Nullable<int> value);
+        partial void OnFPSOChanged();
+        /// <summary>
+        /// There are no comments for Property Revision in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Revision
+        {
+            get
+            {
+                return this._Revision;
+            }
+            set
+            {
+                this.OnRevisionChanging(value);
+                this._Revision = value;
+                this.OnRevisionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Revision;
+        partial void OnRevisionChanging(string value);
+        partial void OnRevisionChanged();
+        /// <summary>
+        /// There are no comments for Property Remark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Remark
+        {
+            get
+            {
+                return this._Remark;
+            }
+            set
+            {
+                this.OnRemarkChanging(value);
+                this._Remark = value;
+                this.OnRemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Remark;
+        partial void OnRemarkChanging(string value);
+        partial void OnRemarkChanged();
+        /// <summary>
+        /// There are no comments for Property Status in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus Status
+        {
+            get
+            {
+                return this._Status;
+            }
+            set
+            {
+                this.OnStatusChanging(value);
+                this._Status = value;
+                this.OnStatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus _Status;
+        partial void OnStatusChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus value);
+        partial void OnStatusChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyGasProductionDeliverySchedule in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule MonthlyGasProductionDeliverySchedule
+        {
+            get
+            {
+                return this._MonthlyGasProductionDeliverySchedule;
+            }
+            set
+            {
+                this.OnMonthlyGasProductionDeliveryScheduleChanging(value);
+                this._MonthlyGasProductionDeliverySchedule = value;
+                this.OnMonthlyGasProductionDeliveryScheduleChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule _MonthlyGasProductionDeliverySchedule;
+        partial void OnMonthlyGasProductionDeliveryScheduleChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule value);
+        partial void OnMonthlyGasProductionDeliveryScheduleChanged();
+    }
+    /// <summary>
+    /// There are no comments for MonthlyGasProductionDeliveryScheduleSingle in the schema.
+    /// </summary>
+    public partial class MonthlyGasProductionDeliveryScheduleSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyGasProductionDeliverySchedule>
+    {
+        /// <summary>
+        /// Initialize a new MonthlyGasProductionDeliveryScheduleSingle object.
+        /// </summary>
+        public MonthlyGasProductionDeliveryScheduleSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyGasProductionDeliveryScheduleSingle object.
+        /// </summary>
+        public MonthlyGasProductionDeliveryScheduleSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyGasProductionDeliveryScheduleSingle object.
+        /// </summary>
+        public MonthlyGasProductionDeliveryScheduleSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyGasProductionDeliverySchedule> query)
+            : base(query) {}
+
+        /// <summary>
+        /// There are no comments for DailyGasProductionDeliverySchedules in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule> DailyGasProductionDeliverySchedules
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._DailyGasProductionDeliverySchedules == null))
+                {
+                    this._DailyGasProductionDeliverySchedules = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule>(GetPath("DailyGasProductionDeliverySchedules"));
+                }
+                return this._DailyGasProductionDeliverySchedules;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule> _DailyGasProductionDeliverySchedules;
+    }
+    /// <summary>
+    /// There are no comments for MonthlyGasProductionDeliverySchedule in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class MonthlyGasProductionDeliverySchedule : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new MonthlyGasProductionDeliverySchedule object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="status">Initial value of Status.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static MonthlyGasProductionDeliverySchedule CreateMonthlyGasProductionDeliverySchedule(long ID, global::System.DateTimeOffset date, global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus status, long xmin)
+        {
+            MonthlyGasProductionDeliverySchedule monthlyGasProductionDeliverySchedule = new MonthlyGasProductionDeliverySchedule();
+            monthlyGasProductionDeliverySchedule.Id = ID;
+            monthlyGasProductionDeliverySchedule.Date = date;
+            monthlyGasProductionDeliverySchedule.Status = status;
+            monthlyGasProductionDeliverySchedule.xmin = xmin;
+            return monthlyGasProductionDeliverySchedule;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property TotalGas in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<int> TotalGas
+        {
+            get
+            {
+                return this._TotalGas;
+            }
+            set
+            {
+                this.OnTotalGasChanging(value);
+                this._TotalGas = value;
+                this.OnTotalGasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<int> _TotalGas;
+        partial void OnTotalGasChanging(global::System.Nullable<int> value);
+        partial void OnTotalGasChanged();
+        /// <summary>
+        /// There are no comments for Property HIP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<int> HIP
+        {
+            get
+            {
+                return this._HIP;
+            }
+            set
+            {
+                this.OnHIPChanging(value);
+                this._HIP = value;
+                this.OnHIPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<int> _HIP;
+        partial void OnHIPChanging(global::System.Nullable<int> value);
+        partial void OnHIPChanged();
+        /// <summary>
+        /// There are no comments for Property FPSO in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<int> FPSO
+        {
+            get
+            {
+                return this._FPSO;
+            }
+            set
+            {
+                this.OnFPSOChanging(value);
+                this._FPSO = value;
+                this.OnFPSOChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<int> _FPSO;
+        partial void OnFPSOChanging(global::System.Nullable<int> value);
+        partial void OnFPSOChanged();
+        /// <summary>
+        /// There are no comments for Property AverageOfTotalGas in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<double> AverageOfTotalGas
+        {
+            get
+            {
+                return this._AverageOfTotalGas;
+            }
+            set
+            {
+                this.OnAverageOfTotalGasChanging(value);
+                this._AverageOfTotalGas = value;
+                this.OnAverageOfTotalGasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<double> _AverageOfTotalGas;
+        partial void OnAverageOfTotalGasChanging(global::System.Nullable<double> value);
+        partial void OnAverageOfTotalGasChanged();
+        /// <summary>
+        /// There are no comments for Property Status in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus Status
+        {
+            get
+            {
+                return this._Status;
+            }
+            set
+            {
+                this.OnStatusChanging(value);
+                this._Status = value;
+                this.OnStatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus _Status;
+        partial void OnStatusChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus value);
+        partial void OnStatusChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property DailyGasProductionDeliverySchedules in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule> DailyGasProductionDeliverySchedules
+        {
+            get
+            {
+                return this._DailyGasProductionDeliverySchedules;
+            }
+            set
+            {
+                this.OnDailyGasProductionDeliverySchedulesChanging(value);
+                this._DailyGasProductionDeliverySchedules = value;
+                this.OnDailyGasProductionDeliverySchedulesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule> _DailyGasProductionDeliverySchedules = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule>();
+        partial void OnDailyGasProductionDeliverySchedulesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule> value);
+        partial void OnDailyGasProductionDeliverySchedulesChanged();
+    }
+    /// <summary>
+    /// There are no comments for DeliveryScheduleStatus in the schema.
+    /// </summary>
+    public enum DeliveryScheduleStatus
+    {
+        Firm = 0,
+        Outlook = 1
+    }
+    /// <summary>
+    /// Class containing all extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliveryScheduleSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliveryScheduleSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliveryScheduleSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliveryScheduleSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliveryScheduleSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliveryScheduleSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity
 {
     /// <summary>
@@ -44997,6 +45626,11 @@ namespace CentralizedDatabaseSystemODataService.Default
                 return resolvedType;
             }
             resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.Deferments", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -45163,6 +45797,10 @@ namespace CentralizedDatabaseSystemODataService.Default
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.", clientType.Name);
+            }
+            if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.", clientType.Name);
             }
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics", global::System.StringComparison.Ordinal))
             {
@@ -46953,6 +47591,40 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SalesMY.MonthlyFPSOSale> _MonthlyFPSOSale;
         /// <summary>
+        /// There are no comments for DailyGasProductionDeliverySchedule in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule> DailyGasProductionDeliverySchedule
+        {
+            get
+            {
+                if ((this._DailyGasProductionDeliverySchedule == null))
+                {
+                    this._DailyGasProductionDeliverySchedule = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule>("DailyGasProductionDeliverySchedule");
+                }
+                return this._DailyGasProductionDeliverySchedule;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule> _DailyGasProductionDeliverySchedule;
+        /// <summary>
+        /// There are no comments for MonthlyGasProductionDeliverySchedule in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule> MonthlyGasProductionDeliverySchedule
+        {
+            get
+            {
+                if ((this._MonthlyGasProductionDeliverySchedule == null))
+                {
+                    this._MonthlyGasProductionDeliverySchedule = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule>("MonthlyGasProductionDeliverySchedule");
+                }
+                return this._MonthlyGasProductionDeliverySchedule;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule> _MonthlyGasProductionDeliverySchedule;
+        /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -47767,6 +48439,22 @@ namespace CentralizedDatabaseSystemODataService.Default
         public void AddToMonthlyFPSOSale(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SalesMY.MonthlyFPSOSale monthlyFPSOSale)
         {
             base.AddObject("MonthlyFPSOSale", monthlyFPSOSale);
+        }
+        /// <summary>
+        /// There are no comments for DailyGasProductionDeliverySchedule in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToDailyGasProductionDeliverySchedule(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule dailyGasProductionDeliverySchedule)
+        {
+            base.AddObject("DailyGasProductionDeliverySchedule", dailyGasProductionDeliverySchedule);
+        }
+        /// <summary>
+        /// There are no comments for MonthlyGasProductionDeliverySchedule in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToMonthlyGasProductionDeliverySchedule(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule monthlyGasProductionDeliverySchedule)
+        {
+            base.AddObject("MonthlyGasProductionDeliverySchedule", monthlyGasProductionDeliverySchedule);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -50064,6 +50752,42 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
       </EntityType>
     </Schema>
+    <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.Deferments"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""DailyGasProductionDeliverySchedule"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""MonthDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""TotalGas"" Type=""Edm.Int32"" />
+        <Property Name=""HIP"" Type=""Edm.Int32"" />
+        <Property Name=""FPSO"" Type=""Edm.Int32"" />
+        <Property Name=""Revision"" Type=""Edm.String"" />
+        <Property Name=""Remark"" Type=""Edm.String"" />
+        <Property Name=""Status"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <NavigationProperty Name=""MonthlyGasProductionDeliverySchedule"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule"" />
+      </EntityType>
+      <EntityType Name=""MonthlyGasProductionDeliverySchedule"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""TotalGas"" Type=""Edm.Int32"" />
+        <Property Name=""HIP"" Type=""Edm.Int32"" />
+        <Property Name=""FPSO"" Type=""Edm.Int32"" />
+        <Property Name=""AverageOfTotalGas"" Type=""Edm.Double"" />
+        <Property Name=""Status"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <NavigationProperty Name=""DailyGasProductionDeliverySchedules"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule)"" />
+      </EntityType>
+      <EnumType Name=""DeliveryScheduleStatus"">
+        <Member Name=""Firm"" Value=""0"" />
+        <Member Name=""Outlook"" Value=""1"" />
+      </EnumType>
+    </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EnumType Name=""ModelValidationStatus"">
         <Member Name=""Pending"" Value=""0"" />
@@ -50835,6 +51559,22 @@ namespace CentralizedDatabaseSystemODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""MonthlyFPSOSale"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.SalesMY.MonthlyFPSOSale"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""DailyGasProductionDeliverySchedule"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule"">
+          <NavigationPropertyBinding Path=""MonthlyGasProductionDeliverySchedule"" Target=""MonthlyGasProductionDeliverySchedule"" />
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""MonthlyGasProductionDeliverySchedule"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule"">
+          <NavigationPropertyBinding Path=""DailyGasProductionDeliverySchedules"" Target=""DailyGasProductionDeliverySchedule"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

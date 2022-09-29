@@ -1,6 +1,7 @@
 ﻿using System.Dynamic;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
@@ -25,14 +26,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private bool isDisposed = false;
         private IDictionary<string, GridColumn> gridColumnDictionary;
 
+        [Parameter] public IDateFilterComponent DateFilter { get; set; }
         [Parameter] public EventCallback<IQueryable<dynamic>> LoadData { get; set; }
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
         [Parameter] public string TType { get; set; }
         [Parameter] public string Subscription { get; set; }
-        [Parameter] public DateTimeOffset? StartDate { get; set; }
-        [Parameter] public DateTimeOffset? EndDate { get; set; }
         [Parameter] public IEnumerable<GridColumn> GridColumns { get; set; }
         [Parameter] public Column Column { get; set; }
+        [Parameter] public int PageSize { get; set; }
+        [Parameter] public int PageNumbersCount { get; set; }
+        
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
@@ -59,8 +62,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
                 await subscription.StartAsync();
-            }           
-            await ReloadAsync(StartDate, EndDate);
+            }
+            if (DateFilter is not null)
+            {
+                DateFilter.OnDateRangeChanged += this.OnDateRangeChangedAsync;
+            }
+            await ReloadAsync();
         }
 
         private Task OnContentUpdateAsync(object obj)
@@ -68,17 +75,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             StateHasChanged();
             return this.ReloadAsync();
         }
-        public Task ReloadAsync(DateTimeOffset? startDate = null, DateTimeOffset? endDate = null)
+        public Task ReloadAsync()
         {
-            StartDate = startDate ?? StartDate;
-            EndDate = endDate ?? EndDate;
             return grid?.FirstPage(true) ?? Task.CompletedTask;
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
-            this.items = await this.GetDailyItemsAsync(this.TType, this.StartDate, this.EndDate, args);
+            this.items = await this.GetDailyItemsAsync(this.TType, DateFilter?.Start, DateFilter?.End, args);
             itemsDictionary = await this.MergeOverridenTypeAsync(this.items) ?? new List<ExpandoObject>();
             isLoading = false;
         }
@@ -267,12 +272,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
             return string.Empty;
         }
+
+        private Task OnDateRangeChangedAsync(DateRange dateRange)
+        {
+            return this.ReloadAsync();
+        }
         public async ValueTask DisposeAsync()
         {
             try
             {
                 if (!isDisposed)
                 {
+                    if (DateFilter is not null)
+                    {
+                        DateFilter.OnDateRangeChanged -= this.OnDateRangeChangedAsync;
+                    }
                     grid.Dispose();
                     if (subscription is not null)
                     {

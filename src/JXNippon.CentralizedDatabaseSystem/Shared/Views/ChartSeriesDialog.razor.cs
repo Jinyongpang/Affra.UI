@@ -82,15 +82,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             Type type = this.Item.ActualType ?? Chart.ActualType;
 
             categoryProperties = type.GetProperties()
+                .Where(p => p.Name != "Date")
                 .Select(prop => prop.Name)
                 .ToList();
 
             valueProperties = type.GetProperties()
                 .Where(prop => valueTypes.Contains(prop.PropertyType))
+                .Where(p => p.Name != "Date")
                 .Select(prop => prop.Name)
                 .ToList();
 
             groupProperties = type.GetProperties()
+                .Where(p => p.Name != "Date")
                 .Select(prop => prop.Name)
                 .ToList();
         }

@@ -40,7 +40,12 @@
                             Stroke=@color
                             Fill=@color
                             Smooth="@series.Smooth">
-                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                            <TooltipTemplate Context="data">           
+                                @(string.Format(this.FormatString, data.Category)) : @data.Value
+                                </TooltipTemplate>
+                            <ChildContent>      
+                                <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                            </ChildContent>
                         </RadzenAreaSeries>
                         break;
                     }
@@ -55,7 +60,12 @@
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
                             Smooth="@series.Smooth" 
                             >
-                        <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                            <TooltipTemplate Context="data">           
+                                @(string.Format(this.FormatString, data.Category)) : @data.Value
+                                </TooltipTemplate>
+                            <ChildContent>      
+                                <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                            </ChildContent>
                         </RadzenLineSeries>
                         break;
                     };
@@ -65,7 +75,12 @@
                             Title="@group.Title" ValueProperty="Value"
                             Fills=@colors
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
-                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                            <TooltipTemplate Context="data">           
+                                @(string.Format(this.FormatString, data.Category)) : @data.Value
+                                </TooltipTemplate>
+                            <ChildContent>      
+                                <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                            </ChildContent>
                         </RadzenBarSeries>
                         break;
                     };
@@ -75,7 +90,12 @@
                             Title="@group.Title" ValueProperty="Value" 
                             Fills=@colors
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
-                            <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                            <TooltipTemplate Context="data">           
+                                @(string.Format(this.FormatString, data.Category)) : @data.Value
+                                </TooltipTemplate>
+                            <ChildContent>      
+                                <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                            </ChildContent>
                         </RadzenColumnSeries>
                         break;
                     };
@@ -119,7 +139,8 @@
         <Empty/>  
     }
 
-    <RadzenCategoryAxis FormatString="@FormatString" Step="@Step" Visible="@(items?.All(x => x.Value.Count() < 10) == true)"/>
+    
+    <RadzenCategoryAxis Formatter="@Format" Step="@Step"/>
     <RadzenValueAxis Step="@ValueAxisStep">
         <RadzenGridLines/>
         <RadzenAxisTitle Text="@AxisTitle"/>

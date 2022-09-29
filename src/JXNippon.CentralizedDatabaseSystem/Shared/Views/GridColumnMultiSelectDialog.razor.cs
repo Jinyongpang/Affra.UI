@@ -72,6 +72,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     : System.Type.GetType(ViewHelper.GetTypeMapping()[this.overrideType]);
 
             properties = type.GetProperties()
+                .Where(p => p.Name != "Date")
                 .Select(prop => prop.Name)
                 .ToList();
 

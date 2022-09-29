@@ -12,15 +12,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Inject] private IServiceProvider ServiceProvider { get; set; }
 
 
-        private DateTimeOffset? startDate { get; set; } = DateTime.Now.Date.AddDays(-30);
-        private DateTimeOffset? endDate { get; set; } = DateTime.Now.Date;
-
         private IEnumerable<View> views = new List<View>();
         private View view = new View();
 
         private ViewComponent viewComponent;
-
-        private RangePicker<DateTime?[]> rangePicker;
 
         private bool hasFocus { get; set; }
 
@@ -39,22 +34,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
-        public Task OnRangeSelectAsync(DateRangeChangedEventArgs args)
-        {
-            startDate = args.Dates[0];
-            endDate = args.Dates[1];
-            return viewComponent.ReloadAsync(startDate, endDate);
-        }
-
-        private Task SetDateAsync(int days)
-        {
-            endDate = DateTime.Now.Date;
-            startDate = endDate.Value.AddDays(days);
-            rangePicker.Value = new DateTime?[] { startDate.Value.DateTime, endDate.Value.DateTime };
-            rangePicker.Close();
-            return viewComponent.ReloadAsync(startDate, endDate);
-        }
-
         public async Task OnTabClickAsync(string key)
         {
             this.selectedTabKey = key;
@@ -69,7 +48,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 }
 
             StateHasChanged();
-            await this.viewComponent.ReloadAsync(startDate, endDate);      
+            await this.viewComponent.ReloadAsync();      
         }
     }
 }

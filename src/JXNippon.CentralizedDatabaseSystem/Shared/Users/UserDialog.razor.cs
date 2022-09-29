@@ -15,6 +15,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         [Inject] private IUserService UserService { get; set; }
         private bool isViewing { get => MenuAction == 3; }
 
+        private ICollection<string> roles = new List<string>()
+        {
+            "User",
+            "SuperUser",
+            "Administrator",
+        };
+
         protected override Task OnInitializedAsync()
         {
             this.userPersonalization = this.Item.UserPersonalization;

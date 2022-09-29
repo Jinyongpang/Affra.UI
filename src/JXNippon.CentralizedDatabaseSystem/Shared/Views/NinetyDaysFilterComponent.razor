@@ -1,0 +1,21 @@
+﻿<Space>
+    @if (!string.IsNullOrEmpty(this.Title))
+    {   
+        <SpaceItem>
+            <span>@this.Title</span>
+        </SpaceItem>
+    }
+    <SpaceItem>
+        <Select Size="large" TItemValue=int TItem="int" @bind-Value=@year DataSource=@years OnSelectedItemChanged=OnChangeAsync></Select>
+    </SpaceItem>
+    <SpaceItem>
+        <RadzenSelectBar @bind-Value=@month TValue="int" Change=OnChangeAsync>
+            <Items>
+                @for(int i = 0; i < this.months.Count(); i++)
+                {
+                    <RadzenSelectBarItem Style=@($"background-color: {this.GetColor(i + 1)}; border-color: {this.GetColor(i + 1)};") Text="@months[i]" Value="@(i + 1)" />
+                }
+            </Items>
+        </RadzenSelectBar>
+    </SpaceItem>
+</Space>   
