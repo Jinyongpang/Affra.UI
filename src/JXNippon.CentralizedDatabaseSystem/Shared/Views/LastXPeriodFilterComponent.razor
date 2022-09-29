@@ -6,7 +6,7 @@
         </SpaceItem>
     }
     <SpaceItem>
-        <AntDesign.InputNumber Size="large" @bind-Value=@number TValue="int" OnChange=OnChangeAsync></AntDesign.InputNumber>
+        <AntDesign.InputNumber Size="large" Min=0 @bind-Value=@number TValue="int" OnChange=OnChangeAsync></AntDesign.InputNumber>
     </SpaceItem>
     <SpaceItem>
         <RadzenSelectBar @bind-Value=@unit TValue="int" Change=OnChangeAsync>

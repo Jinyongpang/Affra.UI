@@ -84,7 +84,7 @@
             {
                 string type = ViewService.GetTypeMapping()[Item.Type];
                 <div class="row py-2 view-dialog-content">
-                    <DataGridComponent TType="@type" GridColumns="@Item.GridColumns"></DataGridComponent>
+                    <DataGridComponent TType="@type" GridColumns="@Item.GridColumns" PageNumbersCount=5 PageSize=10></DataGridComponent>
                 </div>
             }
            
