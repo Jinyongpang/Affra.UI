@@ -16,3 +16,7 @@ else if(this.DateFilter.DateFilterType == DateFilterType.LastXPeriod)
 {
     <LastXPeriodFilterComponent @ref=@Filter Title=@this.Column.Title></LastXPeriodFilterComponent>
 }
+else if(this.DateFilter.DateFilterType == DateFilterType.HorizontalMonth)
+{
+    <HorizontalMonthFilterComponent @ref=@Filter Title=@this.Column.Title></HorizontalMonthFilterComponent>
+}
