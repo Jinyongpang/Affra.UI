@@ -685,3 +685,6 @@ a {
     color: var(--rz-menu-top-item-hover-color) !important;
 }
 
+.invalid {
+    display: block;
+}
