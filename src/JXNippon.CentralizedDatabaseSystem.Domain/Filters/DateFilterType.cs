@@ -5,6 +5,7 @@
         Range,
         Month,
         NinetyMonth,
+        HorizontalMonth,
         LastXPeriod,
     }
 }
