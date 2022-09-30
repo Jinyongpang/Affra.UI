@@ -148,6 +148,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     {
                         value = result;
                     }
+                    else if (ViewService.GetPropValue(item, chartSeries.ValueProperty) is int integer)
+                    {
+                        value = integer;
+                    }
+                    else if (ViewService.GetPropValue(item, chartSeries.ValueProperty) is double doubleValue)
+                    {
+                        value = (decimal?)doubleValue;
+                    }
 
                     if (value != null || isAPie)
                     {

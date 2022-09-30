@@ -314,7 +314,6 @@ body {
     min-height: 56vh;
 }
 
-
 .vh-80 {
     height: 80vh;
 }
@@ -463,14 +462,6 @@ p.moh-cardbody {
 
 .view-chart > div.ant-card-body {
     height: 100%;
-}
-
-.view-chart > div > div.rz-chart {
-    min-height: 85%;
-}
-
-.view-grid > div > div.rz-data-grid {
-    min-height: 80%;
 }
 
 .view-grid.focused > div > div.rz-data-grid {
@@ -689,4 +680,8 @@ a {
 
 .invalid {
     display: block;
+}
+
+.ant-layout-sider-trigger {
+    background-color: #277BC0;
 }
