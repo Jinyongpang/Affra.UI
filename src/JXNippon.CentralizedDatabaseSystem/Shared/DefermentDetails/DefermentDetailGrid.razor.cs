@@ -16,8 +16,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
 {
     public partial class DefermentDetailGrid
     {
-        private AntDesign.Menu menu;
-        private string search;
+        private readonly AntDesign.Menu menu;
+        private readonly string search;
         private bool isLoading = false;
         public string DefermentDetailFilter { get; set; }
         private RadzenDataGrid<DefermentDetail> grid;
@@ -104,7 +104,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             isLoading = true;
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<DefermentDetail>? service = this.GetGenericService(serviceScope);
+            IGenericService<DefermentDetail>? service = GetGenericService(serviceScope);
             var query = service.Get();
 
             if (DefermentDetailFilter == "Open")

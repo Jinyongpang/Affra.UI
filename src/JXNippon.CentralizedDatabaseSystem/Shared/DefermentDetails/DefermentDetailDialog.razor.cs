@@ -19,11 +19,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
         private string ddSecondaryCause = string.Empty;
         private string ddStatus = string.Empty;
 
-        private Dictionary<string, string> downtimeCategorydict = new Dictionary<string, string>();
-        private Dictionary<string, string> downtimeTypedict = new Dictionary<string, string>();
-        private Dictionary<string, string> primaryCausedict = new Dictionary<string, string>();
-        private Dictionary<string, string> secondaryCausedict = new Dictionary<string, string>();
-        private Dictionary<string, string> statusdict = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> downtimeCategorydict = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> downtimeTypedict = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> primaryCausedict = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> secondaryCausedict = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> statusdict = new Dictionary<string, string>();
 
         private bool isViewing { get => MenuAction == 3; }
         protected Task SubmitAsync(DefermentDetail arg)
@@ -39,13 +39,32 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
         }
         protected override Task OnInitializedAsync()
         {
-            if (ddDowntimeCategory != null) ddDowntimeCategory = stringLocalizer[Item.DowntimeCategory.ToString()];
-            if (ddDowntimeType != null) ddDowntimeType = stringLocalizer[Item.DowntimeType.ToString()];
-            if (ddPrimaryCause != null) ddPrimaryCause = stringLocalizer[Item.PrimaryCause.ToString()];
-            if (ddSecondaryCause != null) ddSecondaryCause = stringLocalizer[Item.SecondaryCause.ToString()];
-            if (ddStatus != null) ddStatus = stringLocalizer[Item.Status.ToString()];
+            if (ddDowntimeCategory != null)
+            {
+                ddDowntimeCategory = stringLocalizer[Item.DowntimeCategory.ToString()];
+            }
 
-            return this.LoadAllDefermentEnum();
+            if (ddDowntimeType != null)
+            {
+                ddDowntimeType = stringLocalizer[Item.DowntimeType.ToString()];
+            }
+
+            if (ddPrimaryCause != null)
+            {
+                ddPrimaryCause = stringLocalizer[Item.PrimaryCause.ToString()];
+            }
+
+            if (ddSecondaryCause != null)
+            {
+                ddSecondaryCause = stringLocalizer[Item.SecondaryCause.ToString()];
+            }
+
+            if (ddStatus != null)
+            {
+                ddStatus = stringLocalizer[Item.Status.ToString()];
+            }
+
+            return LoadAllDefermentEnum();
         }
         private void Cancel()
         {

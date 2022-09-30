@@ -7,15 +7,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
     {
         private const string All = "All";
         private Menu menu;
-        private string search;
         private DefermentDetailGrid defermentDetailGrid { get; set; }
-        private List<string> defermentDetailStatusList = new List<string>();
+        private readonly List<string> defermentDetailStatusList = new List<string>();
 
         protected override Task OnInitializedAsync()
         {
-            return this.LoadDefermentStatus();
+            return LoadDefermentStatusAsync();
         }
-        private Task LoadDefermentStatus()
+        private Task LoadDefermentStatusAsync()
         {
             foreach (var val in Enum.GetValues(typeof(DefermentDetailStatus)).Cast<DefermentDetailStatus>())
             {
@@ -24,14 +23,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
 
             StateHasChanged();
 
-            //await InitDefermentDetail();
-
             return Task.CompletedTask;
         }
-        private Task InitDefermentDetail()
+        private Task InitDefermentDetailAsync()
         {
             if (defermentDetailGrid.DefermentDetailFilter == null)
+            {
                 defermentDetailGrid.DefermentDetailFilter = All;
+            }
 
             return defermentDetailGrid.ReloadAsync();
         }
