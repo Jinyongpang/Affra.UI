@@ -33,16 +33,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private ConfirmService ConfirmService { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
 
-        private List<string> sceCodes;
-        private List<string> userDesignation;
-        private List<string> lineManagerUsername;
-        private List<string> approveAuthorityUsername;
-        private List<string> closeOutAuthorityUsername;
+        private ICollection<string> sceCodes;
+        private ICollection<string> userDesignation;
+        private ICollection<string> lineManagerUsername;
+        private ICollection<string> approveAuthorityUsername;
+        private ICollection<string> closeOutAuthorityUsername;
         private int currentStep;
         private bool disableAllInput;
         private bool disableAddExtensionButton;
-        private Dictionary<string, RiskLevels> riskMatrixDictionary = new Dictionary<string, RiskLevels>();
-        protected async override Task OnInitializedAsync()
+        private readonly Dictionary<string, RiskLevels> riskMatrixDictionary = new Dictionary<string, RiskLevels>();
+        protected override async Task OnInitializedAsync()
         {
             disableAllInput = false;
             disableAddExtensionButton = false;
@@ -61,7 +61,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                     break;
                 case ManagementOfChangeCurrentStep.EndorsementSubmitForApproval:
                     currentStep = 2;
-                    await LoadLineManagers();
+                    await LoadLineManagersAsync();
                     break;
                 case ManagementOfChangeCurrentStep.AuthorisationAndApprovalPendingForApproval:
                     disableAllInput = true;
@@ -69,7 +69,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                     break;
                 case ManagementOfChangeCurrentStep.AuthorisationAndApprovalSubmitForApproval:
                     currentStep = 3;
-                    await LoadApprovingAuthorities();
+                    await LoadApprovingAuthoritiesAsync();
                     break;
                 case ManagementOfChangeCurrentStep.ExtensionPendingForApproval:
                     disableAddExtensionButton = true;
@@ -83,7 +83,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 case ManagementOfChangeCurrentStep.ExtensionSubmitForApproval:
                 case ManagementOfChangeCurrentStep.CloseOutSubmitForApproval:
                     currentStep = 4;
-                    await LoadCloseOutAuthorities();
+                    await LoadCloseOutAuthoritiesAsync();
                     break;
                 case ManagementOfChangeCurrentStep.Completed:
                     disableAllInput = true;
@@ -92,13 +92,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             }
 
             InitRiskMatrixDictionary();
-            await this.LoadSCECodeAsync();
-            await this.LoadUserDataAsync();
+            await LoadSCECodeAsync();
+            await LoadUserDataAsync();
         }
         private async Task LoadUserDataAsync()
         {
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<User>? userService = this.GetGenericService(serviceScope);
+            IGenericService<User>? userService = GetGenericService(serviceScope);
             var query = userService.Get();
 
             Microsoft.OData.Client.QueryOperationResponse<User>? usersResponse = await query
@@ -114,7 +114,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private async Task LoadSCECodeAsync()
         {
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<SCEElementRecord>? sceService = this.GetGenericSCEService(serviceScope);
+            IGenericService<SCEElementRecord>? sceService = GetGenericSCEService(serviceScope);
             var query = sceService.Get();
 
             Microsoft.OData.Client.QueryOperationResponse<SCEElementRecord>? sceResponse = await query
@@ -137,7 +137,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 if (Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.RiskEvaluation)
                 {
-                    await LoadLineManagers();
+                    await LoadLineManagersAsync();
                     Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.EndorsementSubmitForApproval;
                     currentStep++;
                 }
@@ -212,76 +212,34 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 categoriesOfChange = "PCSC";
             }
 
-            Item.RecordNumber = $"MOC-{person.Department}-{Item.ManagementOfChangeField.ToString()}-{categoriesOfChange}-{DateTime.Now:yyyy}-{DateTime.Now:yyyyMMddHHmmss}";
+            Item.RecordNumber = $"MOC-{person.Department}-{Item.ManagementOfChangeField}-{categoriesOfChange}-{DateTime.Now:yyyy}-{DateTime.Now:yyyyMMddHHmmss}";
 
             using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.GetGenericMOCService(serviceScope);
+            var service = GetGenericMOCService(serviceScope);
 
             await service.InsertAsync(Item);
 
             AffraNotificationService.NotifyItemCreated();
         }
-        private async Task LoadLineManagers()
+        private async Task LoadLineManagersAsync()
         {
-            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
-
-            lineManagerUsername = new List<string>();
-
-            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
-            {
-                lineManagerUsername.Add(manager);
-
-                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
-                {
-                    lineManagerUsername.Add(delegation);
-                }
-            }
-
-            lineManagerUsername = lineManagerUsername.Distinct().ToList();
+            lineManagerUsername = await GetLineManagersAndDelegationsAsync();
 
             StateHasChanged();
         }
-        private async Task LoadApprovingAuthorities()
+        private async Task LoadApprovingAuthoritiesAsync()
         {
-            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
-
-            approveAuthorityUsername = new List<string>();
-
-            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
-            {
-                approveAuthorityUsername.Add(manager);
-
-                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
-                {
-                    approveAuthorityUsername.Add(delegation);
-                }
-            }
-
-            approveAuthorityUsername = approveAuthorityUsername.Distinct().ToList();
+            approveAuthorityUsername = await GetLineManagersAndDelegationsAsync();
 
             StateHasChanged();
         }
-        private async Task LoadCloseOutAuthorities()
+        private async Task LoadCloseOutAuthoritiesAsync()
         {
-            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
-
-            closeOutAuthorityUsername = new List<string>();
-
-            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
-            {
-                closeOutAuthorityUsername.Add(manager);
-
-                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
-                {
-                    closeOutAuthorityUsername.Add(delegation);
-                }
-            }
-
-            closeOutAuthorityUsername = closeOutAuthorityUsername.Distinct().ToList();
+            closeOutAuthorityUsername = await GetLineManagersAndDelegationsAsync();
 
             StateHasChanged();
         }
-        private async Task<string> LoadExtensionAuthorities()
+        private async Task<string> LoadExtensionAuthoritiesAsync()
         {
             Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
 
@@ -298,11 +256,31 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             }
             return extensionManagers;
         }
+
+        private async Task<ICollection<string>> GetLineManagersAndDelegationsAsync()
+        {
+            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+
+            var results = new List<string>();
+
+            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
+            {
+                results.Add(manager);
+
+                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+                {
+                    results.Add(delegation);
+                }
+            }
+
+            return results.Distinct().ToList();
+        }
+
         private void OnCloseDialogClicked()
         {
             DialogService.Close(false);
         }
-        private async void OnEndorsementSubmitButtonClick()
+        private async Task OnEndorsementSubmitButtonClickAsync()
         {
             if (Item.Endorsement.Name == string.Empty)
             {
@@ -316,7 +294,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             await SubmitAsync(Item);
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+            IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.RecordNumber,
@@ -326,7 +304,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 }
             });
         }
-        private async void OnAuthorisationAndApprovalSubmitButtonClick()
+        private async Task OnAuthorisationAndApprovalSubmitButtonClickAsync()
         {
             if (Item.AuthorisationAndApproval.Name == string.Empty)
             {
@@ -340,7 +318,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             await SubmitAsync(Item);
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+            IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.RecordNumber,
@@ -350,7 +328,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 }
             });
         }
-        private async void OnExtensionSubmitButtonClick()
+        private async Task OnExtensionSubmitButtonClickAsync()
         {
             if (Item.Extensions[Item.Extensions.Count - 1].ApproverName == string.Empty)
             {
@@ -369,7 +347,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             await SubmitAsync(Item);
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+            IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.RecordNumber,
@@ -379,7 +357,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 }
             });
         }
-        private async void OnCloseOutSubmitButtonClick()
+        private async Task OnCloseOutSubmitButtonClickAsync()
         {
             if (Item.CloseOut.Name == string.Empty)
             {
@@ -393,7 +371,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             await SubmitAsync(Item);
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+            IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.RecordNumber,
@@ -403,7 +381,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 }
             });
         }
-        private async Task OnAddExtensionButtonClick()
+        private async Task OnAddExtensionButtonClickAsync()
         {
             if (Item.Extensions.Count == 5)
             {
@@ -418,8 +396,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 ExtensionNo = Item.Extensions.Count + 1,
                 DurationExtended = 180,
-                ReviewDate = System.DateTimeOffset.UtcNow,
-                ApproverNameColection = await LoadExtensionAuthorities(),
+                ReviewDate = DateTimeOffset.UtcNow,
+                ApproverNameColection = await LoadExtensionAuthoritiesAsync(),
                 ApproverName = string.Empty,
                 ApproverDesignation = string.Empty,
                 ApprovalSignature = string.Empty
@@ -429,12 +407,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private void OnStepChange(int current)
         {
-            this.currentStep = current;
+            currentStep = current;
         }
         protected Task SubmitAsync(ManagementOfChangeRecord args, bool closeDialog = true)
         {
             if (closeDialog)
+            {
                 DialogService.Close(true);
+            }
 
             return Task.CompletedTask;
         }

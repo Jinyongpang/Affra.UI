@@ -266,7 +266,7 @@
                                             </Button>
                                 }
                                         @if(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.EndorsementSubmitForApproval){
-                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnEndorsementSubmitButtonClick">
+                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnEndorsementSubmitButtonClickAsync">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />
@@ -320,7 +320,7 @@
                                             </Button>
                                 }
                                         @if(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.AuthorisationAndApprovalSubmitForApproval){
-                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnAuthorisationAndApprovalSubmitButtonClick">
+                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnAuthorisationAndApprovalSubmitButtonClickAsync">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />
@@ -334,7 +334,7 @@
                         else if(@currentStep == 4)
                         {
                             <div class="py-2 px-5">
-                                <Button Disabled="disableAddExtensionButton" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnAddExtensionButtonClick">
+                                <Button Disabled="disableAddExtensionButton" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnAddExtensionButtonClickAsync">
                                     <ChildContent>
                                         <span style="font-size: 18px; margin-left: 0px;">Add Extension</span>
                                         <Icon Class="anticon-big" Type="plus" Theme="outline" />
@@ -402,7 +402,7 @@
                                             </ChildContent>
                                         </Button>
                                         @if(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.CloseOutSubmitForApproval){
-                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnCloseOutSubmitButtonClick">
+                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnCloseOutSubmitButtonClickAsync">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />
@@ -410,7 +410,7 @@
                                             </Button>
                                 }
                                         @if(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.ExtensionSubmitForApproval){
-                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnExtensionSubmitButtonClick">
+                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnExtensionSubmitButtonClickAsync">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Submit For Extension</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />

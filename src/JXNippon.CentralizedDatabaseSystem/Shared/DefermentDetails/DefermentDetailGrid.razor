@@ -5,11 +5,12 @@
 
 <div class="row h-100">
     <div class="col h-100">
-        <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+        <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;"
+            IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
             FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true"
                         ColumnWidth="200px" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DefermentDetail"
                         AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
-            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true">
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true" >
             <EmptyTemplate>    
                 <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
                     <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No deferment detail created.">

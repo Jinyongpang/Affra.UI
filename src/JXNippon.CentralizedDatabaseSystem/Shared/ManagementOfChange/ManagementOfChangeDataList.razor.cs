@@ -1,14 +1,13 @@
-﻿using Microsoft.AspNetCore.Components;
-using Radzen;
-using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
+﻿using Affra.Core.Domain.Services;
+using Affra.Core.Infrastructure.OData.Extensions;
 using AntDesign;
-using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
 using JXNippon.CentralizedDatabaseSystem.Models;
-using Affra.Core.Domain.Services;
-using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
-using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
+using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
+using Microsoft.AspNetCore.Components;
+using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 {
@@ -28,8 +27,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
         public CommonFilter ManagementOfChangeFilter { get; set; }
 
-        private Func<double, string> _fortmat1 = (p) => $"{p} %";
-        private ListGridType grid = new()
+        private readonly Func<double, string> _fortmat1 = (p) => $"{p} %";
+        private readonly ListGridType grid = new()
         {
             Gutter = 16,
             Xs = 1,
@@ -41,9 +40,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         };
         protected override Task OnInitializedAsync()
         {
-            this.ManagementOfChangeFilter = new CommonFilter(navigationManager);
+            ManagementOfChangeFilter = new CommonFilter(navigationManager);
             initLoading = false;
-            return this.LoadDataAsync();
+            return LoadDataAsync();
         }
         private async Task LoadDataAsync(bool isLoadMore = false)
         {
@@ -55,7 +54,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             }
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<ManagementOfChangeRecord>? managementOfChangeService = this.GetGenericMOCService(serviceScope);
+            IGenericService<ManagementOfChangeRecord>? managementOfChangeService = GetGenericMOCService(serviceScope);
             var query = managementOfChangeService.Get();
 
             if (!string.IsNullOrEmpty(ManagementOfChangeFilter.Search))
@@ -98,11 +97,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         public Task ReloadAsync()
         {
-            return this.LoadDataAsync();
+            return LoadDataAsync();
         }
         public Task OnLoadMoreAsync()
         {
-            return this.LoadDataAsync(true);
+            return LoadDataAsync(true);
         }
         private async Task ShowDialogAsync(ManagementOfChangeRecord data, string title = "")
         {
@@ -116,7 +115,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 try
                 {
                     using var serviceScope = ServiceProvider.CreateScope();
-                    var service = this.GetGenericMOCService(serviceScope);
+                    var service = GetGenericMOCService(serviceScope);
 
                     if (data.Id > 0)
                     {

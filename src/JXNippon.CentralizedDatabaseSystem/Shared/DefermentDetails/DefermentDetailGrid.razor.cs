@@ -21,51 +21,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
         private bool isLoading = false;
         public string DefermentDetailFilter { get; set; }
         private RadzenDataGrid<DefermentDetail> grid;
-        private IEnumerable<DefermentDetail> items = new List<DefermentDetail>();
+        private IEnumerable<DefermentDetail> items;
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private ContextMenuService ContextMenuService { get; set; }
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
         public int Count { get; set; }
-        private IGenericService<DefermentDetail> GetGenericService(IServiceScope serviceScope)
-        {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DefermentDetail, ICentralizedDatabaseSystemUnitOfWork>>();
-        }
+
         public Task ReloadAsync()
         {
             return grid.FirstPage(true);
         }
-        private async Task LoadDataAsync(LoadDataArgs args)
-        {
-            isLoading = true;
-            StateHasChanged();
 
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<DefermentDetail>? service = this.GetGenericService(serviceScope);
-            var query = service.Get();
-
-            if (DefermentDetailFilter == "Open")
-            {
-                query = query.Where(x => x.Status == DefermentDetailStatus.Open);
-            }
-            else if (DefermentDetailFilter == "Closed")
-            {
-                query = query.Where(x => x.Status == DefermentDetailStatus.Closed);
-            }
-
-            Microsoft.OData.Client.QueryOperationResponse<DefermentDetail>? response = await query
-                .OrderBy(x => x.StartDate)
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DefermentDetail>();
-
-
-            Count = (int)response.Count;
-            items = response.ToList();
-            isLoading = false;
-
-            StateHasChanged();
-        }
         public async Task ShowDialogAsync(DefermentDetail data, int menuAction, string title)
         {
             ContextMenuService.Close();
@@ -124,6 +92,40 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             }
 
             await grid.Reload();
+        }
+
+        private IGenericService<DefermentDetail> GetGenericService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DefermentDetail, ICentralizedDatabaseSystemUnitOfWork>>();
+        }
+
+        private async Task LoadDataAsync(LoadDataArgs args)
+        {
+            isLoading = true;
+
+            using var serviceScope = ServiceProvider.CreateScope();
+            IGenericService<DefermentDetail>? service = this.GetGenericService(serviceScope);
+            var query = service.Get();
+
+            if (DefermentDetailFilter == "Open")
+            {
+                query = query.Where(x => x.Status == DefermentDetailStatus.Open);
+            }
+            else if (DefermentDetailFilter == "Closed")
+            {
+                query = query.Where(x => x.Status == DefermentDetailStatus.Closed);
+            }
+
+            Microsoft.OData.Client.QueryOperationResponse<DefermentDetail>? response = await query
+                .OrderBy(x => x.StartDate)
+                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
+                .ToQueryOperationResponseAsync<DefermentDetail>();
+
+            Count = (int)response.Count;
+            items = response.ToList();
+            isLoading = false;
+
+            StateHasChanged();
         }
     }
 }

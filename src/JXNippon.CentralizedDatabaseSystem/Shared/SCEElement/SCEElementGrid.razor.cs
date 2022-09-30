@@ -1,25 +1,21 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Linq.Dynamic.Core;
+using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
-using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
-using JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements;
 using Microsoft.AspNetCore.Components;
-using Microsoft.OData.Client;
 using Radzen;
 using Radzen.Blazor;
-using System.Linq.Dynamic.Core;
-using ViewODataService.Affra.Service.View.Domain.Templates;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
 {
     public partial class SCEElementGrid
     {
-        private AntDesign.Menu menu;
-        private string search;
+        private readonly AntDesign.Menu menu;
+        private readonly string search;
         private bool isLoading = false;
         public string SCEFilter { get; set; }
         private RadzenDataGrid<SCEElementRecord> grid;
@@ -44,7 +40,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
             StateHasChanged();
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<SCEElementRecord>? SCEService = this.GetGenericSCEService(serviceScope);
+            IGenericService<SCEElementRecord>? SCEService = GetGenericSCEService(serviceScope);
             var query = SCEService.Get();
 
             if (SCEFilter != null && SCEFilter != "All")

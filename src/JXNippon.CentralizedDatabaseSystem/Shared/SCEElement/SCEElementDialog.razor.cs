@@ -1,7 +1,6 @@
 ﻿using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements;
 using Microsoft.AspNetCore.Components;
 using Radzen;
-using System;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
 {
@@ -17,7 +16,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
         private bool isViewing { get => MenuAction == 3; }
         protected override void OnInitialized()
         {
-            if(Item.SCEGroupId != null)
+            if (Item.SCEGroupId != null)
             {
                 ddSelectedValue = (long)Item.SCEGroupId;
             }
