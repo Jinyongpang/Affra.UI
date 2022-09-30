@@ -13,5 +13,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
         object GetPropValue(object src, string propName);
         dynamic GetGenericService(IServiceScope serviceScope, string typeInString);
         Task<IEnumerable<View>> GetPageViewsAsync(string page);
+        IDictionary<string, string> GetExtraTypeMapping();
     }
 }

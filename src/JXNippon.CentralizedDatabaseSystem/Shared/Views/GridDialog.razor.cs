@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json;
+using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.AspNetCore.Components;
@@ -22,6 +23,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private bool isViewing { get => MenuAction == 3; }
         private int current { get; set; } = 0;
         private AntDesign.Steps steps;
+        private string[] dateFiltersId;
 
         protected override Task OnInitializedAsync()
         {
@@ -39,7 +41,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 Item = JsonSerializer.Deserialize<Grid>(Column.ColumnComponent) ?? Item;
             }
-            
+
+            dateFiltersId = View.Rows.SelectMany(x => x.Columns)
+                .Where(x => x.ComponentType == nameof(DateFilter))
+                .Select(x => JsonSerializer.Deserialize<DateFilter>(x.ColumnComponent).Id)
+                .Distinct()
+                .ToArray();
             return Task.CompletedTask;
         }
 

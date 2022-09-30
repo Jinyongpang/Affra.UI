@@ -33,6 +33,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             .Select(x => x.ToString())
             .ToList();
 
+
+        private static IEnumerable<string> transformTypes = Enum.GetValues(typeof(ChartSeriesTransform))
+            .Cast<ChartSeriesTransform>()
+            .Select(x => x.ToString())
+            .ToList();
+
+
         private static HashSet<Type> valueTypes = new HashSet<Type>()
         {
             typeof(decimal?),
@@ -75,15 +82,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             Type type = this.Item.ActualType ?? Chart.ActualType;
 
             categoryProperties = type.GetProperties()
+                .Where(p => p.Name != "Date")
                 .Select(prop => prop.Name)
                 .ToList();
 
             valueProperties = type.GetProperties()
                 .Where(prop => valueTypes.Contains(prop.PropertyType))
+                .Where(p => p.Name != "Date")
                 .Select(prop => prop.Name)
                 .ToList();
 
             groupProperties = type.GetProperties()
+                .Where(p => p.Name != "Date")
                 .Select(prop => prop.Name)
                 .ToList();
         }

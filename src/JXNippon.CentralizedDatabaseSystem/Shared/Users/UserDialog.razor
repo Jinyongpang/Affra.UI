@@ -22,7 +22,7 @@
                         <RadzenLabel class="dialogTextSize" Text="Role" />
                     </div>
                     <div class="col-8">
-                        <RadzenTextBox Name="Role" class="w-100" Placeholder="Enter title..." @bind-Value="@Item.Role" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenDropDown Name="Role" class="w-100" Placeholder="Select role..." Data=@roles @bind-Value="@Item.Role" Disabled=@isViewing></RadzenDropDown>
                         <RadzenRequiredValidator Component="Role" Text="Role is required" Popup=false/>
                     </div>
                 </div>

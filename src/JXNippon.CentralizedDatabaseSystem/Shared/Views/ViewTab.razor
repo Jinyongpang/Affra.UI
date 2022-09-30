@@ -1,40 +1,10 @@
-﻿@using BlazorDateRangePicker
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
 @using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
 @using ViewODataService.Affra.Service.View.Domain.Views
 
 <div class="px-2">
     @if (!hasFocus)
     {        
-        <div class="row">
-            <div class="col-md-6 col-xl-3 col">      
-                <Space>
-                    <SpaceItem>
-                        <span>Period:</span>
-                    </SpaceItem>
-                    <SpaceItem>
-                        <RangePicker @ref=rangePicker TValue="DateTime?[]" Size="medium" OnChange=OnRangeSelectAsync AllowClear=false DisabledDate="date => date >= DateTime.Now" DefaultValue="@(new [] { startDate?.ToLocalTime().DateTime, endDate?.ToLocalTime().DateTime })">
-                            <RenderExtraFooter>
-                                <Space>
-                                    <SpaceItem>
-                                        <Button @onclick=@(args => SetDateAsync(0))>Today</Button>
-                                    </SpaceItem>
-                                    <SpaceItem>
-                                        <Button @onclick=@(args => SetDateAsync(-6))>Last 7 days</Button> 
-                                    </SpaceItem>
-                                    <SpaceItem>
-                                        <Button @onclick=@(args => SetDateAsync(-29))>Last 30 days</Button> 
-                                    </SpaceItem>
-                                    <SpaceItem>
-                                        <Button @onclick=@(args => SetDateAsync(-59))>Last 60 days</Button> 
-                                    </SpaceItem>
-                                </Space>  
-                            </RenderExtraFooter>
-                        </RangePicker>
-                    </SpaceItem>
-                </Space>       
-            </div>
-        </div>
         @if (this.views?.Count() > 1)
         {
             <Tabs Class="py-2" Size="@TabSize.Small" OnTabClick=OnTabClickAsync DefaultActiveKey=@this.selectedTabKey>
@@ -49,5 +19,5 @@
             </Tabs>
         }
     }
-    <ViewComponent @ref="viewComponent" View=@view StartDate="@startDate" EndDate="@endDate" ColorsGroups=@colorsGroups @bind-HasFocus=@this.hasFocus/>
+    <ViewComponent @ref="viewComponent" View=@view ColorsGroups=@colorsGroups @bind-HasFocus=@this.hasFocus/>
 </div>

@@ -83,6 +83,14 @@
                     <RadzenRequiredValidator Component="ExecutionType" Text="Execution type is required" Popup=false Visible=@(isAPie)/>
                 </div>
             </div>
+            <div class="row py-2" hidden="@(!isAPie)">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Transform" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown AllowClear="false" Data="@transformTypes" Name="TransformType" class="w-100" Placeholder="Select transform type..." @bind-Value="@Item.TransformString" Disabled=@isViewing></RadzenDropDown>
+                </div>
+            </div>
             <div class="row py-2" hidden="@(isAPie)">
                 <div class="col-4 align-items-center d-flex">
                     <RadzenLabel class="dialogTextSize" Text="Smooth" />

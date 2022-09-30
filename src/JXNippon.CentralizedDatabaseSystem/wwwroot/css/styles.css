@@ -321,9 +321,10 @@ body {
 
 .layout-view {
     background-color: #ffffff !important;
-    border: 1px solid #dbe0ea !important;
-    box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%) !important;
-    height: calc(90vh - 5rem);
+    border: 0px !important;
+    box-shadow: none;
+    height: calc(100vh - 5rem);
+    overflow-x: hidden;
 }
 
 .ant-carousel .slick-dots-bottom {
@@ -541,7 +542,8 @@ a {
 
 .page-content {
     height: calc(100vh - 5rem);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .popup-menu {
@@ -646,6 +648,47 @@ a {
     position: absolute;
     right: 15px;
     top: 15px;
+}
+
+.editable-cell {
+    position: relative;
+}
+
+.editable-cell-value-wrap {
+    padding: 5px 12px;
+    cursor: pointer;
+}
+
+.editable-row:hover .editable-cell-value-wrap {
+    padding: 4px 11px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+}
+
+[data-theme='dark'] .editable-row:hover .editable-cell-value-wrap {
+    border: 1px solid #434343;
+}
+
+.rz-datatable-emptymessage {
+    background-color: transparent !important;
+}
+
+.rz-context-menu {
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+}
+
+.rz-menu:not(.rz-profile-menu) {
+    align-items: start  !important; 
+}
+
+.rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-column-drag:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-datatable-loading-content .rzi-circle-o-notch:not(.rz-navigation-item-icon-children), .rz-datatable-loading-content .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi-circle-o-notch:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-datatable-header .rzi-plus:not(.rz-navigation-item-icon-children), .rz-datatable-header .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi-plus:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-sortable-column .rzi-grid-sort:not(.rz-navigation-item-icon-children), .rz-sortable-column .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi-grid-sort:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-datatable .rzi-chevron-circle-down:not(.rz-navigation-item-icon-children), .rz-datatable .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi-chevron-circle-down:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-datatable .rzi-chevron-circle-right:not(.rz-navigation-item-icon-children), .rz-datatable .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi-chevron-circle-right:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-fileupload-row .rz-button .rzi-close:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-fileupload-row .rz-paginator-element .rzi-close:not(.rz-navigation-item-icon-children), .rz-fileupload-row .rz-button .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi-close:not(.rz-navigation-item-icon-children), .rz-fileupload-row .rz-paginator-element .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi-close:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-fileupload-row .rz-button .rzi-times:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-fileupload-row .rz-paginator-element .rzi-times:not(.rz-navigation-item-icon-children), .rz-fileupload-row .rz-button .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi-times:not(.rz-navigation-item-icon-children), .rz-fileupload-row .rz-paginator-element .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rzi-times:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-fileupload-row .rz-button .rz-icon-trash:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-fileupload-row .rz-paginator-element .rz-icon-trash:not(.rz-navigation-item-icon-children), .rz-fileupload-row .rz-button .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-icon-trash:not(.rz-navigation-item-icon-children), .rz-fileupload-row .rz-paginator-element .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-icon-trash:not(.rz-navigation-item-icon-children), .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-menuitem .rz-menuitem-icon:not(.rz-navigation-item-icon-children), .rz-menuitem .rz-menu:not(.rz-profile-menu) .rz-navigation-item-wrapper:hover .rz-navigation-item-link .rz-menuitem-icon:not(.rz-navigation-item-icon-children) {
+    color: var(--rz-menu-top-item-hover-color) !important;
+}
+
+.invalid {
+    display: block;
 }
 .oi-step-navbar {
     width: 50%;

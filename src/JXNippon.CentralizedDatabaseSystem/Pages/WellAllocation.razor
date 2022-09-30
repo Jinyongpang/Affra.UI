@@ -1,4 +1,4 @@
-﻿@page "/wellallocation/{activeKey}"
+﻿@page "/wellallocationold/{activeKey}"
 @using JXNippon.CentralizedDatabaseSystem.Shared.Views
 
 @attribute [Authorize(Policy = "RolePageWellAllocation")]
@@ -16,6 +16,6 @@
         <TabTemplate>
             <span>PE Report</span>
         </TabTemplate>
-        <ChildContent>PE Report</ChildContent>
+        <ChildContent><ViewTab Page="PEReport"></ViewTab></ChildContent>
     </TabPane>
 </Tabs>

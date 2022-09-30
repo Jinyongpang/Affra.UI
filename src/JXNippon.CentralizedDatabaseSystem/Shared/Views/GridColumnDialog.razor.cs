@@ -38,6 +38,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             Type type = this.Item.ActualType ?? Grid.ActualType;
 
             properties = type.GetProperties()
+                .Where(p => p.Name != "Date")
                 .Select(prop => prop.Name)
                 .ToList();
 

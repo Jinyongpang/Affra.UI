@@ -8,9 +8,9 @@
 
 <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@this.Count" Data="@this.itemsDictionary" LoadData="@this.LoadDataAsync" 
     FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
-    PageSize=5 PageSizeText="Items" PageSizeOptions=@this.pageSizeOptions PagerHorizontalAlign="HorizontalAlign.Center" AllowColumnResize="true" ShowPagingSummary="true" 
+    PageSize=@this.PageSize PageSizeText="Items" PageSizeOptions=@this.pageSizeOptions PagerHorizontalAlign="HorizontalAlign.Center" PageNumbersCount=@PageNumbersCount AllowColumnResize="true" ShowPagingSummary="true" 
     AllowMultiColumnSorting="false" ShowMultiColumnSortingIndex="false"
-    PagerAlwaysVisible="false" CellRender=@this.CellRender>
+    PagerAlwaysVisible="false" CellRender=@this.CellRender Responsive>
     <Columns>
         @foreach(var gridColumn in GridColumns)
         {

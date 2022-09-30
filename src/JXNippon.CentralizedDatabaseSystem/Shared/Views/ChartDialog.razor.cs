@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.AspNetCore.Components;
 using Radzen;
@@ -24,6 +25,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private AntDesign.Steps steps;
 
+        private string[] dateFiltersId;
+
         protected override Task OnInitializedAsync()
         {
             Column.ViewName = View.Name;
@@ -41,6 +44,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 Item = JsonSerializer.Deserialize<Chart>(Column.ColumnComponent) ?? Item;
             }
             
+            dateFiltersId = View.Rows.SelectMany(x => x.Columns)
+                .Where(x => x.ComponentType == nameof(DateFilter))
+                .Select(x => JsonSerializer.Deserialize<DateFilter>(x.ColumnComponent).Id)
+                .Distinct()
+                .ToArray();
+
             return Task.CompletedTask;
         }
 

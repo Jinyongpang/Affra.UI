@@ -14,12 +14,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IPersonalMessageNotificationService PersonalMessageNotificationService { get; set; }
+        [Inject] private AntDesign.DrawerService DrawerService { get; set; }
 
         private IHubSubscription subscription;
         private bool isDisposed = false;
         private PersonalMessageTab personalMessageTab;
         private bool visible = false;
-
+        private AntDesign.Drawer drawer;
         protected override async Task OnInitializedAsync()
         {
             subscription = PersonalMessageNotificationService.Subscribe(OnMessageReceivedAsync);

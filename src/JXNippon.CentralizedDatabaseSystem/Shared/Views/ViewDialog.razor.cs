@@ -6,7 +6,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
     public partial class ViewDialog
     {
-        private string[] datas = new[] { "Operation", "WellAllocation", "Deferment", };
+        private string[] datas = new[] { "Operation", "WellAllocation", "Deferment", "PEReport", };
         [Parameter] public View Item { get; set; }
 
         [Inject] private DialogService DialogService { get; set; }

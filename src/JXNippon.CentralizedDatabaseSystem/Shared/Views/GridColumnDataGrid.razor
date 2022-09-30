@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col">
         <RadzenDataGrid @ref="grid" Data="@items"
-            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="false" 
             PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="GridColumn" 
             AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
@@ -23,7 +23,7 @@
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="GridColumn" Property="Property" Title="Property">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="GridColumn" Property="FormatString" Title="FormatString">
+                <RadzenDataGridColumn TItem="GridColumn" Property="FormatString" Title="Format String">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="GridColumn" Property="Type" Title="Type">
                 </RadzenDataGridColumn>
@@ -37,19 +37,25 @@
     private void OnCellContextMenu(MouseEventArgs args)
     {
         bool hasRowData = (args as DataGridCellMouseEventArgs<GridColumn>) != null;
+        var arg = args as DataGridCellMouseEventArgs<GridColumn>;
         ContextMenuService.Open(args, ds =>
-           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<GridColumn>, e))">
+           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(e, arg))">
                 <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
+                <RadzenMenuItem Text="Add Multiple..." Value="4" Icon="list"/>
                 <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
                 <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
                 <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Move Up" Value="5" Icon="flight_takeoff" Visible=@hasRowData/>
+                <RadzenMenuItem Text="Move Down" Value="6" Icon="flight_land" Visible=@hasRowData/>
+                
     </RadzenMenu>
-    );  
+    ); 
     }
 
-    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<GridColumn> args, MenuItemEventArgs e)
+    private async Task OnMenuItemClickAsync(MenuItemEventArgs e, DataGridCellMouseEventArgs<GridColumn> args = null)
     {  
         int i = (int)e.Value;
+
         if (i == 0)
         {
             await ShowDialogAsync(
@@ -69,5 +75,28 @@
         {
             await ShowDialogAsync(args.Data, i, "View");
         }
+        else if (i == 4)
+        {
+            await ShowDialogAsync(new GridColumn(), i, "Add Properties");
+        }
+        else if (i == 5)
+        {
+            await this.MoveAsync(args.Data, -1);
+
+        }
+        else if (i == 6)
+        {
+            await this.MoveAsync(args.Data);
+        }
+    }
+
+    private Task MoveAsync(GridColumn column, int offset = 0)
+    {
+        var list = items as List<GridColumn> ?? items.ToList();
+        var index = list.FindIndex(x => x == column);
+        list.Reverse(index + offset, 2);
+        items = list;
+        this.Grid.GridColumns = list;
+        return this.grid.Reload(); 
     }
 }
