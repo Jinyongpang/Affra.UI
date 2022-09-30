@@ -2294,8 +2294,8 @@
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Date" Type="Edm.DateTimeOffset" />
-        <Property Name="MonthDate" Type="Edm.DateTimeOffset" />
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="MonthDate" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="TotalGas" Type="Edm.Int32" />
         <Property Name="HIP" Type="Edm.Int32" />
         <Property Name="FPSO" Type="Edm.Int32" />
@@ -2310,7 +2310,7 @@
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Date" Type="Edm.DateTimeOffset" />
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="TotalGas" Type="Edm.Int32" />
         <Property Name="HIP" Type="Edm.Int32" />
         <Property Name="FPSO" Type="Edm.Int32" />
