@@ -98,7 +98,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             List<IDaily> list = new List<IDaily>();
             if (dailyItems.Any())
             {
-                
                 foreach (var type in types)
                 {
                     var actualType = ViewHelper.GetActualType(type);

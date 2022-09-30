@@ -37,7 +37,6 @@
                         <RadzenAreaSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value"
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
-                            Stroke=@color
                             Fill=@color
                             Smooth="@series.Smooth">
                             <TooltipTemplate Context="data">           
@@ -56,7 +55,6 @@
                             : series.Color;
                         <RadzenLineSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value"
-                            Stroke=@color
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
                             Smooth="@series.Smooth" 
                             >
