@@ -44,7 +44,7 @@
                                 @(string.Format(this.FormatString, data.Category)) : @data.Value
                                 </TooltipTemplate>
                             <ChildContent>      
-                                <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                                <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                             </ChildContent>
                         </RadzenAreaSeries>
                         break;
@@ -64,37 +64,45 @@
                                 @(string.Format(this.FormatString, data.Category)) : @data.Value
                                 </TooltipTemplate>
                             <ChildContent>      
-                                <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                                <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                             </ChildContent>
                         </RadzenLineSeries>
                         break;
                     };
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.BarChart:
-                    {                           
+                    {                          
+                        string color = string.IsNullOrEmpty(series.Color)
+                            ? colors[i]
+                            : series.Color;
+
                         <RadzenBarSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value"
-                            Fills=@colors
-                            LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
+                            Fill=@color
+                            LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))" C>
                             <TooltipTemplate Context="data">           
                                 @(string.Format(this.FormatString, data.Category)) : @data.Value
                                 </TooltipTemplate>
                             <ChildContent>      
-                                <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                                <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                             </ChildContent>
                         </RadzenBarSeries>
                         break;
                     };
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.ColumnChart:
-                    {                           
+                    {   
+                        string color = string.IsNullOrEmpty(series.Color)
+                            ? colors[i]
+                            : series.Color;   
+                            
                         <RadzenColumnSeries Data="@seriesItem" CategoryProperty="Category" 
                             Title="@group.Title" ValueProperty="Value" 
-                            Fills=@colors
+                            Fill=@color
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
                             <TooltipTemplate Context="data">           
                                 @(string.Format(this.FormatString, data.Category)) : @data.Value
                                 </TooltipTemplate>
                             <ChildContent>      
-                                <RadzenMarkers MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                                <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
                             </ChildContent>
                         </RadzenColumnSeries>
                         break;
