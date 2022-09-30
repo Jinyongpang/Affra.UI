@@ -47,7 +47,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private async Task LoadDataAsync(bool isLoadMore = false)
         {
             isLoading = true;
-            StateHasChanged();
             if (!isLoadMore)
             {
                 currentCount = 0;
@@ -153,7 +152,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private int GetPercentage(double step)
         {
             double enumLength = Enum.GetNames(typeof(ManagementOfChangeCurrentStep)).Length - 1;
-            return (int)((step / enumLength) * 100);
+            return (int)(step / enumLength * 100);
         }
     }
 }

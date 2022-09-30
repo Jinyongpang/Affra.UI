@@ -41,7 +41,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private int currentStep;
         private bool disableAllInput;
         private bool disableAddExtensionButton;
-        private readonly Dictionary<string, RiskLevels> riskMatrixDictionary = new Dictionary<string, RiskLevels>();
+        private readonly IDictionary<string, RiskLevels> riskMatrixDictionary = new Dictionary<string, RiskLevels>();
         protected override async Task OnInitializedAsync()
         {
             disableAllInput = false;
