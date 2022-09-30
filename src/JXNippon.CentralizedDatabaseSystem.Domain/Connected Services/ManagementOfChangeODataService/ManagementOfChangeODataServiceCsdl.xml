@@ -97,6 +97,53 @@
         <NavigationProperty Name="SCEElementRecords" Type="Collection(Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord)" />
       </EntityType>
     </Schema>
+    <Schema Namespace="Affra.Service.ManagementOfChange.Domain.OperationInstructions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="OperationInstructionRecord">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="OperationInstructionNo" Type="Edm.String" />
+        <Property Name="EstimatedDuration" Type="Edm.Int32" Nullable="false" />
+        <Property Name="EstimatedDurationDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="RevisionNo" Type="Edm.Int32" Nullable="false" />
+        <Property Name="OperationInstructionStatus" Type="Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionStatus" Nullable="false" />
+        <Property Name="OperationInstructionCurrentStep" Type="Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionCurrentStep" Nullable="false" />
+        <Property Name="OperationInstructionField" Type="Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionField" Nullable="false" />
+        <Property Name="OIContent" Type="Edm.String" />
+        <Property Name="PreparedBy" Type="Edm.String" />
+        <Property Name="PreparerSignature" Type="Edm.String" />
+        <Property Name="PreparedByDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="EndorsedBy" Type="Edm.String" />
+        <Property Name="EndorserSignature" Type="Edm.String" />
+        <Property Name="EndorsedByDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ApprovedBy" Type="Edm.String" />
+        <Property Name="ApproverSignature" Type="Edm.String" />
+        <Property Name="ApprovedByDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="CreatedDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.String" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+      </EntityType>
+      <EnumType Name="OperationInstructionStatus">
+        <Member Name="New" Value="0" />
+        <Member Name="Pending" Value="1" />
+        <Member Name="Completed" Value="2" />
+        <Member Name="Deleted" Value="3" />
+      </EnumType>
+      <EnumType Name="OperationInstructionCurrentStep">
+        <Member Name="InitialCreation" Value="0" />
+        <Member Name="EndorsementSubmitForApproval" Value="1" />
+        <Member Name="EndorsementPendingForApproval" Value="2" />
+        <Member Name="ApprovalSubmitForApproval" Value="3" />
+        <Member Name="ApprovalPendingForApproval" Value="4" />
+        <Member Name="Completed" Value="5" />
+      </EnumType>
+      <EnumType Name="OperationInstructionField">
+        <Member Name="HIP" Value="0" />
+        <Member Name="LWP" Value="1" />
+        <Member Name="SK10" Value="2" />
+      </EnumType>
+    </Schema>
     <Schema Namespace="Affra.Service.ManagementOfChange.Domain.Identifications" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <ComplexType Name="Identification">
         <Property Name="DurationOfChange" Type="Edm.Int32" Nullable="false" />
@@ -209,6 +256,13 @@
         </EntitySet>
         <EntitySet Name="SCEElementGroupRecord" EntityType="Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord">
           <NavigationPropertyBinding Path="SCEElementRecords" Target="SCEElementRecord" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="OperationInstructionRecord" EntityType="Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord">
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

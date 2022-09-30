@@ -18,6 +18,7 @@
                         <MenuItemGroup Title="Management Of Change">
                             <MenuItem RouterLink="operation/managementofchange" RouterMatch="NavLinkMatch.Prefix" Key="OperationManagementOfChange"><a href="operation/managementofchange"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change</span></a></MenuItem>
                             <MenuItem RouterLink="operation/managementofchangesummary" RouterMatch="NavLinkMatch.Prefix" Key="OperationManagementOfChangeSummary"><a href="operation/managementofchangesummary"><Icon Type="reconciliation" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change Summary</span></a></MenuItem>
+                            <MenuItem RouterLink="operation/operationinstruction" RouterMatch="NavLinkMatch.Prefix" Key="OperationOperationInstruction"><a href="operation/operationinstruction"><Icon Type="diff" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Operation Instruction</span></a></MenuItem>
                         </MenuItemGroup>
                     </ChildContent>
                 </SubMenu>
@@ -40,7 +41,8 @@
                     <TitleTemplate><div><Icon Type="hourglass" Theme="@GetTheme("Deferment")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
                     <ChildContent>
                         <MenuItem RouterLink="deferment/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="DefermentDashboard"><a href="deferment/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-                        <MenuItem RouterLink="deferment/report" RouterMatch="NavLinkMatch.Prefix" Key="DefermentReport"><a href="deferment/report"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Deferment Report</span></a></MenuItem>
+                        <MenuItem RouterLink="deferment/report" RouterMatch="NavLinkMatch.Prefix" Key="DefermentReport"><a href="deferment/report"><Icon Type="fund-view" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title">Deferment Report</span></a></MenuItem>
+                    <MenuItem RouterLink="deferment/defermentdetail" RouterMatch="NavLinkMatch.Prefix" Key="DefermentDetail"><a href="deferment/defermentdetail"><Icon Type="diff" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title">Deferment Detail</span></a></MenuItem>
                     </ChildContent>
                 </SubMenu>
             </Authorized>

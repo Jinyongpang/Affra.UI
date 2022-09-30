@@ -37,11 +37,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             }
         }
 
-        private Task OnMessageReceivedAsync(Message obj)
+        private async Task OnMessageReceivedAsync(Message obj)
         {
             AffraNotificationService.NotifyInfo(obj.Content, obj.Subject);
 
-            return Task.WhenAll(this.personalMessageTab.ReloadAllAsync(), this.GetUnreadCountAsync());
+            await Task.WhenAll(this.GetUnreadCountAsync(), this.personalMessageTab.ReloadAllAsync());
         }
 
         private void Open()

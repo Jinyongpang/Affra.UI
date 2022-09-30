@@ -689,3 +689,7 @@ a {
 .ant-layout-sider-trigger {
     background-color: #277BC0;
 }
+.oi-step-navbar {
+    width: 50%;
+    margin: auto;
+}

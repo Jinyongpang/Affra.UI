@@ -6,15 +6,16 @@ using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
+using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
+namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
 {
-    public partial class ManagementOfChangeDataList
+    public partial class OperationInstructionDataList
     {
-        private AntList<ManagementOfChangeRecord> _managementOfChangeList;
-        private List<ManagementOfChangeRecord> managementOfChanges;
+        private AntList<OperationInstructionRecord> _operationInstructionList;
+        private List<OperationInstructionRecord> operationInstructions;
         private int count;
         private int currentCount;
         private bool isLoading = false;
@@ -25,10 +26,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
 
-        public CommonFilter ManagementOfChangeFilter { get; set; }
+        public CommonFilter OperationInstructionFilter { get; set; }
 
-        private readonly Func<double, string> _fortmat1 = (p) => $"{p} %";
-        private readonly ListGridType grid = new()
+        private Func<double, string> _fortmat1 = (p) => $"{p} %";
+        private ListGridType grid = new()
         {
             Gutter = 16,
             Xs = 1,
@@ -40,54 +41,55 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         };
         protected override Task OnInitializedAsync()
         {
-            ManagementOfChangeFilter = new CommonFilter(navigationManager);
+            this.OperationInstructionFilter = new CommonFilter(navigationManager);
             initLoading = false;
-            return LoadDataAsync();
+            return this.LoadDataAsync();
         }
         private async Task LoadDataAsync(bool isLoadMore = false)
         {
             isLoading = true;
+            StateHasChanged();
             if (!isLoadMore)
             {
                 currentCount = 0;
             }
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<ManagementOfChangeRecord>? managementOfChangeService = GetGenericMOCService(serviceScope);
-            var query = managementOfChangeService.Get();
+            IGenericService<OperationInstructionRecord>? operationInstructionService = this.GetGenericOIService(serviceScope);
+            var query = operationInstructionService.Get();
 
-            if (!string.IsNullOrEmpty(ManagementOfChangeFilter.Search))
+            if (!string.IsNullOrEmpty(OperationInstructionFilter.Search))
             {
-                query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus.ToString().ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper()));
+                query = query.Where(oiRecord => oiRecord.OperationInstructionStatus.ToString().ToUpper().Contains(OperationInstructionFilter.Search.ToUpper()));
             }
-            if (ManagementOfChangeFilter.Status != null)
+            if (OperationInstructionFilter.Status != null)
             {
-                var status = (ManagementOfChangeStatus)Enum.Parse(typeof(ManagementOfChangeStatus), ManagementOfChangeFilter.Status);
-                query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus == status);
+                var status = (OperationInstructionStatus)Enum.Parse(typeof(OperationInstructionStatus), OperationInstructionFilter.Status);
+                query = query.Where(oiRecord => oiRecord.OperationInstructionStatus == status);
             }
 
-            Microsoft.OData.Client.QueryOperationResponse<ManagementOfChangeRecord>? managementOfChangeResponse = await query
-                .OrderByDescending(moc => moc.CreatedDateTime)
+            Microsoft.OData.Client.QueryOperationResponse<OperationInstructionRecord>? operationInstructionResponse = await query
+                .OrderByDescending(oi => oi.CreatedDateTime)
                 .Skip(currentCount)
                 .Take(loadSize)
-                .ToQueryOperationResponseAsync<ManagementOfChangeRecord>();
+                .ToQueryOperationResponseAsync<OperationInstructionRecord>();
 
-            count = (int)managementOfChangeResponse.Count;
+            count = (int)operationInstructionResponse.Count;
             currentCount += loadSize;
-            var managementOfChangeList = managementOfChangeResponse.ToList();
+            var operationInstructionList = operationInstructionResponse.ToList();
 
             if (isLoadMore)
             {
-                managementOfChanges.AddRange(managementOfChangeList);
+                operationInstructions.AddRange(operationInstructionList);
             }
             else
             {
-                managementOfChanges = managementOfChangeList;
+                operationInstructions = operationInstructionList;
             }
 
             isLoading = false;
 
-            if (managementOfChangeList.DistinctBy(x => x.Id).Count() != managementOfChangeList.Count)
+            if (operationInstructionList.DistinctBy(x => x.Id).Count() != operationInstructionList.Count)
             {
                 AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
             }
@@ -96,16 +98,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         public Task ReloadAsync()
         {
-            return LoadDataAsync();
+            return this.LoadDataAsync();
         }
         public Task OnLoadMoreAsync()
         {
-            return LoadDataAsync(true);
+            return this.LoadDataAsync(true);
         }
-        private async Task ShowDialogAsync(ManagementOfChangeRecord data, string title = "")
+        private async Task ShowDialogAsync(OperationInstructionRecord data, string title = "")
         {
             dynamic? response;
-            response = await DialogService.OpenAsync<MOCFormTemplate>(title,
+            response = await DialogService.OpenAsync<OperationInstructionFormTemplate>(title,
                        new Dictionary<string, object>() { { "item", data } },
                        Constant.MOHDialogOptions);
 
@@ -114,7 +116,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 try
                 {
                     using var serviceScope = ServiceProvider.CreateScope();
-                    var service = GetGenericMOCService(serviceScope);
+                    var service = this.GetGenericOIService(serviceScope);
 
                     if (data.Id > 0)
                     {
@@ -141,9 +143,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
             await ReloadAsync();
         }
-        private IGenericService<ManagementOfChangeRecord> GetGenericMOCService(IServiceScope serviceScope)
+        private IGenericService<OperationInstructionRecord> GetGenericOIService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<ManagementOfChangeRecord, IManagementOfChangeUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<OperationInstructionRecord, IManagementOfChangeUnitOfWork>>();
         }
         private void HandleException(Exception ex)
         {
@@ -151,8 +153,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private int GetPercentage(double step)
         {
-            double enumLength = Enum.GetNames(typeof(ManagementOfChangeCurrentStep)).Length - 1;
-            return (int)(step / enumLength * 100);
+            double enumLength = Enum.GetNames(typeof(OperationInstructionCurrentStep)).Length - 1;
+            return (int)((step / enumLength) * 100);
         }
     }
 }

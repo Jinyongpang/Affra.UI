@@ -1,7 +1,6 @@
 ﻿using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements;
 using Microsoft.AspNetCore.Components;
 using Radzen;
-using System;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
 {

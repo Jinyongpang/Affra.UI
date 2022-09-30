@@ -1,13 +1,13 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Linq.Dynamic.Core;
+using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using AntDesign;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
-using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements;
 using Microsoft.AspNetCore.Components;
 using Radzen;
-using System.Linq.Dynamic.Core;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
 {
@@ -15,7 +15,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
     {
         private const string All = "All";
         private Menu menu;
-        private string search;
+        private readonly string search;
         private IEnumerable<SCEElementGroupRecord> sceElementGroupList = new List<SCEElementGroupRecord>();
         private SCEElementGrid sceElementGrid { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
@@ -28,14 +28,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
         }
         protected override Task OnInitializedAsync()
         {
-            return this.LoadSCEGroupAsync();
+            return LoadSCEGroupAsync();
         }
         private async Task LoadSCEGroupAsync()
         {
             StateHasChanged();
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<SCEElementGroupRecord>? SCEGroupService = this.GetGenericSCEGroupService(serviceScope);
+            IGenericService<SCEElementGroupRecord>? SCEGroupService = GetGenericSCEGroupService(serviceScope);
             var query = SCEGroupService.Get();
 
             var SCEResponse = await query
@@ -51,8 +51,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
         }
         private Task InitSCEElement()
         {
-            if(sceElementGrid.SCEFilter == null)
+            if (sceElementGrid.SCEFilter == null)
+            {
                 sceElementGrid.SCEFilter = "All";
+            }
 
             sceElementGrid.groupItems = sceElementGroupList;
             return sceElementGrid.ReloadAsync();

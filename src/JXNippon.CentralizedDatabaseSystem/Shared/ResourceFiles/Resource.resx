@@ -306,4 +306,85 @@
   <data name="DailyDiesel" xml:space="preserve">
     <value>Diesel</value>
   </data>
+  <data name="E1" xml:space="preserve">
+    <value>E1: PETRONAS</value>
+  </data>
+  <data name="E2" xml:space="preserve">
+    <value>E2: Customer</value>
+  </data>
+  <data name="E3" xml:space="preserve">
+    <value>E3: Cascaded Shutdown</value>
+  </data>
+  <data name="E4" xml:space="preserve">
+    <value>E4: Others</value>
+  </data>
+  <data name="O1" xml:space="preserve">
+    <value>O1: Production Enhancement</value>
+  </data>
+  <data name="O2" xml:space="preserve">
+    <value>O2: Wireline</value>
+  </data>
+  <data name="O3" xml:space="preserve">
+    <value>O3: Offloading operations</value>
+  </data>
+  <data name="O4" xml:space="preserve">
+    <value>O4: Production operations</value>
+  </data>
+  <data name="O5" xml:space="preserve">
+    <value>O5: Inspection &amp; Maintenance</value>
+  </data>
+  <data name="O6" xml:space="preserve">
+    <value>O6: Construction</value>
+  </data>
+  <data name="P1" xml:space="preserve">
+    <value>P1: Separation</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>P2: Gas dehydration</value>
+  </data>
+  <data name="P3" xml:space="preserve">
+    <value>P3: Safeguarding &amp; control system</value>
+  </data>
+  <data name="P4" xml:space="preserve">
+    <value>P4: Metering</value>
+  </data>
+  <data name="P5" xml:space="preserve">
+    <value>P5: Produced water</value>
+  </data>
+  <data name="P6" xml:space="preserve">
+    <value>P6: Pipeline</value>
+  </data>
+  <data name="P7" xml:space="preserve">
+    <value>P7: Storage &amp; Offloading</value>
+  </data>
+  <data name="P8" xml:space="preserve">
+    <value>P8: Utilities</value>
+  </data>
+  <data name="PlannedDowntime" xml:space="preserve">
+    <value>Planned Downtime</value>
+  </data>
+  <data name="R1" xml:space="preserve">
+    <value>R1: Export compression</value>
+  </data>
+  <data name="R2" xml:space="preserve">
+    <value>R2: Gas lift compression</value>
+  </data>
+  <data name="R3" xml:space="preserve">
+    <value>R3: Power generation</value>
+  </data>
+  <data name="R4" xml:space="preserve">
+    <value>R4: Export pumps</value>
+  </data>
+  <data name="UnplannedDowntime" xml:space="preserve">
+    <value>Unplanned Downtime</value>
+  </data>
+  <data name="W1" xml:space="preserve">
+    <value>W1: Reservoir Conditions</value>
+  </data>
+  <data name="W2" xml:space="preserve">
+    <value>W2: Well Conditions</value>
+  </data>
+  <data name="W3" xml:space="preserve">
+    <value>W3: Artificial Lift</value>
+  </data>
 </root>

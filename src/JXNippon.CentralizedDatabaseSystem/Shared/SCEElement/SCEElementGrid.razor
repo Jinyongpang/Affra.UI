@@ -7,7 +7,7 @@
     <div class="col h-100">
         <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
             FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true"
-                        PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="SCEElementRecord"
+                        PageSize="15" PagerHorizontalAlign="HorizontalAlign.Center" TItem="SCEElementRecord"
                         ColumnWidth="40px" AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
             AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true">
             <EmptyTemplate>    
@@ -17,7 +17,7 @@
                 </div>
             </EmptyTemplate>
             <Columns>
-                <RadzenDataGridColumn TItem="SCEElementRecord" Property="SCECode" Title="Code" Width="40px">
+                <RadzenDataGridColumn TItem="SCEElementRecord" Property="SCECode" Title="Code" Width="20px">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="SCEElementRecord" Property="SCEName" Title="Name" Width="40px">
                 </RadzenDataGridColumn>

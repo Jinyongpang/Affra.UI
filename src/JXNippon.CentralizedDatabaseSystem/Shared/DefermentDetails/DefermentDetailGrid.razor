@@ -1,0 +1,109 @@
+﻿@using AntDesign;
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments
+@using System.Text.Json
+
+<div class="row h-100">
+    <div class="col h-100">
+        <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;"
+            IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true"
+                        ColumnWidth="200px" PageSize="10" PagerHorizontalAlign="HorizontalAlign.Center" TItem="DefermentDetail"
+                        AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true" >
+            <EmptyTemplate>    
+                <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                    <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No deferment detail created.">
+                    </GenericDescription>
+                </div>
+            </EmptyTemplate>
+            <Columns>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Field" Title="Field" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Facility_Platform" Title="Facility / Platform" Width="150px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="DowntimeCategory" Title="Downtime Category" Width="150px">
+                    <Template Context="item">
+                        @(stringLocalizer[item.DowntimeCategory.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="DowntimeType" Title="Downtime Type" Width="120px">
+                    <Template Context="item">
+                        @(stringLocalizer[item.DowntimeType.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="PrimaryCause" Title="Primary Cause" Width="100px">
+                    <Template Context="item">
+                        @(stringLocalizer[item.PrimaryCause.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="SecondaryCause" Title="Secondary Cause" Width="150px">
+                    <Template Context="item">
+                        @(stringLocalizer[item.SecondaryCause.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="StartDate" Title="Start Date" Width="100px">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.StartDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="EndDate" Title="End Date" Width="100px">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.EndDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="CumulativeVolume_kb" Title="Cumulative Volume (kb)"  Width="100px"/>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="AnnualizedVolume_kb_d" Title="Annualized Volume (kb/d)"  Width="100px"/>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="ProblemStatement_Remark" Title="Problem Statement / Remark"  Width="200px"/>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="WayForwardDescription" Title="Way Forward Description" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Status" Title="Status" Width="100px">
+                    <Template Context="item">
+                        @(stringLocalizer[item.Status.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+        </RadzenDataGrid>  
+    </div>
+</div>
+
+
+@code {
+
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        Console.WriteLine(JsonSerializer.Serialize(args));
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DefermentDetail>) != null;
+        ContextMenuService.Open(args, ds =>
+    @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DefermentDetail>, e))">
+                    <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
+                    <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+    </RadzenMenu>
+    );
+    }
+
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DefermentDetail> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DefermentDetail() { }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();
+        }
+    }
+}
