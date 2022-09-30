@@ -464,6 +464,10 @@ p.moh-cardbody {
     height: 100%;
 }
 
+.view-chart > div > div.rz-chart {
+    min-height: 85%;
+}
+
 .view-grid.focused > div > div.rz-data-grid {
     min-height: 90%;
 }
