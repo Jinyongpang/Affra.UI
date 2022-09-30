@@ -1,0 +1,25 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Models
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (DefermentDetail args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Level Drop" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CumulativeVolume" class="w-100" @bind-Value="@Item.CumulativeVolume_kb" Disabled=@isViewing
+                                   Placeholder="Enter Cumulative Volume (kb) ..."></RadzenNumeric>
+                    <RadzenRequiredValidator Component="CumulativeVolume" Text="Cumulative Volume (kb) is required" Popup=false />
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</RadzenTemplateForm>

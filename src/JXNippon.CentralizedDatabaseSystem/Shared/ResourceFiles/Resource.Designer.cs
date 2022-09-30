@@ -466,6 +466,42 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E1: PETRONAS.
+        /// </summary>
+        public static string E1 {
+            get {
+                return ResourceManager.GetString("E1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E2: Customer.
+        /// </summary>
+        public static string E2 {
+            get {
+                return ResourceManager.GetString("E2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E3: Cascaded Shutdown.
+        /// </summary>
+        public static string E3 {
+            get {
+                return ResourceManager.GetString("E3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E4: Others.
+        /// </summary>
+        public static string E4 {
+            get {
+                return ResourceManager.GetString("E4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Facilities Improvement Plan.
         /// </summary>
         public static string FacilitiesImprovementPlan {
@@ -574,6 +610,60 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O1: Production Enhancement.
+        /// </summary>
+        public static string O1 {
+            get {
+                return ResourceManager.GetString("O1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O2: Wireline.
+        /// </summary>
+        public static string O2 {
+            get {
+                return ResourceManager.GetString("O2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O3: Offloading operations.
+        /// </summary>
+        public static string O3 {
+            get {
+                return ResourceManager.GetString("O3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O4: Production operations.
+        /// </summary>
+        public static string O4 {
+            get {
+                return ResourceManager.GetString("O4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O5: Inspection &amp; Maintenance.
+        /// </summary>
+        public static string O5 {
+            get {
+                return ResourceManager.GetString("O5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O6: Construction.
+        /// </summary>
+        public static string O6 {
+            get {
+                return ResourceManager.GetString("O6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operating Change and Non-Routine Operations.
         /// </summary>
         public static string OperatingChangeAndNonRoutineOperations {
@@ -583,11 +673,128 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to P1: Separation.
+        /// </summary>
+        public static string P1 {
+            get {
+                return ResourceManager.GetString("P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P2: Gas dehydration.
+        /// </summary>
+        public static string P2 {
+            get {
+                return ResourceManager.GetString("P2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P3: Safeguarding &amp; control system.
+        /// </summary>
+        public static string P3 {
+            get {
+                return ResourceManager.GetString("P3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P4: Metering.
+        /// </summary>
+        public static string P4 {
+            get {
+                return ResourceManager.GetString("P4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P5: Produced water.
+        /// </summary>
+        public static string P5 {
+            get {
+                return ResourceManager.GetString("P5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P6: Pipeline.
+        /// </summary>
+        public static string P6 {
+            get {
+                return ResourceManager.GetString("P6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P7: Storage &amp; Offloading.
+        /// </summary>
+        public static string P7 {
+            get {
+                return ResourceManager.GetString("P7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P8: Utilities.
+        /// </summary>
+        public static string P8 {
+            get {
+                return ResourceManager.GetString("P8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Planned Downtime.
+        /// </summary>
+        public static string PlannedDowntime {
+            get {
+                return ResourceManager.GetString("PlannedDowntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plant Control and Safety System Change.
         /// </summary>
         public static string PlantControlAndSafetySystemChange {
             get {
                 return ResourceManager.GetString("PlantControlAndSafetySystemChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R1: Export compression.
+        /// </summary>
+        public static string R1 {
+            get {
+                return ResourceManager.GetString("R1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R2: Gas lift compression.
+        /// </summary>
+        public static string R2 {
+            get {
+                return ResourceManager.GetString("R2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R3: Power generation.
+        /// </summary>
+        public static string R3 {
+            get {
+                return ResourceManager.GetString("R3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to R4: Export pumps.
+        /// </summary>
+        public static string R4 {
+            get {
+                return ResourceManager.GetString("R4", resourceCulture);
             }
         }
         
@@ -619,11 +826,47 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unplanned Downtime.
+        /// </summary>
+        public static string UnplannedDowntime {
+            get {
+                return ResourceManager.GetString("UnplannedDowntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to High Risk.
         /// </summary>
         public static string VeryHighRisk {
             get {
                 return ResourceManager.GetString("VeryHighRisk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to W1: Reservoir Conditions.
+        /// </summary>
+        public static string W1 {
+            get {
+                return ResourceManager.GetString("W1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to W2: Well Conditions.
+        /// </summary>
+        public static string W2 {
+            get {
+                return ResourceManager.GetString("W2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to W3: Artificial Lift.
+        /// </summary>
+        public static string W3 {
+            get {
+                return ResourceManager.GetString("W3", resourceCulture);
             }
         }
     }

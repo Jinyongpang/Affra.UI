@@ -160,7 +160,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async void OnCreateButtonClick()
         {
-            if(Item.TitleOfChange == string.Empty)
+            if (Item.TitleOfChange == string.Empty)
             {
                 AffraNotificationService.NotifyWarning("Title of change is required.");
                 return;
@@ -175,7 +175,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 AffraNotificationService.NotifyWarning("Duration of change cannot be less than or equal 0.");
                 return;
             }
-            if (Item.Identification.SCETagNumber  == string.Empty)
+            if (Item.Identification.SCETagNumber == string.Empty)
             {
                 AffraNotificationService.NotifyWarning("SCE tag number is required.");
                 return;
@@ -200,11 +200,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
             string categoriesOfChange = "";
             if (Item.Identification.DetailOfChange == DetailOfChange.FacilitiesImprovementPlan)
+            {
                 categoriesOfChange = "FIP";
+            }
             else if (Item.Identification.DetailOfChange == DetailOfChange.OperatingChangeAndNonRoutineOperations)
+            {
                 categoriesOfChange = "OCR";
+            }
             else
+            {
                 categoriesOfChange = "PCSC";
+            }
 
             Item.RecordNumber = $"MOC-{person.Department}-{Item.ManagementOfChangeField.ToString()}-{categoriesOfChange}-{DateTime.Now:yyyy}-{DateTime.Now:yyyyMMddHHmmss}";
 
@@ -225,7 +231,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 lineManagerUsername.Add(manager);
 
-                foreach(string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
                 {
                     lineManagerUsername.Add(delegation);
                 }
@@ -314,7 +320,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.RecordNumber,
-                Content = "Approval needed!",
+                Content = "You have a new management of change to approve!",
                 Users = new System.Collections.ObjectModel.Collection<string> {
                     Item.Endorsement.Name
                 }
@@ -322,7 +328,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async void OnAuthorisationAndApprovalSubmitButtonClick()
         {
-            if(Item.AuthorisationAndApproval.Name == string.Empty)
+            if (Item.AuthorisationAndApproval.Name == string.Empty)
             {
                 AffraNotificationService.NotifyWarning("Authorisation approval name is required.");
                 return;
@@ -338,7 +344,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.RecordNumber,
-                Content = "Approval needed!",
+                Content = "You have a new management of change to approve!",
                 Users = new System.Collections.ObjectModel.Collection<string> {
                     Item.AuthorisationAndApproval.Name
                 }
@@ -346,7 +352,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async void OnExtensionSubmitButtonClick()
         {
-            if(Item.Extensions[Item.Extensions.Count - 1].ApproverName == string.Empty)
+            if (Item.Extensions[Item.Extensions.Count - 1].ApproverName == string.Empty)
             {
                 AffraNotificationService.NotifyWarning("Extension approval name is required.");
                 return;
@@ -367,13 +373,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.RecordNumber,
-                Content = "Approval needed!",
+                Content = "You have a new management of change to approve!",
                 Users = new System.Collections.ObjectModel.Collection<string> {
                     Item.Extensions[Item.Extensions.Count - 1].ApproverName
                 }
             });
-
-            Console.WriteLine(Item.Extensions[Item.Extensions.Count - 1].ApproverName);
         }
         private async void OnCloseOutSubmitButtonClick()
         {
@@ -393,7 +397,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.RecordNumber,
-                Content = "Approval needed!",
+                Content = "You have a new management of change to approve!",
                 Users = new System.Collections.ObjectModel.Collection<string> {
                     Item.CloseOut.Name
                 }
@@ -401,7 +405,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async Task OnAddExtensionButtonClick()
         {
-            if(Item.Extensions.Count == 5)
+            if (Item.Extensions.Count == 5)
             {
                 AffraNotificationService.NotifyWarning("Maximum extension reached.");
                 return;
@@ -429,7 +433,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         protected Task SubmitAsync(ManagementOfChangeRecord args, bool closeDialog = true)
         {
-            if(closeDialog)
+            if (closeDialog)
                 DialogService.Close(true);
 
             return Task.CompletedTask;

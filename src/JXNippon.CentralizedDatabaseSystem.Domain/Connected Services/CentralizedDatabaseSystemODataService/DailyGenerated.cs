@@ -302,3 +302,23 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions { public partial class DailyPowerGenerationAndDistribution : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
+
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments
+{
+    public partial class DefermentDetail
+    {
+        [IgnoreClientProperty]
+        public DateTime StartDateUI
+        {
+            get { return this.StartDate.ToLocalDateTime(); }
+            set { this.StartDate = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public DateTime EndDateUI
+        {
+            get { return this.EndDate.ToLocalDateTime(); }
+            set { this.EndDate = value.ToUniversalTime(); }
+        }
+    }
+}
