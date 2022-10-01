@@ -83,6 +83,12 @@
                         ComponentType = nameof(DateFilter),
                     },
                     "Add")) Disabled=@(!hasItem)><a><i class="fas fa-calendar fa-fw fa-xl"></i> Add Date Filter...</a></MenuItem>
+                    <MenuItem Key="AddStatistics" @onclick=@(args => ShowDialogAsync(
+                    new Column()
+                    {
+                        ComponentType = nameof(JXNippon.CentralizedDatabaseSystem.Domain.Statistics.Statistic),
+                    },
+                    "Add")) Disabled=@(!hasItem)><a><i class="fas fa-gauge-high fa-fw fa-xl"></i> Add Statistics...</a></MenuItem>
                     <MenuDivider />
                     <MenuItem Key="Export" Disabled=@(!hasItem)><a @onclick=ExportAsync><i class="fas fa-download fa-fw fa-xl"></i> Export</a></MenuItem>
                     <MenuItem Key="Import">

@@ -1,4 +1,5 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
+﻿using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using Microsoft.AspNetCore.Components;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
@@ -7,6 +8,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     {
         [Parameter] public string Title { get; set; }
 
+        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
         public DateTime? Start => this.dateRange.Start;
 
         public DateTime? End => this.dateRange.End;
@@ -25,7 +27,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private void CalculateDateRange()
         {
-            this.dateRange.End = DateTime.Now.Date;
+            this.dateRange.End = this.GlobalDataSource.GlobalDateFilter.Start.Value.Date;
 
             if (this.unit == 1)
             {

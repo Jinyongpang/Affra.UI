@@ -41,7 +41,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 .Where(p => p.Name != "Date")
                 .Select(prop => prop.Name)
                 .ToList();
-
         }
     }
 }

@@ -2,6 +2,7 @@
 {
     public enum DateFilterType
     {
+        SingleDate,
         Range,
         Month,
         NinetyMonth,

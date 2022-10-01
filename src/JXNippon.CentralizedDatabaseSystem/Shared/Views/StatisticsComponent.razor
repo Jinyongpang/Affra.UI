@@ -1,0 +1,74 @@
+﻿@{  <Spin Spinning=@isLoading>
+        <Statistic Title="@this.Column.Title" Value=@value Precision="@this.Statistic.Precision" ValueStyle="font-size: 50px; color: #2192FF;"
+            PrefixTemplate=@this.GetPrefixTemplate() DecimalSeparator="."> 
+            <SuffixTemplate>
+                <span style="font-size: 20px; color: black;">@this.Statistic.Suffix</span>
+            </SuffixTemplate>
+        </Statistic>
+    </Spin>
+}
+
+@code{
+    private decimal? GetDecimalValue(object input)
+    {
+        decimal? decimalValue = null;
+        if (input is decimal result)
+        {
+            decimalValue = result;
+        }
+        else if (input is int integer)
+        {
+            decimalValue = integer;
+        }
+        else if (input is double doubleValue)
+        {
+            decimalValue = (decimal?)doubleValue;
+        }
+        return decimalValue;
+    }
+
+    private RenderFragment GetPrefixTemplate()
+    {
+        if (this.Statistic.ComparePrevious)
+        {
+            decimal? currentValue = this.GetDecimalValue(value);
+            decimal? previousDecimalValue = this.GetDecimalValue(previousValue);
+
+            if (currentValue is null || previousDecimalValue is null)
+            {
+                return null;
+            }
+
+            decimal difference = currentValue.Value - previousDecimalValue.Value;
+            var differenceString = $"{difference}";
+            if (this.Statistic.CompareType == Domain.Statistics.StatisticsCompareType.Percentage 
+                && difference > 0
+                && currentValue > 0)
+            {
+                var percentage = difference / currentValue * 100;
+                differenceString = $"{Math.Ceiling(percentage.Value * 100) / 100} %";
+            }
+
+            if (currentValue > previousDecimalValue)
+            {
+                return
+    @<span style="color: @this.Statistic.ColorGreater; font-size: 20px;"><Icon Type="arrow-up" />@differenceString</span>
+    ;
+            }
+            else if (currentValue < previousDecimalValue)
+            {
+                return
+    @<span style="color: @this.Statistic.ColorLesser; font-size: 20px;"><Icon Type="arrow-down" />@differenceString</span>
+    ;
+            }
+            else
+            {
+                return
+    @<span style="color: @this.Statistic.ColorEqual; font-size: 24px;"><Icon Type="line" /></span>
+    ;
+
+            }
+        }
+        return null;
+    }
+}

@@ -1,7 +1,6 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json;
+﻿using System.Text.Json;
 using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
-using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
+using JXNippon.CentralizedDatabaseSystem.Domain.Statistics;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.AspNetCore.Components;
 using Radzen;
@@ -9,21 +8,26 @@ using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class GridDialog
+    public partial class StatisticsDialog
     {
-        [Parameter] public View View { get; set; }
-        [Parameter] public Column Column { get; set; }
-        public Grid Item { get; set; }
-        [Parameter] public int MenuAction { get; set; }
-        [Inject] private IServiceProvider ServiceProvider { get; set; }
-        [Inject] private IViewService ViewService { get; set; }
-        [Inject] private DialogService DialogService { get; set; }
-
+        private static readonly IEnumerable<string> compareTypes = Enum.GetValues(typeof(StatisticsCompareType))
+            .Cast<StatisticsCompareType>()
+            .Select(x => x.ToString())
+            .ToList();
         private IEnumerable<string> types;
         private bool isViewing { get => MenuAction == 3; }
         private int current { get; set; } = 0;
         private AntDesign.Steps steps;
         private string[] dateFiltersId;
+        private IEnumerable<string> properties;
+
+        [Parameter] public View View { get; set; }
+        [Parameter] public Column Column { get; set; }
+        public Statistic Item { get; set; }
+        [Parameter] public int MenuAction { get; set; }
+        [Inject] private IServiceProvider ServiceProvider { get; set; }
+        [Inject] private IViewService ViewService { get; set; }
+        [Inject] private DialogService DialogService { get; set; }
 
         protected override Task OnInitializedAsync()
         {
@@ -33,13 +37,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 .Select(x => x.Key)
                 .ToHashSet();
 
-            Item = new Grid()
+            Item = new Statistic()
             {
-                GridColumns = new Collection<GridColumn>(),
+                ColorGreater = "#38E54D",
+                ColorLesser = "#FF884B",
+                ColorEqual = "#256D85",
+                IsSimpleCard = true,
             };
+
             if (!string.IsNullOrEmpty(Column.ColumnComponent))
             {
-                Item = JsonSerializer.Deserialize<Grid>(Column.ColumnComponent) ?? Item;
+                Item = JsonSerializer.Deserialize<Statistic>(Column.ColumnComponent) ?? Item;
             }
 
             var filters = View.Rows.SelectMany(x => x.Columns)
@@ -52,20 +60,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             dateFiltersId = filters.Distinct()
                 .ToArray();
 
+            this.RefreshTypeProperties();
+
             return Task.CompletedTask;
         }
 
-        protected Task SubmitAsync(Grid arg)
+        protected Task SubmitAsync(Statistic arg)
         {
-            if (this.current < 2)
+            if (current < 1)
             {
-                this.MovePage(1);
+                MovePage(1);
             }
             else
             {
                 Column.ColumnComponent = JsonSerializer.Serialize(Item);
                 DialogService.Close(true);
-            }     
+            }
             return Task.CompletedTask;
         }
 
@@ -84,7 +94,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private void MovePage(int i)
         {
-            this.current += i;
+            current += i;
+        }
+
+        private void RefreshTypeProperties()
+        {
+            Type type = Item.ActualType;
+
+            if (type is null)
+            {
+                return;
+            }
+
+            properties = type.GetProperties()
+                .Where(p => p.Name != "Date")
+                .Select(prop => prop.Name)
+                .ToList();
         }
     }
 }

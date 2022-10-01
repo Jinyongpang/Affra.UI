@@ -108,18 +108,20 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     Queryable = Queryable
                         .Cast<IDaily>()
                         .Where(item => item.Date >= DateFilter.Start.Value.ToUniversalTime())
-                        .Where(item => item.Date <= DateFilter.End.Value.ToUniversalTime());
+                        .Where(item => item.Date <= DateFilter.End.Value.ToUniversalTime())
+                        .OrderBy(x => x.Date);
                 }
                 else
                 {
-                    Queryable = Queryable.Take(100);
+                    Queryable = Queryable
+                        .Cast<IDaily>()
+                        .OrderBy(x => x.Date)
+                        .Take(100);
                 }
                 await LoadData.InvokeAsync(Queryable);
-                var q = (DataServiceQuery)Queryable;
+                var q = (DataServiceQuery<IDaily>)Queryable;
 
                 var typeItems = (await q.ExecuteAsync())
-                    .Cast<IDaily>()
-                    .OrderBy(x => x.Date)
                     .ToList();
 
                 if (this.Count == 0 && typeItems.Count > 0)

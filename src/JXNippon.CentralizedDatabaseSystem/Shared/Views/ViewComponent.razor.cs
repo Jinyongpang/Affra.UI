@@ -29,6 +29,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private readonly IList<string> cardClasses = new List<string>();
 
+        private readonly List<ChartComponent> chartComponents = new();
+
         [Parameter]
         public bool HasFocus { get; set; }
 
@@ -43,10 +45,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         [Inject] private NavigationManager NavigationManager { get; set; }
 
-        private List<ChartComponent> chartComponents = new();
-        public ChartComponent chartComponentRef 
-        {       
-            set 
+        public ChartComponent chartComponentRef
+        {
+            set
             {
                 var existingComponent = chartComponents
                     .Where(x => x.Column.Id == value.Column.Id)
@@ -58,10 +59,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 }
 
                 chartComponents.Add(value);
-            } 
+            }
         }
 
-        private List<DataGridComponent> gridComponents = new();
+        private readonly List<DataGridComponent> gridComponents = new();
         public DataGridComponent gridComponentRef
         {
             set
@@ -79,7 +80,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
-        private List<AnnouncementCardComponent> announcementComponents = new();
+        private readonly List<AnnouncementCardComponent> announcementComponents = new();
         public AnnouncementCardComponent announcementComponentRef
         {
             set
@@ -97,7 +98,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
-        private IDictionary<string, DateFilterComponent> dateFilterComponents = new Dictionary<string, DateFilterComponent>();
+        private readonly IDictionary<string, DateFilterComponent> dateFilterComponents = new Dictionary<string, DateFilterComponent>();
         public DateFilterComponent dateFilterComponentRef
         {
             set
@@ -108,6 +109,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 }
 
                 dateFilterComponents.Add(value.DateFilter.Id, value);
+            }
+        }
+
+        private readonly List<StatisticsComponent> statisticsComponents = new();
+        public StatisticsComponent statisticsComponentRef
+        {
+            set
+            {
+                var existingComponent = statisticsComponents
+                    .Where(x => x.Column.Id == value.Column.Id)
+                    .FirstOrDefault();
+
+                if (existingComponent is not null)
+                {
+                    statisticsComponents.Remove(existingComponent);
+                }
+
+                statisticsComponents.Add(value);
             }
         }
 
@@ -138,7 +157,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private Task OnFocusAsync(int i)
         {
-            this.focusId = i; 
+            this.focusId = i;
             this.HasFocus = i != -1;
             return HasFocusChanged.InvokeAsync(i != -1);
         }
@@ -207,6 +226,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             else if (data.ComponentType == nameof(DateFilter))
             {
                 response = await DialogService.OpenAsync<DateFilterDialog>("Edit",
+                    new Dictionary<string, object>() { { "Column", data }, { "View", View } },
+                    Constant.FullScreenDialogOptions);
+            }
+            else if (data.ComponentType == nameof(Domain.Statistics.Statistic))
+            {
+                response = await DialogService.OpenAsync<StatisticsDialog>("Edit",
                     new Dictionary<string, object>() { { "Column", data }, { "View", View } },
                     Constant.FullScreenDialogOptions);
             }
@@ -324,7 +349,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private void HandleDragStart(DragEventArgs arg, Row row, Column column, int draggedId)
         {
             arg.DataTransfer.DropEffect = "move";
-            draggingItem = this.columnDictionary[column.Id];
+            draggingItem = columnDictionary[column.Id];
             this.draggedId = draggedId;
         }
 
@@ -343,7 +368,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 using var serviceScope = ServiceProvider.CreateScope();
                 await this.GetGenericService<Column>(serviceScope).UpdateAsync(draggingItem, draggingItem.Id);
                 await RefreshViewAsync();
-                
+
                 AffraNotificationService.NotifyInfo(ViewUpdated);
             }
             catch (Exception ex)
@@ -390,7 +415,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     UpdateColumnDictionary(column);
                 }
             }
-            await this.ReloadAsync();         
+            await this.ReloadAsync();
         }
 
         private void UpdateColumnDictionary(Column col)
@@ -414,15 +439,35 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 target.RowId = source.RowId;
                 target.xmin = source.xmin;
                 target.Row = source.Row;
-            }         
+            }
+        }
+
+        private IDateFilterComponent GetDateFilterComponent(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return null;
+            }
+            else if (id == Constant.GlobalDateFilter)
+            {
+                return GlobalDataSource.GlobalDateFilter;
+            }
+            else if (dateFilterComponents.TryGetValue(id, out var component))
+            {
+                return component.Filter;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async ValueTask DisposeAsync()
         {
-           if (_disposed)
+            if (_disposed)
             {
                 foreach (var component in chartComponents)
-                { 
+                {
                     await component.DisposeAsync();
                 }
 

@@ -1,0 +1,138 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Domain.Charts
+@using JXNippon.CentralizedDatabaseSystem.Domain.Filters
+@using Row = ViewODataService.Affra.Service.View.Domain.Views.Row
+
+<RadzenTemplateForm Data="@Item" Submit="@(async (JXNippon.CentralizedDatabaseSystem.Domain.Statistics.Statistic args) => { await SubmitAsync(args); })">
+    <div class="fullscreen-dialog">
+        <div class="fullscreen-dialog-header">
+            <Icon Type="arrow-left" Theme="outline" Class="fullscreen-dialog-back" OnClick=@(() => this.DialogService.Close())/>
+            <Steps ShowProgressDot Current="current" @ref=@this.steps Class="steps-navbar">
+                <Step Title="Configurations" />
+                <Step Title="Preview" />
+            </Steps>
+            <div class="steps-action-buttons">
+                <RadzenButton Visible=@(this.current > 0) Style="margin-right: 10px;" ButtonStyle="Radzen.ButtonStyle.Light" Click="@(() => MovePage(-1))">Previous</RadzenButton> 
+                <RadzenButton Visible=@(this.current < 1) ButtonType="Radzen.ButtonType.Submit">Next</RadzenButton> 
+                <RadzenButton Visible=@(this.current == 1) ButtonType="Radzen.ButtonType.Submit" Text="Save" Disabled=@isViewing/>            
+             </div>
+        </div>
+        <Divider />
+        <div class="col view-dialog-content">
+            @if (this.current == 0)
+            {   
+                <div class="view-dialog-content">                  
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Type" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenDropDown Name="Type" class="w-100" Placeholder="Select type..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@types" @bind-Value="@Item.Type" TValue="string" AllowClear="false" Disabled=@isViewing Change=RefreshTypeProperties></RadzenDropDown>
+                            <RadzenRequiredValidator Component="Type" Text="Type is required" Popup=false/>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Date Filter" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenDropDown Name="DateFilterId" class="w-100" Placeholder="Select date filter..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@dateFiltersId" @bind-Value="@Item.DateFilterId" TValue="string" AllowClear="true" Disabled=@isViewing></RadzenDropDown>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Title" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenTextBox Name="Title" class="w-100" Placeholder="Enter title..." @bind-Value="@Column.Title" Disabled=@isViewing></RadzenTextBox>
+                            <RadzenRequiredValidator Component="Title" Text="Title is required" Popup=false/>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Property" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenDropDown AllowClear="true" Data="@properties" Name="Property" class="w-100" Placeholder="Select property..." @bind-Value="@Item.Property" Disabled=@isViewing></RadzenDropDown>
+                            <RadzenRequiredValidator Component="Property" Text="Property is required" Popup=false/>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Precision" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenNumeric Min=0 Name="Precision" class="w-100" Placeholder="Enter precision..." @bind-Value="@Item.Precision" Disabled=@isViewing></RadzenNumeric>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Suffix" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenTextBox Name="Suffix" class="w-100" Placeholder="Enter suffix..." @bind-Value="@Item.Suffix" Disabled=@isViewing></RadzenTextBox>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Compare Previous" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenSwitch Name="ComparePrevious" @bind-Value="@Item.ComparePrevious" Disabled=@isViewing></RadzenSwitch>
+                        </div>
+                    </div>
+                    @if (Item.ComparePrevious)
+                    {
+                      <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Compare Type" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenDropDown Name="CompareType" class="w-100" Placeholder="Select compare type..." Data=@compareTypes @bind-Value="@Item.CompareTypeString" Disabled=@isViewing></RadzenDropDown>
+                            </div>
+                       </div>
+                       <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Equal Color" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenColorPicker Name="ColorEqual" @bind-Value="@Item.ColorEqual" Disabled=@isViewing></RadzenColorPicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Greater Color" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenColorPicker Name="ColorGreater" @bind-Value="@Item.ColorGreater" Disabled=@isViewing></RadzenColorPicker>
+                            </div>
+                        </div>
+                        <div class="row py-2">
+                            <div class="col-4 align-items-center d-flex">
+                                <RadzenLabel class="dialogTextSize" Text="Lesser Color" />
+                            </div>
+                            <div class="col-8">
+                                <RadzenColorPicker Name="ColorLesser" @bind-Value="@Item.ColorLesser" Disabled=@isViewing></RadzenColorPicker>
+                            </div>
+                        </div>
+                    }
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Width Size" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenNumeric Max=12 Min=1 Name="WidthGridSize" class="w-100" Placeholder="Enter width size..." @bind-Value="@Item.WidthGridSize" Disabled=@isViewing></RadzenNumeric>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                string type = ViewService.GetTypeMapping()[Item.Type];
+                <div class="row py-2 view-dialog-content">
+                    <JXNippon.CentralizedDatabaseSystem.Shared.Views.StatisticsComponent TType="@type" Column=@Column DateFilter=null Statistic=@Item></JXNippon.CentralizedDatabaseSystem.Shared.Views.StatisticsComponent>
+                </div>
+            }
+           
+        </div>
+    </div>
+</RadzenTemplateForm>
