@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
@@ -42,6 +43,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
             }
         }
 
+        public IDateFilterComponent GlobalDateFilter { get; set; }
+
         public object LoginDisplay { get; set; }
 
         public void AddException(Exception exception)
@@ -52,5 +55,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.DataSources
                 _ = this.Exceptions.TryTake(out Exception firstException);
             }
         }
+
     }
 }
