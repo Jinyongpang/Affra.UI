@@ -1,4 +1,5 @@
 ﻿using AntDesign;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using Microsoft.AspNetCore.Components;
 
@@ -7,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     public partial class NinetyDaysFilterComponent : IDateFilterComponent
     {
         [Parameter] public string Title { get; set; }
+
+        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
 
         public DateTime? Start => this.dateRange.Start;
 
@@ -42,8 +45,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 years.Add(i);
             }
-            this.month = DateTime.Now.Month;
-            this.year = DateTime.Now.Year;
+            this.month = this.GlobalDataSource.GlobalDateFilter.Start.Value.Month;
+            this.year = this.GlobalDataSource.GlobalDateFilter.Start.Value.Year;
             this.CalculateDateRange();
             return Task.CompletedTask;
         }

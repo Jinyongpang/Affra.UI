@@ -20,3 +20,7 @@ else if(this.DateFilter.DateFilterType == DateFilterType.HorizontalMonth)
 {
     <HorizontalMonthFilterComponent @ref=@Filter Title=@this.Column.Title></HorizontalMonthFilterComponent>
 }
+else if(this.DateFilter.DateFilterType == DateFilterType.SingleDate)
+{
+    <SingleDateRangeFilterComponent @ref=@Filter Title=@this.Column.Title></SingleDateRangeFilterComponent>
+}

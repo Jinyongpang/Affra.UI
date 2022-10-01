@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Components;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
-    public partial class MonthFilterComponent : IDateFilterComponent
+    public partial class SingleDateRangeFilterComponent : IDateFilterComponent
     {
         [Parameter] public string Title { get; set; }
-
+        [Parameter] public string Class { get; set; }
+        [Parameter] public bool IsGlobal { get; set; }
         [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
         public DateTime? Start => this.dateRange.Start;
 
@@ -28,14 +29,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override Task OnInitializedAsync()
         {
-            this.CalculateDateRange(this.GlobalDataSource.GlobalDateFilter.Start.Value.Date);
+            this.CalculateDateRange(IsGlobal
+                ? DateTime.Now.Date
+                : this.GlobalDataSource.GlobalDateFilter.Start.Value.Date);
+
             return Task.CompletedTask;
         }
 
         private void CalculateDateRange(DateTime month)
         {
             this.dateRange.Start = new DateTime(month.Year, month.Month, 1);
-            this.dateRange.End = this.dateRange.Start.Value.AddMonths(1).AddDays(-1);
+            this.dateRange.End = this.dateRange.Start.Value.AddDays(1).AddMilliseconds(-1);
         }
     }
 }

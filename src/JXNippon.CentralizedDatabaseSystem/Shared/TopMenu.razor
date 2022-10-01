@@ -1,5 +1,6 @@
 ﻿@using JXNippon.CentralizedDatabaseSystem.Domain.DataSources
 @using JXNippon.CentralizedDatabaseSystem.Shared.Notifications
+@using JXNippon.CentralizedDatabaseSystem.Shared.Views
 @inject IGlobalDataSource GlobalDataSource
 
 <Menu @ref=menu Mode=MenuMode.Horizontal DefaultSelectedKeys="@(new string[] { "Home" })" Class="top-menu">
@@ -66,6 +67,7 @@
         </Authorized>
     </AuthorizeView>
     <div style="position: absolute; top: 0; right: 0;">
+         <SingleDateRangeFilterComponent IsGlobal Class="px-2"  @ref=@GlobalDataSource.GlobalDateFilter></SingleDateRangeFilterComponent>
          <LoginDisplay @ref=GlobalDataSource.LoginDisplay/>
     </div> 
 </Menu>

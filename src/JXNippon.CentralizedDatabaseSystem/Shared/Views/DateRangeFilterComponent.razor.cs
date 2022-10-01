@@ -1,4 +1,5 @@
 ﻿using AntDesign;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using Microsoft.AspNetCore.Components;
 
@@ -7,6 +8,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     public partial class DateRangeFilterComponent : IDateFilterComponent
     {
         [Parameter] public string Title { get; set; }
+        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
         public DateTime? Start => this.dateRange.Start;
 
         public DateTime? End => this.dateRange.End;

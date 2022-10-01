@@ -1,4 +1,5 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Models;
+﻿using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
@@ -70,6 +71,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         private DieselDataGrid dieselDataGrid;
 
         [Inject] private NavigationManager NavManager { get; set; }
+        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
         private CommonFilter CommonFilter { get; set; }
 
         [Parameter]
@@ -81,7 +83,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
         protected override Task OnInitializedAsync()
         {
             CommonFilter = new CommonFilter(NavManager);
-            CommonFilter.Date = DateTime.Today;
+            CommonFilter.Date = GlobalDataSource.GlobalDateFilter.Start;
 
             return Task.CompletedTask;
         }
