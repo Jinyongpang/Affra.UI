@@ -4,6 +4,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Constants
 {
     public static class Constant
     {
+        public const string GlobalDateFilter = "GlobalDateFilter";
         public const string DialogStyle = "min-height:auto;max-width:100%; width:auto; min-width:30vw;";
         public const string FullScreenDialogStyle = "height:100vh;width:100vw;padding:0px; border-radius:0 !important;";
 

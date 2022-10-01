@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json;
-using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+﻿using System.Text.Json;
 using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.AspNetCore.Components;
@@ -13,22 +11,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     {
         [Parameter] public View View { get; set; }
         [Parameter] public Column Column { get; set; }
-        public DateFilter Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
+
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
+        public DateFilter Item { get; set; }
 
         private bool isViewing { get => MenuAction == 3; }
         private int current { get; set; } = 0;
         private AntDesign.Steps steps;
 
 
-        private static IEnumerable<string> types = Enum.GetValues(typeof(DateFilterType))
+        private static readonly IEnumerable<string> types = Enum.GetValues(typeof(DateFilterType))
             .Cast<DateFilterType>()
             .Select(x => x.ToString())
             .ToList();
-
 
         protected override Task OnInitializedAsync()
         {
@@ -43,15 +41,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 Item = JsonSerializer.Deserialize<DateFilter>(Column.ColumnComponent) ?? Item;
             }
-            
+
             return Task.CompletedTask;
         }
 
         protected Task SubmitAsync(DateFilter arg)
         {
-            if (this.current < 1)
+            if (current < 1)
             {
-                this.MovePage(1);
+                MovePage(1);
             }
             else
             {
@@ -76,7 +74,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private void MovePage(int i)
         {
-            this.current += i;
+            current += i;
         }
     }
 }

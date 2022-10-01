@@ -246,6 +246,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                    new Dictionary<string, object>() { { "Column", data }, { "View", view } },
                    Constant.FullScreenDialogOptions);
             }
+            else if (data.ComponentType == nameof(Domain.Statistics.Statistic))
+            {
+                response = await DialogService.OpenAsync<StatisticsDialog>(title,
+                   new Dictionary<string, object>() { { "Column", data }, { "View", view } },
+                   Constant.FullScreenDialogOptions);
+            }
 
             if (response == true)
             {

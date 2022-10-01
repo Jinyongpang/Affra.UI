@@ -43,11 +43,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 Item = JsonSerializer.Deserialize<Chart>(Column.ColumnComponent) ?? Item;
             }
-            
-            dateFiltersId = View.Rows.SelectMany(x => x.Columns)
+
+            var filters = View.Rows.SelectMany(x => x.Columns)
                 .Where(x => x.ComponentType == nameof(DateFilter))
                 .Select(x => JsonSerializer.Deserialize<DateFilter>(x.ColumnComponent).Id)
-                .Distinct()
+                .ToList();
+
+            filters.Add(Constants.Constant.GlobalDateFilter);
+
+            dateFiltersId = filters.Distinct()
                 .ToArray();
 
             return Task.CompletedTask;

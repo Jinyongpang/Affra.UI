@@ -1,6 +1,7 @@
 ﻿@using System.Text.Json;
 @using Affra.Core.Domain.Services
 @using JXNippon.CentralizedDatabaseSystem.Domain.Announcements
+@using JXNippon.CentralizedDatabaseSystem.Domain.DataSources
 @using JXNippon.CentralizedDatabaseSystem.Domain.Filters
 @using JXNippon.CentralizedDatabaseSystem.Domain.Grids
 @using JXNippon.CentralizedDatabaseSystem.Domain.Views
@@ -15,6 +16,7 @@
 @inject DialogService DialogService
 @inject IServiceProvider ServiceProvider
 @inject AffraNotificationService AffraNotificationService
+@inject IGlobalDataSource GlobalDataSource
 
 @if (View is not null)
 {
@@ -85,18 +87,14 @@
                                     @if (col.ComponentType == nameof(Chart))
                                     {   
                                         Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                                        var dateFilter = !string.IsNullOrEmpty(chart.DateFilterId)
-                                            ? this.dateFilterComponents[chart.DateFilterId].Filter
-                                            : null;
+                                        var dateFilter = this.GetDateFilterComponent(chart.DateFilterId);
                                         <ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
                                             Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col" Colors=@(this.ColorsGroups.ElementAt(j))></ChartComponent>
                                     }
                                     else if (col.ComponentType ==  nameof(Grid))
                                     {
                                         Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                                        var dateFilter = !string.IsNullOrEmpty(grid.DateFilterId)
-                                            ? this.dateFilterComponents[grid.DateFilterId].Filter
-                                            : null;
+                                        var dateFilter = this.GetDateFilterComponent(grid.DateFilterId);
                                         <DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize(j) PageNumbersCount=GetPageNumbersCount(j)></DataGridComponent>
                                     }
                                     else if (col.ComponentType ==  nameof(AnnouncementCard))
@@ -108,6 +106,13 @@
                                     {
                                         DateFilter component = JsonSerializer.Deserialize<DateFilter>(col.ColumnComponent);
                                         <DateFilterComponent @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>
+                                    }                                    
+                                    else if (col.ComponentType ==  nameof(Domain.Statistics.Statistic))
+                                    {
+                                        Domain.Statistics.Statistic component = JsonSerializer.Deserialize<Domain.Statistics.Statistic>(col.ColumnComponent);
+                                        var dateFilter = this.GetDateFilterComponent(component.DateFilterId);
+
+                                        <StatisticsComponent @ref=@statisticsComponentRef TType="@component.ActualType.AssemblyQualifiedName" DateFilter=@dateFilter Statistic=@component Column=@col></StatisticsComponent>
                                     }
                                 </Body>
                             </Card> 
@@ -140,18 +145,14 @@
                                     @if (col.ComponentType ==  nameof(Chart))
                                     {
                                         Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                                        var dateFilter = !string.IsNullOrEmpty(chart.DateFilterId)
-                                            ? this.dateFilterComponents[chart.DateFilterId].Filter
-                                            : null;
+                                        var dateFilter = this.GetDateFilterComponent(chart.DateFilterId);
                                         <ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
                                             Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col" Colors=@(this.ColorsGroups.ElementAt(j))></ChartComponent>
                                     }
                                     else if (col.ComponentType ==  nameof(Grid))
                                     {
-                                       Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                                        var dateFilter = !string.IsNullOrEmpty(grid.DateFilterId)
-                                            ? this.dateFilterComponents[grid.DateFilterId].Filter
-                                            : null;
+                                        Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
+                                        var dateFilter = this.GetDateFilterComponent(grid.DateFilterId);
                                         <DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize(j) PageNumbersCount=GetPageNumbersCount(j)></DataGridComponent>
                                   }
                                     else if (col.ComponentType ==  nameof(AnnouncementCard))
@@ -163,6 +164,13 @@
                                     {
                                         DateFilter component = JsonSerializer.Deserialize<DateFilter>(col.ColumnComponent);
                                         <DateFilterComponent @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>
+                                    }
+                                    else if (col.ComponentType ==  nameof(Domain.Statistics.Statistic))
+                                    {
+                                        Domain.Statistics.Statistic component = JsonSerializer.Deserialize<Domain.Statistics.Statistic>(col.ColumnComponent);
+                                        var dateFilter = this.GetDateFilterComponent(component.DateFilterId);
+
+                                        <StatisticsComponent @ref=@statisticsComponentRef TType="@component.ActualType.AssemblyQualifiedName" DateFilter=@dateFilter Statistic=@component Column=@col></StatisticsComponent>
                                     }
                                 </Body>
                             </Card> 

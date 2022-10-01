@@ -36,9 +36,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return Task.CompletedTask;
         }
 
-        private void CalculateDateRange(DateTime month)
+        private void CalculateDateRange(DateTime datetime)
         {
-            this.dateRange.Start = new DateTime(month.Year, month.Month, 1);
+            this.dateRange.Start = datetime;
             this.dateRange.End = this.dateRange.Start.Value.AddDays(1).AddMilliseconds(-1);
         }
     }
