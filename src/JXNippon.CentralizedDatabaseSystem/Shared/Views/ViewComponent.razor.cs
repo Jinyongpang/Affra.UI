@@ -1,4 +1,5 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Collections.Concurrent;
+using Affra.Core.Domain.Services;
 using JXNippon.CentralizedDatabaseSystem.Domain.Announcements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
@@ -25,9 +26,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private int focusId = -1;
 
-        private readonly IDictionary<long, Column> columnDictionary = new Dictionary<long, Column>();
+        private bool isFirstRowCompleted = false;
 
-        private readonly IDictionary<long, string> cardClasses = new Dictionary<long, string>();
+        private readonly IDictionary<long, Column> columnDictionary = new ConcurrentDictionary<long, Column>();
+
+        private readonly IDictionary<long, string> cardClasses = new ConcurrentDictionary<long, string>();
 
         private readonly List<ChartComponent> chartComponents = new();
 
@@ -95,7 +98,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
-        private readonly IDictionary<string, DateFilterComponent> dateFilterComponents = new Dictionary<string, DateFilterComponent>();
+        private static readonly IDictionary<string, DateFilterComponent> dateFilterComponents = new ConcurrentDictionary<string, DateFilterComponent>();
         public DateFilterComponent dateFilterComponentRef
         {
             set
