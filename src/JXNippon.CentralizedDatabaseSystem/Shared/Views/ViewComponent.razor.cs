@@ -151,15 +151,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }        
         }
 
-        private string CheckRowHidden(Row row)
-        {
-            return !this.IsDesignMode
-                || row.Columns is not null
-                || row.Columns.Count > 0
-                ? DisplayNoneStyle
-                : string.Empty;
-        }
-
         private Task OnFocusAsync(int i)
         {
             this.focusId = i;
