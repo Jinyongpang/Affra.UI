@@ -29,7 +29,7 @@
                 || row.Columns.Count == 0))
             {
                  int j = id;
-                 <div class="col py-1" ondragover="event.preventDefault();" @ondrop=@(args => HandleDropOnRowAsync(args, row)) @ondragenter="@(args => HandleDragEnter(j))">
+                 <div class="col py-1" ondragover="event.preventDefault();" @ondrop=@(args => HandleDropOnRowAsync(args, row)) @ondragenter="@(args => HandleDragEnter(j))" style=@this.CheckRowHidden(row)>
                     <Card Style="text-align: center;" Class="h-100 card-shadow"> 
                         <TitleTemplate>
                         </TitleTemplate>

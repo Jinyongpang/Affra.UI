@@ -130,29 +130,37 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
-        public Task ReloadAsync()
+        public async Task ReloadAsync(bool forceReload = true)
         {
             StateHasChanged();
-            var allColumns = this.View.Rows.SelectMany(x => x.Columns);
-            List<Task> tasks = new List<Task>();
-            tasks.AddRange(chartComponents
-                .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
-                .Select(x => x.ReloadAsync())
-                .ToList());
-            tasks.AddRange(gridComponents
-                .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
-                .Select(x => x.ReloadAsync())
-                .ToList());
+            if (forceReload)
+            {
+                var allColumns = this.View.Rows.SelectMany(x => x.Columns);
+                List<Task> tasks = new List<Task>();
+                tasks.AddRange(chartComponents
+                    .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
+                    .Select(x => x.ReloadAsync())
+                    .ToList());
+                tasks.AddRange(gridComponents
+                    .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
+                    .Select(x => x.ReloadAsync())
+                    .ToList());
 
-            tasks.AddRange(announcementComponents
-                .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
-                .Select(x => x.ReloadAsync())
-                .ToList());
-            return Task.WhenAll(tasks);
+                tasks.AddRange(announcementComponents
+                    .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
+                    .Select(x => x.ReloadAsync())
+                    .ToList());
+                await Task.WhenAll(tasks);
+            }        
         }
 
-        protected override async Task OnInitializedAsync()
+        private string CheckRowHidden(Row row)
         {
+            return !this.IsDesignMode
+                || row.Columns is not null
+                || row.Columns.Count > 0
+                ? "display: none !important;"
+                : string.Empty;
         }
 
         private Task OnFocusAsync(int i)
@@ -367,7 +375,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 draggingItem.Sequence = column.Sequence;
                 using var serviceScope = ServiceProvider.CreateScope();
                 await this.GetGenericService<Column>(serviceScope).UpdateAsync(draggingItem, draggingItem.Id);
-                await RefreshViewAsync();
+                await this.RefreshViewAsync();
 
                 AffraNotificationService.NotifyInfo(ViewUpdated);
             }
@@ -415,7 +423,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     UpdateColumnDictionary(column);
                 }
             }
-            await this.ReloadAsync();
+            await this.ReloadAsync(false);
         }
 
         private void UpdateColumnDictionary(Column col)

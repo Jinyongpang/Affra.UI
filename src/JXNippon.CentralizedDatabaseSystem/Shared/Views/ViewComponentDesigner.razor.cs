@@ -34,6 +34,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
 
+        private string ViewHidden => this.view?.Name is null
+            ? string.Empty
+            : "display: none !important;";
+
         public async Task ReloadAsync(View value = null)
         {
             value ??= this.view;
@@ -50,17 +54,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             foreach (var row in view.Rows)
                 foreach (var col in row.Columns)
                 {
-                    colorsGroups.Add(Constants.Constant.GetRandomColors());
+                    colorsGroups.Add(Constant.GetRandomColors());
                 }
         }
 
         protected override async Task OnInitializedAsync()
         {
             views = (await GetViewsAsync()).ToList();
-            this.view = views.FirstOrDefault();
-            await this.GetViewDetailAsync();
             this.ReloadColorGroup();
-
         }
 
         protected async Task<IEnumerable<View>> GetViewsAsync()
@@ -105,12 +106,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private async Task AddRowAsync()
         {
             using var serviceScope = ServiceProvider.CreateScope();
-            var genericService = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<Row, IViewUnitOfWork>>();
-            var seq = view.Rows.Count > 0
-                ? view.Rows.Max(row => row.Sequence) + 1
+            var rowService = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<Row, IViewUnitOfWork>>();
+            var latestRow = (await rowService
+                .Get()
+                .Where(x => x.ViewName == this.view.Name)
+                .OrderByDescending(x => x.Sequence)
+                .ToQueryOperationResponseAsync<Row>())
+                .FirstOrDefault();
+
+            var seq = latestRow?.Sequence is not null
+                ? latestRow?.Sequence + 1 ?? 0
                 : 0;
             var row = new Row() { ViewName = view.Name, Sequence = seq };
-            await genericService.InsertAsync(row);
+            await rowService.InsertAsync(row);
             AffraNotificationService.NotifyItemCreated();
             view.Rows.Add(row);
             StateHasChanged();

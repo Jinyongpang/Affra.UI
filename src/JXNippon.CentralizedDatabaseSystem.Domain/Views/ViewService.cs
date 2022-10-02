@@ -65,7 +65,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
         {
             if (view != null)
             {
-                var columns = await GetColumnsAsync(view);
+                var columns = await this.GetColumnsAsync(view);
                 ConstructView(view, columns);
             }
         }
@@ -106,6 +106,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             }
             return query
                 .OrderBy(d => d.Sequence)
+                .ThenBy(d => d.RowId)
                 .ExecuteAsync<Column>();
         }
 
