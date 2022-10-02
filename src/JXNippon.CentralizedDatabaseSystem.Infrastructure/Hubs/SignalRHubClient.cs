@@ -31,8 +31,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
                 })
                 .WithAutomaticReconnect()
                 .AddJsonProtocol();
+
             HubConnection hubConnection = hubConnectionBuilder.Build();
-            foreach(var method in methodNames)
+            foreach (var method in methodNames)
             {
                 hubConnection.On(method, handler);
             }

@@ -47,26 +47,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
-            var actualTypes = new HashSet<Type>();
-            types = new HashSet<string>();
-            actualTypes.Add(this.TType);
-            types.Add(this.TType.AssemblyQualifiedName);
-            foreach (var series in this.ChartSeries)
-            {
-                if (series.ActualType is not null
-                    && !types.Contains(series.ActualType.AssemblyQualifiedName))
-                {
-                    types.Add(series.ActualType.AssemblyQualifiedName);
-                    actualTypes.Add(series.ActualType);
-                }
-            }
             if (this.HasSubscription)
             {
+                var actualTypes = this.GetActualTypes();
                 foreach (var type in actualTypes)
                 {
-                    var subscription = ContentUpdateNotificationService.Subscribe<object>(type.Name, OnContentUpdateAsync);
-                    await subscription.StartAsync();
-                    subscriptions.Add(subscription);
+                    await this.ContentUpdateNotificationService.SubscribeAsync(type.Name, OnContentUpdateAsync);
                 }
             }
 
@@ -281,7 +267,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
             return string.Empty;
         }
-        
+
+        private ICollection<Type> GetActualTypes()
+        {
+            var actualTypes = new HashSet<Type>();
+            types = new HashSet<string>();
+            actualTypes.Add(this.TType);
+            types.Add(this.TType.AssemblyQualifiedName);
+            foreach (var series in this.ChartSeries)
+            {
+                if (series.ActualType is not null
+                    && !types.Contains(series.ActualType.AssemblyQualifiedName))
+                {
+                    types.Add(series.ActualType.AssemblyQualifiedName);
+                    actualTypes.Add(series.ActualType);
+                }
+            }
+            return actualTypes;
+        }
 
         public async ValueTask DisposeAsync()
         {
@@ -301,6 +304,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                             await subscription.DisposeAsync();
                         }
                     }
+
+                    if (this.HasSubscription)
+                    {
+                        foreach (var type in this.GetActualTypes())
+                        {
+                            await this.ContentUpdateNotificationService.RemoveHandlerAsync(type.Name, OnContentUpdateAsync);
+                        }
+                    }
+
                     isDisposed = true;
                 }
             }

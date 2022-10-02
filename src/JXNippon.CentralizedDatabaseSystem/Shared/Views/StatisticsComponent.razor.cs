@@ -85,10 +85,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
-            if (!string.IsNullOrEmpty(Subscription))
+            if (!string.IsNullOrEmpty(this.Subscription))
             {
-                var subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
-                await subscription.StartAsync();
+                await this.ContentUpdateNotificationService.SubscribeAsync(Subscription, OnContentUpdateAsync);
             }
 
             if (DateFilter is not null)
@@ -120,13 +119,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     {
                         DateFilter.OnDateRangeChanged -= OnDateRangeChangedAsync;
                     }
-                    foreach (var subscription in subscriptions)
+                    if (!string.IsNullOrEmpty(this.Subscription))
                     {
-                        if (subscription is not null)
-                        {
-                            await subscription.DisposeAsync();
-                        }
+                        await this.ContentUpdateNotificationService.RemoveHandlerAsync(Subscription, OnContentUpdateAsync);
                     }
+                    
                     isDisposed = true;
                 }
             }
