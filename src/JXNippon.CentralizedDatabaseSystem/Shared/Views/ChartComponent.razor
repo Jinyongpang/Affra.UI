@@ -78,7 +78,7 @@
                         <RadzenBarSeries Data="@seriesItem" CategoryProperty="Category"
                             Title="@group.Title" ValueProperty="Value"
                             Fill=@color
-                            LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))" C>
+                            LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
                             <TooltipTemplate Context="data">           
                                 @(string.Format(this.FormatString, data.Category)) : @data.Value
                                 </TooltipTemplate>

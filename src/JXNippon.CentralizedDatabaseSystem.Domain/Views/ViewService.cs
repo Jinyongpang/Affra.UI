@@ -106,7 +106,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             }
             return query
                 .OrderBy(d => d.Sequence)
-                .ThenBy(d => d.RowId)
+                .ThenBy(d => d.Id)
                 .ExecuteAsync<Column>();
         }
 
@@ -115,6 +115,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
         {
             if (view != null)
             {
+                view.Rows = new Collection<Row>(view.Rows
+                    .OrderBy(x => x.Sequence)
+                    .ThenBy(x => x.Id)
+                    .ToList());
+
                 foreach (Row row in view.Rows)
                 {
                     row.Columns = new Collection<Column>();
