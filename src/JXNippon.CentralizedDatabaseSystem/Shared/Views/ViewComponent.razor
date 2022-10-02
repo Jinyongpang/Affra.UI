@@ -20,15 +20,38 @@
 
 @if (View is not null)
 {
-    <Virtualize Items="@View.Rows" Context="row">
-        <Placeholder>
-            <Spin/>
-        </Placeholder>
-        <ItemContent>
-            <div class="row">
+    foreach (var firstRow in this.View.RowsFirst)
+    {
+        @this.BuildRowComponent(firstRow)
+    }
+
+    @if (isFirstRowCompleted)
+    {
+        <Virtualize Items="@View.RowsStartFromSecond" Context="row">
+            <Placeholder>
+                <Spin/>
+            </Placeholder>
+            <ItemContent>
+                @this.BuildRowComponent(row)
+            </ItemContent>    
+        </Virtualize>
+    }
+}
+
+@code
+{
+    protected override void OnAfterRender(bool firstRender)
+    {
+        this.isFirstRowCompleted = true;
+        base.OnAfterRender(firstRender);
+    }
+    private RenderFragment BuildRowComponent(Row row)
+    { 
+        return 
+    @<div class="row" @key=@row.Id>
                 @if (IsDesignMode 
-                && (row.Columns is null
-                || row.Columns.Count == 0))
+                    && (row.Columns is null
+                    || row.Columns.Count == 0))
                 {
                     <div class="col py-1" ondragover="event.preventDefault();" @ondrop=@(args => HandleDropOnRowAsync(args, row)) @ondragenter="@(args => HandleDragEnter((int)row.Id))">
                         <Card Style="text-align: center;" Class="h-100 card-shadow"> 
@@ -64,127 +87,108 @@
                     </Placeholder>
                     <ItemContent>
                         <div class="col py-3 px-3 can-drop" style=@this.CheckOnDrag(col) ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave((int)col.Id))" @ondrop=@(args => HandleDropOnColumnAsync(args, col))/> 
-                        @{
-                                this.UpdateColumnDictionary(col);
-                                cardClasses.TryAdd(col.Id, string.Empty);
-                                ColumnComponent columnComponent = JsonSerializer.Deserialize<ColumnComponent>(col.ColumnComponent);
-                                var widthGridSize = columnComponent.WidthGridSize is null
-                                    ? "col-md"
-                                    : $"col-md-{columnComponent.WidthGridSize}";
-
-                                <div class="col-sm-12 py-3 @draggableClass @this.GetFocusClass((int)col.Id, @widthGridSize)" draggable="@isDraggable" ondragover="event.preventDefault();"
-                                    @ondrop=@(args => HandleDropOnColumnAsync(args, col))
-                                    @ondragstart=@(args => HandleDragStart(args, row, col, (int)col.Id))         
-                                    @ondragenter="@(args => HandleDragEnter((int)col.Id))"
-                                    @ondragend=@(args => this.enteredId = -1)> 
-
-                                    @if(columnComponent.IsSimpleCard == true && !this.IsDesignMode)
-                                    {
-                                        <Card Size="medium" Id=@(((int)col.Id).ToString()) Style="pointer-event: none;" Class=@($"card-shadow view-chart view-grid {this.GetCardFocusClass((int)col.Id)}")> 
-                                            <Body>
-                                                @if (col.ComponentType == nameof(Chart))
-                                                {   
-                                                    Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                                                    var dateFilter = this.GetDateFilterComponent(chart.DateFilterId);
-                                                    <ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
-                                                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col"></ChartComponent>
-                                                }
-                                                else if (col.ComponentType ==  nameof(Grid))
-                                                {
-                                                    Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                                                    var dateFilter = this.GetDateFilterComponent(grid.DateFilterId);
-                                                    <DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize((int)col.Id) PageNumbersCount=GetPageNumbersCount((int)col.Id)></DataGridComponent>
-                                                }
-                                                else if (col.ComponentType ==  nameof(AnnouncementCard))
-                                                {
-                                                    AnnouncementCard component = JsonSerializer.Deserialize<AnnouncementCard>(col.ColumnComponent);
-                                                    <AnnouncementCardComponent @ref="@announcementComponentRef" AnnouncementCard=@component Column=@col HasSubscription=@(!this.IsDesignMode)></AnnouncementCardComponent>
-                                                }
-                                                else if (col.ComponentType ==  nameof(DateFilter))
-                                                {
-                                                    DateFilter component = JsonSerializer.Deserialize<DateFilter>(col.ColumnComponent);
-                                                    <DateFilterComponent @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>
-                                                }                                    
-                                                else if (col.ComponentType ==  nameof(Domain.Statistics.Statistic))
-                                                {
-                                                    Domain.Statistics.Statistic component = JsonSerializer.Deserialize<Domain.Statistics.Statistic>(col.ColumnComponent);
-                                                    var dateFilter = this.GetDateFilterComponent(component.DateFilterId);
-
-                                                    <StatisticsComponent @ref=@statisticsComponentRef TType="@component.ActualType.AssemblyQualifiedName" DateFilter=@dateFilter Statistic=@component Column=@col></StatisticsComponent>
-                                                }
-                                            </Body>
-                                        </Card> 
-                                    }
-                                    else
-                                    {
-                                        <Card Size="medium" Id=@(((int)col.Id).ToString()) Style="pointer-event: none;" Class=@($"h-100 card-shadow view-chart view-grid {this.GetCardFocusClass((int)col.Id)}")>
-                                            <TitleTemplate>
-                                                <span>
-                                                    <i class="@col.Icon"></i>
-                                                    @col.Title
-                                                </span>
-                                            </TitleTemplate>
-                                            <Extra>
-                                                @if (IsDesignMode)
-                                                {
-                                                    <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg text-info"></i></a>
-                                                    <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
-                                                }
-                                                else if(this.focusId == -1)
-                                                {
-                                                    <AntDesign.Button OnClick="@(() => this.OnFocusAsync((int)col.Id))"><i class="fa-solid fa-up-right-and-down-left-from-center extra-icon"></i></AntDesign.Button>
-                                                }
-                                                else
-                                                {
-                                                    <AntDesign.Button OnClick="@(() => this.OnFocusAsync(-1))"><i class="fa-solid fa-down-left-and-up-right-to-center extra-icon"></i></AntDesign.Button>
-                                                }
-                                            </Extra>
-                                            <Body>
-                                                @if (col.ComponentType ==  nameof(Chart))
-                                                {
-                                                    Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
-                                                    var dateFilter = this.GetDateFilterComponent(chart.DateFilterId);
-                                                    <ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
-                                                        Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col"></ChartComponent>
-                                                }
-                                                else if (col.ComponentType ==  nameof(Grid))
-                                                {
-                                                    Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
-                                                    var dateFilter = this.GetDateFilterComponent(grid.DateFilterId);
-                                                    <DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize((int)col.Id) PageNumbersCount=GetPageNumbersCount((int)col.Id)></DataGridComponent>
-                                                }
-                                                else if (col.ComponentType ==  nameof(AnnouncementCard))
-                                                {
-                                                    AnnouncementCard component = JsonSerializer.Deserialize<AnnouncementCard>(col.ColumnComponent);
-                                                    <AnnouncementCardComponent @ref="@announcementComponentRef" AnnouncementCard=@component Column=@col HasSubscription=@(!this.IsDesignMode)></AnnouncementCardComponent>
-                                                }
-                                                else if (col.ComponentType ==  nameof(DateFilter))
-                                                {
-                                                    DateFilter component = JsonSerializer.Deserialize<DateFilter>(col.ColumnComponent);
-                                                    <DateFilterComponent @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>
-                                                }
-                                                else if (col.ComponentType ==  nameof(Domain.Statistics.Statistic))
-                                                {
-                                                    Domain.Statistics.Statistic component = JsonSerializer.Deserialize<Domain.Statistics.Statistic>(col.ColumnComponent);
-                                                    var dateFilter = this.GetDateFilterComponent(component.DateFilterId);
-
-                                                    <StatisticsComponent @ref=@statisticsComponentRef TType="@component.ActualType.AssemblyQualifiedName" DateFilter=@dateFilter Statistic=@component Column=@col></StatisticsComponent>
-                                                }
-                                            </Body>
-                                        </Card> 
-                                    }                                   
-                                </div> 
-                        }
+                        @this.GetColumnComponentCard(row, col)
                     </ItemContent>
                 </Virtualize>
-            
-        </div>
-        </ItemContent>
-        
-    </Virtualize>
-}
+            </div>;
+    }
 
-@code
-{
+    private RenderFragment GetColumnComponent(Row row, Column col)
+    {
+        if (col.ComponentType == nameof(Chart))
+        {
+            Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
+            var dateFilter = this.GetDateFilterComponent(chart.DateFilterId);
+            return
+    @<ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+                                            Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col"></ChartComponent>;
+    }
+        else if (col.ComponentType == nameof(Grid))
+        {
+            Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
+            var dateFilter = this.GetDateFilterComponent(grid.DateFilterId);
+            return
+    @<DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize((int)col.Id) PageNumbersCount=GetPageNumbersCount((int)col.Id)></DataGridComponent>;
+        }
+        else if (col.ComponentType == nameof(AnnouncementCard))
+        {
+            AnnouncementCard component = JsonSerializer.Deserialize<AnnouncementCard>(col.ColumnComponent);
+            return
+    @<AnnouncementCardComponent @ref="@announcementComponentRef" AnnouncementCard=@component Column=@col HasSubscription=@(!this.IsDesignMode)></AnnouncementCardComponent>;
+        }
+        else if (col.ComponentType == nameof(DateFilter))
+        {
+            DateFilter component = JsonSerializer.Deserialize<DateFilter>(col.ColumnComponent);
+            return
+    @<DateFilterComponent @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>;
+        }
+        else if (col.ComponentType == nameof(Domain.Statistics.Statistic))
+        {
+            Domain.Statistics.Statistic component = JsonSerializer.Deserialize<Domain.Statistics.Statistic>(col.ColumnComponent);
+            var dateFilter = this.GetDateFilterComponent(component.DateFilterId);
 
+            return
+    @<StatisticsComponent @ref=@statisticsComponentRef TType="@component.ActualType.AssemblyQualifiedName" DateFilter=@dateFilter Statistic=@component Column=@col></StatisticsComponent>;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    private RenderFragment GetColumnComponentCard(Row row, Column col)
+    {
+        this.UpdateColumnDictionary(col);
+        cardClasses.TryAdd(col.Id, string.Empty);
+        ColumnComponent columnComponent = JsonSerializer.Deserialize<ColumnComponent>(col.ColumnComponent);
+        var widthGridSize = columnComponent.WidthGridSize is null
+            ? "col-md"
+            : $"col-md-{columnComponent.WidthGridSize}";
+
+        return
+    @<div class="col-sm-12 py-3 @draggableClass @this.GetFocusClass((int)col.Id, @widthGridSize)" draggable="@isDraggable" ondragover="event.preventDefault();"
+                                        @ondrop=@(args => HandleDropOnColumnAsync(args, col))
+                                        @ondragstart=@(args => HandleDragStart(args, row, col, (int)col.Id))         
+                                        @ondragenter="@(args => HandleDragEnter((int)col.Id))"
+                                        @ondragend=@(args => this.enteredId = -1)> 
+
+            @if (columnComponent.IsSimpleCard == true && !this.IsDesignMode)
+            {
+                <Card Size="medium" Id=@(((int)col.Id).ToString()) Style="pointer-event: none;" Class=@($"card-shadow view-chart view-grid {this.GetCardFocusClass((int)col.Id)}")> 
+                    <Body>
+                        @this.GetColumnComponent(row, col)
+                    </Body>
+                </Card>
+            }
+            else
+            {
+                <Card Size="medium" Id=@(((int)col.Id).ToString()) Style="pointer-event: none;" Class=@($"h-100 card-shadow view-chart view-grid {this.GetCardFocusClass((int)col.Id)}")>
+                    <TitleTemplate>
+                        <span>
+                            <i class="@col.Icon"></i>
+                            @col.Title
+                        </span>
+                    </TitleTemplate>
+                    <Extra>
+                        @if (IsDesignMode)
+                        {
+                            <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg text-info"></i></a>
+                            <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
+                        }
+                        else if (this.focusId == -1)
+                        {
+                            <AntDesign.Button OnClick="@(() => this.OnFocusAsync((int)col.Id))"><i class="fa-solid fa-up-right-and-down-left-from-center extra-icon"></i></AntDesign.Button>
+                        }
+                        else
+                        {
+                            <AntDesign.Button OnClick="@(() => this.OnFocusAsync(-1))"><i class="fa-solid fa-down-left-and-up-right-to-center extra-icon"></i></AntDesign.Button>
+                        }
+                    </Extra>
+                    <Body>
+                        @this.GetColumnComponent(row, col)
+                    </Body>
+                </Card>
+            }                                   
+        </div>;
+                           
+    }
 }
