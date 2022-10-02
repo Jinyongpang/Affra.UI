@@ -5,8 +5,8 @@
 
 <RadzenChart @ref="chart">
     @if (items != null)
-    {   bool haveData = false;    
-        string[] colors = this.Colors.ToArray();
+    {   bool haveData = false;
+        string[] colors = Constants.Constant.Colors;
         int i = -1;
 
         foreach (var series in ChartSeries.OrderBy(x => x.Sequence))

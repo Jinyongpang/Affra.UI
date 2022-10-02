@@ -16,7 +16,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private bool _disposed = false;
 
         private const string ViewUpdated = "View updated.";
-
+        private const string DisplayNoneStyle = "display: none !important;";
         private Column draggingItem;
 
         private int enteredId = -1;
@@ -27,7 +27,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private readonly IDictionary<long, Column> columnDictionary = new Dictionary<long, Column>();
 
-        private readonly IList<string> cardClasses = new List<string>();
+        private readonly IDictionary<long, string> cardClasses = new Dictionary<long, string>();
 
         private readonly List<ChartComponent> chartComponents = new();
 
@@ -40,9 +40,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public View View { get; set; }
 
         [Parameter] public bool IsDesignMode { get; set; }
-
-        [Parameter] public ICollection<ICollection<string>> ColorsGroups { get; set; } = new List<ICollection<string>>();
-
         [Inject] private NavigationManager NavigationManager { get; set; }
 
         public ChartComponent chartComponentRef
@@ -130,29 +127,37 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
-        public Task ReloadAsync()
+        public async Task ReloadAsync(bool forceReload = true)
         {
             StateHasChanged();
-            var allColumns = this.View.Rows.SelectMany(x => x.Columns);
-            List<Task> tasks = new List<Task>();
-            tasks.AddRange(chartComponents
-                .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
-                .Select(x => x.ReloadAsync())
-                .ToList());
-            tasks.AddRange(gridComponents
-                .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
-                .Select(x => x.ReloadAsync())
-                .ToList());
+            if (forceReload)
+            {
+                var allColumns = this.View.Rows.SelectMany(x => x.Columns);
+                List<Task> tasks = new List<Task>();
+                tasks.AddRange(chartComponents
+                    .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
+                    .Select(x => x.ReloadAsync())
+                    .ToList());
+                tasks.AddRange(gridComponents
+                    .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
+                    .Select(x => x.ReloadAsync())
+                    .ToList());
 
-            tasks.AddRange(announcementComponents
-                .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
-                .Select(x => x.ReloadAsync())
-                .ToList());
-            return Task.WhenAll(tasks);
+                tasks.AddRange(announcementComponents
+                    .Where(x => allColumns.Any(column => column.Id == x.Column.Id))
+                    .Select(x => x.ReloadAsync())
+                    .ToList());
+                await Task.WhenAll(tasks);
+            }        
         }
 
-        protected override async Task OnInitializedAsync()
+        private string CheckRowHidden(Row row)
         {
+            return !this.IsDesignMode
+                || row.Columns is not null
+                || row.Columns.Count > 0
+                ? DisplayNoneStyle
+                : string.Empty;
         }
 
         private Task OnFocusAsync(int i)
@@ -367,7 +372,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 draggingItem.Sequence = column.Sequence;
                 using var serviceScope = ServiceProvider.CreateScope();
                 await this.GetGenericService<Column>(serviceScope).UpdateAsync(draggingItem, draggingItem.Id);
-                await RefreshViewAsync();
+                await this.RefreshViewAsync();
 
                 AffraNotificationService.NotifyInfo(ViewUpdated);
             }
@@ -415,7 +420,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     UpdateColumnDictionary(column);
                 }
             }
-            await this.ReloadAsync();
+            await this.ReloadAsync(false);
         }
 
         private void UpdateColumnDictionary(Column col)
@@ -460,6 +465,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 return null;
             }
+        }
+
+        private string CheckOnDrag(Column col)
+        {
+            return this.enteredId == (int)col.Id && this.draggedId != (int)col.Id && (col.RowId != draggingItem.RowId || col.Sequence != draggingItem.Sequence + 1)
+                ? string.Empty
+                : DisplayNoneStyle;
         }
 
         public async ValueTask DisposeAsync()

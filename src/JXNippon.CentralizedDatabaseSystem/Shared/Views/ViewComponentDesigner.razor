@@ -2,6 +2,7 @@
 @using JXNippon.CentralizedDatabaseSystem.Domain.Charts
 @using JXNippon.CentralizedDatabaseSystem.Domain.Filters
 @using JXNippon.CentralizedDatabaseSystem.Domain.Grids
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
 @using ViewODataService.Affra.Service.View.Domain.Views
 
 <div class="row py-2">
@@ -19,28 +20,16 @@
     </div>
 </div>
 
-@if (false)
-{
-    <div class="title py-3">Rows</div>
-    <div class="row py-1">
-        <div class="col">
-           <RowDataGrid View=@view @ref=rowDataGrid LoadData=@(args => LoadDataAsync(args))/>
-        </div>
-    </div>
-
-    <hr class="solid"><div class="title">Columns</div>
-    <div class="row py-2">
-        <div class="col">
-            <ColumnDataGrid View=@view @ref=columnDataGrid LoadData=@(args => LoadDataAsync(args))/>
-        
-        </div>
-    </div>
-}
-
 <hr class="solid"><div class="title">Preview</div>
+
+<div class="min-vh-56 d-flex align-items-center justify-content-center gap-3" style=@this.ViewHidden>
+    <GenericDescription Height="350px" ImageFile="@ImageFile.Designer" Description="No view selected. Select or add a view.">
+    </GenericDescription>
+</div>
+
 <div class="row py-2">
     <div class="col">
-        <ViewComponent View=@view @ref=viewComponent IsDesignMode="true" ColorsGroups=@this.colorsGroups/>
+        <ViewComponent View=@view @ref=viewComponent IsDesignMode="true"/>
     </div>
 </div>
 

@@ -35,7 +35,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public Type TType { get; set; }
         [Parameter] public bool HasSubscription { get; set; }
         [Parameter] public Column Column { get; set; }
-        [Parameter] public ICollection<string> Colors { get; set; } = Array.Empty<string>();
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
