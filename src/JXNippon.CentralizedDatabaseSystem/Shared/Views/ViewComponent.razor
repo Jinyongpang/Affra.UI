@@ -22,17 +22,17 @@
 {
     foreach (var firstRow in this.View.RowsFirst)
     {
-        @this.BuildRowComponent(firstRow)
+        @this.BuildRowComponent(firstRow, false)
     }
 
     @if (isFirstRowCompleted)
     {
-        <Virtualize ItemSize=300 Items="@View.RowsStartFromSecond" Context="row">
+        <Virtualize ItemSize=400 Items="@View.RowsStartFromSecond" Context="row">
             <Placeholder>
                 <Spin/>
             </Placeholder>
             <ItemContent>
-                @this.BuildRowComponent(row)
+                @this.BuildRowComponent(row, false)
             </ItemContent>    
         </Virtualize>
     }
@@ -45,7 +45,7 @@
         this.isFirstRowCompleted = true;
         base.OnAfterRender(firstRender);
     }
-    private RenderFragment BuildRowComponent(Row row)
+    private RenderFragment BuildRowComponent(Row row, bool isVirtualization)
     { 
         return 
     @<div class="row" @key=@row.Id>
@@ -81,6 +81,8 @@
                     </div>
                 }
                 
+            @if (isVirtualization)
+            {
                 <Virtualize Items="row.Columns" Context="col" ItemSize=300>
                     <Placeholder>
                         <Spin/>
@@ -90,6 +92,17 @@
                         @this.GetColumnComponentCard(row, col)
                     </ItemContent>
                 </Virtualize>
+            }
+            else
+            {
+                foreach (var col in row.Columns)
+                {
+                    <div class="col py-3 px-3 can-drop" style=@this.CheckOnDrag(col) ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave((int)col.Id))" @ondrop=@(args => HandleDropOnColumnAsync(args, col))/> 
+                        @this.GetColumnComponentCard(row, col)
+                }
+            }
+
+            
             </div>;
     }
 
