@@ -1,12 +1,11 @@
-﻿@{  <Spin Spinning=@isLoading>
-        <Statistic Title="@this.Column.Title" Value=@value Precision="@this.Statistic.Precision" ValueStyle="font-size: 50px; color: #2192FF;"
-            PrefixTemplate=@this.GetPrefixTemplate() DecimalSeparator="."> 
-            <SuffixTemplate>
-                <span style="font-size: 20px; color: black;">@this.Statistic.Suffix</span>
-            </SuffixTemplate>
-        </Statistic>
-    </Spin>
-}
+﻿<Spin Spinning=@isLoading>
+    <Statistic Title="@this.Column.Title" Value=@value Precision="@this.Statistic.Precision" ValueStyle="font-size: 50px; color: #2192FF;"
+        PrefixTemplate=@this.GetPrefixTemplate() DecimalSeparator="."> 
+        <SuffixTemplate>
+            <span style="font-size: 20px; color: black;">@this.Statistic.Suffix</span>
+        </SuffixTemplate>
+    </Statistic>
+</Spin>
 
 @code{
     private decimal? GetDecimalValue(object input)
