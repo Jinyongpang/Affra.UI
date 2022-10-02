@@ -16,7 +16,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private bool _disposed = false;
 
         private const string ViewUpdated = "View updated.";
-
+        private const string DisplayNoneStyle = "display: none !important;";
         private Column draggingItem;
 
         private int enteredId = -1;
@@ -27,7 +27,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private readonly IDictionary<long, Column> columnDictionary = new Dictionary<long, Column>();
 
-        private readonly IList<string> cardClasses = new List<string>();
+        private readonly IDictionary<long, string> cardClasses = new Dictionary<long, string>();
 
         private readonly List<ChartComponent> chartComponents = new();
 
@@ -40,9 +40,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public View View { get; set; }
 
         [Parameter] public bool IsDesignMode { get; set; }
-
-        [Parameter] public ICollection<ICollection<string>> ColorsGroups { get; set; } = new List<ICollection<string>>();
-
         [Inject] private NavigationManager NavigationManager { get; set; }
 
         public ChartComponent chartComponentRef
@@ -159,7 +156,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return !this.IsDesignMode
                 || row.Columns is not null
                 || row.Columns.Count > 0
-                ? "display: none !important;"
+                ? DisplayNoneStyle
                 : string.Empty;
         }
 
@@ -468,6 +465,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 return null;
             }
+        }
+
+        private string CheckOnDrag(Column col)
+        {
+            return this.enteredId == (int)col.Id && this.draggedId != (int)col.Id && (col.RowId != draggingItem.RowId || col.Sequence != draggingItem.Sequence + 1)
+                ? string.Empty
+                : DisplayNoneStyle;
         }
 
         public async ValueTask DisposeAsync()
