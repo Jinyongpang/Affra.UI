@@ -60,8 +60,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             gridColumnDictionary = this.GridColumns.ToDictionary(x => $"{x.Type}{x.Property}");
             if (!string.IsNullOrEmpty(this.Subscription))
             {
-                subscription = ContentUpdateNotificationService.Subscribe<object>(Subscription, OnContentUpdateAsync);
-                await subscription.StartAsync();
+                await this.ContentUpdateNotificationService.SubscribeAsync(Subscription, OnContentUpdateAsync);
             }
             if (DateFilter is not null)
             {
@@ -287,6 +286,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         DateFilter.OnDateRangeChanged -= this.OnDateRangeChangedAsync;
                     }
                     grid.Dispose();
+                    if (!string.IsNullOrEmpty(this.Subscription))
+                    {
+                        await this.ContentUpdateNotificationService.RemoveHandlerAsync(Subscription, OnContentUpdateAsync);
+                    }
                     if (subscription is not null)
                     {
                         await subscription.DisposeAsync();
