@@ -49,7 +49,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
                     if (TType.StartsWith("Monthly"))
                     {
-                        start = start.AddMonths(-1);
+                        start = start.AddMonths(-1)
+                            .AddDays(-1);
                     }
                 }
                 queryable = queryable
