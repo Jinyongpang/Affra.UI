@@ -29,7 +29,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private Task SetDateAsync(int days)
         {
-            dateRange.End = DateTime.Now.Date;
+            dateRange.End = this.GlobalDataSource.GlobalDateFilter.Start.Value;
             dateRange.Start = dateRange.End.Value.AddDays(days);
             rangePicker.Value = new DateTime?[] { dateRange.Start.Value, dateRange.End.Value };
             rangePicker.Close();
@@ -38,8 +38,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override Task OnInitializedAsync()
         {
-            dateRange.Start = DateTime.Now.Date.AddDays(-30);
-            dateRange.End =  DateTime.Now.Date;
+            dateRange.Start = this.GlobalDataSource.GlobalDateFilter.Start.Value.AddDays(-30);
+            dateRange.End = this.GlobalDataSource.GlobalDateFilter.Start.Value.Date;
             return Task.CompletedTask;
         }
 
