@@ -20,7 +20,7 @@
                     </Button>
                 </div>
                 <div class="col-11">
-                    <Steps Current=@currentStep OnChange="OnStepChange">
+                    <Steps Current=@currentStep>
                         <Step Class="stepAntIconBig" Title="IDENTIFICATION" />
                         <Step Class="stepAntIconBig" Title="RISK EVALUATION" Status="@(((int)Item.ManagementOfChangeCurrentStep > 1) ? "finish" : "wait")"/>
                         <Step Class="stepAntIconBig" Title="ENDORSEMENT" Status="@(((int)Item.ManagementOfChangeCurrentStep > 2) ? "finish" : "wait")" />
@@ -185,23 +185,6 @@
                                     }
                                     </DescriptionsItem>
                                 </Descriptions>
-                                <Descriptions Class="borderedTitlelessDescription" Title="Upload Attachments" Bordered Column="@responsiveColumn" Style="padding-top:20px">
-                                    <DescriptionsItem Span="4">
-                                        <Upload Action="https://Affra/UploadPath/"
-                                    Name="files"
-                                            Drag
-                                            Multiple>        
-                                        <p class="ant-upload-drag-icon">
-                                            <Icon Type="inbox" />
-                                        </p>
-                                        <p class="ant-upload-text">Click or drag file to this area to upload</p>
-                                        <p class="ant-upload-hint">
-                                            Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-                                            band files
-                                        </p>
-                                    </Upload>
-                                    </DescriptionsItem>
-                                </Descriptions>
                                 <Descriptions Class="borderedTitlelessDescription" Title="Recommendation / Countermeasure from Risk Assessment" Bordered Column="@responsiveColumn" Style="padding-top:20px">
                                     <DescriptionsItem Span="4"><RadzenHtmlEditor Disabled="disableAllInput" style="height: 500px;" @bind-Value="Item.RiskEvaluation.RecommendationAndCountermeasure"></RadzenHtmlEditor></DescriptionsItem>
                                 </Descriptions>
@@ -228,7 +211,7 @@
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Class="signature-uppp" Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="4" Title="Line Manager Comment"><TextArea Rows="5" @bind-Value="Item.Endorsement.LineManagerComment" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Line Manager Comment"><TextArea Disabled="disableAllInput" Rows="5" @bind-Value="Item.Endorsement.LineManagerComment" /></DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Name">
                                         <AutoComplete Disabled="@(disableAllInput || Item.Endorsement.Signature != string.Empty)" @bind-Value="Item.Endorsement.Name" Options="lineManagerUsername" Placeholder="Select user..." />
                                     </DescriptionsItem>
@@ -281,7 +264,7 @@
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="4" Title="Approving Authority Comment"><TextArea Rows="5"  @bind-Value="Item.AuthorisationAndApproval.ApprovingAuthorityComment" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Approving Authority Comment"><TextArea Disabled="disableAllInput" Rows="5" @bind-Value="Item.AuthorisationAndApproval.ApprovingAuthorityComment" /></DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Name">
                                         <AutoComplete Disabled="@(disableAllInput || Item.AuthorisationAndApproval.Signature != string.Empty)" @bind-Value="Item.AuthorisationAndApproval.Name" Options="approveAuthorityUsername" Placeholder="Select user..." />
                                     </DescriptionsItem>

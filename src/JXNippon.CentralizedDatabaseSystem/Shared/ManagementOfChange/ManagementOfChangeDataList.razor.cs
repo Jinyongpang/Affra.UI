@@ -24,6 +24,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
+        [Inject] private ConfirmService ConfirmService { get; set; }
 
         public CommonFilter ManagementOfChangeFilter { get; set; }
 
@@ -60,10 +61,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus.ToString().ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper()));
             }
-            if (ManagementOfChangeFilter.Status != null)
+            else if (ManagementOfChangeFilter.Status != null)
             {
                 var status = (ManagementOfChangeStatus)Enum.Parse(typeof(ManagementOfChangeStatus), ManagementOfChangeFilter.Status);
                 query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus == status);
+            }
+            else
+            {
+                query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus != ManagementOfChangeStatus.Deleted);
             }
 
             Microsoft.OData.Client.QueryOperationResponse<ManagementOfChangeRecord>? managementOfChangeResponse = await query
@@ -153,6 +158,27 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         {
             double enumLength = Enum.GetNames(typeof(ManagementOfChangeCurrentStep)).Length - 1;
             return (int)(step / enumLength * 100);
+        }
+        private async Task DeleteMOCFormAsync(ManagementOfChangeRecord data)
+        {
+            var content = $"Are you sure want to delete record no #{data.RecordNumber} ?";
+            var title = "Management of Change - Deletion";
+
+            var confirmResult = await ConfirmService.Show(content, title, ConfirmButtons.YesNo, ConfirmIcon.Question);
+
+            if (confirmResult == ConfirmResult.Yes)
+            {
+                using var serviceScope = ServiceProvider.CreateScope();
+                var service = GetGenericMOCService(serviceScope);
+
+                data.ManagementOfChangeStatus = ManagementOfChangeStatus.Deleted;
+                data.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.Completed;
+
+                await service.UpdateAsync(data, data.Id);
+                AffraNotificationService.NotifyItemDeleted();
+            }
+
+            await ReloadAsync();
         }
     }
 }
