@@ -2326,18 +2326,49 @@
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
         <Property Name="Field" Type="Edm.String" />
         <Property Name="Facility_Platform" Type="Edm.String" />
-        <Property Name="StartDate" Type="Edm.DateTimeOffset" Nullable="false" />
-        <Property Name="EndDate" Type="Edm.DateTimeOffset" Nullable="false" />
-        <Property Name="DowntimeCategory" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory" Nullable="false" />
-        <Property Name="DowntimeType" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType" Nullable="false" />
-        <Property Name="PrimaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause" Nullable="false" />
-        <Property Name="SecondaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause" Nullable="false" />
+        <Property Name="StartDate" Type="Edm.DateTimeOffset" />
+        <Property Name="EndDate" Type="Edm.DateTimeOffset" />
+        <Property Name="DowntimeCategory" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory" />
+        <Property Name="DowntimeType" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType" />
+        <Property Name="PrimaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause" />
+        <Property Name="SecondaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause" />
         <Property Name="CumulativeVolume_kb" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="AnnualizedVolume_kb_d" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="ProblemStatement_Remark" Type="Edm.String" />
         <Property Name="WayForwardDescription" Type="Edm.String" />
-        <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" Nullable="false" />
+        <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" />
+        <Property Name="HLCapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LACapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="BUCapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="PlannedUnplanned" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPlannedUnplanned" />
+        <Property Name="Month_MMscf" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month_KBBL" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="HL_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Layang_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Beryl_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LossVolume_Kbbl" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LossAnnualized_Kbd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.String" />
+        <Property Name="Year" Type="Edm.String" />
+        <Property Name="DurationDay" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="ProductionMaintenance_Onshore_Team_Action" Type="Edm.String" />
+        <Property Name="Action_Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" />
+        <Property Name="SK10_24_Hrs_Shutdown_Notification_Report" Type="Edm.String" />
+        <Property Name="SK10_Unplanned_Production_Interruption_Report" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="DefermentDetailMapping" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping" />
+      </EntityType>
+      <EntityType Name="DefermentDetailMapping">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="No" Type="Edm.String" />
+        <Property Name="DefermentDetailId" Type="Edm.Int64" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="DefermentDetail" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail">
+          <ReferentialConstraint Property="DefermentDetailId" ReferencedProperty="Id" />
+        </NavigationProperty>
       </EntityType>
       <EnumType Name="DeliveryScheduleStatus">
         <Member Name="Firm" Value="0" />
@@ -2392,6 +2423,10 @@
       <EnumType Name="DefermentDetailStatus">
         <Member Name="Open" Value="0" />
         <Member Name="Closed" Value="1" />
+      </EnumType>
+      <EnumType Name="DefermentDetailPlannedUnplanned">
+        <Member Name="U" Value="0" />
+        <Member Name="P" Value="1" />
       </EnumType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -3188,6 +3223,15 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DefermentDetail" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail">
+          <NavigationPropertyBinding Path="DefermentDetailMapping" Target="DefermentDetailMapping" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="DefermentDetailMapping" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping">
+          <NavigationPropertyBinding Path="DefermentDetail" Target="DefermentDetail" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

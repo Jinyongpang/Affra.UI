@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 9/30/2022 10:36:52 AM
+// Generation date: 10/3/2022 3:59:31 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -47509,6 +47509,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         public DefermentDetailSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DefermentDetail> query)
             : base(query) {}
 
+        /// <summary>
+        /// There are no comments for DefermentDetailMapping in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle DefermentDetailMapping
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._DefermentDetailMapping == null))
+                {
+                    this._DefermentDetailMapping = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle(this.Context, GetPath("DefermentDetailMapping"));
+                }
+                return this._DefermentDetailMapping;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle _DefermentDetailMapping;
     }
     /// <summary>
     /// There are no comments for DefermentDetail in the schema.
@@ -47523,34 +47544,12 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new DefermentDetail object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="startDate">Initial value of StartDate.</param>
-        /// <param name="endDate">Initial value of EndDate.</param>
-        /// <param name="downtimeCategory">Initial value of DowntimeCategory.</param>
-        /// <param name="downtimeType">Initial value of DowntimeType.</param>
-        /// <param name="primaryCause">Initial value of PrimaryCause.</param>
-        /// <param name="secondaryCause">Initial value of SecondaryCause.</param>
-        /// <param name="status">Initial value of Status.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public static DefermentDetail CreateDefermentDetail(long ID, 
-                    global::System.DateTimeOffset startDate, 
-                    global::System.DateTimeOffset endDate, 
-                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory downtimeCategory, 
-                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType downtimeType, 
-                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause primaryCause, 
-                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause secondaryCause, 
-                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus status, 
-                    long xmin)
+        public static DefermentDetail CreateDefermentDetail(long ID, long xmin)
         {
             DefermentDetail defermentDetail = new DefermentDetail();
             defermentDetail.Id = ID;
-            defermentDetail.StartDate = startDate;
-            defermentDetail.EndDate = endDate;
-            defermentDetail.DowntimeCategory = downtimeCategory;
-            defermentDetail.DowntimeType = downtimeType;
-            defermentDetail.PrimaryCause = primaryCause;
-            defermentDetail.SecondaryCause = secondaryCause;
-            defermentDetail.Status = status;
             defermentDetail.xmin = xmin;
             return defermentDetail;
         }
@@ -47626,8 +47625,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "StartDate is required.")]
-        public virtual global::System.DateTimeOffset StartDate
+        public virtual global::System.Nullable<global::System.DateTimeOffset> StartDate
         {
             get
             {
@@ -47641,16 +47639,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.DateTimeOffset _StartDate;
-        partial void OnStartDateChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _StartDate;
+        partial void OnStartDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnStartDateChanged();
         /// <summary>
         /// There are no comments for Property EndDate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "EndDate is required.")]
-        public virtual global::System.DateTimeOffset EndDate
+        public virtual global::System.Nullable<global::System.DateTimeOffset> EndDate
         {
             get
             {
@@ -47664,16 +47661,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.DateTimeOffset _EndDate;
-        partial void OnEndDateChanging(global::System.DateTimeOffset value);
+        private global::System.Nullable<global::System.DateTimeOffset> _EndDate;
+        partial void OnEndDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
         partial void OnEndDateChanged();
         /// <summary>
         /// There are no comments for Property DowntimeCategory in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "DowntimeCategory is required.")]
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory DowntimeCategory
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory> DowntimeCategory
         {
             get
             {
@@ -47687,16 +47683,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory _DowntimeCategory;
-        partial void OnDowntimeCategoryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory value);
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory> _DowntimeCategory;
+        partial void OnDowntimeCategoryChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory> value);
         partial void OnDowntimeCategoryChanged();
         /// <summary>
         /// There are no comments for Property DowntimeType in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "DowntimeType is required.")]
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType DowntimeType
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> DowntimeType
         {
             get
             {
@@ -47710,16 +47705,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType _DowntimeType;
-        partial void OnDowntimeTypeChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType value);
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> _DowntimeType;
+        partial void OnDowntimeTypeChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> value);
         partial void OnDowntimeTypeChanged();
         /// <summary>
         /// There are no comments for Property PrimaryCause in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "PrimaryCause is required.")]
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause PrimaryCause
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause> PrimaryCause
         {
             get
             {
@@ -47733,16 +47727,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause _PrimaryCause;
-        partial void OnPrimaryCauseChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause value);
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause> _PrimaryCause;
+        partial void OnPrimaryCauseChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause> value);
         partial void OnPrimaryCauseChanged();
         /// <summary>
         /// There are no comments for Property SecondaryCause in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "SecondaryCause is required.")]
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause SecondaryCause
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause> SecondaryCause
         {
             get
             {
@@ -47756,8 +47749,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause _SecondaryCause;
-        partial void OnSecondaryCauseChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause value);
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause> _SecondaryCause;
+        partial void OnSecondaryCauseChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause> value);
         partial void OnSecondaryCauseChanged();
         /// <summary>
         /// There are no comments for Property CumulativeVolume_kb in the schema.
@@ -47852,8 +47845,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Status is required.")]
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus Status
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> Status
         {
             get
             {
@@ -47867,9 +47859,405 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus _Status;
-        partial void OnStatusChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus value);
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> _Status;
+        partial void OnStatusChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> value);
         partial void OnStatusChanged();
+        /// <summary>
+        /// There are no comments for Property HLCapacity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> HLCapacity
+        {
+            get
+            {
+                return this._HLCapacity;
+            }
+            set
+            {
+                this.OnHLCapacityChanging(value);
+                this._HLCapacity = value;
+                this.OnHLCapacityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _HLCapacity;
+        partial void OnHLCapacityChanging(global::System.Nullable<decimal> value);
+        partial void OnHLCapacityChanged();
+        /// <summary>
+        /// There are no comments for Property LACapacity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> LACapacity
+        {
+            get
+            {
+                return this._LACapacity;
+            }
+            set
+            {
+                this.OnLACapacityChanging(value);
+                this._LACapacity = value;
+                this.OnLACapacityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _LACapacity;
+        partial void OnLACapacityChanging(global::System.Nullable<decimal> value);
+        partial void OnLACapacityChanged();
+        /// <summary>
+        /// There are no comments for Property BUCapacity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> BUCapacity
+        {
+            get
+            {
+                return this._BUCapacity;
+            }
+            set
+            {
+                this.OnBUCapacityChanging(value);
+                this._BUCapacity = value;
+                this.OnBUCapacityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _BUCapacity;
+        partial void OnBUCapacityChanging(global::System.Nullable<decimal> value);
+        partial void OnBUCapacityChanged();
+        /// <summary>
+        /// There are no comments for Property PlannedUnplanned in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPlannedUnplanned> PlannedUnplanned
+        {
+            get
+            {
+                return this._PlannedUnplanned;
+            }
+            set
+            {
+                this.OnPlannedUnplannedChanging(value);
+                this._PlannedUnplanned = value;
+                this.OnPlannedUnplannedChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPlannedUnplanned> _PlannedUnplanned;
+        partial void OnPlannedUnplannedChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPlannedUnplanned> value);
+        partial void OnPlannedUnplannedChanged();
+        /// <summary>
+        /// There are no comments for Property Month_MMscf in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> Month_MMscf
+        {
+            get
+            {
+                return this._Month_MMscf;
+            }
+            set
+            {
+                this.OnMonth_MMscfChanging(value);
+                this._Month_MMscf = value;
+                this.OnMonth_MMscfChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _Month_MMscf;
+        partial void OnMonth_MMscfChanging(global::System.Nullable<decimal> value);
+        partial void OnMonth_MMscfChanged();
+        /// <summary>
+        /// There are no comments for Property Month_KBBL in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> Month_KBBL
+        {
+            get
+            {
+                return this._Month_KBBL;
+            }
+            set
+            {
+                this.OnMonth_KBBLChanging(value);
+                this._Month_KBBL = value;
+                this.OnMonth_KBBLChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _Month_KBBL;
+        partial void OnMonth_KBBLChanging(global::System.Nullable<decimal> value);
+        partial void OnMonth_KBBLChanged();
+        /// <summary>
+        /// There are no comments for Property HL_MMscfd in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> HL_MMscfd
+        {
+            get
+            {
+                return this._HL_MMscfd;
+            }
+            set
+            {
+                this.OnHL_MMscfdChanging(value);
+                this._HL_MMscfd = value;
+                this.OnHL_MMscfdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _HL_MMscfd;
+        partial void OnHL_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnHL_MMscfdChanged();
+        /// <summary>
+        /// There are no comments for Property Layang_MMscfd in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> Layang_MMscfd
+        {
+            get
+            {
+                return this._Layang_MMscfd;
+            }
+            set
+            {
+                this.OnLayang_MMscfdChanging(value);
+                this._Layang_MMscfd = value;
+                this.OnLayang_MMscfdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _Layang_MMscfd;
+        partial void OnLayang_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnLayang_MMscfdChanged();
+        /// <summary>
+        /// There are no comments for Property Beryl_MMscfd in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> Beryl_MMscfd
+        {
+            get
+            {
+                return this._Beryl_MMscfd;
+            }
+            set
+            {
+                this.OnBeryl_MMscfdChanging(value);
+                this._Beryl_MMscfd = value;
+                this.OnBeryl_MMscfdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _Beryl_MMscfd;
+        partial void OnBeryl_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnBeryl_MMscfdChanged();
+        /// <summary>
+        /// There are no comments for Property LossVolume_Kbbl in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> LossVolume_Kbbl
+        {
+            get
+            {
+                return this._LossVolume_Kbbl;
+            }
+            set
+            {
+                this.OnLossVolume_KbblChanging(value);
+                this._LossVolume_Kbbl = value;
+                this.OnLossVolume_KbblChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _LossVolume_Kbbl;
+        partial void OnLossVolume_KbblChanging(global::System.Nullable<decimal> value);
+        partial void OnLossVolume_KbblChanged();
+        /// <summary>
+        /// There are no comments for Property LossAnnualized_Kbd in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> LossAnnualized_Kbd
+        {
+            get
+            {
+                return this._LossAnnualized_Kbd;
+            }
+            set
+            {
+                this.OnLossAnnualized_KbdChanging(value);
+                this._LossAnnualized_Kbd = value;
+                this.OnLossAnnualized_KbdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _LossAnnualized_Kbd;
+        partial void OnLossAnnualized_KbdChanging(global::System.Nullable<decimal> value);
+        partial void OnLossAnnualized_KbdChanged();
+        /// <summary>
+        /// There are no comments for Property Month in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Month
+        {
+            get
+            {
+                return this._Month;
+            }
+            set
+            {
+                this.OnMonthChanging(value);
+                this._Month = value;
+                this.OnMonthChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _Month;
+        partial void OnMonthChanging(string value);
+        partial void OnMonthChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _Year;
+        partial void OnYearChanging(string value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property DurationDay in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> DurationDay
+        {
+            get
+            {
+                return this._DurationDay;
+            }
+            set
+            {
+                this.OnDurationDayChanging(value);
+                this._DurationDay = value;
+                this.OnDurationDayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _DurationDay;
+        partial void OnDurationDayChanging(global::System.Nullable<decimal> value);
+        partial void OnDurationDayChanged();
+        /// <summary>
+        /// There are no comments for Property ProductionMaintenance_Onshore_Team_Action in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string ProductionMaintenance_Onshore_Team_Action
+        {
+            get
+            {
+                return this._ProductionMaintenance_Onshore_Team_Action;
+            }
+            set
+            {
+                this.OnProductionMaintenance_Onshore_Team_ActionChanging(value);
+                this._ProductionMaintenance_Onshore_Team_Action = value;
+                this.OnProductionMaintenance_Onshore_Team_ActionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _ProductionMaintenance_Onshore_Team_Action;
+        partial void OnProductionMaintenance_Onshore_Team_ActionChanging(string value);
+        partial void OnProductionMaintenance_Onshore_Team_ActionChanged();
+        /// <summary>
+        /// There are no comments for Property Action_Status in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> Action_Status
+        {
+            get
+            {
+                return this._Action_Status;
+            }
+            set
+            {
+                this.OnAction_StatusChanging(value);
+                this._Action_Status = value;
+                this.OnAction_StatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> _Action_Status;
+        partial void OnAction_StatusChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> value);
+        partial void OnAction_StatusChanged();
+        /// <summary>
+        /// There are no comments for Property SK10_24_Hrs_Shutdown_Notification_Report in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string SK10_24_Hrs_Shutdown_Notification_Report
+        {
+            get
+            {
+                return this._SK10_24_Hrs_Shutdown_Notification_Report;
+            }
+            set
+            {
+                this.OnSK10_24_Hrs_Shutdown_Notification_ReportChanging(value);
+                this._SK10_24_Hrs_Shutdown_Notification_Report = value;
+                this.OnSK10_24_Hrs_Shutdown_Notification_ReportChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _SK10_24_Hrs_Shutdown_Notification_Report;
+        partial void OnSK10_24_Hrs_Shutdown_Notification_ReportChanging(string value);
+        partial void OnSK10_24_Hrs_Shutdown_Notification_ReportChanged();
+        /// <summary>
+        /// There are no comments for Property SK10_Unplanned_Production_Interruption_Report in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string SK10_Unplanned_Production_Interruption_Report
+        {
+            get
+            {
+                return this._SK10_Unplanned_Production_Interruption_Report;
+            }
+            set
+            {
+                this.OnSK10_Unplanned_Production_Interruption_ReportChanging(value);
+                this._SK10_Unplanned_Production_Interruption_Report = value;
+                this.OnSK10_Unplanned_Production_Interruption_ReportChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _SK10_Unplanned_Production_Interruption_Report;
+        partial void OnSK10_Unplanned_Production_Interruption_ReportChanging(string value);
+        partial void OnSK10_Unplanned_Production_Interruption_ReportChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -47893,6 +48281,208 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property DefermentDetailMapping in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping DefermentDetailMapping
+        {
+            get
+            {
+                return this._DefermentDetailMapping;
+            }
+            set
+            {
+                this.OnDefermentDetailMappingChanging(value);
+                this._DefermentDetailMapping = value;
+                this.OnDefermentDetailMappingChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping _DefermentDetailMapping;
+        partial void OnDefermentDetailMappingChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping value);
+        partial void OnDefermentDetailMappingChanged();
+    }
+    /// <summary>
+    /// There are no comments for DefermentDetailMappingSingle in the schema.
+    /// </summary>
+    public partial class DefermentDetailMappingSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DefermentDetailMapping>
+    {
+        /// <summary>
+        /// Initialize a new DefermentDetailMappingSingle object.
+        /// </summary>
+        public DefermentDetailMappingSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new DefermentDetailMappingSingle object.
+        /// </summary>
+        public DefermentDetailMappingSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new DefermentDetailMappingSingle object.
+        /// </summary>
+        public DefermentDetailMappingSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DefermentDetailMapping> query)
+            : base(query) {}
+
+        /// <summary>
+        /// There are no comments for DefermentDetail in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle DefermentDetail
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._DefermentDetail == null))
+                {
+                    this._DefermentDetail = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle(this.Context, GetPath("DefermentDetail"));
+                }
+                return this._DefermentDetail;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle _DefermentDetail;
+    }
+    /// <summary>
+    /// There are no comments for DefermentDetailMapping in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class DefermentDetailMapping : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new DefermentDetailMapping object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static DefermentDetailMapping CreateDefermentDetailMapping(long ID, long xmin)
+        {
+            DefermentDetailMapping defermentDetailMapping = new DefermentDetailMapping();
+            defermentDetailMapping.Id = ID;
+            defermentDetailMapping.xmin = xmin;
+            return defermentDetailMapping;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property No in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string No
+        {
+            get
+            {
+                return this._No;
+            }
+            set
+            {
+                this.OnNoChanging(value);
+                this._No = value;
+                this.OnNoChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _No;
+        partial void OnNoChanging(string value);
+        partial void OnNoChanged();
+        /// <summary>
+        /// There are no comments for Property DefermentDetailId in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<long> DefermentDetailId
+        {
+            get
+            {
+                return this._DefermentDetailId;
+            }
+            set
+            {
+                this.OnDefermentDetailIdChanging(value);
+                this._DefermentDetailId = value;
+                this.OnDefermentDetailIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<long> _DefermentDetailId;
+        partial void OnDefermentDetailIdChanging(global::System.Nullable<long> value);
+        partial void OnDefermentDetailIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property DefermentDetail in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail DefermentDetail
+        {
+            get
+            {
+                return this._DefermentDetail;
+            }
+            set
+            {
+                this.OnDefermentDetailChanging(value);
+                this._DefermentDetail = value;
+                this.OnDefermentDetailChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail _DefermentDetail;
+        partial void OnDefermentDetailChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail value);
+        partial void OnDefermentDetailChanged();
     }
     /// <summary>
     /// There are no comments for DeliveryScheduleStatus in the schema.
@@ -47973,6 +48563,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         Closed = 1
     }
     /// <summary>
+    /// There are no comments for DefermentDetailPlannedUnplanned in the schema.
+    /// </summary>
+    public enum DefermentDetailPlannedUnplanned
+    {
+        U = 0,
+        P = 1
+    }
+    /// <summary>
     /// Class containing all extension methods
     /// </summary>
     public static class ExtensionMethods
@@ -48045,6 +48643,29 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 { "Id", id }
             };
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
     }
 }
@@ -50232,6 +50853,23 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail> _DefermentDetail;
         /// <summary>
+        /// There are no comments for DefermentDetailMapping in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping> DefermentDetailMapping
+        {
+            get
+            {
+                if ((this._DefermentDetailMapping == null))
+                {
+                    this._DefermentDetailMapping = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping>("DefermentDetailMapping");
+                }
+                return this._DefermentDetailMapping;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping> _DefermentDetailMapping;
+        /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
@@ -51070,6 +51708,14 @@ namespace CentralizedDatabaseSystemODataService.Default
         public virtual void AddToDefermentDetail(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail defermentDetail)
         {
             base.AddObject("DefermentDetail", defermentDetail);
+        }
+        /// <summary>
+        /// There are no comments for DefermentDetailMapping in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToDefermentDetailMapping(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping defermentDetailMapping)
+        {
+            base.AddObject("DefermentDetailMapping", defermentDetailMapping);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private abstract class GeneratedEdmModel

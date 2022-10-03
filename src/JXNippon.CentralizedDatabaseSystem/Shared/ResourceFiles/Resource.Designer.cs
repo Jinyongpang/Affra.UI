@@ -673,6 +673,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Planned.
+        /// </summary>
+        public static string P {
+            get {
+                return ResourceManager.GetString("P", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to P1: Separation.
         /// </summary>
         public static string P1 {
@@ -804,6 +813,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string RevertOriginalState {
             get {
                 return ResourceManager.GetString("RevertOriginalState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unplanned.
+        /// </summary>
+        public static string U {
+            get {
+                return ResourceManager.GetString("U", resourceCulture);
             }
         }
         

@@ -344,14 +344,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
     public partial class DefermentDetail
     {
         [IgnoreClientProperty]
-        public DateTime StartDateUI
+        public DateTime? StartDateUI
         {
             get { return this.StartDate.ToLocalDateTime(); }
             set { this.StartDate = value.ToUniversalTime(); }
         }
 
         [IgnoreClientProperty]
-        public DateTime EndDateUI
+        public DateTime? EndDateUI
         {
             get { return this.EndDate.ToLocalDateTime(); }
             set { this.EndDate = value.ToUniversalTime(); }
