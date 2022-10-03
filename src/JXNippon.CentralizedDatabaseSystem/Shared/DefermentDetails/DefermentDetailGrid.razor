@@ -59,11 +59,36 @@
                         @(stringLocalizer[item.Status.ToString()])
                     </Template>
                 </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="HLCapacity" Title="HL Capacity" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="LACapacity" Title="LA Capacity" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="BUCapacity" Title="BU Capacity" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="PlannedUnplanned" Title="Planned(P)/ Unplanned(U)" Width="100px">
+                    <Template Context="item">
+                        @(stringLocalizer[item.PlannedUnplanned.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Month_MMscf" Title="MMscf/Month" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Month_KBBL" Title="KBBL/Month" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="HL_MMscfd" Title="HL (MMScfd)" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Layang_MMscfd" Title="Layang (MMScfd)" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Beryl_MMscfd" Title="Beryl (MMScfd)" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="LossVolume_Kbbl" Title="Loss Volume (Kbbl)" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="LossAnnualized_Kbd" Title="Loss Annualized (Kbd)" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Month" Title="Month" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Year" Title="Year" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="DurationDay" Title="Duration (day)" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="ProductionMaintenance_Onshore_Team_Action" Title="Production/Maintenance Onshore Team Action" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="Action_Status" Title="Action Status" Width="100px">
+                    <Template Context="item">
+                        @(stringLocalizer[item.Status.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="SK10_24_Hrs_Shutdown_Notification_Report" Title="SK10 24 Hrs Shutdown Notification Report" Width="100px" />
+                <RadzenDataGridColumn TItem="DefermentDetail" Property="SK10_Unplanned_Production_Interruption_Report" Title="SK10 Unplanned Production Interruption Report" Width="100px" />
             </Columns>
         </RadzenDataGrid>  
     </div>
 </div>
-
 
 @code {
 
