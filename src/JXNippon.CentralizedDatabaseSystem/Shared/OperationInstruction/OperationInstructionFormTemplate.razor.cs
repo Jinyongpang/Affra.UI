@@ -223,6 +223,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
             {
                 Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.EndorsementSubmitForApproval;
                 Item.OperationInstructionStatus = OperationInstructionStatus.Pending;
+                Item.EndorserSignature = string.Empty;
                 await SubmitAsync(Item);
 
                 using var serviceScope = ServiceProvider.CreateScope();
@@ -275,6 +276,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
             {
                 Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.ApprovalSubmitForApproval;
                 Item.OperationInstructionStatus = OperationInstructionStatus.Pending;
+                Item.ApproverSignature = string.Empty;
                 await SubmitAsync(Item);
 
                 using var serviceScope = ServiceProvider.CreateScope();

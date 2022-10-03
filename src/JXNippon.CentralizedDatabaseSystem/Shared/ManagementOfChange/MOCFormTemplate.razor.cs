@@ -439,6 +439,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.Completed;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Completed;
+                Item.CloseOut.Signature = Item.CloseOut.Name;
                 Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
 
@@ -465,6 +466,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseOutSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
+                Item.CloseOut.Name = string.Empty;
+                Item.CloseOut.Signature = string.Empty;
                 Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
 
@@ -492,7 +495,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.AuthorisationAndApprovalSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
                 Item.Endorsement.Signature = Item.Endorsement.Name;
-                Item.CloseOut.DateUI = DateTime.Now;
+                Item.Endorsement.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
 
                 using var serviceScope = ServiceProvider.CreateScope();
@@ -518,8 +521,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.EndorsementSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
-                Item.CloseOut.DateUI = DateTime.Now;
+                Item.Endorsement.DateUI = DateTime.Now;
                 Item.Endorsement.Name = string.Empty;
+                Item.Endorsement.Signature = string.Empty;
                 await SubmitAsync(Item);
 
                 using var serviceScope = ServiceProvider.CreateScope();
@@ -546,7 +550,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseOutSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
                 Item.AuthorisationAndApproval.Signature = Item.AuthorisationAndApproval.Name;
-                Item.CloseOut.DateUI = DateTime.Now;
+                Item.AuthorisationAndApproval.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
 
                 using var serviceScope = ServiceProvider.CreateScope();
@@ -572,8 +576,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.AuthorisationAndApprovalSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
-                Item.CloseOut.DateUI = DateTime.Now;
+                Item.AuthorisationAndApproval.DateUI = DateTime.Now;
                 Item.AuthorisationAndApproval.Name = string.Empty;
+                Item.AuthorisationAndApproval.Signature = string.Empty;
                 await SubmitAsync(Item);
 
                 using var serviceScope = ServiceProvider.CreateScope();
@@ -598,10 +603,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             if (confirmResult == ConfirmResult.Yes)
             {
                 Item.Extensions[item.ExtensionNo - 1].ApprovalSignature = Item.Extensions[item.ExtensionNo - 1].ApproverName;
+                Item.Extensions[item.ExtensionNo - 1].ReviewDateUI = DateTime.Now;
 
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseOutSubmitForApproval;
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
-                Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
 
                 using var serviceScope = ServiceProvider.CreateScope();
@@ -629,6 +634,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Extension;
                 Item.CloseOut.DateUI = DateTime.Now;
                 Item.Extensions[item.ExtensionNo - 1].ApproverName = string.Empty;
+                Item.Extensions[item.ExtensionNo - 1].ApprovalSignature = string.Empty;
                 await SubmitAsync(Item);
 
                 using var serviceScope = ServiceProvider.CreateScope();

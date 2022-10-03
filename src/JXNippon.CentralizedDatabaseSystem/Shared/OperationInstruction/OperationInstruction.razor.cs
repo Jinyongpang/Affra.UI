@@ -50,8 +50,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
                 OperationInstructionStatus = OperationInstructionStatus.New,
                 OperationInstructionField = OperationInstructionField.HIP,
                 EstimatedDurationDateTimeUI = DateTime.Now,
+                EndorsedBy = string.Empty,
                 EndorserSignature = string.Empty,
                 EndorsedByDateTimeUI = DateTime.Now,
+                ApprovedBy = string.Empty,
                 ApproverSignature = string.Empty,
                 ApprovedByDateTimeUI = DateTime.Now,
                 RevisionNo = 0
