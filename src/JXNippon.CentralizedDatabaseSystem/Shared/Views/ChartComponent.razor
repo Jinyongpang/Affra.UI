@@ -54,19 +54,19 @@
                         string color = string.IsNullOrEmpty(series.Color)
                             ? colors[i]
                             : series.Color;
-                        <RadzenLineSeries Data="@seriesItem" CategoryProperty="Category"
-                            Title="@group.Title" ValueProperty="Value"
-                            Stroke=@color
-                            LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
-                            Smooth="@series.Smooth" 
-                            >
-                            <TooltipTemplate Context="data">           
-                                @(string.Format(this.FormatString, data.Category)) : @data.Value
-                                </TooltipTemplate>
-                            <ChildContent>      
-                                <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
-                            </ChildContent>
-                        </RadzenLineSeries>
+                            <RadzenLineSeries Data="@seriesItem" CategoryProperty="Category"
+                                Title="@group.Title" ValueProperty="Value"
+                                Stroke=@color
+                                LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
+                                Smooth="@series.Smooth" 
+                                >
+                                <TooltipTemplate Context="data">           
+                                    @(string.Format(this.FormatString, data.Category)) : @data.Value
+                                    </TooltipTemplate>
+                                <ChildContent>      
+                                    <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
+                                </ChildContent>
+                            </RadzenLineSeries>
                         break;
                     };
                     case JXNippon.CentralizedDatabaseSystem.Domain.Charts.ChartType.BarChart:
@@ -135,8 +135,10 @@
 
         }
         if (!haveData)
-        {
-            <Empty/> 
+        { 
+            <Spin Spinning=@this.isLoading Delay=200>
+                <Empty/> 
+            </Spin>
         }
 
     }
