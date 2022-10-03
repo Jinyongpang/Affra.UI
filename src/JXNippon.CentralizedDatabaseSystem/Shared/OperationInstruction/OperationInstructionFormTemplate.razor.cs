@@ -116,6 +116,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         }
         private async void OnCreateButtonClick()
         {
+            if (Item.EstimatedDuration <= 0)
+            {
+                AffraNotificationService.NotifyWarning("Estimated duration cannot be less than or equal 0.");
+                return;
+            }
+
             Item.OperationInstructionStatus = OperationInstructionStatus.New;
 
             Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.EndorsementSubmitForApproval;
@@ -127,7 +133,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
             var service = this.GetGenericOIService(serviceScope);
 
             await service.InsertAsync(Item);
-            AffraNotificationService.NotifyItemCreated();
+            AffraNotificationService.NotifyItemCreated(); 
+            
+            await LoadEndoserUsernames();
         }
         private void OnCloseDialogClicked()
         {
@@ -153,7 +161,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.OperationInstructionNo,
-                Content = "Approve now!",
+                Content = "You have a new operation instruction to approve!",
                 Users = new System.Collections.ObjectModel.Collection<string> {
                     Item.EndorsedBy
                 }
@@ -171,7 +179,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
             var query = notificationService.InsertAsync(new Message
             {
                 Subject = Item.OperationInstructionNo,
-                Content = "Approve now!",
+                Content = "You have a new operation instruction to approve!",
                 Users = new System.Collections.ObjectModel.Collection<string> {
                     Item.ApprovedBy
                 }
@@ -191,6 +199,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
                 Item.EndorserSignature = Item.EndorsedBy;
                 Item.EndorsedByDateTimeUI = DateTime.Now;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.OperationInstructionNo,
+                    Content = "Your operation instruction has been approved!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.PreparedBy
+                }
+                });
             }
         }
         private async Task ShowEndorsementRejectDialogAsync()
@@ -205,6 +224,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
                 Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.EndorsementSubmitForApproval;
                 Item.OperationInstructionStatus = OperationInstructionStatus.Pending;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.OperationInstructionNo,
+                    Content = "Your operation instruction has been rejected!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.PreparedBy
+                }
+                });
             }
         }
         private async Task ShowApprovalConfirmationDialogAsync()
@@ -221,6 +251,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
                 Item.ApproverSignature = Item.ApprovedBy;
                 Item.ApprovedByDateTimeUI = DateTime.Now;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.OperationInstructionNo,
+                    Content = "Your operation instruction has been approved!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.PreparedBy
+                }
+                });
             }
         }
         private async Task ShowApprovalRejectDialogAsync()
@@ -235,6 +276,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
                 Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.ApprovalSubmitForApproval;
                 Item.OperationInstructionStatus = OperationInstructionStatus.Pending;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = this.GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.OperationInstructionNo,
+                    Content = "Your operation instruction has been rejected!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.PreparedBy
+                }
+                });
             }
         }
         private IGenericService<User> GetGenericUserService(IServiceScope serviceScope)

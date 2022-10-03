@@ -86,6 +86,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                     await LoadCloseOutAuthoritiesAsync();
                     break;
                 case ManagementOfChangeCurrentStep.Completed:
+                    disableAddExtensionButton = true;
                     disableAllInput = true;
                     currentStep = 0;
                     break;
@@ -188,6 +189,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.CloseOut.CloseOutState = CloseOutState.MadePermanentState;
                 Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseOutSubmitForApproval;
                 currentStep = 4;
+                await LoadCloseOutAuthoritiesAsync();
             }
             else
             {
@@ -439,6 +441,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Completed;
                 Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.RecordNumber,
+                    Content = "Your management of change has been approved!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.CreatedBy
+                }
+                });
             }
         }
         private async Task ShowCloseOutRejectDialogAsync()
@@ -454,6 +467,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
                 Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.RecordNumber,
+                    Content = "Your management of change has been rejected!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.CreatedBy
+                }
+                });
             }
         }
         private async Task ShowEndorsementConfirmationDialogAsync()
@@ -470,6 +494,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.Endorsement.Signature = Item.Endorsement.Name;
                 Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.RecordNumber,
+                    Content = "Your management of change has been approved!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.CreatedBy
+                }
+                });
             }
         }
         private async Task ShowEndorsementRejectDialogAsync()
@@ -486,6 +521,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.CloseOut.DateUI = DateTime.Now;
                 Item.Endorsement.Name = string.Empty;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.RecordNumber,
+                    Content = "Your management of change has been rejected!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.CreatedBy
+                }
+                });
             }
         }
         private async Task ShowAuthorisationAndApprovalConfirmationDialogAsync()
@@ -502,6 +548,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.AuthorisationAndApproval.Signature = Item.AuthorisationAndApproval.Name;
                 Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.RecordNumber,
+                    Content = "Your management of change has been approved!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.CreatedBy
+                }
+                });
             }
         }
         private async Task ShowAuthorisationAndApprovalRejectDialogAsync()
@@ -518,6 +575,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.CloseOut.DateUI = DateTime.Now;
                 Item.AuthorisationAndApproval.Name = string.Empty;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.RecordNumber,
+                    Content = "Your management of change has been rejected!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.CreatedBy
+                }
+                });
             }
         }
         private async Task ShowExtensionConfirmationDialogAsync(Extension item)
@@ -535,6 +603,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.ManagementOfChangeStatus = ManagementOfChangeStatus.Pending;
                 Item.CloseOut.DateUI = DateTime.Now;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.RecordNumber,
+                    Content = "Your management of change has been approved!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.CreatedBy
+                }
+                });
             }
         }
         private async Task ShowExtensionRejectDialogAsync(Extension item)
@@ -551,6 +630,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Item.CloseOut.DateUI = DateTime.Now;
                 Item.Extensions[item.ExtensionNo - 1].ApproverName = string.Empty;
                 await SubmitAsync(Item);
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<Message>? notificationService = GetGenericNotificationService(serviceScope);
+                var query = notificationService.InsertAsync(new Message
+                {
+                    Subject = Item.RecordNumber,
+                    Content = "Your management of change has been rejected!",
+                    Users = new System.Collections.ObjectModel.Collection<string> {
+                    Item.CreatedBy
+                }
+                });
             }
         }
         private void OnInheritRadioChanged()

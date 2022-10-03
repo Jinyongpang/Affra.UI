@@ -56,6 +56,10 @@
                                         {
                                             <RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(context.ManagementOfChangeStatus.ToString())"/>
                                         }
+                                        else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.Deleted)
+                                        {
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Dark" Text="@(context.ManagementOfChangeStatus.ToString())" />
+                                        }
                                         else
                                         {
                                             <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.ManagementOfChangeStatus.ToString())"/>
@@ -65,7 +69,19 @@
                                 </div>
                             </Body>
                             <Extra>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                @if (context.ManagementOfChangeStatus != ManagementOfChangeStatus.Deleted)
+                                {
+                                    <Popover Placement="@Placement.RightBottom">
+                                        <ContentTemplate>
+                                            <Menu Mode=MenuMode.Vertical Class="popup-menu">
+                                                <MenuItem Key="DeleteForm"><a @onclick="@(() => DeleteMOCFormAsync(context))"><i class="fas fa-trash fa-fw fa-xl"></i> Delete Form...</a></MenuItem>
+                                            </Menu>
+                                        </ContentTemplate>
+                                        <ChildContent>
+                                            <AntDesign.Button><i class="fa-solid fa-ellipsis-vertical extra-icon"></i></AntDesign.Button>
+                                        </ChildContent>
+                                    </Popover>
+                                }
                             </Extra>
                         </Card>
                     </div> 
