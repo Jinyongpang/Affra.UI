@@ -1,11 +1,14 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Collections.Concurrent;
+using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using AntDesign;
 using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 using Microsoft.OData.Client;
 using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages;
+using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
 {
@@ -18,12 +21,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
         private int currentCount;
         private bool isLoading = false;
         private bool initLoading = true;
+        private IDictionary<string, User> users = new ConcurrentDictionary<string, User>(StringComparer.OrdinalIgnoreCase);
 
         [Parameter] public PersonalMessageStatus? PersonalMessageStatus { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
-
+        [Inject] private IUserService UserService { get; set; }
         public int Count => this.count;
 
         protected override Task OnInitializedAsync()
@@ -80,6 +84,23 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
                 personalMessages = personalMessageList;
             }
 
+            foreach (var email in personalMessages
+                .Select(x => x.Message.CreatedBy))
+            {
+                if (!this.users.TryGetValue(email, out var user))
+                {
+
+                    using var serviceScopeUser = ServiceProvider.CreateScope();
+                    var userService = this.GetUserGenericService(serviceScopeUser);
+                    user = (await userService.Get()
+                        .Where(x => x.Email == email)
+                        .ToQueryOperationResponseAsync<User>())
+                        .FirstOrDefault();
+                    this.users[email] = user;
+                }
+                
+            }
+
             isLoading = false;
 
             if (personalMessages.DistinctBy(x => x.Id).Count() != personalMessages.Count)
@@ -114,8 +135,31 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             }
         }
         private IGenericService<PersonalMessage> GetGenericService(IServiceScope serviceScope)
-        {       
+        {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PersonalMessage, INotificationUnitOfWork>>();
+        }
+
+        private IGenericService<User> GetUserGenericService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<User, IUserUnitOfWork>>();
+        }
+
+        private string GetAvatarName(string email)
+        {
+            if (this.users.TryGetValue(email, out var user))
+            { 
+                return this.UserService.GetAvatarName(user.Name);
+            }
+            return $"{email[0]}";
+        }
+
+        private string GetAvatarColor(string email)
+        {
+            if (this.users.TryGetValue(email, out var user))
+            {
+                return user?.UserPersonalization?.AvatarColor ?? string.Empty;
+            }
+            return string.Empty;
         }
     }
 }
