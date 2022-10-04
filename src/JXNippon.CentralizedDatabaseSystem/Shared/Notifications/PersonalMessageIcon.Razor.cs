@@ -67,7 +67,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             var query = (DataServiceQuery<PersonalMessage>)personalMessageService.Get();
 
             QueryOperationResponse<PersonalMessage>? response = await query
-                .Expand(x => x.Message)
                 .Where(x => x.Status == PersonalMessageStatus.Unread)
                 .OrderByDescending(x => x.CreatedDateTime)
                 .Take(0)
