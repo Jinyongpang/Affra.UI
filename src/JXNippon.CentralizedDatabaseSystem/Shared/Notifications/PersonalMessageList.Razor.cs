@@ -150,6 +150,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             { 
                 return this.UserService.GetAvatarName(user.Name);
             }
+
             return $"{email[0]}";
         }
 
@@ -158,6 +159,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             if (this.users.TryGetValue(email, out var user))
             {
                 return user?.UserPersonalization?.AvatarColor ?? string.Empty;
+            }
+            return string.Empty;
+        }
+
+        private string GetAvatarIcon(string email)
+        {
+            if (this.users.TryGetValue(email, out var user))
+            {
+                return user?.UserPersonalization?.AvatarId > 0
+                     ? $"avatar\\{user?.UserPersonalization?.AvatarId}.png"
+                     : string.Empty;
             }
             return string.Empty;
         }

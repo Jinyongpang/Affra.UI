@@ -16,7 +16,7 @@
             <ChildContent>
                 <ListItemMeta Description="@context.MessageContent">
                     <AvatarTemplate>
-                        <Avatar Style=@($"vertical-align: middle; background-color: {this.GetAvatarColor(context.CreatedBy)};") Size="large">
+                        <Avatar Src=@this.GetAvatarIcon(context.CreatedBy) Style=@($"vertical-align: middle; background-color: {this.GetAvatarColor(context.CreatedBy)};") Size="large">
                             <span style="font-size: 16px;">@this.GetAvatarName(context.CreatedBy)</span>
                         </Avatar>
                     </AvatarTemplate>
