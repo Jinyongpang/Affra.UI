@@ -27,9 +27,9 @@
                                 <div>
                                     <Space>
                                         <SpaceItem>
-                                            <Avatar Style=@($"vertical-align: middle; background-color: {context.UserPersonalization?.AvatarColor};") Size="64">
-                                            <span style="font-size: 32px;">@this.UserService.GetAvatarName(context.Name)</span>
-                                         </Avatar>
+                                            <Avatar Src=@this.GetAvatarIcon(context.UserPersonalization) Style=@($"vertical-align: middle; background-color: {context.UserPersonalization?.AvatarColor};") Size="64">
+                                                <span style="font-size: 32px;">@this.UserService.GetAvatarName(context.Name)</span>
+                                             </Avatar>
                                         </SpaceItem>
                                         <SpaceItem>                                                                             
                                             <div style="word-break:break-word;">Email : @context.Email</div>

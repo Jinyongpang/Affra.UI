@@ -121,6 +121,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<User, IUserUnitOfWork>>();
         }
 
+        private string GetAvatarIcon(UserPersonalization userPersonalization)
+        {
+            return userPersonalization?.AvatarId > 0
+                     ? $"avatar\\{userPersonalization?.AvatarId}.png"
+                     : string.Empty;
+        }
         private async Task ShowDialogAsync(User data, int menuAction, string title)
         {
             dynamic? response;
