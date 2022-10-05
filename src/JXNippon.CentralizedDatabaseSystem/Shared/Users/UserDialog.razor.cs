@@ -14,6 +14,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private IUserService UserService { get; set; }
         private bool isViewing { get => MenuAction == 3; }
+        private int[] availableAvatar = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
         private ICollection<string> roles = new List<string>()
         {
@@ -30,10 +31,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         protected Task SubmitAsync(User arg)
         {
-            arg.UserPersonalization.AvatarColor = this.userPersonalization.AvatarColor;
-            arg.UserPersonalization = this.userPersonalization;
+            Item.UserPersonalization = this.userPersonalization;
             DialogService.Close(true);
             return Task.CompletedTask;
+        }
+
+        private void OnSelect(int id)
+        {
+            this.userPersonalization.AvatarId = id;
         }
 
         private void Cancel()

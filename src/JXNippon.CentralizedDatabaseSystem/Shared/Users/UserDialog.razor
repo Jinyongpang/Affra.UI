@@ -8,10 +8,27 @@
             {
                 <div class="row py-2">
                     <div class="col-4 align-items-center d-flex">
-                        <RadzenLabel class="dialogTextSize" Text="Avatar color" />
+                        <RadzenLabel class="dialogTextSize" Text="Color" />
                     </div>
                     <div class="col-8">
                         <RadzenColorPicker Name="AvatarColor" class="w-100" Placeholder="Select color..." @bind-Value="@this.userPersonalization.AvatarColor" Disabled=@isViewing></RadzenColorPicker>
+                    </div>
+                </div> 
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Avatar" />
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                            @foreach(var ava in availableAvatar)
+                            {
+                                <div class="col-1" @onclick=@(() => this.OnSelect(ava))>
+                                    <Avatar Src=@($"avatar\\{ava}.png") Style=@($"vertical-align: middle; background-color: {(this.userPersonalization.AvatarId == ava ? this.userPersonalization.AvatarColor : "Transparent")};") Size="large">
+                                        <span style="font-size: 16px;"></span>
+                                    </Avatar>
+                                </div>                          
+                            }
+                        </div>
                     </div>
                 </div>
             }

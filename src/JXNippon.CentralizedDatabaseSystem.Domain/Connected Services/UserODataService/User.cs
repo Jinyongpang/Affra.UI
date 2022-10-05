@@ -16,11 +16,12 @@ namespace UserODataService.Affra.Service.User.Domain.Users
                 this._userPersonalization = this.Personalization is null
                     ? new ()
                     : JsonSerializer.Deserialize<UserPersonalization>(this.Personalization);
+
                 return this._userPersonalization;
             }
             set 
             { 
-                this.Personalization = JsonSerializer.Serialize(this._userPersonalization); 
+                this.Personalization = JsonSerializer.Serialize(value); 
             }
         }
     }

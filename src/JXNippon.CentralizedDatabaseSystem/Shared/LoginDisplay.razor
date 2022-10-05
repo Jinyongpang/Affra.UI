@@ -9,7 +9,10 @@
 <AuthorizeView>
     <Authorized>
         @{
-            var avatarColor = this.GlobalDataSource.User?.UserPersonalization?.AvatarColor; 
+            var avatarColor = this.GlobalDataSource.User?.UserPersonalization?.AvatarColor;
+            var avatarIcon = this.GlobalDataSource.User?.UserPersonalization?.AvatarId > 0
+                ? $"avatar\\{this.GlobalDataSource.User?.UserPersonalization?.AvatarId}.png"
+                : string.Empty;   
             <Space>
                 <SpaceItem>
                     <PersonalMessageIcon/>
@@ -17,7 +20,7 @@
                 <SpaceItem>
                     <RadzenProfileMenu Style="line-height: 2rem;">
                         <Template>                     
-                            <Avatar Style=@($"vertical-align: middle; background-color: {avatarColor};") Size="large">
+                            <Avatar Src=@avatarIcon Style=@($"vertical-align: middle; background-color: {avatarColor};") Size="large">
                                 <span style="font-size: 16px;">@this._userService.GetAvatarName(context.User.Identity.Name)</span>
                             </Avatar>
                         </Template>
@@ -32,7 +35,7 @@
                                 <Body>
                                     <div class="row min-w-100">
                                         <div class="col"  @onclick=ShowDialogAsync>
-                                             <Avatar Style=@($"vertical-align: middle; background-color: {avatarColor};") Size="64">
+                                             <Avatar Src=@avatarIcon Style=@($"vertical-align: middle; background-color: {avatarColor};") Size="64">
                                                 <span style="font-size: 32px;">@this._userService.GetAvatarName(context.User.Identity.Name)</span>
                                              </Avatar>
                                         </div>
