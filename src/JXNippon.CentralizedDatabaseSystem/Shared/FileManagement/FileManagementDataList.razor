@@ -68,7 +68,9 @@
                                     }
                                     else if (context.ProcessStatus == FileProcessStatus.Failed)
                                     {
-                                        <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.ProcessStatus.ToString())"/>
+                                        <Tooltip Placement="@Placement.BottomLeft" Title="@context.ErrorMessage">            
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.ProcessStatus.ToString())"/>
+                                        </Tooltip>
                                     }
                                     else if (context.ProcessStatus == FileProcessStatus.Pending)
                                     {
