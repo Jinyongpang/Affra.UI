@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 22/4/2022 6:06:38 PM
+// Generation date: 6/10/2022 8:28:24 PM
 namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
 {
     /// <summary>
@@ -211,6 +211,27 @@ namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
         partial void OnProcessStatusChanging(global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.FileProcessStatus value);
         partial void OnProcessStatusChanged();
         /// <summary>
+        /// There are no comments for Property ErrorMessage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ErrorMessage
+        {
+            get
+            {
+                return this._ErrorMessage;
+            }
+            set
+            {
+                this.OnErrorMessageChanging(value);
+                this._ErrorMessage = value;
+                this.OnErrorMessageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ErrorMessage;
+        partial void OnErrorMessageChanging(string value);
+        partial void OnErrorMessageChanged();
+        /// <summary>
         /// There are no comments for Property NumberOfAttempts in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -397,6 +418,7 @@ namespace DataExtractorODataService.Default
         <Property Name=""JobStartDateTime"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""ProcessedLastModifiedDateTime"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""ProcessStatus"" Type=""Affra.Service.DataExtractor.Domain.DataFiles.FileProcessStatus"" Nullable=""false"" />
+        <Property Name=""ErrorMessage"" Type=""Edm.String"" />
         <Property Name=""NumberOfAttempts"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
