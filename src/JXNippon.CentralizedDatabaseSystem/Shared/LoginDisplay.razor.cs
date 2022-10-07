@@ -6,9 +6,9 @@ using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Shared.Users;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
-using Radzen.Blazor;
 using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared
@@ -34,15 +34,27 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
 
         [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
 
+        [Inject] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+
         public Task ReloadAsync()
         {
-            this.StateHasChanged();
+            StateHasChanged();
             return Task.CompletedTask;
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+            var authstate = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+            if (authstate?.User?.Identity?.IsAuthenticated == true)
+            {
+                await RefreshUserAsync(authstate.User);
+            }
         }
 
         private async Task BeginLogout(MouseEventArgs args)
         {
-            await this.LogUserActivityAsync(ActivityType.Logout);
+            await LogUserActivityAsync(ActivityType.Logout);
             await SignOutManager.SetSignOutState();
             Navigation.NavigateTo("authentication/logout");
         }
@@ -51,35 +63,48 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         {
             try
             {
-                using var serviceScope = this._serviceProvider.CreateScope();
-                var service = this.GetGenericService<UserActivity>(serviceScope);
+                using var serviceScope = _serviceProvider.CreateScope();
+                var service = GetGenericService<UserActivity>(serviceScope);
                 await service.InsertAsync(new UserActivity()
                 {
                     Username = user?.Identity?.Name,
                     ActivityType = activityType,
-                    Site = this._navigationManager.BaseUri.ToString(),
+                    Site = _navigationManager.BaseUri.ToString(),
                 });
             }
             catch (Exception ex)
             {
-                this._affraNotificationService.NotifyException(ex);
+                _affraNotificationService.NotifyException(ex);
             }
         }
+
+        private async Task RefreshUserAsync(ClaimsPrincipal? user)
+        {
+
+            if (user.Identity.IsAuthenticated)
+            {
+                using var serviceScope = _serviceProvider.CreateScope();
+                var service = serviceScope.ServiceProvider.GetRequiredService<IUserService>();
+                var userFromService = await service.GetUserAsync(user);
+                GlobalDataSource.User = userFromService;
+            }
+        }
+
 
         private async Task ShowDialogAsync()
         {
             User data = GlobalDataSource.User;
             dynamic? response;
-                response = await DialogService.OpenAsync<UserDialog>("Edit",
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", 1 }, { "IsUserEdit", true } },
-                           Constant.DialogOptions);
+            response = await DialogService.OpenAsync<UserDialog>("Edit",
+                       new Dictionary<string, object>() { { "Item", data }, { "MenuAction", 1 }, { "IsUserEdit", true } },
+                       Constant.DialogOptions);
 
             if (response == true)
             {
                 try
                 {
                     using var serviceScope = ServiceProvider.CreateScope();
-                    var service = this.GetGenericService<User>(serviceScope);
+                    var service = GetGenericService<User>(serviceScope);
 
                     if (data.Id != Guid.Empty)
                     {
@@ -99,7 +124,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
                     _affraNotificationService.NotifyException(ex);
                 }
             }
-            
+
         }
 
         private IGenericService<T> GetGenericService<T>(IServiceScope serviceScope) where T : class
