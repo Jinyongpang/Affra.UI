@@ -58,7 +58,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
             if (!string.IsNullOrEmpty(ManagementOfChangeFilter.Search))
             {
-                query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus.ToString().ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper()));
+                query = query
+                    .Where(mocRecord => mocRecord.TitleOfChange.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
+                        || mocRecord.CreatedBy.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
+                        || mocRecord.RecordNumber.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
+                    );
             }
             if (ManagementOfChangeFilter.Status != null)
             {

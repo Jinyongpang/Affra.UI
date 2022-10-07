@@ -66,10 +66,14 @@
             </SubMenu>
         </Authorized>
     </AuthorizeView>
-    <div style="position: absolute; top: 0; right: 0;">
-         <SingleDateRangeFilterComponent IsGlobal Class="px-2"  @ref=@GlobalDataSource.GlobalDateFilter></SingleDateRangeFilterComponent>
-         <LoginDisplay @ref=GlobalDataSource.LoginDisplay/>
-    </div> 
+    <AuthorizeView>
+        <Authorized>
+            <div style="position: absolute; top: 0; right: 0;">
+                 <SingleDateRangeFilterComponent IsGlobal Class="px-2"  @ref=@GlobalDataSource.GlobalDateFilter></SingleDateRangeFilterComponent>
+                 <LoginDisplay @ref=GlobalDataSource.LoginDisplay/>
+            </div> 
+        </Authorized>
+    </AuthorizeView>
 </Menu>
 
 @code
