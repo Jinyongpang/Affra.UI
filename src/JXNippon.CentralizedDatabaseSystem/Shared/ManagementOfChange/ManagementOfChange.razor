@@ -3,11 +3,18 @@
     <Header>
         <div class="row">
             <div class="col-12 float-right align-items-center text-right mt-1">
-                <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick="@(() => ShowDialogAsync(new ManagementOfChangeRecord()))">
-                    <ChildContent>
-                        <Icon Type="plus-circle" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Add</span>
-                    </ChildContent>
-                </Button>
+                <Space Size="@("middle")">
+                    <SpaceItem>
+                        <Search Size="@("large")" Placeholder="Search..." Style="20vw;" OnChange=@(args => ReloadAsync(null)) @bind-Value=search ClassicSearchIcon/>
+                    </SpaceItem>
+                    <SpaceItem>
+                        <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick="@(() => ShowDialogAsync(new ManagementOfChangeRecord()))">
+                            <ChildContent>
+                                <Icon Type="plus-circle" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Add</span>
+                            </ChildContent>
+                        </Button>
+                    </SpaceItem>
+                </Space>
             </div>
         </div>       
     </Header>
