@@ -17,13 +17,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private ManagementOfChangeDataList managementOfChangeDataList;
         private Menu menu;
         private string search;
+        private string status;
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
 
         private Task ReloadAsync(string status = null)
         {
-            managementOfChangeDataList.ManagementOfChangeFilter.Status = GetStatusFilter(status);
+            managementOfChangeDataList.ManagementOfChangeFilter.Status = GetStatusFilter(status ?? this.status);
             managementOfChangeDataList.ManagementOfChangeFilter.Search = search;
             return managementOfChangeDataList.ReloadAsync();
         }
@@ -41,6 +42,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
         private Task OnMenuItemSelectAsync(MenuItem menuItem)
         {
+            status = menuItem.Key;
             return this.ReloadAsync(menuItem.Key);
         }
         private async Task ShowDialogAsync(ManagementOfChangeRecord data, string title = "")
