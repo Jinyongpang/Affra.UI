@@ -65,7 +65,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                         || mocRecord.RecordNumber.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
                     );
             }
-            else if (ManagementOfChangeFilter.Status != null)
+             
+            if (ManagementOfChangeFilter.Status != null)
             {
                 var status = (ManagementOfChangeStatus)Enum.Parse(typeof(ManagementOfChangeStatus), ManagementOfChangeFilter.Status);
                 query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus == status);
