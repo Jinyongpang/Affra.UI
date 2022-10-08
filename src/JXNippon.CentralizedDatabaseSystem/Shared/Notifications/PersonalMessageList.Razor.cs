@@ -85,6 +85,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             }
 
             foreach (var email in personalMessages
+                .Where(x => !string.IsNullOrEmpty(x.CreatedBy))
                 .Select(x => x.Message.CreatedBy))
             {
                 if (!this.users.TryGetValue(email, out var user))
@@ -146,6 +147,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
 
         private string GetAvatarName(string email)
         {
+            if (string.IsNullOrEmpty(email))
+            {
+                return string.Empty;
+            }
             if (this.users.TryGetValue(email, out var user))
             { 
                 return this.UserService.GetAvatarName(user.Name);
@@ -156,7 +161,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
 
         private string GetAvatarColor(string email)
         {
-            if (this.users.TryGetValue(email, out var user))
+            if (!string.IsNullOrEmpty(email) && this.users.TryGetValue(email, out var user))
             {
                 return user?.UserPersonalization?.AvatarColor ?? string.Empty;
             }
@@ -165,7 +170,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
 
         private string GetAvatarIcon(string email)
         {
-            if (this.users.TryGetValue(email, out var user))
+            if (!string.IsNullOrEmpty(email) && this.users.TryGetValue(email, out var user))
             {
                 return user?.UserPersonalization?.AvatarId > 0
                      ? $"avatar\\{user?.UserPersonalization?.AvatarId}.png"
