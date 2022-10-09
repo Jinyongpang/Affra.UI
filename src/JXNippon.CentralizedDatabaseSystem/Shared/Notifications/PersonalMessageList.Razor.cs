@@ -85,16 +85,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             }
 
             foreach (var email in personalMessages
-                .Where(x => !string.IsNullOrEmpty(x.CreatedBy))
+                .Where(x => !string.IsNullOrEmpty(x.Message.CreatedBy))
                 .Select(x => x.Message.CreatedBy))
             {
                 if (!this.users.TryGetValue(email, out var user))
                 {
-
                     using var serviceScopeUser = ServiceProvider.CreateScope();
                     var userService = this.GetUserGenericService(serviceScopeUser);
                     user = (await userService.Get()
-                        .Where(x => x.Email == email)
+                        .Where(x => x.Email.ToUpper() == email.ToUpper())
                         .ToQueryOperationResponseAsync<User>())
                         .FirstOrDefault();
                     this.users[email] = user;
