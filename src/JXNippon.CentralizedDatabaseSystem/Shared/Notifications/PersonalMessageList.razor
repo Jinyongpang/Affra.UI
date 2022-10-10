@@ -6,36 +6,31 @@
     <div class="min-vh-75 d-flex align-items-center justify-content-center gap-3">
         <GenericDescription Height="300px" ImageFile="@ImageFile.Message" Description="No notification.">
         </GenericDescription>
-    </div>
-      
+    </div>   
 }
 
-<AntList DataSource="@personalMessages" TItem="PersonalMessage" Class="px-3" @ref=_dataList>
-    <ChildContent>
-        <ListItem OnClick="@(() => MarkAsReadAsync(context))">
-            <ChildContent>
-                <ListItemMeta Description="@context.MessageContent">
-                    <AvatarTemplate>
-                        <Avatar Src=@this.GetAvatarIcon(context.CreatedBy) Style=@($"vertical-align: middle; background-color: {this.GetAvatarColor(context.CreatedBy)};") Size="large">
-                            <span style="font-size: 16px;">@this.GetAvatarName(context.CreatedBy)</span>
-                        </Avatar>
-                    </AvatarTemplate>
-                    <TitleTemplate>
-                        <a href="@context.Extra">@context.Subject</a>
-                    </TitleTemplate>
-                </ListItemMeta>
+<Virtualize TItem="PersonalMessage" ItemsProvider="@LoadDataAsync" @ref=_dataList>
+    <ChildContent Context=item>
+        <AntList DataSource=@(new [] { item }) @key=item.Id>
+             <ChildContent Context=context>
+                <ListItem OnClick="@(() => MarkAsReadAsync(context))">
+                    <ChildContent>
+                        <ListItemMeta Description="@context.MessageContent">
+                            <AvatarTemplate>
+                                <Avatar Src=@this.GetAvatarIcon(context.CreatedBy) Style=@($"vertical-align: middle; background-color: {this.GetAvatarColor(context.CreatedBy)};") Size="large">
+                                    <span style="font-size: 16px;">@this.GetAvatarName(context.CreatedBy)</span>
+                                </Avatar>
+                            </AvatarTemplate>
+                            <TitleTemplate>
+                                <a href="@context.Extra">@context.Subject</a>
+                            </TitleTemplate>
+                        </ListItemMeta>
+                    </ChildContent>
+                    <Extra>
+                        <i class="dot-item" hidden="@(context.Status == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Read)"></i>
+                    </Extra>
+                </ListItem>
             </ChildContent>
-            <Extra>
-                <i class="dot-item" hidden="@(context.Status == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Read)"></i>
-            </Extra>
-        </ListItem>
-    </ChildContent>
-    <LoadMore>
-        @if (!initLoading && !isLoading && currentCount < count)
-        {
-            <div class="loadmore-btn-content">
-                <Button Type="primary" OnClick="OnLoadMoreAsync">loading more</Button>
-            </div>
-        }
-    </LoadMore>
-</AntList>
+        </AntList>
+    </ChildContent>   
+</Virtualize>
