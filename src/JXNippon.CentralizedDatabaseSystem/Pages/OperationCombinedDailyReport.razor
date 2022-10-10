@@ -1,5 +1,6 @@
 ﻿@page "/Operation/CombinedDailyReport"
+@using JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 @attribute [Authorize(Policy = "RolePageOperation")]
 
 <PageTitle>Combined Daily Report</PageTitle>
-<CombinedDailyReport></CombinedDailyReport>
+<CombinedDailyReportDataListView></CombinedDailyReportDataListView>

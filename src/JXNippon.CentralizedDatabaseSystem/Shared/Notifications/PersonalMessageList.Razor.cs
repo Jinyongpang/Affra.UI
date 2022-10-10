@@ -6,6 +6,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.OData.Client;
 using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages;
 using UserODataService.Affra.Service.User.Domain.Users;
@@ -14,11 +15,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
 {
     public partial class PersonalMessageList
     {
-        private const int loadSize = 9;
-        private AntList<PersonalMessage> _dataList;
-        private List<PersonalMessage > personalMessages;
+        private Virtualize<PersonalMessage> _dataList;
+
         private int count;
-        private int currentCount;
         private bool isLoading = false;
         private bool initLoading = true;
         private IDictionary<string, User> users = new ConcurrentDictionary<string, User>(StringComparer.OrdinalIgnoreCase);
@@ -33,27 +32,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
         protected override Task OnInitializedAsync()
         {
             initLoading = false;
-            return this.LoadDataAsync();
+            return Task.CompletedTask;  
         }
 
-        public Task ReloadAsync()
+        public async Task ReloadAsync()
         {
-            return this.LoadDataAsync();
+            await _dataList.RefreshDataAsync();
+            this.StateHasChanged();
         }
 
-        public Task OnLoadMoreAsync()
-        {
-            return this.LoadDataAsync(true);
-        }
-
-        private async Task LoadDataAsync(bool isLoadMore = false)
+        private async ValueTask<ItemsProviderResult<PersonalMessage>> LoadDataAsync(ItemsProviderRequest request)
         {
             isLoading = true;
             StateHasChanged();
-            if (!isLoadMore)
-            {
-                currentCount = 0;
-            }
 
             using var serviceScope = ServiceProvider.CreateScope();
             IGenericService<PersonalMessage>? personalMessageService = this.GetGenericService(serviceScope);
@@ -67,23 +58,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             QueryOperationResponse<PersonalMessage>? response = await query
                 .Expand(x => x.Message)
                 .OrderByDescending(x => x.CreatedDateTime)
-                .Skip(currentCount)
-                .Take(loadSize)
+                .Skip(request.StartIndex)
+                .Take(request.Count)
                 .ToQueryOperationResponseAsync<PersonalMessage>();
 
             count = (int)response.Count;
-            currentCount += loadSize;
-            var personalMessageList = response.ToList();
-
-            if (isLoadMore)
-            {
-                personalMessages.AddRange(personalMessageList);
-            }
-            else
-            {
-                personalMessages = personalMessageList;
-            }
-
+            var personalMessages = response.ToList();
             foreach (var email in personalMessages
                 .Where(x => !string.IsNullOrEmpty(x.Message.CreatedBy))
                 .Select(x => x.Message.CreatedBy))
@@ -97,8 +77,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
                         .ToQueryOperationResponseAsync<User>())
                         .FirstOrDefault();
                     this.users[email] = user;
-                }
-                
+                }               
             }
 
             isLoading = false;
@@ -109,6 +88,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             }
 
             StateHasChanged();
+            return new ItemsProviderResult<PersonalMessage>(personalMessages, count);
         }
 
         private void HandleException(Exception ex)
@@ -128,9 +108,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
 
             if (this.PersonalMessageStatus == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Unread)
             {
-                count--;
-                currentCount--;
-                this.personalMessages.Remove(personalMessage);
+                await this._dataList.RefreshDataAsync();
                 this.StateHasChanged();
             }
         }
