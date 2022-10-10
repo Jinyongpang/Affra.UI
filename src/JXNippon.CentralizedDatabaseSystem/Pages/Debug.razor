@@ -102,5 +102,24 @@
                 res = res.Replace("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems", type.Value);
                 <a>@res</a>
             }
+
+            var b = assembly.GetTypes()
+                   .DistinctBy(t => t.Name)
+                   .Where(t => t.Name.StartsWith("Daily"))
+                   .Where(t => !t.Name.EndsWith("Single"))
+                   .ToDictionary(x => x.Name, x => x.Namespace);
+            foreach (var type in b)
+            {
+
+                var res = @"            modelBuilder.Entity<CombinedDailyReport>()
+                .HasOne(x => x.DailyInowacInjection)
+                .WithOne(x => x.CombinedDailyReport)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasPrincipalKey<CombinedDailyReport>(x => x.Date)
+                .HasForeignKey<DailyInowacInjection>(x => x.Date);";
+                res = res.Replace("DailyInowacInjection", type.Key);
+                <a>@res</a>
+            }
+
             
 }
