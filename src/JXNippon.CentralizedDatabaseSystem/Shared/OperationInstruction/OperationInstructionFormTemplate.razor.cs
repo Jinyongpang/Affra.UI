@@ -151,7 +151,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         }
         private async void OnEndorsementSubmitButtonClick()
         {
-            Item.OperationInstructionStatus = OperationInstructionStatus.Pending;
+            Item.OperationInstructionStatus = OperationInstructionStatus.PendingForApproval;
             Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.EndorsementPendingForApproval;
 
             await SubmitAsync(Item);
@@ -169,7 +169,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         }
         private async void OnApprovalSubmitButtonClick()
         {
-            Item.OperationInstructionStatus = OperationInstructionStatus.Pending;
+            Item.OperationInstructionStatus = OperationInstructionStatus.PendingForApproval;
             Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.ApprovalPendingForApproval;
 
             await SubmitAsync(Item);
@@ -195,7 +195,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
             if (confirmResult == ConfirmResult.Yes)
             {
                 Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.ApprovalSubmitForApproval;
-                Item.OperationInstructionStatus = OperationInstructionStatus.Pending;
+                Item.OperationInstructionStatus = OperationInstructionStatus.Approved;
                 Item.EndorserSignature = Item.EndorsedBy;
                 Item.EndorsedByDateTimeUI = DateTime.Now;
                 await SubmitAsync(Item);
@@ -222,7 +222,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
             if (confirmResult == ConfirmResult.Yes)
             {
                 Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.EndorsementSubmitForApproval;
-                Item.OperationInstructionStatus = OperationInstructionStatus.Pending;
+                Item.OperationInstructionStatus = OperationInstructionStatus.Rejected;
                 Item.EndorserSignature = string.Empty;
                 await SubmitAsync(Item);
 
@@ -275,7 +275,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
             if (confirmResult == ConfirmResult.Yes)
             {
                 Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.ApprovalSubmitForApproval;
-                Item.OperationInstructionStatus = OperationInstructionStatus.Pending;
+                Item.OperationInstructionStatus = OperationInstructionStatus.Rejected;
                 Item.ApproverSignature = string.Empty;
                 await SubmitAsync(Item);
 

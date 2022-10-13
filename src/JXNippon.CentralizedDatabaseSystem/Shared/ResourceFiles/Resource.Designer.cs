@@ -754,6 +754,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pending For Approval.
+        /// </summary>
+        public static string PendingForApproval {
+            get {
+                return ResourceManager.GetString("PendingForApproval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pending For Close Out.
+        /// </summary>
+        public static string PendingForCloseOut {
+            get {
+                return ResourceManager.GetString("PendingForCloseOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Planned Downtime.
         /// </summary>
         public static string PlannedDowntime {
