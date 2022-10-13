@@ -5,9 +5,11 @@ using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
+using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
@@ -25,6 +27,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
+        [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
+        [Inject] private ConfirmService ConfirmService { get; set; }
 
         public CommonFilter OperationInstructionFilter { get; set; }
 
@@ -60,12 +64,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
 
             if (!string.IsNullOrEmpty(OperationInstructionFilter.Search))
             {
-                query = query.Where(oiRecord => oiRecord.OperationInstructionStatus.ToString().ToUpper().Contains(OperationInstructionFilter.Search.ToUpper()));
+                query = query
+                    .Where(oiRecord => oiRecord.CreatedBy.ToUpper().Contains(OperationInstructionFilter.Search.ToUpper())
+                        || oiRecord.OperationInstructionNo.ToUpper().Contains(OperationInstructionFilter.Search.ToUpper())
+                    );
             }
             if (OperationInstructionFilter.Status != null)
             {
                 var status = (OperationInstructionStatus)Enum.Parse(typeof(OperationInstructionStatus), OperationInstructionFilter.Status);
                 query = query.Where(oiRecord => oiRecord.OperationInstructionStatus == status);
+            }
+            else
+            {
+                query = query.Where(oiRecord => oiRecord.OperationInstructionStatus != OperationInstructionStatus.Deleted);
             }
 
             Microsoft.OData.Client.QueryOperationResponse<OperationInstructionRecord>? operationInstructionResponse = await query
@@ -155,6 +166,27 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         {
             double enumLength = Enum.GetNames(typeof(OperationInstructionCurrentStep)).Length - 1;
             return (int)((step / enumLength) * 100);
+        }
+        private async Task DeleteOIFormAsync(OperationInstructionRecord data)
+        {
+            var content = $"Are you sure want to delete record no #{data.OperationInstructionNo} ?";
+            var title = "Operation Instruction - Deletion";
+
+            var confirmResult = await ConfirmService.Show(content, title, ConfirmButtons.YesNo, ConfirmIcon.Question);
+
+            if (confirmResult == ConfirmResult.Yes)
+            {
+                using var serviceScope = ServiceProvider.CreateScope();
+                var service = GetGenericOIService(serviceScope);
+
+                data.OperationInstructionStatus = OperationInstructionStatus.Deleted;
+                data.OperationInstructionCurrentStep = OperationInstructionCurrentStep.Completed;
+
+                await service.UpdateAsync(data, data.Id);
+                AffraNotificationService.NotifyItemDeleted();
+            }
+
+            await ReloadAsync();
         }
     }
 }

@@ -25,9 +25,11 @@
                             <Body>
                                <div class="d-flex flex-row align-items-center">
                                     <div class="col-9">
-                                        <div>Title Of Change : @context.TitleOfChange</div>
-                                        <div>Field : @(context.ManagementOfChangeField.ToString())</div>
-                                        <div>Duration of Change : @(context.Identification.DurationOfChange)</div>
+                                        <div class="text-truncate">Title : @context.TitleOfChange</div>
+                                        <div class="text-truncate">Field : @(context.ManagementOfChangeField.ToString())</div>
+                                        <div class="text-truncate">Duration : @(context.Identification.DurationOfChange) days</div>
+                                        <div class="text-truncate">Reason : @(context.Identification.ReasonForChange)</div>
+                                        <div class="text-truncate">Creator : @(context.CreatedBy)</div>
                                     </div>
                                     <div class="col-3 text-center">
                                         <Progress Format=_fortmat1 Type=ProgressType.Circle Percent=@(GetPercentage((int)Enum.Parse(typeof(ManagementOfChangeCurrentStep), context.ManagementOfChangeCurrentStep.ToString()))) Size=ProgressSize.Small />
@@ -37,34 +39,43 @@
                                 <div class="row">
                                     <div class="col-md-8 text-truncate card-time">
                                         <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Created Date : {0:d}", context.CreatedDateTime.ToLocalTime())</b>
-                                        <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.CreatedDateTime.ToLocalTime())</b>
                                     </div>
                                     <div class="col-md-8 text-truncate card-time">
                                         <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Expiry Date : {0:d}", context.Identification.ExpiryDate.ToLocalTime())</b>
-                                        <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.Identification.ExpiryDate.ToLocalTime())</b>
                                     </div>
-                                    <div class="col-md-4 text-right">
-                                        @if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.Completed)
+                                    <div class="col-md-12 text-right" style="padding-top:5px">
+                                        @if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.ClosedOut)
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.ManagementOfChangeStatus.ToString())"/>
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Primary" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
                                         }
                                         else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.Extension)
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.ManagementOfChangeStatus.ToString())"/>
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
                                         }
-                                        else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.Pending)
+                                        else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.PendingForApproval)
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(context.ManagementOfChangeStatus.ToString())"/>
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
+                                        }
+                                        else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.PendingForCloseOut)
+                                        {
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
+                                        }
+                                        else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.Approved)
+                                        {
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
+                                        }
+                                        else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.Rejected)
+                                        {
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
                                         }
                                         else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.Deleted)
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Dark" Text="@(context.ManagementOfChangeStatus.ToString())" />
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Dark" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
                                         }
                                         else
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.ManagementOfChangeStatus.ToString())"/>
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
                                         }
-                                    
                                     </div>
                                 </div>
                             </Body>

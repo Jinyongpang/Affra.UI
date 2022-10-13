@@ -26,8 +26,9 @@
                             <Body>
                                <div class="d-flex flex-row align-items-center">
                                     <div class="col-9">
-                                        <div>Field : @(context.OperationInstructionField.ToString())</div>
-                                        <div>Estimated Duration : @(context.EstimatedDuration)</div>
+                                        <div class="text-truncate">Field : @(context.OperationInstructionField.ToString())</div>
+                                        <div class="text-truncate">Estimated Duration : @(context.EstimatedDuration)</div>
+                                        <div class="text-truncate">Creator : @(context.CreatedBy)</div>
                                     </div>
                                     <div class="col-3 text-center">
                                         <Progress Format=_fortmat1 Type=ProgressType.Circle Percent=@(GetPercentage((int)Enum.Parse(typeof(OperationInstructionCurrentStep), context.OperationInstructionCurrentStep.ToString()))) Size=ProgressSize.Small />
@@ -37,31 +38,53 @@
                                 <div class="row">
                                     <div class="col-md-8 text-truncate card-time">
                                         <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Created Date : {0:d}", context.CreatedDateTime.ToLocalTime())</b>
-                                        <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.CreatedDateTime.ToLocalTime())</b>
                                     </div>
                                     <div class="col-md-8 text-truncate card-time">
                                         <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Expiry Date : {0:d}", context.CreatedDateTime.AddDays(context.EstimatedDuration).ToLocalTime())</b>
-                                        <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.CreatedDateTime.AddDays(context.EstimatedDuration).ToLocalTime())</b>
                                     </div>
-                                    <div class="col-md-4 text-right">
+                                    <div class="col-md-12 text-right" style="padding-top:5px">
                                         @if (context.OperationInstructionStatus == OperationInstructionStatus.Completed)
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.OperationInstructionStatus.ToString())"/>
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(stringLocalizer[context.OperationInstructionStatus.ToString()])" />
                                         }
-                                        else if (context.OperationInstructionStatus == OperationInstructionStatus.Pending)
+                                        else if (context.OperationInstructionStatus == OperationInstructionStatus.PendingForApproval)
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(context.OperationInstructionStatus.ToString())"/>
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(stringLocalizer[context.OperationInstructionStatus.ToString()])" />
+                                        }
+                                        else if (context.OperationInstructionStatus == OperationInstructionStatus.Approved)
+                                        {
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(stringLocalizer[context.OperationInstructionStatus.ToString()])" />
+                                        }
+                                        else if (context.OperationInstructionStatus == OperationInstructionStatus.Rejected)
+                                        {
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(stringLocalizer[context.OperationInstructionStatus.ToString()])" />
+                                        }
+                                        else if (context.OperationInstructionStatus == OperationInstructionStatus.Deleted)
+                                        {
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Dark" Text="@(stringLocalizer[context.OperationInstructionStatus.ToString()])"/>
                                         }
                                         else
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.OperationInstructionStatus.ToString())"/>
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(stringLocalizer[context.OperationInstructionStatus.ToString()])" />
                                         }
                                     
                                     </div>
                                 </div>
                             </Body>
                             <Extra>
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                @if (context.OperationInstructionStatus != OperationInstructionStatus.Deleted)
+                                {
+                                    <Popover Placement="@Placement.RightBottom">
+                                        <ContentTemplate>
+                                            <Menu Mode=MenuMode.Vertical Class="popup-menu">
+                                                <MenuItem Key="DeleteForm"><a @onclick="@(() => DeleteOIFormAsync(context))"><i class="fas fa-trash fa-fw fa-xl"></i> Delete Form...</a></MenuItem>
+                                            </Menu>
+                                        </ContentTemplate>
+                                        <ChildContent>
+                                            <AntDesign.Button><i class="fa-solid fa-ellipsis-vertical extra-icon"></i></AntDesign.Button>
+                                        </ChildContent>
+                                    </Popover>
+                                }
                             </Extra>
                         </Card>
                     </div> 

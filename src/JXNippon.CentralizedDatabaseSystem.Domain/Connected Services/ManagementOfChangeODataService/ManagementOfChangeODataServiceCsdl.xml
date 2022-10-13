@@ -29,10 +29,13 @@
       </EnumType>
       <EnumType Name="ManagementOfChangeStatus">
         <Member Name="New" Value="0" />
-        <Member Name="Pending" Value="1" />
-        <Member Name="Extension" Value="2" />
-        <Member Name="Completed" Value="3" />
-        <Member Name="Deleted" Value="4" />
+        <Member Name="Approved" Value="1" />
+        <Member Name="Rejected" Value="2" />
+        <Member Name="PendingForApproval" Value="3" />
+        <Member Name="PendingForCloseOut" Value="4" />
+        <Member Name="Extension" Value="5" />
+        <Member Name="ClosedOut" Value="6" />
+        <Member Name="Deleted" Value="7" />
       </EnumType>
       <EnumType Name="ManagementOfChangeCurrentStep">
         <Member Name="InitialCreation" Value="0" />
@@ -126,9 +129,11 @@
       </EntityType>
       <EnumType Name="OperationInstructionStatus">
         <Member Name="New" Value="0" />
-        <Member Name="Pending" Value="1" />
-        <Member Name="Completed" Value="2" />
-        <Member Name="Deleted" Value="3" />
+        <Member Name="Approved" Value="1" />
+        <Member Name="Rejected" Value="2" />
+        <Member Name="PendingForApproval" Value="3" />
+        <Member Name="Completed" Value="4" />
+        <Member Name="Deleted" Value="5" />
       </EnumType>
       <EnumType Name="OperationInstructionCurrentStep">
         <Member Name="InitialCreation" Value="0" />
