@@ -61,6 +61,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Closed Out.
+        /// </summary>
+        public static string ClosedOut {
+            get {
+                return ResourceManager.GetString("ClosedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1 [Insignificant].
         /// </summary>
         public static string ConsequenceLevel1 {
