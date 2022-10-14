@@ -1,3 +1,4 @@
+global using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using System.Globalization;
 using Affra.Core.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem;

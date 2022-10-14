@@ -118,8 +118,113 @@
                 .HasPrincipalKey<CombinedDailyReport>(x => x.Date)
                 .HasForeignKey<DailyInowacInjection>(x => x.Date);";
                 res = res.Replace("DailyInowacInjection", type.Key);
-                <a>@res</a>
-            }
+        <a>@res</a>
+    }
 
-            
+    <br/>
+    <br/>
+    var alltypes = assembly.GetTypes()
+           .DistinctBy(t => t.Name)
+           .Where(t => t.Name.StartsWith("Daily"))
+           .Where(t => !t.Name.EndsWith("Single"));
+
+    foreach (var type in alltypes)
+    {
+
+         @($"<Panel Header=\"{type.Name}\" Key=\"1\">")
+         <br/>
+         @("<ChildContent>")
+         <br/>
+         @("<Descriptions Size=\"small\" Bordered>");
+         <br/>
+        foreach (var prop in type.GetProperties())
+        {
+            if (prop.PropertyType == typeof(decimal?)
+            || prop.PropertyType == typeof(decimal)
+            || prop.PropertyType == typeof(double)
+            || prop.PropertyType == typeof(double?))
+            {
+                <br/>
+                @($"<DecimalDescriptionItem Title=\"{prop.Name}\" Value=@this.Item.{type.Name}?.{prop.Name} IsEditing=@this.isEditing/>")
+            }
+            else if (prop.PropertyType == typeof(int?)
+                || prop.PropertyType == typeof(int))
+            {  <br/>
+                @($"<IntegerDescriptionItem Title=\"{prop.Name}\" Value=@this.Item.{type.Name}?.{prop.Name} IsEditing=@this.isEditing/>")
+            }
+            else if (prop.PropertyType == typeof(string))
+            {  <br/>
+                @($"<StringDescriptionItem Title=\"{prop.Name}\" Value=@this.Item.{type.Name}?.{prop.Name} IsEditing=@this.isEditing/>")
+            }
+            else if (prop.PropertyType == typeof(DateTime?)
+                || prop.PropertyType == typeof(DateTime)
+                || prop.PropertyType == typeof(DateTimeOffset?)
+                || prop.PropertyType == typeof(DateTimeOffset))
+            {   <br/>
+                @($"<DateDescriptionItem Title=\"{prop.Name}\" Value=@this.Item.{type.Name}?.{prop.Name} IsEditing=@this.isEditing/>")
+            }
+        }
+        <br/>
+        @("</Descriptions>")
+        <br/>
+        @("</ChildContent>")
+        <br/>
+        @("</Panel>")
+    }
+
+    <br/>
+    foreach (var type in alltypes)
+    {
+        @($".Expand(x => x.{type.Name})")
+        <br/>
+    }
+
+    <br/>
+    foreach (var type in alltypes)
+    {
+
+         @($"<Panel Header=\"{type.Name}\" Key=\"1\">")
+         <br/>
+         @("<ChildContent>")
+         <br/>
+         @("<Descriptions Size=\"small\" Bordered>");
+         <br/>
+         @($"<Virtualize TItem={type.Name} Item=@this.Item.{type.Name}s>");
+        foreach (var prop in type.GetProperties())
+        {
+            if (prop.PropertyType == typeof(decimal?)
+            || prop.PropertyType == typeof(decimal)
+            || prop.PropertyType == typeof(double)
+            || prop.PropertyType == typeof(double?))
+            {
+                <br/>
+                @($"<DecimalDescriptionItem Title=\"{prop.Name}\" Value=@context.{prop.Name} IsEditing=@this.isEditing/>")
+            }
+            else if (prop.PropertyType == typeof(int?)
+                || prop.PropertyType == typeof(int))
+            {  <br/>
+                @($"<IntegerDescriptionItem Title=\"{prop.Name}\" Value=@context.{prop.Name} IsEditing=@this.isEditing/>")
+            }
+            else if (prop.PropertyType == typeof(string))
+            {  <br/>
+                @($"<StringDescriptionItem Title=\"{prop.Name}\" Value=@context.{prop.Name} IsEditing=@this.isEditing/>")
+            }
+            else if (prop.PropertyType == typeof(DateTime?)
+                || prop.PropertyType == typeof(DateTime)
+                || prop.PropertyType == typeof(DateTimeOffset?)
+                || prop.PropertyType == typeof(DateTimeOffset))
+            {   <br/>
+                @($"<DateDescriptionItem Title=\"{prop.Name}\" Value=@context.{prop.Name} IsEditing=@this.isEditing/>")
+            }
+        }
+        <br/>
+        @($"</Virtualize>");
+        <br/>
+        @("</Descriptions>")
+        <br/>
+        @("</ChildContent>")
+        <br/>
+        @("</Panel>")
+    }
+
 }

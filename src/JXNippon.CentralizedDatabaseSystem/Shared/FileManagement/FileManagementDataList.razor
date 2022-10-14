@@ -1,112 +1,114 @@
 ﻿@using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
 @using JXNippon.CentralizedDatabaseSystem.Shared.Description
 
-<div class="row">
-    <div class="col">
-        @if (!isLoading && count == 0)
-        {       
-            <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
-                <GenericDescription Height="300px" ImageFile="@ImageFile.NoData" Description="No result found.">
-                </GenericDescription>
-            </div>
-      
-        }
-        <AntList Class="py-3 px-3" Loading=isLoading @ref="_dataList" DataSource="@files" TItem="DataFile" Grid=grid>
-            <ChildContent>
-                <ListItem>
-                    <Card Style="min-height:200px;">
-                        <TitleTemplate>
-                           <div class="d-flex flex-row align-items-center">
-                                <div style="word-break:break-word;">
-                                    <span class="mb-0 title" href="#">
-                                        <Space>
-                                            <SpaceItem>
-                                                 @if (context.FileName.EndsWith(".xlsx", StringComparison.InvariantCultureIgnoreCase))
-                                                {
-                                                    <Icon Class="anticon-big" Type="file-excel" Theme="outline"/>
-                                                }
-                                                else if (context.FileName.EndsWith(".doc", StringComparison.InvariantCultureIgnoreCase))
-                                                {
-                                                    <Icon Class="anticon-big" Type="file-word" Theme="outline"/>
-                                                }
-                                                else if (context.FileName.EndsWith(".pdf", StringComparison.InvariantCultureIgnoreCase))
-                                                {
-                                                    <Icon Class="anticon-big" Type="file-pdf" Theme="outline"/>
-                                                }
-                                                else
-                                                {
-                                                    <Icon Class="anticon-big"  Type="file-text" Theme="outline"/>
-                                                }
-                                            </SpaceItem>
-                                            <SpaceItem>
-                                                @(context.FileName)
-                                            </SpaceItem>
-                                        </Space>                                 
-                                    </span>
-                                </div>
-                           </div>
-                        </TitleTemplate>
-                        <Body>
-                           <div class="d-flex flex-row align-items-center">
-                                <div>
-                                     <div style="word-break:break-word;">Folder : @context.FolderName</div>
-                                    <div style="font-size: .8em">Attempts: @(context.NumberOfAttempts)</div>
-                                </div>
-                            </div>
-                            <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
-                            <div class="row">
-                                <div class="col-md-8 text-truncate card-time">
-                                    <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Modified : {0:d}", context.LastModifiedDateTime.ToLocalTime())</b>
-                                </div>
-                                <div class="col-md-8 text-truncate card-time">
-                                    <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.LastModifiedDateTime.ToLocalTime())</b>
-                                </div>
-                                <div class="col-md-4 text-right" style="word-break:break-word;">
-                                    @if (context.ProcessStatus == FileProcessStatus.Completed)
-                                    {
-                                        <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.ProcessStatus.ToString())"/>
-                                    }
-                                    else if (context.ProcessStatus == FileProcessStatus.Failed)
-                                    {
-                                        <Tooltip Placement="@Placement.BottomLeft" Title="@context.ErrorMessage">            
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.ProcessStatus.ToString())"/>
-                                        </Tooltip>
-                                    }
-                                    else if (context.ProcessStatus == FileProcessStatus.Pending)
-                                    {
-                                        <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(context.ProcessStatus.ToString())"/>
-                                    }
-                                    else
-                                    {
-                                        <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.ProcessStatus.ToString())"/>
-                                    }
-                                    
-                                </div>
-                            </div>
-                        </Body>
-                        <Extra>
-                            <Popover Placement="@Placement.RightBottom">
-                                <ContentTemplate>
-                                    <Menu Mode=MenuMode.Vertical Class="popup-menu">                   
-                                        <MenuItem Key="Resync"><a @onclick="@(() => this.ResyncFile(context))"><i class="fas fa-fw fa-xl fa-repeat"></i> Reset To Pending</a></MenuItem>
-                                    </Menu>
-                                </ContentTemplate>
-                                <ChildContent> 
-                                    <AntDesign.Button><i class="fa-solid fa-ellipsis-vertical extra-icon"></i></AntDesign.Button>                                  
-                                </ChildContent>
-                            </Popover>         
-                        </Extra>
-                    </Card>            
-                </ListItem>      
-            </ChildContent>
-            <LoadMore>
-                @if (!initLoading && !isLoading && currentCount < count)
-                {
-                    <div class="loadmore-btn-content">
-                        <Button Type="primary" OnClick="OnLoadMoreAsync">loading more</Button>
-                    </div>
-                }
-            </LoadMore>
-        </AntList>
+@if (!initLoading && count == 0)
+{       
+    <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+        <GenericDescription Height="300px" ImageFile="@ImageFile.NoData" Description="No result found.">
+        </GenericDescription>
     </div>
+      
+}
+<div class="row px-3 py-2">
+    <Virtualize Context="context" ItemsProvider="@LoadDataAsync" TItem=DataFile ItemSize=50 OverscanCount=10 @ref=@this.virtualize>
+        <Placeholder>
+            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:200px;">
+                <Card Class="h-100">
+                    <Body>
+                        <Skeleton Active></Skeleton>
+                    </Body>
+                </Card>  
+            </div>    
+        </Placeholder>
+        <ItemContent>
+            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:200px;">
+                <Card Style="min-height:200px;">
+                    <TitleTemplate>
+                        <div class="d-flex flex-row align-items-center">
+                            <div style="word-break:break-word;">
+                                <span class="mb-0 title" href="#">
+                                    <Space>
+                                        <SpaceItem>
+                                            @if (context.FileName.EndsWith(".xlsx", StringComparison.InvariantCultureIgnoreCase))
+                                            {
+                                                <Icon Class="anticon-big" Type="file-excel" Theme="outline" Fill="green"/>
+                                            }
+                                            else if (context.FileName.EndsWith(".doc", StringComparison.InvariantCultureIgnoreCase))
+                                            {
+                                                <Icon Class="anticon-big" Type="file-word" Theme="outline" Fill="blue"/>
+                                            }
+                                            else if (context.FileName.EndsWith(".pdf", StringComparison.InvariantCultureIgnoreCase))
+                                            {
+                                                <Icon Class="anticon-big" Type="file-pdf" Theme="outline" Fill="red"/>
+                                            }
+                                            else
+                                            {
+                                                <Icon Class="anticon-big"  Type="file-text" Theme="outline"/>
+                                            }
+                                        </SpaceItem>
+                                        <SpaceItem>
+                                            <Tooltip Title=@(context.FileName)>
+                                                @(context.FileName)
+                                            </Tooltip>
+                                                
+                                        </SpaceItem>
+                                    </Space>                                 
+                                </span>
+                            </div>
+                        </div>
+                    </TitleTemplate>
+                    <Body>
+                        <div class="d-flex flex-row align-items-center">
+                            <div>
+                                    <div style="word-break:break-word;">Folder : @context.FolderName</div>
+                                <div style="font-size: .8em">Attempts: @(context.NumberOfAttempts)</div>
+                            </div>
+                        </div>
+                        <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
+                        <div class="row">
+                            <div class="col-md-8 text-truncate card-time">
+                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Modified : {0:d}", context.LastModifiedDateTime.ToLocalTime())</b>
+                            </div>
+                            <div class="col-md-8 text-truncate card-time">
+                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.LastModifiedDateTime.ToLocalTime())</b>
+                            </div>
+                            <div class="col-md-4 text-right" style="word-break:break-word;">
+                                @if (context.ProcessStatus == FileProcessStatus.Completed)
+                                {
+                                    <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.ProcessStatus.ToString())"/>
+                                }
+                                else if (context.ProcessStatus == FileProcessStatus.Failed)
+                                {
+                                    <Tooltip Placement="@Placement.BottomLeft" Title="@context.ErrorMessage">            
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.ProcessStatus.ToString())"/>
+                                    </Tooltip>
+                                }
+                                else if (context.ProcessStatus == FileProcessStatus.Pending)
+                                {
+                                    <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(context.ProcessStatus.ToString())"/>
+                                }
+                                else
+                                {
+                                    <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.ProcessStatus.ToString())"/>
+                                }                                  
+                            </div>
+                        </div>
+                    </Body>
+                    <ActionTemplate>        
+                        <CardAction >
+                            <Tooltip Title=@("Reset To Pending")>
+                                <Popconfirm Title=@($"Reset {context.FileName} to pending?")
+                                            OnConfirm="@(() => this.ResyncFileAsync(context))"
+                                            OkText="Yes"
+                                            CancelText="No">
+                                    <Icon Class="anticon-big" Type="redo"/>
+                                </Popconfirm>
+                            </Tooltip>
+                        </CardAction>
+                        <CardAction><Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" /></Tooltip></CardAction>
+                    </ActionTemplate>
+                </Card>  
+            </div>        
+        </ItemContent>
+    </Virtualize>
 </div>

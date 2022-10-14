@@ -10,7 +10,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Constants
 
         public readonly static DialogOptions DialogOptions = new DialogOptions() { Style = DialogStyle, Resizable = true, Draggable = true, CloseDialogOnOverlayClick = true };
         public readonly static DialogOptions MOHDialogOptions = new DialogOptions() { Style = FullScreenDialogStyle, Resizable = false, Draggable = false, ShowClose = false, ShowTitle = false, CloseDialogOnOverlayClick = true };
-        public readonly static DialogOptions FullScreenDialogOptions = new DialogOptions() { Style = FullScreenDialogStyle, Resizable = false, Draggable = false, ShowClose = false, ShowTitle = false, CloseDialogOnOverlayClick = true };
+        public readonly static DialogOptions FullScreenDialogOptions = new DialogOptions() { CssClass= "fullscreen-dialog-content", Style = FullScreenDialogStyle, Resizable = false, Draggable = false, ShowClose = false, ShowTitle = false, CloseDialogOnOverlayClick = true };
 
 
         public readonly static string[] Colors = new string[]

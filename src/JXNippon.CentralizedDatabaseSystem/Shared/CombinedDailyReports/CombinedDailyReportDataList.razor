@@ -9,18 +9,20 @@
     </div>
       
 }
-<div class="row px-3">
-    <Virtualize Context="context" ItemsProvider="@LoadDataAsync" TItem=CombinedDailyReport ItemSize=200 OverscanCount=10 @ref=@this.virtualize>
+<div class="row px-3 py-2">
+    <Virtualize Context="context" ItemsProvider="@LoadDataAsync" TItem=CombinedDailyReport ItemSize=59 OverscanCount=10 @ref=@this.virtualize>
         <Placeholder>
-            <div class="col-sm-12 col-md-4 py-2 pr-2" style="min-height:200px;">
-                <div class="d-flex align-items-center justify-content-center gap-3 py-5">
-                    <Spin></Spin>
-                </div>                           
-            </div>
+            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:200px;">
+                <Card Class="h-100" Hoverable>
+                    <Body>
+                        <Skeleton Active></Skeleton>
+                    </Body>
+                </Card>  
+            </div>    
         </Placeholder>
         <ItemContent>
-            <div class="col-sm-12 col-md-4 py-2 pr-2" style="min-height:200px;" >
-                <Card Class="h-100" @key=@context.Id>
+            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:200px;" @onclick="(() => this.ShowDialogAsync(context))">
+                 <Card Class="h-100" @key=@context.Id Hoverable Bordered>
                     <Body>
                         <div class="d-flex flex-row align-items-center">
                             <div>
@@ -62,7 +64,7 @@
                             </div>
                         </div>
                     </Body>
-                </Card>  
+                </Card>
             </div>        
         </ItemContent>
     </Virtualize>

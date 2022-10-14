@@ -1,0 +1,11 @@
+﻿<DescriptionsItem Title="@Title" Span=@(Span ?? 1)>
+    @if (this.IsEditing)
+    {
+        <RadzenNumeric @bind-Value=@this.Value></RadzenNumeric>
+    }
+    else
+    {
+        @this.Value
+    }
+</DescriptionsItem>
+     
