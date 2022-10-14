@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 10/10/2022 5:14:33 PM
+// Generation date: 14/10/2022 10:36:57 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -48168,10 +48168,10 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoatSingle _DailyLifeBoat;
         /// <summary>
-        /// There are no comments for DailyLongTermOverridesInhibitsOnAlarmTrip in the schema.
+        /// There are no comments for DailyLongTermOverridesInhibitsOnAlarmTrips in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTripSingle DailyLongTermOverridesInhibitsOnAlarmTrip
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip> DailyLongTermOverridesInhibitsOnAlarmTrips
         {
             get
             {
@@ -48179,15 +48179,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyLongTermOverridesInhibitsOnAlarmTrip == null))
+                if ((this._DailyLongTermOverridesInhibitsOnAlarmTrips == null))
                 {
-                    this._DailyLongTermOverridesInhibitsOnAlarmTrip = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTripSingle(this.Context, GetPath("DailyLongTermOverridesInhibitsOnAlarmTrip"));
+                    this._DailyLongTermOverridesInhibitsOnAlarmTrips = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip>(GetPath("DailyLongTermOverridesInhibitsOnAlarmTrips"));
                 }
-                return this._DailyLongTermOverridesInhibitsOnAlarmTrip;
+                return this._DailyLongTermOverridesInhibitsOnAlarmTrips;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTripSingle _DailyLongTermOverridesInhibitsOnAlarmTrip;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip> _DailyLongTermOverridesInhibitsOnAlarmTrips;
         /// <summary>
         /// There are no comments for DailyLossOfPrimaryContainmentIncident in the schema.
         /// </summary>
@@ -48210,10 +48210,10 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLossOfPrimaryContainmentIncidentSingle _DailyLossOfPrimaryContainmentIncident;
         /// <summary>
-        /// There are no comments for DailyHIPAndLWPSummary in the schema.
+        /// There are no comments for DailyHIPAndLWPSummarys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummarySingle DailyHIPAndLWPSummary
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary> DailyHIPAndLWPSummarys
         {
             get
             {
@@ -48221,20 +48221,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyHIPAndLWPSummary == null))
+                if ((this._DailyHIPAndLWPSummarys == null))
                 {
-                    this._DailyHIPAndLWPSummary = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummarySingle(this.Context, GetPath("DailyHIPAndLWPSummary"));
+                    this._DailyHIPAndLWPSummarys = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary>(GetPath("DailyHIPAndLWPSummarys"));
                 }
-                return this._DailyHIPAndLWPSummary;
+                return this._DailyHIPAndLWPSummarys;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummarySingle _DailyHIPAndLWPSummary;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary> _DailyHIPAndLWPSummarys;
         /// <summary>
-        /// There are no comments for DailyFPSOHelangSummary in the schema.
+        /// There are no comments for DailyFPSOHelangSummarys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummarySingle DailyFPSOHelangSummary
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary> DailyFPSOHelangSummarys
         {
             get
             {
@@ -48242,15 +48242,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyFPSOHelangSummary == null))
+                if ((this._DailyFPSOHelangSummarys == null))
                 {
-                    this._DailyFPSOHelangSummary = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummarySingle(this.Context, GetPath("DailyFPSOHelangSummary"));
+                    this._DailyFPSOHelangSummarys = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary>(GetPath("DailyFPSOHelangSummarys"));
                 }
-                return this._DailyFPSOHelangSummary;
+                return this._DailyFPSOHelangSummarys;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummarySingle _DailyFPSOHelangSummary;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary> _DailyFPSOHelangSummarys;
         /// <summary>
         /// There are no comments for DailySandDisposalDesander in the schema.
         /// </summary>
@@ -48294,10 +48294,10 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyCiNalcoSingle _DailyCiNalco;
         /// <summary>
-        /// There are no comments for DailyInowacInjection in the schema.
+        /// There are no comments for DailyInowacInjections in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjectionSingle DailyInowacInjection
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection> DailyInowacInjections
         {
             get
             {
@@ -48305,20 +48305,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyInowacInjection == null))
+                if ((this._DailyInowacInjections == null))
                 {
-                    this._DailyInowacInjection = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjectionSingle(this.Context, GetPath("DailyInowacInjection"));
+                    this._DailyInowacInjections = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection>(GetPath("DailyInowacInjections"));
                 }
-                return this._DailyInowacInjection;
+                return this._DailyInowacInjections;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjectionSingle _DailyInowacInjection;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection> _DailyInowacInjections;
         /// <summary>
-        /// There are no comments for DailyCommunicationSystem in the schema.
+        /// There are no comments for DailyCommunicationSystems in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystemSingle DailyCommunicationSystem
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem> DailyCommunicationSystems
         {
             get
             {
@@ -48326,20 +48326,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyCommunicationSystem == null))
+                if ((this._DailyCommunicationSystems == null))
                 {
-                    this._DailyCommunicationSystem = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystemSingle(this.Context, GetPath("DailyCommunicationSystem"));
+                    this._DailyCommunicationSystems = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem>(GetPath("DailyCommunicationSystems"));
                 }
-                return this._DailyCommunicationSystem;
+                return this._DailyCommunicationSystems;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystemSingle _DailyCommunicationSystem;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem> _DailyCommunicationSystems;
         /// <summary>
-        /// There are no comments for DailyLWPActivity in the schema.
+        /// There are no comments for DailyLWPActivitys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivitySingle DailyLWPActivity
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity> DailyLWPActivitys
         {
             get
             {
@@ -48347,20 +48347,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyLWPActivity == null))
+                if ((this._DailyLWPActivitys == null))
                 {
-                    this._DailyLWPActivity = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivitySingle(this.Context, GetPath("DailyLWPActivity"));
+                    this._DailyLWPActivitys = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity>(GetPath("DailyLWPActivitys"));
                 }
-                return this._DailyLWPActivity;
+                return this._DailyLWPActivitys;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivitySingle _DailyLWPActivity;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity> _DailyLWPActivitys;
         /// <summary>
-        /// There are no comments for DailyVendorActivity in the schema.
+        /// There are no comments for DailyVendorActivitys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivitySingle DailyVendorActivity
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity> DailyVendorActivitys
         {
             get
             {
@@ -48368,20 +48368,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyVendorActivity == null))
+                if ((this._DailyVendorActivitys == null))
                 {
-                    this._DailyVendorActivity = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivitySingle(this.Context, GetPath("DailyVendorActivity"));
+                    this._DailyVendorActivitys = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity>(GetPath("DailyVendorActivitys"));
                 }
-                return this._DailyVendorActivity;
+                return this._DailyVendorActivitys;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivitySingle _DailyVendorActivity;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity> _DailyVendorActivitys;
         /// <summary>
-        /// There are no comments for DailyUtility in the schema.
+        /// There are no comments for DailyUtilitys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtilitySingle DailyUtility
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility> DailyUtilitys
         {
             get
             {
@@ -48389,20 +48389,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyUtility == null))
+                if ((this._DailyUtilitys == null))
                 {
-                    this._DailyUtility = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtilitySingle(this.Context, GetPath("DailyUtility"));
+                    this._DailyUtilitys = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility>(GetPath("DailyUtilitys"));
                 }
-                return this._DailyUtility;
+                return this._DailyUtilitys;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtilitySingle _DailyUtility;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility> _DailyUtilitys;
         /// <summary>
-        /// There are no comments for DailyWaterTank in the schema.
+        /// There are no comments for DailyWaterTanks in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTankSingle DailyWaterTank
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> DailyWaterTanks
         {
             get
             {
@@ -48410,20 +48410,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyWaterTank == null))
+                if ((this._DailyWaterTanks == null))
                 {
-                    this._DailyWaterTank = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTankSingle(this.Context, GetPath("DailyWaterTank"));
+                    this._DailyWaterTanks = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank>(GetPath("DailyWaterTanks"));
                 }
-                return this._DailyWaterTank;
+                return this._DailyWaterTanks;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTankSingle _DailyWaterTank;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> _DailyWaterTanks;
         /// <summary>
-        /// There are no comments for DailyNitrogenGenerator in the schema.
+        /// There are no comments for DailyNitrogenGenerators in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGeneratorSingle DailyNitrogenGenerator
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> DailyNitrogenGenerators
         {
             get
             {
@@ -48431,20 +48431,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyNitrogenGenerator == null))
+                if ((this._DailyNitrogenGenerators == null))
                 {
-                    this._DailyNitrogenGenerator = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGeneratorSingle(this.Context, GetPath("DailyNitrogenGenerator"));
+                    this._DailyNitrogenGenerators = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator>(GetPath("DailyNitrogenGenerators"));
                 }
-                return this._DailyNitrogenGenerator;
+                return this._DailyNitrogenGenerators;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGeneratorSingle _DailyNitrogenGenerator;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> _DailyNitrogenGenerators;
         /// <summary>
-        /// There are no comments for DailyMaximoWorkOrder in the schema.
+        /// There are no comments for DailyMaximoWorkOrders in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrderSingle DailyMaximoWorkOrder
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder> DailyMaximoWorkOrders
         {
             get
             {
@@ -48452,15 +48452,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyMaximoWorkOrder == null))
+                if ((this._DailyMaximoWorkOrders == null))
                 {
-                    this._DailyMaximoWorkOrder = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrderSingle(this.Context, GetPath("DailyMaximoWorkOrder"));
+                    this._DailyMaximoWorkOrders = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder>(GetPath("DailyMaximoWorkOrders"));
                 }
-                return this._DailyMaximoWorkOrder;
+                return this._DailyMaximoWorkOrders;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrderSingle _DailyMaximoWorkOrder;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder> _DailyMaximoWorkOrders;
         /// <summary>
         /// There are no comments for DailyAnalysisResult in the schema.
         /// </summary>
@@ -48504,10 +48504,10 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyCoolingMediumSystemSingle _DailyCoolingMediumSystem;
         /// <summary>
-        /// There are no comments for DailyLogistic in the schema.
+        /// There are no comments for DailyLogistics in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogisticSingle DailyLogistic
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic> DailyLogistics
         {
             get
             {
@@ -48515,20 +48515,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyLogistic == null))
+                if ((this._DailyLogistics == null))
                 {
-                    this._DailyLogistic = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogisticSingle(this.Context, GetPath("DailyLogistic"));
+                    this._DailyLogistics = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic>(GetPath("DailyLogistics"));
                 }
-                return this._DailyLogistic;
+                return this._DailyLogistics;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogisticSingle _DailyLogistic;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic> _DailyLogistics;
         /// <summary>
-        /// There are no comments for DailyGlycolPump in the schema.
+        /// There are no comments for DailyGlycolPumps in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPumpSingle DailyGlycolPump
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump> DailyGlycolPumps
         {
             get
             {
@@ -48536,20 +48536,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyGlycolPump == null))
+                if ((this._DailyGlycolPumps == null))
                 {
-                    this._DailyGlycolPump = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPumpSingle(this.Context, GetPath("DailyGlycolPump"));
+                    this._DailyGlycolPumps = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump>(GetPath("DailyGlycolPumps"));
                 }
-                return this._DailyGlycolPump;
+                return this._DailyGlycolPumps;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPumpSingle _DailyGlycolPump;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump> _DailyGlycolPumps;
         /// <summary>
-        /// There are no comments for DailyGlycolTrain in the schema.
+        /// There are no comments for DailyGlycolTrains in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrainSingle DailyGlycolTrain
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain> DailyGlycolTrains
         {
             get
             {
@@ -48557,20 +48557,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyGlycolTrain == null))
+                if ((this._DailyGlycolTrains == null))
                 {
-                    this._DailyGlycolTrain = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrainSingle(this.Context, GetPath("DailyGlycolTrain"));
+                    this._DailyGlycolTrains = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain>(GetPath("DailyGlycolTrains"));
                 }
-                return this._DailyGlycolTrain;
+                return this._DailyGlycolTrains;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrainSingle _DailyGlycolTrain;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain> _DailyGlycolTrains;
         /// <summary>
-        /// There are no comments for DailyGlycolStock in the schema.
+        /// There are no comments for DailyGlycolStocks in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStockSingle DailyGlycolStock
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock> DailyGlycolStocks
         {
             get
             {
@@ -48578,20 +48578,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyGlycolStock == null))
+                if ((this._DailyGlycolStocks == null))
                 {
-                    this._DailyGlycolStock = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStockSingle(this.Context, GetPath("DailyGlycolStock"));
+                    this._DailyGlycolStocks = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock>(GetPath("DailyGlycolStocks"));
                 }
-                return this._DailyGlycolStock;
+                return this._DailyGlycolStocks;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStockSingle _DailyGlycolStock;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock> _DailyGlycolStocks;
         /// <summary>
-        /// There are no comments for DailyKawasakiExportCompressor in the schema.
+        /// There are no comments for DailyKawasakiExportCompressors in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressorSingle DailyKawasakiExportCompressor
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor> DailyKawasakiExportCompressors
         {
             get
             {
@@ -48599,20 +48599,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyKawasakiExportCompressor == null))
+                if ((this._DailyKawasakiExportCompressors == null))
                 {
-                    this._DailyKawasakiExportCompressor = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressorSingle(this.Context, GetPath("DailyKawasakiExportCompressor"));
+                    this._DailyKawasakiExportCompressors = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor>(GetPath("DailyKawasakiExportCompressors"));
                 }
-                return this._DailyKawasakiExportCompressor;
+                return this._DailyKawasakiExportCompressors;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressorSingle _DailyKawasakiExportCompressor;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor> _DailyKawasakiExportCompressors;
         /// <summary>
-        /// There are no comments for DailyRollsRoyceRB211Engine in the schema.
+        /// There are no comments for DailyRollsRoyceRB211Engines in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211EngineSingle DailyRollsRoyceRB211Engine
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine> DailyRollsRoyceRB211Engines
         {
             get
             {
@@ -48620,20 +48620,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyRollsRoyceRB211Engine == null))
+                if ((this._DailyRollsRoyceRB211Engines == null))
                 {
-                    this._DailyRollsRoyceRB211Engine = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211EngineSingle(this.Context, GetPath("DailyRollsRoyceRB211Engine"));
+                    this._DailyRollsRoyceRB211Engines = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine>(GetPath("DailyRollsRoyceRB211Engines"));
                 }
-                return this._DailyRollsRoyceRB211Engine;
+                return this._DailyRollsRoyceRB211Engines;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211EngineSingle _DailyRollsRoyceRB211Engine;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine> _DailyRollsRoyceRB211Engines;
         /// <summary>
-        /// There are no comments for DailyHIPWellHeadParameter in the schema.
+        /// There are no comments for DailyHIPWellHeadParameters in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameterSingle DailyHIPWellHeadParameter
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter> DailyHIPWellHeadParameters
         {
             get
             {
@@ -48641,20 +48641,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyHIPWellHeadParameter == null))
+                if ((this._DailyHIPWellHeadParameters == null))
                 {
-                    this._DailyHIPWellHeadParameter = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameterSingle(this.Context, GetPath("DailyHIPWellHeadParameter"));
+                    this._DailyHIPWellHeadParameters = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter>(GetPath("DailyHIPWellHeadParameters"));
                 }
-                return this._DailyHIPWellHeadParameter;
+                return this._DailyHIPWellHeadParameters;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameterSingle _DailyHIPWellHeadParameter;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter> _DailyHIPWellHeadParameters;
         /// <summary>
-        /// There are no comments for DailyLWPWellHeadParameter in the schema.
+        /// There are no comments for DailyLWPWellHeadParameters in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameterSingle DailyLWPWellHeadParameter
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter> DailyLWPWellHeadParameters
         {
             get
             {
@@ -48662,15 +48662,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyLWPWellHeadParameter == null))
+                if ((this._DailyLWPWellHeadParameters == null))
                 {
-                    this._DailyLWPWellHeadParameter = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameterSingle(this.Context, GetPath("DailyLWPWellHeadParameter"));
+                    this._DailyLWPWellHeadParameters = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter>(GetPath("DailyLWPWellHeadParameters"));
                 }
-                return this._DailyLWPWellHeadParameter;
+                return this._DailyLWPWellHeadParameters;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameterSingle _DailyLWPWellHeadParameter;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter> _DailyLWPWellHeadParameters;
         /// <summary>
         /// There are no comments for DailyGasCondensateExportSamplerAndExportLine in the schema.
         /// </summary>
@@ -48798,10 +48798,10 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProductionSingle _DailyFPSOHelangProduction;
         /// <summary>
-        /// There are no comments for DailyMajorEquipmentStatus in the schema.
+        /// There are no comments for DailyMajorEquipmentStatuses in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatusSingle DailyMajorEquipmentStatus
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus> DailyMajorEquipmentStatuses
         {
             get
             {
@@ -48809,15 +48809,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyMajorEquipmentStatus == null))
+                if ((this._DailyMajorEquipmentStatuses == null))
                 {
-                    this._DailyMajorEquipmentStatus = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatusSingle(this.Context, GetPath("DailyMajorEquipmentStatus"));
+                    this._DailyMajorEquipmentStatuses = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus>(GetPath("DailyMajorEquipmentStatuses"));
                 }
-                return this._DailyMajorEquipmentStatus;
+                return this._DailyMajorEquipmentStatuses;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatusSingle _DailyMajorEquipmentStatus;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus> _DailyMajorEquipmentStatuses;
         /// <summary>
         /// There are no comments for DailyDiesel in the schema.
         /// </summary>
@@ -48840,10 +48840,10 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDieselSingle _DailyDiesel;
         /// <summary>
-        /// There are no comments for DailyProducedWaterTreatmentSystem in the schema.
+        /// There are no comments for DailyProducedWaterTreatmentSystems in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystemSingle DailyProducedWaterTreatmentSystem
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> DailyProducedWaterTreatmentSystems
         {
             get
             {
@@ -48851,15 +48851,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyProducedWaterTreatmentSystem == null))
+                if ((this._DailyProducedWaterTreatmentSystems == null))
                 {
-                    this._DailyProducedWaterTreatmentSystem = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystemSingle(this.Context, GetPath("DailyProducedWaterTreatmentSystem"));
+                    this._DailyProducedWaterTreatmentSystems = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem>(GetPath("DailyProducedWaterTreatmentSystems"));
                 }
-                return this._DailyProducedWaterTreatmentSystem;
+                return this._DailyProducedWaterTreatmentSystems;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystemSingle _DailyProducedWaterTreatmentSystem;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> _DailyProducedWaterTreatmentSystems;
         /// <summary>
         /// There are no comments for DailyDeOilerInjection in the schema.
         /// </summary>
@@ -48882,10 +48882,10 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyDeOilerInjectionSingle _DailyDeOilerInjection;
         /// <summary>
-        /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
+        /// There are no comments for DailyPowerGenerationAndDistributions in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistributionSingle DailyPowerGenerationAndDistribution
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution> DailyPowerGenerationAndDistributions
         {
             get
             {
@@ -48893,15 +48893,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyPowerGenerationAndDistribution == null))
+                if ((this._DailyPowerGenerationAndDistributions == null))
                 {
-                    this._DailyPowerGenerationAndDistribution = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistributionSingle(this.Context, GetPath("DailyPowerGenerationAndDistribution"));
+                    this._DailyPowerGenerationAndDistributions = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution>(GetPath("DailyPowerGenerationAndDistributions"));
                 }
-                return this._DailyPowerGenerationAndDistribution;
+                return this._DailyPowerGenerationAndDistributions;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistributionSingle _DailyPowerGenerationAndDistribution;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution> _DailyPowerGenerationAndDistributions;
     }
     /// <summary>
     /// There are no comments for CombinedDailyReport in the schema.
@@ -49121,26 +49121,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyLifeBoatChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat value);
         partial void OnDailyLifeBoatChanged();
         /// <summary>
-        /// There are no comments for Property DailyLongTermOverridesInhibitsOnAlarmTrip in the schema.
+        /// There are no comments for Property DailyLongTermOverridesInhibitsOnAlarmTrips in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip DailyLongTermOverridesInhibitsOnAlarmTrip
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip> DailyLongTermOverridesInhibitsOnAlarmTrips
         {
             get
             {
-                return this._DailyLongTermOverridesInhibitsOnAlarmTrip;
+                return this._DailyLongTermOverridesInhibitsOnAlarmTrips;
             }
             set
             {
-                this.OnDailyLongTermOverridesInhibitsOnAlarmTripChanging(value);
-                this._DailyLongTermOverridesInhibitsOnAlarmTrip = value;
-                this.OnDailyLongTermOverridesInhibitsOnAlarmTripChanged();
+                this.OnDailyLongTermOverridesInhibitsOnAlarmTripsChanging(value);
+                this._DailyLongTermOverridesInhibitsOnAlarmTrips = value;
+                this.OnDailyLongTermOverridesInhibitsOnAlarmTripsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip _DailyLongTermOverridesInhibitsOnAlarmTrip;
-        partial void OnDailyLongTermOverridesInhibitsOnAlarmTripChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip value);
-        partial void OnDailyLongTermOverridesInhibitsOnAlarmTripChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip> _DailyLongTermOverridesInhibitsOnAlarmTrips = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip>();
+        partial void OnDailyLongTermOverridesInhibitsOnAlarmTripsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip> value);
+        partial void OnDailyLongTermOverridesInhibitsOnAlarmTripsChanged();
         /// <summary>
         /// There are no comments for Property DailyLossOfPrimaryContainmentIncident in the schema.
         /// </summary>
@@ -49163,47 +49163,47 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyLossOfPrimaryContainmentIncidentChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLossOfPrimaryContainmentIncident value);
         partial void OnDailyLossOfPrimaryContainmentIncidentChanged();
         /// <summary>
-        /// There are no comments for Property DailyHIPAndLWPSummary in the schema.
+        /// There are no comments for Property DailyHIPAndLWPSummarys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary DailyHIPAndLWPSummary
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary> DailyHIPAndLWPSummarys
         {
             get
             {
-                return this._DailyHIPAndLWPSummary;
+                return this._DailyHIPAndLWPSummarys;
             }
             set
             {
-                this.OnDailyHIPAndLWPSummaryChanging(value);
-                this._DailyHIPAndLWPSummary = value;
-                this.OnDailyHIPAndLWPSummaryChanged();
+                this.OnDailyHIPAndLWPSummarysChanging(value);
+                this._DailyHIPAndLWPSummarys = value;
+                this.OnDailyHIPAndLWPSummarysChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary _DailyHIPAndLWPSummary;
-        partial void OnDailyHIPAndLWPSummaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary value);
-        partial void OnDailyHIPAndLWPSummaryChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary> _DailyHIPAndLWPSummarys = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary>();
+        partial void OnDailyHIPAndLWPSummarysChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary> value);
+        partial void OnDailyHIPAndLWPSummarysChanged();
         /// <summary>
-        /// There are no comments for Property DailyFPSOHelangSummary in the schema.
+        /// There are no comments for Property DailyFPSOHelangSummarys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary DailyFPSOHelangSummary
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary> DailyFPSOHelangSummarys
         {
             get
             {
-                return this._DailyFPSOHelangSummary;
+                return this._DailyFPSOHelangSummarys;
             }
             set
             {
-                this.OnDailyFPSOHelangSummaryChanging(value);
-                this._DailyFPSOHelangSummary = value;
-                this.OnDailyFPSOHelangSummaryChanged();
+                this.OnDailyFPSOHelangSummarysChanging(value);
+                this._DailyFPSOHelangSummarys = value;
+                this.OnDailyFPSOHelangSummarysChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary _DailyFPSOHelangSummary;
-        partial void OnDailyFPSOHelangSummaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary value);
-        partial void OnDailyFPSOHelangSummaryChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary> _DailyFPSOHelangSummarys = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary>();
+        partial void OnDailyFPSOHelangSummarysChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary> value);
+        partial void OnDailyFPSOHelangSummarysChanged();
         /// <summary>
         /// There are no comments for Property DailySandDisposalDesander in the schema.
         /// </summary>
@@ -49247,173 +49247,173 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyCiNalcoChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyCiNalco value);
         partial void OnDailyCiNalcoChanged();
         /// <summary>
-        /// There are no comments for Property DailyInowacInjection in the schema.
+        /// There are no comments for Property DailyInowacInjections in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection DailyInowacInjection
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection> DailyInowacInjections
         {
             get
             {
-                return this._DailyInowacInjection;
+                return this._DailyInowacInjections;
             }
             set
             {
-                this.OnDailyInowacInjectionChanging(value);
-                this._DailyInowacInjection = value;
-                this.OnDailyInowacInjectionChanged();
+                this.OnDailyInowacInjectionsChanging(value);
+                this._DailyInowacInjections = value;
+                this.OnDailyInowacInjectionsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection _DailyInowacInjection;
-        partial void OnDailyInowacInjectionChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection value);
-        partial void OnDailyInowacInjectionChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection> _DailyInowacInjections = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection>();
+        partial void OnDailyInowacInjectionsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection> value);
+        partial void OnDailyInowacInjectionsChanged();
         /// <summary>
-        /// There are no comments for Property DailyCommunicationSystem in the schema.
+        /// There are no comments for Property DailyCommunicationSystems in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem DailyCommunicationSystem
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem> DailyCommunicationSystems
         {
             get
             {
-                return this._DailyCommunicationSystem;
+                return this._DailyCommunicationSystems;
             }
             set
             {
-                this.OnDailyCommunicationSystemChanging(value);
-                this._DailyCommunicationSystem = value;
-                this.OnDailyCommunicationSystemChanged();
+                this.OnDailyCommunicationSystemsChanging(value);
+                this._DailyCommunicationSystems = value;
+                this.OnDailyCommunicationSystemsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem _DailyCommunicationSystem;
-        partial void OnDailyCommunicationSystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem value);
-        partial void OnDailyCommunicationSystemChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem> _DailyCommunicationSystems = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem>();
+        partial void OnDailyCommunicationSystemsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem> value);
+        partial void OnDailyCommunicationSystemsChanged();
         /// <summary>
-        /// There are no comments for Property DailyLWPActivity in the schema.
+        /// There are no comments for Property DailyLWPActivitys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity DailyLWPActivity
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity> DailyLWPActivitys
         {
             get
             {
-                return this._DailyLWPActivity;
+                return this._DailyLWPActivitys;
             }
             set
             {
-                this.OnDailyLWPActivityChanging(value);
-                this._DailyLWPActivity = value;
-                this.OnDailyLWPActivityChanged();
+                this.OnDailyLWPActivitysChanging(value);
+                this._DailyLWPActivitys = value;
+                this.OnDailyLWPActivitysChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity _DailyLWPActivity;
-        partial void OnDailyLWPActivityChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity value);
-        partial void OnDailyLWPActivityChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity> _DailyLWPActivitys = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity>();
+        partial void OnDailyLWPActivitysChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity> value);
+        partial void OnDailyLWPActivitysChanged();
         /// <summary>
-        /// There are no comments for Property DailyVendorActivity in the schema.
+        /// There are no comments for Property DailyVendorActivitys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity DailyVendorActivity
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity> DailyVendorActivitys
         {
             get
             {
-                return this._DailyVendorActivity;
+                return this._DailyVendorActivitys;
             }
             set
             {
-                this.OnDailyVendorActivityChanging(value);
-                this._DailyVendorActivity = value;
-                this.OnDailyVendorActivityChanged();
+                this.OnDailyVendorActivitysChanging(value);
+                this._DailyVendorActivitys = value;
+                this.OnDailyVendorActivitysChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity _DailyVendorActivity;
-        partial void OnDailyVendorActivityChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity value);
-        partial void OnDailyVendorActivityChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity> _DailyVendorActivitys = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity>();
+        partial void OnDailyVendorActivitysChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity> value);
+        partial void OnDailyVendorActivitysChanged();
         /// <summary>
-        /// There are no comments for Property DailyUtility in the schema.
+        /// There are no comments for Property DailyUtilitys in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility DailyUtility
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility> DailyUtilitys
         {
             get
             {
-                return this._DailyUtility;
+                return this._DailyUtilitys;
             }
             set
             {
-                this.OnDailyUtilityChanging(value);
-                this._DailyUtility = value;
-                this.OnDailyUtilityChanged();
+                this.OnDailyUtilitysChanging(value);
+                this._DailyUtilitys = value;
+                this.OnDailyUtilitysChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility _DailyUtility;
-        partial void OnDailyUtilityChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility value);
-        partial void OnDailyUtilityChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility> _DailyUtilitys = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility>();
+        partial void OnDailyUtilitysChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility> value);
+        partial void OnDailyUtilitysChanged();
         /// <summary>
-        /// There are no comments for Property DailyWaterTank in the schema.
+        /// There are no comments for Property DailyWaterTanks in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank DailyWaterTank
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> DailyWaterTanks
         {
             get
             {
-                return this._DailyWaterTank;
+                return this._DailyWaterTanks;
             }
             set
             {
-                this.OnDailyWaterTankChanging(value);
-                this._DailyWaterTank = value;
-                this.OnDailyWaterTankChanged();
+                this.OnDailyWaterTanksChanging(value);
+                this._DailyWaterTanks = value;
+                this.OnDailyWaterTanksChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank _DailyWaterTank;
-        partial void OnDailyWaterTankChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank value);
-        partial void OnDailyWaterTankChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> _DailyWaterTanks = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank>();
+        partial void OnDailyWaterTanksChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> value);
+        partial void OnDailyWaterTanksChanged();
         /// <summary>
-        /// There are no comments for Property DailyNitrogenGenerator in the schema.
+        /// There are no comments for Property DailyNitrogenGenerators in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator DailyNitrogenGenerator
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> DailyNitrogenGenerators
         {
             get
             {
-                return this._DailyNitrogenGenerator;
+                return this._DailyNitrogenGenerators;
             }
             set
             {
-                this.OnDailyNitrogenGeneratorChanging(value);
-                this._DailyNitrogenGenerator = value;
-                this.OnDailyNitrogenGeneratorChanged();
+                this.OnDailyNitrogenGeneratorsChanging(value);
+                this._DailyNitrogenGenerators = value;
+                this.OnDailyNitrogenGeneratorsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator _DailyNitrogenGenerator;
-        partial void OnDailyNitrogenGeneratorChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator value);
-        partial void OnDailyNitrogenGeneratorChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> _DailyNitrogenGenerators = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator>();
+        partial void OnDailyNitrogenGeneratorsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> value);
+        partial void OnDailyNitrogenGeneratorsChanged();
         /// <summary>
-        /// There are no comments for Property DailyMaximoWorkOrder in the schema.
+        /// There are no comments for Property DailyMaximoWorkOrders in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder DailyMaximoWorkOrder
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder> DailyMaximoWorkOrders
         {
             get
             {
-                return this._DailyMaximoWorkOrder;
+                return this._DailyMaximoWorkOrders;
             }
             set
             {
-                this.OnDailyMaximoWorkOrderChanging(value);
-                this._DailyMaximoWorkOrder = value;
-                this.OnDailyMaximoWorkOrderChanged();
+                this.OnDailyMaximoWorkOrdersChanging(value);
+                this._DailyMaximoWorkOrders = value;
+                this.OnDailyMaximoWorkOrdersChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder _DailyMaximoWorkOrder;
-        partial void OnDailyMaximoWorkOrderChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder value);
-        partial void OnDailyMaximoWorkOrderChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder> _DailyMaximoWorkOrders = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder>();
+        partial void OnDailyMaximoWorkOrdersChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder> value);
+        partial void OnDailyMaximoWorkOrdersChanged();
         /// <summary>
         /// There are no comments for Property DailyAnalysisResult in the schema.
         /// </summary>
@@ -49457,173 +49457,173 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyCoolingMediumSystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyCoolingMediumSystem value);
         partial void OnDailyCoolingMediumSystemChanged();
         /// <summary>
-        /// There are no comments for Property DailyLogistic in the schema.
+        /// There are no comments for Property DailyLogistics in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic DailyLogistic
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic> DailyLogistics
         {
             get
             {
-                return this._DailyLogistic;
+                return this._DailyLogistics;
             }
             set
             {
-                this.OnDailyLogisticChanging(value);
-                this._DailyLogistic = value;
-                this.OnDailyLogisticChanged();
+                this.OnDailyLogisticsChanging(value);
+                this._DailyLogistics = value;
+                this.OnDailyLogisticsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic _DailyLogistic;
-        partial void OnDailyLogisticChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic value);
-        partial void OnDailyLogisticChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic> _DailyLogistics = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic>();
+        partial void OnDailyLogisticsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic> value);
+        partial void OnDailyLogisticsChanged();
         /// <summary>
-        /// There are no comments for Property DailyGlycolPump in the schema.
+        /// There are no comments for Property DailyGlycolPumps in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump DailyGlycolPump
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump> DailyGlycolPumps
         {
             get
             {
-                return this._DailyGlycolPump;
+                return this._DailyGlycolPumps;
             }
             set
             {
-                this.OnDailyGlycolPumpChanging(value);
-                this._DailyGlycolPump = value;
-                this.OnDailyGlycolPumpChanged();
+                this.OnDailyGlycolPumpsChanging(value);
+                this._DailyGlycolPumps = value;
+                this.OnDailyGlycolPumpsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump _DailyGlycolPump;
-        partial void OnDailyGlycolPumpChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump value);
-        partial void OnDailyGlycolPumpChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump> _DailyGlycolPumps = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump>();
+        partial void OnDailyGlycolPumpsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump> value);
+        partial void OnDailyGlycolPumpsChanged();
         /// <summary>
-        /// There are no comments for Property DailyGlycolTrain in the schema.
+        /// There are no comments for Property DailyGlycolTrains in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain DailyGlycolTrain
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain> DailyGlycolTrains
         {
             get
             {
-                return this._DailyGlycolTrain;
+                return this._DailyGlycolTrains;
             }
             set
             {
-                this.OnDailyGlycolTrainChanging(value);
-                this._DailyGlycolTrain = value;
-                this.OnDailyGlycolTrainChanged();
+                this.OnDailyGlycolTrainsChanging(value);
+                this._DailyGlycolTrains = value;
+                this.OnDailyGlycolTrainsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain _DailyGlycolTrain;
-        partial void OnDailyGlycolTrainChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain value);
-        partial void OnDailyGlycolTrainChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain> _DailyGlycolTrains = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain>();
+        partial void OnDailyGlycolTrainsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain> value);
+        partial void OnDailyGlycolTrainsChanged();
         /// <summary>
-        /// There are no comments for Property DailyGlycolStock in the schema.
+        /// There are no comments for Property DailyGlycolStocks in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock DailyGlycolStock
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock> DailyGlycolStocks
         {
             get
             {
-                return this._DailyGlycolStock;
+                return this._DailyGlycolStocks;
             }
             set
             {
-                this.OnDailyGlycolStockChanging(value);
-                this._DailyGlycolStock = value;
-                this.OnDailyGlycolStockChanged();
+                this.OnDailyGlycolStocksChanging(value);
+                this._DailyGlycolStocks = value;
+                this.OnDailyGlycolStocksChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock _DailyGlycolStock;
-        partial void OnDailyGlycolStockChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock value);
-        partial void OnDailyGlycolStockChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock> _DailyGlycolStocks = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock>();
+        partial void OnDailyGlycolStocksChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock> value);
+        partial void OnDailyGlycolStocksChanged();
         /// <summary>
-        /// There are no comments for Property DailyKawasakiExportCompressor in the schema.
+        /// There are no comments for Property DailyKawasakiExportCompressors in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor DailyKawasakiExportCompressor
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor> DailyKawasakiExportCompressors
         {
             get
             {
-                return this._DailyKawasakiExportCompressor;
+                return this._DailyKawasakiExportCompressors;
             }
             set
             {
-                this.OnDailyKawasakiExportCompressorChanging(value);
-                this._DailyKawasakiExportCompressor = value;
-                this.OnDailyKawasakiExportCompressorChanged();
+                this.OnDailyKawasakiExportCompressorsChanging(value);
+                this._DailyKawasakiExportCompressors = value;
+                this.OnDailyKawasakiExportCompressorsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor _DailyKawasakiExportCompressor;
-        partial void OnDailyKawasakiExportCompressorChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor value);
-        partial void OnDailyKawasakiExportCompressorChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor> _DailyKawasakiExportCompressors = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor>();
+        partial void OnDailyKawasakiExportCompressorsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor> value);
+        partial void OnDailyKawasakiExportCompressorsChanged();
         /// <summary>
-        /// There are no comments for Property DailyRollsRoyceRB211Engine in the schema.
+        /// There are no comments for Property DailyRollsRoyceRB211Engines in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine DailyRollsRoyceRB211Engine
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine> DailyRollsRoyceRB211Engines
         {
             get
             {
-                return this._DailyRollsRoyceRB211Engine;
+                return this._DailyRollsRoyceRB211Engines;
             }
             set
             {
-                this.OnDailyRollsRoyceRB211EngineChanging(value);
-                this._DailyRollsRoyceRB211Engine = value;
-                this.OnDailyRollsRoyceRB211EngineChanged();
+                this.OnDailyRollsRoyceRB211EnginesChanging(value);
+                this._DailyRollsRoyceRB211Engines = value;
+                this.OnDailyRollsRoyceRB211EnginesChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine _DailyRollsRoyceRB211Engine;
-        partial void OnDailyRollsRoyceRB211EngineChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine value);
-        partial void OnDailyRollsRoyceRB211EngineChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine> _DailyRollsRoyceRB211Engines = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine>();
+        partial void OnDailyRollsRoyceRB211EnginesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine> value);
+        partial void OnDailyRollsRoyceRB211EnginesChanged();
         /// <summary>
-        /// There are no comments for Property DailyHIPWellHeadParameter in the schema.
+        /// There are no comments for Property DailyHIPWellHeadParameters in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter DailyHIPWellHeadParameter
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter> DailyHIPWellHeadParameters
         {
             get
             {
-                return this._DailyHIPWellHeadParameter;
+                return this._DailyHIPWellHeadParameters;
             }
             set
             {
-                this.OnDailyHIPWellHeadParameterChanging(value);
-                this._DailyHIPWellHeadParameter = value;
-                this.OnDailyHIPWellHeadParameterChanged();
+                this.OnDailyHIPWellHeadParametersChanging(value);
+                this._DailyHIPWellHeadParameters = value;
+                this.OnDailyHIPWellHeadParametersChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter _DailyHIPWellHeadParameter;
-        partial void OnDailyHIPWellHeadParameterChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter value);
-        partial void OnDailyHIPWellHeadParameterChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter> _DailyHIPWellHeadParameters = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter>();
+        partial void OnDailyHIPWellHeadParametersChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter> value);
+        partial void OnDailyHIPWellHeadParametersChanged();
         /// <summary>
-        /// There are no comments for Property DailyLWPWellHeadParameter in the schema.
+        /// There are no comments for Property DailyLWPWellHeadParameters in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter DailyLWPWellHeadParameter
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter> DailyLWPWellHeadParameters
         {
             get
             {
-                return this._DailyLWPWellHeadParameter;
+                return this._DailyLWPWellHeadParameters;
             }
             set
             {
-                this.OnDailyLWPWellHeadParameterChanging(value);
-                this._DailyLWPWellHeadParameter = value;
-                this.OnDailyLWPWellHeadParameterChanged();
+                this.OnDailyLWPWellHeadParametersChanging(value);
+                this._DailyLWPWellHeadParameters = value;
+                this.OnDailyLWPWellHeadParametersChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter _DailyLWPWellHeadParameter;
-        partial void OnDailyLWPWellHeadParameterChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter value);
-        partial void OnDailyLWPWellHeadParameterChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter> _DailyLWPWellHeadParameters = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter>();
+        partial void OnDailyLWPWellHeadParametersChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter> value);
+        partial void OnDailyLWPWellHeadParametersChanged();
         /// <summary>
         /// There are no comments for Property DailyGasCondensateExportSamplerAndExportLine in the schema.
         /// </summary>
@@ -49751,26 +49751,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyFPSOHelangProductionChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction value);
         partial void OnDailyFPSOHelangProductionChanged();
         /// <summary>
-        /// There are no comments for Property DailyMajorEquipmentStatus in the schema.
+        /// There are no comments for Property DailyMajorEquipmentStatuses in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus DailyMajorEquipmentStatus
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus> DailyMajorEquipmentStatuses
         {
             get
             {
-                return this._DailyMajorEquipmentStatus;
+                return this._DailyMajorEquipmentStatuses;
             }
             set
             {
-                this.OnDailyMajorEquipmentStatusChanging(value);
-                this._DailyMajorEquipmentStatus = value;
-                this.OnDailyMajorEquipmentStatusChanged();
+                this.OnDailyMajorEquipmentStatusesChanging(value);
+                this._DailyMajorEquipmentStatuses = value;
+                this.OnDailyMajorEquipmentStatusesChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus _DailyMajorEquipmentStatus;
-        partial void OnDailyMajorEquipmentStatusChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus value);
-        partial void OnDailyMajorEquipmentStatusChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus> _DailyMajorEquipmentStatuses = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus>();
+        partial void OnDailyMajorEquipmentStatusesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus> value);
+        partial void OnDailyMajorEquipmentStatusesChanged();
         /// <summary>
         /// There are no comments for Property DailyDiesel in the schema.
         /// </summary>
@@ -49793,26 +49793,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyDieselChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel value);
         partial void OnDailyDieselChanged();
         /// <summary>
-        /// There are no comments for Property DailyProducedWaterTreatmentSystem in the schema.
+        /// There are no comments for Property DailyProducedWaterTreatmentSystems in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem DailyProducedWaterTreatmentSystem
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> DailyProducedWaterTreatmentSystems
         {
             get
             {
-                return this._DailyProducedWaterTreatmentSystem;
+                return this._DailyProducedWaterTreatmentSystems;
             }
             set
             {
-                this.OnDailyProducedWaterTreatmentSystemChanging(value);
-                this._DailyProducedWaterTreatmentSystem = value;
-                this.OnDailyProducedWaterTreatmentSystemChanged();
+                this.OnDailyProducedWaterTreatmentSystemsChanging(value);
+                this._DailyProducedWaterTreatmentSystems = value;
+                this.OnDailyProducedWaterTreatmentSystemsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem _DailyProducedWaterTreatmentSystem;
-        partial void OnDailyProducedWaterTreatmentSystemChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem value);
-        partial void OnDailyProducedWaterTreatmentSystemChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> _DailyProducedWaterTreatmentSystems = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem>();
+        partial void OnDailyProducedWaterTreatmentSystemsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem> value);
+        partial void OnDailyProducedWaterTreatmentSystemsChanged();
         /// <summary>
         /// There are no comments for Property DailyDeOilerInjection in the schema.
         /// </summary>
@@ -49835,26 +49835,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyDeOilerInjectionChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyDeOilerInjection value);
         partial void OnDailyDeOilerInjectionChanged();
         /// <summary>
-        /// There are no comments for Property DailyPowerGenerationAndDistribution in the schema.
+        /// There are no comments for Property DailyPowerGenerationAndDistributions in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution DailyPowerGenerationAndDistribution
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution> DailyPowerGenerationAndDistributions
         {
             get
             {
-                return this._DailyPowerGenerationAndDistribution;
+                return this._DailyPowerGenerationAndDistributions;
             }
             set
             {
-                this.OnDailyPowerGenerationAndDistributionChanging(value);
-                this._DailyPowerGenerationAndDistribution = value;
-                this.OnDailyPowerGenerationAndDistributionChanged();
+                this.OnDailyPowerGenerationAndDistributionsChanging(value);
+                this._DailyPowerGenerationAndDistributions = value;
+                this.OnDailyPowerGenerationAndDistributionsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution _DailyPowerGenerationAndDistribution;
-        partial void OnDailyPowerGenerationAndDistributionChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution value);
-        partial void OnDailyPowerGenerationAndDistributionChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution> _DailyPowerGenerationAndDistributions = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution>();
+        partial void OnDailyPowerGenerationAndDistributionsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution> value);
+        partial void OnDailyPowerGenerationAndDistributionsChanged();
     }
     /// <summary>
     /// There are no comments for CombinedDailyReportStatus in the schema.
@@ -55457,41 +55457,41 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""DailyHealthSafetyEnvironment"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyHealthSafetyEnvironment"" />
         <NavigationProperty Name=""DailyLifeBoat"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat"" />
-        <NavigationProperty Name=""DailyLongTermOverridesInhibitsOnAlarmTrip"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip"" />
+        <NavigationProperty Name=""DailyLongTermOverridesInhibitsOnAlarmTrips"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip)"" />
         <NavigationProperty Name=""DailyLossOfPrimaryContainmentIncident"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLossOfPrimaryContainmentIncident"" />
-        <NavigationProperty Name=""DailyHIPAndLWPSummary"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary"" />
-        <NavigationProperty Name=""DailyFPSOHelangSummary"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary"" />
+        <NavigationProperty Name=""DailyHIPAndLWPSummarys"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary)"" />
+        <NavigationProperty Name=""DailyFPSOHelangSummarys"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary)"" />
         <NavigationProperty Name=""DailySandDisposalDesander"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders.DailySandDisposalDesander"" />
         <NavigationProperty Name=""DailyCiNalco"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyCiNalco"" />
-        <NavigationProperty Name=""DailyInowacInjection"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection"" />
-        <NavigationProperty Name=""DailyCommunicationSystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem"" />
-        <NavigationProperty Name=""DailyLWPActivity"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity"" />
-        <NavigationProperty Name=""DailyVendorActivity"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity"" />
-        <NavigationProperty Name=""DailyUtility"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility"" />
-        <NavigationProperty Name=""DailyWaterTank"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank"" />
-        <NavigationProperty Name=""DailyNitrogenGenerator"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator"" />
-        <NavigationProperty Name=""DailyMaximoWorkOrder"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder"" />
+        <NavigationProperty Name=""DailyInowacInjections"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection)"" />
+        <NavigationProperty Name=""DailyCommunicationSystems"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem)"" />
+        <NavigationProperty Name=""DailyLWPActivitys"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity)"" />
+        <NavigationProperty Name=""DailyVendorActivitys"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity)"" />
+        <NavigationProperty Name=""DailyUtilitys"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility)"" />
+        <NavigationProperty Name=""DailyWaterTanks"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank)"" />
+        <NavigationProperty Name=""DailyNitrogenGenerators"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator)"" />
+        <NavigationProperty Name=""DailyMaximoWorkOrders"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder)"" />
         <NavigationProperty Name=""DailyAnalysisResult"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult"" />
         <NavigationProperty Name=""DailyCoolingMediumSystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyCoolingMediumSystem"" />
-        <NavigationProperty Name=""DailyLogistic"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic"" />
-        <NavigationProperty Name=""DailyGlycolPump"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump"" />
-        <NavigationProperty Name=""DailyGlycolTrain"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain"" />
-        <NavigationProperty Name=""DailyGlycolStock"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock"" />
-        <NavigationProperty Name=""DailyKawasakiExportCompressor"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor"" />
-        <NavigationProperty Name=""DailyRollsRoyceRB211Engine"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine"" />
-        <NavigationProperty Name=""DailyHIPWellHeadParameter"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter"" />
-        <NavigationProperty Name=""DailyLWPWellHeadParameter"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter"" />
+        <NavigationProperty Name=""DailyLogistics"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic)"" />
+        <NavigationProperty Name=""DailyGlycolPumps"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump)"" />
+        <NavigationProperty Name=""DailyGlycolTrains"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain)"" />
+        <NavigationProperty Name=""DailyGlycolStocks"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock)"" />
+        <NavigationProperty Name=""DailyKawasakiExportCompressors"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor)"" />
+        <NavigationProperty Name=""DailyRollsRoyceRB211Engines"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine)"" />
+        <NavigationProperty Name=""DailyHIPWellHeadParameters"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter)"" />
+        <NavigationProperty Name=""DailyLWPWellHeadParameters"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter)"" />
         <NavigationProperty Name=""DailyGasCondensateExportSamplerAndExportLine"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines.DailyGasCondensateExportSamplerAndExportLine"" />
         <NavigationProperty Name=""DailyWellHeadAndSeparationSystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.DailyWellHeadAndSeparationSystem"" />
         <NavigationProperty Name=""DailyWellStreamCooler"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.DailyWellStreamCooler"" />
         <NavigationProperty Name=""DailySK10Production"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production"" />
         <NavigationProperty Name=""DailyHIPProduction"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction"" />
         <NavigationProperty Name=""DailyFPSOHelangProduction"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction"" />
-        <NavigationProperty Name=""DailyMajorEquipmentStatus"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus"" />
+        <NavigationProperty Name=""DailyMajorEquipmentStatuses"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus)"" />
         <NavigationProperty Name=""DailyDiesel"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel"" />
-        <NavigationProperty Name=""DailyProducedWaterTreatmentSystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem"" />
+        <NavigationProperty Name=""DailyProducedWaterTreatmentSystems"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem)"" />
         <NavigationProperty Name=""DailyDeOilerInjection"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyDeOilerInjection"" />
-        <NavigationProperty Name=""DailyPowerGenerationAndDistribution"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution"" />
+        <NavigationProperty Name=""DailyPowerGenerationAndDistributions"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution)"" />
       </EntityType>
       <EnumType Name=""CombinedDailyReportStatus"">
         <Member Name=""Pending"" Value=""0"" />
@@ -56348,39 +56348,39 @@ namespace CentralizedDatabaseSystemODataService.Default
         <EntitySet Name=""CombinedDailyReport"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"">
           <NavigationPropertyBinding Path=""DailyAnalysisResult"" Target=""DailyAnalysisResult"" />
           <NavigationPropertyBinding Path=""DailyCiNalco"" Target=""DailyCiNalco"" />
-          <NavigationPropertyBinding Path=""DailyCommunicationSystem"" Target=""DailyCommunicationSystem"" />
+          <NavigationPropertyBinding Path=""DailyCommunicationSystems"" Target=""DailyCommunicationSystem"" />
           <NavigationPropertyBinding Path=""DailyCoolingMediumSystem"" Target=""DailyCoolingMediumSystem"" />
           <NavigationPropertyBinding Path=""DailyDeOilerInjection"" Target=""DailyDeOilerInjection"" />
           <NavigationPropertyBinding Path=""DailyDiesel"" Target=""DailyDiesel"" />
           <NavigationPropertyBinding Path=""DailyFPSOHelangProduction"" Target=""DailyFPSOHelangProduction"" />
-          <NavigationPropertyBinding Path=""DailyFPSOHelangSummary"" Target=""DailyFPSOHelangSummary"" />
+          <NavigationPropertyBinding Path=""DailyFPSOHelangSummarys"" Target=""DailyFPSOHelangSummary"" />
           <NavigationPropertyBinding Path=""DailyGasCondensateExportSamplerAndExportLine"" Target=""DailyGasCondensateExportSamplerAndExportLine"" />
-          <NavigationPropertyBinding Path=""DailyGlycolPump"" Target=""DailyGlycolPump"" />
-          <NavigationPropertyBinding Path=""DailyGlycolStock"" Target=""DailyGlycolStock"" />
-          <NavigationPropertyBinding Path=""DailyGlycolTrain"" Target=""DailyGlycolTrain"" />
+          <NavigationPropertyBinding Path=""DailyGlycolPumps"" Target=""DailyGlycolPump"" />
+          <NavigationPropertyBinding Path=""DailyGlycolStocks"" Target=""DailyGlycolStock"" />
+          <NavigationPropertyBinding Path=""DailyGlycolTrains"" Target=""DailyGlycolTrain"" />
           <NavigationPropertyBinding Path=""DailyHealthSafetyEnvironment"" Target=""DailyHealthSafetyEnvironment"" />
-          <NavigationPropertyBinding Path=""DailyHIPAndLWPSummary"" Target=""DailyHIPAndLWPSummary"" />
+          <NavigationPropertyBinding Path=""DailyHIPAndLWPSummarys"" Target=""DailyHIPAndLWPSummary"" />
           <NavigationPropertyBinding Path=""DailyHIPProduction"" Target=""DailyHIPProduction"" />
-          <NavigationPropertyBinding Path=""DailyHIPWellHeadParameter"" Target=""DailyHIPWellHeadParameter"" />
-          <NavigationPropertyBinding Path=""DailyInowacInjection"" Target=""DailyInowacInjection"" />
-          <NavigationPropertyBinding Path=""DailyKawasakiExportCompressor"" Target=""DailyKawasakiExportCompressor"" />
+          <NavigationPropertyBinding Path=""DailyHIPWellHeadParameters"" Target=""DailyHIPWellHeadParameter"" />
+          <NavigationPropertyBinding Path=""DailyInowacInjections"" Target=""DailyInowacInjection"" />
+          <NavigationPropertyBinding Path=""DailyKawasakiExportCompressors"" Target=""DailyKawasakiExportCompressor"" />
           <NavigationPropertyBinding Path=""DailyLifeBoat"" Target=""DailyLifeBoat"" />
-          <NavigationPropertyBinding Path=""DailyLogistic"" Target=""DailyLogistic"" />
-          <NavigationPropertyBinding Path=""DailyLongTermOverridesInhibitsOnAlarmTrip"" Target=""DailyLongTermOverridesInhibitsOnAlarmTrip"" />
+          <NavigationPropertyBinding Path=""DailyLogistics"" Target=""DailyLogistic"" />
+          <NavigationPropertyBinding Path=""DailyLongTermOverridesInhibitsOnAlarmTrips"" Target=""DailyLongTermOverridesInhibitsOnAlarmTrip"" />
           <NavigationPropertyBinding Path=""DailyLossOfPrimaryContainmentIncident"" Target=""DailyLossOfPrimaryContainmentIncident"" />
-          <NavigationPropertyBinding Path=""DailyLWPActivity"" Target=""DailyLWPActivity"" />
-          <NavigationPropertyBinding Path=""DailyLWPWellHeadParameter"" Target=""DailyLWPWellHeadParameter"" />
-          <NavigationPropertyBinding Path=""DailyMajorEquipmentStatus"" Target=""DailyMajorEquipmentStatus"" />
-          <NavigationPropertyBinding Path=""DailyMaximoWorkOrder"" Target=""DailyMaximoWorkOrder"" />
-          <NavigationPropertyBinding Path=""DailyNitrogenGenerator"" Target=""DailyNitrogenGenerator"" />
-          <NavigationPropertyBinding Path=""DailyPowerGenerationAndDistribution"" Target=""DailyPowerGenerationAndDistribution"" />
-          <NavigationPropertyBinding Path=""DailyProducedWaterTreatmentSystem"" Target=""DailyProducedWaterTreatmentSystem"" />
-          <NavigationPropertyBinding Path=""DailyRollsRoyceRB211Engine"" Target=""DailyRollsRoyceRB211Engine"" />
+          <NavigationPropertyBinding Path=""DailyLWPActivitys"" Target=""DailyLWPActivity"" />
+          <NavigationPropertyBinding Path=""DailyLWPWellHeadParameters"" Target=""DailyLWPWellHeadParameter"" />
+          <NavigationPropertyBinding Path=""DailyMajorEquipmentStatuses"" Target=""DailyMajorEquipmentStatus"" />
+          <NavigationPropertyBinding Path=""DailyMaximoWorkOrders"" Target=""DailyMaximoWorkOrder"" />
+          <NavigationPropertyBinding Path=""DailyNitrogenGenerators"" Target=""DailyNitrogenGenerator"" />
+          <NavigationPropertyBinding Path=""DailyPowerGenerationAndDistributions"" Target=""DailyPowerGenerationAndDistribution"" />
+          <NavigationPropertyBinding Path=""DailyProducedWaterTreatmentSystems"" Target=""DailyProducedWaterTreatmentSystem"" />
+          <NavigationPropertyBinding Path=""DailyRollsRoyceRB211Engines"" Target=""DailyRollsRoyceRB211Engine"" />
           <NavigationPropertyBinding Path=""DailySandDisposalDesander"" Target=""DailySandDisposalDesander"" />
           <NavigationPropertyBinding Path=""DailySK10Production"" Target=""DailySK10Production"" />
-          <NavigationPropertyBinding Path=""DailyUtility"" Target=""DailyUtility"" />
-          <NavigationPropertyBinding Path=""DailyVendorActivity"" Target=""DailyVendorActivity"" />
-          <NavigationPropertyBinding Path=""DailyWaterTank"" Target=""DailyWaterTank"" />
+          <NavigationPropertyBinding Path=""DailyUtilitys"" Target=""DailyUtility"" />
+          <NavigationPropertyBinding Path=""DailyVendorActivitys"" Target=""DailyVendorActivity"" />
+          <NavigationPropertyBinding Path=""DailyWaterTanks"" Target=""DailyWaterTank"" />
           <NavigationPropertyBinding Path=""DailyWellHeadAndSeparationSystem"" Target=""DailyWellHeadAndSeparationSystem"" />
           <NavigationPropertyBinding Path=""DailyWellStreamCooler"" Target=""DailyWellStreamCooler"" />
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">

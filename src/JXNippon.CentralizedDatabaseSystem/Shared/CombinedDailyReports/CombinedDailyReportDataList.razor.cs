@@ -4,8 +4,10 @@ using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSys
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web.Virtualization;
+using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 {
@@ -19,13 +21,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
+        [Inject] private DialogService DialogService { get; set; }
 
         public CommonFilter Filter { get; set; }
 
         protected override Task OnInitializedAsync()
         {
-            Filter = new CommonFilter(navigationManager);
-            initLoading = false;
+            Filter = new CommonFilter(navigationManager);  
             return Task.CompletedTask;
         }
         public async Task ReloadAsync()
@@ -70,6 +72,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             }
             finally
             {
+                initLoading = false;
                 isLoading = false;
                 StateHasChanged();
             }
@@ -83,6 +86,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private IGenericService<CombinedDailyReport> GetGenericFileService(IServiceScope serviceScope)
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<CombinedDailyReport, ICentralizedDatabaseSystemUnitOfWork>>();
+        }
+
+        private async Task ShowDialogAsync(CombinedDailyReport data)
+        {
+            dynamic? response;
+            response = await DialogService.OpenAsync<CombinedDailyReportView>(data.Date.ToLocalTime().ToString("d"),
+                       new Dictionary<string, object>() { { "item", data } },
+                       Constant.FullScreenDialogOptions);
+
+            if (response == true)
+            {
+                
+            }
+
+            await this.ReloadAsync();
         }
     }
 }

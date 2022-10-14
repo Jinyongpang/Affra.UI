@@ -5,17 +5,18 @@ using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
+using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 {
     public partial class FileManagementDataList
     {
         private const int loadSize = 9;
-        private AntList<DataFile> _dataList;
-        private List<DataFile> files;
+        private Virtualize<DataFile> virtualize;
         private int count;
-        private int currentCount;
         private bool isLoading = false;
         private bool initLoading = true;
         private ListGridType grid = new()
@@ -32,84 +33,67 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
-
+        [Inject] private DialogService DialogService { get; set; }
         public CommonFilter FileManagementFilter { get; set; }
 
         protected override Task OnInitializedAsync()
         {
             this.FileManagementFilter = new CommonFilter(navigationManager);
-            initLoading = false;
-            return this.LoadDataAsync();
+            return Task.CompletedTask;
         }
 
-        public Task ReloadAsync()
+        public async Task ReloadAsync()
         {
-            return this.LoadDataAsync();
+            await this.virtualize.RefreshDataAsync();
+            this.StateHasChanged();
         }
 
-        public Task OnLoadMoreAsync()
-        {
-            return this.LoadDataAsync(true);
-        }
-
-        private async Task LoadDataAsync(bool isLoadMore = false)
+        private async ValueTask<ItemsProviderResult<DataFile>> LoadDataAsync(ItemsProviderRequest request)
         {
             isLoading = true;
             StateHasChanged();
-            if (!isLoadMore)
+            try
             {
-                currentCount = 0;
-            }
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
+                var query = fileService.Get();
+                if (!string.IsNullOrEmpty(FileManagementFilter.Search))
+                {
+                    query = query.Where(dataFile => dataFile.FileName.ToUpper().Contains(FileManagementFilter.Search.ToUpper()));
+                }
+                if (FileManagementFilter.Status != null)
+                {
+                    var status = (FileProcessStatus)Enum.Parse(typeof(FileProcessStatus), FileManagementFilter.Status);
+                    query = query.Where(dataFile => dataFile.ProcessStatus == status);
+                }
+                if (FileManagementFilter.Date != null)
+                {
+                    var start = TimeZoneInfo.ConvertTimeToUtc(FileManagementFilter.Date.Value);
+                    var end = TimeZoneInfo.ConvertTimeToUtc(FileManagementFilter.Date.Value.AddDays(1));
+                    query = query
+                        .Where(dataFile => dataFile.LastModifiedDateTime >= start)
+                        .Where(dataFile => dataFile.LastModifiedDateTime < end);
+                }
 
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
-            var query = fileService.Get();
-            if (!string.IsNullOrEmpty(FileManagementFilter.Search))
+
+                Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
+                    .OrderByDescending(file => file.LastModifiedDateTime)
+                    .Skip(request.StartIndex)
+                    .Take(request.Count)
+                    .ToQueryOperationResponseAsync<DataFile>();
+
+                count = (int)filesResponse.Count;
+                var filesList = filesResponse.ToList();
+
+                isLoading = false;
+                return new ItemsProviderResult<DataFile>(filesList, count);
+            }
+            finally
             {
-                query = query.Where(dataFile => dataFile.FileName.ToUpper().Contains(FileManagementFilter.Search.ToUpper()));
+                initLoading = false;
+                isLoading = false;
+                StateHasChanged();
             }
-            if (FileManagementFilter.Status != null)
-            {
-                var status = (FileProcessStatus)Enum.Parse(typeof(FileProcessStatus), FileManagementFilter.Status);
-                query = query.Where(dataFile => dataFile.ProcessStatus == status);
-            }
-            if (FileManagementFilter.Date != null)
-            {
-                var start = TimeZoneInfo.ConvertTimeToUtc(FileManagementFilter.Date.Value);
-                var end = TimeZoneInfo.ConvertTimeToUtc(FileManagementFilter.Date.Value.AddDays(1));
-                query = query
-                    .Where(dataFile => dataFile.LastModifiedDateTime >= start)
-                    .Where(dataFile => dataFile.LastModifiedDateTime < end);
-            }
-            
-
-            Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
-                .OrderByDescending(file => file.LastModifiedDateTime)
-                .Skip(currentCount)
-                .Take(loadSize)
-                .ToQueryOperationResponseAsync<DataFile>();
-
-            count = (int)filesResponse.Count;
-            currentCount += loadSize;
-            var filesList = filesResponse.ToList();
-
-            if (isLoadMore)
-            {
-                files.AddRange(filesList);
-            }
-            else
-            { 
-                files = filesList;
-            }
-
-            isLoading = false;
-
-            if (filesList.DistinctBy(x => x.Id).Count() != filesList.Count)
-            {
-                AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
-            }
-
-            StateHasChanged();
         }
 
         private void HandleException(Exception ex)
@@ -122,13 +106,26 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DataFile, IDataExtractorUnitOfWork>>();
         }
 
-        public async Task ResyncFile(DataFile dataFile)
+        public async Task ResyncFileAsync(DataFile dataFile)
         {
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
-            dataFile.NumberOfAttempts = 0;
-            dataFile.ProcessStatus = FileProcessStatus.Pending;
-            await fileService.UpdateAsync(dataFile, dataFile.Id);
+            var currentAttempts = dataFile.NumberOfAttempts;
+            var currentStatus = dataFile.ProcessStatus;
+            try
+            {
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
+                dataFile.NumberOfAttempts = 0;
+                dataFile.ProcessStatus = FileProcessStatus.Pending;
+                await fileService.UpdateAsync(dataFile, dataFile.Id);
+
+                AffraNotificationService.NotifySuccess("Reset to pending succeeded.");
+            }
+            catch (Exception ex)
+            {
+                dataFile.NumberOfAttempts = currentAttempts;
+                dataFile.ProcessStatus = currentStatus;
+                AffraNotificationService.NotifyException(ex);
+            }          
         }
     }
 }

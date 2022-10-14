@@ -57,19 +57,10 @@
                                 </div>
                             </div>
                         </Body>
-                        <Extra>
-                            <Popover Placement="@Placement.RightBottom">
-                                <ContentTemplate>
-                                    <Menu Mode=MenuMode.Vertical Class="popup-menu">                   
-                                        <MenuItem Key="ViewActivity"><a @onclick="@(() => ShowActivityDialogAsync(context))"><i class="fas fa-eye fa-fw fa-xl"></i> View Activities...</a></MenuItem> 
-                                        <MenuItem Key="EditUser"><a @onclick="@(() => ShowDialogAsync(context, 1, "Edit"))"><i class="fas fa-edit fa-fw fa-xl"></i> Edit User...</a></MenuItem> 
-                                    </Menu>
-                                </ContentTemplate>
-                                <ChildContent> 
-                                    <AntDesign.Button><i class="fa-solid fa-ellipsis-vertical extra-icon"></i></AntDesign.Button>                                  
-                                </ChildContent>
-                            </Popover>         
-                        </Extra>
+                        <ActionTemplate>                         
+                            <CardAction><Tooltip Title=@("Edit...")><Icon Class="anticon-big" Type="edit" OnClick="@(() => ShowDialogAsync(context, 1, "Edit"))"/></Tooltip></CardAction>
+                            <CardAction><Tooltip Title=@("View Activities...")><Icon Class="anticon-big" Type="eye" OnClick="@(() => ShowActivityDialogAsync(context))"/></Tooltip></CardAction>
+                        </ActionTemplate>
                     </Card>            
                 </ListItem>      
             </ChildContent>

@@ -693,3 +693,20 @@ a {
     width: 50%;
     margin: auto;
 }
+
+.cdr-action-buttons {
+    margin-left: 20px;
+    width: 300px;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.cdr-title {
+    justify-content: center;
+    display: flex;
+    flex: 1;
+}
+
+.fullscreen-dialog-content > div {
+    height: 100%;
+}

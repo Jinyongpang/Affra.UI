@@ -1,0 +1,11 @@
+﻿<DescriptionsItem Title="@Title" Span=@(Span ?? 1)>
+    @if (this.IsEditing)
+    {
+        <RadzenDatePicker @bind-Value=@this.Value DateFormat="d"></RadzenDatePicker>
+    }
+    else
+    {
+        @(this.Value.ToDateString())
+    }
+</DescriptionsItem>
+     

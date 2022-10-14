@@ -8,16 +8,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Notifications
 {
     public class AffraNotificationService
     {
-        private const int NotificationDration = 10000;
+        private const int NotificationDuration = 5;
         private readonly NotificationService notificationService;
+        private readonly AntDesign.NotificationService antNotification;
         private readonly IStringLocalizer<Resource> stringLocalizer;
         private readonly IGlobalDataSource globalDataSource;
 
-        public AffraNotificationService(NotificationService notificationService, IStringLocalizer<Resource> stringLocalizer, IGlobalDataSource globalDataSource)
+        public AffraNotificationService(NotificationService notificationService, 
+            IStringLocalizer<Resource> stringLocalizer, 
+            IGlobalDataSource globalDataSource,
+            AntDesign.NotificationService notification)
         { 
             this.notificationService = notificationService;
             this.stringLocalizer = stringLocalizer;
             this.globalDataSource = globalDataSource;
+            this.antNotification = notification;
         }
 
         public void NotifyException(Exception exception)
@@ -25,100 +30,65 @@ namespace JXNippon.CentralizedDatabaseSystem.Notifications
             this.globalDataSource.AddException(exception);
             if (exception is AffraODataException odataEx)
             {
-                notificationService.Notify(new()
+                _ = antNotification.Error(new()
                 {
-                    Summary = odataEx.AffraProblemDetails.Title,
-                    Detail = stringLocalizer[odataEx.AffraProblemDetails.ErrorCode.ToString()],
-                    Severity = NotificationSeverity.Error,
-                    Duration = NotificationDration,
+                    Message = odataEx.Message,
+                    Description = stringLocalizer[odataEx.AffraProblemDetails.ErrorCode.ToString()].ToString(),
+                    Duration = NotificationDuration,
                 });
             }
             else
             {
-                notificationService.Notify(new()
+                _ = antNotification.Error(new()
                 {
-                    Summary = "Error",
-                    Detail = (exception.InnerException ?? exception).ToString(),
-                    Severity = NotificationSeverity.Error,
-                    Duration = NotificationDration,
+                    Message = exception.Message,
                 });
             }
         }
 
         public void NotifyItemCreated()
         {
-            notificationService.Notify(new()
-            {
-                Summary = stringLocalizer["New item added."],
-                Detail = string.Empty,
-                Severity = NotificationSeverity.Success,
-                Duration = NotificationDration,
-            });
+            this.NoticeWithIcon(AntDesign.NotificationType.Success, stringLocalizer["New item added."]);
         }
 
         public void NotifyItemUpdated()
         {
-            notificationService.Notify(new()
-            {
-                Summary = stringLocalizer["Item updated."],
-                Detail = string.Empty,
-                Severity = NotificationSeverity.Success,
-                Duration = NotificationDration,
-            });
+            this.NoticeWithIcon(AntDesign.NotificationType.Success, stringLocalizer["Item updated."]);
         }
 
         public void NotifyItemDeleted()
         {
-            notificationService.Notify(new()
-            {
-                Summary = stringLocalizer["Item deleted."],
-                Detail = string.Empty,
-                Severity = NotificationSeverity.Success,
-                Duration = NotificationDration,
-            });
+            this.NoticeWithIcon(AntDesign.NotificationType.Success, stringLocalizer["Item deleted."]);
         }
 
         public void NotifyWarning(string message, string detail= default)
         {
-            notificationService.Notify(new()
-            {
-                Summary = stringLocalizer[message],
-                Detail = detail,
-                Severity = NotificationSeverity.Warning,
-                Duration = NotificationDration,
-            });
+            this.NoticeWithIcon(AntDesign.NotificationType.Warning, stringLocalizer[message], detail);
         }
 
         public void NotifyInfo(string message, string detail = default)
         {
-            notificationService.Notify(new()
-            {
-                Summary = stringLocalizer[message],
-                Detail = detail,
-                Severity = NotificationSeverity.Info,
-                Duration = NotificationDration,
-            });
+            this.NoticeWithIcon(AntDesign.NotificationType.Info, stringLocalizer[message], detail);
         }
 
         public void NotifyError(string message, string detail = default)
         {
-            notificationService.Notify(new()
-            {
-                Summary = stringLocalizer[message],
-                Detail = detail,
-                Severity = NotificationSeverity.Error,
-                Duration = NotificationDration,
-            });
+            this.NoticeWithIcon(AntDesign.NotificationType.Error, stringLocalizer[message], detail);
         }
 
         public void NotifySuccess(string message, string detail = default)
         {
-            notificationService.Notify(new()
+            this.NoticeWithIcon(AntDesign.NotificationType.Success, stringLocalizer[message], detail);
+        }
+
+        private void NoticeWithIcon(AntDesign.NotificationType type, string message, string detail = default)
+        {
+            _ = antNotification.Open(new ()
             {
-                Summary = stringLocalizer[message],
-                Detail = detail,
-                Severity = NotificationSeverity.Success,
-                Duration = NotificationDration,
+                Message = message,
+                Description = detail,
+                NotificationType = type,
+                Duration = NotificationDuration,
             });
         }
 
