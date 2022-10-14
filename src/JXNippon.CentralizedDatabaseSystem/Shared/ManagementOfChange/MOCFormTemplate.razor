@@ -43,46 +43,46 @@
                                         <RadioGroup Disabled="@(Item.ManagementOfChangeCurrentStep.ToString() != ManagementOfChangeCurrentStep.InitialCreation.ToString())" TValue="ManagementOfChangeField" Name="ManagementOfChangeField" @bind-Value="Item.ManagementOfChangeField" @bind-CheckedValue="Item.ManagementOfChangeField">
                                             @foreach (var val in Enum.GetValues(typeof(ManagementOfChangeField)).Cast<ManagementOfChangeField>()) {
                                             <Radio TValue="ManagementOfChangeField" Value="@val">@(val.ToString())</Radio>
-                                    }
+                                            }
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Duration of Change">
-                                        <RadzenNumeric @bind-Value="Item.Identification.DurationOfChange" Disabled="true" /> Days
+                                        <RadzenNumeric @bind-Value="Item.Identification.DurationOfChange" Disabled="@(disableAllInput || disableDurationOfChange)" /> Days
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Expiry Date">
-                                        <DatePicker Disabled="disableAllInput" @bind-Value="Item.Identification.ExpiryDateUI" OnChange="OnIdentificationExpiryDateChange" Format="yyyy/MM/dd" />
+                                        <DatePicker Disabled="true" @bind-Value="Item.Identification.ExpiryDateUI" Format="yyyy/MM/dd" />
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Description of Change"><TextArea Disabled="disableAllInput" @bind-Value="Item.Identification.DescriptionOfChange" /></DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Reason for Change">
                                         <RadioGroup Disabled="disableAllInput" TValue="ReasonForChange" Name="ReasonForChange" @bind-Value="Item.Identification.ReasonForChange" @bind-CheckedValue="Item.Identification.ReasonForChange">
                                             @foreach (var val in Enum.GetValues(typeof(ReasonForChange)).Cast<ReasonForChange>()) {
                                             <Radio TValue="ReasonForChange" Value="@val">@(val.ToString())</Radio>
-                                    }
+                                            }
                                         </RadioGroup>
                                         @if (Item.Identification.ReasonForChange.ToString() == ReasonForChange.Others.ToString())
-                                {
-                                                <Input type="text" Style="margin-top: 10px;" TValue="string" @bind-Value="Item.Identification.OtherReasonForChange" />
-                                }
+                                        {
+                                            <Input type="text" Style="margin-top: 10px;" TValue="string" @bind-Value="Item.Identification.OtherReasonForChange" />
+                                        }
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Details of Change">
                                         <RadioGroup Disabled="@(Item.ManagementOfChangeCurrentStep.ToString() != ManagementOfChangeCurrentStep.InitialCreation.ToString())" TValue="DetailOfChange" Name="DetailOfChange" @bind-Value="Item.Identification.DetailOfChange" @bind-CheckedValue="Item.Identification.DetailOfChange">
                                             @foreach (var val in Enum.GetValues(typeof(DetailOfChange)).Cast<DetailOfChange>()) {
                                                 <Radio TValue="DetailOfChange" Value="@val">@(stringLocalizer[val.ToString()])</Radio>
-                                    }
+                                            }
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Categories for Change">
                                         <RadioGroup Disabled="disableAllInput" TValue="CategoriesOfChange" Name="CategoriesOfChange" @bind-Value="Item.Identification.CategoriesOfChange" @bind-CheckedValue="Item.Identification.CategoriesOfChange">
                                             @foreach (var val in Enum.GetValues(typeof(CategoriesOfChange)).Cast<CategoriesOfChange>()) {
                                             <Radio TValue="CategoriesOfChange" Value="@val">@(val.ToString())</Radio>
-                                    }
+                                            }
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Priority for Change">
                                         <RadioGroup Disabled="disableAllInput" TValue="PriorityOfChange" Name="PriorityOfChange" @bind-Value="Item.Identification.PriorityOfChange" @bind-CheckedValue="Item.Identification.PriorityOfChange">
                                             @foreach (var val in Enum.GetValues(typeof(PriorityOfChange)).Cast<PriorityOfChange>()) {
                                             <Radio TValue="PriorityOfChange" Value="@val">@(val.ToString())</Radio>
-                                    }
+                                            }
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="SCE(s) Affected">
@@ -96,23 +96,23 @@
                                 <div class="row">
                                     <div class="col-6 offset-3 text-center">
                                         @if(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.InitialCreation)
-                                {
+                                        {
                                             <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnCreateButtonClick">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Next</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline"/>
                                                 </ChildContent>
                                             </Button>
-                                }
-                                else
-                                {
+                                        }
+                                        else
+                                        {
                                             <Button Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnNextButtonClick">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Next</span>
                                                     <Icon Class="anticon-big" Type="right" Theme="outline"/>
                                                 </ChildContent>
                                             </Button>
-                                }
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -125,32 +125,32 @@
                                         <RadioGroup OnChange="OnInheritRadioChanged" Disabled="disableAllInput" TValue="LikelihoodLevels" Name="LikelihoodLevels" @bind-Value="Item.RiskEvaluation.InheritRiskLikelihood" @bind-CheckedValue="Item.RiskEvaluation.InheritRiskLikelihood">
                                             @foreach (var val in Enum.GetValues(typeof(LikelihoodLevels)).Cast<LikelihoodLevels>()) {
                                                 <Radio TValue="LikelihoodLevels" Value="@val">@(stringLocalizer[val.ToString()])</Radio>
-                                    }
+                                            }
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Consequence">
                                         <RadioGroup OnChange="OnInheritRadioChanged" Disabled="disableAllInput" TValue="ConsequenceLevels" Name="ConsequenceLevels" @bind-Value="Item.RiskEvaluation.InheritRiskConsequence" @bind-CheckedValue="Item.RiskEvaluation.InheritRiskConsequence">
                                             @foreach (var val in Enum.GetValues(typeof(ConsequenceLevels)).Cast<ConsequenceLevels>()) {
                                                 <Radio TValue="ConsequenceLevels" Value="@val">@(stringLocalizer[val.ToString()])</Radio>
-                                    }
+                                            }
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Risk Level">
-                                @{
+                                    @{
 
-                                    if(Item.RiskEvaluation.InheritRiskRiskLevel == RiskLevels.MediumRisk){
-                                        <RadzenButton Style="background-color: yellow; color: black" Text="@(stringLocalizer[Item.RiskEvaluation.InheritRiskRiskLevel.ToString()])" ButtonStyle="ButtonStyle.Primary" />
+                                        if(Item.RiskEvaluation.InheritRiskRiskLevel == RiskLevels.MediumRisk){
+                                            <RadzenButton Style="background-color: yellow; color: black" Text="@(stringLocalizer[Item.RiskEvaluation.InheritRiskRiskLevel.ToString()])" ButtonStyle="ButtonStyle.Primary" />
+                                        }
+                                        else if(Item.RiskEvaluation.InheritRiskRiskLevel == RiskLevels.HighRisk){
+                                            <RadzenButton Style="background-color: darkorange" Text="@(stringLocalizer[Item.RiskEvaluation.InheritRiskRiskLevel.ToString()])" ButtonStyle="ButtonStyle.Primary" />
+                                        }
+                                        else if(Item.RiskEvaluation.InheritRiskRiskLevel == RiskLevels.VeryHighRisk){
+                                            <RadzenButton Style="background-color: Red" Text="@(stringLocalizer[Item.RiskEvaluation.InheritRiskRiskLevel.ToString()])" ButtonStyle="ButtonStyle.Primary" />
+                                        }
+                                        else {
+                                            <RadzenButton Style="background-color: green" Text="@(stringLocalizer[Item.RiskEvaluation.InheritRiskRiskLevel.ToString()])" ButtonStyle="ButtonStyle.Primary" />
+                                        }
                                     }
-                                    else if(Item.RiskEvaluation.InheritRiskRiskLevel == RiskLevels.HighRisk){
-                                        <RadzenButton Style="background-color: darkorange" Text="@(stringLocalizer[Item.RiskEvaluation.InheritRiskRiskLevel.ToString()])" ButtonStyle="ButtonStyle.Primary" />
-                                    }
-                                    else if(Item.RiskEvaluation.InheritRiskRiskLevel == RiskLevels.VeryHighRisk){
-                                        <RadzenButton Style="background-color: Red" Text="@(stringLocalizer[Item.RiskEvaluation.InheritRiskRiskLevel.ToString()])" ButtonStyle="ButtonStyle.Primary" />
-                                    }
-                                    else {
-                                        <RadzenButton Style="background-color: green" Text="@(stringLocalizer[Item.RiskEvaluation.InheritRiskRiskLevel.ToString()])" ButtonStyle="ButtonStyle.Primary" />
-                                    }
-                                }
                                     </DescriptionsItem>
                                 </Descriptions>
                                 <Descriptions Title="Residual Risk" Bordered Column="@responsiveColumn" Style="padding-top:20px">
@@ -158,14 +158,14 @@
                                         <RadioGroup OnChange="OnResidualRadioChanged" Disabled="disableAllInput" TValue="LikelihoodLevels" Name="LikelihoodLevels" @bind-Value="Item.RiskEvaluation.ResidualRiskLikelihood" @bind-CheckedValue="Item.RiskEvaluation.ResidualRiskLikelihood">
                                             @foreach (var val in Enum.GetValues(typeof(LikelihoodLevels)).Cast<LikelihoodLevels>()) {
                                                 <Radio TValue="LikelihoodLevels" Value="@val">@(stringLocalizer[val.ToString()])</Radio>
-                                    }
+                                            }
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Consequence">
                                         <RadioGroup OnChange="OnResidualRadioChanged" Disabled="disableAllInput" TValue="ConsequenceLevels" Name="ConsequenceLevels" @bind-Value="Item.RiskEvaluation.ResidualRiskConsequence" @bind-CheckedValue="Item.RiskEvaluation.ResidualRiskConsequence">
                                             @foreach (var val in Enum.GetValues(typeof(ConsequenceLevels)).Cast<ConsequenceLevels>()) {
                                                 <Radio TValue="ConsequenceLevels" Value="@val">@(stringLocalizer[val.ToString()])</Radio>
-                                    }
+                                            }
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="4" Title="Risk Level">
@@ -186,7 +186,35 @@
                                     </DescriptionsItem>
                                 </Descriptions>
                                 <Descriptions Class="borderedTitlelessDescription" Title="Recommendation / Countermeasure from Risk Assessment" Bordered Column="@responsiveColumn" Style="padding-top:20px">
-                                    <DescriptionsItem Span="4"><RadzenHtmlEditor Disabled="disableAllInput" style="height: 500px;" @bind-Value="Item.RiskEvaluation.RecommendationAndCountermeasure"></RadzenHtmlEditor></DescriptionsItem>
+                                    <DescriptionsItem Span="4">
+                                    <RadzenHtmlEditor Disabled="disableAllInput" style="height: 500px;" @bind-Value="Item.RiskEvaluation.RecommendationAndCountermeasure">
+                                        <RadzenHtmlEditorUndo />
+                                        <RadzenHtmlEditorRedo />
+                                        <RadzenHtmlEditorSeparator />
+                                        <RadzenHtmlEditorBold />
+                                        <RadzenHtmlEditorItalic />
+                                        <RadzenHtmlEditorUnderline />
+                                        <RadzenHtmlEditorStrikeThrough />
+                                        <RadzenHtmlEditorSeparator />
+                                        <RadzenHtmlEditorAlignLeft />
+                                        <RadzenHtmlEditorAlignCenter />
+                                        <RadzenHtmlEditorAlignRight />
+                                        <RadzenHtmlEditorJustify />
+                                        <RadzenHtmlEditorSeparator />
+                                        <RadzenHtmlEditorIndent />
+                                        <RadzenHtmlEditorOutdent />
+                                        <RadzenHtmlEditorUnorderedList />
+                                        <RadzenHtmlEditorOrderedList />
+                                        <RadzenHtmlEditorSeparator />
+                                        <RadzenHtmlEditorColor />
+                                        <RadzenHtmlEditorBackground />
+                                        <RadzenHtmlEditorRemoveFormat />
+                                        <RadzenHtmlEditorSeparator />
+                                        <RadzenHtmlEditorFontName />
+                                        <RadzenHtmlEditorFontSize />
+                                        <RadzenHtmlEditorFormatBlock />
+                                    </RadzenHtmlEditor>
+                                    </DescriptionsItem>
                                 </Descriptions>
                                 <Divider />
                                 <div class="row">
@@ -211,7 +239,7 @@
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Class="signature-uppp" Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="4" Title="Line Manager Comment"><TextArea Disabled="disableAllInput" Rows="5" @bind-Value="Item.Endorsement.LineManagerComment" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Line Manager Comment"><TextArea Disabled="@(!(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.EndorsementPendingForApproval))" Rows="5" @bind-Value="Item.Endorsement.LineManagerComment" /></DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Name">
                                         <AutoComplete Disabled="@(disableAllInput || Item.Endorsement.Signature != string.Empty)" @bind-Value="Item.Endorsement.Name" Options="lineManagerUsername" Placeholder="Select user..." />
                                     </DescriptionsItem>
@@ -255,15 +283,15 @@
                                                     <Icon Class="anticon-big" Type="right" Theme="outline"/>
                                                 </ChildContent>
                                             </Button>
-                                }
+                                        }
                                         @if(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.EndorsementSubmitForApproval){
-                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnEndorsementSubmitButtonClickAsync">
+                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnEndorsementSubmitButtonClickAsync">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />
                                                 </ChildContent>
                                             </Button>
-                                }
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +300,7 @@
                         {
                             <div class="py-2 px-5">
                                 <Descriptions Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="4" Title="Approving Authority Comment"><TextArea Disabled="disableAllInput" Rows="5" @bind-Value="Item.AuthorisationAndApproval.ApprovingAuthorityComment" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Approving Authority Comment"><TextArea Disabled="@(!(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.AuthorisationAndApprovalPendingForApproval))" Rows="5" @bind-Value="Item.AuthorisationAndApproval.ApprovingAuthorityComment" /></DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Name">
                                         <AutoComplete Disabled="@(disableAllInput || Item.AuthorisationAndApproval.Signature != string.Empty)" @bind-Value="Item.AuthorisationAndApproval.Name" Options="approveAuthorityUsername" Placeholder="Select user..." />
                                     </DescriptionsItem>
@@ -317,7 +345,7 @@
                                                     <Icon Class="anticon-big" Type="right" Theme="outline"/>
                                                 </ChildContent>
                                             </Button>
-                                }
+                                        }
                                         @if(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.AuthorisationAndApprovalSubmitForApproval){
                                             <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnAuthorisationAndApprovalSubmitButtonClickAsync">
                                                 <ChildContent>
@@ -325,7 +353,7 @@
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />
                                                 </ChildContent>
                                             </Button>
-                                }
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -340,44 +368,44 @@
                                     </ChildContent>
                                 </Button>
                                 @foreach(var extension in Item.Extensions){
-                                <Descriptions Class="moc-extension-description" Title="@($"Extension #{extension.ExtensionNo}")" Bordered Column="@responsiveColumn">
-                                    <DescriptionsItem Span="2" Title="Duration extended by ">
-                                        <RadzenNumeric Disabled="@(disableAllInput || extension.ApprovalSignature != string.Empty)" @bind-Value="extension.DurationExtended" TValue="int" /> Days on
-                                    </DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Review Date"><DatePicker Disabled="@(disableAllInput || ((int)extension.ExtensionNo < Item.Extensions.Count) || Item.ManagementOfChangeCurrentStep != ManagementOfChangeCurrentStep.ExtensionPendingForApproval)" @bind-Value="extension.ReviewDateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Name">
-                                        <AutoComplete Disabled="@(disableAllInput || extension.ApprovalSignature != string.Empty)" @bind-Value="extension.ApproverName" Options="@(extension.ApproverNameColection.Split(',').Remove(string.Empty).ToList())" Placeholder="Select user..." />
-                                    </DescriptionsItem>
-                                    <DescriptionsItem Span="2" Title="Approver Signature">
-                                        @if(extension.ApprovalSignature != string.Empty){
-                                            <h4 style="text-align:center">Approved</h4>
-                                        }else{
-                                            @if (extension.ApproverName.Equals(GlobalDataSource.User.Email, StringComparison.OrdinalIgnoreCase) && (Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.ExtensionPendingForApproval)){
-                                                <Button Class="approveButtonStyle" Disabled="@((int)extension.ExtensionNo < Item.Extensions.Count || Item.ManagementOfChangeCurrentStep != ManagementOfChangeCurrentStep.ExtensionPendingForApproval)" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" OnClick="@(() => ShowExtensionConfirmationDialogAsync(extension))">
-                                                    <ChildContent>
-                                                        <Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
-                                                        <span style="font-size: 18px; margin-left: 0px;">Approve</span>
-                                                    </ChildContent>
-                                                </Button>
-                                                <Button Class="rejectButtonStyle" Disabled="@((int)extension.ExtensionNo < Item.Extensions.Count || Item.ManagementOfChangeCurrentStep != ManagementOfChangeCurrentStep.ExtensionPendingForApproval)" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" OnClick="@(() => ShowExtensionRejectDialogAsync(extension))">
-                                                    <ChildContent>
-                                                        <Icon Class="anticon-big" Type="close-circle" Theme="outline"/>
-                                                        <span style="font-size: 18px; margin-left: 0px;">Reject</span>
-                                                    </ChildContent>
-                                                </Button>
+                                    <Descriptions Class="moc-extension-description" Title="@($"Extension #{extension.ExtensionNo}")" Bordered Column="@responsiveColumn">
+                                        <DescriptionsItem Span="2" Title="Duration extended by ">
+                                            <RadzenNumeric Disabled="@(disableAllInput || extension.ApprovalSignature != string.Empty)" @bind-Value="extension.DurationExtended" TValue="int" /> Days on
+                                        </DescriptionsItem>
+                                        <DescriptionsItem Span="2" Title="Review Date"><DatePicker Disabled="@(disableAllInput || ((int)extension.ExtensionNo < Item.Extensions.Count) || Item.ManagementOfChangeCurrentStep != ManagementOfChangeCurrentStep.ExtensionPendingForApproval)" @bind-Value="extension.ReviewDateUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                        <DescriptionsItem Span="2" Title="Approver Name">
+                                            <AutoComplete Disabled="@(disableAllInput || extension.ApprovalSignature != string.Empty)" @bind-Value="extension.ApproverName" Options="@(extension.ApproverNameColection.Split(',').Remove(string.Empty).ToList())" Placeholder="Select user..." />
+                                        </DescriptionsItem>
+                                        <DescriptionsItem Span="2" Title="Approver Signature">
+                                            @if(extension.ApprovalSignature != string.Empty){
+                                                <h4 style="text-align:center">Approved</h4>
                                             }else{
-                                                <h4 style="text-align:center">Pending Approval</h4>
+                                                @if (extension.ApproverName.Equals(GlobalDataSource.User.Email, StringComparison.OrdinalIgnoreCase) && (Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.ExtensionPendingForApproval)){
+                                                    <Button Class="approveButtonStyle" Disabled="@((int)extension.ExtensionNo < Item.Extensions.Count || Item.ManagementOfChangeCurrentStep != ManagementOfChangeCurrentStep.ExtensionPendingForApproval)" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" OnClick="@(() => ShowExtensionConfirmationDialogAsync(extension))">
+                                                        <ChildContent>
+                                                            <Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
+                                                            <span style="font-size: 18px; margin-left: 0px;">Approve</span>
+                                                        </ChildContent>
+                                                    </Button>
+                                                    <Button Class="rejectButtonStyle" Disabled="@((int)extension.ExtensionNo < Item.Extensions.Count || Item.ManagementOfChangeCurrentStep != ManagementOfChangeCurrentStep.ExtensionPendingForApproval)" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" OnClick="@(() => ShowExtensionRejectDialogAsync(extension))">
+                                                        <ChildContent>
+                                                            <Icon Class="anticon-big" Type="close-circle" Theme="outline"/>
+                                                            <span style="font-size: 18px; margin-left: 0px;">Reject</span>
+                                                        </ChildContent>
+                                                    </Button>
+                                                }else{
+                                                    <h4 style="text-align:center">Pending Approval</h4>
+                                                }
                                             }
-                                        }
-                                    </DescriptionsItem>
-                                </Descriptions>
-                        }
+                                        </DescriptionsItem>
+                                    </Descriptions>
+                                }
                                 <Descriptions Title="MOC Close-out (Approving Authority)" Style="padding-top:20px" Bordered Column="@responsiveColumn">
                                     <DescriptionsItem Span="4" Title="">
                                     <RadioGroup Disabled="@((Item.Identification.DetailOfChange.ToString() == DetailOfChange.FacilitiesImprovementPlan.ToString()) || disableAllInput || ((Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.ExtensionSubmitForApproval) || (Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.ExtensionPendingForApproval)))" TValue="CloseOutState" Name="CloseOutState" @bind-Value="Item.CloseOut.CloseOutState" @bind-CheckedValue="Item.CloseOut.CloseOutState">
                                             @foreach (var val in Enum.GetValues(typeof(CloseOutState)).Cast<CloseOutState>()) {
                                                 <Radio TValue="CloseOutState" Value="@val">@(stringLocalizer[val.ToString()])</Radio>
-                                }
+                                            }
                                         </RadioGroup>
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Name">
@@ -417,27 +445,26 @@
                                             </ChildContent>
                                         </Button>
                                         @if(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.CloseOutSubmitForApproval){
-                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnCloseOutSubmitButtonClickAsync">
+                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnCloseOutSubmitButtonClickAsync">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />
                                                 </ChildContent>
                                             </Button>
-                                }
+                                        }
                                         @if(Item.ManagementOfChangeCurrentStep == ManagementOfChangeCurrentStep.ExtensionSubmitForApproval){
-                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnExtensionSubmitButtonClickAsync">
+                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnExtensionSubmitButtonClickAsync">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Submit For Extension</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />
                                                 </ChildContent>
                                             </Button>
-                                }
+                                        }
                                     </div>
                                 </div>
                             </div>
                         }
                     }
-
                 </div>
             </div>
         </div>

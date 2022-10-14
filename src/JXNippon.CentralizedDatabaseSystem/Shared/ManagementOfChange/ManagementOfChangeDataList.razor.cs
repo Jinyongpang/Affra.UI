@@ -1,12 +1,16 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using AntDesign;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
+using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
@@ -25,6 +29,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private ConfirmService ConfirmService { get; set; }
+        [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
 
         public CommonFilter ManagementOfChangeFilter { get; set; }
 

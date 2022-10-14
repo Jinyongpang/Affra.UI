@@ -3,10 +3,12 @@ using AntDesign;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
+using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
@@ -21,6 +23,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
+        [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
 
         private Task ReloadAsync(string status = null)
         {

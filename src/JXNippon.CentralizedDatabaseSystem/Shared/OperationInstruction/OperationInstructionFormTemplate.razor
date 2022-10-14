@@ -34,185 +34,210 @@
                     @{
                         if(@currentStep == 0)
                         {
-                                            <div class="py-2 px-5">
-                                                <Descriptions Bordered Column="@responsiveColumn">
-                                        <DescriptionsItem Span="4" Title="Operation Instruction No."><Input Placeholder="To be generated after form created." Disabled="true" @bind-Value="Item.OperationInstructionNo" /></DescriptionsItem>
-                                                    <DescriptionsItem Span="4" Title="Field">
-                                                        <RadioGroup Disabled="disableAllInput" TValue="OperationInstructionField" Name="OperationInstructionField" @bind-Value="Item.OperationInstructionField" @bind-CheckedValue="Item.OperationInstructionField">
-                                                            @foreach (var val in Enum.GetValues(typeof(OperationInstructionField)).Cast<OperationInstructionField>()) {
-                                                            <Radio TValue="OperationInstructionField" Value="@val">@(val.ToString())</Radio>
-                                                }
-                                                        </RadioGroup>
-                                                    </DescriptionsItem>
-                                                    <DescriptionsItem Span="2" Title="Estimated Duration">
-                                                        <RadzenNumeric TValue="int" Disabled="disableAllInput" @bind-Value="Item.EstimatedDuration" Change="@(args => OnEstimatedDurationChange(args))" /> Days
-                                                    </DescriptionsItem>
-                                                    <DescriptionsItem Span="2" Title="Estimated Date">
-                                                    <DatePicker Disabled="true" @bind-Value="Item.EstimatedDurationDateTimeUI" Format="yyyy/MM/dd" />
-                                                    </DescriptionsItem>
-                                                </Descriptions>
-                                                <Descriptions Class="borderedTitlelessDescription" Title="Operation Instruction Remarks" Bordered Column="@responsiveColumn" Style="padding-top:20px">
-                                                    <DescriptionsItem Span="4"><RadzenHtmlEditor Disabled="disableAllInput" style="height: 500px;" @bind-Value="Item.OIContent"></RadzenHtmlEditor></DescriptionsItem>
-                                                </Descriptions>
-                                                @{
-                                                        @if(Item.PreparedBy != null){
-                                                            <Descriptions Title="Prepared By" Bordered Column="@responsiveColumn" Style="padding-top:20px">
-                                                                <DescriptionsItem Span="2" Title="Preparer Name">
-                                                                    <RadzenTextBox Style="width:100%" Disabled="true" @bind-Value="Item.PreparedBy"></RadzenTextBox>
-                                                                </DescriptionsItem>
-                                                                <DescriptionsItem Span="2" Title="Prepared Date">
-                                                                    <DatePicker Style="width:100%" Disabled="true" @bind-Value="Item.PreparedByDateTimeUI" Format="yyyy/MM/dd" />
-                                                                </DescriptionsItem>
-                                                            </Descriptions>
-                                                }
-                                                }
-                                                <Divider />
-                                                <div class="row">
-                                                    <div class="col-6 offset-3 text-center">
-                                                        @if(Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.InitialCreation)
-                                            {
-                                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnCreateButtonClick">
-                                                                <ChildContent>
-                                                                    <span style="font-size: 18px; margin-left: 0px;">Create Form</span>
-                                                                    <Icon Class="anticon-big" Type="form" Theme="outline"/>
-                                                                </ChildContent>
-                                                            </Button>
+                            <div class="py-2 px-5">
+                                <Descriptions Bordered Column="@responsiveColumn">
+                                    <DescriptionsItem Span="4" Title="Operation Instruction No."><Input Placeholder="To be generated after form created." Disabled="true" @bind-Value="Item.OperationInstructionNo" /></DescriptionsItem>
+                                    <DescriptionsItem Span="4" Title="Field">
+                                        <RadioGroup Disabled="disableAllInput" TValue="OperationInstructionField" Name="OperationInstructionField" @bind-Value="Item.OperationInstructionField" @bind-CheckedValue="Item.OperationInstructionField">
+                                            @foreach (var val in Enum.GetValues(typeof(OperationInstructionField)).Cast<OperationInstructionField>()) {
+                                                <Radio TValue="OperationInstructionField" Value="@val">@(val.ToString())</Radio>
                                             }
-                                            else
-                                            {
-                                                            <Button Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnNextButtonClick">
-                                                                <ChildContent>
-                                                                    <span style="font-size: 18px; margin-left: 0px;">Next</span>
-                                                                    <Icon Class="anticon-big" Type="right" Theme="outline"/>
-                                                                </ChildContent>
-                                                            </Button>
-                                            }
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        </RadioGroup>
+                                    </DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Estimated Duration">
+                                        <RadzenNumeric TValue="int" Disabled="disableAllInput" @bind-Value="Item.EstimatedDuration" Change="@(args => OnEstimatedDurationChange(args))" /> Days
+                                    </DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Estimated Date">
+                                    <DatePicker Disabled="true" @bind-Value="Item.EstimatedDurationDateTimeUI" Format="yyyy/MM/dd" />
+                                    </DescriptionsItem>
+                                </Descriptions>
+                                <Descriptions Class="borderedTitlelessDescription" Title="Operation Instruction Remarks" Bordered Column="@responsiveColumn" Style="padding-top:20px">
+                                    <DescriptionsItem Span="4">
+                                        <RadzenHtmlEditor Disabled="disableAllInput" style="height: 500px;" @bind-Value="Item.OIContent">
+                                            <RadzenHtmlEditorUndo />
+                                            <RadzenHtmlEditorRedo />
+                                            <RadzenHtmlEditorSeparator />
+                                            <RadzenHtmlEditorBold />
+                                            <RadzenHtmlEditorItalic />
+                                            <RadzenHtmlEditorUnderline />
+                                            <RadzenHtmlEditorStrikeThrough />
+                                            <RadzenHtmlEditorSeparator />
+                                            <RadzenHtmlEditorAlignLeft />
+                                            <RadzenHtmlEditorAlignCenter />
+                                            <RadzenHtmlEditorAlignRight />
+                                            <RadzenHtmlEditorJustify />
+                                            <RadzenHtmlEditorSeparator />
+                                            <RadzenHtmlEditorIndent />
+                                            <RadzenHtmlEditorOutdent />
+                                            <RadzenHtmlEditorUnorderedList />
+                                            <RadzenHtmlEditorOrderedList />
+                                            <RadzenHtmlEditorSeparator />
+                                            <RadzenHtmlEditorColor />
+                                            <RadzenHtmlEditorBackground />
+                                            <RadzenHtmlEditorRemoveFormat />
+                                            <RadzenHtmlEditorSeparator />
+                                            <RadzenHtmlEditorFontName />
+                                            <RadzenHtmlEditorFontSize />
+                                            <RadzenHtmlEditorFormatBlock />
+                                        </RadzenHtmlEditor>
+                                    </DescriptionsItem>
+                                </Descriptions>
+                                @{
+                                    @if(Item.PreparedBy != null){
+                                        <Descriptions Title="Prepared By" Bordered Column="@responsiveColumn" Style="padding-top:20px">
+                                            <DescriptionsItem Span="2" Title="Preparer Name">
+                                                <RadzenTextBox Style="width:100%" Disabled="true" @bind-Value="Item.PreparedBy"></RadzenTextBox>
+                                            </DescriptionsItem>
+                                            <DescriptionsItem Span="2" Title="Prepared Date">
+                                                <DatePicker Style="width:100%" Disabled="true" @bind-Value="Item.PreparedByDateTimeUI" Format="yyyy/MM/dd" />
+                                            </DescriptionsItem>
+                                        </Descriptions>
+                                    }
+                                }
+                                <Divider />
+                                <div class="row">
+                                    <div class="col-6 offset-3 text-center">
+                                        @if(Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.InitialCreation)
+                                        {
+                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnCreateButtonClick">
+                                                <ChildContent>
+                                                    <span style="font-size: 18px; margin-left: 0px;">Create Form</span>
+                                                    <Icon Class="anticon-big" Type="form" Theme="outline"/>
+                                                </ChildContent>
+                                            </Button>
+                                        }
+                                        else
+                                        {
+                                            <Button Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnNextButtonClick">
+                                                <ChildContent>
+                                                    <span style="font-size: 18px; margin-left: 0px;">Next</span>
+                                                    <Icon Class="anticon-big" Type="right" Theme="outline"/>
+                                                </ChildContent>
+                                            </Button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         }
                         else if(@currentStep == 1)
                         {
-                                            <div class="py-2 px-5">
-                                                <Descriptions Title="Endorsement" Class="signature-uppp" Bordered Column="@responsiveColumn">
-                                                    <DescriptionsItem Span="4" Title="Name">
-                                                        <AutoComplete Disabled="@(disableAllInput || Item.EndorserSignature != string.Empty)" @bind-Value="Item.EndorsedBy" Options="EndorserUsername" Placeholder="Select user..." />
-                                                    </DescriptionsItem>
-                                                    <DescriptionsItem Span="2" Title="Date"><DatePicker Disabled="true" @bind-Value="Item.EndorsedByDateTimeUI" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                                    <DescriptionsItem Class="signature-description" Span="2" Title="Signature">
-                                                        @if(Item.EndorserSignature != string.Empty){
-                                                            <h4 style="text-align:center">Approved</h4>
-                                                        }else{
-                                                            @if (Item.EndorsedBy.Equals(GlobalDataSource.User.Email, StringComparison.OrdinalIgnoreCase) && (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.EndorsementPendingForApproval)){
-                                                                <Button Class="approveButtonStyle" Disabled="@(Item.OperationInstructionCurrentStep != OperationInstructionCurrentStep.EndorsementPendingForApproval)" OnClick="ShowEndorsementConfirmationDialogAsync" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large">
-                                                                    <ChildContent>
-                                                                        <Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
-                                                                        <span style="font-size: 18px; margin-left: 0px;">Approve</span>
-                                                                    </ChildContent>
-                                                                </Button>
-                                                                <Button Class="rejectButtonStyle" Disabled="@(Item.OperationInstructionCurrentStep != OperationInstructionCurrentStep.EndorsementPendingForApproval)" OnClick="ShowEndorsementRejectDialogAsync" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large">
-                                                                    <ChildContent>
-                                                                        <Icon Class="anticon-big" Type="close-circle" Theme="outline"/>
-                                                                        <span style="font-size: 18px; margin-left: 0px;">Reject</span>
-                                                                    </ChildContent>
-                                                                </Button>
-                                                            }
-                                                            else
-                                                            {
-                                                                <h4 style="text-align:center">Pending Approval</h4>
-                                                            }
-                                                        }
-                                                    </DescriptionsItem>
-                                                </Descriptions>
-                                                <Divider />
-                                                <div class="row">
-                                                    <div class="col-6 offset-3 text-center">
-                                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnPreviousButtonClick">
-                                                            <ChildContent>
-                                                                <Icon Class="anticon-big" Type="left" Theme="outline" />
-                                                                <span style="font-size: 18px; margin-left: 0px;">Previous</span>
-                                                            </ChildContent>
-                                                        </Button>
-                                                        @if ((int)Item.OperationInstructionCurrentStep >= (int)OperationInstructionCurrentStep.ApprovalSubmitForApproval)
-                                                    {
-                                                            <Button Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnNextButtonClick">
-                                                                <ChildContent>
-                                                                    <span style="font-size: 18px; margin-left: 0px;">Next</span>
-                                                                    <Icon Class="anticon-big" Type="right" Theme="outline" />
-                                                                </ChildContent>
-                                                            </Button>
-                                                    }
-                                                        @if (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.EndorsementSubmitForApproval)
-                                                    {
-                                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnEndorsementSubmitButtonClick">
-                                                                <ChildContent>
-                                                                    <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
-                                                                    <Icon Class="anticon-big" Type="form" Theme="outline" />
-                                                                </ChildContent>
-                                                            </Button>
-                                                    }
-                                                    </div>
-                                                </div>
-                                            </div>
+                            <div class="py-2 px-5">
+                                <Descriptions Title="Endorsement" Class="signature-uppp" Bordered Column="@responsiveColumn">
+                                    <DescriptionsItem Span="4" Title="Name">
+                                        <AutoComplete Disabled="@(disableAllInput || Item.EndorserSignature != string.Empty)" @bind-Value="Item.EndorsedBy" Options="EndorserUsername" Placeholder="Select user..." />
+                                    </DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Date"><DatePicker Disabled="true" @bind-Value="Item.EndorsedByDateTimeUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Class="signature-description" Span="2" Title="Signature">
+                                        @if(Item.EndorserSignature != string.Empty){
+                                            <h4 style="text-align:center">Approved</h4>
+                                        }else{
+                                            @if (Item.EndorsedBy.Equals(GlobalDataSource.User.Email, StringComparison.OrdinalIgnoreCase) && (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.EndorsementPendingForApproval)){
+                                                <Button Class="approveButtonStyle" Disabled="@(Item.OperationInstructionCurrentStep != OperationInstructionCurrentStep.EndorsementPendingForApproval)" OnClick="ShowEndorsementConfirmationDialogAsync" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large">
+                                                    <ChildContent>
+                                                        <Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
+                                                        <span style="font-size: 18px; margin-left: 0px;">Approve</span>
+                                                    </ChildContent>
+                                                </Button>
+                                                <Button Class="rejectButtonStyle" Disabled="@(Item.OperationInstructionCurrentStep != OperationInstructionCurrentStep.EndorsementPendingForApproval)" OnClick="ShowEndorsementRejectDialogAsync" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large">
+                                                    <ChildContent>
+                                                        <Icon Class="anticon-big" Type="close-circle" Theme="outline"/>
+                                                        <span style="font-size: 18px; margin-left: 0px;">Reject</span>
+                                                    </ChildContent>
+                                                </Button>
+                                            }
+                                            else
+                                            {
+                                                <h4 style="text-align:center">Pending Approval</h4>
+                                            }
+                                        }
+                                    </DescriptionsItem>
+                                </Descriptions>
+                                <Divider />
+                                <div class="row">
+                                    <div class="col-6 offset-3 text-center">
+                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnPreviousButtonClick">
+                                            <ChildContent>
+                                                <Icon Class="anticon-big" Type="left" Theme="outline" />
+                                                <span style="font-size: 18px; margin-left: 0px;">Previous</span>
+                                            </ChildContent>
+                                        </Button>
+                                        @if ((int)Item.OperationInstructionCurrentStep >= (int)OperationInstructionCurrentStep.ApprovalSubmitForApproval)
+                                        {
+                                            <Button Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnNextButtonClick">
+                                                <ChildContent>
+                                                    <span style="font-size: 18px; margin-left: 0px;">Next</span>
+                                                    <Icon Class="anticon-big" Type="right" Theme="outline" />
+                                                </ChildContent>
+                                            </Button>
+                                        }
+                                        @if (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.EndorsementSubmitForApproval)
+                                        {
+                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnEndorsementSubmitButtonClick">
+                                                <ChildContent>
+                                                    <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
+                                                    <Icon Class="anticon-big" Type="form" Theme="outline" />
+                                                </ChildContent>
+                                            </Button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         }
                         else if(@currentStep == 2)
                         {
-                                            <div class="py-2 px-5">
-                                                <Descriptions Title="Approval" Class="signature-uppp" Bordered Column="@responsiveColumn">
-                                                    <DescriptionsItem Span="4" Title="Name">
-                                                        <AutoComplete Disabled="@(disableAllInput || Item.ApproverSignature != string.Empty)" @bind-Value="Item.ApprovedBy" Options="approvalUsername" Placeholder="Select user..." />
-                                                    </DescriptionsItem>
-                                                    <DescriptionsItem Span="2" Title="Date"><DatePicker Disabled="true" @bind-Value="Item.ApprovedByDateTimeUI" Format="yyyy/MM/dd" /></DescriptionsItem>
-                                                    <DescriptionsItem Class="signature-description" Span="2" Title="Signature">
-                                                        @if(Item.ApproverSignature != string.Empty){
-                                                            <h4 style="text-align:center">Approved</h4>
-                                                        }else{
-                                                            @if (Item.ApprovedBy.Equals(GlobalDataSource.User.Email, StringComparison.OrdinalIgnoreCase) && (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.ApprovalPendingForApproval))
-                                                            {
-                                                                <Button Class="approveButtonStyle" Disabled="@(Item.OperationInstructionCurrentStep != OperationInstructionCurrentStep.ApprovalPendingForApproval)" OnClick="ShowApprovalConfirmationDialogAsync" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large">
-                                                                    <ChildContent>
-                                                                        <Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
-                                                                        <span style="font-size: 18px; margin-left: 0px;">Approve</span>
-                                                                    </ChildContent>
-                                                                </Button>
-                                                                <Button Class="rejectButtonStyle" Disabled="@(Item.OperationInstructionCurrentStep != OperationInstructionCurrentStep.ApprovalPendingForApproval)" OnClick="ShowEndorsementRejectDialogAsync" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large">
-                                                                    <ChildContent>
-                                                                        <Icon Class="anticon-big" Type="close-circle" Theme="outline"/>
-                                                                        <span style="font-size: 18px; margin-left: 0px;">Reject</span>
-                                                                    </ChildContent>
-                                                                </Button>
-                                                            }else{
-                                                                <h4 style="text-align:center">Pending Approval</h4>
-                                                            }
-                                                        }
-                                                    </DescriptionsItem>
-                                                </Descriptions>
-                                                <Divider />
-                                                <div class="row">
-                                                    <div class="col-6 offset-3 text-center">
-                                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnPreviousButtonClick">
-                                                            <ChildContent>
-                                                                <Icon Class="anticon-big" Type="left" Theme="outline" />
-                                                                <span style="font-size: 18px; margin-left: 0px;">Previous</span>
-                                                            </ChildContent>
-                                                        </Button>
-
-                                                @if (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.ApprovalSubmitForApproval)
+                            <div class="py-2 px-5">
+                                <Descriptions Title="Approval" Class="signature-uppp" Bordered Column="@responsiveColumn">
+                                    <DescriptionsItem Span="4" Title="Name">
+                                        <AutoComplete Disabled="@(disableAllInput || Item.ApproverSignature != string.Empty)" @bind-Value="Item.ApprovedBy" Options="approvalUsername" Placeholder="Select user..." />
+                                    </DescriptionsItem>
+                                    <DescriptionsItem Span="2" Title="Date"><DatePicker Disabled="true" @bind-Value="Item.ApprovedByDateTimeUI" Format="yyyy/MM/dd" /></DescriptionsItem>
+                                    <DescriptionsItem Class="signature-description" Span="2" Title="Signature">
+                                        @if(Item.ApproverSignature != string.Empty){
+                                            <h4 style="text-align:center">Approved</h4>
+                                        }else{
+                                            @if (Item.ApprovedBy.Equals(GlobalDataSource.User.Email, StringComparison.OrdinalIgnoreCase) && (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.ApprovalPendingForApproval))
                                             {
-                                                    <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnApprovalSubmitButtonClick">
-                                                        <ChildContent>
-                                                            <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
-                                                            <Icon Class="anticon-big" Type="form" Theme="outline" />
-                                                        </ChildContent>
-                                                    </Button>
+                                                <Button Class="approveButtonStyle" Disabled="@(Item.OperationInstructionCurrentStep != OperationInstructionCurrentStep.ApprovalPendingForApproval)" OnClick="ShowApprovalConfirmationDialogAsync" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large">
+                                                    <ChildContent>
+                                                        <Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
+                                                        <span style="font-size: 18px; margin-left: 0px;">Approve</span>
+                                                    </ChildContent>
+                                                </Button>
+                                                <Button Class="rejectButtonStyle" Disabled="@(Item.OperationInstructionCurrentStep != OperationInstructionCurrentStep.ApprovalPendingForApproval)" OnClick="ShowEndorsementRejectDialogAsync" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large">
+                                                    <ChildContent>
+                                                        <Icon Class="anticon-big" Type="close-circle" Theme="outline"/>
+                                                        <span style="font-size: 18px; margin-left: 0px;">Reject</span>
+                                                    </ChildContent>
+                                                </Button>
+                                            }else{
+                                                <h4 style="text-align:center">Pending Approval</h4>
                                             }
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        }
+                                    </DescriptionsItem>
+                                </Descriptions>
+                                <Divider />
+                                <div class="row">
+                                    <div class="col-6 offset-3 text-center">
+                                        <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnPreviousButtonClick">
+                                            <ChildContent>
+                                                <Icon Class="anticon-big" Type="left" Theme="outline" />
+                                                <span style="font-size: 18px; margin-left: 0px;">Previous</span>
+                                            </ChildContent>
+                                        </Button>
+                                        @if (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.ApprovalSubmitForApproval)
+                                        {
+                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnApprovalSubmitButtonClick">
+                                                <ChildContent>
+                                                    <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
+                                                    <Icon Class="anticon-big" Type="form" Theme="outline" />
+                                                </ChildContent>
+                                            </Button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         }
-                        
                     }
-
                 </div>
             </div>
         </div>

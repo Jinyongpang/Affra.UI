@@ -19,14 +19,13 @@
         </div>       
     </Header>
     <Layout Style="height: 100%;">
-        <Sider Width=200>
+        <Sider Width=250>
             <Menu DefaultSelectedKeys=@(new[] { "All" }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
                 <MenuItem Key="All"><span style="font-size: 16px; margin-left: 0px;">All</span></MenuItem>
-                <MenuItem Key="New"><span style="font-size: 16px; margin-left: 0px;">New</span></MenuItem>
-                <MenuItem Key="Pending"><span style="font-size: 16px; margin-left: 0px;">Pending</span></MenuItem>
-                <MenuItem Key="Extension"><span style="font-size: 16px; margin-left: 0px;">Extension</span></MenuItem>
-                <MenuItem Key="Completed"><span style="font-size: 16px; margin-left: 0px;">Completed</span></MenuItem>
-                <MenuItem Key="Deleted"><span style="font-size: 16px; margin-left: 0px;">Deleted</span></MenuItem>
+                    @foreach (var mocStatus in Enum.GetValues(typeof(ManagementOfChangeStatus)).Cast<ManagementOfChangeStatus>().ToList())
+                    {
+                    <MenuItem Key="@mocStatus.ToString()"><span style="font-size: 16px; margin-left: 0px;">@(stringLocalizer[mocStatus.ToString()])</span></MenuItem>
+                    }
             </Menu>
         </Sider>
         <Layout>

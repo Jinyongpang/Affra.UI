@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 1/10/2022 12:42:30 AM
+// Generation date: 10/13/2022 4:55:10 PM
 namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges
 {
     /// <summary>
@@ -53,7 +53,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <param name="managementOfChangeStatus">Initial value of ManagementOfChangeStatus.</param>
         /// <param name="managementOfChangeCurrentStep">Initial value of ManagementOfChangeCurrentStep.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static ManagementOfChangeRecord CreateManagementOfChangeRecord(long ID, 
                     global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeField managementOfChangeField, 
                     global::System.DateTimeOffset createdDateTime, 
@@ -73,8 +73,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property Id in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long Id
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
         {
             get
             {
@@ -87,15 +89,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnIdChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
         /// There are no comments for Property TitleOfChange in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string TitleOfChange
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string TitleOfChange
         {
             get
             {
@@ -108,15 +111,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnTitleOfChangeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _TitleOfChange;
         partial void OnTitleOfChangeChanging(string value);
         partial void OnTitleOfChangeChanged();
         /// <summary>
         /// There are no comments for Property RecordNumber in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string RecordNumber
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string RecordNumber
         {
             get
             {
@@ -129,15 +133,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnRecordNumberChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _RecordNumber;
         partial void OnRecordNumberChanging(string value);
         partial void OnRecordNumberChanged();
         /// <summary>
         /// There are no comments for Property ManagementOfChangeField in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeField ManagementOfChangeField
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ManagementOfChangeField is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeField ManagementOfChangeField
         {
             get
             {
@@ -150,15 +156,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnManagementOfChangeFieldChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeField _ManagementOfChangeField;
         partial void OnManagementOfChangeFieldChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeField value);
         partial void OnManagementOfChangeFieldChanged();
         /// <summary>
         /// There are no comments for Property CreatedDateTime in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset CreatedDateTime
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "CreatedDateTime is required.")]
+        public virtual global::System.DateTimeOffset CreatedDateTime
         {
             get
             {
@@ -171,15 +179,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCreatedDateTimeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _CreatedDateTime;
         partial void OnCreatedDateTimeChanging(global::System.DateTimeOffset value);
         partial void OnCreatedDateTimeChanged();
         /// <summary>
         /// There are no comments for Property CreatedBy in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string CreatedBy
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string CreatedBy
         {
             get
             {
@@ -192,15 +201,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCreatedByChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _CreatedBy;
         partial void OnCreatedByChanging(string value);
         partial void OnCreatedByChanged();
         /// <summary>
         /// There are no comments for Property ManagementOfChangeStatus in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeStatus ManagementOfChangeStatus
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ManagementOfChangeStatus is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeStatus ManagementOfChangeStatus
         {
             get
             {
@@ -213,15 +224,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnManagementOfChangeStatusChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeStatus _ManagementOfChangeStatus;
         partial void OnManagementOfChangeStatusChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeStatus value);
         partial void OnManagementOfChangeStatusChanged();
         /// <summary>
         /// There are no comments for Property ManagementOfChangeCurrentStep in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeCurrentStep ManagementOfChangeCurrentStep
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ManagementOfChangeCurrentStep is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeCurrentStep ManagementOfChangeCurrentStep
         {
             get
             {
@@ -234,15 +247,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnManagementOfChangeCurrentStepChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeCurrentStep _ManagementOfChangeCurrentStep;
         partial void OnManagementOfChangeCurrentStepChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeCurrentStep value);
         partial void OnManagementOfChangeCurrentStepChanged();
         /// <summary>
         /// There are no comments for Property Identification in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.Identification Identification
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.Identification Identification
         {
             get
             {
@@ -255,15 +269,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnIdentificationChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.Identification _Identification;
         partial void OnIdentificationChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.Identification value);
         partial void OnIdentificationChanged();
         /// <summary>
         /// There are no comments for Property RiskEvaluation in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.RiskEvaluations.RiskEvaluation RiskEvaluation
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.RiskEvaluations.RiskEvaluation RiskEvaluation
         {
             get
             {
@@ -276,15 +291,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnRiskEvaluationChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.RiskEvaluations.RiskEvaluation _RiskEvaluation;
         partial void OnRiskEvaluationChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.RiskEvaluations.RiskEvaluation value);
         partial void OnRiskEvaluationChanged();
         /// <summary>
         /// There are no comments for Property Endorsement in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Endorsements.Endorsement Endorsement
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Endorsements.Endorsement Endorsement
         {
             get
             {
@@ -297,15 +313,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnEndorsementChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Endorsements.Endorsement _Endorsement;
         partial void OnEndorsementChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Endorsements.Endorsement value);
         partial void OnEndorsementChanged();
         /// <summary>
         /// There are no comments for Property AuthorisationAndApproval in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.AuthorisationAndApprovals.AuthorisationAndApproval AuthorisationAndApproval
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.AuthorisationAndApprovals.AuthorisationAndApproval AuthorisationAndApproval
         {
             get
             {
@@ -318,15 +335,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnAuthorisationAndApprovalChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.AuthorisationAndApprovals.AuthorisationAndApproval _AuthorisationAndApproval;
         partial void OnAuthorisationAndApprovalChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.AuthorisationAndApprovals.AuthorisationAndApproval value);
         partial void OnAuthorisationAndApprovalChanged();
         /// <summary>
         /// There are no comments for Property CommunicationAndImplementation in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations.CommunicationAndImplementation CommunicationAndImplementation
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations.CommunicationAndImplementation CommunicationAndImplementation
         {
             get
             {
@@ -339,15 +357,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCommunicationAndImplementationChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations.CommunicationAndImplementation _CommunicationAndImplementation;
         partial void OnCommunicationAndImplementationChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations.CommunicationAndImplementation value);
         partial void OnCommunicationAndImplementationChanged();
         /// <summary>
         /// There are no comments for Property Extensions in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Extensions.Extension> Extensions
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Extensions.Extension> Extensions
         {
             get
             {
@@ -360,15 +379,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnExtensionsChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Extensions.Extension> _Extensions = new global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Extensions.Extension>();
         partial void OnExtensionsChanging(global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Extensions.Extension> value);
         partial void OnExtensionsChanged();
         /// <summary>
         /// There are no comments for Property CloseOut in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOut CloseOut
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOut CloseOut
         {
             get
             {
@@ -381,15 +401,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCloseOutChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOut _CloseOut;
         partial void OnCloseOutChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOut value);
         partial void OnCloseOutChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
         {
             get
             {
@@ -402,7 +424,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnxminChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
@@ -422,10 +444,13 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
     public enum ManagementOfChangeStatus
     {
         New = 0,
-        Pending = 1,
-        Extension = 2,
-        Completed = 3,
-        Deleted = 4
+        Approved = 1,
+        Rejected = 2,
+        PendingForApproval = 3,
+        PendingForCloseOut = 4,
+        Extension = 5,
+        ClosedOut = 6,
+        Deleted = 7
     }
     /// <summary>
     /// There are no comments for ManagementOfChangeCurrentStep in the schema.
@@ -485,10 +510,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// Get an entity of type global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord as global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecordSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
         {
-            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
         /// <summary>
         /// Get an entity of type global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord as global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecordSingle specified by key from an entity set
@@ -498,11 +523,11 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord> _source,
             long id)
         {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
     }
 }
@@ -534,8 +559,8 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for SCEElementGroupRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle SCEElementGroupRecord
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle SCEElementGroupRecord
         {
             get
             {
@@ -550,7 +575,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 return this._SCEElementGroupRecord;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle _SCEElementGroupRecord;
     }
     /// <summary>
@@ -568,7 +593,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="createdDateTime">Initial value of CreatedDateTime.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static SCEElementRecord CreateSCEElementRecord(long ID, global::System.DateTimeOffset createdDateTime, long xmin)
         {
             SCEElementRecord sCEElementRecord = new SCEElementRecord();
@@ -580,8 +605,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property Id in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long Id
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
         {
             get
             {
@@ -594,15 +621,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnIdChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
         /// There are no comments for Property SCECode in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string SCECode
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string SCECode
         {
             get
             {
@@ -615,15 +643,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSCECodeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _SCECode;
         partial void OnSCECodeChanging(string value);
         partial void OnSCECodeChanged();
         /// <summary>
         /// There are no comments for Property SCEName in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string SCEName
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string SCEName
         {
             get
             {
@@ -636,15 +665,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSCENameChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _SCEName;
         partial void OnSCENameChanging(string value);
         partial void OnSCENameChanged();
         /// <summary>
         /// There are no comments for Property SCEGroupId in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<long> SCEGroupId
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<long> SCEGroupId
         {
             get
             {
@@ -657,15 +687,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSCEGroupIdChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.Nullable<long> _SCEGroupId;
         partial void OnSCEGroupIdChanging(global::System.Nullable<long> value);
         partial void OnSCEGroupIdChanged();
         /// <summary>
         /// There are no comments for Property SCEDescription in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string SCEDescription
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string SCEDescription
         {
             get
             {
@@ -678,15 +709,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSCEDescriptionChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _SCEDescription;
         partial void OnSCEDescriptionChanging(string value);
         partial void OnSCEDescriptionChanged();
         /// <summary>
         /// There are no comments for Property CreatedDateTime in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset CreatedDateTime
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "CreatedDateTime is required.")]
+        public virtual global::System.DateTimeOffset CreatedDateTime
         {
             get
             {
@@ -699,15 +732,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCreatedDateTimeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _CreatedDateTime;
         partial void OnCreatedDateTimeChanging(global::System.DateTimeOffset value);
         partial void OnCreatedDateTimeChanged();
         /// <summary>
         /// There are no comments for Property CreatedBy in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string CreatedBy
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string CreatedBy
         {
             get
             {
@@ -720,15 +754,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCreatedByChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _CreatedBy;
         partial void OnCreatedByChanging(string value);
         partial void OnCreatedByChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
         {
             get
             {
@@ -741,15 +777,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnxminChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
         /// There are no comments for Property SCEElementGroupRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord SCEElementGroupRecord
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord SCEElementGroupRecord
         {
             get
             {
@@ -762,7 +799,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSCEElementGroupRecordChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord _SCEElementGroupRecord;
         partial void OnSCEElementGroupRecordChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord value);
         partial void OnSCEElementGroupRecordChanged();
@@ -793,8 +830,8 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for SCEElementRecords in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> SCEElementRecords
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> SCEElementRecords
         {
             get
             {
@@ -809,7 +846,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 return this._SCEElementRecords;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> _SCEElementRecords;
     }
     /// <summary>
@@ -828,7 +865,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <param name="name">Initial value of Name.</param>
         /// <param name="createdDateTime">Initial value of CreatedDateTime.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static SCEElementGroupRecord CreateSCEElementGroupRecord(long ID, string name, global::System.DateTimeOffset createdDateTime, long xmin)
         {
             SCEElementGroupRecord sCEElementGroupRecord = new SCEElementGroupRecord();
@@ -841,8 +878,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property Id in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long Id
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
         {
             get
             {
@@ -855,15 +894,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnIdChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
         /// There are no comments for Property Name in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Name
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Name is required.")]
+        public virtual string Name
         {
             get
             {
@@ -876,15 +917,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnNameChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Name;
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
         /// <summary>
         /// There are no comments for Property CreatedDateTime in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset CreatedDateTime
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "CreatedDateTime is required.")]
+        public virtual global::System.DateTimeOffset CreatedDateTime
         {
             get
             {
@@ -897,15 +940,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCreatedDateTimeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _CreatedDateTime;
         partial void OnCreatedDateTimeChanging(global::System.DateTimeOffset value);
         partial void OnCreatedDateTimeChanged();
         /// <summary>
         /// There are no comments for Property CreatedBy in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string CreatedBy
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string CreatedBy
         {
             get
             {
@@ -918,15 +962,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCreatedByChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _CreatedBy;
         partial void OnCreatedByChanging(string value);
         partial void OnCreatedByChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
         {
             get
             {
@@ -939,15 +985,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnxminChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
         /// There are no comments for Property SCEElementRecords in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> SCEElementRecords
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> SCEElementRecords
         {
             get
             {
@@ -960,7 +1007,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSCEElementRecordsChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> _SCEElementRecords = new global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord>();
         partial void OnSCEElementRecordsChanging(global::System.Collections.ObjectModel.Collection<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> value);
         partial void OnSCEElementRecordsChanged();
@@ -974,10 +1021,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// Get an entity of type global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord as global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecordSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
         {
-            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
         /// <summary>
         /// Get an entity of type global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord as global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecordSingle specified by key from an entity set
@@ -987,20 +1034,20 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> _source,
             long id)
         {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
         /// <summary>
         /// Get an entity of type global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord as global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
         {
-            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
         /// <summary>
         /// Get an entity of type global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord as global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle specified by key from an entity set
@@ -1010,11 +1057,11 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord> _source,
             long id)
         {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
     }
 }
@@ -1068,7 +1115,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <param name="approvedByDateTime">Initial value of ApprovedByDateTime.</param>
         /// <param name="createdDateTime">Initial value of CreatedDateTime.</param>
         /// <param name="xmin">Initial value of xmin.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static OperationInstructionRecord CreateOperationInstructionRecord(long ID, 
                     int estimatedDuration, 
                     global::System.DateTimeOffset estimatedDurationDateTime, 
@@ -1100,8 +1147,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property Id in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long Id
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
         {
             get
             {
@@ -1114,15 +1163,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnIdChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
         /// There are no comments for Property OperationInstructionNo in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string OperationInstructionNo
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string OperationInstructionNo
         {
             get
             {
@@ -1135,15 +1185,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnOperationInstructionNoChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _OperationInstructionNo;
         partial void OnOperationInstructionNoChanging(string value);
         partial void OnOperationInstructionNoChanged();
         /// <summary>
         /// There are no comments for Property EstimatedDuration in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int EstimatedDuration
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "EstimatedDuration is required.")]
+        public virtual int EstimatedDuration
         {
             get
             {
@@ -1156,15 +1208,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnEstimatedDurationChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private int _EstimatedDuration;
         partial void OnEstimatedDurationChanging(int value);
         partial void OnEstimatedDurationChanged();
         /// <summary>
         /// There are no comments for Property EstimatedDurationDateTime in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset EstimatedDurationDateTime
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "EstimatedDurationDateTime is required.")]
+        public virtual global::System.DateTimeOffset EstimatedDurationDateTime
         {
             get
             {
@@ -1177,15 +1231,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnEstimatedDurationDateTimeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _EstimatedDurationDateTime;
         partial void OnEstimatedDurationDateTimeChanging(global::System.DateTimeOffset value);
         partial void OnEstimatedDurationDateTimeChanged();
         /// <summary>
         /// There are no comments for Property RevisionNo in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int RevisionNo
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "RevisionNo is required.")]
+        public virtual int RevisionNo
         {
             get
             {
@@ -1198,15 +1254,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnRevisionNoChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private int _RevisionNo;
         partial void OnRevisionNoChanging(int value);
         partial void OnRevisionNoChanged();
         /// <summary>
         /// There are no comments for Property OperationInstructionStatus in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionStatus OperationInstructionStatus
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "OperationInstructionStatus is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionStatus OperationInstructionStatus
         {
             get
             {
@@ -1219,15 +1277,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnOperationInstructionStatusChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionStatus _OperationInstructionStatus;
         partial void OnOperationInstructionStatusChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionStatus value);
         partial void OnOperationInstructionStatusChanged();
         /// <summary>
         /// There are no comments for Property OperationInstructionCurrentStep in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionCurrentStep OperationInstructionCurrentStep
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "OperationInstructionCurrentStep is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionCurrentStep OperationInstructionCurrentStep
         {
             get
             {
@@ -1240,15 +1300,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnOperationInstructionCurrentStepChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionCurrentStep _OperationInstructionCurrentStep;
         partial void OnOperationInstructionCurrentStepChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionCurrentStep value);
         partial void OnOperationInstructionCurrentStepChanged();
         /// <summary>
         /// There are no comments for Property OperationInstructionField in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionField OperationInstructionField
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "OperationInstructionField is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionField OperationInstructionField
         {
             get
             {
@@ -1261,15 +1323,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnOperationInstructionFieldChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionField _OperationInstructionField;
         partial void OnOperationInstructionFieldChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionField value);
         partial void OnOperationInstructionFieldChanged();
         /// <summary>
         /// There are no comments for Property OIContent in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string OIContent
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string OIContent
         {
             get
             {
@@ -1282,15 +1345,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnOIContentChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _OIContent;
         partial void OnOIContentChanging(string value);
         partial void OnOIContentChanged();
         /// <summary>
         /// There are no comments for Property PreparedBy in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string PreparedBy
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string PreparedBy
         {
             get
             {
@@ -1303,15 +1367,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnPreparedByChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _PreparedBy;
         partial void OnPreparedByChanging(string value);
         partial void OnPreparedByChanged();
         /// <summary>
         /// There are no comments for Property PreparerSignature in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string PreparerSignature
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string PreparerSignature
         {
             get
             {
@@ -1324,15 +1389,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnPreparerSignatureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _PreparerSignature;
         partial void OnPreparerSignatureChanging(string value);
         partial void OnPreparerSignatureChanged();
         /// <summary>
         /// There are no comments for Property PreparedByDateTime in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset PreparedByDateTime
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "PreparedByDateTime is required.")]
+        public virtual global::System.DateTimeOffset PreparedByDateTime
         {
             get
             {
@@ -1345,15 +1412,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnPreparedByDateTimeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _PreparedByDateTime;
         partial void OnPreparedByDateTimeChanging(global::System.DateTimeOffset value);
         partial void OnPreparedByDateTimeChanged();
         /// <summary>
         /// There are no comments for Property EndorsedBy in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string EndorsedBy
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string EndorsedBy
         {
             get
             {
@@ -1366,15 +1434,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnEndorsedByChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _EndorsedBy;
         partial void OnEndorsedByChanging(string value);
         partial void OnEndorsedByChanged();
         /// <summary>
         /// There are no comments for Property EndorserSignature in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string EndorserSignature
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string EndorserSignature
         {
             get
             {
@@ -1387,15 +1456,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnEndorserSignatureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _EndorserSignature;
         partial void OnEndorserSignatureChanging(string value);
         partial void OnEndorserSignatureChanged();
         /// <summary>
         /// There are no comments for Property EndorsedByDateTime in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset EndorsedByDateTime
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "EndorsedByDateTime is required.")]
+        public virtual global::System.DateTimeOffset EndorsedByDateTime
         {
             get
             {
@@ -1408,15 +1479,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnEndorsedByDateTimeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _EndorsedByDateTime;
         partial void OnEndorsedByDateTimeChanging(global::System.DateTimeOffset value);
         partial void OnEndorsedByDateTimeChanged();
         /// <summary>
         /// There are no comments for Property ApprovedBy in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string ApprovedBy
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string ApprovedBy
         {
             get
             {
@@ -1429,15 +1501,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnApprovedByChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _ApprovedBy;
         partial void OnApprovedByChanging(string value);
         partial void OnApprovedByChanged();
         /// <summary>
         /// There are no comments for Property ApproverSignature in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string ApproverSignature
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string ApproverSignature
         {
             get
             {
@@ -1450,15 +1523,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnApproverSignatureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _ApproverSignature;
         partial void OnApproverSignatureChanging(string value);
         partial void OnApproverSignatureChanged();
         /// <summary>
         /// There are no comments for Property ApprovedByDateTime in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset ApprovedByDateTime
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ApprovedByDateTime is required.")]
+        public virtual global::System.DateTimeOffset ApprovedByDateTime
         {
             get
             {
@@ -1471,15 +1546,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnApprovedByDateTimeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _ApprovedByDateTime;
         partial void OnApprovedByDateTimeChanging(global::System.DateTimeOffset value);
         partial void OnApprovedByDateTimeChanged();
         /// <summary>
         /// There are no comments for Property CreatedDateTime in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset CreatedDateTime
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "CreatedDateTime is required.")]
+        public virtual global::System.DateTimeOffset CreatedDateTime
         {
             get
             {
@@ -1492,15 +1569,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCreatedDateTimeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _CreatedDateTime;
         partial void OnCreatedDateTimeChanging(global::System.DateTimeOffset value);
         partial void OnCreatedDateTimeChanged();
         /// <summary>
         /// There are no comments for Property CreatedBy in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string CreatedBy
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string CreatedBy
         {
             get
             {
@@ -1513,15 +1591,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCreatedByChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _CreatedBy;
         partial void OnCreatedByChanging(string value);
         partial void OnCreatedByChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public long xmin
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
         {
             get
             {
@@ -1534,7 +1614,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnxminChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
@@ -1545,9 +1625,11 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
     public enum OperationInstructionStatus
     {
         New = 0,
-        Pending = 1,
-        Completed = 2,
-        Deleted = 3
+        Approved = 1,
+        Rejected = 2,
+        PendingForApproval = 3,
+        Completed = 4,
+        Deleted = 5
     }
     /// <summary>
     /// There are no comments for OperationInstructionCurrentStep in the schema.
@@ -1579,10 +1661,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// Get an entity of type global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord as global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecordSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
-        /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
         {
-            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
         /// <summary>
         /// Get an entity of type global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord as global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecordSingle specified by key from an entity set
@@ -1592,11 +1674,11 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         public static global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecordSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord> _source,
             long id)
         {
-            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecordSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
     }
 }
@@ -1617,7 +1699,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <param name="categoriesOfChange">Initial value of CategoriesOfChange.</param>
         /// <param name="priorityOfChange">Initial value of PriorityOfChange.</param>
         /// <param name="sCEAffected">Initial value of SCEAffected.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static Identification CreateIdentification(int durationOfChange, 
                     global::System.DateTimeOffset expiryDate, 
                     global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.ReasonForChange reasonForChange, 
@@ -1639,8 +1721,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property DurationOfChange in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int DurationOfChange
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "DurationOfChange is required.")]
+        public virtual int DurationOfChange
         {
             get
             {
@@ -1653,15 +1737,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDurationOfChangeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private int _DurationOfChange;
         partial void OnDurationOfChangeChanging(int value);
         partial void OnDurationOfChangeChanged();
         /// <summary>
         /// There are no comments for Property ExpiryDate in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset ExpiryDate
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ExpiryDate is required.")]
+        public virtual global::System.DateTimeOffset ExpiryDate
         {
             get
             {
@@ -1674,15 +1760,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnExpiryDateChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _ExpiryDate;
         partial void OnExpiryDateChanging(global::System.DateTimeOffset value);
         partial void OnExpiryDateChanged();
         /// <summary>
         /// There are no comments for Property DescriptionOfChange in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string DescriptionOfChange
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string DescriptionOfChange
         {
             get
             {
@@ -1695,15 +1782,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDescriptionOfChangeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _DescriptionOfChange;
         partial void OnDescriptionOfChangeChanging(string value);
         partial void OnDescriptionOfChangeChanged();
         /// <summary>
         /// There are no comments for Property ReasonForChange in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.ReasonForChange ReasonForChange
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ReasonForChange is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.ReasonForChange ReasonForChange
         {
             get
             {
@@ -1716,15 +1805,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnReasonForChangeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.ReasonForChange _ReasonForChange;
         partial void OnReasonForChangeChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.ReasonForChange value);
         partial void OnReasonForChangeChanged();
         /// <summary>
         /// There are no comments for Property OtherReasonForChange in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string OtherReasonForChange
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string OtherReasonForChange
         {
             get
             {
@@ -1737,15 +1827,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnOtherReasonForChangeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _OtherReasonForChange;
         partial void OnOtherReasonForChangeChanging(string value);
         partial void OnOtherReasonForChangeChanged();
         /// <summary>
         /// There are no comments for Property DetailOfChange in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.DetailOfChange DetailOfChange
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "DetailOfChange is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.DetailOfChange DetailOfChange
         {
             get
             {
@@ -1758,15 +1850,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDetailOfChangeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.DetailOfChange _DetailOfChange;
         partial void OnDetailOfChangeChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.DetailOfChange value);
         partial void OnDetailOfChangeChanged();
         /// <summary>
         /// There are no comments for Property CategoriesOfChange in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.CategoriesOfChange CategoriesOfChange
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "CategoriesOfChange is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.CategoriesOfChange CategoriesOfChange
         {
             get
             {
@@ -1779,15 +1873,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCategoriesOfChangeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.CategoriesOfChange _CategoriesOfChange;
         partial void OnCategoriesOfChangeChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.CategoriesOfChange value);
         partial void OnCategoriesOfChangeChanged();
         /// <summary>
         /// There are no comments for Property PriorityOfChange in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.PriorityOfChange PriorityOfChange
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "PriorityOfChange is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.PriorityOfChange PriorityOfChange
         {
             get
             {
@@ -1800,15 +1896,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnPriorityOfChangeChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.PriorityOfChange _PriorityOfChange;
         partial void OnPriorityOfChangeChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.Identifications.PriorityOfChange value);
         partial void OnPriorityOfChangeChanged();
         /// <summary>
         /// There are no comments for Property SCEAffected in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public bool SCEAffected
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "SCEAffected is required.")]
+        public virtual bool SCEAffected
         {
             get
             {
@@ -1821,15 +1919,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSCEAffectedChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private bool _SCEAffected;
         partial void OnSCEAffectedChanging(bool value);
         partial void OnSCEAffectedChanged();
         /// <summary>
         /// There are no comments for Property SCETagNumber in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string SCETagNumber
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string SCETagNumber
         {
             get
             {
@@ -1842,7 +1941,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSCETagNumberChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _SCETagNumber;
         partial void OnSCETagNumberChanging(string value);
         partial void OnSCETagNumberChanged();
@@ -1901,7 +2000,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <param name="residualRiskLikelihood">Initial value of ResidualRiskLikelihood.</param>
         /// <param name="residualRiskConsequence">Initial value of ResidualRiskConsequence.</param>
         /// <param name="residualRiskRiskLevel">Initial value of ResidualRiskRiskLevel.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static RiskEvaluation CreateRiskEvaluation(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels inheritRiskLikelihood, 
                     global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels inheritRiskConsequence, 
                     global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels inheritRiskRiskLevel, 
@@ -1921,8 +2020,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property InheritRiskLikelihood in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels InheritRiskLikelihood
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "InheritRiskLikelihood is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels InheritRiskLikelihood
         {
             get
             {
@@ -1935,15 +2036,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnInheritRiskLikelihoodChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels _InheritRiskLikelihood;
         partial void OnInheritRiskLikelihoodChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels value);
         partial void OnInheritRiskLikelihoodChanged();
         /// <summary>
         /// There are no comments for Property InheritRiskConsequence in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels InheritRiskConsequence
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "InheritRiskConsequence is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels InheritRiskConsequence
         {
             get
             {
@@ -1956,15 +2059,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnInheritRiskConsequenceChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels _InheritRiskConsequence;
         partial void OnInheritRiskConsequenceChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels value);
         partial void OnInheritRiskConsequenceChanged();
         /// <summary>
         /// There are no comments for Property InheritRiskRiskLevel in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels InheritRiskRiskLevel
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "InheritRiskRiskLevel is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels InheritRiskRiskLevel
         {
             get
             {
@@ -1977,15 +2082,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnInheritRiskRiskLevelChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels _InheritRiskRiskLevel;
         partial void OnInheritRiskRiskLevelChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels value);
         partial void OnInheritRiskRiskLevelChanged();
         /// <summary>
         /// There are no comments for Property ResidualRiskLikelihood in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels ResidualRiskLikelihood
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ResidualRiskLikelihood is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels ResidualRiskLikelihood
         {
             get
             {
@@ -1998,15 +2105,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnResidualRiskLikelihoodChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels _ResidualRiskLikelihood;
         partial void OnResidualRiskLikelihoodChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels value);
         partial void OnResidualRiskLikelihoodChanged();
         /// <summary>
         /// There are no comments for Property ResidualRiskConsequence in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels ResidualRiskConsequence
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ResidualRiskConsequence is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels ResidualRiskConsequence
         {
             get
             {
@@ -2019,15 +2128,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnResidualRiskConsequenceChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels _ResidualRiskConsequence;
         partial void OnResidualRiskConsequenceChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels value);
         partial void OnResidualRiskConsequenceChanged();
         /// <summary>
         /// There are no comments for Property ResidualRiskRiskLevel in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels ResidualRiskRiskLevel
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ResidualRiskRiskLevel is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels ResidualRiskRiskLevel
         {
             get
             {
@@ -2040,15 +2151,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnResidualRiskRiskLevelChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels _ResidualRiskRiskLevel;
         partial void OnResidualRiskRiskLevelChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels value);
         partial void OnResidualRiskRiskLevelChanged();
         /// <summary>
         /// There are no comments for Property RecommendationAndCountermeasure in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string RecommendationAndCountermeasure
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string RecommendationAndCountermeasure
         {
             get
             {
@@ -2061,7 +2173,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnRecommendationAndCountermeasureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _RecommendationAndCountermeasure;
         partial void OnRecommendationAndCountermeasureChanging(string value);
         partial void OnRecommendationAndCountermeasureChanged();
@@ -2078,7 +2190,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// Create a new Endorsement object.
         /// </summary>
         /// <param name="date">Initial value of Date.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static Endorsement CreateEndorsement(global::System.DateTimeOffset date)
         {
             Endorsement endorsement = new Endorsement();
@@ -2088,8 +2200,9 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property LineManagerComment in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string LineManagerComment
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string LineManagerComment
         {
             get
             {
@@ -2102,15 +2215,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnLineManagerCommentChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _LineManagerComment;
         partial void OnLineManagerCommentChanging(string value);
         partial void OnLineManagerCommentChanged();
         /// <summary>
         /// There are no comments for Property Name in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Name
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Name
         {
             get
             {
@@ -2123,15 +2237,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnNameChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Name;
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
         /// <summary>
         /// There are no comments for Property Designation in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Designation
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Designation
         {
             get
             {
@@ -2144,15 +2259,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDesignationChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Designation;
         partial void OnDesignationChanging(string value);
         partial void OnDesignationChanged();
         /// <summary>
         /// There are no comments for Property Signature in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Signature
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Signature
         {
             get
             {
@@ -2165,15 +2281,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSignatureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Signature;
         partial void OnSignatureChanging(string value);
         partial void OnSignatureChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Date
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Date is required.")]
+        public virtual global::System.DateTimeOffset Date
         {
             get
             {
@@ -2186,7 +2304,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDateChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _Date;
         partial void OnDateChanging(global::System.DateTimeOffset value);
         partial void OnDateChanged();
@@ -2203,7 +2321,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// Create a new AuthorisationAndApproval object.
         /// </summary>
         /// <param name="date">Initial value of Date.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static AuthorisationAndApproval CreateAuthorisationAndApproval(global::System.DateTimeOffset date)
         {
             AuthorisationAndApproval authorisationAndApproval = new AuthorisationAndApproval();
@@ -2213,8 +2331,9 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property ApprovingAuthorityComment in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string ApprovingAuthorityComment
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string ApprovingAuthorityComment
         {
             get
             {
@@ -2227,15 +2346,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnApprovingAuthorityCommentChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _ApprovingAuthorityComment;
         partial void OnApprovingAuthorityCommentChanging(string value);
         partial void OnApprovingAuthorityCommentChanged();
         /// <summary>
         /// There are no comments for Property Name in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Name
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Name
         {
             get
             {
@@ -2248,15 +2368,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnNameChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Name;
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
         /// <summary>
         /// There are no comments for Property Designation in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Designation
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Designation
         {
             get
             {
@@ -2269,15 +2390,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDesignationChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Designation;
         partial void OnDesignationChanging(string value);
         partial void OnDesignationChanged();
         /// <summary>
         /// There are no comments for Property Signature in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Signature
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Signature
         {
             get
             {
@@ -2290,15 +2412,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSignatureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Signature;
         partial void OnSignatureChanging(string value);
         partial void OnSignatureChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Date
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Date is required.")]
+        public virtual global::System.DateTimeOffset Date
         {
             get
             {
@@ -2311,7 +2435,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDateChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _Date;
         partial void OnDateChanging(global::System.DateTimeOffset value);
         partial void OnDateChanged();
@@ -2329,7 +2453,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// </summary>
         /// <param name="preparedByDate">Initial value of PreparedByDate.</param>
         /// <param name="agreedByDate">Initial value of AgreedByDate.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static CommunicationAndImplementation CreateCommunicationAndImplementation(global::System.DateTimeOffset preparedByDate, global::System.DateTimeOffset agreedByDate)
         {
             CommunicationAndImplementation communicationAndImplementation = new CommunicationAndImplementation();
@@ -2340,8 +2464,9 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property Comments in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Comments
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Comments
         {
             get
             {
@@ -2354,15 +2479,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCommentsChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Comments;
         partial void OnCommentsChanging(string value);
         partial void OnCommentsChanged();
         /// <summary>
         /// There are no comments for Property PreparedByName in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string PreparedByName
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string PreparedByName
         {
             get
             {
@@ -2375,15 +2501,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnPreparedByNameChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _PreparedByName;
         partial void OnPreparedByNameChanging(string value);
         partial void OnPreparedByNameChanged();
         /// <summary>
         /// There are no comments for Property PreparedBySignature in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string PreparedBySignature
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string PreparedBySignature
         {
             get
             {
@@ -2396,15 +2523,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnPreparedBySignatureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _PreparedBySignature;
         partial void OnPreparedBySignatureChanging(string value);
         partial void OnPreparedBySignatureChanged();
         /// <summary>
         /// There are no comments for Property PreparedByDate in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset PreparedByDate
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "PreparedByDate is required.")]
+        public virtual global::System.DateTimeOffset PreparedByDate
         {
             get
             {
@@ -2417,15 +2546,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnPreparedByDateChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _PreparedByDate;
         partial void OnPreparedByDateChanging(global::System.DateTimeOffset value);
         partial void OnPreparedByDateChanged();
         /// <summary>
         /// There are no comments for Property AgreedByName in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string AgreedByName
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string AgreedByName
         {
             get
             {
@@ -2438,15 +2568,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnAgreedByNameChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _AgreedByName;
         partial void OnAgreedByNameChanging(string value);
         partial void OnAgreedByNameChanged();
         /// <summary>
         /// There are no comments for Property AgreedBySignature in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string AgreedBySignature
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string AgreedBySignature
         {
             get
             {
@@ -2459,15 +2590,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnAgreedBySignatureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _AgreedBySignature;
         partial void OnAgreedBySignatureChanging(string value);
         partial void OnAgreedBySignatureChanged();
         /// <summary>
         /// There are no comments for Property AgreedByDate in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset AgreedByDate
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "AgreedByDate is required.")]
+        public virtual global::System.DateTimeOffset AgreedByDate
         {
             get
             {
@@ -2480,7 +2613,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnAgreedByDateChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _AgreedByDate;
         partial void OnAgreedByDateChanging(global::System.DateTimeOffset value);
         partial void OnAgreedByDateChanged();
@@ -2499,7 +2632,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <param name="extensionNo">Initial value of ExtensionNo.</param>
         /// <param name="durationExtended">Initial value of DurationExtended.</param>
         /// <param name="reviewDate">Initial value of ReviewDate.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static Extension CreateExtension(int extensionNo, int durationExtended, global::System.DateTimeOffset reviewDate)
         {
             Extension extension = new Extension();
@@ -2511,8 +2644,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property ExtensionNo in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int ExtensionNo
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ExtensionNo is required.")]
+        public virtual int ExtensionNo
         {
             get
             {
@@ -2525,15 +2660,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnExtensionNoChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private int _ExtensionNo;
         partial void OnExtensionNoChanging(int value);
         partial void OnExtensionNoChanged();
         /// <summary>
         /// There are no comments for Property DurationExtended in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public int DurationExtended
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "DurationExtended is required.")]
+        public virtual int DurationExtended
         {
             get
             {
@@ -2546,15 +2683,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDurationExtendedChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private int _DurationExtended;
         partial void OnDurationExtendedChanging(int value);
         partial void OnDurationExtendedChanged();
         /// <summary>
         /// There are no comments for Property ReviewDate in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset ReviewDate
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ReviewDate is required.")]
+        public virtual global::System.DateTimeOffset ReviewDate
         {
             get
             {
@@ -2567,15 +2706,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnReviewDateChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _ReviewDate;
         partial void OnReviewDateChanging(global::System.DateTimeOffset value);
         partial void OnReviewDateChanged();
         /// <summary>
         /// There are no comments for Property ApproverNameColection in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string ApproverNameColection
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string ApproverNameColection
         {
             get
             {
@@ -2588,15 +2728,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnApproverNameColectionChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _ApproverNameColection;
         partial void OnApproverNameColectionChanging(string value);
         partial void OnApproverNameColectionChanged();
         /// <summary>
         /// There are no comments for Property ApproverName in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string ApproverName
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string ApproverName
         {
             get
             {
@@ -2609,15 +2750,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnApproverNameChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _ApproverName;
         partial void OnApproverNameChanging(string value);
         partial void OnApproverNameChanged();
         /// <summary>
         /// There are no comments for Property ApproverDesignation in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string ApproverDesignation
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string ApproverDesignation
         {
             get
             {
@@ -2630,15 +2772,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnApproverDesignationChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _ApproverDesignation;
         partial void OnApproverDesignationChanging(string value);
         partial void OnApproverDesignationChanged();
         /// <summary>
         /// There are no comments for Property ApprovalSignature in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string ApprovalSignature
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string ApprovalSignature
         {
             get
             {
@@ -2651,7 +2794,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnApprovalSignatureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _ApprovalSignature;
         partial void OnApprovalSignatureChanging(string value);
         partial void OnApprovalSignatureChanged();
@@ -2669,7 +2812,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// </summary>
         /// <param name="closeOutState">Initial value of CloseOutState.</param>
         /// <param name="date">Initial value of Date.</param>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static CloseOut CreateCloseOut(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOutState closeOutState, global::System.DateTimeOffset date)
         {
             CloseOut closeOut = new CloseOut();
@@ -2680,8 +2823,10 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         /// <summary>
         /// There are no comments for Property CloseOutState in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOutState CloseOutState
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "CloseOutState is required.")]
+        public virtual global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOutState CloseOutState
         {
             get
             {
@@ -2694,15 +2839,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnCloseOutStateChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOutState _CloseOutState;
         partial void OnCloseOutStateChanging(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOutState value);
         partial void OnCloseOutStateChanged();
         /// <summary>
         /// There are no comments for Property Name in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Name
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Name
         {
             get
             {
@@ -2715,15 +2861,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnNameChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Name;
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
         /// <summary>
         /// There are no comments for Property Designation in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Designation
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Designation
         {
             get
             {
@@ -2736,15 +2883,16 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDesignationChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Designation;
         partial void OnDesignationChanging(string value);
         partial void OnDesignationChanged();
         /// <summary>
         /// There are no comments for Property Signature in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Signature
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Signature
         {
             get
             {
@@ -2757,15 +2905,17 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnSignatureChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private string _Signature;
         partial void OnSignatureChanging(string value);
         partial void OnSignatureChanged();
         /// <summary>
         /// There are no comments for Property Date in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Date
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Date is required.")]
+        public virtual global::System.DateTimeOffset Date
         {
             get
             {
@@ -2778,7 +2928,7 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
                 this.OnDateChanged();
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::System.DateTimeOffset _Date;
         partial void OnDateChanging(global::System.DateTimeOffset value);
         partial void OnDateChanged();
@@ -2802,9 +2952,18 @@ namespace ManagementOfChangeODataService.Default
         /// <summary>
         /// Initialize a new Container object.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public Container(global::System.Uri serviceRoot) : 
-                base(serviceRoot, global::Microsoft.OData.Client.ODataProtocolVersion.V4)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public Container(global::System.Uri serviceRoot) :
+                this(serviceRoot, global::Microsoft.OData.Client.ODataProtocolVersion.V4)
+        {
+        }
+
+        /// <summary>
+        /// Initialize a new Container object.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public Container(global::System.Uri serviceRoot, global::Microsoft.OData.Client.ODataProtocolVersion protocolVersion) :
+                base(serviceRoot, protocolVersion)
         {
             this.ResolveName = new global::System.Func<global::System.Type, string>(this.ResolveNameFromType);
             this.ResolveType = new global::System.Func<string, global::System.Type>(this.ResolveTypeFromName);
@@ -2818,7 +2977,7 @@ namespace ManagementOfChangeODataService.Default
         /// in Visual Studio is different from the one indicated in the
         /// server schema, use type-mappers to map between the two.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
             global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations", "ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations");
@@ -2883,7 +3042,7 @@ namespace ManagementOfChangeODataService.Default
         /// in Visual Studio is different from the one indicated in the
         /// server schema, use type-mappers to map between the two.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
             if (clientType.Namespace.Equals("ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations", global::System.StringComparison.Ordinal))
@@ -2930,13 +3089,13 @@ namespace ManagementOfChangeODataService.Default
             {
                 return string.Concat("Default.", clientType.Name);
             }
-            return clientType.FullName;
+            return null;
         }
         /// <summary>
         /// There are no comments for ManagementOfChangeRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord> ManagementOfChangeRecord
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord> ManagementOfChangeRecord
         {
             get
             {
@@ -2947,13 +3106,13 @@ namespace ManagementOfChangeODataService.Default
                 return this._ManagementOfChangeRecord;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord> _ManagementOfChangeRecord;
         /// <summary>
         /// There are no comments for SCEElementRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> SCEElementRecord
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> SCEElementRecord
         {
             get
             {
@@ -2964,13 +3123,13 @@ namespace ManagementOfChangeODataService.Default
                 return this._SCEElementRecord;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord> _SCEElementRecord;
         /// <summary>
         /// There are no comments for SCEElementGroupRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord> SCEElementGroupRecord
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord> SCEElementGroupRecord
         {
             get
             {
@@ -2981,13 +3140,13 @@ namespace ManagementOfChangeODataService.Default
                 return this._SCEElementGroupRecord;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord> _SCEElementGroupRecord;
         /// <summary>
         /// There are no comments for OperationInstructionRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord> OperationInstructionRecord
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord> OperationInstructionRecord
         {
             get
             {
@@ -2998,344 +3157,72 @@ namespace ManagementOfChangeODataService.Default
                 return this._OperationInstructionRecord;
             }
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord> _OperationInstructionRecord;
         /// <summary>
         /// There are no comments for ManagementOfChangeRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToManagementOfChangeRecord(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord managementOfChangeRecord)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToManagementOfChangeRecord(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord managementOfChangeRecord)
         {
             base.AddObject("ManagementOfChangeRecord", managementOfChangeRecord);
         }
         /// <summary>
         /// There are no comments for SCEElementRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToSCEElementRecord(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord sCEElementRecord)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToSCEElementRecord(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord sCEElementRecord)
         {
             base.AddObject("SCEElementRecord", sCEElementRecord);
         }
         /// <summary>
         /// There are no comments for SCEElementGroupRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToSCEElementGroupRecord(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord sCEElementGroupRecord)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToSCEElementGroupRecord(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord sCEElementGroupRecord)
         {
             base.AddObject("SCEElementGroupRecord", sCEElementGroupRecord);
         }
         /// <summary>
         /// There are no comments for OperationInstructionRecord in the schema.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToOperationInstructionRecord(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord operationInstructionRecord)
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToOperationInstructionRecord(global::ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord operationInstructionRecord)
         {
             base.AddObject("OperationInstructionRecord", operationInstructionRecord);
         }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private abstract class GeneratedEdmModel
         {
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
             private static global::Microsoft.OData.Edm.IEdmModel ParsedModel = LoadModelFromString();
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-            private const string Edmx = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
-  <edmx:DataServices>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityType Name=""ManagementOfChangeRecord"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""TitleOfChange"" Type=""Edm.String"" />
-        <Property Name=""RecordNumber"" Type=""Edm.String"" />
-        <Property Name=""ManagementOfChangeField"" Type=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeField"" Nullable=""false"" />
-        <Property Name=""CreatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""CreatedBy"" Type=""Edm.String"" />
-        <Property Name=""ManagementOfChangeStatus"" Type=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeStatus"" Nullable=""false"" />
-        <Property Name=""ManagementOfChangeCurrentStep"" Type=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeCurrentStep"" Nullable=""false"" />
-        <Property Name=""Identification"" Type=""Affra.Service.ManagementOfChange.Domain.Identifications.Identification"" />
-        <Property Name=""RiskEvaluation"" Type=""Affra.Service.ManagementOfChange.Domain.RiskEvaluations.RiskEvaluation"" />
-        <Property Name=""Endorsement"" Type=""Affra.Service.ManagementOfChange.Domain.Endorsements.Endorsement"" />
-        <Property Name=""AuthorisationAndApproval"" Type=""Affra.Service.ManagementOfChange.Domain.AuthorisationAndApprovals.AuthorisationAndApproval"" />
-        <Property Name=""CommunicationAndImplementation"" Type=""Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations.CommunicationAndImplementation"" />
-        <Property Name=""Extensions"" Type=""Collection(Affra.Service.ManagementOfChange.Domain.Extensions.Extension)"" />
-        <Property Name=""CloseOut"" Type=""Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOut"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-      </EntityType>
-      <EnumType Name=""ManagementOfChangeField"">
-        <Member Name=""HIP"" Value=""0"" />
-        <Member Name=""LWP"" Value=""1"" />
-        <Member Name=""Others"" Value=""2"" />
-      </EnumType>
-      <EnumType Name=""ManagementOfChangeStatus"">
-        <Member Name=""New"" Value=""0"" />
-        <Member Name=""Pending"" Value=""1"" />
-        <Member Name=""Extension"" Value=""2"" />
-        <Member Name=""Completed"" Value=""3"" />
-        <Member Name=""Deleted"" Value=""4"" />
-      </EnumType>
-      <EnumType Name=""ManagementOfChangeCurrentStep"">
-        <Member Name=""InitialCreation"" Value=""0"" />
-        <Member Name=""RiskEvaluation"" Value=""1"" />
-        <Member Name=""EndorsementSubmitForApproval"" Value=""2"" />
-        <Member Name=""EndorsementPendingForApproval"" Value=""3"" />
-        <Member Name=""AuthorisationAndApprovalSubmitForApproval"" Value=""4"" />
-        <Member Name=""AuthorisationAndApprovalPendingForApproval"" Value=""5"" />
-        <Member Name=""ExtensionSubmitForApproval"" Value=""6"" />
-        <Member Name=""ExtensionPendingForApproval"" Value=""7"" />
-        <Member Name=""CloseOutSubmitForApproval"" Value=""8"" />
-        <Member Name=""CloseoutPendingForApproval"" Value=""9"" />
-        <Member Name=""Completed"" Value=""10"" />
-      </EnumType>
-      <EnumType Name=""LikelihoodLevels"">
-        <Member Name=""LikelihoodLevelA"" Value=""0"" />
-        <Member Name=""LikelihoodLevelB"" Value=""1"" />
-        <Member Name=""LikelihoodLevelC"" Value=""2"" />
-        <Member Name=""LikelihoodLevelD"" Value=""3"" />
-        <Member Name=""LikelihoodLevelE"" Value=""4"" />
-      </EnumType>
-      <EnumType Name=""ConsequenceLevels"">
-        <Member Name=""ConsequenceLevel1"" Value=""0"" />
-        <Member Name=""ConsequenceLevel2"" Value=""1"" />
-        <Member Name=""ConsequenceLevel3"" Value=""2"" />
-        <Member Name=""ConsequenceLevel4"" Value=""3"" />
-        <Member Name=""ConsequenceLevel5"" Value=""4"" />
-      </EnumType>
-      <EnumType Name=""RiskLevels"">
-        <Member Name=""LowRisk"" Value=""0"" />
-        <Member Name=""MediumRisk"" Value=""1"" />
-        <Member Name=""HighRisk"" Value=""2"" />
-        <Member Name=""VeryHighRisk"" Value=""3"" />
-      </EnumType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.SCEElements"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityType Name=""SCEElementRecord"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""SCECode"" Type=""Edm.String"" />
-        <Property Name=""SCEName"" Type=""Edm.String"" />
-        <Property Name=""SCEGroupId"" Type=""Edm.Int64"" />
-        <Property Name=""SCEDescription"" Type=""Edm.String"" />
-        <Property Name=""CreatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""CreatedBy"" Type=""Edm.String"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""SCEElementGroupRecord"" Type=""Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord"">
-          <ReferentialConstraint Property=""SCEGroupId"" ReferencedProperty=""Id"" />
-        </NavigationProperty>
-      </EntityType>
-      <EntityType Name=""SCEElementGroupRecord"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" Nullable=""false"" />
-        <Property Name=""CreatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""CreatedBy"" Type=""Edm.String"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-        <NavigationProperty Name=""SCEElementRecords"" Type=""Collection(Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord)"" />
-      </EntityType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.OperationInstructions"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityType Name=""OperationInstructionRecord"">
-        <Key>
-          <PropertyRef Name=""Id"" />
-        </Key>
-        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""OperationInstructionNo"" Type=""Edm.String"" />
-        <Property Name=""EstimatedDuration"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""EstimatedDurationDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""RevisionNo"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""OperationInstructionStatus"" Type=""Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionStatus"" Nullable=""false"" />
-        <Property Name=""OperationInstructionCurrentStep"" Type=""Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionCurrentStep"" Nullable=""false"" />
-        <Property Name=""OperationInstructionField"" Type=""Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionField"" Nullable=""false"" />
-        <Property Name=""OIContent"" Type=""Edm.String"" />
-        <Property Name=""PreparedBy"" Type=""Edm.String"" />
-        <Property Name=""PreparerSignature"" Type=""Edm.String"" />
-        <Property Name=""PreparedByDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""EndorsedBy"" Type=""Edm.String"" />
-        <Property Name=""EndorserSignature"" Type=""Edm.String"" />
-        <Property Name=""EndorsedByDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""ApprovedBy"" Type=""Edm.String"" />
-        <Property Name=""ApproverSignature"" Type=""Edm.String"" />
-        <Property Name=""ApprovedByDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""CreatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""CreatedBy"" Type=""Edm.String"" />
-        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
-      </EntityType>
-      <EnumType Name=""OperationInstructionStatus"">
-        <Member Name=""New"" Value=""0"" />
-        <Member Name=""Pending"" Value=""1"" />
-        <Member Name=""Completed"" Value=""2"" />
-        <Member Name=""Deleted"" Value=""3"" />
-      </EnumType>
-      <EnumType Name=""OperationInstructionCurrentStep"">
-        <Member Name=""InitialCreation"" Value=""0"" />
-        <Member Name=""EndorsementSubmitForApproval"" Value=""1"" />
-        <Member Name=""EndorsementPendingForApproval"" Value=""2"" />
-        <Member Name=""ApprovalSubmitForApproval"" Value=""3"" />
-        <Member Name=""ApprovalPendingForApproval"" Value=""4"" />
-        <Member Name=""Completed"" Value=""5"" />
-      </EnumType>
-      <EnumType Name=""OperationInstructionField"">
-        <Member Name=""HIP"" Value=""0"" />
-        <Member Name=""LWP"" Value=""1"" />
-        <Member Name=""SK10"" Value=""2"" />
-      </EnumType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.Identifications"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <ComplexType Name=""Identification"">
-        <Property Name=""DurationOfChange"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""ExpiryDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""DescriptionOfChange"" Type=""Edm.String"" />
-        <Property Name=""ReasonForChange"" Type=""Affra.Service.ManagementOfChange.Domain.Identifications.ReasonForChange"" Nullable=""false"" />
-        <Property Name=""OtherReasonForChange"" Type=""Edm.String"" />
-        <Property Name=""DetailOfChange"" Type=""Affra.Service.ManagementOfChange.Domain.Identifications.DetailOfChange"" Nullable=""false"" />
-        <Property Name=""CategoriesOfChange"" Type=""Affra.Service.ManagementOfChange.Domain.Identifications.CategoriesOfChange"" Nullable=""false"" />
-        <Property Name=""PriorityOfChange"" Type=""Affra.Service.ManagementOfChange.Domain.Identifications.PriorityOfChange"" Nullable=""false"" />
-        <Property Name=""SCEAffected"" Type=""Edm.Boolean"" Nullable=""false"" />
-        <Property Name=""SCETagNumber"" Type=""Edm.String"" />
-      </ComplexType>
-      <EnumType Name=""ReasonForChange"">
-        <Member Name=""Deviation"" Value=""0"" />
-        <Member Name=""Deferment"" Value=""1"" />
-        <Member Name=""Improvement"" Value=""2"" />
-        <Member Name=""Deficiency"" Value=""3"" />
-        <Member Name=""Decommissioning"" Value=""4"" />
-        <Member Name=""Others"" Value=""5"" />
-      </EnumType>
-      <EnumType Name=""DetailOfChange"">
-        <Member Name=""FacilitiesImprovementPlan"" Value=""0"" />
-        <Member Name=""OperatingChangeAndNonRoutineOperations"" Value=""1"" />
-        <Member Name=""PlantControlAndSafetySystemChange"" Value=""2"" />
-      </EnumType>
-      <EnumType Name=""CategoriesOfChange"">
-        <Member Name=""Permanent"" Value=""0"" />
-        <Member Name=""Temporary"" Value=""1"" />
-      </EnumType>
-      <EnumType Name=""PriorityOfChange"">
-        <Member Name=""Normal"" Value=""0"" />
-        <Member Name=""Emergency"" Value=""1"" />
-      </EnumType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.RiskEvaluations"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <ComplexType Name=""RiskEvaluation"">
-        <Property Name=""InheritRiskLikelihood"" Type=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels"" Nullable=""false"" />
-        <Property Name=""InheritRiskConsequence"" Type=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels"" Nullable=""false"" />
-        <Property Name=""InheritRiskRiskLevel"" Type=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels"" Nullable=""false"" />
-        <Property Name=""ResidualRiskLikelihood"" Type=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.LikelihoodLevels"" Nullable=""false"" />
-        <Property Name=""ResidualRiskConsequence"" Type=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ConsequenceLevels"" Nullable=""false"" />
-        <Property Name=""ResidualRiskRiskLevel"" Type=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.RiskLevels"" Nullable=""false"" />
-        <Property Name=""RecommendationAndCountermeasure"" Type=""Edm.String"" />
-      </ComplexType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.Endorsements"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <ComplexType Name=""Endorsement"">
-        <Property Name=""LineManagerComment"" Type=""Edm.String"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""Designation"" Type=""Edm.String"" />
-        <Property Name=""Signature"" Type=""Edm.String"" />
-        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-      </ComplexType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.AuthorisationAndApprovals"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <ComplexType Name=""AuthorisationAndApproval"">
-        <Property Name=""ApprovingAuthorityComment"" Type=""Edm.String"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""Designation"" Type=""Edm.String"" />
-        <Property Name=""Signature"" Type=""Edm.String"" />
-        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-      </ComplexType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.CommunicationAndImplementations"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <ComplexType Name=""CommunicationAndImplementation"">
-        <Property Name=""Comments"" Type=""Edm.String"" />
-        <Property Name=""PreparedByName"" Type=""Edm.String"" />
-        <Property Name=""PreparedBySignature"" Type=""Edm.String"" />
-        <Property Name=""PreparedByDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""AgreedByName"" Type=""Edm.String"" />
-        <Property Name=""AgreedBySignature"" Type=""Edm.String"" />
-        <Property Name=""AgreedByDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-      </ComplexType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.Extensions"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <ComplexType Name=""Extension"">
-        <Property Name=""ExtensionNo"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""DurationExtended"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""ReviewDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""ApproverNameColection"" Type=""Edm.String"" />
-        <Property Name=""ApproverName"" Type=""Edm.String"" />
-        <Property Name=""ApproverDesignation"" Type=""Edm.String"" />
-        <Property Name=""ApprovalSignature"" Type=""Edm.String"" />
-      </ComplexType>
-    </Schema>
-    <Schema Namespace=""Affra.Service.ManagementOfChange.Domain.CloseOuts"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <ComplexType Name=""CloseOut"">
-        <Property Name=""CloseOutState"" Type=""Affra.Service.ManagementOfChange.Domain.CloseOuts.CloseOutState"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""Designation"" Type=""Edm.String"" />
-        <Property Name=""Signature"" Type=""Edm.String"" />
-        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-      </ComplexType>
-      <EnumType Name=""CloseOutState"">
-        <Member Name=""RevertOriginalState"" Value=""0"" />
-        <Member Name=""MadePermanentState"" Value=""1"" />
-      </EnumType>
-    </Schema>
-    <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityContainer Name=""Container"">
-        <EntitySet Name=""ManagementOfChangeRecord"" EntityType=""Affra.Service.ManagementOfChange.Domain.ManagementOfChanges.ManagementOfChangeRecord"" />
-        <EntitySet Name=""SCEElementRecord"" EntityType=""Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementRecord"">
-          <NavigationPropertyBinding Path=""SCEElementGroupRecord"" Target=""SCEElementGroupRecord"" />
-          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name=""SCEElementGroupRecord"" EntityType=""Affra.Service.ManagementOfChange.Domain.SCEElements.SCEElementGroupRecord"">
-          <NavigationPropertyBinding Path=""SCEElementRecords"" Target=""SCEElementRecord"" />
-          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name=""OperationInstructionRecord"" EntityType=""Affra.Service.ManagementOfChange.Domain.OperationInstructions.OperationInstructionRecord"">
-          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-      </EntityContainer>
-    </Schema>
-  </edmx:DataServices>
-</edmx:Edmx>";
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+            private const string filePath = @"ManagementOfChangeODataServiceCsdl.xml";
+
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
             public static global::Microsoft.OData.Edm.IEdmModel GetInstance()
             {
                 return ParsedModel;
             }
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
             private static global::Microsoft.OData.Edm.IEdmModel LoadModelFromString()
             {
-                global::System.Xml.XmlReader reader = CreateXmlReader(Edmx);
+                global::System.Xml.XmlReader reader = CreateXmlReader();
                 try
                 {
                     global::System.Collections.Generic.IEnumerable<global::Microsoft.OData.Edm.Validation.EdmError> errors;
                     global::Microsoft.OData.Edm.IEdmModel edmModel;
-                    
+
                     if (!global::Microsoft.OData.Edm.Csdl.CsdlReader.TryParse(reader, false, out edmModel, out errors))
                     {
-                        global::System.Text.StringBuilder errorMessages = new global::System.Text.StringBuilder();
-                        foreach (var error in errors)
-                        {
-                            errorMessages.Append(error.ErrorMessage);
-                            errorMessages.Append("; ");
-                        }
-                        throw new global::System.InvalidOperationException(errorMessages.ToString());
+	                    global::System.Text.StringBuilder errorMessages = new global::System.Text.StringBuilder();
+	                    foreach (var error in errors)
+	                    {
+		                    errorMessages.Append(error.ErrorMessage);
+		                    errorMessages.Append("; ");
+	                    }
+	                    throw new global::System.InvalidOperationException(errorMessages.ToString());
                     }
 
                     return edmModel;
@@ -3345,10 +3232,26 @@ namespace ManagementOfChangeODataService.Default
                     ((global::System.IDisposable)(reader)).Dispose();
                 }
             }
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
             private static global::System.Xml.XmlReader CreateXmlReader(string edmxToParse)
             {
                 return global::System.Xml.XmlReader.Create(new global::System.IO.StringReader(edmxToParse));
+            }
+
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+            private static global::System.Xml.XmlReader CreateXmlReader()
+            {
+                try
+                {
+                    var assembly = global::System.Reflection.Assembly.GetExecutingAssembly();
+                    var resourcePath = global::System.Linq.Enumerable.Single(assembly.GetManifestResourceNames(), str => str.EndsWith(filePath));
+                    global::System.IO.Stream stream = assembly.GetManifestResourceStream(resourcePath);
+                    return global::System.Xml.XmlReader.Create(new global::System.IO.StreamReader(stream));
+                }
+                catch(global::System.Xml.XmlException e)
+                {
+                    throw new global::System.Xml.XmlException("Failed to create an XmlReader from the stream. Check if the resource exists.", e);
+                }
             }
         }
     }
