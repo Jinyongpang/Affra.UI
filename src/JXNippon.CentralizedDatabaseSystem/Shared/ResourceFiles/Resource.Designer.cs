@@ -61,11 +61,236 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last Sand Disposal.
+        /// </summary>
+        public static string AccumulatedSandDisposed {
+            get {
+                return ResourceManager.GetString("AccumulatedSandDisposed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual Consumption.
+        /// </summary>
+        public static string ActualConsumption {
+            get {
+                return ResourceManager.GetString("ActualConsumption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual Injection.
+        /// </summary>
+        public static string ActualInjection {
+            get {
+                return ResourceManager.GetString("ActualInjection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to After Cooler Disch HP.
+        /// </summary>
+        public static string AfterCoolerDischHP {
+            get {
+                return ResourceManager.GetString("AfterCoolerDischHP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to After Cooler Disch LP.
+        /// </summary>
+        public static string AfterCoolerDischLP {
+            get {
+                return ResourceManager.GetString("AfterCoolerDischLP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analyser Status.
+        /// </summary>
+        public static string AnalyserStatus {
+            get {
+                return ResourceManager.GetString("AnalyserStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Bedding.
+        /// </summary>
+        public static string AvailableBedding {
+            get {
+                return ResourceManager.GetString("AvailableBedding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Axial Disp. mm #1.
+        /// </summary>
+        public static string AxialDisp1 {
+            get {
+                return ResourceManager.GetString("AxialDisp1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Axial Disp. mm #2.
+        /// </summary>
+        public static string AxialDisp2 {
+            get {
+                return ResourceManager.GetString("AxialDisp2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CB.
+        /// </summary>
+        public static string CB {
+            get {
+                return ResourceManager.GetString("CB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CCP (bar).
+        /// </summary>
+        public static string CCP {
+            get {
+                return ResourceManager.GetString("CCP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CDP.
+        /// </summary>
+        public static string CDP {
+            get {
+                return ResourceManager.GetString("CDP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chose (Base).
+        /// </summary>
+        public static string ChokeBase {
+            get {
+                return ResourceManager.GetString("ChokeBase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choke (Mode).
+        /// </summary>
+        public static string ChokeMode {
+            get {
+                return ResourceManager.GetString("ChokeMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choke (%).
+        /// </summary>
+        public static string ChokePercentage {
+            get {
+                return ResourceManager.GetString("ChokePercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CI (ltr / day).
+        /// </summary>
+        public static string CI {
+            get {
+                return ResourceManager.GetString("CI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CI Pump Status.
+        /// </summary>
+        public static string CIPumpStatus {
+            get {
+                return ResourceManager.GetString("CIPumpStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Closed Out.
         /// </summary>
         public static string ClosedOut {
             get {
                 return ResourceManager.GetString("ClosedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CM.
+        /// </summary>
+        public static string CM {
+            get {
+                return ResourceManager.GetString("CM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CM Filter S-6970 d/p.
+        /// </summary>
+        public static string CMFilterS6970 {
+            get {
+                return ResourceManager.GetString("CMFilterS6970", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CM Filter Range.
+        /// </summary>
+        public static string CMFilterS6970Range {
+            get {
+                return ResourceManager.GetString("CMFilterS6970Range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Condensate Water Cut Meter (%).
+        /// </summary>
+        public static string CondensateWaterCutMeterPercentage {
+            get {
+                return ResourceManager.GetString("CondensateWaterCutMeterPercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Condensate Water Cut Meter (PPM).
+        /// </summary>
+        public static string CondensateWaterCutMeterPPM {
+            get {
+                return ResourceManager.GetString("CondensateWaterCutMeterPPM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string CondensateWaterCutMeterRemark {
+            get {
+                return ResourceManager.GetString("CondensateWaterCutMeterRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Condy Sampler Content (ml).
+        /// </summary>
+        public static string CondySamplerContent {
+            get {
+                return ResourceManager.GetString("CondySamplerContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Condy Sampler Id.
+        /// </summary>
+        public static string CondySamplerId {
+            get {
+                return ResourceManager.GetString("CondySamplerId", resourceCulture);
             }
         }
         
@@ -111,6 +336,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string ConsequenceLevel5 {
             get {
                 return ResourceManager.GetString("ConsequenceLevel5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cooling Medium System Name.
+        /// </summary>
+        public static string CoolingMediumSystemName {
+            get {
+                return ResourceManager.GetString("CoolingMediumSystemName", resourceCulture);
             }
         }
         
@@ -412,6 +646,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Daily Target Rate.
+        /// </summary>
+        public static string DailyTargetRate {
+            get {
+                return ResourceManager.GetString("DailyTargetRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Utilities.
         /// </summary>
         public static string DailyUtility {
@@ -466,6 +709,87 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DE Journal Brg TE-807 (°c).
+        /// </summary>
+        public static string DEJournalBrgTE807 {
+            get {
+                return ResourceManager.GetString("DEJournalBrgTE807", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DE Journal Brg TE-808 (°c).
+        /// </summary>
+        public static string DEJournalBrgTE808 {
+            get {
+                return ResourceManager.GetString("DEJournalBrgTE808", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DE Sample Colour.
+        /// </summary>
+        public static string DESampleColour {
+            get {
+                return ResourceManager.GetString("DESampleColour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deviation %.
+        /// </summary>
+        public static string Deviation {
+            get {
+                return ResourceManager.GetString("Deviation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DE Vibration X.
+        /// </summary>
+        public static string DEVibrationX {
+            get {
+                return ResourceManager.GetString("DEVibrationX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DE Vibration Y.
+        /// </summary>
+        public static string DEVibrationY {
+            get {
+                return ResourceManager.GetString("DEVibrationY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drums.
+        /// </summary>
+        public static string Drum {
+            get {
+                return ResourceManager.GetString("Drum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numbers of Drum.
+        /// </summary>
+        public static string DrumCollectedNumber {
+            get {
+                return ResourceManager.GetString("DrumCollectedNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drums.
+        /// </summary>
+        public static string Drums {
+            get {
+                return ResourceManager.GetString("Drums", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item exists..
         /// </summary>
         public static string DuplicatePrimaryKey {
@@ -511,11 +835,308 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to East Cluster.
+        /// </summary>
+        public static string EastClusterJettingCycleNumber {
+            get {
+                return ResourceManager.GetString("EastClusterJettingCycleNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated HIP Crude to FPSO (bbl).
+        /// </summary>
+        public static string EstimatedHIPCrudeToFPSO {
+            get {
+                return ResourceManager.GetString("EstimatedHIPCrudeToFPSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string EstimatedHIPCrudeToFPSORemark {
+            get {
+                return ResourceManager.GetString("EstimatedHIPCrudeToFPSORemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated LWP Crude to FPSO (bbl).
+        /// </summary>
+        public static string EstimatedLWPCrudeToFPSO {
+            get {
+                return ResourceManager.GetString("EstimatedLWPCrudeToFPSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string EstimatedLWPCrudeToFPSORemark {
+            get {
+                return ResourceManager.GetString("EstimatedLWPCrudeToFPSORemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expired.
+        /// </summary>
+        public static string ExpiredDate {
+            get {
+                return ResourceManager.GetString("ExpiredDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Facilities Improvement Plan.
         /// </summary>
         public static string FacilitiesImprovementPlan {
             get {
                 return ResourceManager.GetString("FacilitiesImprovementPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flow Rate (kg / hr).
+        /// </summary>
+        public static string FlowRate {
+            get {
+                return ResourceManager.GetString("FlowRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSO Crude API reading Inlet Sep.
+        /// </summary>
+        public static string FPSOCrudeAPIReadingInletSep {
+            get {
+                return ResourceManager.GetString("FPSOCrudeAPIReadingInletSep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSO Crude API Reading Receiving Tank.
+        /// </summary>
+        public static string FPSOCrudeAPIReadingReceivingTank {
+            get {
+                return ResourceManager.GetString("FPSOCrudeAPIReadingReceivingTank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSO Cumulative Crude Oil (bbl).
+        /// </summary>
+        public static string FPSOCumulativeCrudeOil {
+            get {
+                return ResourceManager.GetString("FPSOCumulativeCrudeOil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string FPSOCumulativeCrudeOilRemark {
+            get {
+                return ResourceManager.GetString("FPSOCumulativeCrudeOilRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSO Cumulative Gas Export (MMscf).
+        /// </summary>
+        public static string FPSOCumulativeGasExport {
+            get {
+                return ResourceManager.GetString("FPSOCumulativeGasExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string FPSOCumulativeGasExportRemark {
+            get {
+                return ResourceManager.GetString("FPSOCumulativeGasExportRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSO Cumulative Water Production (bbl).
+        /// </summary>
+        public static string FPSOCumulativeWaterProduction {
+            get {
+                return ResourceManager.GetString("FPSOCumulativeWaterProduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string FPSOCumulativeWaterProductionRemark {
+            get {
+                return ResourceManager.GetString("FPSOCumulativeWaterProductionRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSO Flaring (MMscf).
+        /// </summary>
+        public static string FPSOFlaring {
+            get {
+                return ResourceManager.GetString("FPSOFlaring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string FPSOFlaringRemark {
+            get {
+                return ResourceManager.GetString("FPSOFlaringRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSO Fuel Gas Consumption (MMscf).
+        /// </summary>
+        public static string FPSOFuelGasConsumption {
+            get {
+                return ResourceManager.GetString("FPSOFuelGasConsumption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string FPSOFuelGasConsumptionRemark {
+            get {
+                return ResourceManager.GetString("FPSOFuelGasConsumptionRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSO Gas Export GODC Plan.
+        /// </summary>
+        public static string FPSOGasExportGODCPlan {
+            get {
+                return ResourceManager.GetString("FPSOGasExportGODCPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fuel Gas (MMscf).
+        /// </summary>
+        public static string FuelGas {
+            get {
+                return ResourceManager.GetString("FuelGas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string FuelGasRemark {
+            get {
+                return ResourceManager.GetString("FuelGasRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gas Sampler Content (ml).
+        /// </summary>
+        public static string GasSamplerContent {
+            get {
+                return ResourceManager.GetString("GasSamplerContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gas Sampler Id.
+        /// </summary>
+        public static string GasSamplerId {
+            get {
+                return ResourceManager.GetString("GasSamplerId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GG Air Intake ΔP.
+        /// </summary>
+        public static string GGAirIntake {
+            get {
+                return ResourceManager.GetString("GGAirIntake", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GG CT Brg L.O ΔP.
+        /// </summary>
+        public static string GGCTBrgLO {
+            get {
+                return ResourceManager.GetString("GGCTBrgLO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GG N1.
+        /// </summary>
+        public static string GGN1 {
+            get {
+                return ResourceManager.GetString("GGN1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GG N2.
+        /// </summary>
+        public static string GGN2 {
+            get {
+                return ResourceManager.GetString("GGN2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string GlycolPumpName {
+            get {
+                return ResourceManager.GetString("GlycolPumpName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Glycol Stock In Drum.
+        /// </summary>
+        public static string GlycolStockInDrum {
+            get {
+                return ResourceManager.GetString("GlycolStockInDrum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Glycol Stock In Tote Tank.
+        /// </summary>
+        public static string GlycolStockInToteTank {
+            get {
+                return ResourceManager.GetString("GlycolStockInToteTank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string GlycolTrainName {
+            get {
+                return ResourceManager.GetString("GlycolTrainName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highest Mercury.
+        /// </summary>
+        public static string HighestMercuryReading {
+            get {
+                return ResourceManager.GetString("HighestMercuryReading", resourceCulture);
             }
         }
         
@@ -529,11 +1150,344 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HIP ALQ.
+        /// </summary>
+        public static string HIP_ALQ {
+            get {
+                return ResourceManager.GetString("HIP_ALQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HIP LQ.
+        /// </summary>
+        public static string HIP_LQ {
+            get {
+                return ResourceManager.GetString("HIP_LQ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated HIP Condy Divert to FPSO (bbl).
+        /// </summary>
+        public static string HIPCondyDivertToFPSO {
+            get {
+                return ResourceManager.GetString("HIPCondyDivertToFPSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string HIPCondyDivertToFPSORemark {
+            get {
+                return ResourceManager.GetString("HIPCondyDivertToFPSORemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HIP Cumulative Condensate Export (bbl).
+        /// </summary>
+        public static string HIPCumulativeCondensateExport {
+            get {
+                return ResourceManager.GetString("HIPCumulativeCondensateExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string HIPCumulativeCondensateExportRemark {
+            get {
+                return ResourceManager.GetString("HIPCumulativeCondensateExportRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HIP Cumulative Gas Export (MMscf).
+        /// </summary>
+        public static string HIPCumulativeGasExport {
+            get {
+                return ResourceManager.GetString("HIPCumulativeGasExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string HIPCumulativeGasExportRemark {
+            get {
+                return ResourceManager.GetString("HIPCumulativeGasExportRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HIP Cumulative Water Production (bbl).
+        /// </summary>
+        public static string HIPCumulativeWaterProduction {
+            get {
+                return ResourceManager.GetString("HIPCumulativeWaterProduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string HIPCumulativeWaterProductionRemark {
+            get {
+                return ResourceManager.GetString("HIPCumulativeWaterProductionRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HIP Gas Export GODC Plan.
+        /// </summary>
+        public static string HIPGasExportGODCPlan {
+            get {
+                return ResourceManager.GetString("HIPGasExportGODCPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wells.
+        /// </summary>
+        public static string HIPWellHeadName {
+            get {
+                return ResourceManager.GetString("HIPWellHeadName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HP Vent (MMscf).
+        /// </summary>
+        public static string HPVent {
+            get {
+                return ResourceManager.GetString("HPVent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string HPVentRemark {
+            get {
+                return ResourceManager.GetString("HPVentRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inboard Thrust Brg TE-803 (°c).
+        /// </summary>
+        public static string InboardThrustBrgTE803 {
+            get {
+                return ResourceManager.GetString("InboardThrustBrgTE803", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inboard Thrust Brg TE-804 (°c).
+        /// </summary>
+        public static string InboardThrustBrgTE804 {
+            get {
+                return ResourceManager.GetString("InboardThrustBrgTE804", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicator.
+        /// </summary>
+        public static string Indicator {
+            get {
+                return ResourceManager.GetString("Indicator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicator Guide.
+        /// </summary>
+        public static string IndicatorGuide {
+            get {
+                return ResourceManager.GetString("IndicatorGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Injection Point.
+        /// </summary>
+        public static string InjectionPoint {
+            get {
+                return ResourceManager.GetString("InjectionPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Injection Status.
+        /// </summary>
+        public static string InjectionStatus {
+            get {
+                return ResourceManager.GetString("InjectionStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Injurious / MTC / FAC.
+        /// </summary>
+        public static string Injurious_MTC_FACCount {
+            get {
+                return ResourceManager.GetString("Injurious_MTC_FACCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Injurious / MTC / FAC Date.
+        /// </summary>
+        public static string Injurious_MTC_FACDateUI {
+            get {
+                return ResourceManager.GetString("Injurious_MTC_FACDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction conflicts with another user..
         /// </summary>
         public static string InvalidToken {
             get {
                 return ResourceManager.GetString("InvalidToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iron (ppm).
+        /// </summary>
+        public static string Iron {
+            get {
+                return ResourceManager.GetString("Iron", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iron Range.
+        /// </summary>
+        public static string IronRange {
+            get {
+                return ResourceManager.GetString("IronRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Annual ESD Test.
+        /// </summary>
+        public static string LastAnnualESDTestDateUI {
+            get {
+                return ResourceManager.GetString("LastAnnualESDTestDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Change Out.
+        /// </summary>
+        public static string LastChangeOutUI {
+            get {
+                return ResourceManager.GetString("LastChangeOutUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Drill Exercise Conducted.
+        /// </summary>
+        public static string LastDrillExerciseConductedDateUI {
+            get {
+                return ResourceManager.GetString("LastDrillExerciseConductedDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last LTI Date.
+        /// </summary>
+        public static string LastLTIDateUI {
+            get {
+                return ResourceManager.GetString("LastLTIDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Major LOPC.
+        /// </summary>
+        public static string LastMajorLOPC {
+            get {
+                return ResourceManager.GetString("LastMajorLOPC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Minor LOPC.
+        /// </summary>
+        public static string LastMinorLOPC {
+            get {
+                return ResourceManager.GetString("LastMinorLOPC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Other LOPC.
+        /// </summary>
+        public static string LastOtherLOPC {
+            get {
+                return ResourceManager.GetString("LastOtherLOPC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Pigging Date.
+        /// </summary>
+        public static string LastPiggingDateUI {
+            get {
+                return ResourceManager.GetString("LastPiggingDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Sampling.
+        /// </summary>
+        public static string LastSamplingUI {
+            get {
+                return ResourceManager.GetString("LastSamplingUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Sand Jetting Date.
+        /// </summary>
+        public static string LastSandJettingDateUI {
+            get {
+                return ResourceManager.GetString("LastSandJettingDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Skimming Date.
+        /// </summary>
+        public static string LastSkimmingDateUI {
+            get {
+                return ResourceManager.GetString("LastSkimmingDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Level Drop.
+        /// </summary>
+        public static string LevelDrop {
+            get {
+                return ResourceManager.GetString("LevelDrop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Life Boat Name.
+        /// </summary>
+        public static string LifeBoatName {
+            get {
+                return ResourceManager.GetString("LifeBoatName", resourceCulture);
             }
         }
         
@@ -583,11 +1537,83 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logistic Name.
+        /// </summary>
+        public static string LogisticName {
+            get {
+                return ResourceManager.GetString("LogisticName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Long Description &amp; Remark.
+        /// </summary>
+        public static string LongDescriptionRemark {
+            get {
+                return ResourceManager.GetString("LongDescriptionRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Low.
         /// </summary>
         public static string LowRisk {
             get {
                 return ResourceManager.GetString("LowRisk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LP Vent (MMscf).
+        /// </summary>
+        public static string LPVent {
+            get {
+                return ResourceManager.GetString("LPVent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string LPVentRemark {
+            get {
+                return ResourceManager.GetString("LPVentRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual.
+        /// </summary>
+        public static string LWPActualInjection {
+            get {
+                return ResourceManager.GetString("LWPActualInjection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LWP.
+        /// </summary>
+        public static string LWPInjectionTarget {
+            get {
+                return ResourceManager.GetString("LWPInjectionTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wells.
+        /// </summary>
+        public static string LWPWellHeadName {
+            get {
+                return ResourceManager.GetString("LWPWellHeadName", resourceCulture);
             }
         }
         
@@ -601,11 +1627,182 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Major Equipment Name.
+        /// </summary>
+        public static string MajorEquipmentName {
+            get {
+                return ResourceManager.GetString("MajorEquipmentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Major LOPC.
+        /// </summary>
+        public static string MajorLOPC {
+            get {
+                return ResourceManager.GetString("MajorLOPC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximo Work Order.
+        /// </summary>
+        public static string MaximoWorkOrder {
+            get {
+                return ResourceManager.GetString("MaximoWorkOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Medium.
         /// </summary>
         public static string MediumRisk {
             get {
                 return ResourceManager.GetString("MediumRisk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minor LOPC.
+        /// </summary>
+        public static string MinorLOPC {
+            get {
+                return ResourceManager.GetString("MinorLOPC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MO.
+        /// </summary>
+        public static string MO {
+            get {
+                return ResourceManager.GetString("MO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NDE Journal Brg TE-805 (°c).
+        /// </summary>
+        public static string NDEJournalBrgTE805 {
+            get {
+                return ResourceManager.GetString("NDEJournalBrgTE805", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NDE Journal Brg TE-806 (°c).
+        /// </summary>
+        public static string NDEJournalBrgTE806 {
+            get {
+                return ResourceManager.GetString("NDEJournalBrgTE806", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NDE Sample Colour.
+        /// </summary>
+        public static string NDESampleColour {
+            get {
+                return ResourceManager.GetString("NDESampleColour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NDE Vibration X.
+        /// </summary>
+        public static string NDEVibrationX {
+            get {
+                return ResourceManager.GetString("NDEVibrationX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NDE Vibration Y.
+        /// </summary>
+        public static string NDEVibrationY {
+            get {
+                return ResourceManager.GetString("NDEVibrationY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Near Miss.
+        /// </summary>
+        public static string NearMissCount {
+            get {
+                return ResourceManager.GetString("NearMissCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Near Miss Date.
+        /// </summary>
+        public static string NearMissDateUI {
+            get {
+                return ResourceManager.GetString("NearMissDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Annual ESD Test.
+        /// </summary>
+        public static string NextAnnualESDTestDateUI {
+            get {
+                return ResourceManager.GetString("NextAnnualESDTestDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Change Out.
+        /// </summary>
+        public static string NextChangeOutUI {
+            get {
+                return ResourceManager.GetString("NextChangeOutUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Pigging Date.
+        /// </summary>
+        public static string NextPiggingDateUI {
+            get {
+                return ResourceManager.GetString("NextPiggingDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Sampling.
+        /// </summary>
+        public static string NextSamplingUI {
+            get {
+                return ResourceManager.GetString("NextSamplingUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Sand Jetting Date.
+        /// </summary>
+        public static string NextSandJettingDateUI {
+            get {
+                return ResourceManager.GetString("NextSandJettingDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nitrite (ppm).
+        /// </summary>
+        public static string Nitrite {
+            get {
+                return ResourceManager.GetString("Nitrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nitrite Range.
+        /// </summary>
+        public static string NitriteRange {
+            get {
+                return ResourceManager.GetString("NitriteRange", resourceCulture);
             }
         }
         
@@ -673,11 +1870,65 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Oil In Water Reading (PPM).
+        /// </summary>
+        public static string OilInWaterReading {
+            get {
+                return ResourceManager.GetString("OilInWaterReading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string OilInWaterReadingRemark {
+            get {
+                return ResourceManager.GetString("OilInWaterReadingRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operating Change and Non-Routine Operations.
         /// </summary>
         public static string OperatingChangeAndNonRoutineOperations {
             get {
                 return ResourceManager.GetString("OperatingChangeAndNonRoutineOperations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operation : Catering : Non-Essential.
+        /// </summary>
+        public static string Operation_Catering_NonEssential {
+            get {
+                return ResourceManager.GetString("Operation_Catering_NonEssential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other LOPC.
+        /// </summary>
+        public static string OtherLOPC {
+            get {
+                return ResourceManager.GetString("OtherLOPC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outboard Thrust Brg TE-801 (°c).
+        /// </summary>
+        public static string OutboardThrustBrgTE801 {
+            get {
+                return ResourceManager.GetString("OutboardThrustBrgTE801", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outboard Thrust Brg TE-802 (°c).
+        /// </summary>
+        public static string OutboardThrustBrgTE802 {
+            get {
+                return ResourceManager.GetString("OutboardThrustBrgTE802", resourceCulture);
             }
         }
         
@@ -763,6 +2014,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PCP (bar).
+        /// </summary>
+        public static string PCP {
+            get {
+                return ResourceManager.GetString("PCP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pending For Approval.
         /// </summary>
         public static string PendingForApproval {
@@ -781,6 +2041,51 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Period.
+        /// </summary>
+        public static string Period {
+            get {
+                return ResourceManager.GetString("Period", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to pH.
+        /// </summary>
+        public static string PH {
+            get {
+                return ResourceManager.GetString("PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to pH Reading.
+        /// </summary>
+        public static string PhReading {
+            get {
+                return ResourceManager.GetString("PhReading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to pH Reading Range.
+        /// </summary>
+        public static string PhReadingRange {
+            get {
+                return ResourceManager.GetString("PhReadingRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plan For Tomorrow.
+        /// </summary>
+        public static string PlanForTomorrow {
+            get {
+                return ResourceManager.GetString("PlanForTomorrow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Planned Downtime.
         /// </summary>
         public static string PlannedDowntime {
@@ -795,6 +2100,141 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string PlantControlAndSafetySystemChange {
             get {
                 return ResourceManager.GetString("PlantControlAndSafetySystemChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PM.
+        /// </summary>
+        public static string PM {
+            get {
+                return ResourceManager.GetString("PM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Power Generator Name.
+        /// </summary>
+        public static string PowerGeneratorName {
+            get {
+                return ResourceManager.GetString("PowerGeneratorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disc (HP).
+        /// </summary>
+        public static string PressureDisc {
+            get {
+                return ResourceManager.GetString("PressureDisc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suct (LP).
+        /// </summary>
+        public static string PressureSuct {
+            get {
+                return ResourceManager.GetString("PressureSuct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous Day Level (mm).
+        /// </summary>
+        public static string PreviousDayLevel {
+            get {
+                return ResourceManager.GetString("PreviousDayLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary Vent DE (kpa).
+        /// </summary>
+        public static string PrimaryVentDE {
+            get {
+                return ResourceManager.GetString("PrimaryVentDE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary Vent NDE (kpa).
+        /// </summary>
+        public static string PrimaryVentNDE {
+            get {
+                return ResourceManager.GetString("PrimaryVentNDE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string ProducedWaterTreatmentSystemName {
+            get {
+                return ResourceManager.GetString("ProducedWaterTreatmentSystemName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Production Separator V-2010 PV.
+        /// </summary>
+        public static string ProductionSeparatorV2010PV {
+            get {
+                return ResourceManager.GetString("ProductionSeparatorV2010PV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property Damage.
+        /// </summary>
+        public static string PropertyDamageCount {
+            get {
+                return ResourceManager.GetString("PropertyDamageCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property Damage Date.
+        /// </summary>
+        public static string PropertyDamageDateUI {
+            get {
+                return ResourceManager.GetString("PropertyDamageDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PT N3.
+        /// </summary>
+        public static string PTN3 {
+            get {
+                return ResourceManager.GetString("PTN3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pump Discharge (I/d).
+        /// </summary>
+        public static string PumpDischarge {
+            get {
+                return ResourceManager.GetString("PumpDischarge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pump Stroke / Min.
+        /// </summary>
+        public static string PumpStroke {
+            get {
+                return ResourceManager.GetString("PumpStroke", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PV-2901 SP.
+        /// </summary>
+        public static string PV2901SP {
+            get {
+                return ResourceManager.GetString("PV2901SP", resourceCulture);
             }
         }
         
@@ -835,11 +2275,722 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Raised.
+        /// </summary>
+        public static string RaisedDateUI {
+            get {
+                return ResourceManager.GetString("RaisedDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recycle Value HP (%).
+        /// </summary>
+        public static string RecycleValueHP {
+            get {
+                return ResourceManager.GetString("RecycleValueHP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recycle Value LP (%).
+        /// </summary>
+        public static string RecycleValueLP {
+            get {
+                return ResourceManager.GetString("RecycleValueLP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reference Number.
+        /// </summary>
+        public static string ReferenceNumber {
+            get {
+                return ResourceManager.GetString("ReferenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string Remark {
+            get {
+                return ResourceManager.GetString("Remark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string Remark1 {
+            get {
+                return ResourceManager.GetString("Remark1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string Remark2 {
+            get {
+                return ResourceManager.GetString("Remark2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This change is hereby reverted to original state.
         /// </summary>
         public static string RevertOriginalState {
             get {
                 return ResourceManager.GetString("RevertOriginalState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string RollsRoyceRB211EngineName {
+            get {
+                return ResourceManager.GetString("RollsRoyceRB211EngineName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Running Hours.
+        /// </summary>
+        public static string RunningHours {
+            get {
+                return ResourceManager.GetString("RunningHours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-0400 ΔP (bar).
+        /// </summary>
+        public static string S0400 {
+            get {
+                return ResourceManager.GetString("S0400", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salinity (µS/cm).
+        /// </summary>
+        public static string Salinity {
+            get {
+                return ResourceManager.GetString("Salinity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sand Disposal Desander Name.
+        /// </summary>
+        public static string SandDisposalDesanderName {
+            get {
+                return ResourceManager.GetString("SandDisposalDesanderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sand Filter S-0400 Status.
+        /// </summary>
+        public static string SandFilterS0400Status {
+            get {
+                return ResourceManager.GetString("SandFilterS0400Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Say bolt Colour.
+        /// </summary>
+        public static string SayBoltColour {
+            get {
+                return ResourceManager.GetString("SayBoltColour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SCP (bar).
+        /// </summary>
+        public static string SCP {
+            get {
+                return ResourceManager.GetString("SCP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SK10 Cumulative Gas Export (MMscf).
+        /// </summary>
+        public static string SK10CumulativeGasExport {
+            get {
+                return ResourceManager.GetString("SK10CumulativeGasExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SK-10 Days LTI Free.
+        /// </summary>
+        public static string SK10DaysLTIFree {
+            get {
+                return ResourceManager.GetString("SK10DaysLTIFree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SK10 Gas Export GODC Plan (MMscfd).
+        /// </summary>
+        public static string SK10GasExportGODCPlan {
+            get {
+                return ResourceManager.GetString("SK10GasExportGODCPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string SK10GasExportGODCPlanRemark {
+            get {
+                return ResourceManager.GetString("SK10GasExportGODCPlanRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speed.
+        /// </summary>
+        public static string Speed {
+            get {
+                return ResourceManager.GetString("Speed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speed Control.
+        /// </summary>
+        public static string SpeedControl {
+            get {
+                return ResourceManager.GetString("SpeedControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Attempt.
+        /// </summary>
+        public static string StartAttempt {
+            get {
+                return ResourceManager.GetString("StartAttempt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Date.
+        /// </summary>
+        public static string StartDate {
+            get {
+                return ResourceManager.GetString("StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Station Recycle PV-2015 %.
+        /// </summary>
+        public static string StationRecyclePV2015 {
+            get {
+                return ResourceManager.GetString("StationRecyclePV2015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Station Recycle PV-2015 Control.
+        /// </summary>
+        public static string StationRecyclePV2015Control {
+            get {
+                return ResourceManager.GetString("StationRecyclePV2015Control", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stock (Drums).
+        /// </summary>
+        public static string Stock {
+            get {
+                return ResourceManager.GetString("Stock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful Starts.
+        /// </summary>
+        public static string SuccessfulStarts {
+            get {
+                return ResourceManager.GetString("SuccessfulStarts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surge Deviation HP (%).
+        /// </summary>
+        public static string SurgeDeviationHP {
+            get {
+                return ResourceManager.GetString("SurgeDeviationHP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surge Deviation LP (%).
+        /// </summary>
+        public static string SurgeDeviationLP {
+            get {
+                return ResourceManager.GetString("SurgeDeviationLP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wave Height (m).
+        /// </summary>
+        public static string SwellWaveHeight {
+            get {
+                return ResourceManager.GetString("SwellWaveHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to T6.
+        /// </summary>
+        public static string T6 {
+            get {
+                return ResourceManager.GetString("T6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag.
+        /// </summary>
+        public static string TagName {
+            get {
+                return ResourceManager.GetString("TagName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target.
+        /// </summary>
+        public static string Target {
+            get {
+                return ResourceManager.GetString("Target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A DE Fe.
+        /// </summary>
+        public static string TCA_DE_FE {
+            get {
+                return ResourceManager.GetString("TCA_DE_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A DE pH.
+        /// </summary>
+        public static string TCA_DE_PH {
+            get {
+                return ResourceManager.GetString("TCA_DE_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A NDE Fe.
+        /// </summary>
+        public static string TCA_NDE_FE {
+            get {
+                return ResourceManager.GetString("TCA_NDE_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A NDE pH.
+        /// </summary>
+        public static string TCA_NDE_PH {
+            get {
+                return ResourceManager.GetString("TCA_NDE_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A LP Fe.
+        /// </summary>
+        public static string TCA_TCALP_FE {
+            get {
+                return ResourceManager.GetString("TCA_TCALP_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A LP pH.
+        /// </summary>
+        public static string TCA_TCALP_PH {
+            get {
+                return ResourceManager.GetString("TCA_TCALP_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A V-2200 Fe.
+        /// </summary>
+        public static string TCA_V2200_FE {
+            get {
+                return ResourceManager.GetString("TCA_V2200_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A V-2200 pH.
+        /// </summary>
+        public static string TCA_V2200_PH {
+            get {
+                return ResourceManager.GetString("TCA_V2200_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A V-2400 Fe.
+        /// </summary>
+        public static string TCA_V2400_FE {
+            get {
+                return ResourceManager.GetString("TCA_V2400_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A V-2400 pH.
+        /// </summary>
+        public static string TCA_V2400_PH {
+            get {
+                return ResourceManager.GetString("TCA_V2400_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A V-2430 Fe.
+        /// </summary>
+        public static string TCA_V2430_FE {
+            get {
+                return ResourceManager.GetString("TCA_V2430_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A V-2430 pH.
+        /// </summary>
+        public static string TCA_V2430_PH {
+            get {
+                return ResourceManager.GetString("TCA_V2430_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A HP.
+        /// </summary>
+        public static string TCAHP {
+            get {
+                return ResourceManager.GetString("TCAHP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-A LP.
+        /// </summary>
+        public static string TCALP {
+            get {
+                return ResourceManager.GetString("TCALP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B DE Fe.
+        /// </summary>
+        public static string TCB_DE_FE {
+            get {
+                return ResourceManager.GetString("TCB_DE_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B DE pH.
+        /// </summary>
+        public static string TCB_DE_PH {
+            get {
+                return ResourceManager.GetString("TCB_DE_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B NDE Fe.
+        /// </summary>
+        public static string TCB_NDE_FE {
+            get {
+                return ResourceManager.GetString("TCB_NDE_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B NDE pH.
+        /// </summary>
+        public static string TCB_NDE_PH {
+            get {
+                return ResourceManager.GetString("TCB_NDE_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B LP Fe.
+        /// </summary>
+        public static string TCB_TCBLP_FE {
+            get {
+                return ResourceManager.GetString("TCB_TCBLP_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B LP pH.
+        /// </summary>
+        public static string TCB_TCBLP_PH {
+            get {
+                return ResourceManager.GetString("TCB_TCBLP_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B V-2500 Fe.
+        /// </summary>
+        public static string TCB_V2500_FE {
+            get {
+                return ResourceManager.GetString("TCB_V2500_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B V-2500 pH.
+        /// </summary>
+        public static string TCB_V2500_PH {
+            get {
+                return ResourceManager.GetString("TCB_V2500_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B V-2530 Fe.
+        /// </summary>
+        public static string TCB_V2530_FE {
+            get {
+                return ResourceManager.GetString("TCB_V2530_FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B V-2530 pH.
+        /// </summary>
+        public static string TCB_V2530_PH {
+            get {
+                return ResourceManager.GetString("TCB_V2530_PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B HP.
+        /// </summary>
+        public static string TCBHP {
+            get {
+                return ResourceManager.GetString("TCBHP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TC-B LP.
+        /// </summary>
+        public static string TCBLP {
+            get {
+                return ResourceManager.GetString("TCBLP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TCP (bar).
+        /// </summary>
+        public static string TCP {
+            get {
+                return ResourceManager.GetString("TCP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test Separator V-2000 PV.
+        /// </summary>
+        public static string TestSeparatorV2000PV {
+            get {
+                return ResourceManager.GetString("TestSeparatorV2000PV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to THP (bar).
+        /// </summary>
+        public static string THP {
+            get {
+                return ResourceManager.GetString("THP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Throughput (MMscfd).
+        /// </summary>
+        public static string ThroughPut {
+            get {
+                return ResourceManager.GetString("ThroughPut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to THT (° c).
+        /// </summary>
+        public static string THT {
+            get {
+                return ResourceManager.GetString("THT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Today&apos;s Level.
+        /// </summary>
+        public static string TodayLevel {
+            get {
+                return ResourceManager.GetString("TodayLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Today Report Level (mm).
+        /// </summary>
+        public static string TodayReportLevel {
+            get {
+                return ResourceManager.GetString("TodayReportLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total HIP POB.
+        /// </summary>
+        public static string Total_HIP_POB {
+            get {
+                return ResourceManager.GetString("Total_HIP_POB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tote Tank.
+        /// </summary>
+        public static string TotalTank {
+            get {
+                return ResourceManager.GetString("TotalTank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total UCUX This Month.
+        /// </summary>
+        public static string TotalUCUXThisMonth {
+            get {
+                return ResourceManager.GetString("TotalUCUXThisMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total UCUX Today.
+        /// </summary>
+        public static string TotalUCUXToday {
+            get {
+                return ResourceManager.GetString("TotalUCUXToday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tote Tank.
+        /// </summary>
+        public static string ToteTank {
+            get {
+                return ResourceManager.GetString("ToteTank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual.
+        /// </summary>
+        public static string TrunkLineActualInjection {
+            get {
+                return ResourceManager.GetString("TrunkLineActualInjection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trunk Line.
+        /// </summary>
+        public static string TrunkLineInjectionTarget {
+            get {
+                return ResourceManager.GetString("TrunkLineInjectionTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trunk Line Pressure.
+        /// </summary>
+        public static string TrunkLinePressure {
+            get {
+                return ResourceManager.GetString("TrunkLinePressure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string TurbineWashDateUI {
+            get {
+                return ResourceManager.GetString("TurbineWashDateUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runnning Hours.
+        /// </summary>
+        public static string TurbineWashRunnningHours {
+            get {
+                return ResourceManager.GetString("TurbineWashRunnningHours", resourceCulture);
             }
         }
         
@@ -880,11 +3031,56 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uptime (hr : mm).
+        /// </summary>
+        public static string UpTime {
+            get {
+                return ResourceManager.GetString("UpTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Utility Name.
+        /// </summary>
+        public static string UtilityName {
+            get {
+                return ResourceManager.GetString("UtilityName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V-2010.
+        /// </summary>
+        public static string V2010 {
+            get {
+                return ResourceManager.GetString("V2010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vendor Name.
+        /// </summary>
+        public static string VendorName {
+            get {
+                return ResourceManager.GetString("VendorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to High Risk.
         /// </summary>
         public static string VeryHighRisk {
             get {
                 return ResourceManager.GetString("VeryHighRisk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visibility (NM).
+        /// </summary>
+        public static string Visibility {
+            get {
+                return ResourceManager.GetString("Visibility", resourceCulture);
             }
         }
         
@@ -912,6 +3108,114 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string W3 {
             get {
                 return ResourceManager.GetString("W3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Water Content in Gas (lb/MMscf).
+        /// </summary>
+        public static string WaterContentInGas {
+            get {
+                return ResourceManager.GetString("WaterContentInGas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remarks.
+        /// </summary>
+        public static string WaterContentInGasRemark {
+            get {
+                return ResourceManager.GetString("WaterContentInGasRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weather.
+        /// </summary>
+        public static string Weather {
+            get {
+                return ResourceManager.GetString("Weather", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual.
+        /// </summary>
+        public static string WellActualInjection {
+            get {
+                return ResourceManager.GetString("WellActualInjection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wells.
+        /// </summary>
+        public static string WellInjectionTarget {
+            get {
+                return ResourceManager.GetString("WellInjectionTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Well Stream Cooler Name.
+        /// </summary>
+        public static string WellStreamCoolerName {
+            get {
+                return ResourceManager.GetString("WellStreamCoolerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Well Stream Coolers Temperature ° c.
+        /// </summary>
+        public static string WellStreamCoolerTemparature {
+            get {
+                return ResourceManager.GetString("WellStreamCoolerTemparature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to West Cluster.
+        /// </summary>
+        public static string WestClusterJettingCycleNumber {
+            get {
+                return ResourceManager.GetString("WestClusterJettingCycleNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wind Direction.
+        /// </summary>
+        public static string WindDirection {
+            get {
+                return ResourceManager.GetString("WindDirection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wind Speed (knots).
+        /// </summary>
+        public static string WindSpeed {
+            get {
+                return ResourceManager.GetString("WindSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string WorkOrderTypeName {
+            get {
+                return ResourceManager.GetString("WorkOrderTypeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yesterday&apos;s Level.
+        /// </summary>
+        public static string YesterdayLevel {
+            get {
+                return ResourceManager.GetString("YesterdayLevel", resourceCulture);
             }
         }
     }

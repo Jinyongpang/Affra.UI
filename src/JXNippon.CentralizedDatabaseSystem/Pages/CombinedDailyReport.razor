@@ -57,7 +57,10 @@
                         <div class="col-5">
                             <Space>
                                 <SpaceItem>
-                                    <h4 class="m-0 d-flex align-items-center title">
+                                    @if(Item.DailyHIPAndLWPSummarys.Count == 0 && Item.DailyFPSOHelangSummarys.Count == 0){
+                                        CDRClass = emptyCDRClass;
+                                    }
+                                    <h4 class="@CDRClass">
                                         1. OIM Summary
                                     </h4>
                                 </SpaceItem>
@@ -73,7 +76,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=20 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[0])
@@ -116,7 +118,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=25 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[1])
@@ -168,7 +169,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=85 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[2])
@@ -214,7 +214,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=75 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[3])
@@ -257,7 +256,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=75 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[4])
@@ -300,7 +298,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=15 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[5])
@@ -343,7 +340,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=50 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[6])
@@ -386,7 +382,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=40 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[7])
@@ -429,7 +424,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=10 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[8])
@@ -475,7 +469,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=90 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[9])
@@ -515,7 +508,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=88 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[10])
@@ -558,7 +550,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=100 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[11])
@@ -598,7 +589,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=100 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[12])
@@ -644,7 +634,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=19 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[13])
@@ -687,7 +676,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=20 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[14])
@@ -727,7 +715,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=55 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[15])
@@ -767,7 +754,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=62 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[16])
@@ -807,7 +793,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=66 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[17])
@@ -847,7 +832,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=10 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[18])
@@ -887,7 +871,6 @@
                                 </SpaceItem>
                             </Space>
                         </div>
-                        <GenericProgressBar StrokeWidth=15 Percentage=0 ShowInfo=false />
                     </HeaderTemplate>
                     <ChildContent>
                         @if (isRadzenPanelExpandedList[19])
