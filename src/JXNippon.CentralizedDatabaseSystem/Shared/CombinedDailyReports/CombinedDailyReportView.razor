@@ -60,8 +60,8 @@
 				<div class="col view-dialog-content">
 					<Collapse DefaultActiveKey="@(new[] {"1" })">
 						<Panel Header="1. OIM SUMMARY" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="HIP / LWP SUMMARY" Key="1">
+							<ChildContent> 
+								<Panel ShowArrow="false" Header="HIP / LWP SUMMARY" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyHIPAndLWPSummary Items=@this.Item.DailyHIPAndLWPSummarys>
@@ -70,7 +70,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="FPSO HELANG SUMMARY" Key="1">
+								<Panel ShowArrow="false" Header="FPSO HELANG SUMMARY" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyFPSOHelangSummary Items=@this.Item.DailyFPSOHelangSummarys>
@@ -79,40 +79,40 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="2. HEALTH, SAFETY & ENVIRONMENT" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="HEALTH, SAFETY & ENVIRONMENT" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="HEALTH, SAFETY & ENVIRONMENT" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-										<DateDescriptionItem Title="Last LTI Date" Value=@this.Item.DailyHealthSafetyEnvironment?.LastLTIDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Injurious / MTC / FAC" Value=@this.Item.DailyHealthSafetyEnvironment?.Injurious_MTC_FACCount IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="Injurious / MTC / FAC Date" Value=@this.Item.DailyHealthSafetyEnvironment?.Injurious_MTC_FACDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="HIP LQ" Value=@this.Item.DailyHealthSafetyEnvironment?.HIP_LQ IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="HIP ALQ" Value=@this.Item.DailyHealthSafetyEnvironment?.HIP_ALQ IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="SK-10 Days LTI Free" Value=@this.Item.DailyHealthSafetyEnvironment?.SK10DaysLTIFree IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Near Miss" Value=@this.Item.DailyHealthSafetyEnvironment?.NearMissCount IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="Near Miss Date" Value=@this.Item.DailyHealthSafetyEnvironment?.NearMissDateUI IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="Last Annual ESD Test" Value=@this.Item.DailyHealthSafetyEnvironment?.LastAnnualESDTestDateUI IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="Next Annual ESD Test" Value=@this.Item.DailyHealthSafetyEnvironment?.NextAnnualESDTestDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Property Damage" Value=@this.Item.DailyHealthSafetyEnvironment?.PropertyDamageCount IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="Property Damage	Date" Value=@this.Item.DailyHealthSafetyEnvironment?.PropertyDamageDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Total HIP POB" Value=@this.Item.DailyHealthSafetyEnvironment?.Total_HIP_POB IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="Last Drill Exercise Conducted" Value=@this.Item.DailyHealthSafetyEnvironment?.LastDrillExerciseConductedDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Total UCUX Today" Value=@this.Item.DailyHealthSafetyEnvironment?.TotalUCUXToday IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Total UCUX This Month" Value=@this.Item.DailyHealthSafetyEnvironment?.TotalUCUXThisMonth IsEditing=@this.isEditing/>
+										<DateDescriptionItem Title="LastLTIDate" Value=@this.Item.DailyHealthSafetyEnvironment?.LastLTIDateUI IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="Injurious_MTC_FACCount" Value=@this.Item.DailyHealthSafetyEnvironment?.Injurious_MTC_FACCount IsEditing=@this.isEditing/>
+										<DateDescriptionItem Title="Injurious_MTC_FACDate" Value=@this.Item.DailyHealthSafetyEnvironment?.Injurious_MTC_FACDateUI IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="HIP_LQ" Value=@this.Item.DailyHealthSafetyEnvironment?.HIP_LQ IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="HIP_ALQ" Value=@this.Item.DailyHealthSafetyEnvironment?.HIP_ALQ IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="SK10DaysLTIFree" Value=@this.Item.DailyHealthSafetyEnvironment?.SK10DaysLTIFree IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="NearMissCount" Value=@this.Item.DailyHealthSafetyEnvironment?.NearMissCount IsEditing=@this.isEditing/>
+										<DateDescriptionItem Title="NearMissDate" Value=@this.Item.DailyHealthSafetyEnvironment?.NearMissDateUI IsEditing=@this.isEditing/>
+										<DateDescriptionItem Title="LastAnnualESDTestDate" Value=@this.Item.DailyHealthSafetyEnvironment?.LastAnnualESDTestDateUI IsEditing=@this.isEditing/>
+										<DateDescriptionItem Title="NextAnnualESDTestDate" Value=@this.Item.DailyHealthSafetyEnvironment?.NextAnnualESDTestDateUI IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="PropertyDamageCount" Value=@this.Item.DailyHealthSafetyEnvironment?.PropertyDamageCount IsEditing=@this.isEditing/>
+										<DateDescriptionItem Title="PropertyDamageDate" Value=@this.Item.DailyHealthSafetyEnvironment?.PropertyDamageDateUI IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="Total_HIP_POB" Value=@this.Item.DailyHealthSafetyEnvironment?.Total_HIP_POB IsEditing=@this.isEditing/>
+										<DateDescriptionItem Title="LastDrillExerciseConductedDate" Value=@this.Item.DailyHealthSafetyEnvironment?.LastDrillExerciseConductedDateUI IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="TotalUCUXToday" Value=@this.Item.DailyHealthSafetyEnvironment?.TotalUCUXToday IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="TotalUCUXThisMonth" Value=@this.Item.DailyHealthSafetyEnvironment?.TotalUCUXThisMonth IsEditing=@this.isEditing/>
 										<StringDescriptionItem Title="Weather" Value=@this.Item.DailyHealthSafetyEnvironment?.Weather IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Wind Speed (knots)" Value=@this.Item.DailyHealthSafetyEnvironment?.WindSpeed IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Wind Direction" Value=@this.Item.DailyHealthSafetyEnvironment?.WindDirection IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Available Bedding" Value=@this.Item.DailyHealthSafetyEnvironment?.AvailableBedding IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Swell/Wave Height" Value=@this.Item.DailyHealthSafetyEnvironment?.SwellWaveHeight IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Operation : Catering : Non-Essential" Value=@this.Item.DailyHealthSafetyEnvironment?.Operation_Catering_NonEssential IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Visibility (NM)" Value=@this.Item.DailyHealthSafetyEnvironment?.Visibility IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="WindSpeed" Value=@this.Item.DailyHealthSafetyEnvironment?.WindSpeed IsEditing=@this.isEditing/>
+										<StringDescriptionItem Title="WindDirection" Value=@this.Item.DailyHealthSafetyEnvironment?.WindDirection IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="AvailableBedding" Value=@this.Item.DailyHealthSafetyEnvironment?.AvailableBedding IsEditing=@this.isEditing/>
+										<StringDescriptionItem Title="SwellWaveHeight" Value=@this.Item.DailyHealthSafetyEnvironment?.SwellWaveHeight IsEditing=@this.isEditing/>
+										<StringDescriptionItem Title="Operation_Catering_NonEssential" Value=@this.Item.DailyHealthSafetyEnvironment?.Operation_Catering_NonEssential IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="Visibility" Value=@this.Item.DailyHealthSafetyEnvironment?.Visibility IsEditing=@this.isEditing/>
 									</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="LOSS OF PRIMARY CONTAINMENT (LOPC) INCIDENT" Key="1">
+								<Panel ShowArrow="false" Header="LOSS OF PRIMARY CONTAINMENT (LOPC) INCIDENT" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 										<IntegerDescriptionItem Title="MajorLOPC" Value=@this.Item.DailyLossOfPrimaryContainmentIncident?.MajorLOPC IsEditing=@this.isEditing/>
@@ -124,7 +124,7 @@
 									</Descriptions>
 								</ChildContent>
 								</Panel>
-								<Panel Header="LIFEBOATS" Key="1">
+								<Panel ShowArrow="false" Header="LIFEBOATS" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<StringDescriptionItem Title="LifeBoatName" Value=@this.Item.DailyLifeBoat?.LifeBoatName IsEditing=@this.isEditing/>
@@ -134,7 +134,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
+								<Panel ShowArrow="false" Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyLongTermOverridesInhibitsOnAlarmTrip Item=@this.Item.DailyLongTermOverridesInhibitsOnAlarmTrips>
@@ -147,7 +147,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="MANAGEMENT OF CHANGE (MOC) : OPERATING CHANGE" Key="1">
+								<Panel ShowArrow="false" Header="MANAGEMENT OF CHANGE (MOC) : OPERATING CHANGE" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyOperatingChange Item=@this.Item.DailyOperatingChanges>
@@ -160,11 +160,11 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="3. DAILY PRODUCTION" Key="1">
-							<Collapse DefaultActiveKey="@(new[]{"1"})">
-								<Panel Header="SK10" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="SK10" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<DecimalDescriptionItem Title="SK10CumulativeGasExport" Value=@this.Item.DailySK10Production?.SK10CumulativeGasExport IsEditing=@this.isEditing/>
@@ -173,7 +173,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="HIP" Key="1">
+								<Panel ShowArrow="false" Header="HIP" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<DecimalDescriptionItem Title="HIPCumulativeGasExport" Value=@this.Item.DailyHIPProduction?.HIPCumulativeGasExport IsEditing=@this.isEditing/>
@@ -199,7 +199,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="FPSO Helang" Key="1">
+								<Panel ShowArrow="false" Header="FPSO Helang" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<DecimalDescriptionItem Title="FPSOCumulativeGasExport" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCumulativeGasExport IsEditing=@this.isEditing/>
@@ -225,11 +225,11 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="4. MAJOR EQUIPMENT STATUS" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="Major Equipment Status" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="Major Equipment Status" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyMajorEquipmentStatus Items=@this.Item.DailyMajorEquipmentStatuses>
@@ -240,7 +240,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="DailyDiesel" Key="1">
+								<Panel ShowArrow="false" Header="DailyDiesel" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 										<DecimalDescriptionItem Title="HIPDieselStock" Value=@this.Item.DailyDiesel?.HIPDieselStock IsEditing=@this.isEditing/>
@@ -250,11 +250,11 @@
 									</Descriptions>
 								</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="5. CHEMICAL INJECTION" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="CI NALCO, EC-1310A" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="CI NALCO, EC-1310A" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<DecimalDescriptionItem Title="YesterdayLevel" Value=@this.Item.DailyCiNalco?.YesterdayLevel IsEditing=@this.isEditing/>
@@ -274,7 +274,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="INOWAC SBN-810 INJECTION" Key="1">
+								<Panel ShowArrow="false" Header="INOWAC SBN-810 INJECTION" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<DecimalDescriptionItem Title="V2010" Value=@this.Item.DailyInowacInjection?.V2010 IsEditing=@this.isEditing/>
@@ -311,11 +311,11 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="6. WELLHEAD & SEPARATION SYSTEM" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="DailyWellHeadAndSeparationSystem" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="DailyWellHeadAndSeparationSystem" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 										<DecimalDescriptionItem Title="StationRecyclePV2015" Value=@this.Item.DailyWellHeadAndSeparationSystem?.StationRecyclePV2015 IsEditing=@this.isEditing/>
@@ -328,7 +328,7 @@
 									</Descriptions>
 								</ChildContent>
 								</Panel>
-								<Panel Header="DailyWellStreamCooler" Key="1">
+								<Panel ShowArrow="false" Header="DailyWellStreamCooler" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyWellStreamCooler Items=@this.Item.DailyWellStreamCoolers>
@@ -338,11 +338,11 @@
 									</Descriptions>
 								</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="7. WELLHEAD" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-									<Panel Header="HIP WELLHEAD PARAMETERS" Key="1">
+							<ChildContent>
+									<Panel ShowArrow="false" Header="HIP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyHIPWellHeadParameter Items=@this.Item.DailyHIPWellHeadParameters>
@@ -365,7 +365,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="LWP WELLHEAD PARAMETERS" Key="1">
+								<Panel ShowArrow="false" Header="LWP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyLWPWellHeadParameter Items=@this.Item.DailyLWPWellHeadParameters>
@@ -386,11 +386,11 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="8. ROLLS ROYCE GAS ENGINE & KAWASAKI COMPRESSION SYSTEM" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="KAWASAKI EXPORT COMPRESSOR" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="KAWASAKI EXPORT COMPRESSOR" Key="1">
 								<ChildContent>
 									<Descriptions Size="small" Bordered>
 										<Virtualize TItem=DailyKawasakiExportCompressor Items=@this.Item.DailyKawasakiExportCompressors>
@@ -427,7 +427,7 @@
 									</Descriptions>
 								</ChildContent>
 							</Panel>
-							<Panel Header="ROLLS ROYCE RB-211 ENGINE" Key="1">
+							<Panel ShowArrow="false" Header="ROLLS ROYCE RB-211 ENGINE" Key="1">
 								<ChildContent>
 									<Descriptions Size="small" Bordered>
 										<Virtualize TItem=DailyRollsRoyceRB211Engine Items=@this.Item.DailyRollsRoyceRB211Engines>
@@ -450,11 +450,11 @@
 									</Descriptions>
 								</ChildContent>
 							</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="9. GLYCOL REGENERATION SYSTEM" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="DailyGlycolPump" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="DailyGlycolPump" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyGlycolPump Items=@this.Item.DailyGlycolPumps>
@@ -465,7 +465,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="DailyGlycolTrain" Key="1">
+								<Panel ShowArrow="false" Header="DailyGlycolTrain" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyGlycolTrain Items=@this.Item.DailyGlycolTrains>
@@ -481,7 +481,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="DailyGlycolStock" Key="1">
+								<Panel ShowArrow="false" Header="DailyGlycolStock" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<IntegerDescriptionItem Title="GlycolStockInToteTank" Value=@this.Item.DailyGlycolStock?.GlycolStockInToteTank IsEditing=@this.isEditing/>
@@ -489,7 +489,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="10. GAS & CONDENSATE EXPORT SAMPLERS & EXPORT LINE" Key="1">
 							<ChildContent>
@@ -510,8 +510,8 @@
 							</ChildContent>
 						</Panel>
 						<Panel Header="11. COOLING MEDIUM SYSTEM" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="DailyAnalysisResult" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="DailyAnalysisResult" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<DecimalDescriptionItem Title="PhReading" Value=@this.Item.DailyAnalysisResult?.PhReading IsEditing=@this.isEditing/>
@@ -526,7 +526,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="DailyCoolingMediumSystem" Key="1">
+								<Panel ShowArrow="false" Header="DailyCoolingMediumSystem" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyCoolingMediumSystem Items=@this.Item.DailyCoolingMediumSystems>
@@ -537,7 +537,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="12. POWER GENERATION & DISTRIBUTION" Key="1">
 							<ChildContent>
@@ -551,8 +551,8 @@
 							</ChildContent>
 						</Panel>
 						<Panel Header="13. LIVING QUARTERS, UTILITIES & OTHERS" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="DailyUtility" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="DailyUtility" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyUtility Items=@this.Item.DailyUtilitys>
@@ -563,7 +563,7 @@
 									</Descriptions>
 								</ChildContent>
 								</Panel>
-								<Panel Header="DailyWaterTank" Key="1">
+								<Panel ShowArrow="false" Header="DailyWaterTank" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 												<Virtualize TItem=DailyWaterTank Items=@this.Item.DailyWaterTanks>
@@ -575,7 +575,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="DailyNitrogenGenerator" Key="1">
+								<Panel ShowArrow="false" Header="DailyNitrogenGenerator" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyNitrogenGenerator Items=@this.Item.DailyNitrogenGenerators>
@@ -587,11 +587,11 @@
 									</Descriptions>
 								</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="14. TILTED PLATE SEPARATOR V-3000 & PRODUCED WATER TREATMENT SYSTEM" Key="1">
-							<Collapse DefaultActiveKey="@(new[] {"1" })">
-								<Panel Header="DailyProducedWaterTreatmentSystem" Key="1">
+							<ChildContent>
+								<Panel ShowArrow="false" Header="DailyProducedWaterTreatmentSystem" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 											<Virtualize TItem=DailyProducedWaterTreatmentSystem Items=@this.Item.DailyProducedWaterTreatmentSystems>
@@ -607,7 +607,7 @@
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel Header="DE-OILER INJECTION" Key="1">
+								<Panel ShowArrow="false" Header="DE-OILER INJECTION" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
 										<StringDescriptionItem Title="InjectionPoint" Value=@this.Item.DailyDeOilerInjection?.InjectionPoint IsEditing=@this.isEditing/>
@@ -623,7 +623,7 @@
 									</Descriptions>
 								</ChildContent>
 								</Panel>
-							</Collapse>
+							</ChildContent>
 						</Panel>
 						<Panel Header="15. SAND DISPOSAL FROM TPS (V-3000) VIA DESANDER" Key="1">
 							<ChildContent>
