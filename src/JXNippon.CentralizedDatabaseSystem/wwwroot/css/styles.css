@@ -710,3 +710,7 @@ a {
 .fullscreen-dialog-content > div {
     height: 100%;
 }
+
+.data-list-card {
+    box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%);
+}

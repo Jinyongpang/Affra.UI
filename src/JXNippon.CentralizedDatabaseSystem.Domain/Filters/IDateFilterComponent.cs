@@ -1,4 +1,6 @@
-﻿namespace JXNippon.CentralizedDatabaseSystem.Domain.Filters
+﻿using Microsoft.AspNetCore.Components;
+
+namespace JXNippon.CentralizedDatabaseSystem.Domain.Filters
 {
     public delegate Task OnDateRangeChangedHandler(DateRange dateRange);
     public interface IDateFilterComponent
@@ -8,5 +10,6 @@
         DateTime? End { get; }
 
         event OnDateRangeChangedHandler OnDateRangeChanged;
+
     }
 }

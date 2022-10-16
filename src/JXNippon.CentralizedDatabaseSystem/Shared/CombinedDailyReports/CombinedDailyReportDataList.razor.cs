@@ -50,13 +50,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                     var status = (CombinedDailyReportStatus)Enum.Parse(typeof(CombinedDailyReportStatus), Filter.Status);
                     query = query.Where(CombinedDailyReport => CombinedDailyReport.Status == status);
                 }
-                if (Filter.Date != null)
+                if (Filter.DateRange?.Start != null)
                 {
-                    var start = TimeZoneInfo.ConvertTimeToUtc(Filter.Date.Value);
-                    var end = TimeZoneInfo.ConvertTimeToUtc(Filter.Date.Value.AddDays(1));
+                    var start = Filter.DateRange.Start.ToUniversalTime();
+                    var end = Filter.DateRange.End.ToUniversalTime();
                     query = query
                         .Where(CombinedDailyReport => CombinedDailyReport.Date >= start)
-                        .Where(CombinedDailyReport => CombinedDailyReport.Date < end);
+                        .Where(CombinedDailyReport => CombinedDailyReport.Date <= end);
                 }
 
                 Microsoft.OData.Client.QueryOperationResponse<CombinedDailyReport>? combinedDailyReportsResponse = await query

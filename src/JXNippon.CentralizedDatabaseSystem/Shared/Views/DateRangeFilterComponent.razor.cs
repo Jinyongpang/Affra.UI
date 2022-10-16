@@ -8,22 +8,27 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     public partial class DateRangeFilterComponent : IDateFilterComponent
     {
         [Parameter] public string Title { get; set; }
+
+        [Parameter] public EventCallback<DateRange> OnChanged { get; set; }
+
         [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
         public DateTime? Start => this.dateRange.Start;
 
         public DateTime? End => this.dateRange.End;
 
+        public event OnDateRangeChangedHandler OnDateRangeChanged;
+
         private RangePicker<DateTime?[]> rangePicker;
 
         private DateRange dateRange = new DateRange();
 
-        public event OnDateRangeChangedHandler OnDateRangeChanged;
 
         public Task OnRangeSelectAsync(DateRangeChangedEventArgs args)
         {
             dateRange.Start = args.Dates[0];
             dateRange.End = args.Dates[1];
 
+            OnChanged.InvokeAsync(dateRange);
             return OnDateRangeChanged is null ? Task.CompletedTask : OnDateRangeChanged(dateRange);
         }
 
@@ -33,6 +38,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             dateRange.Start = dateRange.End.Value.AddDays(days);
             rangePicker.Value = new DateTime?[] { dateRange.Start.Value, dateRange.End.Value };
             rangePicker.Close();
+            OnChanged.InvokeAsync(dateRange);
             return OnDateRangeChanged is null ? Task.CompletedTask : OnDateRangeChanged(dateRange);
         }
 

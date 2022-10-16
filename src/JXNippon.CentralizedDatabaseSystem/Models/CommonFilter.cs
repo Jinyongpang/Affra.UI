@@ -1,4 +1,5 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Extensions;
+﻿using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
+using JXNippon.CentralizedDatabaseSystem.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.WebUtilities;
 
@@ -11,6 +12,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Models
         public string Status { get; set; }
 
         public DateTime? Date { get; set; }
+        public DateRange? DateRange { get; set; } = new DateRange();
         public string Mode { get; set; }
 
         public CommonFilter(NavigationManager navigationManager)
@@ -19,6 +21,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Models
             this.Date = navigationManager.GetQueryString<DateTime?>(nameof(CommonFilter.Date));
             this.Status = navigationManager.GetQueryString<string>(nameof(CommonFilter.Status));
             this.Mode = navigationManager.GetQueryString<string>(nameof(CommonFilter.Mode));
+            this.DateRange.Start = navigationManager.GetQueryString<DateTime?>(nameof(CommonFilter.DateRange.Start));           
+            this.DateRange.End = navigationManager.GetQueryString<DateTime?>(nameof(CommonFilter.DateRange.End));
         }
 
         public void AppendQuery(NavigationManager navigationManager)
@@ -39,6 +43,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Models
             if (this.Mode != null)
             {
                 queries.Add(nameof(CommonFilter.Mode), this.Mode);
+            }
+            if (this.DateRange?.Start != null)
+            {
+                queries.Add(nameof(DateRange.Start), this.DateRange.Start.Value.ToString("yyyy-MM-dd"));
+            }
+            if (this.DateRange?.End != null)
+            {
+                queries.Add(nameof(DateRange.End), this.DateRange.End.Value.ToString("yyyy-MM-dd"));
             }
             var uriBuilder = new UriBuilder(navigationManager.Uri);
             navigationManager.NavigateTo(QueryHelpers.AddQueryString(uriBuilder.Uri.AbsolutePath, queries));

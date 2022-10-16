@@ -10,19 +10,19 @@
       
 }
 <div class="row px-3 py-2">
-    <Virtualize Context="context" ItemsProvider="@LoadDataAsync" TItem=CombinedDailyReport ItemSize=59 OverscanCount=10 @ref=@this.virtualize>
+    <Virtualize Context="context" ItemsProvider="@LoadDataAsync" TItem=CombinedDailyReport ItemSize=25 OverscanCount=10 @ref=@this.virtualize>
         <Placeholder>
-            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:200px;">
-                <Card Class="h-100" Hoverable>
+            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:150px;">
+                <Card Class="h-100 data-list-card" Hoverable>
                     <Body>
-                        <Skeleton Active></Skeleton>
+                        <Skeleton Active ParagraphRows=3></Skeleton>
                     </Body>
                 </Card>  
             </div>    
         </Placeholder>
         <ItemContent>
-            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:200px;" @onclick="(() => this.ShowDialogAsync(context))">
-                 <Card Class="h-100" @key=@context.Id Hoverable Bordered>
+            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:150px;" @onclick="(() => this.ShowDialogAsync(context))">
+                 <Card Class="h-100 data-list-card" @key=@context.Id Hoverable Bordered>
                     <Body>
                         <div class="d-flex flex-row align-items-center">
                             <div>
