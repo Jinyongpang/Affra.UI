@@ -399,4 +399,7 @@
   <data name="PendingForCloseOut" xml:space="preserve">
     <value>Pending For Close Out</value>
   </data>
+  <data name="ClosedOut" xml:space="preserve">
+    <value>Closed Out</value>
+  </data>
 </root>

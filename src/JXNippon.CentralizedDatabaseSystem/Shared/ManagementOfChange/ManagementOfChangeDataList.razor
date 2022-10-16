@@ -46,11 +46,11 @@
                                     <div class="col-md-12 text-right" style="padding-top:5px">
                                         @if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.ClosedOut)
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Primary" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
                                         }
                                         else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.Extension)
                                         {
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Primary" Text="@(stringLocalizer[context.ManagementOfChangeStatus.ToString()])" />
                                         }
                                         else if (context.ManagementOfChangeStatus == ManagementOfChangeStatus.PendingForApproval)
                                         {
