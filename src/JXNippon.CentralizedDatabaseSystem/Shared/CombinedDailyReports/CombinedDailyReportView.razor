@@ -137,7 +137,7 @@
 								<Panel ShowArrow="false" Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyLongTermOverridesInhibitsOnAlarmTrip Item=@this.Item.DailyLongTermOverridesInhibitsOnAlarmTrips>
+											<Virtualize TItem=DailyLongTermOverridesInhibitsOnAlarmTrip Items=@this.Item.DailyLongTermOverridesInhibitsOnAlarmTrips>
 												<StringDescriptionItem Title="TagName" Value=@context.TagName IsEditing=@this.isEditing/>
 												<DateDescriptionItem Title="RaisedDate" Value=@context.RaisedDateUI IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="MaximoWorkOrder" Value=@context.MaximoWorkOrder IsEditing=@this.isEditing/>
@@ -150,7 +150,7 @@
 								<Panel ShowArrow="false" Header="MANAGEMENT OF CHANGE (MOC) : OPERATING CHANGE" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyOperatingChange Item=@this.Item.DailyOperatingChanges>
+											<Virtualize TItem=DailyOperatingChange Items=@this.Item.DailyOperatingChanges>
 												<StringDescriptionItem Title="TagName" Value=@context.TagName IsEditing=@this.isEditing/>
 												<DateDescriptionItem Title="RaisedDate" Value=@context.RaisedDateUI IsEditing=@this.isEditing/>
 												<DateDescriptionItem Title="ExpiredDate" Value=@context.ExpiredDateUI IsEditing=@this.isEditing/>

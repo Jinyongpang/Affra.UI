@@ -1,4 +1,7 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+﻿using Affra.Core.Domain.Services;
+using Affra.Core.Infrastructure.OData.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem;
@@ -21,6 +24,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities;
 using JXNippon.CentralizedDatabaseSystem.Shared.WellHead;
 using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem;
 using Microsoft.AspNetCore.Components;
+using Microsoft.OData.Client;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
@@ -72,6 +76,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         [Inject] private NavigationManager NavManager { get; set; }
         [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
+        [Inject] private IServiceProvider ServiceProvider { get; set; }
         private CommonFilter CommonFilter { get; set; }
 
         [Parameter]
@@ -79,15 +84,72 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
         [Parameter]
         public EventCallback<bool> HasFocusChanged { get; set; }
+        [Parameter] public CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport Item { get; set; }
 
-        protected override Task OnInitializedAsync()
+        private string defaultCDRClass = "m-0 d-flex align-items-center title";
+        private string emptyCDRClass = "m-0 d-flex align-items-center title text-warning";
+        private string CDRClass = "";
+
+        protected override async Task OnInitializedAsync()
         {
+            CDRClass = defaultCDRClass;
             CommonFilter = new CommonFilter(NavManager);
             CommonFilter.Date = GlobalDataSource.GlobalDateFilter.Start;
 
-            return Task.CompletedTask;
-        }
+            using var serviceScope = ServiceProvider.CreateScope();
+            var service = this.GetGenericService(serviceScope);
+            var query = (DataServiceQuery<CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport>)service.Get();
 
+            var response = await query
+                .Expand(x => x.DailyHealthSafetyEnvironment)
+                .Expand(x => x.DailyLifeBoat)
+                .Expand(x => x.DailyLongTermOverridesInhibitsOnAlarmTrips)
+                .Expand(x => x.DailyOperatingChanges)
+                .Expand(x => x.DailyLossOfPrimaryContainmentIncident)
+                .Expand(x => x.DailyHIPAndLWPSummarys)
+                .Expand(x => x.DailyFPSOHelangSummarys)
+                .Expand(x => x.DailySandDisposalDesander)
+                .Expand(x => x.DailyCiNalco)
+                .Expand(x => x.DailyInowacInjection)
+                .Expand(x => x.DailyCommunicationSystems)
+                .Expand(x => x.DailyLWPActivitys)
+                .Expand(x => x.DailyVendorActivitys)
+                .Expand(x => x.DailyUtilitys)
+                .Expand(x => x.DailyWaterTanks)
+                .Expand(x => x.DailyNitrogenGenerators)
+                .Expand(x => x.DailyMaximoWorkOrders)
+                .Expand(x => x.DailyAnalysisResult)
+                .Expand(x => x.DailyCoolingMediumSystems)
+                .Expand(x => x.DailyLogistics)
+                .Expand(x => x.DailyGlycolPumps)
+                .Expand(x => x.DailyGlycolTrains)
+                .Expand(x => x.DailyGlycolStock)
+                .Expand(x => x.DailyKawasakiExportCompressors)
+                .Expand(x => x.DailyRollsRoyceRB211Engines)
+                .Expand(x => x.DailyHIPWellHeadParameters)
+                .Expand(x => x.DailyLWPWellHeadParameters)
+                .Expand(x => x.DailyGasCondensateExportSamplerAndExportLine)
+                .Expand(x => x.DailyWellHeadAndSeparationSystem)
+                .Expand(x => x.DailyWellStreamCoolers)
+                .Expand(x => x.DailySK10Production)
+                .Expand(x => x.DailyHIPProduction)
+                .Expand(x => x.DailyFPSOHelangProduction)
+                .Expand(x => x.DailyMajorEquipmentStatuses)
+                .Expand(x => x.DailyDiesel)
+                .Expand(x => x.DailyProducedWaterTreatmentSystems)
+                .Expand(x => x.DailyDeOilerInjection)
+                .Expand(x => x.DailyPowerGenerationAndDistributions)
+                .Where(x => x.Date == CommonFilter.Date.ToUniversalTime())
+                .ToQueryOperationResponseAsync<CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport>();
+
+            this.Item = response.FirstOrDefault();
+
+            await base.OnInitializedAsync();
+        }
+        private IGenericService<CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport> GetGenericService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport, ICentralizedDatabaseSystemUnitOfWork>>();
+        }
         private async Task OnChangeAsync(object value)
         {
             CommonFilter.AppendQuery(NavManager);
@@ -315,7 +377,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             {
                 CommonFilter.Date = previousDate;
             }
-            
+
             return HasFocusChanged.InvokeAsync(i != -1);
         }
 

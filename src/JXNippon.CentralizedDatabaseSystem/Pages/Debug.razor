@@ -189,7 +189,7 @@
          <br/>
          @("<Descriptions Size=\"small\" Bordered>");
          <br/>
-         @($"<Virtualize TItem={type.Name} Item=@this.Item.{type.Name}s>");
+         @($"<Virtualize TItem={type.Name} Items=@this.Item.{type.Name}s>");
         foreach (var prop in type.GetProperties())
         {
             if (prop.PropertyType == typeof(decimal?)

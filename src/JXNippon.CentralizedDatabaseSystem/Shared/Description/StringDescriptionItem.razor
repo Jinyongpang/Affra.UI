@@ -1,4 +1,4 @@
-﻿<DescriptionsItem Title="@Title" Span=@(Span ?? 1)>
+﻿<DescriptionsItem Title="@(stringLocalizer[Title])" Span=@(Span ?? 1)>
     @if (this.IsEditing)
     {
         <RadzenTextArea @bind-Value=@this.Value></RadzenTextArea>
