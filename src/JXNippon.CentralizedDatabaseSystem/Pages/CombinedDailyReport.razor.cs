@@ -139,7 +139,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 .Expand(x => x.DailyProducedWaterTreatmentSystems)
                 .Expand(x => x.DailyDeOilerInjection)
                 .Expand(x => x.DailyPowerGenerationAndDistributions)
-                .Where(x => x.Date == this.Item.Date)
+                .Where(x => x.Date == CommonFilter.Date.ToUniversalTime())
                 .ToQueryOperationResponseAsync<CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport>();
 
             this.Item = response.FirstOrDefault();

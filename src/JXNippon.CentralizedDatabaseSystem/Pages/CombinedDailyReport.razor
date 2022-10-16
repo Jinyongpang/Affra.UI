@@ -57,7 +57,7 @@
                         <div class="col-5">
                             <Space>
                                 <SpaceItem>
-                                    @if(Item.DailyHIPAndLWPSummarys.Count == 0 && Item.DailyFPSOHelangSummarys.Count == 0){
+                                    @if (Item is null || Item?.DailyHIPAndLWPSummarys?.Count == 0 && Item?.DailyFPSOHelangSummarys?.Count == 0){
                                         CDRClass = emptyCDRClass;
                                     }
                                     <h4 class="@CDRClass">
