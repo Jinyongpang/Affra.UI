@@ -19,6 +19,7 @@
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 @using JXNippon.CentralizedDatabaseSystem.Shared.Description
 
 <Spin Size="large" Spinning=this.isLoading Style="top: 30%;">
@@ -64,18 +65,18 @@
 								<Panel ShowArrow="false" Header="HIP / LWP SUMMARY" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyHIPAndLWPSummary Items=@this.Item.DailyHIPAndLWPSummarys>
+											<CollectionView TItem=DailyHIPAndLWPSummary Items=@this.Item.DailyHIPAndLWPSummarys>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="FPSO HELANG SUMMARY" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyFPSOHelangSummary Items=@this.Item.DailyFPSOHelangSummarys>
+											<CollectionView TItem=DailyFPSOHelangSummary Items=@this.Item.DailyFPSOHelangSummarys>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -137,26 +138,26 @@
 								<Panel ShowArrow="false" Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyLongTermOverridesInhibitsOnAlarmTrip Items=@this.Item.DailyLongTermOverridesInhibitsOnAlarmTrips>
+											<CollectionView TItem=DailyLongTermOverridesInhibitsOnAlarmTrip Items=@this.Item.DailyLongTermOverridesInhibitsOnAlarmTrips>
 												<StringDescriptionItem Title="TagName" Value=@context.TagName IsEditing=@this.isEditing/>
 												<DateDescriptionItem Title="RaisedDate" Value=@context.RaisedDateUI IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="MaximoWorkOrder" Value=@context.MaximoWorkOrder IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Location" Value=@context.Location IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="LongDescriptionRemark" Value=@context.LongDescriptionRemark IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="MANAGEMENT OF CHANGE (MOC) : OPERATING CHANGE" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyOperatingChange Items=@this.Item.DailyOperatingChanges>
+											<CollectionView TItem=DailyOperatingChange Items=@this.Item.DailyOperatingChanges>
 												<StringDescriptionItem Title="TagName" Value=@context.TagName IsEditing=@this.isEditing/>
 												<DateDescriptionItem Title="RaisedDate" Value=@context.RaisedDateUI IsEditing=@this.isEditing/>
 												<DateDescriptionItem Title="ExpiredDate" Value=@context.ExpiredDateUI IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="ReferenceNumber" Value=@context.ReferenceNumber IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -232,11 +233,11 @@
 								<Panel ShowArrow="false" Header="Major Equipment Status" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyMajorEquipmentStatus Items=@this.Item.DailyMajorEquipmentStatuses>
+											<CollectionView TItem=DailyMajorEquipmentStatus Items=@this.Item.DailyMajorEquipmentStatuses>
 												<StringDescriptionItem Title="MajorEquipmentName" Value=@context.MajorEquipmentName IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -331,10 +332,10 @@
 								<Panel ShowArrow="false" Header="DailyWellStreamCooler" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyWellStreamCooler Items=@this.Item.DailyWellStreamCoolers>
+											<CollectionView TItem=DailyWellStreamCooler Items=@this.Item.DailyWellStreamCoolers>
 												<StringDescriptionItem Title="WellStreamCoolerName" Value=@context.WellStreamCoolerName IsEditing=@this.isEditing/>
 												<DecimalDescriptionItem Title="WellStreamCoolerTemparature" Value=@context.WellStreamCoolerTemparature IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 									</Descriptions>
 								</ChildContent>
 								</Panel>
@@ -345,7 +346,7 @@
 									<Panel ShowArrow="false" Header="HIP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyHIPWellHeadParameter Items=@this.Item.DailyHIPWellHeadParameters>
+											<CollectionView TItem=DailyHIPWellHeadParameter Items=@this.Item.DailyHIPWellHeadParameters>
 												<StringDescriptionItem Title="HIPWellHeadName" Value=@context.HIPWellHeadName IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
@@ -361,14 +362,14 @@
 												<DecimalDescriptionItem Title="CI" Value=@context.CI IsEditing=@this.isEditing/>
 												<DecimalDescriptionItem Title="TCP" Value=@context.TCP IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="CIPumpStatus" Value=@context.CIPumpStatus IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="LWP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyLWPWellHeadParameter Items=@this.Item.DailyLWPWellHeadParameters>
+											<CollectionView TItem=DailyLWPWellHeadParameter Items=@this.Item.DailyLWPWellHeadParameters>
 												<StringDescriptionItem Title="LWPWellHeadName" Value=@context.LWPWellHeadName IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
@@ -382,7 +383,7 @@
 												<StringDescriptionItem Title="UpTime" Value=@context.UpTime IsEditing=@this.isEditing/>
 												<DecimalDescriptionItem Title="CI" Value=@context.CI IsEditing=@this.isEditing/>
 												<DecimalDescriptionItem Title="TCP" Value=@context.TCP IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -393,7 +394,7 @@
 								<Panel ShowArrow="false" Header="KAWASAKI EXPORT COMPRESSOR" Key="1">
 								<ChildContent>
 									<Descriptions Size="small" Bordered>
-										<Virtualize TItem=DailyKawasakiExportCompressor Items=@this.Item.DailyKawasakiExportCompressors>
+										<CollectionView TItem=DailyKawasakiExportCompressor Items=@this.Item.DailyKawasakiExportCompressors>
 											<StringDescriptionItem Title="KawasakiExportCompressorName" Value=@context.KawasakiExportCompressorName IsEditing=@this.isEditing/>
 											<StringDescriptionItem Title="SpeedControl" Value=@context.SpeedControl IsEditing=@this.isEditing/>
 											<IntegerDescriptionItem Title="Speed" Value=@context.Speed IsEditing=@this.isEditing/>
@@ -423,14 +424,14 @@
 											<DecimalDescriptionItem Title="DEJournalBrgTE807" Value=@context.DEJournalBrgTE807 IsEditing=@this.isEditing/>
 											<DecimalDescriptionItem Title="DEJournalBrgTE808" Value=@context.DEJournalBrgTE808 IsEditing=@this.isEditing/>
 											<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-										</Virtualize>
+										</CollectionView>
 									</Descriptions>
 								</ChildContent>
 							</Panel>
 							<Panel ShowArrow="false" Header="ROLLS ROYCE RB-211 ENGINE" Key="1">
 								<ChildContent>
 									<Descriptions Size="small" Bordered>
-										<Virtualize TItem=DailyRollsRoyceRB211Engine Items=@this.Item.DailyRollsRoyceRB211Engines>
+										<CollectionView TItem=DailyRollsRoyceRB211Engine Items=@this.Item.DailyRollsRoyceRB211Engines>
 											<StringDescriptionItem Title="RollsRoyceRB211EngineName" Value=@context.RollsRoyceRB211EngineName IsEditing=@this.isEditing/>
 											<IntegerDescriptionItem Title="GGN1" Value=@context.GGN1 IsEditing=@this.isEditing/>
 											<IntegerDescriptionItem Title="GGN2" Value=@context.GGN2 IsEditing=@this.isEditing/>
@@ -446,7 +447,7 @@
 											<StringDescriptionItem Title="NDESampleColour" Value=@context.NDESampleColour IsEditing=@this.isEditing/>
 											<DateDescriptionItem Title="TurbineWashDate" Value=@context.TurbineWashDateUI IsEditing=@this.isEditing/>
 											<IntegerDescriptionItem Title="TurbineWashRunnningHours" Value=@context.TurbineWashRunnningHours IsEditing=@this.isEditing/>
-										</Virtualize>
+										</CollectionView>
 									</Descriptions>
 								</ChildContent>
 							</Panel>
@@ -457,18 +458,18 @@
 								<Panel ShowArrow="false" Header="DailyGlycolPump" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyGlycolPump Items=@this.Item.DailyGlycolPumps>
+											<CollectionView TItem=DailyGlycolPump Items=@this.Item.DailyGlycolPumps>
 												<StringDescriptionItem Title="GlycolPumpName" Value=@context.GlycolPumpName IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DailyGlycolTrain" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyGlycolTrain Items=@this.Item.DailyGlycolTrains>
+											<CollectionView TItem=DailyGlycolTrain Items=@this.Item.DailyGlycolTrains>
 												<StringDescriptionItem Title="GlycolTrainName" Value=@context.GlycolTrainName IsEditing=@this.isEditing/>
 												<DecimalDescriptionItem Title="PreviousDayLevel" Value=@context.PreviousDayLevel IsEditing=@this.isEditing/>
 												<DecimalDescriptionItem Title="TodayReportLevel" Value=@context.TodayReportLevel IsEditing=@this.isEditing/>
@@ -477,7 +478,7 @@
 												<StringDescriptionItem Title="IndicatorGuide" Value=@context.IndicatorGuide IsEditing=@this.isEditing/>
 												<DecimalDescriptionItem Title="FlowRate" Value=@context.FlowRate IsEditing=@this.isEditing/>
 												<DecimalDescriptionItem Title="PH" Value=@context.PH IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -529,11 +530,11 @@
 								<Panel ShowArrow="false" Header="DailyCoolingMediumSystem" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyCoolingMediumSystem Items=@this.Item.DailyCoolingMediumSystems>
+											<CollectionView TItem=DailyCoolingMediumSystem Items=@this.Item.DailyCoolingMediumSystems>
 												<StringDescriptionItem Title="CoolingMediumSystemName" Value=@context.CoolingMediumSystemName IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -542,11 +543,11 @@
 						<Panel Header="12. POWER GENERATION & DISTRIBUTION" Key="1">
 							<ChildContent>
 								<Descriptions Size="small" Bordered>
-									<Virtualize TItem=DailyPowerGenerationAndDistribution Items=@this.Item.DailyPowerGenerationAndDistributions>
+									<CollectionView TItem=DailyPowerGenerationAndDistribution Items=@this.Item.DailyPowerGenerationAndDistributions>
 										<StringDescriptionItem Title="PowerGeneratorName" Value=@context.PowerGeneratorName IsEditing=@this.isEditing/>
 										<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</Virtualize>
+									</CollectionView>
 								</Descriptions>
 							</ChildContent>
 						</Panel>
@@ -555,35 +556,35 @@
 								<Panel ShowArrow="false" Header="DailyUtility" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyUtility Items=@this.Item.DailyUtilitys>
+											<CollectionView TItem=DailyUtility Items=@this.Item.DailyUtilitys>
 												<StringDescriptionItem Title="UtilityName" Value=@context.UtilityName IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 									</Descriptions>
 								</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DailyWaterTank" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-												<Virtualize TItem=DailyWaterTank Items=@this.Item.DailyWaterTanks>
+												<CollectionView TItem=DailyWaterTank Items=@this.Item.DailyWaterTanks>
 													<StringDescriptionItem Title="PH" Value=@context.PH IsEditing=@this.isEditing/>
 													<StringDescriptionItem Title="UtilityName" Value=@context.UtilityName IsEditing=@this.isEditing/>
 													<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 													<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-												</Virtualize>
+												</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DailyNitrogenGenerator" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyNitrogenGenerator Items=@this.Item.DailyNitrogenGenerators>
+											<CollectionView TItem=DailyNitrogenGenerator Items=@this.Item.DailyNitrogenGenerators>
 												<DecimalDescriptionItem Title="OxygenPercentage" Value=@context.OxygenPercentage IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="UtilityName" Value=@context.UtilityName IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 									</Descriptions>
 								</ChildContent>
 								</Panel>
@@ -594,7 +595,7 @@
 								<Panel ShowArrow="false" Header="DailyProducedWaterTreatmentSystem" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<Virtualize TItem=DailyProducedWaterTreatmentSystem Items=@this.Item.DailyProducedWaterTreatmentSystems>
+											<CollectionView TItem=DailyProducedWaterTreatmentSystem Items=@this.Item.DailyProducedWaterTreatmentSystems>
 												<StringDescriptionItem Title="ProducedWaterTreatmentSystemName" Value=@context.ProducedWaterTreatmentSystemName IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
@@ -603,7 +604,7 @@
 												<DecimalDescriptionItem Title="Iron" Value=@context.Iron IsEditing=@this.isEditing/>
 												<DecimalDescriptionItem Title="PH" Value=@context.PH IsEditing=@this.isEditing/>
 												<StringDescriptionItem Title="Remark2" Value=@context.Remark2 IsEditing=@this.isEditing/>
-											</Virtualize>
+											</CollectionView>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -645,47 +646,47 @@
 						<Panel Header="16. DCS, FGS, ASD & COMMUNICATION SYSTEM" Key="1">
 							<ChildContent>
 								<Descriptions Size="small" Bordered>
-									<Virtualize TItem=DailyCommunicationSystem Items=@this.Item.DailyCommunicationSystems>
+									<CollectionView TItem=DailyCommunicationSystem Items=@this.Item.DailyCommunicationSystems>
 										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</Virtualize>
+									</CollectionView>
 								</Descriptions>
 							</ChildContent>
 						</Panel>
 						<Panel Header="17. LAYANG WELLHEAD PLATFORM (LWP) ACTIVITIES" Key="1">
 							<ChildContent>
 								<Descriptions Size="small" Bordered>
-									<Virtualize TItem=DailyLWPActivity Items=@this.Item.DailyLWPActivitys>
+									<CollectionView TItem=DailyLWPActivity Items=@this.Item.DailyLWPActivitys>
 										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</Virtualize>
+									</CollectionView>
 							</Descriptions>
 						</ChildContent>
 						</Panel>
 						<Panel Header="18. VENDOR ACTIVITIES" Key="1">
 							<ChildContent>
 								<Descriptions Size="small" Bordered>
-									<Virtualize TItem=DailyVendorActivity Items=@this.Item.DailyVendorActivitys>
+									<CollectionView TItem=DailyVendorActivity Items=@this.Item.DailyVendorActivitys>
 										<StringDescriptionItem Title="VendorName" Value=@context.VendorName IsEditing=@this.isEditing/>
 										<StringDescriptionItem Title="Title" Value=@context.Title IsEditing=@this.isEditing/>
 										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
 										<StringDescriptionItem Title="PlanForTomorrow" Value=@context.PlanForTomorrow IsEditing=@this.isEditing/>
-									</Virtualize>
+									</CollectionView>
 							</Descriptions>
 						</ChildContent>
 						</Panel>
 						<Panel Header="19. LOGISTIC" Key="1">
 							<ChildContent>
 								<Descriptions Size="small" Bordered>
-									<Virtualize TItem=DailyLogistic Items=@this.Item.DailyLogistics>
+									<CollectionView TItem=DailyLogistic Items=@this.Item.DailyLogistics>
 										<StringDescriptionItem Title="LogisticName" Value=@context.LogisticName IsEditing=@this.isEditing/>
 										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</Virtualize>
+									</CollectionView>
 							</Descriptions>
 							</ChildContent>
 						</Panel>
 						<Panel Header="20. MAXIMO WORK ORDER" Key="1">
 							<ChildContent>
 								<Descriptions Size="small" Bordered>
-									<Virtualize TItem=DailyMaximoWorkOrder Items=@this.Item.DailyMaximoWorkOrders>
+									<CollectionView TItem=DailyMaximoWorkOrder Items=@this.Item.DailyMaximoWorkOrders>
 										<StringDescriptionItem Title="Period" Value=@context.Period IsEditing=@this.isEditing/>
 										<StringDescriptionItem Title="WorkOrderTypeName" Value=@context.WorkOrderTypeName IsEditing=@this.isEditing/>
 										<IntegerDescriptionItem Title="PM" Value=@context.PM IsEditing=@this.isEditing/>
@@ -694,7 +695,7 @@
 										<IntegerDescriptionItem Title="MO" Value=@context.MO IsEditing=@this.isEditing/>
 										<IntegerDescriptionItem Title="Total" Value=@context.Total IsEditing=@this.isEditing/>
 										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</Virtualize>
+									</CollectionView>
 							</Descriptions>
 						</ChildContent>
 						</Panel>	

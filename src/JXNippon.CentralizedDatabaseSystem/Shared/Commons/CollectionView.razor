@@ -1,0 +1,12 @@
+﻿@typeparam TItem
+
+@if(this.Items is null
+    || this.Items.Count == 0)
+{
+    <Empty></Empty>
+}
+
+@foreach(var context in this.Items)
+{
+    @this.ChildContent(context)
+}
