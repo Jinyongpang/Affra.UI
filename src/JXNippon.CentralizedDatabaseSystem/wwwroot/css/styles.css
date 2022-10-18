@@ -714,3 +714,8 @@ a {
 .data-list-card {
     box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%);
 }
+
+.hidden-chart {
+    display: none !important;
+    height: 0px !important;
+}
