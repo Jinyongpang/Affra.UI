@@ -3,13 +3,15 @@
 @using JXNippon.CentralizedDatabaseSystem.Models
 @using System.Collections.Concurrent
 
-<RadzenChart @ref="chart">
-    @if (items != null)
-    {   bool haveData = false;
+<RadzenChart @ref="chart" class="@this.GetChartClassName()">
+    @{   
+        bool haveData = false;
         string[] colors = Constants.Constant.Colors;
         int i = -1;
 
-        foreach (var series in ChartSeries.OrderBy(x => x.Sequence))
+        <Spin Style="top: 30%;" Spinning=@this.isLoading>
+  
+        @foreach (var series in ChartSeries.OrderBy(x => x.Sequence))
         {
             var type = series.ActualType ?? TType;
             IEnumerable<IDaily> dailyItems = null;
@@ -131,20 +133,11 @@
                 }
 
             }
-            haveData = haveData || seriesList.Count() > 0;
+            
 
         }
-        if (!haveData)
-        { 
-            <Spin Spinning=@this.isLoading Delay=200>
-                <Empty/> 
-            </Spin>
-        }
-
-    }
-    else
-    {
-        <Empty/>  
+            <Empty Class=@this.GetEmptyClassName()/>
+        </Spin>
     }
     <RadzenCategoryAxis Formatter="@Format" Step="@Step"/>
     <RadzenValueAxis Step="@ValueAxisStep">

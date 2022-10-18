@@ -1,7 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
-using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.TemplateManagements;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -54,7 +53,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             isLoading = true;
             await LoadData.InvokeAsync();
             using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.GetGenericService(serviceScope);
+            var service = GetGenericService(serviceScope);
             var query = service.Get();
             if (CommonFilter != null)
             {
@@ -101,7 +100,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
                 if (response == true)
                 {
                     using var serviceScope = ServiceProvider.CreateScope();
-                    var service = this.GetGenericService(serviceScope);
+                    var service = GetGenericService(serviceScope);
                     await service.DeleteAsync(data);
 
                     AffraNotificationService.NotifyItemDeleted();
@@ -124,7 +123,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             else
             {
                 response = await DialogService.OpenAsync<TDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "CustomColumns", this.customColumns } },
+                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "CustomColumns", customColumns } },
                            Constant.DialogOptions);
 
                 if (response == true)
@@ -132,7 +131,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
                     try
                     {
                         using var serviceScope = ServiceProvider.CreateScope();
-                        var service = this.GetGenericService(serviceScope);
+                        var service = GetGenericService(serviceScope);
 
                         if (data.AsIEntity().Id > 0)
                         {

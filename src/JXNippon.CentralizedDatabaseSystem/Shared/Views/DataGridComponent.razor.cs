@@ -66,7 +66,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 DateFilter.OnDateRangeChanged += this.OnDateRangeChangedAsync;
             }
-            await ReloadAsync();
         }
 
         private Task OnContentUpdateAsync(object obj)
