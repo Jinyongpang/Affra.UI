@@ -76,7 +76,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         public async Task ReloadAsync()
         {           
             await LoadDataAsync();
-            await chart.Reload();
+            await (chart?.Reload() ?? Task.CompletedTask);
             this.StateHasChanged();
         }
 
