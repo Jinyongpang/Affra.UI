@@ -116,6 +116,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<RoleAuthorizationConfigurations>>(Options.Create(roleAuthorizationConfigurations))
     .AddScoped<IUserService, UserService>()
     .AddSingleton<IAuthorizationHandler, UserRoleAuthorizeHandler>()
+    .AddMemoryCache()
     .AddAuthorizationCore(options =>
     {
         options.AddPolicy("RolePageOperation", policy =>
