@@ -8,6 +8,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.OData.Client;
 using Radzen.Blazor;
 using ViewODataService.Affra.Service.View.Domain.Views;
@@ -18,7 +19,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     {
         private RadzenChart chart;
         private IDictionary<string, IEnumerable<IDaily>> items;
-        private bool isLoading = false;
+        private bool isLoading = true;
         private List<IHubSubscription> subscriptions = new List<IHubSubscription>();
         private bool isDisposed = false;
         private HashSet<string> types = new HashSet<string>();
@@ -39,6 +40,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
+        [Inject] private IMemoryCache MemoryCache { get; set; }
+
         public int Count { get; set; }
         private object First;
         private object Last;
@@ -71,17 +74,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         }
 
         public async Task ReloadAsync()
-        {
-            isLoading = true;
-            this.StateHasChanged();
+        {           
             await LoadDataAsync();
             await chart.Reload();
-            isLoading = false;
             this.StateHasChanged();
         }
 
         private async Task LoadDataAsync()
         {
+            if (isLoading != true)
+            {
+                isLoading = true;
+                this.StateHasChanged();
+            }
             items = new Dictionary<string, IEnumerable<IDaily>>();
             this.types = this.types.Distinct().ToHashSet();
             this.Count = 0;
@@ -90,9 +95,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 .ToList();
 
             haveData = false;
-            foreach (var result in tasks)
+            foreach (var result in await Task.WhenAll(tasks))
             {
-                var typeItems = (await result.Item2).ToList();
+                var typeItems = result.Item2;
                 var type = result.Item1;
                 if (this.Count == 0 && typeItems.Count > 0)
                 {
@@ -104,10 +109,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 this.items.TryAdd(type, typeItems);
                 haveData = haveData || typeItems.Count() > 0;
             }
+
+            isLoading = false;
         }
 
-        private (string, Task<IEnumerable<IDaily>>?) LoadTypeDataAsync(string type)
+        private async Task<(string, List<IDaily>)> LoadTypeDataAsync(string type)
         {
+            var cacheKey = type;
             using var serviceScope = ServiceProvider.CreateScope();
             var service = this.ViewService.GetGenericService(serviceScope, type);
             Queryable = service.Get();
@@ -118,6 +126,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     .Where(item => item.Date >= DateFilter.Start.Value.ToUniversalTime())
                     .Where(item => item.Date <= DateFilter.End.Value.ToUniversalTime())
                     .OrderBy(x => x.Date);
+                 cacheKey = $"{cacheKey}-{DateFilter.Start}-{DateFilter.End}";
             }
             else
             {
@@ -126,11 +135,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     .OrderBy(x => x.Date)
                     .Take(100);
             }
+            if (MemoryCache.TryGetValue(cacheKey, out List<IDaily> result))
+            {
+                 return (type, result);
+            }
+
             var q = (DataServiceQuery<IDaily>)Queryable;
+            var list = (await q.ExecuteAsync()).ToList();
+            MemoryCache.Set(cacheKey, list, TimeSpan.FromSeconds(10));
 
-            Task<IEnumerable<IDaily>>? task = q.ExecuteAsync();
-
-            return (type, task);
+            return (type, list);
         }
 
         private List<SeriesItem> GetSeriesItems(ChartSeries chartSeries, IEnumerable<IDaily> dailyItems)

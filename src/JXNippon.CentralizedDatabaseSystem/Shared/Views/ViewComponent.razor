@@ -27,12 +27,12 @@
 
     @if (isFirstRowCompleted)
     {
-        <Virtualize ItemSize=300 Items="@View.RowsStartFromSecond" Context="row">
+        <Virtualize ItemSize=1000 Items="@View.RowsStartFromSecond" Context="row">
             <Placeholder>
                 <Spin/>
             </Placeholder>
             <ItemContent>
-                @this.BuildRowComponent(row, false)
+                @this.BuildRowComponent(row, true)
             </ItemContent>    
         </Virtualize>
     }
@@ -83,7 +83,7 @@
                 
             @if (isVirtualization)
             {
-                <Virtualize Items="row.Columns" Context="col" ItemSize=300>
+                <Virtualize Items="row.Columns" Context="col" ItemSize=400>
                     <Placeholder>
                         <Spin/>
                     </Placeholder>
