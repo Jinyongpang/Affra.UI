@@ -68,14 +68,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
         }
 
-        private Task OnContentUpdateAsync(object obj)
-        {
+        private async Task OnContentUpdateAsync(object obj)
+        {           
+            await this.ReloadAsync();
             StateHasChanged();
-            return this.ReloadAsync();
         }
         public Task ReloadAsync()
         {
-            return grid?.FirstPage(true) ?? Task.CompletedTask;
+            return grid?.Reload() ?? Task.CompletedTask;
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)
