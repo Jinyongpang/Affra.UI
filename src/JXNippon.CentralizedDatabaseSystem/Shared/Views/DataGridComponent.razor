@@ -7,10 +7,9 @@
 @using JXNippon.CentralizedDatabaseSystem.Models
 
 <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@this.Count" Data="@this.itemsDictionary" LoadData="@this.LoadDataAsync" 
-    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
-    PageSize=@this.PageSize PageSizeText="Items" PageSizeOptions=@this.pageSizeOptions PagerHorizontalAlign="HorizontalAlign.Center" PageNumbersCount=@PageNumbersCount AllowColumnResize="true" ShowPagingSummary="true" 
-    AllowMultiColumnSorting="false" ShowMultiColumnSortingIndex="false"
-    PagerAlwaysVisible="false" CellRender=@this.CellRender ColumnWidth="100px">
+    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false"
+    AllowColumnResize="true" Style="height: 45vh;" 
+    AllowMultiColumnSorting="false" ShowMultiColumnSortingIndex="false" AllowVirtualization CellRender=@this.CellRender ColumnWidth="75px">
     <Columns>
         @foreach(var gridColumn in GridColumns)
         {
@@ -32,4 +31,10 @@
             </RadzenDataGridColumn>
         }             
     </Columns>
-</RadzenDataGrid> 
+</RadzenDataGrid>
+
+@if (!this.isLoading && Count == 0)
+{
+    <Empty Style="position:absolute; top: 40%; left: calc(50% - 92px);"></Empty>    
+
+}
