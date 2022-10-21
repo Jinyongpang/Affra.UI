@@ -1,0 +1,15 @@
+﻿@typeparam TItem
+@typeparam TProp
+
+<PropertyColumn Width="80%" Property="Property">
+	@if (isEditing)
+	{
+		<Input Type="text" @bind-Value="this.Value" OnChange="ValueChanged" OnBlur="stopEdit" AutoFocus />
+	}
+	else
+	{
+		<div class="editable-cell-value-wrap" style="padding-right:24px" @onclick="startEdit">
+			@this.Value
+		</div>
+	}
+</PropertyColumn>

@@ -19,8 +19,10 @@
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders
+@using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
 @using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 @using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using JXNippon.CentralizedDatabaseSystem.Shared.TableProperty
 
 <Spin Size="large" Spinning=this.isLoading Style="top: 30%;">
 	<RadzenTemplateForm Data="@Item">
@@ -65,18 +67,16 @@
 								<Panel ShowArrow="false" Header="HIP / LWP SUMMARY" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyHIPAndLWPSummary Items=@this.Item.DailyHIPAndLWPSummarys>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
+											<Table DataSource="this.Item.DailyHIPAndLWPSummarys">
+												<EditableColumnProperty TItem="DailyHIPAndLWPSummary" TProp="string" Item="@context" ItemId="@context.Id" Property="c => c.Remark" @bind-Value="@context.Remark" />
+											</Table>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="FPSO HELANG SUMMARY" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyFPSOHelangSummary Items=@this.Item.DailyFPSOHelangSummarys>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
+											<FPSOHelangSummaryDataGrid @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args)) />
 										</Descriptions>
 									</ChildContent>
 								</Panel>

@@ -1,8 +1,31 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using AntDesign;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
+using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction;
+using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
+using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers;
+using JXNippon.CentralizedDatabaseSystem.Shared.Logistic;
+using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity;
+using JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment;
+using JXNippon.CentralizedDatabaseSystem.Shared.MaximoWorkOrder;
+using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary;
+using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement;
+using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement;
+using JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander;
+using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities;
+using JXNippon.CentralizedDatabaseSystem.Shared.WellHead;
+using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem;
 using Microsoft.AspNetCore.Components;
 using Microsoft.OData.Client;
 using Radzen;
@@ -21,7 +44,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         [Inject] private IServiceProvider ServiceProvider { get; set; }
 
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
+        [Inject] private NavigationManager NavManager { get; set; }
+        private CommonFilter CommonFilter { get; set; }
 
+        private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
+
+        long editId;
         private void SetIsEditing(bool value)
         { 
             this.isEditing = value;
@@ -30,6 +58,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         protected override async Task OnInitializedAsync()
         {
+            CommonFilter = new CommonFilter(NavManager);
+            CommonFilter.Date = this.Item.Date.UtcDateTime;
+
             using var serviceScope = ServiceProvider.CreateScope();
             var service = this.GetGenericService(serviceScope);
             var query = (DataServiceQuery<CombinedDailyReport>)service.Get();
@@ -41,7 +72,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 .Expand(x => x.DailyOperatingChanges)
                 .Expand(x => x.DailyLossOfPrimaryContainmentIncident)
                 .Expand(x => x.DailyHIPAndLWPSummarys)
-                .Expand(x => x.DailyFPSOHelangSummarys)
                 .Expand(x => x.DailySandDisposalDesander)
                 .Expand(x => x.DailyCiNalco)
                 .Expand(x => x.DailyInowacInjection)
@@ -78,6 +108,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
             this.Item = response.FirstOrDefault();
             this.isLoading = false;
+
             await base.OnInitializedAsync();
         }
 
@@ -119,6 +150,33 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 this.AffraNotificationService.NotifyException(ex);
             }
         }
+        void startEdit(long id)
+        {
+            editId = id;
+        }
 
+        private async Task stopEdit()
+        {
+            try
+            {
+                using var scope = ServiceProvider.CreateScope();
+                var service = this.GetGenericService(scope);
+                await service.UpdateAsync(this.Item, this.Item.Id);
+
+                this.AffraNotificationService.NotifySuccess("Record edited.");
+
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
+
+            editId = -1;
+        }
+        private async Task LoadFPSOHelangSummaryDataGridAsync(LoadDataArgs args)
+        {
+            fpsoHelangSummaryDataGrid.CommonFilter = CommonFilter;
+        }
     }
 }
