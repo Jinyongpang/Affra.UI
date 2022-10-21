@@ -6,7 +6,18 @@
     <ChildContent>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Name" />
+                    <RadzenLabel class="dialogTextSize" Text="Injection Status" />
+                </div>
+                <div class="col-8">
+                    <RadzenDropDown Name="InjectionStatus" class="w-100"  @bind-Value="@Item.InjectionStatus" Data="@(StatusFilter.Statuses)" TValue="string" Disabled=@isViewing
+                    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                        Placeholder="Enter injection status..."></RadzenDropDown>
+                    <RadzenRequiredValidator Component="InjectionStatus" Text="Injection status is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Injection Point" />
                 </div>
                 <div class="col-8">
                     <RadzenTextBox Name="InjectionPoint" class="w-100" @bind-Value="@Item.InjectionPoint" Disabled=@isViewing
@@ -24,12 +35,10 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Status" />
+                    <RadzenLabel class="dialogTextSize" Text="Yesterday's Level" />
                 </div>
                 <div class="col-8">
-                    <RadzenDropDown Name="InjectionStatus" class="w-100"  @bind-Value="@Item.InjectionStatus" Data="@(StatusFilter.Statuses)" TValue="string" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
-                        Placeholder="Enter injection status..."></RadzenDropDown>
-                    <RadzenRequiredValidator Component="InjectionStatus" Text="Injection status is required" Popup=false/>
+                    <RadzenNumeric Name="YesterdayLevel" class="w-100" Placeholder="Enter yesterday's level..." @bind-Value="@Item.YesterdayLevel" Disabled=@isViewing></RadzenNumeric>
                 </div>
             </div>
             <div class="row py-2">
@@ -58,10 +67,10 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Total Tank" />
+                    <RadzenLabel class="dialogTextSize" Text="Tote Tank" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric Name="TotalTank" class="w-100" Placeholder="Enter total tank..." @bind-Value="@Item.TotalTank" Disabled=@isViewing></RadzenNumeric>
+                    <RadzenNumeric Name="TotalTank" class="w-100" Placeholder="Enter tote tank..." @bind-Value="@Item.TotalTank" Disabled=@isViewing></RadzenNumeric>
                 </div>
             </div>
             <div class="row py-2">
