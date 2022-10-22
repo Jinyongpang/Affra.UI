@@ -1,4 +1,6 @@
 global using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+global using UserODataService.Affra.Service.User.Domain.Roles;
+global using JXNippon.CentralizedDatabaseSystem.Domain.Roles;
 using System.Globalization;
 using Affra.Core.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem;
@@ -119,14 +121,14 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddMemoryCache()
     .AddAuthorizationCore(options =>
     {
-        options.AddPolicy("RolePageOperation", policy =>
-            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.Operation)));
-        options.AddPolicy("RolePageWellAllocation", policy =>
-            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.WellAllocation)));
-        options.AddPolicy("RolePageDeferment", policy =>
-            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.Deferment)));
-        options.AddPolicy("RolePageAdministration", policy =>
-            policy.Requirements.Add(new UserRoleAuthorizePermission(PageSection.Administration)));
+        foreach (FeaturePermission featurePermission in Enum.GetValues(typeof(FeaturePermission)))
+        {
+            options.AddPolicy($"{featurePermission}.Read", policy =>
+                policy.Requirements.Add(new UserRoleAuthorizePermission(new Permission() { Name = featurePermission.ToString(), HasReadPermissoin = true })));
+            options.AddPolicy($"{featurePermission}.ReadWrite", policy =>
+                policy.Requirements.Add(new UserRoleAuthorizePermission(new Permission() { Name = featurePermission.ToString(), HasReadPermissoin = true, HasWritePermission = true, })));
+        }
+
     })
     .AddAntDesign()
     .AddLocalization();

@@ -3,6 +3,7 @@ using Affra.Core.Infrastructure.OData.UnitOfWorks;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using Microsoft.Extensions.Options;
 using Microsoft.OData.Extensions.Client;
+using UserODataService.Affra.Service.User.Domain.Roles;
 using UserODataService.Affra.Service.User.Domain.Users;
 using UserODataService.Default;
 
@@ -17,5 +18,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Users
 
         public IGenericRepository<User> UserRepository => this.GetGenericRepository<User>();
         public IGenericRepository<UserActivity> UserActivityRepository => this.GetGenericRepository<UserActivity>();
+
+        public IGenericRepository<Role> RoleRepository => this.GetGenericRepository<Role>();
     }
 }

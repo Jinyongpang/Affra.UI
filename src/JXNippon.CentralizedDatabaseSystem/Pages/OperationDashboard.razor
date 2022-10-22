@@ -1,6 +1,6 @@
 ﻿@page "/Operation/Dashboard"
 @using JXNippon.CentralizedDatabaseSystem.Shared.Views
-@attribute [Authorize(Policy = "RolePageOperation")]
+@attribute [Authorize(Policy = "Operation.Read")]
 
 <PageTitle>Operation Dashboard</PageTitle>
 <ViewTab Page="Operation"></ViewTab>

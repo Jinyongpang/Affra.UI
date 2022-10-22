@@ -1,7 +1,7 @@
 ﻿@page "/Operation/OperationInstruction"
 @using JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
 
-@attribute [Authorize(Policy = "RolePageOperation")]
+@attribute [Authorize(Policy = "Operation.Read")]
 
 <PageTitle>Operation Instruction</PageTitle>
 <OperationInstruction />
