@@ -9,8 +9,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         [Parameter]
         public RenderFragment<TItem>? ChildContent { get; set; }
 
-
         [Parameter]
         public ICollection<TItem> Items { get; set; }
+
+        [Parameter]
+        public bool ShowEmpty { get; set; } = true;
+
+        public Task ReloadAsync()
+        {
+            this.StateHasChanged();
+            return Task.CompletedTask;
+        }
     }
 }

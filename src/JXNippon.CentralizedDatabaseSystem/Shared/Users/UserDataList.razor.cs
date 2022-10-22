@@ -6,6 +6,7 @@ using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Radzen;
 using UserODataService.Affra.Service.User.Domain.Users;
 
@@ -13,11 +14,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 {
     public partial class UserDataList
     {
-        private const int loadSize = 9;
-        private AntList<User> _dataList;
-        private List<User> users;
+        private Virtualize<User> virtualize;
         private int count;
-        private int currentCount;
         private bool isLoading = false;
         private bool initLoading = true;
         private ListGridType grid = new()
@@ -42,65 +40,53 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         protected override Task OnInitializedAsync()
         {
             this.CommonFilter = new CommonFilter(navigationManager);
-            initLoading = false;
-            return this.LoadDataAsync();
+            return Task.CompletedTask;
         }
 
-        public Task ReloadAsync()
+        public async Task ReloadAsync()
         {
-            return this.LoadDataAsync();
+            await this.virtualize.RefreshDataAsync();
+            this.StateHasChanged();
         }
 
-        public Task OnLoadMoreAsync()
-        {
-            return this.LoadDataAsync(true);
-        }
-
-        private async Task LoadDataAsync(bool isLoadMore = false)
+        private async ValueTask<ItemsProviderResult<User>> LoadDataAsync(ItemsProviderRequest request)
         {
             isLoading = true;
             StateHasChanged();
-            if (!isLoadMore)
-            {
-                currentCount = 0;
+
+            try 
+            { 
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<User>? userService = this.GetGenericService(serviceScope);
+                var query = userService.Get();
+                if (!string.IsNullOrEmpty(CommonFilter.Status))
+                {
+                    query = query.Where(x => x.Role.ToUpper() == CommonFilter.Status.ToUpper());
+                }
+                if (!string.IsNullOrEmpty(CommonFilter.Search))
+                {
+                    query = query.Where(x => x.Username.ToUpper().Contains(CommonFilter.Search.ToUpper())
+                     || x.Email.ToUpper().Contains(CommonFilter.Search.ToUpper())
+                     || x.Name.ToUpper().Contains(CommonFilter.Search.ToUpper()));
+                }
+                Microsoft.OData.Client.QueryOperationResponse<User>? usersResponse = await query
+                    .OrderByDescending(user => user.Id)
+                    .Skip(request.StartIndex)
+                    .Take(request.Count)
+                    .ToQueryOperationResponseAsync<User>();
+
+                count = (int)usersResponse.Count;
+                var usersList = usersResponse.ToList();
+
+                isLoading = false;
+                return new ItemsProviderResult<User>(usersList, count);
             }
-
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<User>? userService = this.GetGenericService(serviceScope);
-            var query = userService.Get();
-            if (!string.IsNullOrEmpty(CommonFilter.Search))
+            finally
             {
-                query = query.Where(x => x.Username.ToUpper().Contains(CommonFilter.Search.ToUpper())
-                 || x.Email.ToUpper().Contains(CommonFilter.Search.ToUpper())
-                 || x.Name.ToUpper().Contains(CommonFilter.Search.ToUpper()));
+                initLoading = false;
+                isLoading = false;
+                StateHasChanged();
             }
-            Microsoft.OData.Client.QueryOperationResponse<User>? usersResponse = await query
-                .OrderByDescending(user => user.Id)
-                .Skip(currentCount)
-                .Take(loadSize)
-                .ToQueryOperationResponseAsync<User>();
-
-            count = (int)usersResponse.Count;
-            currentCount += loadSize;
-            var usersList = usersResponse.ToList();
-
-            if (isLoadMore)
-            {
-                users.AddRange(usersList);
-            }
-            else
-            {
-                users = usersList;
-            }
-
-            isLoading = false;
-
-            if (usersList.DistinctBy(x => x.Id).Count() != usersList.Count)
-            {
-                AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
-            }
-
-            StateHasChanged();
         }
 
         private async Task ShowActivityDialogAsync(User user)

@@ -1,4 +1,6 @@
-﻿<Layout Class="layout-view">
+﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
+
+<Layout Class="layout-view">
     <Header>
         <div class="row">
             <div class="col-12 float-right align-items-center text-right mt-1">
@@ -18,6 +20,24 @@
         </div>       
     </Header>
     <Layout Style="height: 100%;">
+        <Sider Class="d-none d-lg-inline" Collapsible>
+            <Menu DefaultSelectedKeys=@(new[] { "All" }) Style="height: 100%;" Mode=@MenuMode.Inline @ref=menu OnMenuItemClicked=OnMenuItemSelectAsync>
+                <MenuItem Key="All">         
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">All</span>
+                    </ChildContent>
+                </MenuItem>
+                <CollectionView Items=@this.roles TItem=Role ShowEmpty=false>
+                    <ChildContent Context="role">
+                        <MenuItem Key="@role.Name">
+                            <ChildContent>
+                                <span style="font-size: 16px; margin-left: 0px;">@role.Name</span>
+                            </ChildContent>                
+                        </MenuItem>
+                    </ChildContent>               
+                </CollectionView>
+            </Menu>
+        </Sider>
         <Content Style="overflow-y: auto; overflow-x:hidden; height:100%;">
             <UserDataList @ref=userDataList></UserDataList>
         </Content>

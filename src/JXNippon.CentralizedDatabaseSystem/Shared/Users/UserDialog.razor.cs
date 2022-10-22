@@ -13,6 +13,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         [Parameter] public bool IsUserEdit { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private IUserService UserService { get; set; }
+        [Inject] private IServiceProvider ServiceProvider { get; set; }
         private bool isViewing { get => MenuAction == 3; }
         private int[] availableAvatar = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
@@ -23,10 +24,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
             "Administrator",
         };
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
+            using var scope = ServiceProvider.CreateScope();
+            var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
+            roles = (await userService.GetRolesAsync())
+                .Select(x => x.Name)
+                .ToList();
             this.userPersonalization = this.Item.UserPersonalization;
-            return Task.CompletedTask;
         }
 
         protected Task SubmitAsync(User arg)

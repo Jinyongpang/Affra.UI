@@ -1,69 +1,26 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Configurations;
-using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
-using JXNippon.CentralizedDatabaseSystem.Domain.Users;
+﻿using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Options;
 
 namespace JXNippon.CentralizedDatabaseSystem.Handlers
 {
     public class UserRoleAuthorizeHandler : AuthorizationHandler<UserRoleAuthorizePermission>
     {
-        private const string Administrator = "Administrator";
-        private readonly IGlobalDataSource globalDataSource;
-        private readonly RoleAuthorizationConfigurations roleAuthorizationConfigurations;
         private readonly IServiceProvider serviceProvider;
 
-        public UserRoleAuthorizeHandler(IGlobalDataSource globalDataSource, IOptions<RoleAuthorizationConfigurations> roleAuthorizationConfigurations, IServiceProvider serviceProvider)
+        public UserRoleAuthorizeHandler(IServiceProvider serviceProvider)
         {
-            this.globalDataSource = globalDataSource;
-            this.roleAuthorizationConfigurations = roleAuthorizationConfigurations.Value;
             this.serviceProvider = serviceProvider;
         }
 
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, UserRoleAuthorizePermission requirement)
         {
-            if (globalDataSource.User is null
-                && context.User is not null
-                && context.User.Identity?.IsAuthenticated == true)
-            {
-                using var serviceScope = this.serviceProvider.CreateScope();
-                var service = serviceScope.ServiceProvider.GetRequiredService<IUserService>();
-                var userFromService = await service.GetUserAsync(context.User);
-                this.globalDataSource.User = userFromService;
-            }
-            if (this.globalDataSource.User is null)
-            {
-                return;
-            }
-            else if (this.globalDataSource.User.Email.Equals("jianyi.lim@affra.onmicrosoft.com", StringComparison.OrdinalIgnoreCase))
+            using var serviceScope = serviceProvider.CreateScope();
+            var service = serviceScope.ServiceProvider.GetRequiredService<IUserService>();
+            var result = await service.CheckHasPermissionAsync(context.User, requirement.Permission);
+            if (result)
             {
                 context.Succeed(requirement);
             }
-            else if (string.IsNullOrEmpty(globalDataSource.User?.Role))
-            {
-                return;
-            }
-            else if (requirement.PageSection == PageSection.Undefined)
-            {
-                context.Succeed(requirement);
-            }
-            else if (globalDataSource.User.Role == Administrator)
-            {
-                context.Succeed(requirement);
-            }
-            else if (!roleAuthorizationConfigurations.RolePageSections.TryGetValue(globalDataSource.User.Role, out var authorizationPages))
-            {
-                return;
-            }
-            else
-            {
-                if (authorizationPages.ToList().Contains(requirement.PageSection))
-                {
-                    context.Succeed(requirement);
-                }
-            }
-
-            return;
         }
     }
 }

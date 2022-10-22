@@ -1,0 +1,31 @@
+﻿<RadzenTemplateForm Data="@Item" Submit="@( async (Role args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Role Name" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="Name" class="w-100" Placeholder="Enter role name..." @bind-Value="@Item.Name"></RadzenTextBox>
+                    <RadzenRequiredValidator Component="Name" Text="Role name is required" Popup=false/>
+                </div>
+            </div>         
+            <div class="row justify-content-center py-4">
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <Button HtmlType="submit" Type="primary" Size="@("large")">
+                        <ChildContent>
+                            <Icon Type="save" Theme="outline" Class="anticon-big" />
+                            <span style="font-size: 18px; margin-left: 10px;">Save</span>
+                        </ChildContent>
+                    </Button>
+                    <Button Style="display: inline-block; margin-left: 10px;" Size="@("large")" OnClick="@Cancel">
+                        <ChildContent>
+                            <Icon Type="close-circle" Theme="outline" Class="anticon-big" />
+                            <span style="font-size: 18px; margin-left: 10px;">Cancel</span>
+                        </ChildContent>
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </div>
+</RadzenTemplateForm>

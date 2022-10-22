@@ -250,6 +250,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Combined Daily Report.
+        /// </summary>
+        public static string CombinedDailyReport {
+            get {
+                return ResourceManager.GetString("CombinedDailyReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Condensate Water Cut Meter (%).
         /// </summary>
         public static string CondensateWaterCutMeterPercentage {
@@ -1645,6 +1654,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Management Of Change.
+        /// </summary>
+        public static string ManagementOfChange {
+            get {
+                return ResourceManager.GetString("ManagementOfChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximo Work Order.
         /// </summary>
         public static string MaximoWorkOrder {
@@ -2037,6 +2055,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string PendingForCloseOut {
             get {
                 return ResourceManager.GetString("PendingForCloseOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PE Report.
+        /// </summary>
+        public static string PEReport {
+            get {
+                return ResourceManager.GetString("PEReport", resourceCulture);
             }
         }
         
@@ -3144,6 +3171,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string WellActualInjection {
             get {
                 return ResourceManager.GetString("WellActualInjection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Well Allocation.
+        /// </summary>
+        public static string WellAllocation {
+            get {
+                return ResourceManager.GetString("WellAllocation", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
 ﻿using Affra.Core.Domain.UnitOfWorks;
+using UserODataService.Affra.Service.User.Domain.Roles;
 using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
@@ -7,5 +8,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
     {
         IGenericRepository<User> UserRepository { get; }
         IGenericRepository<UserActivity> UserActivityRepository { get; }
+
+        IGenericRepository<Role> RoleRepository { get; }
     }
 }
