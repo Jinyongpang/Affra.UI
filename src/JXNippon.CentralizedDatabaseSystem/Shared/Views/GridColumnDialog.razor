@@ -39,10 +39,26 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
+                <RadzenLabel class="dialogTextSize" Text="Frozen" />
+                </div>
+                <div class="col-8">
+                    <RadzenSwitch @bind-Value=@Item.Frozen Disabled=@isViewing></RadzenSwitch>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
                     <RadzenLabel class="dialogTextSize" Text="Format String" />
                 </div>
                 <div class="col-8">
                     <RadzenTextBox Name="FormatString" class="w-100" Placeholder="Enter format string..." @bind-Value="@Item.FormatString" Disabled=@isViewing></RadzenTextBox>
+                </div>
+            </div>
+             <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Width" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="Width" class="w-100" Placeholder="Enter width..." @bind-Value="@Item.Width" Disabled=@isViewing></RadzenTextBox>
                 </div>
             </div>
             <div class="row py-2">

@@ -56,6 +56,21 @@
                        <Column Title="Filterable" @bind-Field="@item.Filterable">
                             <RadzenSwitch @bind-Value="@item.Filterable"></RadzenSwitch>            
                        </Column>
+                       <Column Title="Frozen" @bind-Field="@item.Frozen">
+                            <RadzenSwitch @bind-Value="@item.Frozen"></RadzenSwitch>            
+                       </Column>
+                       <Column Title="Width" @bind-Field="@item.Width">
+                            @if (editId == item.Property && editColumn == nameof(item.Width))
+                            {
+                                <RadzenTextBox Name="Width" Placeholder="Enter width..." @bind-Value="@item.Width"></RadzenTextBox>
+                            }
+                            else
+                            {
+                                <div class="editable-cell-value-wrap" style="padding-right:24px" @onclick="()=>this.StartEdit(item.Property, nameof(item.Width))">
+                                    @item.Width
+                                </div>
+                            }    
+                       </Column>
                    </ChildContent>
                   
                 </Table>

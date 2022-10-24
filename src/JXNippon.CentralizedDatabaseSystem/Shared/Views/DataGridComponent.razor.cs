@@ -168,23 +168,27 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             Queryable = Queryable
                 .AppendQuery(orderBy: args?.OrderBy);
 
-            foreach (var filter in args?.Filters)
+            if (args?.Filters is not null)
             {
-                if (filter.FilterValue is not null
-                    && filter.FilterValue as string != string.Empty)
+                foreach (var filter in args?.Filters)
                 {
-                    try
+                    if (filter.FilterValue is not null
+                        && filter.FilterValue as string != string.Empty)
                     {
-                        Queryable = Queryable
-                               .Where($"x => x.{filter.Property} {GetOperator(filter.FilterOperator)} \"{filter.FilterValue}\"");
+                        try
+                        {
+                            Queryable = Queryable
+                                   .Where($"x => x.{filter.Property} {GetOperator(filter.FilterOperator)} \"{filter.FilterValue}\"");
 
-                    }
-                    catch (Exception ex)
-                    {
-                        AffraNotificationService.NotifyException(ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            AffraNotificationService.NotifyException(ex);
+                        }
                     }
                 }
             }
+            
             if (start != null && end != null)
             {
                 Queryable = Queryable
