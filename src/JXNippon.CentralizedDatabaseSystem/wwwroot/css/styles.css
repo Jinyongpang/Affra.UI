@@ -477,7 +477,7 @@ p.moh-cardbody {
 }
 
 .focused-card {
-    min-height: 80vh;
+    min-height: calc(95vh - 5rem);
 }
 
 .hidden-card {
