@@ -176,7 +176,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     try
                     {
                         Queryable = Queryable
-                               .Where($"x => x.{filter.Property} {GetOperator(filter.FilterOperator)} {filter.FilterValue}");
+                               .Where($"x => x.{filter.Property} {GetOperator(filter.FilterOperator)} \"{filter.FilterValue}\"");
 
                     }
                     catch (Exception ex)
