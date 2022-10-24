@@ -13,8 +13,8 @@
                             </label>
                         </div>
                         <div class="col-3">
-                            <Switch Size="large" @bind-Checked="item.HasReadPermissoin" CheckedChildren="Read" UnCheckedChildren="Read" Disabled=@isUserHavePermission />
-                            <Switch Size="large" @bind-Checked="item.HasWritePermission" CheckedChildren="Write" UnCheckedChildren="Write" Disabled=@isUserHavePermission />
+                            <Switch Size="large" @bind-Checked="item.HasReadPermissoin" CheckedChildren="Read" UnCheckedChildren="Read" Disabled=@(!isUserHavePermission) />
+                            <Switch Size="large" @bind-Checked="item.HasWritePermission" CheckedChildren="Write" UnCheckedChildren="Write" Disabled=@(!isUserHavePermission) />
                         </div>
                     </div>            
                 </ChildContent>
