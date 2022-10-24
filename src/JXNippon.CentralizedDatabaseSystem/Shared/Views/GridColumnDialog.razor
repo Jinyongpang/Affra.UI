@@ -14,11 +14,27 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
-                <RadzenLabel class="dialogTextSize" Text="Property" />
+                    <RadzenLabel class="dialogTextSize" Text="Property" />
                 </div>
                 <div class="col-8">
                     <RadzenDropDown AllowClear="true" Data="@properties" Name="Property" class="w-100" Placeholder="Select property..." @bind-Value="@Item.Property" Disabled=@isViewing></RadzenDropDown>
                     <RadzenRequiredValidator Component="Property" Text="Property is required" Popup=false/>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Sortable" />
+                </div>
+                <div class="col-8">
+                    <RadzenSwitch @bind-Value=@Item.Sortable Disabled=@isViewing></RadzenSwitch>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                <RadzenLabel class="dialogTextSize" Text="Filterable" />
+                </div>
+                <div class="col-8">
+                    <RadzenSwitch @bind-Value=@Item.Filterable Disabled=@isViewing></RadzenSwitch>
                 </div>
             </div>
             <div class="row py-2">

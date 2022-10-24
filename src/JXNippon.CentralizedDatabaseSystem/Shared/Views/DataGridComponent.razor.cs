@@ -1,6 +1,6 @@
 ﻿using System.Dynamic;
+using System.Linq.Dynamic.Core;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
-using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
 using JXNippon.CentralizedDatabaseSystem.Domain.Hubs;
@@ -22,29 +22,29 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private IEnumerable<IDaily> items;
         private IEnumerable<IDictionary<string, object>> itemsDictionary;
         private bool isLoading = false;
-        private IHubSubscription subscription;
+        private readonly IHubSubscription subscription;
         private bool isDisposed = false;
         private IDictionary<string, GridColumn> gridColumnDictionary;
 
         [Parameter] public IDateFilterComponent DateFilter { get; set; }
-        [Parameter] public EventCallback<IQueryable<dynamic>> LoadData { get; set; }
-        [Parameter] public IQueryable<dynamic> Queryable { get; set; }
+        [Parameter] public EventCallback<IQueryable> LoadData { get; set; }
+        [Parameter] public IQueryable Queryable { get; set; }
         [Parameter] public string TType { get; set; }
         [Parameter] public string Subscription { get; set; }
         [Parameter] public IEnumerable<GridColumn> GridColumns { get; set; }
         [Parameter] public Column Column { get; set; }
         [Parameter] public int PageSize { get; set; }
         [Parameter] public int PageNumbersCount { get; set; }
-        
+
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
-        
+
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
-        private IEnumerable<int> pageSizeOptions = new int[] { 5, 10, 15 };
+        private readonly IEnumerable<int> pageSizeOptions = new int[] { 5, 10, 15 };
 
         private Type Type
         {
@@ -57,20 +57,20 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
-            gridColumnDictionary = this.GridColumns.ToDictionary(x => $"{x.Type}{x.Property}");
-            if (!string.IsNullOrEmpty(this.Subscription))
+            gridColumnDictionary = GridColumns.ToDictionary(x => $"{x.Type}{x.Property}");
+            if (!string.IsNullOrEmpty(Subscription))
             {
-                await this.ContentUpdateNotificationService.SubscribeAsync(Subscription, OnContentUpdateAsync);
+                await ContentUpdateNotificationService.SubscribeAsync(Subscription, OnContentUpdateAsync);
             }
             if (DateFilter is not null)
             {
-                DateFilter.OnDateRangeChanged += this.OnDateRangeChangedAsync;
+                DateFilter.OnDateRangeChanged += OnDateRangeChangedAsync;
             }
         }
 
         private async Task OnContentUpdateAsync(object obj)
-        {           
-            await this.ReloadAsync();
+        {
+            await ReloadAsync();
             StateHasChanged();
         }
         public Task ReloadAsync()
@@ -81,14 +81,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
-            this.items = await this.GetDailyItemsAsync(this.TType, DateFilter?.Start, DateFilter?.End, args);
-            itemsDictionary = await this.MergeOverridenTypeAsync(this.items) ?? new List<ExpandoObject>();
+            items = await GetDailyItemsAsync(TType, DateFilter?.Start, DateFilter?.End, args);
+            itemsDictionary = await MergeOverridenTypeAsync(items) ?? new List<ExpandoObject>();
             isLoading = false;
         }
 
         private async Task<IEnumerable<IDictionary<string, object>>?> MergeOverridenTypeAsync(IEnumerable<IDaily> dailyItems)
         {
-            var types = this.GridColumns
+            var types = GridColumns
                 .Where(x => !string.IsNullOrEmpty(x.Type))
                 .Select(x => x.Type)
                 .Distinct();
@@ -101,7 +101,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     var actualType = ViewHelper.GetActualType(type);
                     if (actualType is not null)
                     {
-                        list.AddRange(await this.GetDailyItemsAsync(actualType.AssemblyQualifiedName, dailyItems.First().Date, dailyItems.Last().Date));
+                        list.AddRange(await GetDailyItemsAsync(actualType.AssemblyQualifiedName, dailyItems.First().Date, dailyItems.Last().Date));
                     }
                 }
             }
@@ -115,12 +115,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         dictionaryObject.Add(dict);
                     }
                 }
-                    
+
                 result.Add(dictionaryObject);
             }
 
             return result;
-            
+
         }
 
         private string GetColumnPropertyExpression(string name, Type type)
@@ -129,11 +129,62 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return type == typeof(int) ? $"int.Parse({expression})" : expression;
         }
 
+        private string GetOperator(FilterOperator filterOperator)
+        {
+            switch (filterOperator)
+            {
+                case FilterOperator.Equals: return "==";
+                case FilterOperator.NotEquals: return "!=";
+                case FilterOperator.GreaterThan: return ">";
+                case FilterOperator.LessThan: return "<";
+                case FilterOperator.GreaterThanOrEquals: return ">=";
+                case FilterOperator.LessThanOrEquals: return "<=";
+                case FilterOperator.Contains:
+                    break;
+                case FilterOperator.StartsWith:
+                    break;
+                case FilterOperator.EndsWith:
+                    break;
+                case FilterOperator.DoesNotContain:
+                    break;
+                case FilterOperator.IsNull:
+                    break;
+                case FilterOperator.IsEmpty:
+                    break;
+                case FilterOperator.IsNotNull:
+                    break;
+                case FilterOperator.IsNotEmpty:
+                    break;
+                default: return null;
+            }
+            return null;
+        }
+
         private async Task<IEnumerable<IDaily>> GetDailyItemsAsync(string type, DateTimeOffset? start, DateTimeOffset? end, LoadDataArgs args = null)
         {
             using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.ViewService.GetGenericService(serviceScope, type);
+            var service = ViewService.GetGenericService(serviceScope, type);
             Queryable = service.Get();
+            Queryable = Queryable
+                .AppendQuery(orderBy: args?.OrderBy);
+
+            foreach (var filter in args?.Filters)
+            {
+                if (filter.FilterValue is not null
+                    && filter.FilterValue as string != string.Empty)
+                {
+                    try
+                    {
+                        Queryable = Queryable
+                               .Where($"x => x.{filter.Property} {GetOperator(filter.FilterOperator)} {filter.FilterValue}");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        AffraNotificationService.NotifyException(ex);
+                    }
+                }
+            }
             if (start != null && end != null)
             {
                 Queryable = Queryable
@@ -142,23 +193,29 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     .Where(item => item.Date <= end.Value.ToUniversalTime());
             }
 
-            Queryable = (IQueryable<dynamic>)Queryable
-                .Cast<IDaily>()
-                .OrderBy(x => x.Date)
-                .AppendQuery(args?.Filter, args?.Skip, args?.Top, args?.OrderBy);
+            if (args?.Sorts is null)
+            {
+                Queryable = Queryable
+                    .Cast<IDaily>()
+                    .OrderBy(x => x.Date);
+            }
+
+            Queryable = Queryable
+                .AppendQuery(null, args?.Skip, args?.Top, null);
+
 
             if (args is not null)
             {
                 await LoadData.InvokeAsync(Queryable);
             }
-            
+
             var q = (DataServiceQuery)Queryable;
             var response = (await q
                 .ExecuteAsync()) as QueryOperationResponse;
 
             if (args is not null)
             {
-                this.Count = (int)response.Count;
+                Count = (int)response.Count;
             }
 
             return response
@@ -179,14 +236,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private void CellRender(DataGridCellRenderEventArgs<IDictionary<string, object>> args)
         {
-            if (this.gridColumnDictionary.TryGetValue(args.Column.Property, out var gridColumn))
+            if (gridColumnDictionary.TryGetValue(args.Column.Property, out var gridColumn))
             {
                 if (args.Data.TryGetValue(args.Column.Property, out object value))
                 {
-                    var result = this.GetResultString(gridColumn, value);
-                    args.Attributes.Add("style", this.GetStyle(gridColumn, result));
+                    var result = GetResultString(gridColumn, value);
+                    args.Attributes.Add("style", GetStyle(gridColumn, result));
                 }
-            }  
+            }
         }
 
         private string GetResultString(GridColumn gridColumn, object input)
@@ -206,7 +263,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private string GetStyle(GridColumn gridColumn, string value)
         {
             if (gridColumn?.ConditionalStylings is null)
-            { 
+            {
                 return string.Empty;
             }
 
@@ -234,7 +291,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         {
                             if (value?.Equals(style.Value, StringComparison.InvariantCultureIgnoreCase) ?? false)
                             {
-                                    return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
+                                return $"{style.Style} background-color: {style.BackgroundColor}; color: {style.FontColor};";
                             }
                             break;
                         }
@@ -272,7 +329,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private Task OnDateRangeChangedAsync(DateRange dateRange)
         {
-            return this.ReloadAsync();
+            return ReloadAsync();
         }
         public async ValueTask DisposeAsync()
         {
@@ -282,12 +339,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 {
                     if (DateFilter is not null)
                     {
-                        DateFilter.OnDateRangeChanged -= this.OnDateRangeChangedAsync;
+                        DateFilter.OnDateRangeChanged -= OnDateRangeChangedAsync;
                     }
                     grid.Dispose();
-                    if (!string.IsNullOrEmpty(this.Subscription))
+                    if (!string.IsNullOrEmpty(Subscription))
                     {
-                        await this.ContentUpdateNotificationService.RemoveHandlerAsync(Subscription, OnContentUpdateAsync);
+                        await ContentUpdateNotificationService.RemoveHandlerAsync(Subscription, OnContentUpdateAsync);
                     }
                     if (subscription is not null)
                     {

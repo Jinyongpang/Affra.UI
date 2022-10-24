@@ -2,7 +2,8 @@
 @inject IStringLocalizer<Resource> StringLocalizer
 
 @if (Item is not null)
-{    <RadzenTemplateForm class="py-2" Data="@Item" Submit="@(async (Role args) => { await SubmitAsync(args); })">
+{
+    <RadzenTemplateForm class="py-2" Data="@Item" Submit="@(async (Role args) => { await SubmitAsync(args); })">
         <ChildContent>
             <JXNippon.CentralizedDatabaseSystem.Shared.Commons.CollectionView Items=this.Item?.Permissions TItem=Permission @ref=this.collectionView>
                 <ChildContent Context="item">
