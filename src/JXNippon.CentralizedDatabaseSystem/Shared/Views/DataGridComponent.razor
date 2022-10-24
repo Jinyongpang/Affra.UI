@@ -24,7 +24,7 @@
                 && gridColumn.Filterable;
 
             <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@propertyName" Title="@(gridColumn.Title)" 
-                FormatString="@(gridColumn.FormatString)" Sortable=isSortable Filterable=isFilterable SortProperty="@oriProperty">
+                FormatString="@(gridColumn.FormatString)" Width=@gridColumn.Width Frozen=gridColumn.Frozen Sortable=isSortable Filterable=isFilterable SortProperty="@oriProperty">
                 <Template>                  
                     @if(context.TryGetValue(propertyName, out object value))
                     {
