@@ -7,21 +7,24 @@
 @using JXNippon.CentralizedDatabaseSystem.Models
 
 <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@this.Count" Data="@this.itemsDictionary" LoadData="@this.LoadDataAsync" 
-    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false"
+    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering
+    FilterMode=FilterMode.Simple
+    FilterDelay=100
     AllowColumnResize="true" Style="height: 45vh;" 
-    AllowMultiColumnSorting="false" ShowMultiColumnSortingIndex="false" AllowVirtualization CellRender=@this.CellRender ColumnWidth="75px">
+    AllowMultiColumnSorting="false"
+    ShowMultiColumnSortingIndex="false" AllowVirtualization CellRender=@this.CellRender ColumnWidth="75px">
     <Columns>
-        @foreach(var gridColumn in GridColumns)
+        @foreach (var gridColumn in GridColumns)
         {
-            var isSortable = gridColumn.Property == "Date"
-                || gridColumn.Property == "DateUI";
-
-            var sortString = gridColumn.Property == "DateUI"
-                ? "Date"
-                : gridColumn.Property;
-
+            var oriProperty = gridColumn.Property.Replace("DateUI", "Date");
             var propertyName = $"{gridColumn.Type}{gridColumn.Property}";
-            <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@propertyName" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)" Sortable=@isSortable SortProperty="@sortString">
+            var isSortable = string.IsNullOrEmpty(gridColumn.Type)
+                && gridColumn.Sortable;            
+            var isFilterable = string.IsNullOrEmpty(gridColumn.Type)
+                && gridColumn.Filterable;
+
+            <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@propertyName" Title="@(gridColumn.Title)" 
+                FormatString="@(gridColumn.FormatString)" Sortable=isSortable Filterable=isFilterable SortProperty="@oriProperty">
                 <Template>                  
                     @if(context.TryGetValue(propertyName, out object value))
                     {

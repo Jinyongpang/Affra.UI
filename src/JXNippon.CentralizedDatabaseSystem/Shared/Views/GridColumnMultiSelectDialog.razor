@@ -50,6 +50,12 @@
                                 </div>
                             }    
                        </Column>
+                       <Column Title="Sortable" @bind-Field="@item.Sortable">
+                            <RadzenSwitch @bind-Value="@item.Sortable"></RadzenSwitch>                           
+                       </Column>
+                       <Column Title="Filterable" @bind-Field="@item.Filterable">
+                            <RadzenSwitch @bind-Value="@item.Filterable"></RadzenSwitch>            
+                       </Column>
                    </ChildContent>
                   
                 </Table>
