@@ -42,7 +42,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private async ValueTask<ItemsProviderResult<CombinedDailyReport>> LoadDataAsync(ItemsProviderRequest request)
         {
             isLoading = true;
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "CombinedDailyReport", HasReadPermissoin = true, HasWritePermission = true });
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true });
             try
             {
                 using var serviceScope = ServiceProvider.CreateScope();

@@ -21,7 +21,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         protected override async Task OnInitializedAsync()
         {
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "Administration", HasReadPermissoin = true, HasWritePermission = true });
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             this._permissions = Enum.GetValues(typeof(FeaturePermission))
                 .Cast<FeaturePermission>()
                 .OrderBy(x => (int)x)

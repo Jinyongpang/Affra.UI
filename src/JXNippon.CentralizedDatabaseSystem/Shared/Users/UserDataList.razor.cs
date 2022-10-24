@@ -52,7 +52,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         private async ValueTask<ItemsProviderResult<User>> LoadDataAsync(ItemsProviderRequest request)
         {
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "Administration", HasReadPermissoin = true, HasWritePermission = true });
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             isLoading = true;
             StateHasChanged();
 

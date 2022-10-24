@@ -43,7 +43,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
                 return;
             }
             isLoading = true;
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "Administration", HasReadPermissoin = true, HasWritePermission = true });
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             await LoadData.InvokeAsync();
             using var serviceScope = ServiceProvider.CreateScope();
             var service = this.GetGenericService<CustomColumn>(serviceScope);

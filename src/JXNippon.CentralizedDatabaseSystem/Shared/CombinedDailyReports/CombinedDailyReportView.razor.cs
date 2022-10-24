@@ -82,7 +82,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
             this.Item = response.FirstOrDefault();
             this.isLoading = false;
-            this.isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "CombinedDailyReport", HasReadPermissoin = true, HasWritePermission = true});
+            this.isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true});
             await base.OnInitializedAsync();
         }
 

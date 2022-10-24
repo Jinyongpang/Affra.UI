@@ -54,7 +54,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         }
         private async Task LoadDataAsync(bool isLoadMore = false)
         {
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "ManagementOfChange", HasReadPermissoin = true, HasWritePermission = true });
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.ManagementOfChange), HasReadPermissoin = true, HasWritePermission = true });
             isLoading = true;
             StateHasChanged();
             if (!isLoadMore)

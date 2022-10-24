@@ -25,7 +25,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         {
             using var scope = ServiceProvider.CreateScope();
             var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
-            isUserHavePermission = await userService.CheckHasPermissionAsync(null, new Permission { Name = "Administration", HasReadPermissoin = true, HasWritePermission = true });
+            isUserHavePermission = await userService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             roles = await userService.GetRolesAsync();
             roles = roles
                 .Where(x => x.Name != "Administrator")

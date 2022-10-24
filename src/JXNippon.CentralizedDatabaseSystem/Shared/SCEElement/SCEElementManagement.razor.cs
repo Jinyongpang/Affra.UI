@@ -35,7 +35,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
         }
         private async Task LoadSCEGroupAsync()
         {
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "Administration", HasReadPermissoin = true, HasWritePermission = true });
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             StateHasChanged();
 
             using var serviceScope = ServiceProvider.CreateScope();
