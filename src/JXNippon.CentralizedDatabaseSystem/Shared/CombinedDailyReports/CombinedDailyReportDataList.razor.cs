@@ -2,6 +2,7 @@
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
@@ -16,12 +17,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private int count;
         private bool isLoading = false;
         private bool initLoading = true;
+        private bool isUserHavePermission = true;
         private Virtualize<CombinedDailyReport> virtualize;
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private DialogService DialogService { get; set; }
+        [Inject] private IUserService UserService { get; set; }
 
         public CommonFilter Filter { get; set; }
 
@@ -39,7 +42,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private async ValueTask<ItemsProviderResult<CombinedDailyReport>> LoadDataAsync(ItemsProviderRequest request)
         {
             isLoading = true;
-
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "CombinedDailyReport", HasReadPermissoin = true, HasWritePermission = true });
             try
             {
                 using var serviceScope = ServiceProvider.CreateScope();

@@ -94,20 +94,23 @@
                             </div>
                         </div>
                     </Body>
-                    <ActionTemplate>        
-                        <CardAction >
-                            <Tooltip Title=@("Reset To Pending")>
-                                <Popconfirm Title=@($"Reset {context.FileName} to pending?")
-                                            OnConfirm="@(() => this.ResyncFileAsync(context))"
-                                            OkText="Yes"
-                                            CancelText="No">
-                                    <Icon Class="anticon-big" Type="redo"/>
-                                </Popconfirm>
-                            </Tooltip>
-                        </CardAction>
-                        <CardAction>
-                            <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" /></Tooltip>
-                        </CardAction>
+                    <ActionTemplate>
+                        @if (isUserHavePermission)
+                        {
+                            <CardAction>
+                                <Tooltip Title=@("Reset To Pending")>
+                                    <Popconfirm Title=@($"Reset {context.FileName} to pending?")
+                                                OnConfirm="@(() => this.ResyncFileAsync(context))"
+                                                OkText="Yes"
+                                                CancelText="No">
+                                        <Icon Class="anticon-big" Type="redo"/>
+                                    </Popconfirm>
+                                </Tooltip>
+                            </CardAction>
+                            <CardAction>
+                                <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" /></Tooltip>
+                            </CardAction>
+                        }
                     </ActionTemplate>
                 </Card>  
             </div>        

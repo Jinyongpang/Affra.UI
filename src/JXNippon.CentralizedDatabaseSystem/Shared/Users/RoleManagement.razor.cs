@@ -15,6 +15,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         private ICollection<Role> roles;
         private RolePermissionManagement rolePermissionManagement;
         private Role item;
+        private bool isUserHavePermission = true;
 
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
@@ -24,6 +25,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         {
             using var scope = ServiceProvider.CreateScope();
             var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
+            isUserHavePermission = await userService.CheckHasPermissionAsync(null, new Permission { Name = "Administration", HasReadPermissoin = true, HasWritePermission = true });
             roles = await userService.GetRolesAsync();
             roles = roles
                 .Where(x => x.Name != "Administrator")

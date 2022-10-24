@@ -72,7 +72,8 @@
                                 </div>
                             </Body>
                             <Extra>
-                                @if (context.OperationInstructionStatus != OperationInstructionStatus.Deleted)
+                                @if (isUserHavePermission
+                                && context.OperationInstructionStatus != OperationInstructionStatus.Deleted)
                                 {
                                     <Popover Placement="@Placement.RightBottom">
                                         <ContentTemplate>

@@ -39,10 +39,12 @@
                         <DatePicker Class="w-100" Size="medium" DisabledDate="date => date >= DateTime.Now" Placeholder=@("Date") TValue="DateTime?" @bind-Value=@CommonFilter.Date AllowClear=@this.HasFocus OnChange=@(args => OnChangeAsync(args))/>   
                     </SpaceItem>
                 </Space>      
-            </div>         
-            <div class="col-sm-12 col-md-4 col-xl-2 py-2">      
-                <RadzenButton  Style="width: 100%;" Text="Export" Icon="grid_on" ButtonStyle="ButtonStyle.Primary"/>
             </div>
+            <AuthorizeView Policy="CombinedDailyReport.ReadWrite">
+                <div class="col-sm-12 col-md-4 col-xl-2 py-2">      
+                    <RadzenButton  Style="width: 100%;" Text="Export" Icon="grid_on" ButtonStyle="ButtonStyle.Primary"/>
+                </div>
+            </AuthorizeView>
             <div class="col-sm-12 col-md-4 col-xl-2 py-2">      
                 <RadzenButton Style="width: 100%;" Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light"/>
             </div>  

@@ -2,6 +2,7 @@
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 using Microsoft.OData.Client;
@@ -13,6 +14,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
     {
         private bool isEditing;
         private bool isLoading = true;
+        private bool isUserHavePermission = true;
 
         [Parameter] public CombinedDailyReport Item { get; set; }
 
@@ -21,6 +23,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         [Inject] private IServiceProvider ServiceProvider { get; set; }
 
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
+
+        [Inject] private IUserService UserService { get; set; }
 
         private void SetIsEditing(bool value)
         { 
@@ -78,6 +82,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
             this.Item = response.FirstOrDefault();
             this.isLoading = false;
+            this.isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "CombinedDailyReport", HasReadPermissoin = true, HasWritePermission = true});
             await base.OnInitializedAsync();
         }
 

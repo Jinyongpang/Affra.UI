@@ -29,7 +29,7 @@
 
 <div class="row py-2">
     <div class="col">
-        <ViewComponent View=@view @ref=viewComponent IsDesignMode="true"/>
+        <ViewComponent View=@view @ref=viewComponent IsDesignMode="true" IsHavePermission=@isUserHavePermission />
     </div>
 </div>
 
@@ -38,58 +38,60 @@
         && !string.IsNullOrEmpty(this.view?.Name);
 
     <div class="fixed-widgets">
-        <Popover>
-            <ContentTemplate>
-                <Menu Mode=MenuMode.Vertical Class="popup-menu">                   
-                    <MenuItem Key="AddView"><a @onclick=AddViewAsync><i class="fas fa-plus fa-fw fa-xl"></i> Add View...</a></MenuItem> 
-                    <MenuItem Key="EditView" Disabled=@(!hasItem)><a @onclick=EditViewAsync><i class="fas fa-edit fa-fw fa-xl"></i> Edit View...</a></MenuItem>     
-                    <MenuItem Key="DuplicateView" Disabled=@(!hasItem)><a @onclick=DuplicateViewAsync><i class="fas fa-clone fa-fw fa-xl"></i> Duplicate View...</a></MenuItem>     
-                    <MenuItem Key="DeleteView" Disabled=@(!hasItem)><a @onclick=DeleteViewAsync><i class="fas fa-eraser fa-fw fa-xl"></i> Delete View...</a></MenuItem>
-                    <MenuDivider />
-                    <MenuItem Key="AddRow" Disabled=@(!hasItem)><a @onclick=AddRowAsync><i class="fas fa-diagram-next fa-fw fa-xl"></i> Add Row</a></MenuItem>
-                    <MenuDivider />
-                    <MenuItem Key="AddChart" Disabled=@(!hasItem)><a @onclick=@(args => ShowDialogAsync(
-                    new Column()
-                    {
-                        ComponentType = nameof(Chart),
-                    },
-                    "Add"))><i class="fas fa-chart-line fa-fw fa-xl"></i> Add Chart...</a></MenuItem>
-                    <MenuItem Key="AddTable" @onclick=@(args => ShowDialogAsync(
-                    new Column()
-                    {
-                        ComponentType = nameof(Grid),
-                    },
-                    "Add")) Disabled=@(!hasItem)><a><i class="fas fa-table fa-fw fa-xl"></i> Add Table...</a></MenuItem>
-                    <MenuItem Key="AddAnnouncement" @onclick=@(args => ShowDialogAsync(
-                    new Column()
-                    {
-                        ComponentType = nameof(AnnouncementCard),
-                    },
-                    "Add")) Disabled=@(!hasItem)><a><i class="fas fa-bullhorn fa-fw fa-xl"></i> Add Announcement...</a></MenuItem>
-                    <MenuItem Key="AddDateFilter" @onclick=@(args => ShowDialogAsync(
-                    new Column()
-                    {
-                        ComponentType = nameof(DateFilter),
-                    },
-                    "Add")) Disabled=@(!hasItem)><a><i class="fas fa-calendar fa-fw fa-xl"></i> Add Date Filter...</a></MenuItem>
-                    <MenuItem Key="AddStatistics" @onclick=@(args => ShowDialogAsync(
-                    new Column()
-                    {
-                        ComponentType = nameof(JXNippon.CentralizedDatabaseSystem.Domain.Statistics.Statistic),
-                    },
-                    "Add")) Disabled=@(!hasItem)><a><i class="fas fa-gauge-high fa-fw fa-xl"></i> Add Statistics...</a></MenuItem>
-                    <MenuDivider />
-                    <MenuItem Key="Export" Disabled=@(!hasItem)><a @onclick=ExportAsync><i class="fas fa-download fa-fw fa-xl"></i> Export</a></MenuItem>
-                    <MenuItem Key="Import">
-                        <Upload>
-                            <label><InputFile id="fileInput" OnChange="ImportAsync" hidden/><i class="fas fa-upload fa-fw fa-xl"></i> Import...</label>
-                        </Upload>           
-                    </MenuItem>
-                </Menu>
-            </ContentTemplate>
-            <ChildContent> 
-                <Avatar Size="large" Class="fixed-widgets-avatar"><Content><i class="fa-solid fa-wand-magic-sparkles"></i></Content></Avatar>
-            </ChildContent>
-        </Popover>
+        <AuthorizeView Policy="Administration.ReadWrite">
+                <Popover>
+                    <ContentTemplate>
+                        <Menu Mode=MenuMode.Vertical Class="popup-menu">                   
+                            <MenuItem Key="AddView"><a @onclick=AddViewAsync><i class="fas fa-plus fa-fw fa-xl"></i> Add View...</a></MenuItem> 
+                            <MenuItem Key="EditView" Disabled=@(!hasItem)><a @onclick=EditViewAsync><i class="fas fa-edit fa-fw fa-xl"></i> Edit View...</a></MenuItem>     
+                            <MenuItem Key="DuplicateView" Disabled=@(!hasItem)><a @onclick=DuplicateViewAsync><i class="fas fa-clone fa-fw fa-xl"></i> Duplicate View...</a></MenuItem>     
+                            <MenuItem Key="DeleteView" Disabled=@(!hasItem)><a @onclick=DeleteViewAsync><i class="fas fa-eraser fa-fw fa-xl"></i> Delete View...</a></MenuItem>
+                            <MenuDivider />
+                            <MenuItem Key="AddRow" Disabled=@(!hasItem)><a @onclick=AddRowAsync><i class="fas fa-diagram-next fa-fw fa-xl"></i> Add Row</a></MenuItem>
+                            <MenuDivider />
+                            <MenuItem Key="AddChart" Disabled=@(!hasItem)><a @onclick=@(args => ShowDialogAsync(
+                            new Column()
+                            {
+                                ComponentType = nameof(Chart),
+                            },
+                            "Add"))><i class="fas fa-chart-line fa-fw fa-xl"></i> Add Chart...</a></MenuItem>
+                            <MenuItem Key="AddTable" @onclick=@(args => ShowDialogAsync(
+                            new Column()
+                            {
+                                ComponentType = nameof(Grid),
+                            },
+                            "Add")) Disabled=@(!hasItem)><a><i class="fas fa-table fa-fw fa-xl"></i> Add Table...</a></MenuItem>
+                            <MenuItem Key="AddAnnouncement" @onclick=@(args => ShowDialogAsync(
+                            new Column()
+                            {
+                                ComponentType = nameof(AnnouncementCard),
+                            },
+                            "Add")) Disabled=@(!hasItem)><a><i class="fas fa-bullhorn fa-fw fa-xl"></i> Add Announcement...</a></MenuItem>
+                            <MenuItem Key="AddDateFilter" @onclick=@(args => ShowDialogAsync(
+                            new Column()
+                            {
+                                ComponentType = nameof(DateFilter),
+                            },
+                            "Add")) Disabled=@(!hasItem)><a><i class="fas fa-calendar fa-fw fa-xl"></i> Add Date Filter...</a></MenuItem>
+                            <MenuItem Key="AddStatistics" @onclick=@(args => ShowDialogAsync(
+                            new Column()
+                            {
+                                ComponentType = nameof(JXNippon.CentralizedDatabaseSystem.Domain.Statistics.Statistic),
+                            },
+                            "Add")) Disabled=@(!hasItem)><a><i class="fas fa-gauge-high fa-fw fa-xl"></i> Add Statistics...</a></MenuItem>
+                            <MenuDivider />
+                            <MenuItem Key="Export" Disabled=@(!hasItem)><a @onclick=ExportAsync><i class="fas fa-download fa-fw fa-xl"></i> Export</a></MenuItem>
+                            <MenuItem Key="Import">
+                                <Upload>
+                                    <label><InputFile id="fileInput" OnChange="ImportAsync" hidden/><i class="fas fa-upload fa-fw fa-xl"></i> Import...</label>
+                                </Upload>           
+                            </MenuItem>
+                        </Menu>
+                    </ContentTemplate>
+                    <ChildContent> 
+                        <Avatar Size="large" Class="fixed-widgets-avatar"><Content><i class="fa-solid fa-wand-magic-sparkles"></i></Content></Avatar>
+                    </ChildContent>
+               </Popover>
+        </AuthorizeView>
     </div>
 }

@@ -1,6 +1,7 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
@@ -17,6 +18,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
         private RadzenDataGrid<CustomColumn> grid;
         private IEnumerable<CustomColumn> items = new List<CustomColumn>();
         private bool isLoading = false;
+        private bool isUserHavePermission = false;
 
         [Parameter] public string TableName { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
@@ -25,6 +27,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private ContextMenuService ContextMenuService { get; set; }
+        [Inject] private IUserService UserService { get; set; }
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
 
@@ -40,6 +43,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.TemplateManagement
                 return;
             }
             isLoading = true;
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "Administration", HasReadPermissoin = true, HasWritePermission = true });
             await LoadData.InvokeAsync();
             using var serviceScope = ServiceProvider.CreateScope();
             var service = this.GetGenericService<CustomColumn>(serviceScope);

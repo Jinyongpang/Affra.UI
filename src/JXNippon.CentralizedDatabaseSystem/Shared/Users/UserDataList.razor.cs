@@ -18,6 +18,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
         private int count;
         private bool isLoading = false;
         private bool initLoading = true;
+        private bool isUserHavePermission = true;
         private ListGridType grid = new()
         {
             Gutter = 16,
@@ -51,6 +52,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         private async ValueTask<ItemsProviderResult<User>> LoadDataAsync(ItemsProviderRequest request)
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = "Administration", HasReadPermissoin = true, HasWritePermission = true });
             isLoading = true;
             StateHasChanged();
 

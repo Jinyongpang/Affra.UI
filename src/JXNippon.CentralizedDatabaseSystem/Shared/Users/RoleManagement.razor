@@ -9,11 +9,13 @@
                         <span>Roles</span>
                     </div>
                     <div class="col-6 float-right align-items-center text-right mt-1">
-                        <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick=this.AddRoleAsync>
-                            <ChildContent>
-                                <Icon Type="plus-circle" Theme="outline" Class="anticon-big" /><span style="font-size: 18px; margin-left: 10px;">Add</span>
-                            </ChildContent>
-                        </Button>
+                        <AuthorizeView Policy="Administration.ReadWrite">
+                            <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick=this.AddRoleAsync>
+                                <ChildContent>
+                                    <Icon Type="plus-circle" Theme="outline" Class="anticon-big" /><span style="font-size: 18px; margin-left: 10px;">Add</span>
+                                </ChildContent>
+                            </Button>
+                        </AuthorizeView>
                     </div>
                 </div>
             </Header>
@@ -28,11 +30,14 @@
                                             <span style="font-size: 16px; margin-left: 0px;">@role.Name</span>
                                         </div>
                                         <div class="col-3">
-                                            <Button Class="" Type="@AntDesign.ButtonType.Text" Shape="@ButtonShape.Circle" Size="@AntDesign.ButtonSize.Small" OnClick=@(() => this.DeleteAsync(role)) OnClickStopPropagation>
-                                                <ChildContent>
-                                                    <Icon Class="anticon-big" Type="delete" Theme="outline" />
-                                                </ChildContent>
-                                            </Button>
+                                            @if(isUserHavePermission)
+                                            {
+                                                <Button Class="" Type="@AntDesign.ButtonType.Text" Shape="@ButtonShape.Circle" Size="@AntDesign.ButtonSize.Small" OnClick=@(() => this.DeleteAsync(role)) OnClickStopPropagation>
+                                                    <ChildContent>
+                                                        <Icon Class="anticon-big" Type="delete" Theme="outline" />
+                                                    </ChildContent>
+                                                </Button>
+                                            }
                                         </div>
                                     </div>
                                 </ChildContent>                
