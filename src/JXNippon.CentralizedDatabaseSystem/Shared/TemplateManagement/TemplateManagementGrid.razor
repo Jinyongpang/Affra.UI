@@ -15,10 +15,13 @@
                 <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
                     <GenericDescription Height="250px" ImageFile="@ImageFile.ColumnConfig" Description="No custom template for this table created.">
                         <ChildContent>
-                            <Button Type="primary" OnClick=@(args => ShowDialogAsync(
-                                new CustomColumn() { Table = this.TableName },
-                                0,
-                                "Add"))>Create Now</Button>
+                            @if(isUserHavePermission)
+                            {
+                                <Button Type="primary" OnClick=@(args => ShowDialogAsync(
+                                    new CustomColumn() { Table = this.TableName },
+                                    0,
+                                    "Add"))>Create Now</Button>
+                            }
                         </ChildContent>
                     </GenericDescription>
                 </div>
@@ -43,9 +46,11 @@
         bool hasRowData = (args as DataGridCellMouseEventArgs<CustomColumn>) != null;
         ContextMenuService.Open(args, ds =>
            @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<CustomColumn>, e))">
-                <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
-                <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
-                <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                <AuthorizeView Policy="Administration.ReadWrite">
+                    <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
+                    <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                </AuthorizeView>
                 <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
                 <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
     </RadzenMenu>

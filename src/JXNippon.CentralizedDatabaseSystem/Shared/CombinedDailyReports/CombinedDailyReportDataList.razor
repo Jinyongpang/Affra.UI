@@ -70,9 +70,12 @@
                                 <Icon Class="anticon-big" Type="eye" OnClick="(() => this.ShowDialogAsync(context))"/>
                             </Tooltip>
                         </CardAction>
-                        <CardAction>
-                            <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" /></Tooltip>
-                        </CardAction>
+                        @if (isUserHavePermission)
+                        {
+                            <CardAction>
+                                <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" /></Tooltip>
+                            </CardAction>
+                        }
                     </ActionTemplate>
                 </Card>
             </div>        

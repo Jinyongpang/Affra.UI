@@ -23,6 +23,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private int currentCount;
         private bool isLoading = false;
         private bool initLoading = true;
+        private bool isUserHavePermission = true;
         private const int loadSize = 9;
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
@@ -30,6 +31,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private ConfirmService ConfirmService { get; set; }
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
+        [Inject] private IUserService UserService { get; set; }
 
         public CommonFilter ManagementOfChangeFilter { get; set; }
 
@@ -52,6 +54,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async Task LoadDataAsync(bool isLoadMore = false)
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.ManagementOfChange), HasReadPermissoin = true, HasWritePermission = true});
             isLoading = true;
             if (!isLoadMore)
             {

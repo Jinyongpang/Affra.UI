@@ -2,8 +2,7 @@
 @inject IStringLocalizer<Resource> StringLocalizer
 
 @if (Item is not null)
-{
-    <RadzenTemplateForm class="py-2" Data="@Item" Submit="@(async (Role args) => { await SubmitAsync(args); })">
+{    <RadzenTemplateForm class="py-2" Data="@Item" Submit="@(async (Role args) => { await SubmitAsync(args); })">
         <ChildContent>
             <JXNippon.CentralizedDatabaseSystem.Shared.Commons.CollectionView Items=this.Item?.Permissions TItem=Permission @ref=this.collectionView>
                 <ChildContent Context="item">
@@ -14,20 +13,23 @@
                             </label>
                         </div>
                         <div class="col-3">
-                            <Switch Size="large" @bind-Checked="item.HasReadPermissoin" CheckedChildren="Read" UnCheckedChildren="Read" />
-                            <Switch Size="large" @bind-Checked="item.HasWritePermission" CheckedChildren="Write" UnCheckedChildren="Write" />
+                            <Switch Size="large" @bind-Checked="item.HasReadPermissoin" CheckedChildren="Read" UnCheckedChildren="Read" Disabled=@(!isUserHavePermission) />
+                            <Switch Size="large" @bind-Checked="item.HasWritePermission" CheckedChildren="Write" UnCheckedChildren="Write" Disabled=@(!isUserHavePermission) />
                         </div>
                     </div>            
                 </ChildContent>
             </JXNippon.CentralizedDatabaseSystem.Shared.Commons.CollectionView>
             <div class="row justify-content-center py-4">
                 <div class="col-md-12 d-flex align-items-end justify-content-center">
-                   <Button HtmlType="submit" Type="primary" Size="@("large")">
-                        <ChildContent>
-                            <Icon Type="save" Theme="outline" Class="anticon-big" />
-                            <span style="font-size: 18px; margin-left: 10px;">Save</span>
-                        </ChildContent>
-                    </Button>     
+                    @if(isUserHavePermission)
+                    {
+                        <Button HtmlType="submit" Type="primary" Size="@("large")">
+                            <ChildContent>
+                                <Icon Type="save" Theme="outline" Class="anticon-big" />
+                                <span style="font-size: 18px; margin-left: 10px;">Save</span>
+                            </ChildContent>
+                        </Button>
+                    }
                 </div>
             </div>
         </ChildContent>

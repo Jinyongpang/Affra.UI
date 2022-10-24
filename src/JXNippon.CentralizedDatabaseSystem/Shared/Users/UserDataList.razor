@@ -65,8 +65,11 @@
                                 </div>
                             </div>
                         </Body>
-                        <ActionTemplate>                         
-                            <CardAction><Tooltip Title=@("Edit...")><Icon Class="anticon-big" Type="edit" OnClick="@(() => ShowDialogAsync(context, 1, "Edit"))"/></Tooltip></CardAction>
+                        <ActionTemplate>
+                            @if(isUserHavePermission)
+                            {
+                                <CardAction><Tooltip Title=@("Edit...")><Icon Class="anticon-big" Type="edit" OnClick="@(() => ShowDialogAsync(context, 1, "Edit"))"/></Tooltip></CardAction>
+                            }
                             <CardAction><Tooltip Title=@("View Activities...")><Icon Class="anticon-big" Type="eye" OnClick="@(() => ShowActivityDialogAsync(context))"/></Tooltip></CardAction>
                         </ActionTemplate>
                     </Card> 

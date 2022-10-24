@@ -3,6 +3,7 @@ using Affra.Core.Infrastructure.OData.Extensions;
 using AntDesign;
 using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
@@ -19,6 +20,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         private int count;
         private bool isLoading = false;
         private bool initLoading = true;
+        private bool isUserHavePermission = true;
         private ListGridType grid = new()
         {
             Gutter = 16,
@@ -34,6 +36,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private DialogService DialogService { get; set; }
+        [Inject] private IUserService UserService { get; set; }
         public CommonFilter FileManagementFilter { get; set; }
 
         protected override Task OnInitializedAsync()
@@ -50,6 +53,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 
         private async ValueTask<ItemsProviderResult<DataFile>> LoadDataAsync(ItemsProviderRequest request)
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             isLoading = true;
             StateHasChanged();
             try

@@ -17,9 +17,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         private ICollection<Permission> _permissions;
         private Commons.CollectionView<Permission> collectionView;
+        private bool isUserHavePermission = true;
 
         protected override async Task OnInitializedAsync()
-        {       
+        {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             this._permissions = Enum.GetValues(typeof(FeaturePermission))
                 .Cast<FeaturePermission>()
                 .OrderBy(x => (int)x)

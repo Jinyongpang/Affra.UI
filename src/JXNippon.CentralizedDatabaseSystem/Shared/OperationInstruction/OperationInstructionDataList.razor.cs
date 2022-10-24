@@ -2,6 +2,7 @@
 using Affra.Core.Infrastructure.OData.Extensions;
 using AntDesign;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
@@ -22,6 +23,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         private int currentCount;
         private bool isLoading = false;
         private bool initLoading = true;
+        private bool isUserHavePermission = true;
         private const int loadSize = 9;
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
@@ -29,6 +31,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
         [Inject] private ConfirmService ConfirmService { get; set; }
+        [Inject] private IUserService UserService { get; set; }
 
         public CommonFilter OperationInstructionFilter { get; set; }
 
@@ -51,6 +54,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         }
         private async Task LoadDataAsync(bool isLoadMore = false)
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.ManagementOfChange), HasReadPermissoin = true, HasWritePermission = true });
             isLoading = true;
             StateHasChanged();
             if (!isLoadMore)

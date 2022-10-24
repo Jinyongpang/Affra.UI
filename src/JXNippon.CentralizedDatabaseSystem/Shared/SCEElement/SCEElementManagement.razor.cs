@@ -3,6 +3,7 @@ using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using AntDesign;
 using JXNippon.CentralizedDatabaseSystem.Domain.ManagementOfChanges;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.SCEElements;
@@ -14,6 +15,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
     public partial class SCEElementManagement
     {
         private const string All = "All";
+        private bool isUserHavePermission = true;
         private Menu menu;
         private readonly string search;
         private IEnumerable<SCEElementGroupRecord> sceElementGroupList = new List<SCEElementGroupRecord>();
@@ -22,6 +24,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private DialogService DialogService { get; set; }
+        [Inject] private IUserService UserService { get; set; }
         private IGenericService<SCEElementGroupRecord> GetGenericSCEGroupService(IServiceScope serviceScope)
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<SCEElementGroupRecord, IManagementOfChangeUnitOfWork>>();
@@ -32,6 +35,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.SCEElement
         }
         private async Task LoadSCEGroupAsync()
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             StateHasChanged();
 
             using var serviceScope = ServiceProvider.CreateScope();
