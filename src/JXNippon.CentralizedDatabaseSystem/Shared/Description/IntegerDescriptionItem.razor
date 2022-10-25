@@ -1,11 +1,16 @@
-﻿<DescriptionsItem Title="@(stringLocalizer[Title])" Span=@(Span ?? 1)>
-    @if (this.IsEditing)
-    {
-        <RadzenNumeric @bind-Value=@this.Value></RadzenNumeric>
-    }
-    else
-    {
-        @this.Value
-    }
+﻿<DescriptionsItem Span=@(Span ?? 1)>
+    <TitleTemplate>
+        <a>@(stringLocalizer[Title]) <Icon Style=@this.GetStyle() Type="info-circle" Theme="outline" Class="anticon-big"></Icon></a>
+    </TitleTemplate>
+    <ChildContent>
+        @if (this.IsEditing)
+        {
+            <RadzenNumeric @bind-Value=@this.Value></RadzenNumeric>
+        }
+        else
+        {
+            @this.Value
+        }
+    </ChildContent>  
 </DescriptionsItem>
-     
+          
