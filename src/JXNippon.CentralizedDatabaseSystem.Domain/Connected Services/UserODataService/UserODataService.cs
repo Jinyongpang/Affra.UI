@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 14/8/2022 2:34:00 PM
+// Generation date: 21/10/2022 9:36:37 PM
 namespace UserODataService.Affra.Service.User.Domain.Users
 {
     /// <summary>
@@ -34,6 +34,48 @@ namespace UserODataService.Affra.Service.User.Domain.Users
         public UserSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<User> query)
             : base(query) {}
 
+        /// <summary>
+        /// There are no comments for UserActivitys in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::UserODataService.Affra.Service.User.Domain.Users.UserActivity> UserActivitys
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._UserActivitys == null))
+                {
+                    this._UserActivitys = Context.CreateQuery<global::UserODataService.Affra.Service.User.Domain.Users.UserActivity>(GetPath("UserActivitys"));
+                }
+                return this._UserActivitys;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::UserODataService.Affra.Service.User.Domain.Users.UserActivity> _UserActivitys;
+        /// <summary>
+        /// There are no comments for RoleGroup in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::UserODataService.Affra.Service.User.Domain.Roles.RoleSingle RoleGroup
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._RoleGroup == null))
+                {
+                    this._RoleGroup = new global::UserODataService.Affra.Service.User.Domain.Roles.RoleSingle(this.Context, GetPath("RoleGroup"));
+                }
+                return this._RoleGroup;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::UserODataService.Affra.Service.User.Domain.Roles.RoleSingle _RoleGroup;
     }
     /// <summary>
     /// There are no comments for User in the schema.
@@ -250,6 +292,48 @@ namespace UserODataService.Affra.Service.User.Domain.Users
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property UserActivitys in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Users.UserActivity> UserActivitys
+        {
+            get
+            {
+                return this._UserActivitys;
+            }
+            set
+            {
+                this.OnUserActivitysChanging(value);
+                this._UserActivitys = value;
+                this.OnUserActivitysChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Users.UserActivity> _UserActivitys = new global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Users.UserActivity>();
+        partial void OnUserActivitysChanging(global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Users.UserActivity> value);
+        partial void OnUserActivitysChanged();
+        /// <summary>
+        /// There are no comments for Property RoleGroup in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::UserODataService.Affra.Service.User.Domain.Roles.Role RoleGroup
+        {
+            get
+            {
+                return this._RoleGroup;
+            }
+            set
+            {
+                this.OnRoleGroupChanging(value);
+                this._RoleGroup = value;
+                this.OnRoleGroupChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::UserODataService.Affra.Service.User.Domain.Roles.Role _RoleGroup;
+        partial void OnRoleGroupChanging(global::UserODataService.Affra.Service.User.Domain.Roles.Role value);
+        partial void OnRoleGroupChanged();
     }
     /// <summary>
     /// There are no comments for UserActivitySingle in the schema.
@@ -274,6 +358,27 @@ namespace UserODataService.Affra.Service.User.Domain.Users
         public UserActivitySingle(global::Microsoft.OData.Client.DataServiceQuerySingle<UserActivity> query)
             : base(query) {}
 
+        /// <summary>
+        /// There are no comments for User in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::UserODataService.Affra.Service.User.Domain.Users.UserSingle User
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._User == null))
+                {
+                    this._User = new global::UserODataService.Affra.Service.User.Domain.Users.UserSingle(this.Context, GetPath("User"));
+                }
+                return this._User;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::UserODataService.Affra.Service.User.Domain.Users.UserSingle _User;
     }
     /// <summary>
     /// There are no comments for UserActivity in the schema.
@@ -448,6 +553,27 @@ namespace UserODataService.Affra.Service.User.Domain.Users
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property User in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::UserODataService.Affra.Service.User.Domain.Users.User User
+        {
+            get
+            {
+                return this._User;
+            }
+            set
+            {
+                this.OnUserChanging(value);
+                this._User = value;
+                this.OnUserChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::UserODataService.Affra.Service.User.Domain.Users.User _User;
+        partial void OnUserChanging(global::UserODataService.Affra.Service.User.Domain.Users.User value);
+        partial void OnUserChanged();
     }
     /// <summary>
     /// There are no comments for UserStatus in the schema.
@@ -519,6 +645,360 @@ namespace UserODataService.Affra.Service.User.Domain.Users
         }
     }
 }
+namespace UserODataService.Affra.Service.User.Domain.Roles
+{
+    /// <summary>
+    /// There are no comments for RoleSingle in the schema.
+    /// </summary>
+    public partial class RoleSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Role>
+    {
+        /// <summary>
+        /// Initialize a new RoleSingle object.
+        /// </summary>
+        public RoleSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new RoleSingle object.
+        /// </summary>
+        public RoleSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new RoleSingle object.
+        /// </summary>
+        public RoleSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<Role> query)
+            : base(query) {}
+
+        /// <summary>
+        /// There are no comments for Users in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::UserODataService.Affra.Service.User.Domain.Users.User> Users
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._Users == null))
+                {
+                    this._Users = Context.CreateQuery<global::UserODataService.Affra.Service.User.Domain.Users.User>(GetPath("Users"));
+                }
+                return this._Users;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::UserODataService.Affra.Service.User.Domain.Users.User> _Users;
+    }
+    /// <summary>
+    /// There are no comments for Role in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class Role : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new Role object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="createdDateTime">Initial value of CreatedDateTime.</param>
+        /// <param name="lastUpdatedDateTime">Initial value of LastUpdatedDateTime.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static Role CreateRole(long ID, global::System.DateTimeOffset createdDateTime, global::System.DateTimeOffset lastUpdatedDateTime, long xmin)
+        {
+            Role role = new Role();
+            role.Id = ID;
+            role.CreatedDateTime = createdDateTime;
+            role.LastUpdatedDateTime = lastUpdatedDateTime;
+            role.xmin = xmin;
+            return role;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Name in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property Personalization in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Personalization
+        {
+            get
+            {
+                return this._Personalization;
+            }
+            set
+            {
+                this.OnPersonalizationChanging(value);
+                this._Personalization = value;
+                this.OnPersonalizationChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Personalization;
+        partial void OnPersonalizationChanging(string value);
+        partial void OnPersonalizationChanged();
+        /// <summary>
+        /// There are no comments for Property Permissions in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Roles.Permission> Permissions
+        {
+            get
+            {
+                return this._Permissions;
+            }
+            set
+            {
+                this.OnPermissionsChanging(value);
+                this._Permissions = value;
+                this.OnPermissionsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Roles.Permission> _Permissions = new global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Roles.Permission>();
+        partial void OnPermissionsChanging(global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Roles.Permission> value);
+        partial void OnPermissionsChanged();
+        /// <summary>
+        /// There are no comments for Property CreatedDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset CreatedDateTime
+        {
+            get
+            {
+                return this._CreatedDateTime;
+            }
+            set
+            {
+                this.OnCreatedDateTimeChanging(value);
+                this._CreatedDateTime = value;
+                this.OnCreatedDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _CreatedDateTime;
+        partial void OnCreatedDateTimeChanging(global::System.DateTimeOffset value);
+        partial void OnCreatedDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property LastUpdatedDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset LastUpdatedDateTime
+        {
+            get
+            {
+                return this._LastUpdatedDateTime;
+            }
+            set
+            {
+                this.OnLastUpdatedDateTimeChanging(value);
+                this._LastUpdatedDateTime = value;
+                this.OnLastUpdatedDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _LastUpdatedDateTime;
+        partial void OnLastUpdatedDateTimeChanging(global::System.DateTimeOffset value);
+        partial void OnLastUpdatedDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Users in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Users.User> Users
+        {
+            get
+            {
+                return this._Users;
+            }
+            set
+            {
+                this.OnUsersChanging(value);
+                this._Users = value;
+                this.OnUsersChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Users.User> _Users = new global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Users.User>();
+        partial void OnUsersChanging(global::System.Collections.ObjectModel.Collection<global::UserODataService.Affra.Service.User.Domain.Users.User> value);
+        partial void OnUsersChanged();
+    }
+    /// <summary>
+    /// There are no comments for Permission in the schema.
+    /// </summary>
+    public partial class Permission
+    {
+        /// <summary>
+        /// Create a new Permission object.
+        /// </summary>
+        /// <param name="hasReadPermissoin">Initial value of HasReadPermissoin.</param>
+        /// <param name="hasWritePermission">Initial value of HasWritePermission.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static Permission CreatePermission(bool hasReadPermissoin, bool hasWritePermission)
+        {
+            Permission permission = new Permission();
+            permission.HasReadPermissoin = hasReadPermissoin;
+            permission.HasWritePermission = hasWritePermission;
+            return permission;
+        }
+        /// <summary>
+        /// There are no comments for Property Name in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property HasReadPermissoin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public bool HasReadPermissoin
+        {
+            get
+            {
+                return this._HasReadPermissoin;
+            }
+            set
+            {
+                this.OnHasReadPermissoinChanging(value);
+                this._HasReadPermissoin = value;
+                this.OnHasReadPermissoinChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private bool _HasReadPermissoin;
+        partial void OnHasReadPermissoinChanging(bool value);
+        partial void OnHasReadPermissoinChanged();
+        /// <summary>
+        /// There are no comments for Property HasWritePermission in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public bool HasWritePermission
+        {
+            get
+            {
+                return this._HasWritePermission;
+            }
+            set
+            {
+                this.OnHasWritePermissionChanging(value);
+                this._HasWritePermission = value;
+                this.OnHasWritePermissionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private bool _HasWritePermission;
+        partial void OnHasWritePermissionChanging(bool value);
+        partial void OnHasWritePermissionChanged();
+    }
+    /// <summary>
+    /// Class containing all extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Get an entity of type global::UserODataService.Affra.Service.User.Domain.Roles.Role as global::UserODataService.Affra.Service.User.Domain.Roles.RoleSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::UserODataService.Affra.Service.User.Domain.Roles.RoleSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::UserODataService.Affra.Service.User.Domain.Roles.Role> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::UserODataService.Affra.Service.User.Domain.Roles.RoleSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::UserODataService.Affra.Service.User.Domain.Roles.Role as global::UserODataService.Affra.Service.User.Domain.Roles.RoleSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::UserODataService.Affra.Service.User.Domain.Roles.RoleSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::UserODataService.Affra.Service.User.Domain.Roles.Role> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::UserODataService.Affra.Service.User.Domain.Roles.RoleSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+    }
+}
 namespace UserODataService.Default
 {
     /// <summary>
@@ -548,7 +1028,12 @@ namespace UserODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.User.Domain.Users", "UserODataService.Affra.Service.User.Domain.Users");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.User.Domain.Roles", "UserODataService.Affra.Service.User.Domain.Roles");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.User.Domain.Users", "UserODataService.Affra.Service.User.Domain.Users");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -568,6 +1053,10 @@ namespace UserODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
+            if (clientType.Namespace.Equals("UserODataService.Affra.Service.User.Domain.Roles", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.User.Domain.Roles.", clientType.Name);
+            }
             if (clientType.Namespace.Equals("UserODataService.Affra.Service.User.Domain.Users", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.User.Domain.Users.", clientType.Name);
@@ -613,6 +1102,23 @@ namespace UserODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::UserODataService.Affra.Service.User.Domain.Users.UserActivity> _UserActivity;
         /// <summary>
+        /// There are no comments for Role in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::UserODataService.Affra.Service.User.Domain.Roles.Role> Role
+        {
+            get
+            {
+                if ((this._Role == null))
+                {
+                    this._Role = base.CreateQuery<global::UserODataService.Affra.Service.User.Domain.Roles.Role>("Role");
+                }
+                return this._Role;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::UserODataService.Affra.Service.User.Domain.Roles.Role> _Role;
+        /// <summary>
         /// There are no comments for User in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -627,6 +1133,14 @@ namespace UserODataService.Default
         public void AddToUserActivity(global::UserODataService.Affra.Service.User.Domain.Users.UserActivity userActivity)
         {
             base.AddObject("UserActivity", userActivity);
+        }
+        /// <summary>
+        /// There are no comments for Role in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToRole(global::UserODataService.Affra.Service.User.Domain.Roles.Role role)
+        {
+            base.AddObject("Role", role);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -650,6 +1164,8 @@ namespace UserODataService.Default
         <Property Name=""Personalization"" Type=""Edm.String"" />
         <Property Name=""Status"" Type=""Affra.Service.User.Domain.Users.UserStatus"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <NavigationProperty Name=""UserActivitys"" Type=""Collection(Affra.Service.User.Domain.Users.UserActivity)"" />
+        <NavigationProperty Name=""RoleGroup"" Type=""Affra.Service.User.Domain.Roles.Role"" />
       </EntityType>
       <EntityType Name=""UserActivity"">
         <Key>
@@ -662,6 +1178,7 @@ namespace UserODataService.Default
         <Property Name=""CreatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""ActivityType"" Type=""Affra.Service.User.Domain.Users.ActivityType"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <NavigationProperty Name=""User"" Type=""Affra.Service.User.Domain.Users.User"" />
       </EntityType>
       <EnumType Name=""UserStatus"">
         <Member Name=""Active"" Value=""0"" />
@@ -673,10 +1190,38 @@ namespace UserODataService.Default
         <Member Name=""Logout"" Value=""1"" />
       </EnumType>
     </Schema>
+    <Schema Namespace=""Affra.Service.User.Domain.Roles"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""Role"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Name"" Type=""Edm.String"" />
+        <Property Name=""Personalization"" Type=""Edm.String"" />
+        <Property Name=""Permissions"" Type=""Collection(Affra.Service.User.Domain.Roles.Permission)"" />
+        <Property Name=""CreatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""LastUpdatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <NavigationProperty Name=""Users"" Type=""Collection(Affra.Service.User.Domain.Users.User)"" />
+      </EntityType>
+      <ComplexType Name=""Permission"">
+        <Property Name=""Name"" Type=""Edm.String"" />
+        <Property Name=""HasReadPermissoin"" Type=""Edm.Boolean"" Nullable=""false"" />
+        <Property Name=""HasWritePermission"" Type=""Edm.Boolean"" Nullable=""false"" />
+      </ComplexType>
+    </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityContainer Name=""Container"">
-        <EntitySet Name=""User"" EntityType=""Affra.Service.User.Domain.Users.User"" />
-        <EntitySet Name=""UserActivity"" EntityType=""Affra.Service.User.Domain.Users.UserActivity"" />
+        <EntitySet Name=""User"" EntityType=""Affra.Service.User.Domain.Users.User"">
+          <NavigationPropertyBinding Path=""RoleGroup"" Target=""Role"" />
+          <NavigationPropertyBinding Path=""UserActivitys"" Target=""UserActivity"" />
+        </EntitySet>
+        <EntitySet Name=""UserActivity"" EntityType=""Affra.Service.User.Domain.Users.UserActivity"">
+          <NavigationPropertyBinding Path=""User"" Target=""User"" />
+        </EntitySet>
+        <EntitySet Name=""Role"" EntityType=""Affra.Service.User.Domain.Roles.Role"">
+          <NavigationPropertyBinding Path=""Users"" Target=""User"" />
+        </EntitySet>
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

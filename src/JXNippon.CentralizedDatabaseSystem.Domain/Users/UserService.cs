@@ -1,24 +1,31 @@
 ﻿using System.Security.Claims;
 using System.Text.Json;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using Microsoft.OData.Client;
+using UserODataService.Affra.Service.User.Domain.Roles;
 using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
 {
     public class UserService : IUserService
     {
+        private const string Administrator = "Administrator";
         private const string UsernameKey = "preferred_username";
         private readonly IUserUnitOfWork _userUnitOfWork;
+        private readonly IGlobalDataSource globalDataSource;
 
-        public UserService(IUserUnitOfWork userUnitOfWork)
+        public UserService(IUserUnitOfWork userUnitOfWork, IGlobalDataSource globalDataSource)
         {
             this._userUnitOfWork = userUnitOfWork;
+            this.globalDataSource = globalDataSource;
         }
 
         public async Task<User> GetUserAsync(ClaimsPrincipal user)
         {
             var email = this.GetEmail(user).ToLower();
-            var userFromService = (await ((DataServiceQuery<User>)this._userUnitOfWork.UserRepository.Get()
+            var query = (DataServiceQuery<User>)this._userUnitOfWork.UserRepository.Get();
+            var userFromService = (await ((DataServiceQuery<User>) query
+                .Expand(x => x.RoleGroup)
                 .Where(x => x.Username == email))
                 .ExecuteAsync())
                 .ToList()
@@ -57,6 +64,68 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
         public UserPersonalization GetUserPersonalization(User user)
         {
             return JsonSerializer.Deserialize<UserPersonalization>(user.Personalization);
+        }
+
+        public async Task<ICollection<Role>> GetRolesAsync()
+        {
+            var query = (DataServiceQuery<Role>)this._userUnitOfWork.RoleRepository.Get()
+                .OrderBy(x => x.Name);
+            var roles = (await query.ExecuteAsync())
+                .ToList();
+
+            return roles;
+        }
+        public async Task<Role> GetRoleAsync(string name)
+        {
+            var query = (DataServiceQuery<Role>)this._userUnitOfWork.RoleRepository.Get()
+                .Where(x => x.Name.ToUpper() == name.ToUpper());
+            var role = (await query.ExecuteAsync())
+                .FirstOrDefault();
+
+            return role;
+
+        }
+
+        public async Task<bool> CheckHasPermissionAsync(ClaimsPrincipal claimsPrincipal, Permission permission)
+        {
+            if (globalDataSource.User is null
+                && claimsPrincipal is not null
+                && claimsPrincipal.Identity?.IsAuthenticated == true)
+            {
+                this.globalDataSource.User = await this.GetUserAsync(claimsPrincipal);
+            }
+            if (this.globalDataSource.User is null)
+            {
+                return false;
+            }
+            else if (this.globalDataSource.User.Email.Equals("jianyi.lim@affra.onmicrosoft.com", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+            else if (string.IsNullOrEmpty(globalDataSource.User?.Role))
+            {
+                return true;
+            }
+            else if (permission is null)
+            {
+                return true;
+            }
+            else if (globalDataSource.User.Role == Administrator)
+            {
+                return true;
+            }
+            else if (this.globalDataSource.User.RoleGroup?.Permissions?
+                .Where(x => x.Name.Equals(permission.Name, StringComparison.OrdinalIgnoreCase))
+                .Where(x => !permission.HasWritePermission
+                    || x.HasWritePermission)
+                .Where(x => !permission.HasReadPermissoin
+                    || x.HasReadPermissoin)
+                .Any() == true)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

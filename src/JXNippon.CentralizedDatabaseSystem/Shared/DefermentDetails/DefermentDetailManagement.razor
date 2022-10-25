@@ -28,14 +28,16 @@
             <div class="row">
                 <div class="col-6">
                     <span>Details</span>
-                </div>    
-                <div class="col-6 float-right align-items-center text-right mt-1">
-                    <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick=AddDialogAsync >
-                       <ChildContent>
-                           <Icon Type="plus-circle" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Add</span>
-                       </ChildContent>
-                    </Button>
                 </div>
+                <AuthorizeView Policy="Deferment.ReadWrite">
+                    <div class="col-6 float-right align-items-center text-right mt-1">
+                        <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick=AddDialogAsync >
+                           <ChildContent>
+                               <Icon Type="plus-circle" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Add</span>
+                           </ChildContent>
+                        </Button>
+                    </div>
+                </AuthorizeView>
              </div>       
         </Header>
         <Content Style="height:100%;">

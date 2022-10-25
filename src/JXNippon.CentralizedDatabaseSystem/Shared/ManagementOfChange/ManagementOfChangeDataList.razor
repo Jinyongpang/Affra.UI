@@ -80,7 +80,8 @@
                                 </div>
                             </Body>
                             <Extra>
-                                @if (context.ManagementOfChangeStatus != ManagementOfChangeStatus.Deleted)
+                                @if (isUserHavePermission
+                                && context.ManagementOfChangeStatus != ManagementOfChangeStatus.Deleted)
                                 {
                                     <Popover Placement="@Placement.RightBottom">
                                         <ContentTemplate>

@@ -6,6 +6,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Announcements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Grids;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
@@ -27,11 +28,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private ViewComponent viewComponent;
         private ColumnDataGrid columnDataGrid;
         private RowDataGrid rowDataGrid;
+        private bool isUserHavePermission = true;
 
         [Inject] private IJSRuntime JSRuntime { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
+        [Inject] private IUserService UserService { get; set; }
 
         private string ViewHidden => this.view?.Name is null
             ? string.Empty
@@ -48,6 +51,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             views = (await GetViewsAsync()).ToList();
         }
 

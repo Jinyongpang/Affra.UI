@@ -1,20 +1,28 @@
 ﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Description
 @using UserODataService.Affra.Service.User.Domain.Users
 
-<div class="row">
-    <div class="col">
-        @if (!isLoading && count == 0)
-        {       
-            <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
-                <GenericDescription Height="400px" ImageFile="@ImageFile.People" Description="No result found.">
-                </GenericDescription>
-            </div>
+@if (!initLoading && count == 0)
+{       
+    <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+        <GenericDescription Height="300px" ImageFile="@ImageFile.People" Description="No result found.">
+        </GenericDescription>
+    </div>
       
-        }
-        <AntList Class="py-3 px-3" Loading=isLoading @ref="_dataList" DataSource="@users" TItem="User" Grid=grid>
-            <ChildContent>
-                <ListItem>
-                    <Card Style="min-height:200px;" Class="data-list-card">
+}
+<div class="row px-3 py-2">
+    <Virtualize Context="context" ItemsProvider="@LoadDataAsync" TItem=User ItemSize=50 OverscanCount=10 @ref=@this.virtualize>
+        <Placeholder>
+            <div class="col-sm-12 col-md-4 py-2 pr-1" style="min-height:200px;">
+                <Card Class="h-100">
+                    <Body>
+                        <Skeleton Active></Skeleton>
+                    </Body>
+                </Card>  
+            </div>    
+        </Placeholder>
+        <ItemContent>
+            <div class="col-sm-12 col-md-4 py-2 pr-1" style="min-height:200px;">
+                <Card Style="min-height:200px;" Class="data-list-card">
                         <TitleTemplate>
                            <div class="d-flex flex-row align-items-center">
                                 <div>
@@ -57,21 +65,15 @@
                                 </div>
                             </div>
                         </Body>
-                        <ActionTemplate>                         
-                            <CardAction><Tooltip Title=@("Edit...")><Icon Class="anticon-big" Type="edit" OnClick="@(() => ShowDialogAsync(context, 1, "Edit"))"/></Tooltip></CardAction>
+                        <ActionTemplate>
+                            @if(isUserHavePermission)
+                            {
+                                <CardAction><Tooltip Title=@("Edit...")><Icon Class="anticon-big" Type="edit" OnClick="@(() => ShowDialogAsync(context, 1, "Edit"))"/></Tooltip></CardAction>
+                            }
                             <CardAction><Tooltip Title=@("View Activities...")><Icon Class="anticon-big" Type="eye" OnClick="@(() => ShowActivityDialogAsync(context))"/></Tooltip></CardAction>
                         </ActionTemplate>
-                    </Card>            
-                </ListItem>      
-            </ChildContent>
-            <LoadMore>
-                @if (!initLoading && !isLoading && currentCount < count)
-                {
-                    <div class="loadmore-btn-content">
-                        <Button Type="primary" OnClick="OnLoadMoreAsync">loading more</Button>
-                    </div>
-                }
-            </LoadMore>
-        </AntList>
-    </div>
+                    </Card> 
+            </div>        
+        </ItemContent>
+    </Virtualize>
 </div>

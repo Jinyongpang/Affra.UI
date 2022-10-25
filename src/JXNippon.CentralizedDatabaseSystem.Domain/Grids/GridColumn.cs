@@ -14,6 +14,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Grids
 
         public string Type { get; set; }
 
+        public bool Filterable { get; set; }
+
+        public bool Sortable { get; set; } = true;
+
+        public bool Frozen { get; set; }
+
+        public string Width { get; set; }
+
         [IgnoreClientProperty]
         [JsonIgnore]
         public Type ActualType

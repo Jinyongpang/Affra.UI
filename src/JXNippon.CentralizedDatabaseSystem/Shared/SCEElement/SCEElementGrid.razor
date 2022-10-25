@@ -37,9 +37,11 @@
         bool hasRowData = (args as DataGridCellMouseEventArgs<SCEElementRecord>) != null;
         ContextMenuService.Open(args, ds =>
     @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<SCEElementRecord>, e))">
-                    <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
-                    <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
-                    <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                    <AuthorizeView Policy="Administration.ReadWrite">
+                        <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
+                        <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                        <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                    </AuthorizeView>
                     <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
                     <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
     </RadzenMenu>

@@ -27,12 +27,12 @@
 
     @if (isFirstRowCompleted)
     {
-        <Virtualize ItemSize=600 Items="@View.RowsStartFromSecond" Context="row">
+        <Virtualize ItemSize=1000 Items="@View.RowsStartFromSecond" Context="row">
             <Placeholder>
                 <Spin/>
             </Placeholder>
             <ItemContent>
-                @this.BuildRowComponent(row, false)
+                @this.BuildRowComponent(row, true)
             </ItemContent>    
         </Virtualize>
     }
@@ -49,7 +49,8 @@
     { 
         return 
     @<div class="row" @key=@row.Id>
-                @if (IsDesignMode 
+                @if (IsDesignMode
+                    && IsHavePermission 
                     && (row.Columns is null
                     || row.Columns.Count == 0))
                 {
@@ -58,7 +59,7 @@
                             <TitleTemplate>
                             </TitleTemplate>
                             <Extra>
-                                @if (IsDesignMode)
+                                @if (IsDesignMode && IsHavePermission)
                                 {
                                     <a @onclick=@(args => ShowDeleteDialogAsync(args, row)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>
                                 }
@@ -83,7 +84,7 @@
                 
             @if (isVirtualization)
             {
-                <Virtualize Items="row.Columns" Context="col" ItemSize=300>
+                <Virtualize Items="row.Columns" Context="col" ItemSize=1000>
                     <Placeholder>
                         <Spin/>
                     </Placeholder>
@@ -182,7 +183,7 @@
                         </span>
                     </TitleTemplate>
                     <Extra>
-                        @if (IsDesignMode)
+                        @if (IsDesignMode && IsHavePermission)
                         {
                             <a @onclick=@(args => OnEditAsync(args, col))><i class="fa-solid fa-pen-to-square fa-lg text-info"></i></a>
                             <a @onclick=@(args => ShowDeleteDialogAsync(args, col)) class="px-2"><i class="fa-solid fa-trash fa-lg text-danger"></i></a>

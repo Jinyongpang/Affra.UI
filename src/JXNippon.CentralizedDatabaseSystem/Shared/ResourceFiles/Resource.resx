@@ -1170,4 +1170,16 @@
   <data name="YesterdayLevel" xml:space="preserve">
     <value>Yesterday's Level</value>
   </data>
+  <data name="CombinedDailyReport" xml:space="preserve">
+    <value>Combined Daily Report</value>
+  </data>
+  <data name="ManagementOfChange" xml:space="preserve">
+    <value>Management Of Change</value>
+  </data>
+  <data name="PEReport" xml:space="preserve">
+    <value>PE Report</value>
+  </data>
+  <data name="WellAllocation" xml:space="preserve">
+    <value>Well Allocation</value>
+  </data>
 </root>

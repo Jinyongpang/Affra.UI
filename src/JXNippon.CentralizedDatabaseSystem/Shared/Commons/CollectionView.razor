@@ -3,10 +3,16 @@
 @if(this.Items is null
     || this.Items.Count == 0)
 {
-    <Empty></Empty>
+    if (ShowEmpty)
+    {        
+      <Empty></Empty>
+    }
+}
+else
+{
+    @foreach(var context in this.Items)
+    {
+        @this.ChildContent(context)
+    }
 }
 
-@foreach(var context in this.Items)
-{
-    @this.ChildContent(context)
-}

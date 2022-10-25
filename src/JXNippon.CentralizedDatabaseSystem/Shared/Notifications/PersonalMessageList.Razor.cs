@@ -128,7 +128,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
             {
                 return string.Empty;
             }
-            if (this.users.TryGetValue(email, out var user))
+            if (this.users.TryGetValue(email, out var user)
+                && user is not null)
             { 
                 return this.UserService.GetAvatarName(user.Name);
             }

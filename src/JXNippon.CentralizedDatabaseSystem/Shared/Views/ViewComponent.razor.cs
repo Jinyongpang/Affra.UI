@@ -43,6 +43,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public View View { get; set; }
 
         [Parameter] public bool IsDesignMode { get; set; }
+        [Parameter] public bool IsHavePermission { get; set; }
         [Inject] private NavigationManager NavigationManager { get; set; }
 
         public ChartComponent chartComponentRef

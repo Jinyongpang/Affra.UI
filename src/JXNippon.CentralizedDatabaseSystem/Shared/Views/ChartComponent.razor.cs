@@ -1,5 +1,4 @@
-﻿using System;
-using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+﻿using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
@@ -9,6 +8,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.OData.Client;
 using Radzen.Blazor;
 using ViewODataService.Affra.Service.View.Domain.Views;
@@ -19,7 +19,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     {
         private RadzenChart chart;
         private IDictionary<string, IEnumerable<IDaily>> items;
-        private bool isLoading = false;
+        private bool isLoading = true;
         private List<IHubSubscription> subscriptions = new List<IHubSubscription>();
         private bool isDisposed = false;
         private HashSet<string> types = new HashSet<string>();
@@ -40,10 +40,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
+        [Inject] private IMemoryCache MemoryCache { get; set; }
+
         public int Count { get; set; }
         private object First;
         private object Last;
         private object Middle;
+        private bool haveData;
 
         protected override async Task OnInitializedAsync()
         {
@@ -59,8 +62,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             if (DateFilter is not null)
             {
                 DateFilter.OnDateRangeChanged += this.OnDateRangeChangedAsync;
-            }    
-
+            }
             await ReloadAsync();
             await base.OnInitializedAsync();
         }
@@ -72,43 +74,31 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         }
 
         public async Task ReloadAsync()
-        {
+        {           
             await LoadDataAsync();
-            await chart.Reload();
+            await (chart?.Reload() ?? Task.CompletedTask);
+            this.StateHasChanged();
         }
 
         private async Task LoadDataAsync()
         {
-            isLoading = true;
+            if (isLoading != true)
+            {
+                isLoading = true;
+                this.StateHasChanged();
+            }
             items = new Dictionary<string, IEnumerable<IDaily>>();
             this.types = this.types.Distinct().ToHashSet();
             this.Count = 0;
-            foreach (var type in this.types)
+            var tasks = types
+                .Select(t => this.LoadTypeDataAsync(t))
+                .ToList();
+
+            haveData = false;
+            foreach (var result in await Task.WhenAll(tasks))
             {
-                using var serviceScope = ServiceProvider.CreateScope();
-                var service = this.ViewService.GetGenericService(serviceScope, type);
-                Queryable = service.Get();
-                if (DateFilter?.Start != null && DateFilter?.End != null)
-                {
-                    Queryable = Queryable
-                        .Cast<IDaily>()
-                        .Where(item => item.Date >= DateFilter.Start.Value.ToUniversalTime())
-                        .Where(item => item.Date <= DateFilter.End.Value.ToUniversalTime())
-                        .OrderBy(x => x.Date);
-                }
-                else
-                {
-                    Queryable = Queryable
-                        .Cast<IDaily>()
-                        .OrderBy(x => x.Date)
-                        .Take(100);
-                }
-                await LoadData.InvokeAsync(Queryable);
-                var q = (DataServiceQuery<IDaily>)Queryable;
-
-                var typeItems = (await q.ExecuteAsync())
-                    .ToList();
-
+                var typeItems = result.Item2;
+                var type = result.Item1;
                 if (this.Count == 0 && typeItems.Count > 0)
                 {
                     this.Count = typeItems.Count;
@@ -117,9 +107,44 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                     this.Middle = typeItems[this.Count / 2].DateUI;
                 }
                 this.items.TryAdd(type, typeItems);
+                haveData = haveData || typeItems.Count() > 0;
             }
 
             isLoading = false;
+        }
+
+        private async Task<(string, List<IDaily>)> LoadTypeDataAsync(string type)
+        {
+            var cacheKey = type;
+            using var serviceScope = ServiceProvider.CreateScope();
+            var service = this.ViewService.GetGenericService(serviceScope, type);
+            Queryable = service.Get();
+            if (DateFilter?.Start != null && DateFilter?.End != null)
+            {
+                Queryable = Queryable
+                    .Cast<IDaily>()
+                    .Where(item => item.Date >= DateFilter.Start.Value.ToUniversalTime())
+                    .Where(item => item.Date <= DateFilter.End.Value.ToUniversalTime())
+                    .OrderBy(x => x.Date);
+                 cacheKey = $"{cacheKey}-{DateFilter.Start}-{DateFilter.End}";
+            }
+            else
+            {
+                Queryable = Queryable
+                    .Cast<IDaily>()
+                    .OrderBy(x => x.Date)
+                    .Take(100);
+            }
+            if (MemoryCache.TryGetValue(cacheKey, out List<IDaily> result))
+            {
+                 return (type, result);
+            }
+
+            var q = (DataServiceQuery<IDaily>)Queryable;
+            var list = (await q.ExecuteAsync()).ToList();
+            MemoryCache.Set(cacheKey, list, TimeSpan.FromSeconds(10));
+
+            return (type, list);
         }
 
         private List<SeriesItem> GetSeriesItems(ChartSeries chartSeries, IEnumerable<IDaily> dailyItems)
@@ -284,6 +309,20 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 }
             }
             return actualTypes;
+        }
+
+        private string GetChartClassName()
+        {
+            return this.haveData
+                ? string.Empty
+                : "hidden-chart";
+        }
+
+        private string GetEmptyClassName()
+        {
+            return !this.haveData
+                ? string.Empty
+                : "hidden-chart";
         }
 
         public async ValueTask DisposeAsync()

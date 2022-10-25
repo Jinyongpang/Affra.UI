@@ -477,7 +477,7 @@ p.moh-cardbody {
 }
 
 .focused-card {
-    min-height: 80vh;
+    min-height: calc(90vh - 5rem);
 }
 
 .hidden-card {
@@ -713,4 +713,19 @@ a {
 
 .data-list-card {
     box-shadow: 2px 1px 15px -6px rgb(0 6 100 / 30%);
+}
+
+.hidden-chart {
+    display: none !important;
+    height: 0px !important;
+}
+
+.labels {
+    min-width: 300px;
+    color: #3c465d;
+    display: flex;
+    margin-top: 8px;
+    margin-right: 30px;
+    font-size: 100%;
+    font-weight: 500;
 }

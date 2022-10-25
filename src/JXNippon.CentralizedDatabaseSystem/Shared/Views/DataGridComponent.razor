@@ -7,22 +7,24 @@
 @using JXNippon.CentralizedDatabaseSystem.Models
 
 <RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@this.Count" Data="@this.itemsDictionary" LoadData="@this.LoadDataAsync" 
-    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
-    PageSize=@this.PageSize PageSizeText="Items" PageSizeOptions=@this.pageSizeOptions PagerHorizontalAlign="HorizontalAlign.Center" PageNumbersCount=@PageNumbersCount AllowColumnResize="true" ShowPagingSummary="true" 
-    AllowMultiColumnSorting="false" ShowMultiColumnSortingIndex="false"
-    PagerAlwaysVisible="false" CellRender=@this.CellRender ColumnWidth="100px">
+    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering
+    FilterMode=FilterMode.Simple
+    FilterDelay=100
+    AllowColumnResize="true" Style="height: 45vh;" 
+    AllowMultiColumnSorting="false"
+    ShowMultiColumnSortingIndex="false" AllowVirtualization CellRender=@this.CellRender ColumnWidth="75px">
     <Columns>
-        @foreach(var gridColumn in GridColumns)
+        @foreach (var gridColumn in GridColumns)
         {
-            var isSortable = gridColumn.Property == "Date"
-                || gridColumn.Property == "DateUI";
-
-            var sortString = gridColumn.Property == "DateUI"
-                ? "Date"
-                : gridColumn.Property;
-
+            var oriProperty = gridColumn.Property.Replace("DateUI", "Date");
             var propertyName = $"{gridColumn.Type}{gridColumn.Property}";
-            <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@propertyName" Title="@(gridColumn.Title)" FormatString="@(gridColumn.FormatString)" Sortable=@isSortable SortProperty="@sortString">
+            var isSortable = string.IsNullOrEmpty(gridColumn.Type)
+                && gridColumn.Sortable;            
+            var isFilterable = string.IsNullOrEmpty(gridColumn.Type)
+                && gridColumn.Filterable;
+
+            <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@propertyName" Title="@(gridColumn.Title)" 
+                FormatString="@(gridColumn.FormatString)" Width=@gridColumn.Width Frozen=gridColumn.Frozen Sortable=isSortable Filterable=isFilterable SortProperty="@oriProperty">
                 <Template>                  
                     @if(context.TryGetValue(propertyName, out object value))
                     {
@@ -32,4 +34,11 @@
             </RadzenDataGridColumn>
         }             
     </Columns>
-</RadzenDataGrid> 
+</RadzenDataGrid>
+
+@if (!this.isLoading && Count == 0)
+{
+
+    <Empty Style="position:absolute; top: 40%; left: calc(50% - 92px);"></Empty>    
+
+}

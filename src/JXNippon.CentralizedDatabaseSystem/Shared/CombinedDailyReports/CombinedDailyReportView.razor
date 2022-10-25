@@ -36,28 +36,31 @@
 							<Tag PresetColor="@PresetColor.Green">@Item.Date.ToLocalDateTime().ToString("dddd, d MMMM yyyy")</Tag>
 						</div>
 					</div>
-					<div class="cdr-action-buttons">
-						<DropdownButton Style="margin-right: 10px;" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" OnClick=@(() => this.ApproveAsync())>
-							<Unbound Context="button">
-								<Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
-								<span style="font-size: 18px; margin-left: 0px;">Approve</span>
-							</Unbound>
-							<Overlay>
-								<Menu>
-									<MenuItem Key="Reject" OnClick=@(() => this.RejectAsync())>
-										<a>
-											<i class="fas fa-ban fa-fw fa-xl"/> Reject
-										</a>
-									</MenuItem>
-									<MenuItem Key="Export" OnClick=@(()=> this.DialogService.Close())>
-										<a>
-											<i class="fas fa-file-export fa-fw fa-xl"/> Export
-										</a>
-									</MenuItem>
-								</Menu>
-							</Overlay>
-						</DropdownButton>
-					</div>
+					@if(isUserHavePermission)
+					{
+						<div class="cdr-action-buttons">
+							<DropdownButton Style="margin-right: 10px;" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" OnClick=@(() => this.ApproveAsync())>
+								<Unbound Context="button">
+									<Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
+									<span style="font-size: 18px; margin-left: 0px;">Approve</span>
+								</Unbound>
+								<Overlay>
+									<Menu>
+										<MenuItem Key="Reject" OnClick=@(() => this.RejectAsync())>
+											<a>
+												<i class="fas fa-ban fa-fw fa-xl"/> Reject
+											</a>
+										</MenuItem>
+										<MenuItem Key="Export" OnClick=@(()=> this.DialogService.Close())>
+											<a>
+												<i class="fas fa-file-export fa-fw fa-xl"/> Export
+											</a>
+										</MenuItem>
+									</Menu>
+								</Overlay>
+							</DropdownButton>
+						</div>
+					}
 				</div>
 				<Divider/>
 				<div class="col view-dialog-content">

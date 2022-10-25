@@ -4,6 +4,7 @@ using AntDesign;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
@@ -36,6 +37,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
     {
         private bool isEditing;
         private bool isLoading = true;
+        private bool isUserHavePermission = true;
 
         [Parameter] public CombinedDailyReport Item { get; set; }
 
@@ -46,6 +48,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager NavManager { get; set; }
         private CommonFilter CommonFilter { get; set; }
+
+        [Inject] private IUserService UserService { get; set; }
 
         private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
 
@@ -108,7 +112,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
             this.Item = response.FirstOrDefault();
             this.isLoading = false;
-
+            this.isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true});
             await base.OnInitializedAsync();
         }
 
