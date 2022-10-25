@@ -84,6 +84,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             items = await GetDailyItemsAsync(TType, DateFilter?.Start, DateFilter?.End, args);
             itemsDictionary = await MergeOverridenTypeAsync(items) ?? new List<ExpandoObject>();
             isLoading = false;
+            this.StateHasChanged();
         }
 
         private async Task<IEnumerable<IDictionary<string, object>>?> MergeOverridenTypeAsync(IEnumerable<IDaily> dailyItems)
