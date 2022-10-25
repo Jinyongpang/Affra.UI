@@ -13,6 +13,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public int? Value { get; set; }
 
         [Parameter] public int? Span { get; set; }
+
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
+
+        private string GetStyle()
+        {
+            if (Value is null)
+            {
+                return "color: #FF9F29;";
+            }
+            return "display: none;";
+        }
     }
 }
