@@ -10,6 +10,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.OperationInstructions;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.Extensions.Localization;
 using Radzen;
 
@@ -17,7 +18,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
 {
     public partial class OperationInstructionDataList
     {
-        private AntList<OperationInstructionRecord> _operationInstructionList;
+        private Virtualize<OperationInstructionRecord> virtualize;
         private List<OperationInstructionRecord> operationInstructions;
         private int count;
         private int currentCount;
@@ -50,75 +51,69 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         {
             this.OperationInstructionFilter = new CommonFilter(navigationManager);
             initLoading = false;
-            return this.LoadDataAsync();
+            return Task.CompletedTask;
         }
-        private async Task LoadDataAsync(bool isLoadMore = false)
+        private async ValueTask<ItemsProviderResult<OperationInstructionRecord>> LoadDataAsync(ItemsProviderRequest request)
         {
             isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.ManagementOfChange), HasReadPermissoin = true, HasWritePermission = true });
             isLoading = true;
             StateHasChanged();
-            if (!isLoadMore)
+
+            try
             {
-                currentCount = 0;
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<OperationInstructionRecord>? operationInstructionService = this.GetGenericOIService(serviceScope);
+                var query = operationInstructionService.Get();
+
+                if (!string.IsNullOrEmpty(OperationInstructionFilter.Search))
+                {
+                    query = query
+                        .Where(oiRecord => oiRecord.CreatedBy.ToUpper().Contains(OperationInstructionFilter.Search.ToUpper())
+                            || oiRecord.OperationInstructionNo.ToUpper().Contains(OperationInstructionFilter.Search.ToUpper())
+                        );
+                }
+                if (OperationInstructionFilter.Status != null)
+                {
+                    var status = (OperationInstructionStatus)Enum.Parse(typeof(OperationInstructionStatus), OperationInstructionFilter.Status);
+                    query = query.Where(oiRecord => oiRecord.OperationInstructionStatus == status);
+                }
+                else
+                {
+                    query = query.Where(oiRecord => oiRecord.OperationInstructionStatus != OperationInstructionStatus.Deleted);
+                }
+
+                Microsoft.OData.Client.QueryOperationResponse<OperationInstructionRecord>? operationInstructionResponse = await query
+                    .OrderByDescending(oi => oi.CreatedDateTime)
+                    .Skip(request.StartIndex)
+                    .Take(request.Count)
+                    .ToQueryOperationResponseAsync<OperationInstructionRecord>();
+
+                count = (int)operationInstructionResponse.Count;
+                currentCount += loadSize;
+                var operationInstructionList = operationInstructionResponse.ToList();
+
+                isLoading = false;
+
+                if (operationInstructionList.DistinctBy(x => x.Id).Count() != operationInstructionList.Count)
+                {
+                    AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
+                }
+
+                return new ItemsProviderResult<OperationInstructionRecord>(operationInstructionList, count);
             }
-
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<OperationInstructionRecord>? operationInstructionService = this.GetGenericOIService(serviceScope);
-            var query = operationInstructionService.Get();
-
-            if (!string.IsNullOrEmpty(OperationInstructionFilter.Search))
+            finally
             {
-                query = query
-                    .Where(oiRecord => oiRecord.CreatedBy.ToUpper().Contains(OperationInstructionFilter.Search.ToUpper())
-                        || oiRecord.OperationInstructionNo.ToUpper().Contains(OperationInstructionFilter.Search.ToUpper())
-                    );
-            }
-            if (OperationInstructionFilter.Status != null)
-            {
-                var status = (OperationInstructionStatus)Enum.Parse(typeof(OperationInstructionStatus), OperationInstructionFilter.Status);
-                query = query.Where(oiRecord => oiRecord.OperationInstructionStatus == status);
-            }
-            else
-            {
-                query = query.Where(oiRecord => oiRecord.OperationInstructionStatus != OperationInstructionStatus.Deleted);
-            }
-
-            Microsoft.OData.Client.QueryOperationResponse<OperationInstructionRecord>? operationInstructionResponse = await query
-                .OrderByDescending(oi => oi.CreatedDateTime)
-                .Skip(currentCount)
-                .Take(loadSize)
-                .ToQueryOperationResponseAsync<OperationInstructionRecord>();
-
-            count = (int)operationInstructionResponse.Count;
-            currentCount += loadSize;
-            var operationInstructionList = operationInstructionResponse.ToList();
-
-            if (isLoadMore)
-            {
-                operationInstructions.AddRange(operationInstructionList);
-            }
-            else
-            {
-                operationInstructions = operationInstructionList;
-            }
-
-            isLoading = false;
-
-            if (operationInstructionList.DistinctBy(x => x.Id).Count() != operationInstructionList.Count)
-            {
-                AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
-            }
-
-            StateHasChanged();
+                initLoading = false; 
+                isLoading = false;
+                StateHasChanged();
+            }            
         }
-        public Task ReloadAsync()
+        public async Task ReloadAsync()
         {
-            return this.LoadDataAsync();
+            await this.virtualize.RefreshDataAsync();
+            this.StateHasChanged();
         }
-        public Task OnLoadMoreAsync()
-        {
-            return this.LoadDataAsync(true);
-        }
+
         private async Task ShowDialogAsync(OperationInstructionRecord data, string title = "")
         {
             dynamic? response;
