@@ -4,7 +4,8 @@ using Microsoft.Extensions.Localization;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
 {
-    public partial class IntegerDescriptionItem
+    public partial class IntegerDescriptionItem<TItem>
+        where TItem : class
     {
         [Parameter] public bool IsEditing { get; set; }
 
@@ -15,14 +16,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public int? Span { get; set; }
 
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
+        [Parameter] public TItem Item { get; set; }
+        [Parameter] public long ItemId { get; set; }
 
-        private string GetStyle()
-        {
-            if (Value is null)
-            {
-                return "color: #FF9F29;";
-            }
-            return "display: none;";
-        }
+        [Parameter] public EventCallback<int?> ValueChanged { get; set; }
     }
 }

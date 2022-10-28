@@ -1,29 +1,36 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Vendors
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders
-@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems
+@using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
+@using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
+@using JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment
+@using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.WellHead
+@using JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement
+@using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers
+@using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement
+@using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity
+@using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities
+@using JXNippon.CentralizedDatabaseSystem.Shared.Logistic
+@using JXNippon.CentralizedDatabaseSystem.Shared.MaximoWorkOrder
 @using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 @using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using JXNippon.CentralizedDatabaseSystem.Shared.TableProperty
 
 <Spin Size="large" Spinning=this.isLoading Style="top: 30%;">
-	<RadzenTemplateForm Data="@Item">
+	<RadzenTemplateForm Data="@Data">
 		<ChildContent Context="item">
 			<div class="fullscreen-dialog">
 				<div class="fullscreen-dialog-header sticky">
@@ -31,7 +38,7 @@
 					<div class="cdr-title">
 						<div class="p-2" style="font-weight: bold;">Combined Daily Operations Report</div>
 						<div class="p-2" style="font-weight: bold;">
-							<Tag PresetColor="@PresetColor.Green">@Item.Date.ToLocalDateTime().ToString("dddd, d MMMM yyyy")</Tag>
+							<Tag PresetColor="@PresetColor.Green">@Data.Date.ToLocalDateTime().ToString("dddd, d MMMM yyyy")</Tag>
 						</div>
 					</div>
 					@if(isUserHavePermission)
@@ -65,22 +72,14 @@
 					<Collapse DefaultActiveKey="@(new[] {"1" })">
 						<Panel Header="1. OIM SUMMARY" Key="1">
 							<ChildContent> 
-								<Panel ShowArrow="false" Header="HIP / LWP SUMMARY" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="HIP / LWP SUMMARY" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyHIPAndLWPSummary Items=@this.Item.DailyHIPAndLWPSummarys>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<HIPAndLWPSummaryDataGrid @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="FPSO HELANG SUMMARY" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="FPSO HELANG SUMMARY" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyFPSOHelangSummary Items=@this.Item.DailyFPSOHelangSummarys>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<FPSOHelangSummaryDataGrid @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -90,78 +89,62 @@
 								<Panel ShowArrow="false" Header="HEALTH, SAFETY & ENVIRONMENT" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-										<DateDescriptionItem Title="LastLTIDate" Value=@this.Item.DailyHealthSafetyEnvironment?.LastLTIDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Injurious_MTC_FACCount" Value=@this.Item.DailyHealthSafetyEnvironment?.Injurious_MTC_FACCount IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="Injurious_MTC_FACDate" Value=@this.Item.DailyHealthSafetyEnvironment?.Injurious_MTC_FACDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="HIP_LQ" Value=@this.Item.DailyHealthSafetyEnvironment?.HIP_LQ IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="HIP_ALQ" Value=@this.Item.DailyHealthSafetyEnvironment?.HIP_ALQ IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="SK10DaysLTIFree" Value=@this.Item.DailyHealthSafetyEnvironment?.SK10DaysLTIFree IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="NearMissCount" Value=@this.Item.DailyHealthSafetyEnvironment?.NearMissCount IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="NearMissDate" Value=@this.Item.DailyHealthSafetyEnvironment?.NearMissDateUI IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="LastAnnualESDTestDate" Value=@this.Item.DailyHealthSafetyEnvironment?.LastAnnualESDTestDateUI IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="NextAnnualESDTestDate" Value=@this.Item.DailyHealthSafetyEnvironment?.NextAnnualESDTestDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="PropertyDamageCount" Value=@this.Item.DailyHealthSafetyEnvironment?.PropertyDamageCount IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="PropertyDamageDate" Value=@this.Item.DailyHealthSafetyEnvironment?.PropertyDamageDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Total_HIP_POB" Value=@this.Item.DailyHealthSafetyEnvironment?.Total_HIP_POB IsEditing=@this.isEditing/>
-										<DateDescriptionItem Title="LastDrillExerciseConductedDate" Value=@this.Item.DailyHealthSafetyEnvironment?.LastDrillExerciseConductedDateUI IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="TotalUCUXToday" Value=@this.Item.DailyHealthSafetyEnvironment?.TotalUCUXToday IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="TotalUCUXThisMonth" Value=@this.Item.DailyHealthSafetyEnvironment?.TotalUCUXThisMonth IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Weather" Value=@this.Item.DailyHealthSafetyEnvironment?.Weather IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="WindSpeed" Value=@this.Item.DailyHealthSafetyEnvironment?.WindSpeed IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="WindDirection" Value=@this.Item.DailyHealthSafetyEnvironment?.WindDirection IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="AvailableBedding" Value=@this.Item.DailyHealthSafetyEnvironment?.AvailableBedding IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="SwellWaveHeight" Value=@this.Item.DailyHealthSafetyEnvironment?.SwellWaveHeight IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Operation_Catering_NonEssential" Value=@this.Item.DailyHealthSafetyEnvironment?.Operation_Catering_NonEssential IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Visibility" Value=@this.Item.DailyHealthSafetyEnvironment?.Visibility IsEditing=@this.isEditing/>
+										<DateDescriptionItem Title="LastLTIDateUI" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.LastLTIDateUI TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment" />
+										<IntegerDescriptionItem Title="Injurious_MTC_FACCount" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Injurious_MTC_FACCount TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<DateDescriptionItem Title="Injurious_MTC_FACDateUI" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Injurious_MTC_FACDateUI TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="HIP_LQ" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.HIP_LQ TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="HIP_ALQ" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.HIP_ALQ TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="SK10DaysLTIFree" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.SK10DaysLTIFree TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="NearMissCount" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.NearMissCount TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<DateDescriptionItem Title="NearMissDateUI" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.NearMissDateUI TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<DateDescriptionItem Title="LastAnnualESDTestDateUI" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.LastAnnualESDTestDateUI TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<DateDescriptionItem Title="NextAnnualESDTestDateUI" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.NextAnnualESDTestDateUI TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="PropertyDamageCount" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.PropertyDamageCount TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<DateDescriptionItem Title="PropertyDamageDateUI" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.PropertyDamageDateUI TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="Total_HIP_POB" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Total_HIP_POB TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<DateDescriptionItem Title="LastDrillExerciseConductedDateUI" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.LastDrillExerciseConductedDateUI TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="TotalUCUXToday" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.TotalUCUXToday TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="TotalUCUXThisMonth" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.TotalUCUXThisMonth TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<StringDescriptionItem Title="Weather" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Weather TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="WindSpeed" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.WindSpeed TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<StringDescriptionItem Title="WindDirection" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.WindDirection TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="AvailableBedding" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.AvailableBedding TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<StringDescriptionItem Title="SwellWaveHeight" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.SwellWaveHeight TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<StringDescriptionItem Title="Operation_Catering_NonEssential" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Operation_Catering_NonEssential TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
+										<IntegerDescriptionItem Title="Visibility" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Visibility TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
 									</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="LOSS OF PRIMARY CONTAINMENT (LOPC) INCIDENT" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-										<IntegerDescriptionItem Title="MajorLOPC" Value=@this.Item.DailyLossOfPrimaryContainmentIncident?.MajorLOPC IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="LastMajorLOPC" Value=@this.Item.DailyLossOfPrimaryContainmentIncident?.LastMajorLOPC IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="MinorLOPC" Value=@this.Item.DailyLossOfPrimaryContainmentIncident?.MinorLOPC IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="LastMinorLOPC" Value=@this.Item.DailyLossOfPrimaryContainmentIncident?.LastMinorLOPC IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="OtherLOPC" Value=@this.Item.DailyLossOfPrimaryContainmentIncident?.OtherLOPC IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="LastOtherLOPC" Value=@this.Item.DailyLossOfPrimaryContainmentIncident?.LastOtherLOPC IsEditing=@this.isEditing/>
+										<IntegerDescriptionItem Title="MajorLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.MajorLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
+										<StringDescriptionItem Title="LastMajorLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.LastMajorLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
+										<IntegerDescriptionItem Title="MinorLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.MinorLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
+										<StringDescriptionItem Title="LastMinorLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.LastMinorLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
+										<IntegerDescriptionItem Title="OtherLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.OtherLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
+										<StringDescriptionItem Title="LastOtherLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.LastOtherLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
 									</Descriptions>
 								</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="LIFEBOATS" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<StringDescriptionItem Title="LifeBoatName" Value=@this.Item.DailyLifeBoat?.LifeBoatName IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="Status" Value=@this.Item.DailyLifeBoat?.Status IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="StartDate" Value=@this.Item.DailyLifeBoat?.StartDate IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="Remark" Value=@this.Item.DailyLifeBoat?.Remark IsEditing=@this.isEditing/>
+											<StringDescriptionItem Title="LifeBoatName" @bind-Value=@this.Data.DailyLifeBoat.LifeBoatName TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
+											<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailyLifeBoat.Status TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
+											<StringDescriptionItem Title="StartDate" @bind-Value=@this.Data.DailyLifeBoat.StartDate TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
+											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyLifeBoat.Remark TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyLongTermOverridesInhibitsOnAlarmTrip Items=@this.Item.DailyLongTermOverridesInhibitsOnAlarmTrips>
-												<StringDescriptionItem Title="TagName" Value=@context.TagName IsEditing=@this.isEditing/>
-												<DateDescriptionItem Title="RaisedDate" Value=@context.RaisedDateUI IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="MaximoWorkOrder" Value=@context.MaximoWorkOrder IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Location" Value=@context.Location IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="LongDescriptionRemark" Value=@context.LongDescriptionRemark IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="MANAGEMENT OF CHANGE (MOC) : OPERATING CHANGE" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="MANAGEMENT OF CHANGE (MOC) : OPERATING CHANGE" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyOperatingChange Items=@this.Item.DailyOperatingChanges>
-												<StringDescriptionItem Title="TagName" Value=@context.TagName IsEditing=@this.isEditing/>
-												<DateDescriptionItem Title="RaisedDate" Value=@context.RaisedDateUI IsEditing=@this.isEditing/>
-												<DateDescriptionItem Title="ExpiredDate" Value=@context.ExpiredDateUI IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="ReferenceNumber" Value=@context.ReferenceNumber IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<OperatingChangeDataGrid @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -171,61 +154,61 @@
 								<Panel ShowArrow="false" Header="SK10" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<DecimalDescriptionItem Title="SK10CumulativeGasExport" Value=@this.Item.DailySK10Production?.SK10CumulativeGasExport IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="SK10GasExportGODCPlan" Value=@this.Item.DailySK10Production?.SK10GasExportGODCPlan IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="SK10GasExportGODCPlanRemark" Value=@this.Item.DailySK10Production?.SK10GasExportGODCPlanRemark IsEditing=@this.isEditing/>
+											<DecimalDescriptionItem Title="SK10CumulativeGasExport" @bind-Value=@this.Data.DailySK10Production.SK10CumulativeGasExport TItem="DailySK10Production" Item="@this.Data.DailySK10Production" />
+											<DecimalDescriptionItem Title="SK10GasExportGODCPlan" @bind-Value=@this.Data.DailySK10Production.SK10GasExportGODCPlan TItem="DailySK10Production" Item="@this.Data.DailySK10Production"/>
+											<StringDescriptionItem Title="SK10GasExportGODCPlanRemark" @bind-Value=@this.Data.DailySK10Production.SK10GasExportGODCPlanRemark TItem="DailySK10Production" Item="@this.Data.DailySK10Production"/>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="HIP" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<DecimalDescriptionItem Title="HIPCumulativeGasExport" Value=@this.Item.DailyHIPProduction?.HIPCumulativeGasExport IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="HIPGasExportGODCPlan" Value=@this.Item.DailyHIPProduction?.HIPGasExportGODCPlan IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="HIPCumulativeGasExportRemark" Value=@this.Item.DailyHIPProduction?.HIPCumulativeGasExportRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="HIPCumulativeCondensateExport" Value=@this.Item.DailyHIPProduction?.HIPCumulativeCondensateExport IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="HIPCumulativeCondensateExportRemark" Value=@this.Item.DailyHIPProduction?.HIPCumulativeCondensateExportRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="HIPCumulativeWaterProduction" Value=@this.Item.DailyHIPProduction?.HIPCumulativeWaterProduction IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="HIPCumulativeWaterProductionRemark" Value=@this.Item.DailyHIPProduction?.HIPCumulativeWaterProductionRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="FuelGas" Value=@this.Item.DailyHIPProduction?.FuelGas IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="FuelGasRemark" Value=@this.Item.DailyHIPProduction?.FuelGasRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="HPVent" Value=@this.Item.DailyHIPProduction?.HPVent IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="HPVentRemark" Value=@this.Item.DailyHIPProduction?.HPVentRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="LPVent" Value=@this.Item.DailyHIPProduction?.LPVent IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="LPVentRemark" Value=@this.Item.DailyHIPProduction?.LPVentRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="WaterContentInGas" Value=@this.Item.DailyHIPProduction?.WaterContentInGas IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="WaterContentInGasRemark" Value=@this.Item.DailyHIPProduction?.WaterContentInGasRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="CondensateWaterCutMeterPercentage" Value=@this.Item.DailyHIPProduction?.CondensateWaterCutMeterPercentage IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="CondensateWaterCutMeterPPM" Value=@this.Item.DailyHIPProduction?.CondensateWaterCutMeterPPM IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="CondensateWaterCutMeterRemark" Value=@this.Item.DailyHIPProduction?.CondensateWaterCutMeterRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="OilInWaterReading" Value=@this.Item.DailyHIPProduction?.OilInWaterReading IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="OilInWaterReadingRemark" Value=@this.Item.DailyHIPProduction?.OilInWaterReadingRemark IsEditing=@this.isEditing/>
+											<DecimalDescriptionItem Title="HIPCumulativeGasExport" @bind-Value=@this.Data.DailyHIPProduction.HIPCumulativeGasExport TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="HIPGasExportGODCPlan" @bind-Value=@this.Data.DailyHIPProduction.HIPGasExportGODCPlan TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<StringDescriptionItem Title="HIPCumulativeGasExportRemark" @bind-Value=@this.Data.DailyHIPProduction.HIPCumulativeGasExportRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="HIPCumulativeCondensateExport" @bind-Value=@this.Data.DailyHIPProduction.HIPCumulativeCondensateExport TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<StringDescriptionItem Title="HIPCumulativeCondensateExportRemark" @bind-Value=@this.Data.DailyHIPProduction.HIPCumulativeCondensateExportRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="HIPCumulativeWaterProduction" @bind-Value=@this.Data.DailyHIPProduction.HIPCumulativeWaterProduction TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<StringDescriptionItem Title="HIPCumulativeWaterProductionRemark" @bind-Value=@this.Data.DailyHIPProduction.HIPCumulativeWaterProductionRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="FuelGas" @bind-Value=@this.Data.DailyHIPProduction.FuelGas TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<StringDescriptionItem Title="FuelGasRemark"@bind-Value=@this.Data.DailyHIPProduction.FuelGasRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="HPVent" @bind-Value=@this.Data.DailyHIPProduction.HPVent TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<StringDescriptionItem Title="HPVentRemark" @bind-Value=@this.Data.DailyHIPProduction.HPVentRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="LPVent" @bind-Value=@this.Data.DailyHIPProduction.LPVent TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<StringDescriptionItem Title="LPVentRemark" @bind-Value=@this.Data.DailyHIPProduction.LPVentRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="WaterContentInGas" @bind-Value=@this.Data.DailyHIPProduction.WaterContentInGas TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<StringDescriptionItem Title="WaterContentInGasRemark" @bind-Value=@this.Data.DailyHIPProduction.WaterContentInGasRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="CondensateWaterCutMeterPercentage" @bind-Value=@this.Data.DailyHIPProduction.CondensateWaterCutMeterPercentage TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="CondensateWaterCutMeterPPM" @bind-Value=@this.Data.DailyHIPProduction.CondensateWaterCutMeterPPM TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<StringDescriptionItem Title="CondensateWaterCutMeterRemark" @bind-Value=@this.Data.DailyHIPProduction.CondensateWaterCutMeterRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="OilInWaterReading" @bind-Value=@this.Data.DailyHIPProduction.OilInWaterReading TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<StringDescriptionItem Title="OilInWaterReadingRemark" @bind-Value=@this.Data.DailyHIPProduction.OilInWaterReadingRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="FPSO Helang" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<DecimalDescriptionItem Title="FPSOCumulativeGasExport" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCumulativeGasExport IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="FPSOGasExportGODCPlan" Value=@this.Item.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="FPSOCumulativeGasExportRemark" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="FPSOCumulativeCrudeOil" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCumulativeCrudeOil IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="FPSOCumulativeCrudeOilRemark" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCumulativeCrudeOilRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="FPSOCrudeAPIReadingInletSep" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCrudeAPIReadingInletSep IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="FPSOCrudeAPIReadingReceivingTankCOTNumber" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCrudeAPIReadingReceivingTankCOTNumber IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="FPSOCrudeAPIReadingReceivingTank" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCrudeAPIReadingReceivingTank IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="EstimatedHIPCrudeToFPSO" Value=@this.Item.DailyFPSOHelangProduction?.EstimatedHIPCrudeToFPSO IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="EstimatedHIPCrudeToFPSORemark" Value=@this.Item.DailyFPSOHelangProduction?.EstimatedHIPCrudeToFPSORemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="EstimatedLWPCrudeToFPSO" Value=@this.Item.DailyFPSOHelangProduction?.EstimatedLWPCrudeToFPSO IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="EstimatedLWPCrudeToFPSORemark" Value=@this.Item.DailyFPSOHelangProduction?.EstimatedLWPCrudeToFPSORemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="HIPCondyDivertToFPSO" Value=@this.Item.DailyFPSOHelangProduction?.HIPCondyDivertToFPSO IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="HIPCondyDivertToFPSORemark" Value=@this.Item.DailyFPSOHelangProduction?.HIPCondyDivertToFPSORemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="FPSOCumulativeWaterProduction" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCumulativeWaterProduction IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="FPSOCumulativeWaterProductionRemark" Value=@this.Item.DailyFPSOHelangProduction?.FPSOCumulativeWaterProductionRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="FPSOFlaring" Value=@this.Item.DailyFPSOHelangProduction?.FPSOFlaring IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="FPSOFlaringRemark" Value=@this.Item.DailyFPSOHelangProduction?.FPSOFlaringRemark IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="FPSOFuelGasConsumption" Value=@this.Item.DailyFPSOHelangProduction?.FPSOFuelGasConsumption IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="FPSOFuelGasConsumptionRemark" Value=@this.Item.DailyFPSOHelangProduction?.FPSOFuelGasConsumptionRemark IsEditing=@this.isEditing/>
+											<DecimalDescriptionItem Title="FPSOCumulativeGasExport" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCumulativeGasExport TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="FPSOGasExportGODCPlan" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOGasExportGODCPlan TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<StringDescriptionItem Title="FPSOCumulativeGasExportRemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCumulativeGasExportRemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="FPSOCumulativeCrudeOil" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCumulativeCrudeOil TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<StringDescriptionItem Title="FPSOCumulativeCrudeOilRemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCumulativeCrudeOilRemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="FPSOCrudeAPIReadingInletSep" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCrudeAPIReadingInletSep TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<StringDescriptionItem Title="FPSOCrudeAPIReadingReceivingTankCOTNumber"@bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCrudeAPIReadingReceivingTankCOTNumber TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="FPSOCrudeAPIReadingReceivingTank" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCrudeAPIReadingReceivingTank TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="EstimatedHIPCrudeToFPSO" @bind-Value=@this.Data.DailyFPSOHelangProduction.EstimatedHIPCrudeToFPSO TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<StringDescriptionItem Title="EstimatedHIPCrudeToFPSORemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.EstimatedHIPCrudeToFPSORemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="EstimatedLWPCrudeToFPSO" @bind-Value=@this.Data.DailyFPSOHelangProduction.EstimatedLWPCrudeToFPSO TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<StringDescriptionItem Title="EstimatedLWPCrudeToFPSORemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.EstimatedLWPCrudeToFPSORemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="HIPCondyDivertToFPSO" @bind-Value=@this.Data.DailyFPSOHelangProduction.HIPCondyDivertToFPSO TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<StringDescriptionItem Title="HIPCondyDivertToFPSORemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.HIPCondyDivertToFPSORemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="FPSOCumulativeWaterProduction" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCumulativeWaterProduction TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<StringDescriptionItem Title="FPSOCumulativeWaterProductionRemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCumulativeWaterProductionRemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="FPSOFlaring" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOFlaring TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<StringDescriptionItem Title="FPSOFlaringRemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOFlaringRemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<DecimalDescriptionItem Title="FPSOFuelGasConsumption" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOFuelGasConsumption TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
+											<StringDescriptionItem Title="FPSOFuelGasConsumptionRemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOFuelGasConsumptionRemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -233,24 +216,18 @@
 						</Panel>
 						<Panel Header="4. MAJOR EQUIPMENT STATUS" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Header="Major Equipment Status" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="Major Equipment Status" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyMajorEquipmentStatus Items=@this.Item.DailyMajorEquipmentStatuses>
-												<StringDescriptionItem Title="MajorEquipmentName" Value=@context.MajorEquipmentName IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<MajorEquipmentStatusDataGrid @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DailyDiesel" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-										<DecimalDescriptionItem Title="HIPDieselStock" Value=@this.Item.DailyDiesel?.HIPDieselStock IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="HIPDieselStockRemark" Value=@this.Item.DailyDiesel?.HIPDieselStockRemark IsEditing=@this.isEditing/>
-										<DecimalDescriptionItem Title="FPSODieselConsumption" Value=@this.Item.DailyDiesel?.FPSODieselConsumption IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="FPSODieselConsumptionRemark" Value=@this.Item.DailyDiesel?.FPSODieselConsumptionRemark IsEditing=@this.isEditing/>
+										<DecimalDescriptionItem Title="HIPDieselStock" @bind-Value=@this.Data.DailyDiesel.HIPDieselStock TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
+										<StringDescriptionItem Title="HIPDieselStockRemark" @bind-Value=@this.Data.DailyDiesel.HIPDieselStockRemark TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
+										<DecimalDescriptionItem Title="FPSODieselConsumption" @bind-Value=@this.Data.DailyDiesel.FPSODieselConsumption TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
+										<StringDescriptionItem Title="FPSODieselConsumptionRemark" @bind-Value=@this.Data.DailyDiesel.FPSODieselConsumptionRemark TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
 									</Descriptions>
 								</ChildContent>
 								</Panel>
@@ -261,57 +238,57 @@
 								<Panel ShowArrow="false" Header="CI NALCO, EC-1310A" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<DecimalDescriptionItem Title="YesterdayLevel" Value=@this.Item.DailyCiNalco?.YesterdayLevel IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TodayLevel" Value=@this.Item.DailyCiNalco?.TodayLevel IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="LevelDrop" Value=@this.Item.DailyCiNalco?.LevelDrop IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="ActualConsumption" Value=@this.Item.DailyCiNalco?.ActualConsumption IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="DailyTargetRate" Value=@this.Item.DailyCiNalco?.DailyTargetRate IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="Deviation" Value=@this.Item.DailyCiNalco?.Deviation IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="WellInjectionTarget" Value=@this.Item.DailyCiNalco?.WellInjectionTarget IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="WellActualInjection" Value=@this.Item.DailyCiNalco?.WellActualInjection IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TrunkLineInjectionTarget" Value=@this.Item.DailyCiNalco?.TrunkLineInjectionTarget IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TrunkLineActualInjection" Value=@this.Item.DailyCiNalco?.TrunkLineActualInjection IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="LWPInjectionTarget" Value=@this.Item.DailyCiNalco?.LWPInjectionTarget IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="LWPActualInjection" Value=@this.Item.DailyCiNalco?.LWPActualInjection IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="ToteTank" Value=@this.Item.DailyCiNalco?.ToteTank IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="Drum" Value=@this.Item.DailyCiNalco?.Drum IsEditing=@this.isEditing/>
+											<DecimalDescriptionItem Title="YesterdayLevel" @bind-Value=@this.Data.DailyCiNalco.YesterdayLevel TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="TodayLevel" @bind-Value=@this.Data.DailyCiNalco.TodayLevel TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="LevelDrop" @bind-Value=@this.Data.DailyCiNalco.LevelDrop TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="ActualConsumption" @bind-Value=@this.Data.DailyCiNalco.ActualConsumption TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="DailyTargetRate" @bind-Value=@this.Data.DailyCiNalco.DailyTargetRate TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="Deviation" @bind-Value=@this.Data.DailyCiNalco.Deviation TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="WellInjectionTarget" @bind-Value=@this.Data.DailyCiNalco.WellInjectionTarget TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="WellActualInjection" @bind-Value=@this.Data.DailyCiNalco.WellActualInjection TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="TrunkLineInjectionTarget" @bind-Value=@this.Data.DailyCiNalco.TrunkLineInjectionTarget TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="TrunkLineActualInjection" @bind-Value=@this.Data.DailyCiNalco.TrunkLineActualInjection TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="LWPInjectionTarget" @bind-Value=@this.Data.DailyCiNalco.LWPInjectionTarget TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="LWPActualInjection" @bind-Value=@this.Data.DailyCiNalco.LWPActualInjection TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<IntegerDescriptionItem Title="ToteTank" @bind-Value=@this.Data.DailyCiNalco.ToteTank TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<IntegerDescriptionItem Title="Drum" @bind-Value=@this.Data.DailyCiNalco.Drum TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="INOWAC SBN-810 INJECTION" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<DecimalDescriptionItem Title="V2010" Value=@this.Item.DailyInowacInjection?.V2010 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCALP" Value=@this.Item.DailyInowacInjection?.TCALP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCAHP" Value=@this.Item.DailyInowacInjection?.TCAHP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCBLP" Value=@this.Item.DailyInowacInjection?.TCBLP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCBHP" Value=@this.Item.DailyInowacInjection?.TCBHP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="Target" Value=@this.Item.DailyInowacInjection?.Target IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="ActualInjection" Value=@this.Item.DailyInowacInjection?.ActualInjection IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_DE_PH" Value=@this.Item.DailyInowacInjection?.TCA_DE_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_DE_FE" Value=@this.Item.DailyInowacInjection?.TCA_DE_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_NDE_PH" Value=@this.Item.DailyInowacInjection?.TCA_NDE_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_NDE_FE" Value=@this.Item.DailyInowacInjection?.TCA_NDE_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_V2400_PH" Value=@this.Item.DailyInowacInjection?.TCA_V2400_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_V2400_FE" Value=@this.Item.DailyInowacInjection?.TCA_V2400_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_V2430_PH" Value=@this.Item.DailyInowacInjection?.TCA_V2430_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_V2430_FE" Value=@this.Item.DailyInowacInjection?.TCA_V2430_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_TCALP_PH" Value=@this.Item.DailyInowacInjection?.TCA_TCALP_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_TCALP_FE" Value=@this.Item.DailyInowacInjection?.TCA_TCALP_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_V2200_PH" Value=@this.Item.DailyInowacInjection?.TCA_V2200_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCA_V2200_FE" Value=@this.Item.DailyInowacInjection?.TCA_V2200_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_DE_PH" Value=@this.Item.DailyInowacInjection?.TCB_DE_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_DE_FE" Value=@this.Item.DailyInowacInjection?.TCB_DE_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_NDE_PH" Value=@this.Item.DailyInowacInjection?.TCB_NDE_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_NDE_FE" Value=@this.Item.DailyInowacInjection?.TCB_NDE_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_V2500_PH" Value=@this.Item.DailyInowacInjection?.TCB_V2500_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_V2500_FE" Value=@this.Item.DailyInowacInjection?.TCB_V2500_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_V2530_PH" Value=@this.Item.DailyInowacInjection?.TCB_V2530_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_V2530_FE" Value=@this.Item.DailyInowacInjection?.TCB_V2530_FE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_TCBLP_PH" Value=@this.Item.DailyInowacInjection?.TCB_TCBLP_PH IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="TCB_TCBLP_FE" Value=@this.Item.DailyInowacInjection?.TCB_TCBLP_FE IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="Stock" Value=@this.Item.DailyInowacInjection?.Stock IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="LevelDrop" Value=@this.Item.DailyInowacInjection?.LevelDrop IsEditing=@this.isEditing/>
+											<DecimalDescriptionItem Title="V2010" @bind-Value=@this.Data.DailyInowacInjection.V2010 TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCALP" @bind-Value=@this.Data.DailyInowacInjection.TCALP TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCAHP" @bind-Value=@this.Data.DailyInowacInjection.TCAHP TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCBLP" @bind-Value=@this.Data.DailyInowacInjection.TCBLP TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCBHP" @bind-Value=@this.Data.DailyInowacInjection.TCBHP TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="Target" @bind-Value=@this.Data.DailyInowacInjection.Target TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="ActualInjection" @bind-Value=@this.Data.DailyInowacInjection.ActualInjection TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_DE_PH" @bind-Value=@this.Data.DailyInowacInjection.TCA_DE_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_DE_FE" @bind-Value=@this.Data.DailyInowacInjection.TCA_DE_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_NDE_PH" @bind-Value=@this.Data.DailyInowacInjection.TCA_NDE_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_NDE_FE" @bind-Value=@this.Data.DailyInowacInjection.TCA_NDE_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_V2400_PH" @bind-Value=@this.Data.DailyInowacInjection.TCA_V2400_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_V2400_FE" @bind-Value=@this.Data.DailyInowacInjection.TCA_V2400_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_V2430_PH" @bind-Value=@this.Data.DailyInowacInjection.TCA_V2430_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_V2430_FE" @bind-Value=@this.Data.DailyInowacInjection.TCA_V2430_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_TCALP_PH" @bind-Value=@this.Data.DailyInowacInjection.TCA_TCALP_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_TCALP_FE" @bind-Value=@this.Data.DailyInowacInjection.TCA_TCALP_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_V2200_PH" @bind-Value=@this.Data.DailyInowacInjection.TCA_V2200_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCA_V2200_FE" @bind-Value=@this.Data.DailyInowacInjection.TCA_V2200_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_DE_PH" @bind-Value=@this.Data.DailyInowacInjection.TCB_DE_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_DE_FE" @bind-Value=@this.Data.DailyInowacInjection.TCB_DE_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_NDE_PH" @bind-Value=@this.Data.DailyInowacInjection.TCB_NDE_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_NDE_FE" @bind-Value=@this.Data.DailyInowacInjection.TCB_NDE_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_V2500_PH" @bind-Value=@this.Data.DailyInowacInjection.TCB_V2500_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_V2500_FE" @bind-Value=@this.Data.DailyInowacInjection.TCB_V2500_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_V2530_PH" @bind-Value=@this.Data.DailyInowacInjection.TCB_V2530_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_V2530_FE" @bind-Value=@this.Data.DailyInowacInjection.TCB_V2530_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_TCBLP_PH" @bind-Value=@this.Data.DailyInowacInjection.TCB_TCBLP_PH TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="TCB_TCBLP_FE" @bind-Value=@this.Data.DailyInowacInjection.TCB_TCBLP_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<IntegerDescriptionItem Title="Stock" @bind-Value=@this.Data.DailyInowacInjection.Stock TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
+											<DecimalDescriptionItem Title="LevelDrop" @bind-Value=@this.Data.DailyInowacInjection.LevelDrop TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -322,174 +299,68 @@
 								<Panel ShowArrow="false" Header="DailyWellHeadAndSeparationSystem" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-										<DecimalDescriptionItem Title="StationRecyclePV2015" Value=@this.Item.DailyWellHeadAndSeparationSystem?.StationRecyclePV2015 IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="StationRecyclePV2015Control" Value=@this.Item.DailyWellHeadAndSeparationSystem?.StationRecyclePV2015Control IsEditing=@this.isEditing/>
-										<DecimalDescriptionItem Title="ProductionSeparatorV2010PV" Value=@this.Item.DailyWellHeadAndSeparationSystem?.ProductionSeparatorV2010PV IsEditing=@this.isEditing/>
-										<DecimalDescriptionItem Title="TestSeparatorV2000PV" Value=@this.Item.DailyWellHeadAndSeparationSystem?.TestSeparatorV2000PV IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="SayBoltColour" Value=@this.Item.DailyWellHeadAndSeparationSystem?.SayBoltColour IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="SandFilterS0400Status" Value=@this.Item.DailyWellHeadAndSeparationSystem?.SandFilterS0400Status IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="S0400" Value=@this.Item.DailyWellHeadAndSeparationSystem?.S0400 IsEditing=@this.isEditing/>
+										<DecimalDescriptionItem Title="StationRecyclePV2015" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.StationRecyclePV2015 TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
+										<StringDescriptionItem Title="StationRecyclePV2015Control" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.StationRecyclePV2015Control TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
+										<DecimalDescriptionItem Title="ProductionSeparatorV2010PV" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.ProductionSeparatorV2010PV TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
+										<DecimalDescriptionItem Title="TestSeparatorV2000PV" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.TestSeparatorV2000PV TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
+										<StringDescriptionItem Title="SayBoltColour" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.SayBoltColour TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
+										<StringDescriptionItem Title="SandFilterS0400Status" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.SandFilterS0400Status TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
+										<StringDescriptionItem Title="S0400" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.S0400 TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
 									</Descriptions>
 								</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="DailyWellStreamCooler" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyWellStreamCooler" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyWellStreamCooler Items=@this.Item.DailyWellStreamCoolers>
-												<StringDescriptionItem Title="WellStreamCoolerName" Value=@context.WellStreamCoolerName IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="WellStreamCoolerTemparature" Value=@context.WellStreamCoolerTemparature IsEditing=@this.isEditing/>
-											</CollectionView>
-									</Descriptions>
-								</ChildContent>
+										<WellStreamCoolerDataGrid @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args)) />
+									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Header="7. WELLHEAD" Key="1">
 							<ChildContent>
-									<Panel ShowArrow="false" Header="HIP WELLHEAD PARAMETERS" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="HIP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyHIPWellHeadParameter Items=@this.Item.DailyHIPWellHeadParameters>
-												<StringDescriptionItem Title="HIPWellHeadName" Value=@context.HIPWellHeadName IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="THP" Value=@context.THP IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="THT" Value=@context.THT IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="ChokePercentage" Value=@context.ChokePercentage IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="ChokeBase" Value=@context.ChokeBase IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="ChokeMode" Value=@context.ChokeMode IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="PCP" Value=@context.PCP IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="SCP" Value=@context.SCP IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="CCP" Value=@context.CCP IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="UpTime" Value=@context.UpTime IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="CI" Value=@context.CI IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="TCP" Value=@context.TCP IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="CIPumpStatus" Value=@context.CIPumpStatus IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<HIPWellHeadParameterDataGrid @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="LWP WELLHEAD PARAMETERS" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="LWP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyLWPWellHeadParameter Items=@this.Item.DailyLWPWellHeadParameters>
-												<StringDescriptionItem Title="LWPWellHeadName" Value=@context.LWPWellHeadName IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="THP" Value=@context.THP IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="THT" Value=@context.THT IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="ChokePercentage" Value=@context.ChokePercentage IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="ChokeMode" Value=@context.ChokeMode IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="PCP" Value=@context.PCP IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="SCP" Value=@context.SCP IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="CCP" Value=@context.CCP IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="UpTime" Value=@context.UpTime IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="CI" Value=@context.CI IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="TCP" Value=@context.TCP IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<LWPWellHeadParameterDataGrid @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Header="8. ROLLS ROYCE GAS ENGINE & KAWASAKI COMPRESSION SYSTEM" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Header="KAWASAKI EXPORT COMPRESSOR" Key="1">
-								<ChildContent>
-									<Descriptions Size="small" Bordered>
-										<CollectionView TItem=DailyKawasakiExportCompressor Items=@this.Item.DailyKawasakiExportCompressors>
-											<StringDescriptionItem Title="KawasakiExportCompressorName" Value=@context.KawasakiExportCompressorName IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="SpeedControl" Value=@context.SpeedControl IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="Speed" Value=@context.Speed IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="PressureSuct" Value=@context.PressureSuct IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="PressureDisc" Value=@context.PressureDisc IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="ThroughPut" Value=@context.ThroughPut IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="AfterCoolerDischLP" Value=@context.AfterCoolerDischLP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="AfterCoolerDischHP" Value=@context.AfterCoolerDischHP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="RecycleValueLP" Value=@context.RecycleValueLP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="RecycleValueHP" Value=@context.RecycleValueHP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="SurgeDeviationLP" Value=@context.SurgeDeviationLP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="SurgeDeviationHP" Value=@context.SurgeDeviationHP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="AxialDisp1" Value=@context.AxialDisp1 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="AxialDisp2" Value=@context.AxialDisp2 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="PrimaryVentDE" Value=@context.PrimaryVentDE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="PrimaryVentNDE" Value=@context.PrimaryVentNDE IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="DEVibrationX" Value=@context.DEVibrationX IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="DEVibrationY" Value=@context.DEVibrationY IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="NDEVibrationX" Value=@context.NDEVibrationX IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="NDEVibrationY" Value=@context.NDEVibrationY IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="OutboardThrustBrgTE801" Value=@context.OutboardThrustBrgTE801 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="OutboardThrustBrgTE802" Value=@context.OutboardThrustBrgTE802 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="InboardThrustBrgTE803" Value=@context.InboardThrustBrgTE803 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="InboardThrustBrgTE804" Value=@context.InboardThrustBrgTE804 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="NDEJournalBrgTE805" Value=@context.NDEJournalBrgTE805 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="NDEJournalBrgTE806" Value=@context.NDEJournalBrgTE806 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="DEJournalBrgTE807" Value=@context.DEJournalBrgTE807 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="DEJournalBrgTE808" Value=@context.DEJournalBrgTE808 IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-										</CollectionView>
-									</Descriptions>
-								</ChildContent>
-							</Panel>
-							<Panel ShowArrow="false" Header="ROLLS ROYCE RB-211 ENGINE" Key="1">
-								<ChildContent>
-									<Descriptions Size="small" Bordered>
-										<CollectionView TItem=DailyRollsRoyceRB211Engine Items=@this.Item.DailyRollsRoyceRB211Engines>
-											<StringDescriptionItem Title="RollsRoyceRB211EngineName" Value=@context.RollsRoyceRB211EngineName IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="GGN1" Value=@context.GGN1 IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="GGN2" Value=@context.GGN2 IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="PTN3" Value=@context.PTN3 IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="GGCTBrgLO" Value=@context.GGCTBrgLO IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="T6" Value=@context.T6 IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="CDP" Value=@context.CDP IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="GGAirIntake" Value=@context.GGAirIntake IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="RunningHours" Value=@context.RunningHours IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="StartAttempt" Value=@context.StartAttempt IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="SuccessfulStarts" Value=@context.SuccessfulStarts IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="DESampleColour" Value=@context.DESampleColour IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="NDESampleColour" Value=@context.NDESampleColour IsEditing=@this.isEditing/>
-											<DateDescriptionItem Title="TurbineWashDate" Value=@context.TurbineWashDateUI IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="TurbineWashRunnningHours" Value=@context.TurbineWashRunnningHours IsEditing=@this.isEditing/>
-										</CollectionView>
-									</Descriptions>
-								</ChildContent>
-							</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="KAWASAKI EXPORT COMPRESSOR" Key="1">
+									<ChildContent>
+										<KawasakiExportCompressorDataGrid @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args)) />
+									</ChildContent>
+								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="ROLLS ROYCE RB-211 ENGINE" Key="1">
+									<ChildContent>
+										<RollsRoyceRB211EngineDataGrid @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args)) />
+									</ChildContent>
+								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Header="9. GLYCOL REGENERATION SYSTEM" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Header="DailyGlycolPump" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyGlycolPump" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyGlycolPump Items=@this.Item.DailyGlycolPumps>
-												<StringDescriptionItem Title="GlycolPumpName" Value=@context.GlycolPumpName IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<GlycolPumpDataGrid @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="DailyGlycolTrain" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyGlycolTrain" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyGlycolTrain Items=@this.Item.DailyGlycolTrains>
-												<StringDescriptionItem Title="GlycolTrainName" Value=@context.GlycolTrainName IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="PreviousDayLevel" Value=@context.PreviousDayLevel IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="TodayReportLevel" Value=@context.TodayReportLevel IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="LevelDrop" Value=@context.LevelDrop IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="Indicator" Value=@context.Indicator IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="IndicatorGuide" Value=@context.IndicatorGuide IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="FlowRate" Value=@context.FlowRate IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="PH" Value=@context.PH IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<GlycolTrainDataGrid @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DailyGlycolStock" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<IntegerDescriptionItem Title="GlycolStockInToteTank" Value=@this.Item.DailyGlycolStock?.GlycolStockInToteTank IsEditing=@this.isEditing/>
-											<IntegerDescriptionItem Title="GlycolStockInDrum" Value=@this.Item.DailyGlycolStock?.GlycolStockInDrum IsEditing=@this.isEditing/>
+											<IntegerDescriptionItem Title="GlycolStockInToteTank" @bind-Value=@this.Data.DailyGlycolStock.GlycolStockInToteTank TItem="DailyGlycolStock" Item="@this.Data.DailyGlycolStock"/>
+											<IntegerDescriptionItem Title="GlycolStockInDrum" @bind-Value=@this.Data.DailyGlycolStock.GlycolStockInDrum TItem="DailyGlycolStock" Item="@this.Data.DailyGlycolStock"/>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
@@ -498,18 +369,18 @@
 						<Panel Header="10. GAS & CONDENSATE EXPORT SAMPLERS & EXPORT LINE" Key="1">
 							<ChildContent>
 								<Descriptions Size="small" Bordered>
-									<DateDescriptionItem Title="LastPiggingDate" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.LastPiggingDateUI IsEditing=@this.isEditing/>
-									<DateDescriptionItem Title="NextPiggingDate" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.NextPiggingDateUI IsEditing=@this.isEditing/>
-									<DecimalDescriptionItem Title="TrunkLinePressure" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.TrunkLinePressure IsEditing=@this.isEditing/>
-									<DecimalDescriptionItem Title="PV2901SP" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.PV2901SP IsEditing=@this.isEditing/>
-									<StringDescriptionItem Title="GasSamplerId" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.GasSamplerId IsEditing=@this.isEditing/>
-									<DateDescriptionItem Title="LastChangeOut" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.LastChangeOutDateUI IsEditing=@this.isEditing/>
-									<DecimalDescriptionItem Title="GasSamplerContent" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.GasSamplerContent IsEditing=@this.isEditing/>
-									<DateDescriptionItem Title="NextChangeOut" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.NextChangeOutDateUI IsEditing=@this.isEditing/>
-									<StringDescriptionItem Title="CondySamplerId" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.CondySamplerId IsEditing=@this.isEditing/>
-									<DateDescriptionItem Title="LastSampling" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.LastSamplingDateUI IsEditing=@this.isEditing/>
-									<DecimalDescriptionItem Title="CondySamplerContent" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.CondySamplerContent IsEditing=@this.isEditing/>
-									<DateDescriptionItem Title="NextSampling" Value=@this.Item.DailyGasCondensateExportSamplerAndExportLine?.NextSamplingDateUI IsEditing=@this.isEditing/>
+									<DateDescriptionItem Title="LastPiggingDateUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.LastPiggingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
+									<DateDescriptionItem Title="NextPiggingDateUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.NextPiggingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
+									<DecimalDescriptionItem Title="TrunkLinePressure" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.TrunkLinePressure TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
+									<DecimalDescriptionItem Title="PV2901SP" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.PV2901SP TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
+									<StringDescriptionItem Title="GasSamplerId" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.GasSamplerId TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
+									<DateDescriptionItem Title="LastChangeOutUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.LastChangeOutDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
+									<DecimalDescriptionItem Title="GasSamplerContent" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.GasSamplerContent TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
+									<DateDescriptionItem Title="NextChangeOutUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.NextChangeOutDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
+									<StringDescriptionItem Title="CondySamplerId" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.CondySamplerId TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
+									<DateDescriptionItem Title="LastSamplingUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.LastSamplingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
+									<DecimalDescriptionItem Title="CondySamplerContent" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.CondySamplerContent TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
+									<DateDescriptionItem Title="NextSamplingUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.NextSamplingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
 								</Descriptions>
 							</ChildContent>
 						</Panel>
@@ -518,112 +389,69 @@
 								<Panel ShowArrow="false" Header="DailyAnalysisResult" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-											<DecimalDescriptionItem Title="PhReading" Value=@this.Item.DailyAnalysisResult?.PhReading IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="PhReadingRange" Value=@this.Item.DailyAnalysisResult?.PhReadingRange IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="Iron" Value=@this.Item.DailyAnalysisResult?.Iron IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="IronRange" Value=@this.Item.DailyAnalysisResult?.IronRange IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="Salinity" Value=@this.Item.DailyAnalysisResult?.Salinity IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="Nitrite" Value=@this.Item.DailyAnalysisResult?.Nitrite IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="NitriteRange" Value=@this.Item.DailyAnalysisResult?.NitriteRange IsEditing=@this.isEditing/>
-											<DecimalDescriptionItem Title="CMFilterS6970" Value=@this.Item.DailyAnalysisResult?.CMFilterS6970 IsEditing=@this.isEditing/>
-											<StringDescriptionItem Title="CMFilterS6970Range" Value=@this.Item.DailyAnalysisResult?.CMFilterS6970Range IsEditing=@this.isEditing/>
+											<DecimalDescriptionItem Title="PhReading" @bind-Value=@this.Data.DailyAnalysisResult.PhReading TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult" />
+											<StringDescriptionItem Title="PhReadingRange"@bind-Value=@this.Data.DailyAnalysisResult.PhReadingRange TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
+											<DecimalDescriptionItem Title="Iron" @bind-Value=@this.Data.DailyAnalysisResult.Iron TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
+											<StringDescriptionItem Title="IronRange"@bind-Value=@this.Data.DailyAnalysisResult.IronRange TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
+											<DecimalDescriptionItem Title="Salinity" @bind-Value=@this.Data.DailyAnalysisResult.Salinity TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
+											<DecimalDescriptionItem Title="Nitrite" @bind-Value=@this.Data.DailyAnalysisResult.Nitrite TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
+											<StringDescriptionItem Title="NitriteRange" @bind-Value=@this.Data.DailyAnalysisResult.NitriteRange TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
+											<DecimalDescriptionItem Title="CMFilterS6970" @bind-Value=@this.Data.DailyAnalysisResult.CMFilterS6970 TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
+											<StringDescriptionItem Title="CMFilterS6970Range" @bind-Value=@this.Data.DailyAnalysisResult.CMFilterS6970Range TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
 										</Descriptions>
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="DailyCoolingMediumSystem" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyCoolingMediumSystem" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyCoolingMediumSystem Items=@this.Item.DailyCoolingMediumSystems>
-												<StringDescriptionItem Title="CoolingMediumSystemName" Value=@context.CoolingMediumSystemName IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<CoolingMediumSystemDataGrid @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="12. POWER GENERATION & DISTRIBUTION" Key="1">
+						<Panel Header="12. POWER GENERATION & DISTRIBUTION" Class="description-no-shadow" Key="1">
 							<ChildContent>
-								<Descriptions Size="small" Bordered>
-									<CollectionView TItem=DailyPowerGenerationAndDistribution Items=@this.Item.DailyPowerGenerationAndDistributions>
-										<StringDescriptionItem Title="PowerGeneratorName" Value=@context.PowerGeneratorName IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</CollectionView>
-								</Descriptions>
+								<PowerGenerationAndDistributionManagementDataGrid @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
 						<Panel Header="13. LIVING QUARTERS, UTILITIES & OTHERS" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Header="DailyUtility" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyUtility" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyUtility Items=@this.Item.DailyUtilitys>
-												<StringDescriptionItem Title="UtilityName" Value=@context.UtilityName IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
-									</Descriptions>
-								</ChildContent>
-								</Panel>
-								<Panel ShowArrow="false" Header="DailyWaterTank" Key="1">
-									<ChildContent>
-										<Descriptions Size="small" Bordered>
-												<CollectionView TItem=DailyWaterTank Items=@this.Item.DailyWaterTanks>
-													<StringDescriptionItem Title="PH" Value=@context.PH IsEditing=@this.isEditing/>
-													<StringDescriptionItem Title="UtilityName" Value=@context.UtilityName IsEditing=@this.isEditing/>
-													<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-													<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-												</CollectionView>
-										</Descriptions>
+										<UtilitiesDataGrid @ref="utilitiesDataGrid" LoadData=@(args => LoadUtilitiesDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="DailyNitrogenGenerator" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyWaterTank" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyNitrogenGenerator Items=@this.Item.DailyNitrogenGenerators>
-												<DecimalDescriptionItem Title="OxygenPercentage" Value=@context.OxygenPercentage IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="UtilityName" Value=@context.UtilityName IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-											</CollectionView>
-									</Descriptions>
-								</ChildContent>
+										<WaterTankDataGrid @ref="waterTankDataGrid" LoadData=@(args => LoadWaterTankDataGridAsync(args)) />
+									</ChildContent>
+								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyNitrogenGenerator" Key="1">
+									<ChildContent>
+										<NitrogenGeneratorDataGrid @ref="nitrogenGeneratorDataGrid" LoadData=@(args => LoadNitrogenGeneratorDataGridAsync(args)) />
+									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Header="14. TILTED PLATE SEPARATOR V-3000 & PRODUCED WATER TREATMENT SYSTEM" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Header="DailyProducedWaterTreatmentSystem" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyProducedWaterTreatmentSystem" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
-											<CollectionView TItem=DailyProducedWaterTreatmentSystem Items=@this.Item.DailyProducedWaterTreatmentSystems>
-												<StringDescriptionItem Title="ProducedWaterTreatmentSystemName" Value=@context.ProducedWaterTreatmentSystemName IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Status" Value=@context.Status IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-												<DateDescriptionItem Title="LastSkimmingDate" Value=@context.LastSkimmingDateUI IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="AnalyserStatus" Value=@context.AnalyserStatus IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="Iron" Value=@context.Iron IsEditing=@this.isEditing/>
-												<DecimalDescriptionItem Title="PH" Value=@context.PH IsEditing=@this.isEditing/>
-												<StringDescriptionItem Title="Remark2" Value=@context.Remark2 IsEditing=@this.isEditing/>
-											</CollectionView>
-										</Descriptions>
+										<ProducedWaterTreatmentSystemManagementDataGrid @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DE-OILER INJECTION" Key="1">
 									<ChildContent>
 										<Descriptions Size="small" Bordered>
-										<StringDescriptionItem Title="InjectionPoint" Value=@this.Item.DailyDeOilerInjection?.InjectionPoint IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="InjectionStatus" Value=@this.Item.DailyDeOilerInjection?.InjectionStatus IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Remark" Value=@this.Item.DailyDeOilerInjection?.Remark IsEditing=@this.isEditing/>
-										<DecimalDescriptionItem Title="TodayLevel" Value=@this.Item.DailyDeOilerInjection?.TodayLevel IsEditing=@this.isEditing/>
-										<DecimalDescriptionItem Title="YesterdayLevel" Value=@this.Item.DailyDeOilerInjection?.YesterdayLevel IsEditing=@this.isEditing/>
-										<DecimalDescriptionItem Title="LevelDrop" Value=@this.Item.DailyDeOilerInjection?.LevelDrop IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="PumpStroke" Value=@this.Item.DailyDeOilerInjection?.PumpStroke IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="PumpDischarge" Value=@this.Item.DailyDeOilerInjection?.PumpDischarge IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="TotalTank" Value=@this.Item.DailyDeOilerInjection?.TotalTank IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Drums" Value=@this.Item.DailyDeOilerInjection?.Drums IsEditing=@this.isEditing/>
+										<StringDescriptionItem Title="InjectionPoint" @bind-Value=@this.Data.DailyDeOilerInjection.InjectionPoint TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										<StringDescriptionItem Title="InjectionStatus" @bind-Value=@this.Data.DailyDeOilerInjection.InjectionStatus TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyDeOilerInjection.Remark TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										<DecimalDescriptionItem Title="TodayLevel" @bind-Value=@this.Data.DailyDeOilerInjection.TodayLevel TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										<DecimalDescriptionItem Title="YesterdayLevel" @bind-Value=@this.Data.DailyDeOilerInjection.YesterdayLevel TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										<DecimalDescriptionItem Title="LevelDrop" @bind-Value=@this.Data.DailyDeOilerInjection.LevelDrop TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										<StringDescriptionItem Title="PumpStroke" @bind-Value=@this.Data.DailyDeOilerInjection.PumpStroke TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										<StringDescriptionItem Title="PumpDischarge" @bind-Value=@this.Data.DailyDeOilerInjection.PumpDischarge TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										<IntegerDescriptionItem Title="TotalTank" @bind-Value=@this.Data.DailyDeOilerInjection.TotalTank TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										<IntegerDescriptionItem Title="Drums" @bind-Value=@this.Data.DailyDeOilerInjection.Drums TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
 									</Descriptions>
 								</ChildContent>
 								</Panel>
@@ -632,75 +460,44 @@
 						<Panel Header="15. SAND DISPOSAL FROM TPS (V-3000) VIA DESANDER" Key="1">
 							<ChildContent>
 								<Descriptions Size="small" Bordered>
-									<StringDescriptionItem Title="SandDisposalDesanderName" Value=@this.Item.DailySandDisposalDesander?.SandDisposalDesanderName IsEditing=@this.isEditing/>
-									<StringDescriptionItem Title="Status" Value=@this.Item.DailySandDisposalDesander?.Status IsEditing=@this.isEditing/>
-									<StringDescriptionItem Title="Remark" Value=@this.Item.DailySandDisposalDesander?.Remark IsEditing=@this.isEditing/>
-									<DateDescriptionItem Title="LastSandJettingDate" Value=@this.Item.DailySandDisposalDesander?.LastSandJettingDateUI IsEditing=@this.isEditing/>
-									<DateDescriptionItem Title="NextSandJettingDate" Value=@this.Item.DailySandDisposalDesander?.NextSandJettingDateUI IsEditing=@this.isEditing/>
-									<IntegerDescriptionItem Title="EastClusterJettingCycleNumber" Value=@this.Item.DailySandDisposalDesander?.EastClusterJettingCycleNumber IsEditing=@this.isEditing/>
-									<IntegerDescriptionItem Title="WestClusterJettingCycleNumber" Value=@this.Item.DailySandDisposalDesander?.WestClusterJettingCycleNumber IsEditing=@this.isEditing/>
-									<DecimalDescriptionItem Title="DrumCollectedNumber" Value=@this.Item.DailySandDisposalDesander?.DrumCollectedNumber IsEditing=@this.isEditing/>
-									<DecimalDescriptionItem Title="AccumulatedSandDisposed" Value=@this.Item.DailySandDisposalDesander?.AccumulatedSandDisposed IsEditing=@this.isEditing/>
-									<DecimalDescriptionItem Title="HighestMercuryReading" Value=@this.Item.DailySandDisposalDesander?.HighestMercuryReading IsEditing=@this.isEditing/>
-									<StringDescriptionItem Title="Remark1" Value=@this.Item.DailySandDisposalDesander?.Remark1 IsEditing=@this.isEditing/>
+									<StringDescriptionItem Title="SandDisposalDesanderName"@bind-Value=@this.Data.DailySandDisposalDesander.SandDisposalDesanderName TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
+									<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailySandDisposalDesander.Status TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
+									<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailySandDisposalDesander.Remark TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
+									<DateDescriptionItem Title="LastSandJettingDateUI" @bind-Value=@this.Data.DailySandDisposalDesander.LastSandJettingDateUI TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander" />
+									<DateDescriptionItem Title="NextSandJettingDateUI" @bind-Value=@this.Data.DailySandDisposalDesander.NextSandJettingDateUI TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander" />
+									<IntegerDescriptionItem Title="EastClusterJettingCycleNumber" @bind-Value=@this.Data.DailySandDisposalDesander.EastClusterJettingCycleNumber TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
+									<IntegerDescriptionItem Title="WestClusterJettingCycleNumber" @bind-Value=@this.Data.DailySandDisposalDesander.WestClusterJettingCycleNumber TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
+									<DecimalDescriptionItem Title="DrumCollectedNumber" @bind-Value=@this.Data.DailySandDisposalDesander.DrumCollectedNumber TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
+									<DecimalDescriptionItem Title="AccumulatedSandDisposed" @bind-Value=@this.Data.DailySandDisposalDesander.AccumulatedSandDisposed TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
+									<DecimalDescriptionItem Title="HighestMercuryReading" @bind-Value=@this.Data.DailySandDisposalDesander.HighestMercuryReading TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
+									<StringDescriptionItem Title="Remark1" @bind-Value=@this.Data.DailySandDisposalDesander.Remark1 TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
 								</Descriptions>
 							</ChildContent>
 						</Panel>
-						<Panel Header="16. DCS, FGS, ASD & COMMUNICATION SYSTEM" Key="1">
+						<Panel Header="16. DCS, FGS, ASD & COMMUNICATION SYSTEM" Class="description-no-shadow" Key="1">
 							<ChildContent>
-								<Descriptions Size="small" Bordered>
-									<CollectionView TItem=DailyCommunicationSystem Items=@this.Item.DailyCommunicationSystems>
-										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</CollectionView>
-								</Descriptions>
+								<CommunicationSystemDataGrid @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
-						<Panel Header="17. LAYANG WELLHEAD PLATFORM (LWP) ACTIVITIES" Key="1">
+						<Panel Header="17. LAYANG WELLHEAD PLATFORM (LWP) ACTIVITIES" Class="description-no-shadow" Key="1">
 							<ChildContent>
-								<Descriptions Size="small" Bordered>
-									<CollectionView TItem=DailyLWPActivity Items=@this.Item.DailyLWPActivitys>
-										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</CollectionView>
-							</Descriptions>
+								<LWPActivityDataGrid @ref="lWPActivityDataGrid" LoadData=@(args => LoadLWPActivityDataGridAsync(args)) />
 						</ChildContent>
 						</Panel>
-						<Panel Header="18. VENDOR ACTIVITIES" Key="1">
+						<Panel Header="18. VENDOR ACTIVITIES" Class="description-no-shadow" Key="1">
 							<ChildContent>
-								<Descriptions Size="small" Bordered>
-									<CollectionView TItem=DailyVendorActivity Items=@this.Item.DailyVendorActivitys>
-										<StringDescriptionItem Title="VendorName" Value=@context.VendorName IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Title" Value=@context.Title IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="PlanForTomorrow" Value=@context.PlanForTomorrow IsEditing=@this.isEditing/>
-									</CollectionView>
-							</Descriptions>
+								<VendorActivitiesDataGrid @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args)) />
 						</ChildContent>
 						</Panel>
-						<Panel Header="19. LOGISTIC" Key="1">
+						<Panel Header="19. LOGISTIC" Class="description-no-shadow" Key="1">
 							<ChildContent>
-								<Descriptions Size="small" Bordered>
-									<CollectionView TItem=DailyLogistic Items=@this.Item.DailyLogistics>
-										<StringDescriptionItem Title="LogisticName" Value=@context.LogisticName IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</CollectionView>
-							</Descriptions>
+								<LogisticDataGrid @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
-						<Panel Header="20. MAXIMO WORK ORDER" Key="1">
+						<Panel Header="20. MAXIMO WORK ORDER" Class="description-no-shadow" Key="1">
 							<ChildContent>
-								<Descriptions Size="small" Bordered>
-									<CollectionView TItem=DailyMaximoWorkOrder Items=@this.Item.DailyMaximoWorkOrders>
-										<StringDescriptionItem Title="Period" Value=@context.Period IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="WorkOrderTypeName" Value=@context.WorkOrderTypeName IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="PM" Value=@context.PM IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="CM" Value=@context.CM IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="CB" Value=@context.CB IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="MO" Value=@context.MO IsEditing=@this.isEditing/>
-										<IntegerDescriptionItem Title="Total" Value=@context.Total IsEditing=@this.isEditing/>
-										<StringDescriptionItem Title="Remark" Value=@context.Remark IsEditing=@this.isEditing/>
-									</CollectionView>
-							</Descriptions>
-						</ChildContent>
+								<MaximoWorkOrderDataGrid @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args)) />
+							</ChildContent>
 						</Panel>	
 					</Collapse>
 				</div>
