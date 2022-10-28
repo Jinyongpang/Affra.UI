@@ -1,17 +1,11 @@
 ﻿using Affra.Core.Domain.Services;
-using Affra.Core.Infrastructure.OData.Extensions;
-using AntDesign;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
-using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
-using JXNippon.CentralizedDatabaseSystem.Shared.ChemicalInjection;
 using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
-using JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction;
 using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
 using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers;
@@ -23,12 +17,10 @@ using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary;
 using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement;
 using JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem;
-using JXNippon.CentralizedDatabaseSystem.Shared.SandDisposalDesander;
 using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities;
 using JXNippon.CentralizedDatabaseSystem.Shared.WellHead;
 using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem;
 using Microsoft.AspNetCore.Components;
-using Microsoft.OData.Client;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
@@ -39,7 +31,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private bool isLoading = true;
         private bool isUserHavePermission = true;
 
-        [Parameter] public CombinedDailyReport Item { get; set; }
+        [Parameter] public CombinedDailyReport Data { get; set; }
 
         [Inject] private DialogService DialogService { get; set; }
 
@@ -52,10 +44,32 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         [Inject] private IUserService UserService { get; set; }
 
         private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
+        private HIPAndLWPSummaryDataGrid hipAndLWPSummaryDataGrid;
+        private LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid;
+        private OperatingChangeDataGrid operatingChangeDataGrid;
+        private MajorEquipmentStatusDataGrid majorEquipmentStatusDataGrid;
+        private WellStreamCoolerDataGrid wellStreamCoolerDataGrid;
+        private HIPWellHeadParameterDataGrid hipWellHeadParameterDataGrid;
+        private LWPWellHeadParameterDataGrid lwpWellHeadParameterDataGrid;
+        private RollsRoyceRB211EngineDataGrid rollsRoyceRB211EngineDataGrid;
+        private KawasakiExportCompressorDataGrid kawasakiExportCompressorDataGrid;
+        private GlycolPumpDataGrid glycolPumpDataGrid;
+        private GlycolTrainDataGrid glycolTrainDataGrid;
+        private CoolingMediumSystemDataGrid coolingMediumSystemDataGrid;
+        private PowerGenerationAndDistributionManagementDataGrid powerGenerationAndDistributionManagementDataGrid;
+        private UtilitiesDataGrid utilitiesDataGrid;
+        private WaterTankDataGrid waterTankDataGrid;
+        private NitrogenGeneratorDataGrid nitrogenGeneratorDataGrid;
+        private ProducedWaterTreatmentSystemManagementDataGrid producedWaterTreatmentSystemManagementDataGrid;
+        private LWPActivityDataGrid lWPActivityDataGrid;
+        private CommunicationSystemDataGrid communicationSystemDataGrid;
+        private VendorActivitiesDataGrid vendorActivitiesDataGrid;
+        private LogisticDataGrid logisticDataGrid;
+        private MaximoWorkOrderDataGrid maximoWorkOrderDataGrid;
 
         long editId;
         private void SetIsEditing(bool value)
-        { 
+        {
             this.isEditing = value;
             this.StateHasChanged();
         }
@@ -63,56 +77,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         protected override async Task OnInitializedAsync()
         {
             CommonFilter = new CommonFilter(NavManager);
-            CommonFilter.Date = this.Item.Date.UtcDateTime;
+            CommonFilter.Date = this.Data.Date.UtcDateTime;
 
-            using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.GetGenericService(serviceScope);
-            var query = (DataServiceQuery<CombinedDailyReport>)service.Get();
-
-            var response = await query
-                .Expand(x => x.DailyHealthSafetyEnvironment)
-                .Expand(x => x.DailyLifeBoat)
-                .Expand(x => x.DailyLongTermOverridesInhibitsOnAlarmTrips)
-                .Expand(x => x.DailyOperatingChanges)
-                .Expand(x => x.DailyLossOfPrimaryContainmentIncident)
-                .Expand(x => x.DailyHIPAndLWPSummarys)
-                .Expand(x => x.DailySandDisposalDesander)
-                .Expand(x => x.DailyCiNalco)
-                .Expand(x => x.DailyInowacInjection)
-                .Expand(x => x.DailyCommunicationSystems)
-                .Expand(x => x.DailyLWPActivitys)
-                .Expand(x => x.DailyVendorActivitys)
-                .Expand(x => x.DailyUtilitys)
-                .Expand(x => x.DailyWaterTanks)
-                .Expand(x => x.DailyNitrogenGenerators)
-                .Expand(x => x.DailyMaximoWorkOrders)
-                .Expand(x => x.DailyAnalysisResult)
-                .Expand(x => x.DailyCoolingMediumSystems)
-                .Expand(x => x.DailyLogistics)
-                .Expand(x => x.DailyGlycolPumps)
-                .Expand(x => x.DailyGlycolTrains)
-                .Expand(x => x.DailyGlycolStock)
-                .Expand(x => x.DailyKawasakiExportCompressors)
-                .Expand(x => x.DailyRollsRoyceRB211Engines)
-                .Expand(x => x.DailyHIPWellHeadParameters)
-                .Expand(x => x.DailyLWPWellHeadParameters)
-                .Expand(x => x.DailyGasCondensateExportSamplerAndExportLine)
-                .Expand(x => x.DailyWellHeadAndSeparationSystem)
-                .Expand(x => x.DailyWellStreamCoolers)
-                .Expand(x => x.DailySK10Production)
-                .Expand(x => x.DailyHIPProduction)
-                .Expand(x => x.DailyFPSOHelangProduction)
-                .Expand(x => x.DailyMajorEquipmentStatuses)
-                .Expand(x => x.DailyDiesel)
-                .Expand(x => x.DailyProducedWaterTreatmentSystems)
-                .Expand(x => x.DailyDeOilerInjection)
-                .Expand(x => x.DailyPowerGenerationAndDistributions)
-                .Where(x => x.Date == this.Item.Date)
-                .ToQueryOperationResponseAsync<CombinedDailyReport>();
-
-            this.Item = response.FirstOrDefault();
             this.isLoading = false;
-            this.isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true});
+            this.isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true });
             await base.OnInitializedAsync();
         }
 
@@ -127,13 +95,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             {
                 using var scope = ServiceProvider.CreateScope();
                 var service = this.GetGenericService(scope);
-                this.Item.Status = CombinedDailyReportStatus.Approved;
-                await service.UpdateAsync(this.Item, this.Item.Id);
+                this.Data.Status = CombinedDailyReportStatus.Approved;
+                await service.UpdateAsync(this.Data, this.Data.Id);
                 this.AffraNotificationService.NotifySuccess("Report approved.");
                 this.DialogService.Close();
             }
             catch (Exception ex)
-            { 
+            {
                 this.AffraNotificationService.NotifyException(ex);
             }
         }
@@ -144,8 +112,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             {
                 using var scope = ServiceProvider.CreateScope();
                 var service = this.GetGenericService(scope);
-                this.Item.Status = CombinedDailyReportStatus.Rejected;
-                await service.UpdateAsync(this.Item, this.Item.Id);
+                this.Data.Status = CombinedDailyReportStatus.Rejected;
+                await service.UpdateAsync(this.Data, this.Data.Id);
                 this.AffraNotificationService.NotifySuccess("Report rejected.");
                 this.DialogService.Close();
             }
@@ -154,33 +122,99 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 this.AffraNotificationService.NotifyException(ex);
             }
         }
-        void startEdit(long id)
-        {
-            editId = id;
-        }
 
-        private async Task stopEdit()
-        {
-            try
-            {
-                using var scope = ServiceProvider.CreateScope();
-                var service = this.GetGenericService(scope);
-                await service.UpdateAsync(this.Item, this.Item.Id);
-
-                this.AffraNotificationService.NotifySuccess("Record edited.");
-
-                StateHasChanged();
-            }
-            catch (Exception ex)
-            {
-                this.AffraNotificationService.NotifyException(ex);
-            }
-
-            editId = -1;
-        }
         private async Task LoadFPSOHelangSummaryDataGridAsync(LoadDataArgs args)
         {
             fpsoHelangSummaryDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadHIPAndLWPSummaryDataGridAsync(LoadDataArgs args)
+        {
+            hipAndLWPSummaryDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(LoadDataArgs args)
+        {
+            longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadOperatingChangeDataGridAsync(LoadDataArgs args)
+        {
+            operatingChangeDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadMajorEquipmentDataGridAsync(LoadDataArgs args)
+        {
+            majorEquipmentStatusDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadWellStreamCoolerDataGridAsync(LoadDataArgs args)
+        {
+            wellStreamCoolerDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadHIPWellHeadParameterDataGridAsync(LoadDataArgs args)
+        {
+            hipWellHeadParameterDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadLWPWellHeadParameterDataGridAsync(LoadDataArgs args)
+        {
+            lwpWellHeadParameterDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadRollsRoyceRB211EngineDataGridAsync(LoadDataArgs args)
+        {
+            rollsRoyceRB211EngineDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadKawasakiExportCompressorDataGridAsync(LoadDataArgs args)
+        {
+            kawasakiExportCompressorDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadGlycolPumpDataGridAsync(LoadDataArgs args)
+        {
+            glycolPumpDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadGlycolTrainDataGridAsync(LoadDataArgs args)
+        {
+            glycolTrainDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadCoolingMediumSystemDataGridAsync(LoadDataArgs args)
+        {
+            coolingMediumSystemDataGrid.DailyDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadPowerGenerationAndDistributionManagementDataGridAsync(LoadDataArgs args)
+        {
+            powerGenerationAndDistributionManagementDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadUtilitiesDataGridAsync(LoadDataArgs args)
+        {
+            utilitiesDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadWaterTankDataGridAsync(LoadDataArgs args)
+        {
+            waterTankDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadNitrogenGeneratorDataGridAsync(LoadDataArgs args)
+        {
+            nitrogenGeneratorDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadProducedWaterTreatmentSystemManagementDataGridAsync(LoadDataArgs args)
+        {
+            producedWaterTreatmentSystemManagementDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadLWPActivityDataGridAsync(LoadDataArgs args)
+        {
+            lWPActivityDataGrid.CommonFilter = CommonFilter;
+        }
+
+        private async Task LoadCommunicationSystemDataGridAsync(LoadDataArgs args)
+        {
+            communicationSystemDataGrid.DailyDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadVendorActivitiesDataGridAsync(LoadDataArgs args)
+        {
+            vendorActivitiesDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadLogisticDataGridAsync(LoadDataArgs args)
+        {
+            logisticDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadMaximoWorkOrderDataGridAsync(LoadDataArgs args)
+        {
+            maximoWorkOrderDataGrid.CommonFilter = CommonFilter;
         }
     }
 }

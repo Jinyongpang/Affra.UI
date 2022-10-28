@@ -1,0 +1,22 @@
+﻿@typeparam TItem
+
+@if (isEditing)
+{
+    <div class="d-flex justify-content-center">
+        <RadzenDatePicker @bind-Value=@this.Date DateFormat="d" Change="StopEdit"></RadzenDatePicker>
+    </div>
+}
+else
+{
+    <div class="d-flex justify-content-center" style="cursor:pointer" @onclick="StartEdit">
+        @if (this.Date != null)
+        {
+            @this.Date.ToDateString();
+        } 
+        else 
+        {
+            <Icon Style="color: #FF9F29;" Type="edit" Theme="outline" Class="anticon-big"></Icon>
+        }
+    </div>
+}
+     

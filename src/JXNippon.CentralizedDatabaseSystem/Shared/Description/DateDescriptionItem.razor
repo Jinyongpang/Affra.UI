@@ -1,16 +1,10 @@
-﻿<DescriptionsItem Span=@(Span ?? 1)>
+﻿@typeparam TItem
+
+<DescriptionsItem Span=@(Span ?? 1)>
     <TitleTemplate>
-        <a>@(stringLocalizer[Title]) <Icon Style=@this.GetStyle() Type="info-circle" Theme="outline" Class="anticon-big"></Icon></a>
+        <a>@(stringLocalizer[Title])</a>
     </TitleTemplate>
     <ChildContent>
-        @if (this.IsEditing)
-        {
-            <RadzenDatePicker @bind-Value=@this.Value DateFormat="d"></RadzenDatePicker>
-        }
-        else
-        {
-            @(this.Value.ToDateString())
-        }
-    </ChildContent>  
+        <DateDescriptionItemEdit TItem="TItem" Item="@this.Item" ItemId="@this.ItemId" OnDateChanged="@this.ValueChanged" @bind-Date=@this.Value></DateDescriptionItemEdit>
+    </ChildContent>
 </DescriptionsItem>
-     

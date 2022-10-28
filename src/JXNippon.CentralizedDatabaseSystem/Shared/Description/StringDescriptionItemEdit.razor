@@ -1,0 +1,22 @@
+﻿@typeparam TItem
+
+@if (isEditing)
+{
+    <div class="d-flex justify-content-center">
+        <RadzenTextArea @bind-Value=@this.StringVal Change="StopEdit"></RadzenTextArea>
+    </div>
+}
+else
+{
+    <div class="d-flex justify-content-center" style="cursor:pointer" @onclick="StartEdit">
+        @if (this.StringVal != null)
+        {
+            @this.StringVal;
+        } 
+        else 
+        {
+            <Icon Style="color: #FF9F29;" Type="edit" Theme="outline" Class="anticon-big"></Icon>
+        }
+    </div>
+}
+     

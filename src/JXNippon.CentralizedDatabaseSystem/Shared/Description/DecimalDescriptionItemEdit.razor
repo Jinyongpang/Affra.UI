@@ -1,0 +1,22 @@
+﻿@typeparam TItem
+
+@if (isEditing)
+{
+    <div class="d-flex justify-content-center">
+        <RadzenNumeric @bind-Value=@this.Decimal TValue="decimal?" Change="StopEdit" ShowUpDown="false"></RadzenNumeric>
+    </div>
+}
+else
+{
+    <div class="d-flex justify-content-center" style="cursor:pointer" @onclick="StartEdit">
+        @if (this.Decimal != null)
+        {
+            @this.Decimal;
+        } 
+        else 
+        {
+            <Icon Style="color: #FF9F29;" Type="edit" Theme="outline" Class="anticon-big"></Icon>
+        }
+    </div>
+}
+     

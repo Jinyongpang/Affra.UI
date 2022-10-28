@@ -12,6 +12,7 @@
         <Property Name="Status" Type="Edm.String" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="PowerGenerator" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.PowerGenerator" />
       </EntityType>
       <EntityType Name="PowerGenerator">
@@ -41,6 +42,7 @@
         <Property Name="PH" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="Remark2" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="ProducedWaterTreatmentSystem" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem" />
       </EntityType>
       <EntityType Name="ProducedWaterTreatmentSystem">
@@ -70,6 +72,7 @@
         <Property Name="TotalTank" Type="Edm.Int32" />
         <Property Name="Drums" Type="Edm.Int32" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -89,6 +92,7 @@
         <Property Name="IsValidatedByUser" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus" Nullable="false" />
         <Property Name="UserValidationDateTime" Type="Edm.DateTimeOffset" />
         <Property Name="ValidationResults" Type="Edm.String" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="MajorEquipment" Type="Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.MajorEquipment" />
       </EntityType>
       <EntityType Name="MajorEquipment">
@@ -117,6 +121,7 @@
         <Property Name="IsValidatedByUser" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus" Nullable="false" />
         <Property Name="UserValidationDateTime" Type="Edm.DateTimeOffset" />
         <Property Name="ValidationResults" Type="Edm.String" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -132,6 +137,7 @@
         <Property Name="SK10GasExportGODCPlanRemark" Type="Edm.String" />
         <Property Name="SK10CumulativeGasExportPerformanceStatus" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Statuses.PerformanceStatus" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyHIPProduction">
         <Key>
@@ -162,6 +168,7 @@
         <Property Name="OilInWaterReading" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="OilInWaterReadingRemark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyFPSOHelangProduction">
         <Key>
@@ -192,6 +199,7 @@
         <Property Name="FPSOFuelGasConsumption" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="FPSOFuelGasConsumptionRemark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -210,6 +218,7 @@
         <Property Name="SandFilterS0400Status" Type="Edm.String" />
         <Property Name="S0400" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyWellStreamCooler">
         <Key>
@@ -222,6 +231,7 @@
         <Property Name="WellStreamCoolerTemparature" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="WellStreamCooler" Type="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.WellStreamCooler" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="WellStreamCooler">
         <Key>
@@ -259,6 +269,7 @@
         <Property Name="IsValidatedByUser" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus" Nullable="false" />
         <Property Name="UserValidationDateTime" Type="Edm.DateTimeOffset" />
         <Property Name="ValidationResults" Type="Edm.String" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -285,6 +296,7 @@
         <Property Name="TCP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="CIPumpStatus" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="HIPWellHead" Type="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.HIPWellHead" />
       </EntityType>
       <EntityType Name="HIPWellHead">
@@ -317,6 +329,7 @@
         <Property Name="CI" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TCP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="LWPWellHead" Type="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.LWPWellHead" />
       </EntityType>
       <EntityType Name="LWPWellHead">
@@ -367,6 +380,7 @@
         <Property Name="DEJournalBrgTE808" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="KawasakiExportCompressor" Type="Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.KawasakiExportCompressor" />
       </EntityType>
       <EntityType Name="KawasakiExportCompressor">
@@ -401,6 +415,7 @@
         <Property Name="TurbineWashDate" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="TurbineWashRunnningHours" Type="Edm.Int32" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="RollsRoyceRB211Engine" Type="Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.RollsRoyceRB211Engine" />
       </EntityType>
       <EntityType Name="RollsRoyceRB211Engine">
@@ -426,6 +441,7 @@
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="GlycolPump" Type="Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.GlycolPump" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="GlycolPump">
         <Key>
@@ -452,6 +468,7 @@
         <Property Name="FlowRate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="PH" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="GlycolTrain" Type="Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.GlycolTrain" />
       </EntityType>
       <EntityType Name="GlycolTrain">
@@ -473,6 +490,7 @@
         <Property Name="GlycolStockInToteTank" Type="Edm.Int32" />
         <Property Name="GlycolStockInDrum" Type="Edm.Int32" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.Logistics" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -495,6 +513,7 @@
         <Property Name="LogisticName" Type="Edm.String" Nullable="false" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="Logistic" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.Logistic" />
       </EntityType>
     </Schema>
@@ -516,6 +535,7 @@
         <Property Name="CMFilterS6970" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="CMFilterS6970Range" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyCoolingMediumSystem">
         <Key>
@@ -528,6 +548,7 @@
         <Property Name="Status" Type="Edm.String" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="CoolingMediumSystem" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.CoolingMediumSystem" />
       </EntityType>
       <EntityType Name="CoolingMediumSystem">
@@ -558,6 +579,7 @@
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="WorkOrderType" Type="Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.WorkOrderType" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="WorkOrderType">
         <Key>
@@ -592,12 +614,16 @@
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="Utility" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.Utility" />
       </EntityType>
-      <EntityType Name="DailyUtility" BaseType="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtilityBase" />
+      <EntityType Name="DailyUtility" BaseType="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtilityBase">
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
+      </EntityType>
       <EntityType Name="DailyWaterTank" BaseType="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtilityBase">
         <Property Name="PH" Type="Edm.String" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyNitrogenGenerator" BaseType="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtilityBase">
         <Property Name="OxygenPercentage" Type="Edm.Decimal" Scale="Variable" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.Vendors" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -622,6 +648,7 @@
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="PlanForTomorrow" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="Vendor" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.Vendor" />
       </EntityType>
     </Schema>
@@ -635,6 +662,7 @@
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -647,6 +675,7 @@
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -672,6 +701,7 @@
         <Property Name="ToteTank" Type="Edm.Int32" />
         <Property Name="Drum" Type="Edm.Int32" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyInowacInjection">
         <Key>
@@ -712,6 +742,7 @@
         <Property Name="Stock" Type="Edm.Int32" />
         <Property Name="LevelDrop" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -725,8 +756,8 @@
         <Property Name="SandDisposalDesanderName" Type="Edm.String" Nullable="false" />
         <Property Name="Status" Type="Edm.String" />
         <Property Name="Remark" Type="Edm.String" />
-        <Property Name="LastSandJettingDate" Type="Edm.DateTimeOffset" Nullable="false" />
-        <Property Name="NextSandJettingDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="LastSandJettingDate" Type="Edm.DateTimeOffset" />
+        <Property Name="NextSandJettingDate" Type="Edm.DateTimeOffset" />
         <Property Name="EastClusterJettingCycleNumber" Type="Edm.Int32" />
         <Property Name="WestClusterJettingCycleNumber" Type="Edm.Int32" />
         <Property Name="DrumCollectedNumber" Type="Edm.Decimal" Scale="Variable" />
@@ -734,6 +765,7 @@
         <Property Name="HighestMercuryReading" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="Remark1" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="SandDisposalDesander" Type="Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders.SandDisposalDesander" />
       </EntityType>
       <EntityType Name="SandDisposalDesander">
@@ -761,6 +793,7 @@
         <Property Name="IsValidatedByUser" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus" Nullable="false" />
         <Property Name="UserValidationDateTime" Type="Edm.DateTimeOffset" />
         <Property Name="ValidationResults" Type="Edm.String" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyFPSOHelangSummary">
         <Key>
@@ -776,6 +809,7 @@
         <Property Name="IsValidatedByUser" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus" Nullable="false" />
         <Property Name="UserValidationDateTime" Type="Edm.DateTimeOffset" />
         <Property Name="ValidationResults" Type="Edm.String" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -810,6 +844,7 @@
         <Property Name="SwellWaveHeight" Type="Edm.String" />
         <Property Name="Visibility" Type="Edm.Int32" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyLifeBoat">
         <Key>
@@ -824,6 +859,7 @@
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="LifeBoat" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.LifeBoat" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyLongTermOverridesInhibitsOnAlarmTrip">
         <Key>
@@ -838,6 +874,7 @@
         <Property Name="Location" Type="Edm.String" />
         <Property Name="LongDescriptionRemark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="LongTermOverridesInhibitsOnAlarmTrip" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.LongTermOverridesInhibitsOnAlarmTrip" />
       </EntityType>
       <EntityType Name="DailyLossOfPrimaryContainmentIncident">
@@ -854,6 +891,7 @@
         <Property Name="OtherLOPC" Type="Edm.Int32" />
         <Property Name="LastOtherLOPC" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
       </EntityType>
       <EntityType Name="DailyOperatingChange">
         <Key>
@@ -868,6 +906,7 @@
         <Property Name="ReferenceNumber" Type="Edm.String" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="OperatingChange" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.OperatingChange" />
       </EntityType>
       <EntityType Name="LifeBoat">
@@ -1165,12 +1204,8 @@
         <Key>
           <PropertyRef Name="Id" />
         </Key>
-        <Property Name="TotalSK10" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalCondyDivert" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalWellAlloc" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RatioHelang" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RatioLayang" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RatioBeryl" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
@@ -1200,6 +1235,10 @@
         <Property Name="BU3" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalHIP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalFPSO" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalSK10" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RatioHelang" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RatioLayang" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RatioBeryl" Type="Edm.Decimal" Scale="Variable" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellGasProductions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1241,10 +1280,6 @@
         <Key>
           <PropertyRef Name="Id" />
         </Key>
-        <Property Name="TotalSK10" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RatioHelang" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RatioLayang" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RatioBeryl" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
@@ -1274,6 +1309,10 @@
         <Property Name="BU3" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalHIP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalFPSO" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalSK10" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RatioHelang" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RatioLayang" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RatioBeryl" Type="Edm.Decimal" Scale="Variable" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellWaterProductions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1315,10 +1354,6 @@
         <Key>
           <PropertyRef Name="Id" />
         </Key>
-        <Property Name="Total" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RatioHelang" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RatioLayang" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RatioBeryl" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
@@ -1348,6 +1383,10 @@
         <Property Name="BU3" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalHIP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalFPSO" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalSK10" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RatioHelang" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RatioLayang" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RatioBeryl" Type="Edm.Decimal" Scale="Variable" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1374,6 +1413,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1413,6 +1453,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1452,6 +1493,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1491,6 +1533,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1530,6 +1573,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1569,6 +1613,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1608,6 +1653,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1647,6 +1693,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1686,6 +1733,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1715,6 +1763,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1749,6 +1798,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1798,6 +1848,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1832,6 +1883,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1866,6 +1918,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1895,6 +1948,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1924,6 +1978,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1953,6 +2008,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -1997,6 +2053,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -2041,6 +2098,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -2070,6 +2128,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -2109,6 +2168,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -2138,6 +2198,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -2167,6 +2228,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="WellName" Type="Edm.String" />
         <Property Name="ProductionZone" Type="Edm.String" />
         <Property Name="FTHP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="THT" Type="Edm.Decimal" Scale="Variable" />
@@ -2350,7 +2412,7 @@
         <Property Name="LossAnnualized_Kbd" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="Month" Type="Edm.String" />
         <Property Name="Year" Type="Edm.String" />
-        <Property Name="DurationDay" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="DurationDay" Type="Edm.Double" />
         <Property Name="ProductionMaintenance_Onshore_Team_Action" Type="Edm.String" />
         <Property Name="Action_Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" />
         <Property Name="SK10_24_Hrs_Shutdown_Notification_Report" Type="Edm.String" />
@@ -2429,6 +2491,63 @@
         <Member Name="P" Value="1" />
       </EnumType>
     </Schema>
+    <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="CombinedDailyReport">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="User" Type="Edm.String" />
+        <Property Name="LastUpdatedDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReportStatus" Nullable="false" />
+        <Property Name="Remark" Type="Edm.String" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="DailyHealthSafetyEnvironment" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyHealthSafetyEnvironment" />
+        <NavigationProperty Name="DailyLifeBoat" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat" />
+        <NavigationProperty Name="DailyLongTermOverridesInhibitsOnAlarmTrips" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip)" />
+        <NavigationProperty Name="DailyOperatingChanges" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyOperatingChange)" />
+        <NavigationProperty Name="DailyLossOfPrimaryContainmentIncident" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLossOfPrimaryContainmentIncident" />
+        <NavigationProperty Name="DailyHIPAndLWPSummarys" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary)" />
+        <NavigationProperty Name="DailyFPSOHelangSummarys" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary)" />
+        <NavigationProperty Name="DailySandDisposalDesander" Type="Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders.DailySandDisposalDesander" />
+        <NavigationProperty Name="DailyCiNalco" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyCiNalco" />
+        <NavigationProperty Name="DailyInowacInjection" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection" />
+        <NavigationProperty Name="DailyCommunicationSystems" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem)" />
+        <NavigationProperty Name="DailyLWPActivitys" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity)" />
+        <NavigationProperty Name="DailyVendorActivitys" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity)" />
+        <NavigationProperty Name="DailyUtilitys" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility)" />
+        <NavigationProperty Name="DailyWaterTanks" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank)" />
+        <NavigationProperty Name="DailyNitrogenGenerators" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator)" />
+        <NavigationProperty Name="DailyMaximoWorkOrders" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder)" />
+        <NavigationProperty Name="DailyAnalysisResult" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult" />
+        <NavigationProperty Name="DailyCoolingMediumSystems" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyCoolingMediumSystem)" />
+        <NavigationProperty Name="DailyLogistics" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic)" />
+        <NavigationProperty Name="DailyGlycolPumps" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump)" />
+        <NavigationProperty Name="DailyGlycolTrains" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain)" />
+        <NavigationProperty Name="DailyGlycolStock" Type="Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock" />
+        <NavigationProperty Name="DailyKawasakiExportCompressors" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor)" />
+        <NavigationProperty Name="DailyRollsRoyceRB211Engines" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine)" />
+        <NavigationProperty Name="DailyHIPWellHeadParameters" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter)" />
+        <NavigationProperty Name="DailyLWPWellHeadParameters" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter)" />
+        <NavigationProperty Name="DailyGasCondensateExportSamplerAndExportLine" Type="Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines.DailyGasCondensateExportSamplerAndExportLine" />
+        <NavigationProperty Name="DailyWellHeadAndSeparationSystem" Type="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.DailyWellHeadAndSeparationSystem" />
+        <NavigationProperty Name="DailyWellStreamCoolers" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.DailyWellStreamCooler)" />
+        <NavigationProperty Name="DailySK10Production" Type="Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production" />
+        <NavigationProperty Name="DailyHIPProduction" Type="Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction" />
+        <NavigationProperty Name="DailyFPSOHelangProduction" Type="Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction" />
+        <NavigationProperty Name="DailyMajorEquipmentStatuses" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus)" />
+        <NavigationProperty Name="DailyDiesel" Type="Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel" />
+        <NavigationProperty Name="DailyProducedWaterTreatmentSystems" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem)" />
+        <NavigationProperty Name="DailyDeOilerInjection" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyDeOilerInjection" />
+        <NavigationProperty Name="DailyPowerGenerationAndDistributions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution)" />
+      </EntityType>
+      <EnumType Name="CombinedDailyReportStatus">
+        <Member Name="Pending" Value="0" />
+        <Member Name="Rejected" Value="1" />
+        <Member Name="Approved" Value="2" />
+      </EnumType>
+    </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <EnumType Name="ModelValidationStatus">
         <Member Name="Pending" Value="0" />
@@ -2446,6 +2565,7 @@
     <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <EntityContainer Name="Container">
         <EntitySet Name="DailyPowerGenerationAndDistribution" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="PowerGenerator" Target="PowerGenerator" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2462,6 +2582,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyProducedWaterTreatmentSystem" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyProducedWaterTreatmentSystem">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="ProducedWaterTreatmentSystem" Target="ProducedWaterTreatmentSystem" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2478,6 +2599,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyDeOilerInjection" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyDeOilerInjection">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2485,6 +2607,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyMajorEquipmentStatus" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyMajorEquipmentStatus">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="MajorEquipment" Target="MajorEquipment" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2501,6 +2624,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailySK10Production" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailySK10Production">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2508,6 +2632,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHIPProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyHIPProduction">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2515,6 +2640,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyFPSOHelangProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions.DailyFPSOHelangProduction">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2522,6 +2648,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyWellHeadAndSeparationSystem" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.DailyWellHeadAndSeparationSystem">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2529,6 +2656,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyWellStreamCooler" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.DailyWellStreamCooler">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="WellStreamCooler" Target="WellStreamCooler" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2545,6 +2673,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyGasCondensateExportSamplerAndExportLine" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines.DailyGasCondensateExportSamplerAndExportLine">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2552,6 +2681,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHIPWellHeadParameter" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyHIPWellHeadParameter">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="HIPWellHead" Target="HIPWellHead" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2568,6 +2698,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyLWPWellHeadParameter" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.DailyLWPWellHeadParameter">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="LWPWellHead" Target="LWPWellHead" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2584,6 +2715,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyKawasakiExportCompressor" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyKawasakiExportCompressor">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="KawasakiExportCompressor" Target="KawasakiExportCompressor" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2600,6 +2732,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyRollsRoyceRB211Engine" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.DailyRollsRoyceRB211Engine">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="RollsRoyceRB211Engine" Target="RollsRoyceRB211Engine" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2616,6 +2749,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyGlycolPump" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolPump">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="GlycolPump" Target="GlycolPump" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2632,6 +2766,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyGlycolTrain" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolTrain">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="GlycolTrain" Target="GlycolTrain" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2648,6 +2783,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyGlycolStock" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.DailyGlycolStock">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2663,6 +2799,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyLogistic" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Logistics.DailyLogistic">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="Logistic" Target="Logistic" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2671,6 +2808,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyAnalysisResult" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2678,6 +2816,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyCoolingMediumSystem" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyCoolingMediumSystem">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="CoolingMediumSystem" Target="CoolingMediumSystem" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2694,6 +2833,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyMaximoWorkOrder" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="WorkOrderType" Target="WorkOrderType" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2717,6 +2857,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyUtility" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="Utility" Target="Utility" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2725,6 +2866,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyWaterTank" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="Utility" Target="Utility" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2733,6 +2875,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyNitrogenGenerator" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="Utility" Target="Utility" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2749,6 +2892,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyVendorActivity" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="Vendor" Target="Vendor" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2757,6 +2901,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyLWPActivity" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2764,6 +2909,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyCommunicationSystem" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.CommunicationSystems.DailyCommunicationSystem">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2771,6 +2917,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyCiNalco" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyCiNalco">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2778,6 +2925,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyInowacInjection" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections.DailyInowacInjection">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2785,6 +2933,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailySandDisposalDesander" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders.DailySandDisposalDesander">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="SandDisposalDesander" Target="SandDisposalDesander" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2801,6 +2950,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHIPAndLWPSummary" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyHIPAndLWPSummary">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2808,6 +2958,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyFPSOHelangSummary" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.DailyFPSOHelangSummary">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2815,6 +2966,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHealthSafetyEnvironment" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyHealthSafetyEnvironment">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2822,6 +2974,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyLifeBoat" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="LifeBoat" Target="LifeBoat" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2830,6 +2983,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyLongTermOverridesInhibitsOnAlarmTrip" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="LongTermOverridesInhibitsOnAlarmTrip" Target="LongTermOverridesInhibitsOnAlarmTrip" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2838,6 +2992,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyLossOfPrimaryContainmentIncident" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLossOfPrimaryContainmentIncident">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -2845,6 +3000,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyOperatingChange" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyOperatingChange">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <NavigationPropertyBinding Path="OperatingChange" Target="OperatingChange" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -2877,6 +3033,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyDiesel" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses.DailyDiesel">
+          <NavigationPropertyBinding Path="CombinedDailyReport" Target="CombinedDailyReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3232,6 +3389,51 @@
         </EntitySet>
         <EntitySet Name="DefermentDetailMapping" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping">
           <NavigationPropertyBinding Path="DefermentDetail" Target="DefermentDetail" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="CombinedDailyReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport">
+          <NavigationPropertyBinding Path="DailyAnalysisResult" Target="DailyAnalysisResult" />
+          <NavigationPropertyBinding Path="DailyCiNalco" Target="DailyCiNalco" />
+          <NavigationPropertyBinding Path="DailyCommunicationSystems" Target="DailyCommunicationSystem" />
+          <NavigationPropertyBinding Path="DailyCoolingMediumSystems" Target="DailyCoolingMediumSystem" />
+          <NavigationPropertyBinding Path="DailyDeOilerInjection" Target="DailyDeOilerInjection" />
+          <NavigationPropertyBinding Path="DailyDiesel" Target="DailyDiesel" />
+          <NavigationPropertyBinding Path="DailyFPSOHelangProduction" Target="DailyFPSOHelangProduction" />
+          <NavigationPropertyBinding Path="DailyFPSOHelangSummarys" Target="DailyFPSOHelangSummary" />
+          <NavigationPropertyBinding Path="DailyGasCondensateExportSamplerAndExportLine" Target="DailyGasCondensateExportSamplerAndExportLine" />
+          <NavigationPropertyBinding Path="DailyGlycolPumps" Target="DailyGlycolPump" />
+          <NavigationPropertyBinding Path="DailyGlycolStock" Target="DailyGlycolStock" />
+          <NavigationPropertyBinding Path="DailyGlycolTrains" Target="DailyGlycolTrain" />
+          <NavigationPropertyBinding Path="DailyHealthSafetyEnvironment" Target="DailyHealthSafetyEnvironment" />
+          <NavigationPropertyBinding Path="DailyHIPAndLWPSummarys" Target="DailyHIPAndLWPSummary" />
+          <NavigationPropertyBinding Path="DailyHIPProduction" Target="DailyHIPProduction" />
+          <NavigationPropertyBinding Path="DailyHIPWellHeadParameters" Target="DailyHIPWellHeadParameter" />
+          <NavigationPropertyBinding Path="DailyInowacInjection" Target="DailyInowacInjection" />
+          <NavigationPropertyBinding Path="DailyKawasakiExportCompressors" Target="DailyKawasakiExportCompressor" />
+          <NavigationPropertyBinding Path="DailyLifeBoat" Target="DailyLifeBoat" />
+          <NavigationPropertyBinding Path="DailyLogistics" Target="DailyLogistic" />
+          <NavigationPropertyBinding Path="DailyLongTermOverridesInhibitsOnAlarmTrips" Target="DailyLongTermOverridesInhibitsOnAlarmTrip" />
+          <NavigationPropertyBinding Path="DailyLossOfPrimaryContainmentIncident" Target="DailyLossOfPrimaryContainmentIncident" />
+          <NavigationPropertyBinding Path="DailyLWPActivitys" Target="DailyLWPActivity" />
+          <NavigationPropertyBinding Path="DailyLWPWellHeadParameters" Target="DailyLWPWellHeadParameter" />
+          <NavigationPropertyBinding Path="DailyMajorEquipmentStatuses" Target="DailyMajorEquipmentStatus" />
+          <NavigationPropertyBinding Path="DailyMaximoWorkOrders" Target="DailyMaximoWorkOrder" />
+          <NavigationPropertyBinding Path="DailyNitrogenGenerators" Target="DailyNitrogenGenerator" />
+          <NavigationPropertyBinding Path="DailyOperatingChanges" Target="DailyOperatingChange" />
+          <NavigationPropertyBinding Path="DailyPowerGenerationAndDistributions" Target="DailyPowerGenerationAndDistribution" />
+          <NavigationPropertyBinding Path="DailyProducedWaterTreatmentSystems" Target="DailyProducedWaterTreatmentSystem" />
+          <NavigationPropertyBinding Path="DailyRollsRoyceRB211Engines" Target="DailyRollsRoyceRB211Engine" />
+          <NavigationPropertyBinding Path="DailySandDisposalDesander" Target="DailySandDisposalDesander" />
+          <NavigationPropertyBinding Path="DailySK10Production" Target="DailySK10Production" />
+          <NavigationPropertyBinding Path="DailyUtilitys" Target="DailyUtility" />
+          <NavigationPropertyBinding Path="DailyVendorActivitys" Target="DailyVendorActivity" />
+          <NavigationPropertyBinding Path="DailyWaterTanks" Target="DailyWaterTank" />
+          <NavigationPropertyBinding Path="DailyWellHeadAndSeparationSystem" Target="DailyWellHeadAndSeparationSystem" />
+          <NavigationPropertyBinding Path="DailyWellStreamCoolers" Target="DailyWellStreamCooler" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

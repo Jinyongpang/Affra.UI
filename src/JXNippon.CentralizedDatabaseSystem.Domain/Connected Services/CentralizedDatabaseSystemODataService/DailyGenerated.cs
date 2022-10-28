@@ -145,14 +145,14 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
 
         [IgnoreClientProperty]
-        public DateTime LastSandJettingDateUI
+        public DateTime? LastSandJettingDateUI
         {
             get { return this.LastSandJettingDate.ToLocalDateTime(); }
             set { this.LastSandJettingDate = value.ToUniversalTime(); }
         }
 
         [IgnoreClientProperty]
-        public DateTime NextSandJettingDateUI
+        public DateTime? NextSandJettingDateUI
         {
             get { return this.NextSandJettingDate.ToLocalDateTime(); }
             set { this.NextSandJettingDate = value.ToUniversalTime(); }

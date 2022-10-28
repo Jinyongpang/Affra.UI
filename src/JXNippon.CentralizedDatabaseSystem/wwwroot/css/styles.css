@@ -729,3 +729,7 @@ a {
     font-size: 100%;
     font-weight: 500;
 }
+
+.description-no-shadow > div.ant-collapse-content > div.ant-collapse-content-box > div.row > div.col > div.rz-data-grid {
+    box-shadow: none !important;
+}
