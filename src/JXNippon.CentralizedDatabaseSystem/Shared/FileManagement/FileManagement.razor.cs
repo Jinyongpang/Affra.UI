@@ -1,18 +1,46 @@
 ﻿using AntDesign;
+using JXNippon.CentralizedDatabaseSystem.Domain.Workspaces;
+using JXNippon.CentralizedDatabaseSystem.Notifications;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 {
     public partial class FileManagement
     {
         private const string All = "All";
+        private static string[] Folders = new string[] 
+        { 
+            "FPSODailyReport", 
+            "FPSOLabDailyReport", 
+            "ProcessDailyReport", 
+            "InstrumentDailyReport", 
+            "PIMSAndMETReport",
+            "DailyGasProductionDeliverySchedule",
+            "PEMonthlyReport",
+            "VendorReport",
+            "DefermentDetail",
+            "WellTestReport",
+            "FPSOProductionDBReport",
+            "CondensateStreamReport",
+        }
+            .OrderBy(x => x)
+            .ToArray();
         private FileManagementDataList fileManagementDataList;
         private Menu menu;
         private string search;
+        private string folder;
+
+        [Inject] private IWorkspaceService WorkspaceService { get; set; }
+
+        [Inject] private AffraNotificationService AffraNotificationService { get; set; }
 
         private Task ReloadAsync(string status = null)
         {
             fileManagementDataList.FileManagementFilter.Status = GetStatusFilter(status);
             fileManagementDataList.FileManagementFilter.Search = search;
+            fileManagementDataList.Folder = this.folder;
+
             return fileManagementDataList.ReloadAsync();
         }
 
@@ -30,6 +58,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         private Task OnMenuItemSelectAsync(MenuItem menuItem)
         {
             return this.ReloadAsync(menuItem.Key);
+        }
+
+        private async Task UploadAsync(InputFileChangeEventArgs e)
+        {
+            try
+            {
+                await this.WorkspaceService.UploadAsync(this.folder, new Domain.WorkspaceAPI.FileParameter(e.File.OpenReadStream(512000000), e.File.Name));
+                this.AffraNotificationService.NotifySuccess("File uploaded!");
+            }
+            catch (Exception ex)
+            { 
+                this.AffraNotificationService.NotifyException(ex);
+            }
         }
     }
 }
