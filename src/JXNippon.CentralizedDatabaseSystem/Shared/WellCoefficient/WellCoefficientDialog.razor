@@ -1,0 +1,78 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Models
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (WellCoefficient args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Well Name" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="WellName" class="w-100" Placeholder="Enter well name..." @bind-Value="@Item.WellName" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="WellName" Text="Well name is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Coefficient Gas A" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CoefficientGasA" class="w-100" @bind-Value="@Item.CoefficientGasA" Disabled=@isViewing
+                                   Placeholder="Enter coefficient gas A ..."></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Coefficient Gas B" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CoefficientGasB" class="w-100" @bind-Value="@Item.CoefficientGasB" Disabled=@isViewing
+                                   Placeholder="Enter coefficient gas B ..."></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Coefficient Condensate A" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CoefficientCondA" class="w-100" @bind-Value="@Item.CoefficientCondA" Disabled=@isViewing
+                                   Placeholder="Enter coefficient condensate A ..."></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Coefficient Condensate B" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CoefficientCondB" class="w-100" @bind-Value="@Item.CoefficientCondB" Disabled=@isViewing
+                                   Placeholder="Enter coefficient condensate B ..."></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Coefficient Water A" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CoefficientWaterA" class="w-100" @bind-Value="@Item.CoefficientWaterA" Disabled=@isViewing
+                                   Placeholder="Enter coefficient water A ..."></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Coefficient Water B" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="CoefficientWaterB" class="w-100" @bind-Value="@Item.CoefficientWaterB" Disabled=@isViewing
+                                   Placeholder="Enter coefficient water B ..."></RadzenNumeric>
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</RadzenTemplateForm>

@@ -1,0 +1,91 @@
+﻿@using AntDesign;
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations
+@using System.Text.Json
+
+<div class="row h-100">
+    <div class="col h-100">
+        <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;"
+            IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true"
+                        ColumnWidth="200px" PageSize="15" PagerHorizontalAlign="HorizontalAlign.Center" TItem="WellCoefficient"
+                        AllowColumnResize="true" ShowPagingSummary="true" CellContextMenu="@OnCellContextMenu"
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true" >
+            <EmptyTemplate>    
+                <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                    <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No well coefficient created.">
+                    </GenericDescription>
+                </div>
+            </EmptyTemplate>
+            <Columns>
+                <RadzenDataGridColumn TItem="WellCoefficient" Property="WellName" Title="Well Name" Width="100px" />
+                <RadzenDataGridColumn TItem="WellCoefficient" Property="CoefficientGasA" Title="Coefficient Gas A" Width="150px" />
+                <RadzenDataGridColumn TItem="WellCoefficient" Property="CoefficientGasB" Title="Coefficient Gas B" Width="150px" />
+                <RadzenDataGridColumn TItem="WellCoefficient" Property="CoefficientCondA" Title="Coefficient Condensate A" Width="150px" />
+                <RadzenDataGridColumn TItem="WellCoefficient" Property="CoefficientCondB" Title="Coefficient Condensate B" Width="150px" />
+                <RadzenDataGridColumn TItem="WellCoefficient" Property="CoefficientWaterA" Title="Coefficient Water A" Width="150px" />
+                <RadzenDataGridColumn TItem="WellCoefficient" Property="CoefficientWaterB" Title="Coefficient Water B" Width="150px" />
+                 <RadzenDataGridColumn TItem="WellCoefficient" Property="LastUpdatedDate" Title="Last Updated Date" Width="100px">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.LastUpdatedDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+        </RadzenDataGrid>  
+    </div>
+</div>
+
+@code {
+
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        Console.WriteLine(JsonSerializer.Serialize(args));
+        bool hasRowData = (args as DataGridCellMouseEventArgs<WellCoefficient>) != null;
+        ContextMenuService.Open(args, ds =>
+    @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<WellCoefficient>, e))">
+                    <AuthorizeView Policy="WellAllocation.ReadWrite">
+                        <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
+                        <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                        <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                    </AuthorizeView>
+                    <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+                    <RadzenMenuItem Text="History..." Value="5" Icon="history" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Deletion History..." Value="6" Icon="dns"/>
+    </RadzenMenu>
+    );
+    }
+
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<WellCoefficient> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new WellCoefficient(), i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 5)
+        {
+            await ShowDialogAsync(args.Data, i, "History");
+        }
+        else if (i == 6)
+        {
+            await ShowDialogAsync(null, i, "Deletion History");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();      
+        }
+    }
+}

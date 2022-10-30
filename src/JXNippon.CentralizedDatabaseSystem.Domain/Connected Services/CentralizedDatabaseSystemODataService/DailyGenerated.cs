@@ -358,3 +358,16 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
+
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations
+{
+    public partial class WellCoefficient
+    {
+        [IgnoreClientProperty]
+        public DateTime? LastUpdatedDateUI
+        {
+            get { return this.LastUpdatedDate.ToLocalDateTime(); }
+            set { this.LastUpdatedDate = value.ToUniversalTime(); }
+        }
+    }
+}

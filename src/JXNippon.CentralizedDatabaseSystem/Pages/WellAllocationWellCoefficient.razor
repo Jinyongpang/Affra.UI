@@ -1,0 +1,17 @@
+﻿@page "/WellAllocation/wellcoefficient"
+@using JXNippon.CentralizedDatabaseSystem.Shared.Views
+@attribute [Authorize(Policy = "WellAllocation.Read")]
+
+<PageTitle>Well Allocation Well Coefficient</PageTitle>
+<Layout Style="height:100%;">
+    <Header Style="border-left: 1px solid #dbe0ea">
+        <div class="row">
+            <div class="col-6">
+                <span>Well Coefficient</span>
+            </div>
+            </div>       
+    </Header>
+    <Content Style="overflow-y: auto; overflow-x:hidden; height:100%;" Class="py-2 px-5">
+        <JXNippon.CentralizedDatabaseSystem.Shared.WellCoefficient.WellCoefficientGrid></JXNippon.CentralizedDatabaseSystem.Shared.WellCoefficient.WellCoefficientGrid>
+    </Content>
+</Layout>
