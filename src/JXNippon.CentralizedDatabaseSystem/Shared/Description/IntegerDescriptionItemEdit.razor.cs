@@ -59,5 +59,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
                 this.AffraNotificationService.NotifyException(ex);
             }
         }
+
+        private string GetStyle()
+        {
+            return this.Integer is null
+                ? "background-color: yellow;"
+                : null;
+        }
+
+        private void MouseLeave()
+        {
+            isEditing = false;
+            this.StateHasChanged();
+        }
     }
 }

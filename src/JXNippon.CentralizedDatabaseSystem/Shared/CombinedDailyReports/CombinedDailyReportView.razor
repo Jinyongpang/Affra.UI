@@ -88,7 +88,7 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Header="HEALTH, SAFETY & ENVIRONMENT" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 										<DateDescriptionItem Title="LastLTIDateUI" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.LastLTIDateUI TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment" />
 										<IntegerDescriptionItem Title="Injurious_MTC_FACCount" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Injurious_MTC_FACCount TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
 										<DateDescriptionItem Title="Injurious_MTC_FACDateUI" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Injurious_MTC_FACDateUI TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
@@ -112,29 +112,29 @@
 										<StringDescriptionItem Title="SwellWaveHeight" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.SwellWaveHeight TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
 										<StringDescriptionItem Title="Operation_Catering_NonEssential" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Operation_Catering_NonEssential TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
 										<IntegerDescriptionItem Title="Visibility" @bind-Value=@this.Data.DailyHealthSafetyEnvironment.Visibility TItem="DailyHealthSafetyEnvironment" Item="@this.Data.DailyHealthSafetyEnvironment"/>
-									</Descriptions>
+									</DescriptionView>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="LOSS OF PRIMARY CONTAINMENT (LOPC) INCIDENT" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 										<IntegerDescriptionItem Title="MajorLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.MajorLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
 										<StringDescriptionItem Title="LastMajorLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.LastMajorLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
 										<IntegerDescriptionItem Title="MinorLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.MinorLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
 										<StringDescriptionItem Title="LastMinorLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.LastMinorLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
 										<IntegerDescriptionItem Title="OtherLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.OtherLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
 										<StringDescriptionItem Title="LastOtherLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.LastOtherLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
-									</Descriptions>
+									</DescriptionView>
 								</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="LIFEBOATS" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 											<StringDescriptionItem Title="LifeBoatName" @bind-Value=@this.Data.DailyLifeBoat.LifeBoatName TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
 											<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailyLifeBoat.Status TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
 											<StringDescriptionItem Title="StartDate" @bind-Value=@this.Data.DailyLifeBoat.StartDate TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
 											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyLifeBoat.Remark TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
-										</Descriptions>
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
@@ -153,16 +153,16 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Header="SK10" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 											<DecimalDescriptionItem Title="SK10CumulativeGasExport" @bind-Value=@this.Data.DailySK10Production.SK10CumulativeGasExport TItem="DailySK10Production" Item="@this.Data.DailySK10Production" />
 											<DecimalDescriptionItem Title="SK10GasExportGODCPlan" @bind-Value=@this.Data.DailySK10Production.SK10GasExportGODCPlan TItem="DailySK10Production" Item="@this.Data.DailySK10Production"/>
 											<StringDescriptionItem Title="SK10GasExportGODCPlanRemark" @bind-Value=@this.Data.DailySK10Production.SK10GasExportGODCPlanRemark TItem="DailySK10Production" Item="@this.Data.DailySK10Production"/>
-										</Descriptions>
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="HIP" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 											<DecimalDescriptionItem Title="HIPCumulativeGasExport" @bind-Value=@this.Data.DailyHIPProduction.HIPCumulativeGasExport TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
 											<DecimalDescriptionItem Title="HIPGasExportGODCPlan" @bind-Value=@this.Data.DailyHIPProduction.HIPGasExportGODCPlan TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
 											<StringDescriptionItem Title="HIPCumulativeGasExportRemark" @bind-Value=@this.Data.DailyHIPProduction.HIPCumulativeGasExportRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
@@ -183,12 +183,12 @@
 											<StringDescriptionItem Title="CondensateWaterCutMeterRemark" @bind-Value=@this.Data.DailyHIPProduction.CondensateWaterCutMeterRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
 											<DecimalDescriptionItem Title="OilInWaterReading" @bind-Value=@this.Data.DailyHIPProduction.OilInWaterReading TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
 											<StringDescriptionItem Title="OilInWaterReadingRemark" @bind-Value=@this.Data.DailyHIPProduction.OilInWaterReadingRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
-										</Descriptions>
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="FPSO Helang" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 											<DecimalDescriptionItem Title="FPSOCumulativeGasExport" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCumulativeGasExport TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
 											<DecimalDescriptionItem Title="FPSOGasExportGODCPlan" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOGasExportGODCPlan TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
 											<StringDescriptionItem Title="FPSOCumulativeGasExportRemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOCumulativeGasExportRemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
@@ -209,7 +209,7 @@
 											<StringDescriptionItem Title="FPSOFlaringRemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOFlaringRemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
 											<DecimalDescriptionItem Title="FPSOFuelGasConsumption" @bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOFuelGasConsumption TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
 											<StringDescriptionItem Title="FPSOFuelGasConsumptionRemark"@bind-Value=@this.Data.DailyFPSOHelangProduction.FPSOFuelGasConsumptionRemark TItem="DailyFPSOHelangProduction" Item="@this.Data.DailyFPSOHelangProduction"/>
-										</Descriptions>
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -223,12 +223,12 @@
 								</Panel>
 								<Panel ShowArrow="false" Header="DailyDiesel" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 										<DecimalDescriptionItem Title="HIPDieselStock" @bind-Value=@this.Data.DailyDiesel.HIPDieselStock TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
 										<StringDescriptionItem Title="HIPDieselStockRemark" @bind-Value=@this.Data.DailyDiesel.HIPDieselStockRemark TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
 										<DecimalDescriptionItem Title="FPSODieselConsumption" @bind-Value=@this.Data.DailyDiesel.FPSODieselConsumption TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
 										<StringDescriptionItem Title="FPSODieselConsumptionRemark" @bind-Value=@this.Data.DailyDiesel.FPSODieselConsumptionRemark TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
-									</Descriptions>
+									</DescriptionView>
 								</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -237,7 +237,7 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Header="CI NALCO, EC-1310A" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 											<DecimalDescriptionItem Title="YesterdayLevel" @bind-Value=@this.Data.DailyCiNalco.YesterdayLevel TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
 											<DecimalDescriptionItem Title="TodayLevel" @bind-Value=@this.Data.DailyCiNalco.TodayLevel TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
 											<DecimalDescriptionItem Title="LevelDrop" @bind-Value=@this.Data.DailyCiNalco.LevelDrop TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
@@ -252,12 +252,12 @@
 											<DecimalDescriptionItem Title="LWPActualInjection" @bind-Value=@this.Data.DailyCiNalco.LWPActualInjection TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
 											<IntegerDescriptionItem Title="ToteTank" @bind-Value=@this.Data.DailyCiNalco.ToteTank TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
 											<IntegerDescriptionItem Title="Drum" @bind-Value=@this.Data.DailyCiNalco.Drum TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
-										</Descriptions>
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="INOWAC SBN-810 INJECTION" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 											<DecimalDescriptionItem Title="V2010" @bind-Value=@this.Data.DailyInowacInjection.V2010 TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
 											<DecimalDescriptionItem Title="TCALP" @bind-Value=@this.Data.DailyInowacInjection.TCALP TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
 											<DecimalDescriptionItem Title="TCAHP" @bind-Value=@this.Data.DailyInowacInjection.TCAHP TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
@@ -289,7 +289,7 @@
 											<DecimalDescriptionItem Title="TCB_TCBLP_FE" @bind-Value=@this.Data.DailyInowacInjection.TCB_TCBLP_FE TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
 											<IntegerDescriptionItem Title="Stock" @bind-Value=@this.Data.DailyInowacInjection.Stock TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
 											<DecimalDescriptionItem Title="LevelDrop" @bind-Value=@this.Data.DailyInowacInjection.LevelDrop TItem="DailyInowacInjection" Item="@this.Data.DailyInowacInjection"/>
-										</Descriptions>
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -298,7 +298,7 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Header="DailyWellHeadAndSeparationSystem" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 										<DecimalDescriptionItem Title="StationRecyclePV2015" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.StationRecyclePV2015 TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
 										<StringDescriptionItem Title="StationRecyclePV2015Control" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.StationRecyclePV2015Control TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
 										<DecimalDescriptionItem Title="ProductionSeparatorV2010PV" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.ProductionSeparatorV2010PV TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
@@ -306,7 +306,7 @@
 										<StringDescriptionItem Title="SayBoltColour" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.SayBoltColour TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
 										<StringDescriptionItem Title="SandFilterS0400Status" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.SandFilterS0400Status TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
 										<StringDescriptionItem Title="S0400" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.S0400 TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
-									</Descriptions>
+									</DescriptionView>
 								</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyWellStreamCooler" Key="1">
@@ -358,17 +358,17 @@
 								</Panel>
 								<Panel ShowArrow="false" Header="DailyGlycolStock" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 											<IntegerDescriptionItem Title="GlycolStockInToteTank" @bind-Value=@this.Data.DailyGlycolStock.GlycolStockInToteTank TItem="DailyGlycolStock" Item="@this.Data.DailyGlycolStock"/>
 											<IntegerDescriptionItem Title="GlycolStockInDrum" @bind-Value=@this.Data.DailyGlycolStock.GlycolStockInDrum TItem="DailyGlycolStock" Item="@this.Data.DailyGlycolStock"/>
-										</Descriptions>
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Header="10. GAS & CONDENSATE EXPORT SAMPLERS & EXPORT LINE" Key="1">
 							<ChildContent>
-								<Descriptions Size="small" Bordered>
+								<DescriptionView>
 									<DateDescriptionItem Title="LastPiggingDateUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.LastPiggingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
 									<DateDescriptionItem Title="NextPiggingDateUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.NextPiggingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
 									<DecimalDescriptionItem Title="TrunkLinePressure" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.TrunkLinePressure TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
@@ -381,14 +381,14 @@
 									<DateDescriptionItem Title="LastSamplingUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.LastSamplingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
 									<DecimalDescriptionItem Title="CondySamplerContent" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.CondySamplerContent TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
 									<DateDescriptionItem Title="NextSamplingUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.NextSamplingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
-								</Descriptions>
+								</DescriptionView>
 							</ChildContent>
 						</Panel>
 						<Panel Header="11. COOLING MEDIUM SYSTEM" Key="1">
 							<ChildContent>
 								<Panel ShowArrow="false" Header="DailyAnalysisResult" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 											<DecimalDescriptionItem Title="PhReading" @bind-Value=@this.Data.DailyAnalysisResult.PhReading TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult" />
 											<StringDescriptionItem Title="PhReadingRange"@bind-Value=@this.Data.DailyAnalysisResult.PhReadingRange TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
 											<DecimalDescriptionItem Title="Iron" @bind-Value=@this.Data.DailyAnalysisResult.Iron TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
@@ -398,7 +398,7 @@
 											<StringDescriptionItem Title="NitriteRange" @bind-Value=@this.Data.DailyAnalysisResult.NitriteRange TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
 											<DecimalDescriptionItem Title="CMFilterS6970" @bind-Value=@this.Data.DailyAnalysisResult.CMFilterS6970 TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
 											<StringDescriptionItem Title="CMFilterS6970Range" @bind-Value=@this.Data.DailyAnalysisResult.CMFilterS6970Range TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult"/>
-										</Descriptions>
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyCoolingMediumSystem" Key="1">
@@ -441,7 +441,7 @@
 								</Panel>
 								<Panel ShowArrow="false" Header="DE-OILER INJECTION" Key="1">
 									<ChildContent>
-										<Descriptions Size="small" Bordered>
+										<DescriptionView>
 										<StringDescriptionItem Title="InjectionPoint" @bind-Value=@this.Data.DailyDeOilerInjection.InjectionPoint TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
 										<StringDescriptionItem Title="InjectionStatus" @bind-Value=@this.Data.DailyDeOilerInjection.InjectionStatus TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
 										<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyDeOilerInjection.Remark TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
@@ -452,14 +452,14 @@
 										<StringDescriptionItem Title="PumpDischarge" @bind-Value=@this.Data.DailyDeOilerInjection.PumpDischarge TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
 										<IntegerDescriptionItem Title="TotalTank" @bind-Value=@this.Data.DailyDeOilerInjection.TotalTank TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
 										<IntegerDescriptionItem Title="Drums" @bind-Value=@this.Data.DailyDeOilerInjection.Drums TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-									</Descriptions>
+									</DescriptionView>
 								</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Header="15. SAND DISPOSAL FROM TPS (V-3000) VIA DESANDER" Key="1">
 							<ChildContent>
-								<Descriptions Size="small" Bordered>
+								<DescriptionView>
 									<StringDescriptionItem Title="SandDisposalDesanderName"@bind-Value=@this.Data.DailySandDisposalDesander.SandDisposalDesanderName TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
 									<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailySandDisposalDesander.Status TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
 									<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailySandDisposalDesander.Remark TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
@@ -471,7 +471,7 @@
 									<DecimalDescriptionItem Title="AccumulatedSandDisposed" @bind-Value=@this.Data.DailySandDisposalDesander.AccumulatedSandDisposed TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
 									<DecimalDescriptionItem Title="HighestMercuryReading" @bind-Value=@this.Data.DailySandDisposalDesander.HighestMercuryReading TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
 									<StringDescriptionItem Title="Remark1" @bind-Value=@this.Data.DailySandDisposalDesander.Remark1 TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
-								</Descriptions>
+								</DescriptionView>
 							</ChildContent>
 						</Panel>
 						<Panel Header="16. DCS, FGS, ASD & COMMUNICATION SYSTEM" Class="description-no-shadow" Key="1">

@@ -1,10 +1,6 @@
 ﻿@typeparam TItem
 
-<DescriptionsItem Span=@(Span ?? 1)>
-    <TitleTemplate>
-        <a>@(stringLocalizer[Title])</a>
-    </TitleTemplate>
-    <ChildContent>
-        <DecimalDescriptionItemEdit TItem="TItem" Item="@this.Item" ItemId="@this.ItemId" OnDecimalChanged="@this.ValueChanged" @bind-Decimal=@this.Value></DecimalDescriptionItemEdit>
-    </ChildContent>
-</DescriptionsItem>
+<td class="ant-descriptions-item-label col-sm-12 col-md-2">
+    <a>@(stringLocalizer[Title])</a>
+</td>
+<DecimalDescriptionItemEdit TItem="TItem" Item="@this.Item" ItemId="@this.ItemId" OnDecimalChanged="@this.ValueChanged" @bind-Decimal=@this.Value></DecimalDescriptionItemEdit>

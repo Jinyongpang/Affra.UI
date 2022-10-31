@@ -1,4 +1,5 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
+﻿using AntDesign;
+using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 
@@ -20,5 +21,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public long ItemId { get; set; }
 
         [Parameter] public EventCallback<DateTime?> ValueChanged { get; set; }
+
+        private readonly DescriptionsItem DescriptionsItem;
+
+        protected override Task OnInitializedAsync()
+        {
+            return base.OnInitializedAsync();
+        }
+
+        private string GetStyle()
+        {
+            return Value is null
+                ? "background-color: yellow;"
+                : null;
+        }
     }
 }
