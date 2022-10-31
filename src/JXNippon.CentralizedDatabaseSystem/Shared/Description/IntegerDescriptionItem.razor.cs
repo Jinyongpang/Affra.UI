@@ -20,5 +20,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public long ItemId { get; set; }
 
         [Parameter] public EventCallback<int?> ValueChanged { get; set; }
+
+        private string GetStyle()
+        {
+            return this.Value is null
+                ? "background-color: yellow;"
+                : null;
+        }
     }
 }

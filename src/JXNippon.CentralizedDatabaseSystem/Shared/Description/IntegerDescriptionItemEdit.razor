@@ -2,22 +2,21 @@
 
 @if (isEditing)
 {
-    <div class="d-flex justify-content-center">
-        <RadzenNumeric @bind-Value=@this.Integer TValue="int?" Change="StopEdit" ShowUpDown="false"></RadzenNumeric>
-    </div>
+     <td class="ant-descriptions-item-content col-sm-12 col-md-2" colspan="1">
+        <div class="d-flex justify-content-center">
+            <RadzenNumeric @bind-Value=@this.Integer TValue="int?" Change="StopEdit" ShowUpDown="false" MouseLeave="MouseLeave"></RadzenNumeric>
+        </div>
+     </td>
 }
 else
 {
-    <div class="d-flex justify-content-center" style="cursor:pointer" @onclick="StartEdit">
-        @if (this.Integer != null)
-        {
-            @this.Integer
-            ;
-        } 
-        else 
-        {
-            <Icon Style="color: #FF9F29;" Type="edit" Theme="outline" Class="anticon-big"></Icon>
-        }
-    </div>
+    <td class="ant-descriptions-item-content col-sm-12 col-md-2" style="cursor:pointer; @this.GetStyle()" colspan="1" @onclick="StartEdit">
+        <div class="d-flex justify-content-center" >
+            @if (this.Integer != null)
+            {
+                @this.Integer
+            } 
+        </div>
+    </td>  
 }
      

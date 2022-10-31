@@ -29,6 +29,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
             this.StateHasChanged();
         }
 
+        private void MouseLeave()
+        {
+            isEditing = false;
+            this.StateHasChanged();
+        }
+
         private async Task StopEdit()
         {
             try
@@ -50,7 +56,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
                     AffraNotificationService.NotifyItemCreated();
                 }
 
-
                 isEditing = false;
                 this.StateHasChanged();
             }
@@ -58,6 +63,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
             {
                 this.AffraNotificationService.NotifyException(ex);
             }
+        }
+
+        private string GetStyle()
+        {
+            return this.Decimal is null
+                ? "background-color: yellow;"
+                : null;
         }
     }
 }
