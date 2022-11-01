@@ -6,10 +6,10 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLogistic" TDialog="LogisticDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyLogistic" Property="LogisticName" Title="Logistic Name" Width="40px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLogistic" Property="LogisticName" Title="Logistic Name" Width="40px">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyLogistic" Property="Remark" Title="Remark" Width="100px" />
-                <RadzenDataGridColumn TItem="DailyLogistic" Property="Date" Title="Date" Width="30px" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLogistic" Property="Remark" Title="Remark" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLogistic" Property="Date" Title="Date" Width="30px" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="DailyLogistic">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", DailyLogistic.Date.ToLocalTime())
                     </Template>

@@ -6,52 +6,52 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyRollsRoyceRB211Engine" TDialog="RollsRoyceRB211EngineDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="RollsRoyceRB211EngineName" Title="Name" Width="70px" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGN1" Title="GG N1" Width="70px" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGN2" Title="GG N2"  Width="70px"/>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="PTN3" Title="PT N3" Width="70px" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGCTBrgLO" Width="130px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="RollsRoyceRB211EngineName" Title="Name" Width="70px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="GGN1" Title="GG N1" Width="70px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="GGN2" Title="GG N2"  Width="70px"/>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="PTN3" Title="PT N3" Width="70px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="GGCTBrgLO" Width="130px">
                     <HeaderTemplate>
                         <div>GG CT Brg <br /> L.O ΔPl</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="T6" Width="120px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="T6" Width="120px">
                     <HeaderTemplate>
                         <div>T6 <br /> (732)</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="CDP" Title="CDP" Width="70px" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGAirIntake" Width="120px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="CDP" Title="CDP" Width="70px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="GGAirIntake" Width="120px">
                     <HeaderTemplate>
                         <div>GG Air <br /> Intake ΔP</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="RunningHours"Width="120px" >
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="RunningHours"Width="120px" >
                     <HeaderTemplate>
                         <div>Running <br /> Hours</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="StartAttempt" Width="120px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="StartAttempt" Width="120px">
                     <HeaderTemplate>
                         <div>Start <br /> Attempt</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="SuccessfulStarts" Width="120px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="SuccessfulStarts" Width="120px">
                     <HeaderTemplate>
                         <div>Successful <br /> Starts</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="DESampleColour" Width="120px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="DESampleColour" Width="120px">
                     <HeaderTemplate>
                         <div>DE <br /> Sample Colour</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="NDESampleColour" Width="120px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="NDESampleColour" Width="120px">
                     <HeaderTemplate>
                         <div>NDE <br /> Sample Colour</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="TurbineWashDate" Width="120px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="TurbineWashDate" Width="120px">
                     <HeaderTemplate>
                         <div>Turbine Wash <br /> Date</div>
                     </HeaderTemplate>
@@ -59,12 +59,12 @@
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.TurbineWashDateUI)
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="TurbineWashRunnningHours" Width="130px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="TurbineWashRunnningHours" Width="130px">
                     <HeaderTemplate>
                         <div>Turbine Wash <br /> Runnning Hours</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyRollsRoyceRB211Engine" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>

@@ -4,8 +4,9 @@
 @inject IGlobalDataSource GlobalDataSource
 
 <Menu @ref=menu Mode=MenuMode.Horizontal DefaultSelectedKeys="@(new string[] { "Home" })" Class="top-menu">
+    <img src="img/jxnipponhomelogo.png" style="padding: 15px" />
     <MenuItem Key="Home" RouterLink="#" RouterMatch="NavLinkMatch.Prefix">
-         <a href="#"><Icon Type="home" Theme="@GetTheme("Home")"  Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Home</span></a>
+        <a href="#"><Icon Type="home" Theme="@GetTheme("Home")" Class="top-row-icon" /><span class="toprow-nav-title d-none d-lg-inline">Home</span></a>
     </MenuItem>
         <AuthorizeView Policy="Operation.Read">
             <Authorized>

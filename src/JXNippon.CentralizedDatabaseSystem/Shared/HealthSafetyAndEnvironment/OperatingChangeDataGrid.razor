@@ -6,32 +6,32 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyOperatingChange" TDialog="OperatingChangeDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyOperatingChange" Property="TagName" Title="Tag Name">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="TagName" Title="Tag Name">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.TagName</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyOperatingChange" Property="RaisedDate" Title="Raised Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="RaisedDate" Title="Raised Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.RaisedDateUI)
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyOperatingChange" Property="ExpiredDate" Title="Expired Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="ExpiredDate" Title="Expired Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.ExpiredDateUI)
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyOperatingChange" Property="ReferenceNumber" Title="Reference Number">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="ReferenceNumber" Title="Reference Number">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.ReferenceNumber</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyOperatingChange" Property="Remark" Title="Remarks">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="Remark" Title="Remarks">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.Remark</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyOperatingChange" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
