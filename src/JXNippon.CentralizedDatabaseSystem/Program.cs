@@ -33,6 +33,9 @@ using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
 using OpenAPI.UserService;
 using Radzen;
+using JXNippon.CentralizedDatabaseSystem.Domain.Workspaces;
+using JXNippon.CentralizedDatabaseSystem.Domain.WorkspaceAPI;
+using JXNippon.CentralizedDatabaseSystem.Infrastructure.Workspaces;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -74,6 +77,9 @@ builder.Configuration.GetSection(nameof(UserConfigurations)).Bind(userConfigurat
 
 RoleAuthorizationConfigurations roleAuthorizationConfigurations = new();
 builder.Configuration.GetSection(nameof(RoleAuthorizationConfigurations)).Bind(roleAuthorizationConfigurations);
+
+WorkspaceAPIConfigurations workspaceAPIConfigurations = new();
+builder.Configuration.GetSection(nameof(WorkspaceAPIConfigurations)).Bind(workspaceAPIConfigurations);
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
@@ -118,6 +124,16 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<RoleAuthorizationConfigurations>>(Options.Create(roleAuthorizationConfigurations))
     .AddScoped<IUserService, UserService>()
     .AddSingleton<IAuthorizationHandler, UserRoleAuthorizeHandler>()
+    .AddSingleton<IOptions<WorkspaceAPIConfigurations>>(Options.Create(workspaceAPIConfigurations))
+    .AddScoped<IWorkspaceService, WorkspaceService>()
+    .AddHttpClient<IWorkspaceAPIClient, JXNippon.CentralizedDatabaseSystem.Infrastructure.Workspaces.WorkspaceAPIClient>()
+    .AddHttpMessageHandler<CreateActivityHandler>()
+    .AddHttpMessageHandler<AuthorizationMessageHandler>()
+    .Services
+    .AddHttpClient<IUserServiceClient, JXNippon.CentralizedDatabaseSystem.Infrastructure.Users.UserServiceClient>()
+    .AddHttpMessageHandler<CreateActivityHandler>()
+    .AddHttpMessageHandler<AuthorizationMessageHandler>()
+    .Services
     .AddMemoryCache()
     .AddAuthorizationCore(options =>
     {
@@ -132,9 +148,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     })
     .AddAntDesign()
     .AddLocalization();
-    builder.Services.AddHttpClient<IUserServiceClient, JXNippon.CentralizedDatabaseSystem.Infrastructure.Users.UserServiceClient>()
-        .AddHttpMessageHandler<CreateActivityHandler>()
-        .AddHttpMessageHandler<AuthorizationMessageHandler>();
 
 builder.Services.AddMsalAuthentication(options =>
 {

@@ -10,6 +10,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.Extensions.Localization;
 using Radzen;
 
@@ -17,7 +18,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 {
     public partial class ManagementOfChangeDataList
     {
-        private AntList<ManagementOfChangeRecord> _managementOfChangeList;
+        private Virtualize<ManagementOfChangeRecord> virtualize;
         private List<ManagementOfChangeRecord> managementOfChanges;
         private int count;
         private int currentCount;
@@ -50,76 +51,71 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         {
             ManagementOfChangeFilter = new CommonFilter(navigationManager);
             initLoading = false;
-            return LoadDataAsync();
+            return Task.CompletedTask;
         }
-        private async Task LoadDataAsync(bool isLoadMore = false)
+        private async ValueTask<ItemsProviderResult<ManagementOfChangeRecord>> LoadDataAsync(ItemsProviderRequest request)
         {
             isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.ManagementOfChange), HasReadPermissoin = true, HasWritePermission = true});
             isLoading = true;
-            if (!isLoadMore)
-            {
-                currentCount = 0;
-            }
-
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<ManagementOfChangeRecord>? managementOfChangeService = GetGenericMOCService(serviceScope);
-            var query = managementOfChangeService.Get();
-
-            if (!string.IsNullOrEmpty(ManagementOfChangeFilter.Search))
-            {
-                query = query
-                    .Where(mocRecord => mocRecord.TitleOfChange.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
-                        || mocRecord.CreatedBy.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
-                        || mocRecord.RecordNumber.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
-                    );
-            }
-             
-            if (ManagementOfChangeFilter.Status != null)
-            {
-                var status = (ManagementOfChangeStatus)Enum.Parse(typeof(ManagementOfChangeStatus), ManagementOfChangeFilter.Status);
-                query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus == status);
-            }
-            else
-            {
-                query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus != ManagementOfChangeStatus.Deleted);
-            }
-
-            Microsoft.OData.Client.QueryOperationResponse<ManagementOfChangeRecord>? managementOfChangeResponse = await query
-                .OrderByDescending(moc => moc.CreatedDateTime)
-                .Skip(currentCount)
-                .Take(loadSize)
-                .ToQueryOperationResponseAsync<ManagementOfChangeRecord>();
-
-            count = (int)managementOfChangeResponse.Count;
-            currentCount += loadSize;
-            var managementOfChangeList = managementOfChangeResponse.ToList();
-
-            if (isLoadMore)
-            {
-                managementOfChanges.AddRange(managementOfChangeList);
-            }
-            else
-            {
-                managementOfChanges = managementOfChangeList;
-            }
-
-            isLoading = false;
-
-            if (managementOfChangeList.DistinctBy(x => x.Id).Count() != managementOfChangeList.Count)
-            {
-                AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
-            }
-
             StateHasChanged();
+
+            try
+            {
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<ManagementOfChangeRecord>? managementOfChangeService = GetGenericMOCService(serviceScope);
+                var query = managementOfChangeService.Get();
+
+                if (!string.IsNullOrEmpty(ManagementOfChangeFilter.Search))
+                {
+                    query = query
+                        .Where(mocRecord => mocRecord.TitleOfChange.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
+                            || mocRecord.CreatedBy.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
+                            || mocRecord.RecordNumber.ToUpper().Contains(ManagementOfChangeFilter.Search.ToUpper())
+                        );
+                }
+
+                if (ManagementOfChangeFilter.Status != null)
+                {
+                    var status = (ManagementOfChangeStatus)Enum.Parse(typeof(ManagementOfChangeStatus), ManagementOfChangeFilter.Status);
+                    query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus == status);
+                }
+                else
+                {
+                    query = query.Where(mocRecord => mocRecord.ManagementOfChangeStatus != ManagementOfChangeStatus.Deleted);
+                }
+
+                Microsoft.OData.Client.QueryOperationResponse<ManagementOfChangeRecord>? managementOfChangeResponse = await query
+                    .OrderByDescending(moc => moc.CreatedDateTime)
+                    .Skip(request.StartIndex)
+                    .Take(request.Count)
+                    .ToQueryOperationResponseAsync<ManagementOfChangeRecord>();
+
+                count = (int)managementOfChangeResponse.Count;
+                currentCount += loadSize;
+                var managementOfChangeList = managementOfChangeResponse.ToList();
+
+                isLoading = false;
+
+                if (managementOfChangeList.DistinctBy(x => x.Id).Count() != managementOfChangeList.Count)
+                {
+                    AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
+                }
+
+                return new ItemsProviderResult<ManagementOfChangeRecord>(managementOfChangeList, count);
+            }
+            finally
+            {
+                initLoading = false;
+                isLoading = false;
+                StateHasChanged();
+            }
         }
-        public Task ReloadAsync()
+        public async Task ReloadAsync()
         {
-            return LoadDataAsync();
+            await this.virtualize.RefreshDataAsync();
+            this.StateHasChanged();
         }
-        public Task OnLoadMoreAsync()
-        {
-            return LoadDataAsync(true);
-        }
+
         private async Task ShowDialogAsync(ManagementOfChangeRecord data, string title = "")
         {
             dynamic? response;

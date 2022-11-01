@@ -2,21 +2,21 @@
 
 @if (isEditing)
 {
-    <div class="d-flex justify-content-center">
-        <RadzenDatePicker @bind-Value=@this.Date DateFormat="d" Change="StopEdit"></RadzenDatePicker>
-    </div>
+     <td class="ant-descriptions-item-content col-sm-12 col-md-2" colspan="1">
+        <div class="d-flex justify-content-center">
+            <RadzenDatePicker @bind-Value=@this.Date DateFormat="d" Change="StopEdit"></RadzenDatePicker>
+        </div>
+     </td>
 }
 else
 {
-    <div class="d-flex justify-content-center" style="cursor:pointer" @onclick="StartEdit">
-        @if (this.Date != null)
-        {
-            @this.Date.ToDateString();
-        } 
-        else 
-        {
-            <Icon Style="color: #FF9F29;" Type="edit" Theme="outline" Class="anticon-big"></Icon>
-        }
-    </div>
+    <td class="ant-descriptions-item-content col-sm-12 col-md-2" style="cursor:pointer; min-height: 30px; @this.GetStyle()" colspan="1" @onclick="StartEdit">
+        <div class="d-flex justify-content-center" >
+            @if (this.Date != null)
+            {
+                @this.Date.ToDateString();
+            } 
+        </div>
+    </td>
+    
 }
-     

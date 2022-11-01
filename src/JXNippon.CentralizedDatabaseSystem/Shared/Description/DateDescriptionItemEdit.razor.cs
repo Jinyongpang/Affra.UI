@@ -11,6 +11,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public DateTime? Date { get; set; }
         [Parameter] public TItem Item { get; set; }
         [Parameter] public long ItemId { get; set; }
+        [Parameter] public bool IsRequired { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Parameter] public EventCallback<DateTime?> DateChanged { get; set; }
@@ -58,6 +59,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
             {
                 this.AffraNotificationService.NotifyException(ex);
             }
+        }
+        private void MouseLeave()
+        {
+            isEditing = false;
+            this.StateHasChanged();
+        }
+
+        private string GetStyle()
+        {
+            return this.Date is null
+                ? "background-color: yellow;"
+                : null;
         }
     }
 }

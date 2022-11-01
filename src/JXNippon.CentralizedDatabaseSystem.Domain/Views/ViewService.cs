@@ -57,6 +57,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
             DataServiceQuery<View> query = (DataServiceQuery<View>)viewUnitOfWork.ViewRepository.Get();
             return (await query
                 .Where(view => view.Page == page)
+                .OrderBy(view => view.Id)
                 .ExecuteAsync<View>())
                 .ToList();
         }

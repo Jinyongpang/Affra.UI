@@ -1,10 +1,6 @@
 ﻿@typeparam TItem
 
-<DescriptionsItem Span=@(Span ?? 1)>
-    <TitleTemplate>
-        <a>@(stringLocalizer[Title])</a>
-    </TitleTemplate>
-    <ChildContent>
-        <DateDescriptionItemEdit TItem="TItem" Item="@this.Item" ItemId="@this.ItemId" OnDateChanged="@this.ValueChanged" @bind-Date=@this.Value></DateDescriptionItemEdit>
-    </ChildContent>
-</DescriptionsItem>
+<td class="ant-descriptions-item-label col-sm-12 col-md-2">
+    <a>@(stringLocalizer[Title])</a>
+</td>
+<DateDescriptionItemEdit TItem="TItem" Item="@this.Item" ItemId="@this.ItemId" OnDateChanged="@this.ValueChanged" @bind-Date=@this.Value IsRequired=@this.IsRequired></DateDescriptionItemEdit>

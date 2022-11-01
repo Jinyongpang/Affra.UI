@@ -36,7 +36,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return Task.CompletedTask;
         }
 
-        private void CalculateDateRange(DateTime datetime)
+        private void CalculateDateRange(DateTime? datetime)
         {
             this.dateRange.Start = datetime;
             this.dateRange.End = this.dateRange.Start.Value.AddDays(1).AddMilliseconds(-1);

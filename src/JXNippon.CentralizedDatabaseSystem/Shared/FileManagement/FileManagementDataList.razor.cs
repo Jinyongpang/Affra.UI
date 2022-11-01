@@ -4,11 +4,13 @@ using AntDesign;
 using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
+using JXNippon.CentralizedDatabaseSystem.Domain.Workspaces;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web.Virtualization;
+using Microsoft.JSInterop;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
@@ -37,7 +39,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private IUserService UserService { get; set; }
+        [Inject] private IWorkspaceService WorkspaceService { get; set; }
+        [Inject] private IJSRuntime JSRuntime { get; set; }
+
         public CommonFilter FileManagementFilter { get; set; }
+
+        public string Folder { get; set; }
 
         protected override Task OnInitializedAsync()
         {
@@ -79,6 +86,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
                         .Where(dataFile => dataFile.LastModifiedDateTime < end);
                 }
 
+                if (!string.IsNullOrEmpty(Folder))
+                {
+                    query = query
+                        .Where(x => x.FolderName.ToUpper().Contains(Folder.ToUpper()));
+                }
 
                 Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
                     .OrderByDescending(file => file.LastModifiedDateTime)
@@ -110,7 +122,33 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DataFile, IDataExtractorUnitOfWork>>();
         }
 
-        public async Task ResyncFileAsync(DataFile dataFile)
+        private async Task DownloadAsync(DataFile dataFile)
+        {
+            try
+            { 
+                var folder = this.GetFolderName(dataFile.FolderName);
+                var id = await this.WorkspaceService.GetIdAsync(folder, dataFile.FileName);
+                var fileResponse = await this.WorkspaceService.DownloadAsync(id);
+                if (fileResponse != null)
+                {
+
+                    using var streamRef = new DotNetStreamReference(stream: fileResponse.Stream);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", dataFile.FileName, streamRef);
+                }
+            }
+            catch (Exception ex)
+            {
+                AffraNotificationService.NotifyException(ex);
+            }
+
+        }
+
+        private string GetFolderName(string value)
+        {
+            return value.Split('\\').Last();
+        }
+
+        private async Task ResyncFileAsync(DataFile dataFile)
         {
             var currentAttempts = dataFile.NumberOfAttempts;
             var currentStatus = dataFile.ProcessStatus;
