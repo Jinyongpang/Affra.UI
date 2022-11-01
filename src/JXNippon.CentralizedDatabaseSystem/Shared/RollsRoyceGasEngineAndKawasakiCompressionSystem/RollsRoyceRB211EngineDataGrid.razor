@@ -3,28 +3,67 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyRollsRoyceRB211Engine" TDialog="RollsRoyceRB211EngineDialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyRollsRoyceRB211Engine" TDialog="RollsRoyceRB211EngineDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="RollsRoyceRB211EngineName" Title="Name" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGN1" Title="GG N1" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGN2" Title="GG N2" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="PTN3" Title="PT N3" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGCTBrgLO" Title="GG CT Brg L.O ΔP" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="T6" Title="T6 (732)" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="CDP" Title="CDP" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGAirIntake" Title="GG Air Intake ΔP" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="RunningHours" Title="Running Hours" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="StartAttempt" Title="Start Attempt" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="SuccessfulStarts" Title="Successful Starts" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="DESampleColour" Title="DE Sample Colour" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="NDESampleColour" Title="NDE Sample Colour" />
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="TurbineWashDate" Title="Turbine Wash Date">
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="RollsRoyceRB211EngineName" Title="Name" Width="70px" />
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGN1" Title="GG N1" Width="70px" />
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGN2" Title="GG N2"  Width="70px"/>
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="PTN3" Title="PT N3" Width="70px" />
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGCTBrgLO" Width="130px">
+                    <HeaderTemplate>
+                        <div>GG CT Brg <br /> L.O ΔPl</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="T6" Width="120px">
+                    <HeaderTemplate>
+                        <div>T6 <br /> (732)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="CDP" Title="CDP" Width="70px" />
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="GGAirIntake" Width="120px">
+                    <HeaderTemplate>
+                        <div>GG Air <br /> Intake ΔP</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="RunningHours"Width="120px" >
+                    <HeaderTemplate>
+                        <div>Running <br /> Hours</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="StartAttempt" Width="120px">
+                    <HeaderTemplate>
+                        <div>Start <br /> Attempt</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="SuccessfulStarts" Width="120px">
+                    <HeaderTemplate>
+                        <div>Successful <br /> Starts</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="DESampleColour" Width="120px">
+                    <HeaderTemplate>
+                        <div>DE <br /> Sample Colour</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="NDESampleColour" Width="120px">
+                    <HeaderTemplate>
+                        <div>NDE <br /> Sample Colour</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="TurbineWashDate" Width="120px">
+                    <HeaderTemplate>
+                        <div>Turbine Wash <br /> Date</div>
+                    </HeaderTemplate>
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.TurbineWashDateUI)
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="TurbineWashRunnningHours" Title="Turbine Wash Runnning Hours" />
+                <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="TurbineWashRunnningHours" Width="130px">
+                    <HeaderTemplate>
+                        <div>Turbine Wash <br /> Runnning Hours</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyRollsRoyceRB211Engine" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)

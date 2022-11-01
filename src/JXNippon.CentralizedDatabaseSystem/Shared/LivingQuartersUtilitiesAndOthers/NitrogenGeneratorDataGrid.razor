@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyNitrogenGenerator" TDialog="NitrogenGeneratorDialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyNitrogenGenerator" TDialog="NitrogenGeneratorDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyNitrogenGenerator" Property="UtilityName" Title="Utility Name" />

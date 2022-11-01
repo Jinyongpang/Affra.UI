@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyOperatingChange" TDialog="OperatingChangeDialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyOperatingChange" TDialog="OperatingChangeDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyOperatingChange" Property="TagName" Title="Tag Name">

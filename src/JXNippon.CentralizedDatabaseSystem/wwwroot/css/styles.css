@@ -733,3 +733,33 @@ a {
 .description-no-shadow > div.ant-collapse-content > div.ant-collapse-content-box > div.row > div.col > div.rz-data-grid {
     box-shadow: none !important;
 }
+
+.center-grid-title > div > span.rz-column-title {
+    justify-content: center;
+    display: flex;
+    text-align: center;
+}
+.center-grid-content > span.rz-cell-data {
+    justify-content: center;
+    display: flex;
+    text-align: center;
+}
+.panel-header > div > div.ant-collapse-header-text {
+    width: 100%;
+}
+.panel-summary-tag {
+    float: right;
+    font-size: medium;
+}
+
+.panel-header {
+    background-color: #3AAFC6;
+}
+
+.ant-descriptions-item-label {
+    background-color: #92CDDC !important;
+}
+
+th, .rz-cell-filter {
+    background-color: #92CDDC !important;
+}

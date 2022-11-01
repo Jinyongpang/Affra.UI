@@ -517,13 +517,13 @@
     <value>Estimated HIP Crude to FPSO (bbl)</value>
   </data>
   <data name="EstimatedHIPCrudeToFPSORemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>Estimated HIP Crude To FPSO Remark</value>
   </data>
   <data name="EstimatedLWPCrudeToFPSO" xml:space="preserve">
     <value>Estimated LWP Crude to FPSO (bbl)</value>
   </data>
   <data name="EstimatedLWPCrudeToFPSORemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>Estimated LWP Crude To FPSO Remark</value>
   </data>
   <data name="ExpiredDate" xml:space="preserve">
     <value>Expired</value>
@@ -541,31 +541,31 @@
     <value>FPSO Cumulative Crude Oil (bbl)</value>
   </data>
   <data name="FPSOCumulativeCrudeOilRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>FPSO Cumulative Crude Oil Remark</value>
   </data>
   <data name="FPSOCumulativeGasExport" xml:space="preserve">
     <value>FPSO Cumulative Gas Export (MMscf)</value>
   </data>
   <data name="FPSOCumulativeGasExportRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>FPSO Cumulative Gas Export Remark</value>
   </data>
   <data name="FPSOCumulativeWaterProduction" xml:space="preserve">
     <value>FPSO Cumulative Water Production (bbl)</value>
   </data>
   <data name="FPSOCumulativeWaterProductionRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>FPSO Cumulative Water Production Remark</value>
   </data>
   <data name="FPSOFlaring" xml:space="preserve">
     <value>FPSO Flaring (MMscf)</value>
   </data>
   <data name="FPSOFlaringRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>FPSO Flaring Remark</value>
   </data>
   <data name="FPSOFuelGasConsumption" xml:space="preserve">
     <value>FPSO Fuel Gas Consumption (MMscf)</value>
   </data>
   <data name="FPSOFuelGasConsumptionRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>FPSO Fuel Gas Consumption Remark</value>
   </data>
   <data name="FPSOGasExportGODCPlan" xml:space="preserve">
     <value>FPSO Gas Export GODC Plan</value>
@@ -574,7 +574,7 @@
     <value>Fuel Gas (MMscf)</value>
   </data>
   <data name="FuelGasRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>Fuel Gas Remark</value>
   </data>
   <data name="GasSamplerContent" xml:space="preserve">
     <value>Gas Sampler Content (ml)</value>
@@ -595,7 +595,7 @@
     <value>GG N2</value>
   </data>
   <data name="GlycolPumpName" xml:space="preserve">
-    <value>Name</value>
+    <value>Glycol Pump Name</value>
   </data>
   <data name="GlycolStockInDrum" xml:space="preserve">
     <value>Glycol Stock In Drum</value>
@@ -604,7 +604,7 @@
     <value>Glycol Stock In Tote Tank</value>
   </data>
   <data name="GlycolTrainName" xml:space="preserve">
-    <value>Name</value>
+    <value>Glycol Train Name</value>
   </data>
   <data name="HighestMercuryReading" xml:space="preserve">
     <value>Highest Mercury</value>
@@ -613,25 +613,25 @@
     <value>Estimated HIP Condy Divert to FPSO (bbl)</value>
   </data>
   <data name="HIPCondyDivertToFPSORemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>HIP Condy Divert To FPSO Remark</value>
   </data>
   <data name="HIPCumulativeCondensateExport" xml:space="preserve">
     <value>HIP Cumulative Condensate Export (bbl)</value>
   </data>
   <data name="HIPCumulativeCondensateExportRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>HIP Cumulative Condensate Export Remark</value>
   </data>
   <data name="HIPCumulativeGasExport" xml:space="preserve">
     <value>HIP Cumulative Gas Export (MMscf)</value>
   </data>
   <data name="HIPCumulativeGasExportRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>HIP Cumulative Gas Export Remark</value>
   </data>
   <data name="HIPCumulativeWaterProduction" xml:space="preserve">
     <value>HIP Cumulative Water Production (bbl)</value>
   </data>
   <data name="HIPCumulativeWaterProductionRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>HIP Cumulative Water Production Remark</value>
   </data>
   <data name="HIPGasExportGODCPlan" xml:space="preserve">
     <value>HIP Gas Export GODC Plan</value>
@@ -649,7 +649,7 @@
     <value>HP Vent (MMscf)</value>
   </data>
   <data name="HPVentRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>HP Vent Remark</value>
   </data>
   <data name="InboardThrustBrgTE803" xml:space="preserve">
     <value>Inboard Thrust Brg TE-803 (°c)</value>
@@ -733,7 +733,7 @@
     <value>LP Vent (MMscf)</value>
   </data>
   <data name="LPVentRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>LP Vent Remark</value>
   </data>
   <data name="LWPActualInjection" xml:space="preserve">
     <value>Actual</value>
@@ -805,7 +805,7 @@
     <value>Oil In Water Reading (PPM)</value>
   </data>
   <data name="OilInWaterReadingRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>Oil In Water Reading Remark</value>
   </data>
   <data name="Operation_Catering_NonEssential" xml:space="preserve">
     <value>Operation : Catering : Non-Essential</value>
@@ -898,10 +898,10 @@
     <value>Remarks</value>
   </data>
   <data name="Remark1" xml:space="preserve">
-    <value>Remarks</value>
+    <value>Remarks 1</value>
   </data>
   <data name="Remark2" xml:space="preserve">
-    <value>Remarks</value>
+    <value>Remarks 2</value>
   </data>
   <data name="RollsRoyceRB211EngineName" xml:space="preserve">
     <value>Name</value>
@@ -937,7 +937,7 @@
     <value>SK10 Gas Export GODC Plan (MMscfd)</value>
   </data>
   <data name="SK10GasExportGODCPlanRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>SK10 Gas Export GODC Plan Remark</value>
   </data>
   <data name="Speed" xml:space="preserve">
     <value>Speed</value>
@@ -1114,7 +1114,7 @@
     <value>Trunk Line Pressure</value>
   </data>
   <data name="TurbineWashDateUI" xml:space="preserve">
-    <value>Date</value>
+    <value>Turbine Wash Date</value>
   </data>
   <data name="TurbineWashRunnningHours" xml:space="preserve">
     <value>Runnning Hours</value>
@@ -1138,7 +1138,7 @@
     <value>Water Content in Gas (lb/MMscf)</value>
   </data>
   <data name="WaterContentInGasRemark" xml:space="preserve">
-    <value>Remarks</value>
+    <value>Water Content In Gas Remark</value>
   </data>
   <data name="Weather" xml:space="preserve">
     <value>Weather</value>

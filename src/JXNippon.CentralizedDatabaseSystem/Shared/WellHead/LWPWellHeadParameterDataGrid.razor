@@ -3,27 +3,27 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLWPWellHeadParameter" TDialog="LWPWellHeadParameterDialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLWPWellHeadParameter" TDialog="LWPWellHeadParameterDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible"
             QueryFilter=QueryFilterAsync>
              <Columns>
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="LWPWellHeadName" Title="Wells" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="Status" Title="Status">
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="LWPWellHeadName" Title="Wells" Width="70px" />
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="Status" Title="Status" Width="100px">
                     <Template Context="item">
                         <StatusGridColumnTemplate Status="@(item.Status)"></StatusGridColumnTemplate>
                     </Template>           
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="THP" Title="THP Bar" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="THT" Title="THT °c" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="ChokePercentage" Title="Choke %" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="ChokeMode" Title="Choke Mode" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="PCP" Title="PCP Bar" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="SCP" Title="SCP Bar" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="CCP" Title="CCP Bar" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="UpTime" Title="Uptime hr:mm" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="CI" Title="CI ltr/day" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="TCP" Title="TCP Bar" />
-                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="Remark" Title="Remark"/>
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="THP" Title="THP Bar" Width="85px" />
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="THT" Title="THT °c" Width="75px" />
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="ChokePercentage" Title="Choke %" Width="90px" />
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="ChokeMode" Title="Choke Mode" Width="110px" />
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="PCP" Title="PCP Bar" Width="110px" />
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="SCP" Title="SCP Bar" Width="80px"/>
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="CCP" Title="CCP Bar" Width="80px"/>
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="UpTime" Title="Uptime hr:mm" Width="130px" />
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="CI" Title="CI ltr/day" Width="100px" />
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="TCP" Title="TCP Bar" Width="80px"/>
+                <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="Remark" Title="Remark" Width="150px" />
                 <RadzenDataGridColumn TItem="DailyLWPWellHeadParameter" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)

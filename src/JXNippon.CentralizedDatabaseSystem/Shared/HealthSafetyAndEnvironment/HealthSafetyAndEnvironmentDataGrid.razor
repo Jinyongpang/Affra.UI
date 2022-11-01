@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyHealthSafetyEnvironment" TDialog="HealthSafetyEnvironmentDialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyHealthSafetyEnvironment" TDialog="HealthSafetyEnvironmentDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyHealthSafetyEnvironment" Property="LastLTIDate" Title="Last LTI Date" Visible="@ShowDateColumn">

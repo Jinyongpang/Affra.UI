@@ -12,6 +12,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool ShowDateColumn { get; set; }
+        [Parameter] public DateTimeOffset? ReportDate { get; set; }
 
         public DailyDataGrid<DailyCoolingMediumSystem, CoolingMediumSystemDialog> DailyDataGrid { get; set; }
         private Task QueryFilterAsync(IQueryable<DailyCoolingMediumSystem> query)

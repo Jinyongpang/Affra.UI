@@ -862,7 +862,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to Estimated HIP Crude To FPSO Remark.
         /// </summary>
         public static string EstimatedHIPCrudeToFPSORemark {
             get {
@@ -880,7 +880,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to Estimated LWP Crude To FPSO Remark.
         /// </summary>
         public static string EstimatedLWPCrudeToFPSORemark {
             get {
@@ -943,7 +943,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to FPSO Cumulative Crude Oil Remark.
         /// </summary>
         public static string FPSOCumulativeCrudeOilRemark {
             get {
@@ -961,7 +961,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to FPSO Cumulative Gas Export Remark.
         /// </summary>
         public static string FPSOCumulativeGasExportRemark {
             get {
@@ -979,7 +979,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to FPSO Cumulative Water Production Remark.
         /// </summary>
         public static string FPSOCumulativeWaterProductionRemark {
             get {
@@ -997,7 +997,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to FPSO Flaring Remark.
         /// </summary>
         public static string FPSOFlaringRemark {
             get {
@@ -1015,7 +1015,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to FPSO Fuel Gas Consumption Remark.
         /// </summary>
         public static string FPSOFuelGasConsumptionRemark {
             get {
@@ -1042,7 +1042,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to Fuel Gas Remark.
         /// </summary>
         public static string FuelGasRemark {
             get {
@@ -1105,7 +1105,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Glycol Pump Name.
         /// </summary>
         public static string GlycolPumpName {
             get {
@@ -1132,7 +1132,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Glycol Train Name.
         /// </summary>
         public static string GlycolTrainName {
             get {
@@ -1186,7 +1186,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to HIP Condy Divert To FPSO Remark.
         /// </summary>
         public static string HIPCondyDivertToFPSORemark {
             get {
@@ -1204,7 +1204,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to HIP Cumulative Condensate Export Remark.
         /// </summary>
         public static string HIPCumulativeCondensateExportRemark {
             get {
@@ -1222,7 +1222,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to HIP Cumulative Gas Export Remark.
         /// </summary>
         public static string HIPCumulativeGasExportRemark {
             get {
@@ -1240,7 +1240,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to HIP Cumulative Water Production Remark.
         /// </summary>
         public static string HIPCumulativeWaterProductionRemark {
             get {
@@ -1276,7 +1276,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to HP Vent Remark.
         /// </summary>
         public static string HPVentRemark {
             get {
@@ -1591,7 +1591,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to LP Vent Remark.
         /// </summary>
         public static string LPVentRemark {
             get {
@@ -1897,7 +1897,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to Oil In Water Reading Remark.
         /// </summary>
         public static string OilInWaterReadingRemark {
             get {
@@ -2347,7 +2347,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to Remarks 1.
         /// </summary>
         public static string Remark1 {
             get {
@@ -2356,7 +2356,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to Remarks 2.
         /// </summary>
         public static string Remark2 {
             get {
@@ -2473,7 +2473,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to SK10 Gas Export GODC Plan Remark.
         /// </summary>
         public static string SK10GasExportGODCPlanRemark {
             get {
@@ -3004,7 +3004,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Date.
+        ///   Looks up a localized string similar to Turbine Wash Date.
         /// </summary>
         public static string TurbineWashDateUI {
             get {
@@ -3148,7 +3148,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks.
+        ///   Looks up a localized string similar to Water Content In Gas Remark.
         /// </summary>
         public static string WaterContentInGasRemark {
             get {
