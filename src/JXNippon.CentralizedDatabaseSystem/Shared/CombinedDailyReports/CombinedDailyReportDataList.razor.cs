@@ -177,6 +177,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             };
             cdrItem.DailySandDisposalDesander ??= new CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders.DailySandDisposalDesander
             {
+                SandDisposalDesanderName = "Sand Jetting Desander",
                 Date = cdrItem.Date
             };
 

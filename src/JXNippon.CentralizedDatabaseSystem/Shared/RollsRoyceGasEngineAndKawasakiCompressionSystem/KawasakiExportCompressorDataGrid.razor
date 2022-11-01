@@ -6,43 +6,67 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyKawasakiExportCompressor" TDialog="KawasakiExportCompressorDialog"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="KawasakiExportCompressorName" Title="Name" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="SpeedControl" Title="Speed Control" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="Speed" Title="Speed" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="PressureSuct" Title="Pressure (bar) Suct (LP)" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="PressureDisc" Title="Pressure (bar) Disc (HP)" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="ThroughPut" Title="Throughput MMscfd" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="AfterCoolerDischLP" Title="After Cooler Disch LP" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="AfterCoolerDischHP" Title="After Cooler Disch HP" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="RecycleValueLP" Title="Recycle Value LP %" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="RecycleValueHP" Title="Recycle Value HP %" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="SurgeDeviationLP" Title="Surge Deviation LP %" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="SurgeDeviationHP" Title="Surge Deviation HP %" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="AxialDisp1" Title="Axial Disp. mm #1" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="AxialDisp2" Title="Axial Disp. mm #2" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="PrimaryVentDE" Title="Primary Vent DE (kPa)" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="PrimaryVentNDE" Title="Primary Vent NDE (kPa)" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEVibrationX" Title="DE Vibration X" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEVibrationY" Title="DE Vibration Y" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="NDEVibrationX" Title="NDE Vibration X" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="NDEVibrationY" Title="NDE Vibration Y" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="OutboardThrustBrgTE801" Title="Outboard Thrust Brg TE-801 °c" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="OutboardThrustBrgTE802" Title="Outboard Thrust Brg TE-802 °c" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="InboardThrustBrgTE803" Title="Inboard Thrust Brg TE-803 °c" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="InboardThrustBrgTE804" Title="Inboard Thrust Brg TE-804 °c" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="NDEJournalBrgTE805" Title="NDE Journal Brg TE-805 °c" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="NDEJournalBrgTE806" Title="NDE Journal Brg TE-806 °c" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEJournalBrgTE807" Title="DE Journal Brg TE-807 °c" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="DEJournalBrgTE808" Title="DE Journal Brg TE-808 °c" />
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="Remark" Title="Remark">
-                    <Template Context="item">
-                        <p style="white-space:pre-wrap">@item.Remark</p>
-                    </Template>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="KawasakiExportCompressorName" Title="Name" Width="70px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="SpeedControl" Width="75px">
+                    <HeaderTemplate>
+                        <div>Speed <br /> Control</div>
+                    </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyKawasakiExportCompressor" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
-                    <Template Context="item">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
-                    </Template>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="Speed" Title="Speed" Width="75px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="PressureSuct" Width="130px">
+                    <HeaderTemplate>
+                        <div>Pressure (bar) <br /> Suct (LP)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="PressureDisc" Width="130px">
+                    <HeaderTemplate>
+                        <div>Pressure (bar) <br /> Disc (HP)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="ThroughPut" Width="100px">
+                    <HeaderTemplate>
+                        <div>Throughput <br /> MMscfd</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="AfterCoolerDischLP" Width="130px">
+                    <HeaderTemplate>
+                        <div>After Cooler <br /> Disch LP</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="AfterCoolerDischHP" Width="130px">
+                    <HeaderTemplate>
+                        <div>After Cooler <br /> Disch MP</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="RecycleValueLP" Width="130px">
+                    <HeaderTemplate>
+                        <div>Recycle Value <br /> LP %</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="RecycleValueHP" Width="130px">
+                    <HeaderTemplate>
+                        <div>Recycle Value <br /> HP %</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="SurgeDeviationLP" Width="130px">
+                    <HeaderTemplate>
+                        <div>Surge Deviation <br /> LP %</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="SurgeDeviationHP" Width="130px">
+                    <HeaderTemplate>
+                        <div>Surge Deviation <br /> MP %</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="AxialDisp1" Width="110px">
+                    <HeaderTemplate>
+                        <div>Axial Disp. <br /> mm #1</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="AxialDisp2" Width="110px">
+                    <HeaderTemplate>
+                        <div>Axial Disp. <br /> mm #2</div>
+                    </HeaderTemplate>
                 </RadzenDataGridColumn>
             </Columns>
         </DailyDataGrid>  

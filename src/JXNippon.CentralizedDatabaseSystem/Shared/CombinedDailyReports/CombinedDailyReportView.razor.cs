@@ -1,4 +1,5 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Collections.Generic;
+using Affra.Core.Domain.Services;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
@@ -53,6 +54,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private LWPWellHeadParameterDataGrid lwpWellHeadParameterDataGrid;
         private RollsRoyceRB211EngineDataGrid rollsRoyceRB211EngineDataGrid;
         private KawasakiExportCompressorDataGrid kawasakiExportCompressorDataGrid;
+        private KawasakiExportCompressorDataGridPart2 kawasakiExportCompressorDataGridPart2;
         private GlycolPumpDataGrid glycolPumpDataGrid;
         private GlycolTrainDataGrid glycolTrainDataGrid;
         private CoolingMediumSystemDataGrid coolingMediumSystemDataGrid;
@@ -163,6 +165,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             kawasakiExportCompressorDataGrid.CommonFilter = CommonFilter;
         }
+        private async Task LoadKawasakiExportCompressorDataGridPart2Async(LoadDataArgs args)
+        {
+            kawasakiExportCompressorDataGridPart2.CommonFilter = CommonFilter;
+        }
         private async Task LoadGlycolPumpDataGridAsync(LoadDataArgs args)
         {
             glycolPumpDataGrid.CommonFilter = CommonFilter;
@@ -215,6 +221,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private async Task LoadMaximoWorkOrderDataGridAsync(LoadDataArgs args)
         {
             maximoWorkOrderDataGrid.CommonFilter = CommonFilter;
+        }
+        private int GetTotalUnreadProperty(object property)
+        {
+            return property.GetType().GetProperties().Where(x => x.GetValue(property) is null).Count();
         }
     }
 }

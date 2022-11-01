@@ -1,0 +1,44 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
+
+<div class="row">
+    <div class="col">
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyKawasakiExportCompressor" TDialog="KawasakiExportCompressorDialogPart2"
+            PagerAlwaysVisible="@PagerAlwaysVisible">
+            <Columns>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="PrimaryVentDE" >
+                    <HeaderTemplate>
+                        <div>Primary Vent <br /> DE (kPa)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="PrimaryVentNDE" >
+                    <HeaderTemplate>
+                        <div>Primary Vent <br /> NDE (kPa)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="DEVibrationX" Title="DE Vibration X" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="DEVibrationY" Title="DE Vibration Y" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="NDEVibrationX" Title="NDE Vibration X" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="NDEVibrationY" Title="NDE Vibration Y" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="OutboardThrustBrgTE801" Title="Outboard Thrust Brg TE-801 °c" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="OutboardThrustBrgTE802" Title="Outboard Thrust Brg TE-802 °c" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="InboardThrustBrgTE803" Title="Inboard Thrust Brg TE-803 °c" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="InboardThrustBrgTE804" Title="Inboard Thrust Brg TE-804 °c" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="NDEJournalBrgTE805" Title="NDE Journal Brg TE-805 °c" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="NDEJournalBrgTE806" Title="NDE Journal Brg TE-806 °c" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="DEJournalBrgTE807" Title="DE Journal Brg TE-807 °c" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="DEJournalBrgTE808" Title="DE Journal Brg TE-808 °c" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="Remark" Title="Remark">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@item.Remark</p>
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyKawasakiExportCompressor" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+        </DailyDataGrid>  
+    </div>
+</div>

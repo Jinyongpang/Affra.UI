@@ -83,7 +83,7 @@
                     <RadzenLabel class="dialogTextSize" Text="Date" />
                 </div>
                 <div class="col-8">
-                    <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@isViewing></RadzenDatePicker>
+                    <RadzenDatePicker class="w-100" DateFormat="d" @bind-Value="@Item.DateUI" ShowTime="false" Disabled=@(Item.Id > 0 || isViewing)></RadzenDatePicker>
                 </div>
             </div>
     </ChildContent>

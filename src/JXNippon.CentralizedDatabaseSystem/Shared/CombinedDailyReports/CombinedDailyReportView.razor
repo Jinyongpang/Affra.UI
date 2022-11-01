@@ -72,7 +72,7 @@
 					<Collapse DefaultActiveKey="@(new[] {"1" })">
 						<Panel Header="1. OIM SUMMARY" Key="1">
 							<ChildContent> 
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="HIP / LWP SUMMARY" Key="1">
+								<Panel  ShowArrow="false" Class="description-no-shadow" Header="HIP / LWP SUMMARY" Key="1">
 									<ChildContent>
 										<HIPAndLWPSummaryDataGrid @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) />
 									</ChildContent>
@@ -84,7 +84,13 @@
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="2. HEALTH, SAFETY & ENVIRONMENT" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>2. HEALTH, SAFETY & ENVIRONMENT</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnreadProperty(this.Data.DailyHealthSafetyEnvironment))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Header="HEALTH, SAFETY & ENVIRONMENT" Key="1">
 									<ChildContent>
@@ -335,6 +341,7 @@
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="KAWASAKI EXPORT COMPRESSOR" Key="1">
 									<ChildContent>
 										<KawasakiExportCompressorDataGrid @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args)) />
+										<KawasakiExportCompressorDataGridPart2 @ref="kawasakiExportCompressorDataGridPart2" LoadData=@(args => LoadKawasakiExportCompressorDataGridPart2Async(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="ROLLS ROYCE RB-211 ENGINE" Key="1">
@@ -460,7 +467,11 @@
 						<Panel Header="15. SAND DISPOSAL FROM TPS (V-3000) VIA DESANDER" Key="1">
 							<ChildContent>
 								<Descriptions Size="small" Bordered>
-									<StringDescriptionItem Title="SandDisposalDesanderName"@bind-Value=@this.Data.DailySandDisposalDesander.SandDisposalDesanderName TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
+									<DescriptionsItem Title="Sand Disposal Desander Name">
+										<ChildContent>
+											<div class="d-flex justify-content-center">@this.Data.DailySandDisposalDesander.SandDisposalDesanderName</div>
+										</ChildContent>
+									</DescriptionsItem>
 									<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailySandDisposalDesander.Status TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
 									<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailySandDisposalDesander.Remark TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
 									<DateDescriptionItem Title="LastSandJettingDateUI" @bind-Value=@this.Data.DailySandDisposalDesander.LastSandJettingDateUI TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander" />

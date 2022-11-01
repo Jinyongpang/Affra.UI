@@ -6,14 +6,14 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyGlycolTrain" TDialog="GlycolTrainDialog"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="GlycolTrainName" Title="Glycol Train Name" />
-                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="PreviousDayLevel" Title="Previous Day Level (mm)" />
-                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="TodayReportLevel" Title="Today Report Level (mm)" />
-                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="LevelDrop" Title="Level Drop" />
-                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="Indicator" Title="Indicator (mm / MMSCFD)" />
-                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="IndicatorGuide" Title="Guide" />
-                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="FlowRate" Title="Flowrate (kg/hr)" />
-                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="PH" Title="pH" />
+                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="GlycolTrainName" Title="Glycol Train Name" Width="170px" />
+                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="PreviousDayLevel" Title="Previous Day Level (mm)" Width="200px" />
+                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="TodayReportLevel" Title="Today Report Level (mm)" Width="200px" />
+                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="LevelDrop" Title="Level Drop" Width="100px" />
+                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="Indicator" Title="Indicator (mm / MMSCFD)" Width="150px" />
+                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="IndicatorGuide" Title="Guide" Width="80px" />
+                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="FlowRate" Title="Flowrate (kg/hr)" Width="150px" />
+                <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="PH" Title="pH" Width="60px" />
                 <RadzenDataGridColumn TItem="DailyGlycolTrain" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
