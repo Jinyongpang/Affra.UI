@@ -191,7 +191,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         }
         private void CellRender(DataGridCellRenderEventArgs<TItem> args)
         {
-            if(string.IsNullOrEmpty(args.Column.GetValue(args.Data) as string))
+            if(!args.Column.Property.Contains("Remark") 
+                && string.IsNullOrEmpty(args.Column.GetValue(args.Data) as string))
             {
                 args.Attributes.Add("style", "background-color: yellow");
             }
