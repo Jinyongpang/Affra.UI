@@ -23,8 +23,11 @@
             var isFilterable = string.IsNullOrEmpty(gridColumn.Type)
                 && gridColumn.Filterable;
 
-            <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@propertyName" Title="@(gridColumn.Title)" 
+            <RadzenDataGridColumn TItem="IDictionary<string, object>" Property="@propertyName" 
                 FormatString="@(gridColumn.FormatString)" Width=@gridColumn.Width Frozen=gridColumn.Frozen Sortable=isSortable Filterable=isFilterable SortProperty="@oriProperty">
+                <HeaderTemplate>
+                    @((MarkupString)gridColumn.Title)
+                </HeaderTemplate>
                 <Template>                  
                     @if(context.TryGetValue(propertyName, out object value))
                     {
