@@ -11,8 +11,8 @@
     AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
     PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu" Responsive>
     <EmptyTemplate>                
-        <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
-            <a>No records to display.</a>
+        <div class="row" style="background-color: yellow;" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+            <a>No data.</a>
         </div>                    
     </EmptyTemplate>
     <Columns>
