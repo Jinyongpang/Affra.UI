@@ -88,7 +88,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>2. HEALTH, SAFETY & ENVIRONMENT</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnreadProperty(this.Data.DailyHealthSafetyEnvironment))</Tag>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyHealthSafetyEnvironment))</Tag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -222,12 +222,12 @@
 						</Panel>
 						<Panel Header="4. MAJOR EQUIPMENT STATUS" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="Major Equipment Status" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="EQUIPMENT STATUS" Key="1">
 									<ChildContent>
 										<MajorEquipmentStatusDataGrid @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="DailyDiesel" Key="1">
+								<Panel ShowArrow="false" Header="DIESEL STOCK" Key="1">
 									<ChildContent>
 										<DescriptionView>
 										<DecimalDescriptionItem Title="HIPDieselStock" @bind-Value=@this.Data.DailyDiesel.HIPDieselStock TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
@@ -302,7 +302,7 @@
 						</Panel>
 						<Panel Header="6. WELLHEAD & SEPARATION SYSTEM" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Header="DailyWellHeadAndSeparationSystem" Key="1">
+								<Panel ShowArrow="false" Header="WELLHEAD & SEPARATION SYSTEM" Key="1">
 									<ChildContent>
 										<DescriptionView>
 										<DecimalDescriptionItem Title="StationRecyclePV2015" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.StationRecyclePV2015 TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
@@ -315,7 +315,7 @@
 									</DescriptionView>
 								</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyWellStreamCooler" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="WELL STREAM COOLERS" Key="1">
 									<ChildContent>
 										<WellStreamCoolerDataGrid @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args)) />
 									</ChildContent>
@@ -353,17 +353,17 @@
 						</Panel>
 						<Panel Header="9. GLYCOL REGENERATION SYSTEM" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyGlycolPump" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="GLYCOL PUMP" Key="1">
 									<ChildContent>
 										<GlycolPumpDataGrid @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyGlycolTrain" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="GLYCOL TRAIN" Key="1">
 									<ChildContent>
 										<GlycolTrainDataGrid @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="DailyGlycolStock" Key="1">
+								<Panel ShowArrow="false" Header="GLYCOL STOCK" Key="1">
 									<ChildContent>
 										<DescriptionView>
 											<IntegerDescriptionItem Title="GlycolStockInToteTank" @bind-Value=@this.Data.DailyGlycolStock.GlycolStockInToteTank TItem="DailyGlycolStock" Item="@this.Data.DailyGlycolStock"/>
@@ -393,7 +393,7 @@
 						</Panel>
 						<Panel Header="11. COOLING MEDIUM SYSTEM" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Header="DailyAnalysisResult" Key="1">
+								<Panel ShowArrow="false" Header="ANALYSIS RESULT" Key="1">
 									<ChildContent>
 										<DescriptionView>
 											<DecimalDescriptionItem Title="PhReading" @bind-Value=@this.Data.DailyAnalysisResult.PhReading TItem="DailyAnalysisResult" Item="@this.Data.DailyAnalysisResult" />
@@ -408,7 +408,7 @@
 										</DescriptionView>
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyCoolingMediumSystem" Key="1">
+									<Panel ShowArrow="false" Class="description-no-shadow" Header="COOLING MEDIUM SYSTEM" Key="1">
 									<ChildContent>
 										<CoolingMediumSystemDataGrid @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args)) />
 									</ChildContent>
@@ -422,17 +422,17 @@
 						</Panel>
 						<Panel Header="13. LIVING QUARTERS, UTILITIES & OTHERS" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyUtility" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="UTILITIES" Key="1">
 									<ChildContent>
 										<UtilitiesDataGrid @ref="utilitiesDataGrid" LoadData=@(args => LoadUtilitiesDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyWaterTank" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="WATER TANK" Key="1">
 									<ChildContent>
 										<WaterTankDataGrid @ref="waterTankDataGrid" LoadData=@(args => LoadWaterTankDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyNitrogenGenerator" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NITROGEN GENERATOR" Key="1">
 									<ChildContent>
 										<NitrogenGeneratorDataGrid @ref="nitrogenGeneratorDataGrid" LoadData=@(args => LoadNitrogenGeneratorDataGridAsync(args)) />
 									</ChildContent>
@@ -441,7 +441,7 @@
 						</Panel>
 						<Panel Header="14. TILTED PLATE SEPARATOR V-3000 & PRODUCED WATER TREATMENT SYSTEM" Key="1">
 							<ChildContent>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="DailyProducedWaterTreatmentSystem" Key="1">
+									<Panel ShowArrow="false" Class="description-no-shadow" Header="PRODUCED WATER TREATMENT SYSTEM" Key="1">
 									<ChildContent>
 										<ProducedWaterTreatmentSystemManagementDataGrid @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args)) />
 									</ChildContent>

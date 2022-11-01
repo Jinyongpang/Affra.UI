@@ -222,7 +222,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             maximoWorkOrderDataGrid.CommonFilter = CommonFilter;
         }
-        private int GetTotalUnreadProperty(object property)
+        private int GetTotalUnfillProperty(object property)
         {
             return property.GetType().GetProperties().Where(x => x.GetValue(property) is null).Count();
         }
