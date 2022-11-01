@@ -30,6 +30,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Charts
 
         public string Color { get; set; }
 
+        public string ValueFormatString { get; set; }
+
         public ChartSeriesTransform? Transform { get; set; }
 
 
