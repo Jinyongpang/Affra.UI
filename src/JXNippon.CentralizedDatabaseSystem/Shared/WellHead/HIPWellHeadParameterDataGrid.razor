@@ -7,30 +7,30 @@
             PagerAlwaysVisible="@PagerAlwaysVisible"
             QueryFilter=QueryFilterAsync>
             <Columns>
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="HIPWellHeadName" Title="Wells" Width="70px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="Status" Title="Status" Width="100px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="HIPWellHeadName" Title="Wells" Width="70px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="Status" Title="Status" Width="100px">
                     <Template Context="item">
                         <StatusGridColumnTemplate Status="@(item.Status)"></StatusGridColumnTemplate>
                     </Template>           
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="THP" Title="THP Bar" Width="85px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="THT" Title="THT °c" Width="75px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="ChokePercentage" Title="Choke %" Width="90px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="ChokeBase" Title="Choke Base" Width="110px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="ChokeMode" Title="Choke Mode" Width="110px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="PCP" Title="PCP Bar" Width="80px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="SCP" Title="SCP Bar" Width="80px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="CCP" Title="CCP Bar" Width="80px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="UpTime" Title="Uptime hr:mm" Width="130px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="CI" Title="CI ltr/day" Width="100px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="TCP" Title="TCP Bar" Width="80px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="CIPumpStatus" Title="CI Pump Status" Width="110px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="THP" Title="THP Bar" Width="85px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="THT" Title="THT °c" Width="75px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="ChokePercentage" Title="Choke %" Width="90px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="ChokeBase" Title="Choke Base" Width="110px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="ChokeMode" Title="Choke Mode" Width="110px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="PCP" Title="PCP Bar" Width="80px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="SCP" Title="SCP Bar" Width="80px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="CCP" Title="CCP Bar" Width="80px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="UpTime" Title="Uptime hr:mm" Width="130px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="CI" Title="CI ltr/day" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="TCP" Title="TCP Bar" Width="80px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="CIPumpStatus" Title="CI Pump Status" Width="110px">
                  <Template Context="item">
                         <StatusGridColumnTemplate Status="@(item.CIPumpStatus)"></StatusGridColumnTemplate>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="Remark" Title="Remark" Width="150px" />
-                <RadzenDataGridColumn TItem="DailyHIPWellHeadParameter" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="Remark" Title="Remark" Width="150px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyHIPWellHeadParameter" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>

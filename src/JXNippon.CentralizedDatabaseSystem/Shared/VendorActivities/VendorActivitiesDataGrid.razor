@@ -6,19 +6,19 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyVendorActivity" TDialog="VendorActivityDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyVendorActivity" Property="VendorName" Title="Vendor Name" />
-                <RadzenDataGridColumn TItem="DailyVendorActivity" Property="Title" Title="Title" />
-                <RadzenDataGridColumn TItem="DailyVendorActivity" Property="Remark" Title="Remarks">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyVendorActivity" Property="VendorName" Title="Vendor Name" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyVendorActivity" Property="Title" Title="Title" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyVendorActivity" Property="Remark" Title="Remarks">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.Remark</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyVendorActivity" Property="PlanForTomorrow" Title="Plan For Tomorrow">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyVendorActivity" Property="PlanForTomorrow" Title="Plan For Tomorrow">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.PlanForTomorrow</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyVendorActivity" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyVendorActivity" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>

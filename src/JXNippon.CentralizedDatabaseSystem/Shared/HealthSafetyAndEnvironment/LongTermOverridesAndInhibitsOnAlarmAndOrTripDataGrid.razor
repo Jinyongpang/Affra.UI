@@ -6,28 +6,28 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" TDialog="LongTermOverridesInhibitsOnAlarmTripDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="TagName" Title="Tag Name">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="TagName" Title="Tag Name">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.TagName</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="RaisedDate" Title="Raised Date" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="RaisedDate" Title="Raised Date" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.RaisedDateUI)
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="MaximoWorkOrder" Title="Maximo Work Order" />
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="Location" Title="Location">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="MaximoWorkOrder" Title="Maximo Work Order" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="Location" Title="Location">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.Location</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="LongDescriptionRemark" Title="Long Description & Remark">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="LongDescriptionRemark" Title="Long Description & Remark">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.LongDescriptionRemark</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
