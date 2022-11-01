@@ -70,16 +70,22 @@
 				<Divider/>
 				<div class="col view-dialog-content">
 					<Collapse DefaultActiveKey="@(new[] {"1" })">
-						<Panel Header="1. OIM SUMMARY" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>1. OIM SUMMARY</span>
+									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent> 
 								<Panel  ShowArrow="false" Class="description-no-shadow" Header="HIP / LWP SUMMARY" Key="1">
 									<ChildContent>
-										<HIPAndLWPSummaryDataGrid @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) />
+										<HIPAndLWPSummaryDataGrid ReportDate="@this.Data.Date" @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="FPSO HELANG SUMMARY" Key="1">
 									<ChildContent>
-										<FPSOHelangSummaryDataGrid @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args)) />
+										<FPSOHelangSummaryDataGrid ReportDate="@this.Data.Date" @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -88,7 +94,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>2. HEALTH, SAFETY & ENVIRONMENT</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyHealthSafetyEnvironment))</Tag>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyHealthSafetyEnvironment) + GetTotalUnfillProperty(this.Data.DailyLossOfPrimaryContainmentIncident))</Tag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -133,29 +139,30 @@
 										</DescriptionView>
 								</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Header="LIFEBOATS" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="LIFEBOATS" Key="1">
 									<ChildContent>
-										<DescriptionView>
-											<StringDescriptionItem Title="LifeBoatName" @bind-Value=@this.Data.DailyLifeBoat.LifeBoatName TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
-											<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailyLifeBoat.Status TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
-											<StringDescriptionItem Title="StartDate" @bind-Value=@this.Data.DailyLifeBoat.StartDate TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat"/>
-											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyLifeBoat.Remark TItem="DailyLifeBoat" Item="@this.Data.DailyLifeBoat" IsRequired=false/>
-										</DescriptionView>
+										<LifeBoatsDataGrid ReportDate="@this.Data.Date" @ref="lifeBoatsDataGrid" LoadData=@(args => LoadLifeBoatsDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
 									<ChildContent>
-										<LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args)) />
+										<LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid ReportDate="@this.Data.Date" @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="MANAGEMENT OF CHANGE (MOC) : OPERATING CHANGE" Key="1">
 									<ChildContent>
-										<OperatingChangeDataGrid @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args)) />
+										<OperatingChangeDataGrid ReportDate="@this.Data.Date" @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="3. DAILY PRODUCTION" Key="1">
+							<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>3. DAILY PRODUCTION</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailySK10Production, "SK10CumulativeGasExportPerformanceStatus") + GetTotalUnfillProperty(this.Data.DailyHIPProduction) + GetTotalUnfillProperty(this.Data.DailyFPSOHelangProduction))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Header="SK10" Key="1">
 									<ChildContent>
@@ -220,11 +227,17 @@
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="4. MAJOR EQUIPMENT STATUS" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>4. MAJOR EQUIPMENT STATUS</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyDiesel))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="EQUIPMENT STATUS" Key="1">
 									<ChildContent>
-										<MajorEquipmentStatusDataGrid @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args)) />
+											<MajorEquipmentStatusDataGrid ReportDate="@this.Data.Date" @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DIESEL STOCK" Key="1">
@@ -239,7 +252,13 @@
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="5. CHEMICAL INJECTION" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>5. CHEMICAL INJECTION</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyCiNalco) + GetTotalUnfillProperty(this.Data.DailyInowacInjection))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Header="CI NALCO, EC-1310A" Key="1">
 									<ChildContent>
@@ -300,7 +319,13 @@
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="6. WELLHEAD & SEPARATION SYSTEM" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>6. WELLHEAD & SEPARATION SYSTEM</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyWellHeadAndSeparationSystem))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Header="WELLHEAD & SEPARATION SYSTEM" Key="1">
 									<ChildContent>
@@ -317,50 +342,68 @@
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="WELL STREAM COOLERS" Key="1">
 									<ChildContent>
-										<WellStreamCoolerDataGrid @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args)) />
+										<WellStreamCoolerDataGrid ReportDate="@this.Data.Date" @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="7. WELLHEAD" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>7. WELLHEAD</span>
+									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="HIP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
-										<HIPWellHeadParameterDataGrid @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args)) />
+										<HIPWellHeadParameterDataGrid ReportDate="@this.Data.Date" @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="LWP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
-										<LWPWellHeadParameterDataGrid @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args)) />
+										<LWPWellHeadParameterDataGrid ReportDate="@this.Data.Date" @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="8. ROLLS ROYCE GAS ENGINE & KAWASAKI COMPRESSION SYSTEM" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>8. ROLLS ROYCE GAS ENGINE & KAWASAKI COMPRESSION SYSTEM</span>
+									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="KAWASAKI EXPORT COMPRESSOR" Key="1">
 									<ChildContent>
-										<KawasakiExportCompressorDataGrid @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args)) />
-										<KawasakiExportCompressorDataGridPart2 @ref="kawasakiExportCompressorDataGridPart2" LoadData=@(args => LoadKawasakiExportCompressorDataGridPart2Async(args)) />
+										<KawasakiExportCompressorDataGrid ReportDate="@this.Data.Date" @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args)) />
+										<KawasakiExportCompressorDataGridPart2 ReportDate="@this.Data.Date" @ref="kawasakiExportCompressorDataGridPart2" LoadData=@(args => LoadKawasakiExportCompressorDataGridPart2Async(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="ROLLS ROYCE RB-211 ENGINE" Key="1">
 									<ChildContent>
-										<RollsRoyceRB211EngineDataGrid @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args)) />
+										<RollsRoyceRB211EngineDataGrid ReportDate="@this.Data.Date" @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="9. GLYCOL REGENERATION SYSTEM" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>9. GLYCOL REGENERATION SYSTEM</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyGlycolStock))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="GLYCOL PUMP" Key="1">
 									<ChildContent>
-										<GlycolPumpDataGrid @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args)) />
+										<GlycolPumpDataGrid ReportDate="@this.Data.Date" @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="GLYCOL TRAIN" Key="1">
 									<ChildContent>
-										<GlycolTrainDataGrid @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args)) />
+										<GlycolTrainDataGrid ReportDate="@this.Data.Date" @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="GLYCOL STOCK" Key="1">
@@ -373,7 +416,13 @@
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="10. GAS & CONDENSATE EXPORT SAMPLERS & EXPORT LINE" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>10. GAS & CONDENSATE EXPORT SAMPLERS & EXPORT LINE</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyGasCondensateExportSamplerAndExportLine))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<DescriptionView>
 									<DateDescriptionItem Title="LastPiggingDateUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.LastPiggingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
@@ -391,7 +440,13 @@
 								</DescriptionView>
 							</ChildContent>
 						</Panel>
-						<Panel Header="11. COOLING MEDIUM SYSTEM" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>11. COOLING MEDIUM SYSTEM</span>
+										<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyAnalysisResult))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Header="ANALYSIS RESULT" Key="1">
 									<ChildContent>
@@ -410,40 +465,68 @@
 								</Panel>
 									<Panel ShowArrow="false" Class="description-no-shadow" Header="COOLING MEDIUM SYSTEM" Key="1">
 									<ChildContent>
-										<CoolingMediumSystemDataGrid @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args)) />
+										<CoolingMediumSystemDataGrid ReportDate="@this.Data.Date" @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="12. POWER GENERATION & DISTRIBUTION" Class="description-no-shadow" Key="1">
+						<Panel Class="description-no-shadow panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>12. POWER GENERATION & DISTRIBUTION</span>
+									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
-								<PowerGenerationAndDistributionManagementDataGrid @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args)) />
+								<PowerGenerationAndDistributionManagementDataGrid ReportDate="@this.Data.Date" @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
-						<Panel Header="13. LIVING QUARTERS, UTILITIES & OTHERS" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>13. LIVING QUARTERS, UTILITIES & OTHERS</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyWaterTank) + GetTotalUnfillProperty(this.Data.DailyNitrogenGenerator))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="UTILITIES" Key="1">
 									<ChildContent>
-										<UtilitiesDataGrid @ref="utilitiesDataGrid" LoadData=@(args => LoadUtilitiesDataGridAsync(args)) />
+										<UtilitiesDataGrid ReportDate="@this.Data.Date" @ref="utilitiesDataGrid" LoadData=@(args => LoadUtilitiesDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="WATER TANK" Key="1">
+								<Panel ShowArrow="false" Header="WATER TANK" Key="1">
 									<ChildContent>
-										<WaterTankDataGrid @ref="waterTankDataGrid" LoadData=@(args => LoadWaterTankDataGridAsync(args)) />
+										<DescriptionView>
+											<StringDescriptionItem Title="Name" @bind-Value=@this.Data.DailyWaterTank.UtilityName TItem="DailyWaterTank" Item="@this.Data.DailyWaterTank"/>
+											<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailyWaterTank.Status TItem="DailyWaterTank" Item="@this.Data.DailyWaterTank"/>
+											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyWaterTank.Remark TItem="DailyWaterTank" Item="@this.Data.DailyWaterTank"/>
+											<StringDescriptionItem Title="PH" @bind-Value=@this.Data.DailyWaterTank.PH TItem="DailyWaterTank" Item="@this.Data.DailyWaterTank"/>
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
-								<Panel ShowArrow="false" Class="description-no-shadow" Header="NITROGEN GENERATOR" Key="1">
+								<Panel ShowArrow="false" Header="NITROGEN GENERATOR" Key="1">
 									<ChildContent>
-										<NitrogenGeneratorDataGrid @ref="nitrogenGeneratorDataGrid" LoadData=@(args => LoadNitrogenGeneratorDataGridAsync(args)) />
+										<DescriptionView>
+											<StringDescriptionItem Title="Name" @bind-Value=@this.Data.DailyNitrogenGenerator.UtilityName TItem="DailyNitrogenGenerator" Item="@this.Data.DailyNitrogenGenerator" />
+											<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailyNitrogenGenerator.Status TItem="DailyNitrogenGenerator" Item="@this.Data.DailyNitrogenGenerator"/>
+											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyNitrogenGenerator.Remark TItem="DailyNitrogenGenerator" Item="@this.Data.DailyNitrogenGenerator"/>
+											<DecimalDescriptionItem Title="Oxygen %" @bind-Value=@this.Data.DailyNitrogenGenerator.OxygenPercentage TItem="DailyNitrogenGenerator" Item="@this.Data.DailyNitrogenGenerator" />
+										</DescriptionView>
 									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="14. TILTED PLATE SEPARATOR V-3000 & PRODUCED WATER TREATMENT SYSTEM" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>14. TILTED PLATE SEPARATOR V-3000 & PRODUCED WATER TREATMENT SYSTEM</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyDeOilerInjection))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
-									<Panel ShowArrow="false" Class="description-no-shadow" Header="PRODUCED WATER TREATMENT SYSTEM" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="PRODUCED WATER TREATMENT SYSTEM" Key="1">
 									<ChildContent>
-										<ProducedWaterTreatmentSystemManagementDataGrid @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args)) />
+										<ProducedWaterTreatmentSystemManagementDataGrid ReportDate="@this.Data.Date" @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DE-OILER INJECTION" Key="1">
@@ -464,7 +547,13 @@
 								</Panel>
 							</ChildContent>
 						</Panel>
-						<Panel Header="15. SAND DISPOSAL FROM TPS (V-3000) VIA DESANDER" Key="1">
+						<Panel Class="panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>15. SAND DISPOSAL FROM TPS (V-3000) VIA DESANDER</span>
+									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailySandDisposalDesander))</Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
 								<DescriptionView>
 									<DescriptionsItem Title="Sand Disposal Desander Name">
@@ -485,29 +574,59 @@
 								</DescriptionView>
 							</ChildContent>
 						</Panel>
-						<Panel Header="16. DCS, FGS, ASD & COMMUNICATION SYSTEM" Class="description-no-shadow" Key="1">
+						<Panel Class="description-no-shadow panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>16. DCS, FGS, ASD & COMMUNICATION SYSTEM</span>
+									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
-								<CommunicationSystemDataGrid @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args)) />
+								<CommunicationSystemDataGrid ReportDate="@this.Data.Date" @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
-						<Panel Header="17. LAYANG WELLHEAD PLATFORM (LWP) ACTIVITIES" Class="description-no-shadow" Key="1">
+						<Panel Class="description-no-shadow panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>17. LAYANG WELLHEAD PLATFORM (LWP) ACTIVITIES</span>
+									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
-								<LWPActivityDataGrid @ref="lWPActivityDataGrid" LoadData=@(args => LoadLWPActivityDataGridAsync(args)) />
+								<LWPActivityDataGrid ReportDate="@this.Data.Date" @ref="lWPActivityDataGrid" LoadData=@(args => LoadLWPActivityDataGridAsync(args)) />
 						</ChildContent>
 						</Panel>
-						<Panel Header="18. VENDOR ACTIVITIES" Class="description-no-shadow" Key="1">
+						<Panel Class="description-no-shadow panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>18. VENDOR ACTIVITIES</span>
+									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
-								<VendorActivitiesDataGrid @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args)) />
+								<VendorActivitiesDataGrid ReportDate="@this.Data.Date" @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args)) />
 						</ChildContent>
 						</Panel>
-						<Panel Header="19. LOGISTIC" Class="description-no-shadow" Key="1">
+						<Panel Class="description-no-shadow panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>19. LOGISTIC</span>
+									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
-								<LogisticDataGrid @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args)) />
+								<LogisticDataGrid ReportDate="@this.Data.Date" @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
-						<Panel Header="20. MAXIMO WORK ORDER" Class="description-no-shadow" Key="1">
+						<Panel Class="description-no-shadow panel-header" Key="1">
+							<HeaderTemplate>
+								<div>
+									<span>20. MAXIMO WORK ORDER</span>
+									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+								</div>
+							</HeaderTemplate>
 							<ChildContent>
-								<MaximoWorkOrderDataGrid @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args)) />
+								<MaximoWorkOrderDataGrid ReportDate="@this.Data.Date" @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>	
 					</Collapse>

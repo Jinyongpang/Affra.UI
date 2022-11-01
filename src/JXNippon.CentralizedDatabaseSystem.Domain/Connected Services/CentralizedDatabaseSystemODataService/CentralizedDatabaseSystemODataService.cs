@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 10/27/2022 11:47:56 PM
+// Generation date: 11/1/2022 11:00:27 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -22686,6 +22686,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoir> _MonthlyReservoirs;
+        /// <summary>
+        /// There are no comments for MonthlyReservoirProductions in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> MonthlyReservoirProductions
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._MonthlyReservoirProductions == null))
+                {
+                    this._MonthlyReservoirProductions = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction>(GetPath("MonthlyReservoirProductions"));
+                }
+                return this._MonthlyReservoirProductions;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> _MonthlyReservoirProductions;
     }
     /// <summary>
     /// There are no comments for ProductionZone in the schema.
@@ -22799,6 +22820,478 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoir> _MonthlyReservoirs = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoir>();
         partial void OnMonthlyReservoirsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoir> value);
         partial void OnMonthlyReservoirsChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyReservoirProductions in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> MonthlyReservoirProductions
+        {
+            get
+            {
+                return this._MonthlyReservoirProductions;
+            }
+            set
+            {
+                this.OnMonthlyReservoirProductionsChanging(value);
+                this._MonthlyReservoirProductions = value;
+                this.OnMonthlyReservoirProductionsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> _MonthlyReservoirProductions = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction>();
+        partial void OnMonthlyReservoirProductionsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> value);
+        partial void OnMonthlyReservoirProductionsChanged();
+    }
+    /// <summary>
+    /// There are no comments for MonthlyReservoirProductionSingle in the schema.
+    /// </summary>
+    public partial class MonthlyReservoirProductionSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyReservoirProduction>
+    {
+        /// <summary>
+        /// Initialize a new MonthlyReservoirProductionSingle object.
+        /// </summary>
+        public MonthlyReservoirProductionSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyReservoirProductionSingle object.
+        /// </summary>
+        public MonthlyReservoirProductionSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyReservoirProductionSingle object.
+        /// </summary>
+        public MonthlyReservoirProductionSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyReservoirProduction> query)
+            : base(query) {}
+
+        /// <summary>
+        /// There are no comments for ProductionZone in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZoneSingle ProductionZone
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._ProductionZone == null))
+                {
+                    this._ProductionZone = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZoneSingle(this.Context, GetPath("ProductionZone"));
+                }
+                return this._ProductionZone;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZoneSingle _ProductionZone;
+    }
+    /// <summary>
+    /// There are no comments for MonthlyReservoirProduction in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class MonthlyReservoirProduction : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new MonthlyReservoirProduction object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="reservoirName">Initial value of ReservoirName.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="date">Initial value of Date.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static MonthlyReservoirProduction CreateMonthlyReservoirProduction(long ID, string reservoirName, long xmin, global::System.DateTimeOffset date)
+        {
+            MonthlyReservoirProduction monthlyReservoirProduction = new MonthlyReservoirProduction();
+            monthlyReservoirProduction.Id = ID;
+            monthlyReservoirProduction.ReservoirName = reservoirName;
+            monthlyReservoirProduction.xmin = xmin;
+            monthlyReservoirProduction.Date = date;
+            return monthlyReservoirProduction;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Extras in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Extras
+        {
+            get
+            {
+                return this._Extras;
+            }
+            set
+            {
+                this.OnExtrasChanging(value);
+                this._Extras = value;
+                this.OnExtrasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _Extras;
+        partial void OnExtrasChanging(string value);
+        partial void OnExtrasChanged();
+        /// <summary>
+        /// There are no comments for Property ReservoirName in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "ReservoirName is required.")]
+        public virtual string ReservoirName
+        {
+            get
+            {
+                return this._ReservoirName;
+            }
+            set
+            {
+                this.OnReservoirNameChanging(value);
+                this._ReservoirName = value;
+                this.OnReservoirNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _ReservoirName;
+        partial void OnReservoirNameChanging(string value);
+        partial void OnReservoirNameChanged();
+        /// <summary>
+        /// There are no comments for Property ContributionGasPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> ContributionGasPercentage
+        {
+            get
+            {
+                return this._ContributionGasPercentage;
+            }
+            set
+            {
+                this.OnContributionGasPercentageChanging(value);
+                this._ContributionGasPercentage = value;
+                this.OnContributionGasPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _ContributionGasPercentage;
+        partial void OnContributionGasPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnContributionGasPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property ContributionCondensatePercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> ContributionCondensatePercentage
+        {
+            get
+            {
+                return this._ContributionCondensatePercentage;
+            }
+            set
+            {
+                this.OnContributionCondensatePercentageChanging(value);
+                this._ContributionCondensatePercentage = value;
+                this.OnContributionCondensatePercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _ContributionCondensatePercentage;
+        partial void OnContributionCondensatePercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnContributionCondensatePercentageChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyProductionGas in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> MonthlyProductionGas
+        {
+            get
+            {
+                return this._MonthlyProductionGas;
+            }
+            set
+            {
+                this.OnMonthlyProductionGasChanging(value);
+                this._MonthlyProductionGas = value;
+                this.OnMonthlyProductionGasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _MonthlyProductionGas;
+        partial void OnMonthlyProductionGasChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyProductionGasChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyProductionCondensate in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> MonthlyProductionCondensate
+        {
+            get
+            {
+                return this._MonthlyProductionCondensate;
+            }
+            set
+            {
+                this.OnMonthlyProductionCondensateChanging(value);
+                this._MonthlyProductionCondensate = value;
+                this.OnMonthlyProductionCondensateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _MonthlyProductionCondensate;
+        partial void OnMonthlyProductionCondensateChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyProductionCondensateChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyProductionWater in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> MonthlyProductionWater
+        {
+            get
+            {
+                return this._MonthlyProductionWater;
+            }
+            set
+            {
+                this.OnMonthlyProductionWaterChanging(value);
+                this._MonthlyProductionWater = value;
+                this.OnMonthlyProductionWaterChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _MonthlyProductionWater;
+        partial void OnMonthlyProductionWaterChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyProductionWaterChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyProductionCGR in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> MonthlyProductionCGR
+        {
+            get
+            {
+                return this._MonthlyProductionCGR;
+            }
+            set
+            {
+                this.OnMonthlyProductionCGRChanging(value);
+                this._MonthlyProductionCGR = value;
+                this.OnMonthlyProductionCGRChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _MonthlyProductionCGR;
+        partial void OnMonthlyProductionCGRChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyProductionCGRChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyProductionWGR in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> MonthlyProductionWGR
+        {
+            get
+            {
+                return this._MonthlyProductionWGR;
+            }
+            set
+            {
+                this.OnMonthlyProductionWGRChanging(value);
+                this._MonthlyProductionWGR = value;
+                this.OnMonthlyProductionWGRChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _MonthlyProductionWGR;
+        partial void OnMonthlyProductionWGRChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyProductionWGRChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyProductionWaterCut in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> MonthlyProductionWaterCut
+        {
+            get
+            {
+                return this._MonthlyProductionWaterCut;
+            }
+            set
+            {
+                this.OnMonthlyProductionWaterCutChanging(value);
+                this._MonthlyProductionWaterCut = value;
+                this.OnMonthlyProductionWaterCutChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _MonthlyProductionWaterCut;
+        partial void OnMonthlyProductionWaterCutChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyProductionWaterCutChanged();
+        /// <summary>
+        /// There are no comments for Property CumulativeProductionGas in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> CumulativeProductionGas
+        {
+            get
+            {
+                return this._CumulativeProductionGas;
+            }
+            set
+            {
+                this.OnCumulativeProductionGasChanging(value);
+                this._CumulativeProductionGas = value;
+                this.OnCumulativeProductionGasChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _CumulativeProductionGas;
+        partial void OnCumulativeProductionGasChanging(global::System.Nullable<decimal> value);
+        partial void OnCumulativeProductionGasChanged();
+        /// <summary>
+        /// There are no comments for Property CumulativeProductionCondensate in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> CumulativeProductionCondensate
+        {
+            get
+            {
+                return this._CumulativeProductionCondensate;
+            }
+            set
+            {
+                this.OnCumulativeProductionCondensateChanging(value);
+                this._CumulativeProductionCondensate = value;
+                this.OnCumulativeProductionCondensateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _CumulativeProductionCondensate;
+        partial void OnCumulativeProductionCondensateChanging(global::System.Nullable<decimal> value);
+        partial void OnCumulativeProductionCondensateChanged();
+        /// <summary>
+        /// There are no comments for Property CumulativeProductionWater in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> CumulativeProductionWater
+        {
+            get
+            {
+                return this._CumulativeProductionWater;
+            }
+            set
+            {
+                this.OnCumulativeProductionWaterChanging(value);
+                this._CumulativeProductionWater = value;
+                this.OnCumulativeProductionWaterChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _CumulativeProductionWater;
+        partial void OnCumulativeProductionWaterChanging(global::System.Nullable<decimal> value);
+        partial void OnCumulativeProductionWaterChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Date is required.")]
+        public virtual global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property ProductionZone in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZone ProductionZone
+        {
+            get
+            {
+                return this._ProductionZone;
+            }
+            set
+            {
+                this.OnProductionZoneChanging(value);
+                this._ProductionZone = value;
+                this.OnProductionZoneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZone _ProductionZone;
+        partial void OnProductionZoneChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZone value);
+        partial void OnProductionZoneChanged();
     }
     /// <summary>
     /// Class containing all extension methods
@@ -22873,6 +23366,29 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 { "Id", id }
             };
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZoneSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProductionSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProductionSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProductionSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProductionSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProductionSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProductionSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
     }
 }
@@ -50845,10 +51361,10 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyHealthSafetyEnvironmentSingle _DailyHealthSafetyEnvironment;
         /// <summary>
-        /// There are no comments for DailyLifeBoat in the schema.
+        /// There are no comments for DailyLifeBoats in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoatSingle DailyLifeBoat
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat> DailyLifeBoats
         {
             get
             {
@@ -50856,15 +51372,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyLifeBoat == null))
+                if ((this._DailyLifeBoats == null))
                 {
-                    this._DailyLifeBoat = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoatSingle(this.Context, GetPath("DailyLifeBoat"));
+                    this._DailyLifeBoats = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat>(GetPath("DailyLifeBoats"));
                 }
-                return this._DailyLifeBoat;
+                return this._DailyLifeBoats;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoatSingle _DailyLifeBoat;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat> _DailyLifeBoats;
         /// <summary>
         /// There are no comments for DailyLongTermOverridesInhibitsOnAlarmTrips in the schema.
         /// </summary>
@@ -51118,10 +51634,10 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility> _DailyUtilitys;
         /// <summary>
-        /// There are no comments for DailyWaterTanks in the schema.
+        /// There are no comments for DailyWaterTank in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> DailyWaterTanks
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTankSingle DailyWaterTank
         {
             get
             {
@@ -51129,20 +51645,20 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyWaterTanks == null))
+                if ((this._DailyWaterTank == null))
                 {
-                    this._DailyWaterTanks = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank>(GetPath("DailyWaterTanks"));
+                    this._DailyWaterTank = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTankSingle(this.Context, GetPath("DailyWaterTank"));
                 }
-                return this._DailyWaterTanks;
+                return this._DailyWaterTank;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> _DailyWaterTanks;
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTankSingle _DailyWaterTank;
         /// <summary>
-        /// There are no comments for DailyNitrogenGenerators in the schema.
+        /// There are no comments for DailyNitrogenGenerator in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> DailyNitrogenGenerators
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGeneratorSingle DailyNitrogenGenerator
         {
             get
             {
@@ -51150,15 +51666,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 {
                     throw new global::System.NotSupportedException("The previous function is not composable.");
                 }
-                if ((this._DailyNitrogenGenerators == null))
+                if ((this._DailyNitrogenGenerator == null))
                 {
-                    this._DailyNitrogenGenerators = Context.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator>(GetPath("DailyNitrogenGenerators"));
+                    this._DailyNitrogenGenerator = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGeneratorSingle(this.Context, GetPath("DailyNitrogenGenerator"));
                 }
-                return this._DailyNitrogenGenerators;
+                return this._DailyNitrogenGenerator;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> _DailyNitrogenGenerators;
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGeneratorSingle _DailyNitrogenGenerator;
         /// <summary>
         /// There are no comments for DailyMaximoWorkOrders in the schema.
         /// </summary>
@@ -51832,27 +52348,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyHealthSafetyEnvironmentChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyHealthSafetyEnvironment value);
         partial void OnDailyHealthSafetyEnvironmentChanged();
         /// <summary>
-        /// There are no comments for Property DailyLifeBoat in the schema.
+        /// There are no comments for Property DailyLifeBoats in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat DailyLifeBoat
+        public virtual global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat> DailyLifeBoats
         {
             get
             {
-                return this._DailyLifeBoat;
+                return this._DailyLifeBoats;
             }
             set
             {
-                this.OnDailyLifeBoatChanging(value);
-                this._DailyLifeBoat = value;
-                this.OnDailyLifeBoatChanged();
+                this.OnDailyLifeBoatsChanging(value);
+                this._DailyLifeBoats = value;
+                this.OnDailyLifeBoatsChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat _DailyLifeBoat;
-        partial void OnDailyLifeBoatChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat value);
-        partial void OnDailyLifeBoatChanged();
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat> _DailyLifeBoats = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat>();
+        partial void OnDailyLifeBoatsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat> value);
+        partial void OnDailyLifeBoatsChanged();
         /// <summary>
         /// There are no comments for Property DailyLongTermOverridesInhibitsOnAlarmTrips in the schema.
         /// </summary>
@@ -52118,49 +52634,49 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyUtilitysChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility> value);
         partial void OnDailyUtilitysChanged();
         /// <summary>
-        /// There are no comments for Property DailyWaterTanks in the schema.
+        /// There are no comments for Property DailyWaterTank in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> DailyWaterTanks
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank DailyWaterTank
         {
             get
             {
-                return this._DailyWaterTanks;
+                return this._DailyWaterTank;
             }
             set
             {
-                this.OnDailyWaterTanksChanging(value);
-                this._DailyWaterTanks = value;
-                this.OnDailyWaterTanksChanged();
+                this.OnDailyWaterTankChanging(value);
+                this._DailyWaterTank = value;
+                this.OnDailyWaterTankChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> _DailyWaterTanks = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank>();
-        partial void OnDailyWaterTanksChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank> value);
-        partial void OnDailyWaterTanksChanged();
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank _DailyWaterTank;
+        partial void OnDailyWaterTankChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank value);
+        partial void OnDailyWaterTankChanged();
         /// <summary>
-        /// There are no comments for Property DailyNitrogenGenerators in the schema.
+        /// There are no comments for Property DailyNitrogenGenerator in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> DailyNitrogenGenerators
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator DailyNitrogenGenerator
         {
             get
             {
-                return this._DailyNitrogenGenerators;
+                return this._DailyNitrogenGenerator;
             }
             set
             {
-                this.OnDailyNitrogenGeneratorsChanging(value);
-                this._DailyNitrogenGenerators = value;
-                this.OnDailyNitrogenGeneratorsChanged();
+                this.OnDailyNitrogenGeneratorChanging(value);
+                this._DailyNitrogenGenerator = value;
+                this.OnDailyNitrogenGeneratorChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> _DailyNitrogenGenerators = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator>();
-        partial void OnDailyNitrogenGeneratorsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator> value);
-        partial void OnDailyNitrogenGeneratorsChanged();
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator _DailyNitrogenGenerator;
+        partial void OnDailyNitrogenGeneratorChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator value);
+        partial void OnDailyNitrogenGeneratorChanged();
         /// <summary>
         /// There are no comments for Property DailyMaximoWorkOrders in the schema.
         /// </summary>
@@ -54912,6 +55428,23 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport> _CombinedDailyReport;
         /// <summary>
+        /// There are no comments for MonthlyReservoirProduction in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> MonthlyReservoirProduction
+        {
+            get
+            {
+                if ((this._MonthlyReservoirProduction == null))
+                {
+                    this._MonthlyReservoirProduction = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction>("MonthlyReservoirProduction");
+                }
+                return this._MonthlyReservoirProduction;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> _MonthlyReservoirProduction;
+        /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
@@ -55766,6 +56299,14 @@ namespace CentralizedDatabaseSystemODataService.Default
         public virtual void AddToCombinedDailyReport(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport combinedDailyReport)
         {
             base.AddObject("CombinedDailyReport", combinedDailyReport);
+        }
+        /// <summary>
+        /// There are no comments for MonthlyReservoirProduction in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToMonthlyReservoirProduction(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction monthlyReservoirProduction)
+        {
+            base.AddObject("MonthlyReservoirProduction", monthlyReservoirProduction);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private abstract class GeneratedEdmModel

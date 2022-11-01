@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyHIPWellHeadParameter" TDialog="HIPWellHeadParameterDialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyHIPWellHeadParameter" TDialog="HIPWellHeadParameterDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible"
             QueryFilter=QueryFilterAsync>
             <Columns>

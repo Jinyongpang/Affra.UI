@@ -37,6 +37,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         [Inject] private ContextMenuService ContextMenuService { get; set; }
         [Inject] private IExtraColumnService ExtraColumnService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
+        [Parameter] public DateTimeOffset? ReportDate { get; set; }
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
         private bool isDisposed = false;
@@ -192,7 +193,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         {
             if(string.IsNullOrEmpty(args.Column.GetValue(args.Data) as string))
             {
-                args.Attributes.Add("style", "background-color: orange");
+                args.Attributes.Add("style", "background-color: yellow");
             }
         }
         public object GetPropValue(object src, string propName)

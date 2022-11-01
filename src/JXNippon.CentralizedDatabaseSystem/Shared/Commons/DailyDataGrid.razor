@@ -47,7 +47,7 @@
                 <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
                 <RadzenMenuItem Text="History..." Value="5" Icon="history" Visible=@hasRowData/>
                 <RadzenMenuItem Text="Deletion History..." Value="6" Icon="dns"/>
-    </RadzenMenu>
+        </RadzenMenu>
     );  
     }
     private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<TItem> args, MenuItemEventArgs e)
@@ -56,7 +56,16 @@
         if (i == 0)
         {
             TItem data = CommonHelper.Construct<TItem>();
-            data.AsIDaily().DateUI = DateTimeOffset.Now.Date;
+
+            if (ReportDate is null)
+            {
+                data.AsIDaily().DateUI = DateTimeOffset.Now.Date;
+            }
+            else
+            {
+                data.AsIDaily().DateUI = ReportDate.Value.ToLocalDateTime();
+            }
+
             await ShowDialogAsync(data, i, "Add");
         }
         else if (i == 1)

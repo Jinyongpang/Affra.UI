@@ -12,6 +12,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasa
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool ShowDateColumn { get; set; }
+        [Parameter] public DateTimeOffset? ReportDate { get; set; }
         public CommonFilter CommonFilter
         {
             get
@@ -24,7 +25,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasa
             }
         }
 
-        public DailyDataGrid<DailyKawasakiExportCompressor, KawasakiExportCompressorDialogPart2> DailyDataGrid { get; set; }
+        public DailyDataGrid<DailyKawasakiExportCompressor, KawasakiExportCompressorDialog> DailyDataGrid { get; set; }
 
         public Task ReloadAsync()
         {

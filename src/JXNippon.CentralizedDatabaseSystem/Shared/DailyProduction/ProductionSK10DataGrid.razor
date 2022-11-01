@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailySK10Production" TDialog="ProductionSK10Dialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailySK10Production" TDialog="ProductionSK10Dialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailySK10Production" Property="SK10CumulativeGasExport" Filterable="false" Title="SK10 Cumulative Gas Export (MMscf) " Frozen="true" Pickable="false" />

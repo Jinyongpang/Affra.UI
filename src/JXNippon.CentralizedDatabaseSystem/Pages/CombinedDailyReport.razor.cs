@@ -102,7 +102,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
 
             var response = await query
                 .Expand(x => x.DailyHealthSafetyEnvironment)
-                .Expand(x => x.DailyLifeBoat)
+                .Expand(x => x.DailyLifeBoats)
                 .Expand(x => x.DailyLongTermOverridesInhibitsOnAlarmTrips)
                 .Expand(x => x.DailyOperatingChanges)
                 .Expand(x => x.DailyLossOfPrimaryContainmentIncident)
@@ -115,8 +115,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
                 .Expand(x => x.DailyLWPActivitys)
                 .Expand(x => x.DailyVendorActivitys)
                 .Expand(x => x.DailyUtilitys)
-                .Expand(x => x.DailyWaterTanks)
-                .Expand(x => x.DailyNitrogenGenerators)
+                .Expand(x => x.DailyWaterTank)
+                .Expand(x => x.DailyNitrogenGenerator)
                 .Expand(x => x.DailyMaximoWorkOrders)
                 .Expand(x => x.DailyAnalysisResult)
                 .Expand(x => x.DailyCoolingMediumSystems)
