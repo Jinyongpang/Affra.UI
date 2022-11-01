@@ -325,6 +325,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                 : "hidden-chart";
         }
 
+        private string GetFormattedString(string formatString, object value)
+        { 
+            return string.IsNullOrEmpty(formatString)
+                ? value?.ToString()
+                : string.Format(formatString, value);
+        }
+
         public async ValueTask DisposeAsync()
         {
             try
