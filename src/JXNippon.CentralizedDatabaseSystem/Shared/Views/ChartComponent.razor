@@ -43,7 +43,7 @@
                             Fill=@color
                             Smooth="@series.Smooth">
                             <TooltipTemplate Context="data">           
-                                @(string.Format(this.FormatString, data.Category)) : @(string.Format(series.ValueFormatString, data.Value))
+                                @(string.Format(this.FormatString, data.Category)) : @this.GetFormattedString(series.ValueFormatString, data.Value)
                             </TooltipTemplate>
                             <ChildContent>      
                                 <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
@@ -63,7 +63,7 @@
                                 Smooth="@series.Smooth" 
                                 >
                                 <TooltipTemplate Context="data">           
-                                    @(string.Format(this.FormatString, data.Category)) : @(string.Format(series.ValueFormatString, data.Value))
+                                    @(string.Format(this.FormatString, data.Category)) : @this.GetFormattedString(series.ValueFormatString, data.Value)
                                     </TooltipTemplate>
                                 <ChildContent>      
                                     <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
@@ -82,7 +82,7 @@
                             Fill=@color
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
                             <TooltipTemplate Context="data">           
-                                @(string.Format(this.FormatString, data.Category)) : @(string.Format(series.ValueFormatString, data.Value))
+                                @(string.Format(this.FormatString, data.Category)) : @this.GetFormattedString(series.ValueFormatString, data.Value)
                                 </TooltipTemplate>
                             <ChildContent>      
                                 <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
@@ -101,7 +101,7 @@
                             Fill=@color
                             LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))">
                             <TooltipTemplate Context="data">           
-                                @(string.Format(this.FormatString, data.Category)) : @(string.Format(series.ValueFormatString, data.Value))
+                                @(string.Format(this.FormatString, data.Category)) : @this.GetFormattedString(series.ValueFormatString, data.Value)
                                 </TooltipTemplate>
                             <ChildContent>      
                                 <RadzenMarkers Stroke=@color MarkerType="@((MarkerType)Enum.Parse(typeof(MarkerType), series.MarkerType))" />
