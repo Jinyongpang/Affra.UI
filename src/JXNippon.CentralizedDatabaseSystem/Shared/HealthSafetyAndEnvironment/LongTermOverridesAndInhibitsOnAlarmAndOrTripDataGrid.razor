@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" TDialog="LongTermOverridesInhibitsOnAlarmTripDialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" TDialog="LongTermOverridesInhibitsOnAlarmTripDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="TagName" Title="Tag Name">

@@ -1,4 +1,6 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using Affra.Core.Domain.Services;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
@@ -53,19 +55,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private LWPWellHeadParameterDataGrid lwpWellHeadParameterDataGrid;
         private RollsRoyceRB211EngineDataGrid rollsRoyceRB211EngineDataGrid;
         private KawasakiExportCompressorDataGrid kawasakiExportCompressorDataGrid;
+        private KawasakiExportCompressorDataGridPart2 kawasakiExportCompressorDataGridPart2;
         private GlycolPumpDataGrid glycolPumpDataGrid;
         private GlycolTrainDataGrid glycolTrainDataGrid;
         private CoolingMediumSystemDataGrid coolingMediumSystemDataGrid;
         private PowerGenerationAndDistributionManagementDataGrid powerGenerationAndDistributionManagementDataGrid;
         private UtilitiesDataGrid utilitiesDataGrid;
-        private WaterTankDataGrid waterTankDataGrid;
-        private NitrogenGeneratorDataGrid nitrogenGeneratorDataGrid;
         private ProducedWaterTreatmentSystemManagementDataGrid producedWaterTreatmentSystemManagementDataGrid;
         private LWPActivityDataGrid lWPActivityDataGrid;
         private CommunicationSystemDataGrid communicationSystemDataGrid;
         private VendorActivitiesDataGrid vendorActivitiesDataGrid;
         private LogisticDataGrid logisticDataGrid;
         private MaximoWorkOrderDataGrid maximoWorkOrderDataGrid;
+        private LifeBoatsDataGrid lifeBoatsDataGrid;
 
         long editId;
         private void SetIsEditing(bool value)
@@ -163,6 +165,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             kawasakiExportCompressorDataGrid.CommonFilter = CommonFilter;
         }
+        private async Task LoadKawasakiExportCompressorDataGridPart2Async(LoadDataArgs args)
+        {
+            kawasakiExportCompressorDataGridPart2.CommonFilter = CommonFilter;
+        }
         private async Task LoadGlycolPumpDataGridAsync(LoadDataArgs args)
         {
             glycolPumpDataGrid.CommonFilter = CommonFilter;
@@ -182,14 +188,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private async Task LoadUtilitiesDataGridAsync(LoadDataArgs args)
         {
             utilitiesDataGrid.CommonFilter = CommonFilter;
-        }
-        private async Task LoadWaterTankDataGridAsync(LoadDataArgs args)
-        {
-            waterTankDataGrid.CommonFilter = CommonFilter;
-        }
-        private async Task LoadNitrogenGeneratorDataGridAsync(LoadDataArgs args)
-        {
-            nitrogenGeneratorDataGrid.CommonFilter = CommonFilter;
         }
         private async Task LoadProducedWaterTreatmentSystemManagementDataGridAsync(LoadDataArgs args)
         {
@@ -215,6 +213,56 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private async Task LoadMaximoWorkOrderDataGridAsync(LoadDataArgs args)
         {
             maximoWorkOrderDataGrid.CommonFilter = CommonFilter;
+        }
+        private async Task LoadLifeBoatsDataGridAsync(LoadDataArgs args)
+        {
+            lifeBoatsDataGrid.CommonFilter = CommonFilter;
+        }
+        public static HashSet<Type> RequiredTypes = new HashSet<Type>()
+        {
+            typeof(string),
+            typeof(DateTimeOffset),
+            typeof(DateTimeOffset?),
+            typeof(decimal),
+            typeof(decimal?),
+            typeof(int),
+            typeof(int?),
+            typeof(long),
+            typeof(long?),
+        };
+        private int GetTotalUnfillProperty(object property, string extraExemption = "")
+        {
+            if (string.IsNullOrEmpty(extraExemption))
+            {
+                return property.GetType().GetProperties()
+                    .Where(x => x.GetValue(property) is null)
+                    .Where(x => !x.Name.Contains("Remark"))
+                    .Where(x => !x.Name.Contains("Extras"))
+                    .Where(x => !x.Name.Equals("Id"))
+                    .Where(x => !x.Name.Equals("xmin"))
+                    .Where(x => !x.Name.Equals("CombinedDailyReport"))
+                    .Where(x => !x.Name.Equals("SystemValidateDateTime"))
+                    .Where(x => !x.Name.Equals("UserValidationDateTime"))
+                    .Where(x => !x.Name.Equals("ValidationResults"))
+                    .Where(x => RequiredTypes.Contains(x.PropertyType))
+                    .Count();
+            }
+            else
+            {
+                return property.GetType().GetProperties()
+                    .Where(x => x.GetValue(property) is null)
+                    .Where(x => !x.Name.Contains("Remark"))
+                    .Where(x => !x.Name.Contains("Extras"))
+                    .Where(x => !x.Name.Contains("Id"))
+                    .Where(x => !x.Name.Contains("xmin"))
+                    .Where(x => !x.Name.Contains("CombinedDailyReport"))
+                    .Where(x => !x.Name.Equals("SystemValidateDateTime"))
+                    .Where(x => !x.Name.Equals("UserValidationDateTime"))
+                    .Where(x => !x.Name.Equals("ValidationResults"))
+                    .Where(x => RequiredTypes.Contains(x.PropertyType))
+                    .Where(x => x.Name != extraExemption)
+                    .Count();
+            }
         }
     }
 }

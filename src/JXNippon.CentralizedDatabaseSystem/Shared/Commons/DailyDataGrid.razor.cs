@@ -1,6 +1,9 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
+using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
+using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.TemplateManagements;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -8,6 +11,7 @@ using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.AuditTrails;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
+using Npgsql.TypeMapping;
 using Radzen;
 using Radzen.Blazor;
 using ViewODataService.Affra.Service.View.Domain.Templates;
@@ -32,8 +36,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private ContextMenuService ContextMenuService { get; set; }
         [Inject] private IExtraColumnService ExtraColumnService { get; set; }
+        [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
+        [Parameter] public DateTimeOffset? ReportDate { get; set; }
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
+        private bool isDisposed = false;
 
         protected override async Task OnInitializedAsync()
         {
@@ -42,12 +49,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
                 .GetCustomColumns(typeof(TItem).Name)
                 .ToQueryOperationResponseAsync<CustomColumn>())
                 .ToList();
+
+            await this.ContentUpdateNotificationService.SubscribeAsync(typeof(TItem).Name, OnContentUpdateAsync);
         }
         public async Task ReloadAsync()
         {
             await grid.FirstPage(true);
         }
-
+        private Task OnContentUpdateAsync(object obj)
+        {
+            StateHasChanged();
+            return this.ReloadAsync();
+        }
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
@@ -159,6 +172,33 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             }
 
             await grid.Reload();
+        }
+        public async ValueTask DisposeAsync()
+        {
+            try
+            {
+                if (!isDisposed)
+                {
+                    await this.ContentUpdateNotificationService.RemoveHandlerAsync(typeof(TItem).Name, OnContentUpdateAsync);
+
+                    isDisposed = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+        private void CellRender(DataGridCellRenderEventArgs<TItem> args)
+        {
+            if(string.IsNullOrEmpty(args.Column.GetValue(args.Data) as string))
+            {
+                args.Attributes.Add("style", "background-color: yellow");
+            }
+        }
+        public object GetPropValue(object src, string propName)
+        {
+            return src.GetType().GetProperty(propName).GetValue(src, null);
         }
     }
 }

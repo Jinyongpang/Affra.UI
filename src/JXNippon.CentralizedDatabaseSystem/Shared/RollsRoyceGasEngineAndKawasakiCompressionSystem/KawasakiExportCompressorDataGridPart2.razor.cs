@@ -1,12 +1,12 @@
-﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems;
+﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 using Microsoft.AspNetCore.Components;
 using Radzen;
 
-namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
+namespace JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem
 {
-    public partial class WellHeadAndSeparationSystemDataGrid
+    public partial class KawasakiExportCompressorDataGridPart2
     {
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
@@ -25,23 +25,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
             }
         }
 
-        public DailyDataGrid<DailyWellHeadAndSeparationSystem, WellHeadAndSeparationSystemDialog> DailyDataGrid { get; set; }
+        public DailyDataGrid<DailyKawasakiExportCompressor, KawasakiExportCompressorDialog> DailyDataGrid { get; set; }
 
         public Task ReloadAsync()
         {
             return this.DailyDataGrid.ReloadAsync();
-        }
-
-        public Task QueryFilterAsync(IQueryable<DailyWellHeadAndSeparationSystem> query)
-        {
-            if (CommonFilter != null)
-            {
-                if (CommonFilter.Status != null)
-                {
-                    query = query.Where(x => x.SandFilterS0400Status.ToUpper() == CommonFilter.Status.ToUpper());
-                }
-            }
-            return Task.CompletedTask;
         }
     }
 }

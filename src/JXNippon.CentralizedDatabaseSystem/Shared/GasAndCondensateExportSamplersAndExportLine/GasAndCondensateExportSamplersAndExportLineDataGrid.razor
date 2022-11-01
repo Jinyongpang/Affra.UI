@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyGasCondensateExportSamplerAndExportLine" TDialog="GasCondensateExportSamplerAndExportLineDialog"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyGasCondensateExportSamplerAndExportLine" TDialog="GasCondensateExportSamplerAndExportLineDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyGasCondensateExportSamplerAndExportLine" Property="LastPiggingDate" Title="Last Pigging Date" Visible="@ShowDateColumn">

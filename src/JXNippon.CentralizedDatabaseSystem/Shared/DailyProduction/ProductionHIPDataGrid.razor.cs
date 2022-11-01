@@ -19,6 +19,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DailyProduction
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool ShowDateColumn { get; set; }
+        [Parameter] public DateTimeOffset? ReportDate { get; set; }
 
         public DailyDataGrid<DailyHIPProduction, ProductionHIPDialog> DailyDataGrid { get; set; }
     }

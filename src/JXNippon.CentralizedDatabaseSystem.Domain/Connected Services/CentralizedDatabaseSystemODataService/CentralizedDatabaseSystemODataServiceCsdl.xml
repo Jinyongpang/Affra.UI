@@ -1093,6 +1093,29 @@
         <Property Name="Name" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="MonthlyReservoirs" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoir)" />
+        <NavigationProperty Name="MonthlyReservoirProductions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction)" />
+      </EntityType>
+      <EntityType Name="MonthlyReservoirProduction">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Extras" Type="Edm.String" />
+        <Property Name="ReservoirName" Type="Edm.String" Nullable="false" />
+        <Property Name="ContributionGasPercentage" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="ContributionCondensatePercentage" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="MonthlyProductionGas" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="MonthlyProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="MonthlyProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="MonthlyProductionCGR" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="MonthlyProductionWGR" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="MonthlyProductionWaterCut" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="CumulativeProductionGas" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="CumulativeProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="CumulativeProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="ProductionZone" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZone" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -2504,7 +2527,7 @@
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="DailyHealthSafetyEnvironment" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyHealthSafetyEnvironment" />
-        <NavigationProperty Name="DailyLifeBoat" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat" />
+        <NavigationProperty Name="DailyLifeBoats" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat)" />
         <NavigationProperty Name="DailyLongTermOverridesInhibitsOnAlarmTrips" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip)" />
         <NavigationProperty Name="DailyOperatingChanges" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyOperatingChange)" />
         <NavigationProperty Name="DailyLossOfPrimaryContainmentIncident" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLossOfPrimaryContainmentIncident" />
@@ -2517,8 +2540,8 @@
         <NavigationProperty Name="DailyLWPActivitys" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.LWPActivities.DailyLWPActivity)" />
         <NavigationProperty Name="DailyVendorActivitys" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Vendors.DailyVendorActivity)" />
         <NavigationProperty Name="DailyUtilitys" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyUtility)" />
-        <NavigationProperty Name="DailyWaterTanks" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank)" />
-        <NavigationProperty Name="DailyNitrogenGenerators" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator)" />
+        <NavigationProperty Name="DailyWaterTank" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank" />
+        <NavigationProperty Name="DailyNitrogenGenerator" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator" />
         <NavigationProperty Name="DailyMaximoWorkOrders" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.MaximoWorkOrders.DailyMaximoWorkOrder)" />
         <NavigationProperty Name="DailyAnalysisResult" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyAnalysisResult" />
         <NavigationProperty Name="DailyCoolingMediumSystems" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems.DailyCoolingMediumSystem)" />
@@ -3095,6 +3118,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="ProductionZone" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZone">
+          <NavigationPropertyBinding Path="MonthlyReservoirProductions" Target="MonthlyReservoirProduction" />
           <NavigationPropertyBinding Path="MonthlyReservoirs" Target="MonthlyReservoir" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -3414,7 +3438,7 @@
           <NavigationPropertyBinding Path="DailyHIPWellHeadParameters" Target="DailyHIPWellHeadParameter" />
           <NavigationPropertyBinding Path="DailyInowacInjection" Target="DailyInowacInjection" />
           <NavigationPropertyBinding Path="DailyKawasakiExportCompressors" Target="DailyKawasakiExportCompressor" />
-          <NavigationPropertyBinding Path="DailyLifeBoat" Target="DailyLifeBoat" />
+          <NavigationPropertyBinding Path="DailyLifeBoats" Target="DailyLifeBoat" />
           <NavigationPropertyBinding Path="DailyLogistics" Target="DailyLogistic" />
           <NavigationPropertyBinding Path="DailyLongTermOverridesInhibitsOnAlarmTrips" Target="DailyLongTermOverridesInhibitsOnAlarmTrip" />
           <NavigationPropertyBinding Path="DailyLossOfPrimaryContainmentIncident" Target="DailyLossOfPrimaryContainmentIncident" />
@@ -3422,7 +3446,7 @@
           <NavigationPropertyBinding Path="DailyLWPWellHeadParameters" Target="DailyLWPWellHeadParameter" />
           <NavigationPropertyBinding Path="DailyMajorEquipmentStatuses" Target="DailyMajorEquipmentStatus" />
           <NavigationPropertyBinding Path="DailyMaximoWorkOrders" Target="DailyMaximoWorkOrder" />
-          <NavigationPropertyBinding Path="DailyNitrogenGenerators" Target="DailyNitrogenGenerator" />
+          <NavigationPropertyBinding Path="DailyNitrogenGenerator" Target="DailyNitrogenGenerator" />
           <NavigationPropertyBinding Path="DailyOperatingChanges" Target="DailyOperatingChange" />
           <NavigationPropertyBinding Path="DailyPowerGenerationAndDistributions" Target="DailyPowerGenerationAndDistribution" />
           <NavigationPropertyBinding Path="DailyProducedWaterTreatmentSystems" Target="DailyProducedWaterTreatmentSystem" />
@@ -3431,9 +3455,17 @@
           <NavigationPropertyBinding Path="DailySK10Production" Target="DailySK10Production" />
           <NavigationPropertyBinding Path="DailyUtilitys" Target="DailyUtility" />
           <NavigationPropertyBinding Path="DailyVendorActivitys" Target="DailyVendorActivity" />
-          <NavigationPropertyBinding Path="DailyWaterTanks" Target="DailyWaterTank" />
+          <NavigationPropertyBinding Path="DailyWaterTank" Target="DailyWaterTank" />
           <NavigationPropertyBinding Path="DailyWellHeadAndSeparationSystem" Target="DailyWellHeadAndSeparationSystem" />
           <NavigationPropertyBinding Path="DailyWellStreamCoolers" Target="DailyWellStreamCooler" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="MonthlyReservoirProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction">
+          <NavigationPropertyBinding Path="ProductionZone" Target="ProductionZone" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

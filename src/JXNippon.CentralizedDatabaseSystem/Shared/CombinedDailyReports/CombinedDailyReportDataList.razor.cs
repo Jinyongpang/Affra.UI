@@ -101,7 +101,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             var response = await query
                 .Expand(x => x.DailyHealthSafetyEnvironment)
                 .Expand(x => x.DailyLossOfPrimaryContainmentIncident)
-                .Expand(x => x.DailyLifeBoat)
                 .Expand(x => x.DailySK10Production)
                 .Expand(x => x.DailyHIPProduction)
                 .Expand(x => x.DailyFPSOHelangProduction)
@@ -114,6 +113,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 .Expand(x => x.DailyAnalysisResult)
                 .Expand(x => x.DailyDeOilerInjection)
                 .Expand(x => x.DailySandDisposalDesander)
+                .Expand(x => x.DailyWaterTank)
+                .Expand(x => x.DailyNitrogenGenerator)
                 .Where(x => x.Date == data.Date)
                 .ToQueryOperationResponseAsync<CombinedDailyReport>();
 
@@ -124,10 +125,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 Date = cdrItem.Date
             };
             cdrItem.DailyLossOfPrimaryContainmentIncident ??= new CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLossOfPrimaryContainmentIncident
-            {
-                Date = cdrItem.Date
-            };
-            cdrItem.DailyLifeBoat ??= new CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat
             {
                 Date = cdrItem.Date
             };
@@ -177,6 +174,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             };
             cdrItem.DailySandDisposalDesander ??= new CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders.DailySandDisposalDesander
             {
+                SandDisposalDesanderName = "Sand Jetting Desander",
+                Date = cdrItem.Date
+            };
+            cdrItem.DailyNitrogenGenerator ??= new CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyNitrogenGenerator
+            {
+                UtilityName = "Nitrogen Generator, A-5900",
+                Date = cdrItem.Date
+            };
+            cdrItem.DailyWaterTank ??= new CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities.DailyWaterTank
+            {
+                UtilityName = "Potable Water Tank, T-5250",
                 Date = cdrItem.Date
             };
 
