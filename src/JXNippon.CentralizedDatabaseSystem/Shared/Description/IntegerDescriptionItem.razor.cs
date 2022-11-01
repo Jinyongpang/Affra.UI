@@ -14,18 +14,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public int? Value { get; set; }
 
         [Parameter] public int? Span { get; set; }
+        [Parameter] public bool IsRequired { get; set; } = true;
 
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
         [Parameter] public TItem Item { get; set; }
         [Parameter] public long ItemId { get; set; }
 
         [Parameter] public EventCallback<int?> ValueChanged { get; set; }
-
-        private string GetStyle()
-        {
-            return this.Value is null
-                ? "background-color: yellow;"
-                : null;
-        }
     }
 }

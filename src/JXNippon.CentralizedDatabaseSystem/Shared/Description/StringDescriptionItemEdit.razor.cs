@@ -11,6 +11,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public string StringVal { get; set; }
         [Parameter] public TItem Item { get; set; }
         [Parameter] public long ItemId { get; set; }
+        [Parameter] public bool IsRequired { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Parameter] public EventCallback<string?> StringValChanged { get; set; }
@@ -62,7 +63,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
 
         private string GetStyle()
         {
-            return this.StringVal is null
+            return IsRequired && this.StringVal is null
                 ? "background-color: yellow;"
                 : null;
         }
