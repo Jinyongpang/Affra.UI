@@ -751,3 +751,15 @@ a {
     float: right;
     font-size: medium;
 }
+
+.panel-header {
+    background-color: #3AAFC6;
+}
+
+.ant-descriptions-item-label {
+    background-color: #92CDDC !important;
+}
+
+th, .rz-cell-filter {
+    background-color: #92CDDC !important;
+}
