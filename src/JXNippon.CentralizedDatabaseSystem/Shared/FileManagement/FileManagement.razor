@@ -4,7 +4,7 @@
             <div class="col-12 float-right align-items-center text-right mt-1">
                 <Space Size="@("middle")">
                     <SpaceItem>
-                        <RadzenDropDown Change=@(() => ReloadAsync()) Placeholder="Select folder..." Style="min-width: 400px;" Data=@Folders @bind-Value=@folder TValue=string AllowClear>
+                        <RadzenDropDown Change=@(() => ReloadAsync()) Placeholder="Select folder..." Data=@Folders @bind-Value=@folder TValue=string AllowClear>
                             <Template>
                                 <Icon Type="folder-open" Theme="outline" Style="font-size: 20px; vertical-align: 0px; margin-right: 2px;"/>@context
                             </Template>
