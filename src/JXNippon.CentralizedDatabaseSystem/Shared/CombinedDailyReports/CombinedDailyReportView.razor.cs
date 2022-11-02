@@ -30,6 +30,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 {
     public partial class CombinedDailyReportView
     {
+        private static HashSet<Type> RequiredTypes = new HashSet<Type>()
+        {
+            typeof(string),
+            typeof(DateTimeOffset),
+            typeof(DateTimeOffset?),
+            typeof(decimal),
+            typeof(decimal?),
+            typeof(int),
+            typeof(int?),
+            typeof(long),
+            typeof(long?),
+        };
         private bool isEditing;
         private bool isLoading = true;
         private bool isUserHavePermission = true;
@@ -42,10 +54,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private NavigationManager NavManager { get; set; }
-        private CommonFilter CommonFilter { get; set; }
 
         [Inject] private IUserService UserService { get; set; }
 
+        private CommonFilter CommonFilter { get; set; }
         private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
         private HIPAndLWPSummaryDataGrid hipAndLWPSummaryDataGrid;
         private LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid;
@@ -219,18 +231,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             lifeBoatsDataGrid.CommonFilter = CommonFilter;
         }
-        public static HashSet<Type> RequiredTypes = new HashSet<Type>()
-        {
-            typeof(string),
-            typeof(DateTimeOffset),
-            typeof(DateTimeOffset?),
-            typeof(decimal),
-            typeof(decimal?),
-            typeof(int),
-            typeof(int?),
-            typeof(long),
-            typeof(long?),
-        };
 
         private int GetCollectionTotalUnfillProperty<T>(Collection<T> collection, string extraExemption = "")
         {
@@ -240,12 +240,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             }
             return collection.Sum(x => this.GetTotalUnfillProperty(x));
         }
-        
-        private int GetTotalUnfillProperty(object property, string extraExemption = "")
+
+        private string[] GetTotalUnfillPropertyName(object property, string extraExemption = "")
         {
             if (property is null)
             {
-                return -1;
+                return null;
             }
 
             var query = property.GetType().GetProperties()
@@ -257,14 +257,29 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                     .Where(x => !x.Name.Equals("CombinedDailyReport"))
                     .Where(x => !x.Name.Equals("SystemValidateDateTime"))
                     .Where(x => !x.Name.Equals("UserValidationDateTime"))
-                    .Where(x => !x.Name.Equals("ValidationResults"));
+                    .Where(x => !x.Name.Equals("ValidationResults"))
+                    .Where(x => RequiredTypes.Contains(x.PropertyType));
 
             if (!string.IsNullOrEmpty(extraExemption))
             {
                 query = query.Where(x => x.Name == extraExemption);
             }
             
-            return query.Count();
+            var result = query
+                .Select(x => x.Name)
+                .ToArray();
+
+            Console.WriteLine(string.Join(',', result));
+
+            return result;
+        }
+
+        private int GetTotalUnfillProperty(object property, string extraExemption = "")
+        {
+            var result = this.GetTotalUnfillPropertyName(property, extraExemption);
+            return result is null
+                ? -1
+                : result.Length;
         }
     }
 }

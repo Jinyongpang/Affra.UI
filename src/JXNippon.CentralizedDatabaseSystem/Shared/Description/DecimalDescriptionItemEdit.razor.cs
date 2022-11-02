@@ -68,7 +68,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
 
         private string GetStyle()
         {
-            return this.Decimal is null
+            return this.IsRequired && this.Decimal is null
                 ? "background-color: yellow;"
                 : null;
         }

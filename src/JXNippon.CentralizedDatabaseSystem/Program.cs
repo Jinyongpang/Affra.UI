@@ -1,6 +1,7 @@
 global using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
-global using UserODataService.Affra.Service.User.Domain.Roles;
 global using JXNippon.CentralizedDatabaseSystem.Domain.Roles;
+global using System.Collections.ObjectModel;
+global using UserODataService.Affra.Service.User.Domain.Roles;
 using System.Globalization;
 using Affra.Core.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem;

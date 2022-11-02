@@ -1,4 +1,5 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Collections.ObjectModel;
+using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
@@ -23,10 +24,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         where TDialog : ComponentBase, IDailyDialog<TItem>
     {
         private RadzenDataGrid<TItem> grid;
-        private IEnumerable<TItem> items;
+        
         private bool isLoading = false;
         private IEnumerable<CustomColumn> customColumns;
+        private Collection<TItem> _items { get; set; }
 
+        [Parameter] public Collection<TItem> Items { get; set; }
+        [Parameter] public EventCallback<Collection<TItem>> ItemsChanged { get; set; }
+        [Parameter] public EventCallback<Collection<TItem>> OnItemsChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public RenderFragment Columns { get; set; }
@@ -86,7 +91,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
                 .ToQueryOperationResponseAsync<TItem>();
 
             Count = (int)response.Count;
-            items = response.ToList();
+            Items = new Collection<TItem>(response.ToArray());
+            _items = Items;
+            await ItemsChanged.InvokeAsync(Items);
+            await OnItemsChanged.InvokeAsync(Items);
             isLoading = false;
         }
 

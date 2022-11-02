@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.MaximoWorkOrder
 {
     public partial class MaximoWorkOrderDataGrid
     {
+        [Parameter] public Collection<DailyMaximoWorkOrder> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyMaximoWorkOrder>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

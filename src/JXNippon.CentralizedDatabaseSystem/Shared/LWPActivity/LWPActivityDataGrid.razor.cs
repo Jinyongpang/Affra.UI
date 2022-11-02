@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity
 {
     public partial class LWPActivityDataGrid
     {
+        [Parameter] public Collection<DailyLWPActivity> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyLWPActivity>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

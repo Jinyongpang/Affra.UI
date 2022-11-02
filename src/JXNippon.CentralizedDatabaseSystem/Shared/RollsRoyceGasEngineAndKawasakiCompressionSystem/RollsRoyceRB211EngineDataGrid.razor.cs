@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasa
 {
     public partial class RollsRoyceRB211EngineDataGrid
     {
+        [Parameter] public Collection<DailyRollsRoyceRB211Engine> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyRollsRoyceRB211Engine>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

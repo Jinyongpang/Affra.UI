@@ -63,7 +63,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
 
         private string GetStyle()
         {
-            return this.Integer is null
+            return this.IsRequired && this.Integer is null
                 ? "background-color: yellow;"
                 : null;
         }

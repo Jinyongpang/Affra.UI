@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Logistic
 {
     public partial class LogisticDataGrid
     {
+        [Parameter] public Collection<DailyLogistic> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyLogistic>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

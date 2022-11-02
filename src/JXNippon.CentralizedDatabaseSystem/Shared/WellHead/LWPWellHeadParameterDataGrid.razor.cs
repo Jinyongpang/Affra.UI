@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHead
 {
     public partial class LWPWellHeadParameterDataGrid
     {
+        [Parameter] public Collection<DailyLWPWellHeadParameter> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyLWPWellHeadParameter>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

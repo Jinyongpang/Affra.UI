@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyMaximoWorkOrder" TDialog="MaximoWorkOrderDialog" ReportDate="@this.ReportDate"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyMaximoWorkOrder" TDialog="MaximoWorkOrderDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="Period" Filterable="false" Title="Period" Width="150px" />

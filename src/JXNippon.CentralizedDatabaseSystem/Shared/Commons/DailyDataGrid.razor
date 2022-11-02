@@ -4,7 +4,7 @@
 @typeparam TDialog
 @inject ICommonHelper CommonHelper;
 
-<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" CellRender="this.CellRender"  
+<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@_items" LoadData="@LoadDataAsync" CellRender="this.CellRender"  
     FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" AllowPaging="true" 
     PageSize="50" PagerHorizontalAlign="HorizontalAlign.Center" TItem="TItem" 
     ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
