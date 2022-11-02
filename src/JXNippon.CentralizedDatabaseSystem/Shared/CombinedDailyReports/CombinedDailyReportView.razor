@@ -74,11 +74,12 @@
 							<HeaderTemplate>
 								<div>
 									<span>1. OIM SUMMARY</span>
-									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+									<CombinedDailyReportTag Count=@(this.GetCollectionTotalUnfillProperty(this.Data.DailyHIPAndLWPSummarys) 
+									+ this.GetCollectionTotalUnfillProperty(this.Data.DailyFPSOHelangSummarys))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent> 
-								<Panel  ShowArrow="false" Class="description-no-shadow" Header="HIP / LWP SUMMARY" Key="1">
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="HIP / LWP SUMMARY" Key="1">
 									<ChildContent>
 										<HIPAndLWPSummaryDataGrid ReportDate="@this.Data.Date" @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) />
 									</ChildContent>
@@ -94,7 +95,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>2. HEALTH, SAFETY & ENVIRONMENT</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyHealthSafetyEnvironment) + GetTotalUnfillProperty(this.Data.DailyLossOfPrimaryContainmentIncident))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailyHealthSafetyEnvironment) + GetTotalUnfillProperty(this.Data.DailyLossOfPrimaryContainmentIncident))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -160,7 +161,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>3. DAILY PRODUCTION</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailySK10Production, "SK10CumulativeGasExportPerformanceStatus") + GetTotalUnfillProperty(this.Data.DailyHIPProduction) + GetTotalUnfillProperty(this.Data.DailyFPSOHelangProduction))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailySK10Production, "SK10CumulativeGasExportPerformanceStatus") + GetTotalUnfillProperty(this.Data.DailyHIPProduction) + GetTotalUnfillProperty(this.Data.DailyFPSOHelangProduction))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -231,7 +232,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>4. MAJOR EQUIPMENT STATUS</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyDiesel))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailyDiesel))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -256,7 +257,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>5. CHEMICAL INJECTION</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyCiNalco) + GetTotalUnfillProperty(this.Data.DailyInowacInjection))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailyCiNalco) + GetTotalUnfillProperty(this.Data.DailyInowacInjection))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -323,7 +324,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>6. WELLHEAD & SEPARATION SYSTEM</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyWellHeadAndSeparationSystem))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailyWellHeadAndSeparationSystem))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -351,7 +352,8 @@
 							<HeaderTemplate>
 								<div>
 									<span>7. WELLHEAD</span>
-									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+									<CombinedDailyReportTag Count=@(this.GetCollectionTotalUnfillProperty(this.Data.DailyHIPWellHeadParameters)
+									+ this.GetCollectionTotalUnfillProperty(this.Data.DailyLWPWellHeadParameters))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -371,7 +373,8 @@
 							<HeaderTemplate>
 								<div>
 									<span>8. ROLLS ROYCE GAS ENGINE & KAWASAKI COMPRESSION SYSTEM</span>
-									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+									<CombinedDailyReportTag Count=@(this.GetCollectionTotalUnfillProperty(this.Data.DailyKawasakiExportCompressors)
+									+ this.GetCollectionTotalUnfillProperty(this.Data.DailyRollsRoyceRB211Engines))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -392,7 +395,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>9. GLYCOL REGENERATION SYSTEM</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyGlycolStock))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailyGlycolStock))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -420,7 +423,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>10. GAS & CONDENSATE EXPORT SAMPLERS & EXPORT LINE</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyGasCondensateExportSamplerAndExportLine))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailyGasCondensateExportSamplerAndExportLine))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -444,7 +447,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>11. COOLING MEDIUM SYSTEM</span>
-										<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyAnalysisResult))</Tag>
+										<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailyAnalysisResult))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -474,7 +477,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>12. POWER GENERATION & DISTRIBUTION</span>
-									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+									<CombinedDailyReportTag Count=@(this.GetCollectionTotalUnfillProperty(this.Data.DailyPowerGenerationAndDistributions))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -485,7 +488,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>13. LIVING QUARTERS, UTILITIES & OTHERS</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyWaterTank) + GetTotalUnfillProperty(this.Data.DailyNitrogenGenerator))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailyWaterTank) + GetTotalUnfillProperty(this.Data.DailyNitrogenGenerator))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -520,7 +523,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>14. TILTED PLATE SEPARATOR V-3000 & PRODUCED WATER TREATMENT SYSTEM</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailyDeOilerInjection))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailyDeOilerInjection))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -551,7 +554,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>15. SAND DISPOSAL FROM TPS (V-3000) VIA DESANDER</span>
-									<Tag Color="Red" Class="panel-summary-tag">@(GetTotalUnfillProperty(this.Data.DailySandDisposalDesander))</Tag>
+									<CombinedDailyReportTag Count=@(GetTotalUnfillProperty(this.Data.DailySandDisposalDesander))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -578,7 +581,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>16. DCS, FGS, ASD & COMMUNICATION SYSTEM</span>
-									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+									<CombinedDailyReportTag Count=@(this.GetCollectionTotalUnfillProperty(this.Data.DailyCommunicationSystems))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -589,7 +592,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>17. LAYANG WELLHEAD PLATFORM (LWP) ACTIVITIES</span>
-									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+									<CombinedDailyReportTag Count=@(this.GetCollectionTotalUnfillProperty(this.Data.DailyLWPActivitys))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -600,7 +603,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>18. VENDOR ACTIVITIES</span>
-									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+									<CombinedDailyReportTag Count=@(this.GetCollectionTotalUnfillProperty(this.Data.DailyVendorActivitys))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -611,7 +614,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>19. LOGISTIC</span>
-									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+									<CombinedDailyReportTag Count=@this.GetCollectionTotalUnfillProperty(this.Data.DailyLogistics)></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -622,7 +625,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>20. MAXIMO WORK ORDER</span>
-									<Tag Color="Red" Class="panel-summary-tag"></Tag>
+									<CombinedDailyReportTag Count=@(this.GetCollectionTotalUnfillProperty(this.Data.DailyMaximoWorkOrders))></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>

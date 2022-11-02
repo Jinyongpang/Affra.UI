@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using Affra.Core.Domain.Services;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
@@ -230,11 +231,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             typeof(long),
             typeof(long?),
         };
+
+        private int GetCollectionTotalUnfillProperty<T>(Collection<T> collection, string extraExemption = "")
+        {
+            if (collection is null || collection.Count == 0)
+            {
+                return -1;
+            }
+            return collection.Sum(x => this.GetTotalUnfillProperty(x));
+        }
+        
         private int GetTotalUnfillProperty(object property, string extraExemption = "")
         {
-            if (string.IsNullOrEmpty(extraExemption))
+            if (property is null)
             {
-                return property.GetType().GetProperties()
+                return -1;
+            }
+
+            var query = property.GetType().GetProperties()
                     .Where(x => x.GetValue(property) is null)
                     .Where(x => !x.Name.Contains("Remark"))
                     .Where(x => !x.Name.Contains("Extras"))
@@ -243,26 +257,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                     .Where(x => !x.Name.Equals("CombinedDailyReport"))
                     .Where(x => !x.Name.Equals("SystemValidateDateTime"))
                     .Where(x => !x.Name.Equals("UserValidationDateTime"))
-                    .Where(x => !x.Name.Equals("ValidationResults"))
-                    .Where(x => RequiredTypes.Contains(x.PropertyType))
-                    .Count();
-            }
-            else
+                    .Where(x => !x.Name.Equals("ValidationResults"));
+
+            if (!string.IsNullOrEmpty(extraExemption))
             {
-                return property.GetType().GetProperties()
-                    .Where(x => x.GetValue(property) is null)
-                    .Where(x => !x.Name.Contains("Remark"))
-                    .Where(x => !x.Name.Contains("Extras"))
-                    .Where(x => !x.Name.Contains("Id"))
-                    .Where(x => !x.Name.Contains("xmin"))
-                    .Where(x => !x.Name.Contains("CombinedDailyReport"))
-                    .Where(x => !x.Name.Equals("SystemValidateDateTime"))
-                    .Where(x => !x.Name.Equals("UserValidationDateTime"))
-                    .Where(x => !x.Name.Equals("ValidationResults"))
-                    .Where(x => RequiredTypes.Contains(x.PropertyType))
-                    .Where(x => x.Name != extraExemption)
-                    .Count();
+                query = query.Where(x => x.Name == extraExemption);
             }
+            
+            return query.Count();
         }
     }
 }
