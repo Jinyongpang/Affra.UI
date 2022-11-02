@@ -988,6 +988,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FPSO Diesel Consumption (MT).
+        /// </summary>
+        public static string FPSODieselConsumption {
+            get {
+                return ResourceManager.GetString("FPSODieselConsumption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FPSO Diesel Consumption Remark.
+        /// </summary>
+        public static string FPSODieselConsumptionRemark {
+            get {
+                return ResourceManager.GetString("FPSODieselConsumptionRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FPSO Flaring (MMscf).
         /// </summary>
         public static string FPSOFlaring {
@@ -1245,6 +1263,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string HIPCumulativeWaterProductionRemark {
             get {
                 return ResourceManager.GetString("HIPCumulativeWaterProductionRemark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HIP Diesel Stock (litre).
+        /// </summary>
+        public static string HIPDieselStock {
+            get {
+                return ResourceManager.GetString("HIPDieselStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HIP Diesel Stock Remark.
+        /// </summary>
+        public static string HIPDieselStockRemark {
+            get {
+                return ResourceManager.GetString("HIPDieselStockRemark", resourceCulture);
             }
         }
         

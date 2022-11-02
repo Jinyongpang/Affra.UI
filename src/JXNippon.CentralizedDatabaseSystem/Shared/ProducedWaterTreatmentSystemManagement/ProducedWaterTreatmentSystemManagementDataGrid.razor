@@ -7,32 +7,32 @@
             PagerAlwaysVisible="@PagerAlwaysVisible"
             QueryFilter=QueryFilterAsync>
             <Columns>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="ProducedWaterTreatmentSystemName" Width="60px" Title="Name" Frozen="true" Pickable="false">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="ProducedWaterTreatmentSystemName" Width="60px" Title="Name" Frozen="true" Pickable="false">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Status" Title="Status"  Width="40px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="Status" Title="Status" Width="40px">
                     <Template Context="item">
                         <StatusGridColumnTemplate Status="@(item.Status)"></StatusGridColumnTemplate>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Date" Title="Date" Width="30px" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="Date" Title="Date" Width="30px" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="dailyProducedWaterTreatmentSystem">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyProducedWaterTreatmentSystem.Date.ToLocalTime())
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="LastSkimmingDate" Title="Last Skimming" Width="40px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="LastSkimmingDate" Title="Last Skimming" Width="40px">
                     <Template Context="dailyProducedWaterTreatmentSystem">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyProducedWaterTreatmentSystem.LastSkimmingDate.ToLocalTime())
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="AnalyserStatus" Title="Analyser Status"  Width="40px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="AnalyserStatus" Title="Analyser Status"  Width="40px">
                     <Template Context="item">
                         <StatusGridColumnTemplate Status="@(item.AnalyserStatus)"></StatusGridColumnTemplate>
                     </Template>              
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Iron" Title="Iron (ppm)" Width="30px" />
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="PH" Title="pH" Width="30px"/>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Remark" Title="Remark" Width="60px"/>
-                <RadzenDataGridColumn TItem="DailyProducedWaterTreatmentSystem" Property="Remark2" Title="Remark 2" Width="60px"/>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="Iron" Title="Iron (ppm)" Width="30px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="PH" Title="pH" Width="30px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="Remark" Title="Remark" Width="60px"/>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="Remark2" Title="Remark 2" Width="60px"/>
             </Columns>
         </DailyDataGrid>  
     </div>

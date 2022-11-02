@@ -6,14 +6,14 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyGlycolPump" TDialog="GlycolPumpDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyGlycolPump" Property="GlycolPumpName" Title="Glycol Pump Name" />
-                <RadzenDataGridColumn TItem="DailyGlycolPump" Property="Status" Title="Status">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyGlycolPump" Property="GlycolPumpName" Title="Glycol Pump Name" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyGlycolPump" Property="Status" Title="Status">
                     <Template Context="item">
                         <StatusGridColumnTemplate Status="@(item.Status)"></StatusGridColumnTemplate>
                     </Template>           
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyGlycolPump" Property="Remark" Title="Remark" />
-                <RadzenDataGridColumn TItem="DailyGlycolPump" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyGlycolPump" Property="Remark" Title="Remark" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyGlycolPump" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>

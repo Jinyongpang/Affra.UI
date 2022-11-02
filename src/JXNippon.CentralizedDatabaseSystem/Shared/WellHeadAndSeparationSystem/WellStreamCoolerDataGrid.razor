@@ -6,10 +6,10 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyWellStreamCooler" TDialog="WellStreamCoolerDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyWellStreamCooler" Property="WellStreamCoolerName" Filterable="false" Title="Name" Frozen="true" Pickable="false">           
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyWellStreamCooler" Property="WellStreamCoolerName" Filterable="false" Title="Name" Frozen="true" Pickable="false">           
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyWellStreamCooler" Property="WellStreamCoolerTemparature" Title="Temperature"/>
-                <RadzenDataGridColumn TItem="DailyWellStreamCooler" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyWellStreamCooler" Property="WellStreamCoolerTemparature" Title="Temperature" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyWellStreamCooler" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>

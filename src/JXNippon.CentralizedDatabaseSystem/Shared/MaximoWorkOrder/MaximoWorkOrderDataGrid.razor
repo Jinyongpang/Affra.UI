@@ -6,19 +6,19 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyMaximoWorkOrder" TDialog="MaximoWorkOrderDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyMaximoWorkOrder" Property="Period" Filterable="false" Title="Period" Width="150px" />           
-                <RadzenDataGridColumn TItem="DailyMaximoWorkOrder" Property="WorkOrderTypeName" Filterable="false" Title="Name" Width="150px" />
-                <RadzenDataGridColumn TItem="DailyMaximoWorkOrder" Property="PM" Filterable="false" Title="PM" Width="80px" />
-                <RadzenDataGridColumn TItem="DailyMaximoWorkOrder" Property="CM" Filterable="false" Title="CM" Width="80px" />           
-                <RadzenDataGridColumn TItem="DailyMaximoWorkOrder" Property="CB" Filterable="false" Title="CB" Width="80px" />           
-                <RadzenDataGridColumn TItem="DailyMaximoWorkOrder" Property="MO" Filterable="false" Title="MO" Width="80px" />           
-                <RadzenDataGridColumn TItem="DailyMaximoWorkOrder" Property="Total" Filterable="false" Title="Total" Width="100px" />
-                <RadzenDataGridColumn TItem="DailyMaximoWorkOrder" Property="Remark" Title="Remark" Width="150px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="Period" Filterable="false" Title="Period" Width="150px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="WorkOrderTypeName" Filterable="false" Title="Name" Width="150px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="PM" Filterable="false" Title="PM" Width="80px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="CM" Filterable="false" Title="CM" Width="80px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="CB" Filterable="false" Title="CB" Width="80px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="MO" Filterable="false" Title="MO" Width="80px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="Total" Filterable="false" Title="Total" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="Remark" Title="Remark" Width="150px">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.Remark</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyMaximoWorkOrder" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyMaximoWorkOrder" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>

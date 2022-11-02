@@ -6,19 +6,19 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLifeBoat" TDialog="LifeBoatDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyLifeBoat" Property="LifeBoatName" Title="Life Boat Name" />
-                <RadzenDataGridColumn TItem="DailyLifeBoat" Property="Status" Title="Status">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLifeBoat" Property="LifeBoatName" Title="Life Boat Name" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLifeBoat" Property="Status" Title="Status">
                     <Template Context="item">
                         <StatusGridColumnTemplate Status="@(item.Status)"></StatusGridColumnTemplate>
                     </Template>           
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyLifeBoat" Property="StartDate" Title="Start Date" />
-                <RadzenDataGridColumn TItem="DailyLifeBoat" Property="Remark" Title="Remarks">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLifeBoat" Property="StartDate" Title="Start Date" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLifeBoat" Property="Remark" Title="Remarks">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.Remark</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailyLifeBoat" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLifeBoat" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>

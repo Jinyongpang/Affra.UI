@@ -1182,4 +1182,16 @@
   <data name="WellAllocation" xml:space="preserve">
     <value>Well Allocation</value>
   </data>
+  <data name="FPSODieselConsumption" xml:space="preserve">
+    <value>FPSO Diesel Consumption (MT)</value>
+  </data>
+  <data name="FPSODieselConsumptionRemark" xml:space="preserve">
+    <value>FPSO Diesel Consumption Remark</value>
+  </data>
+  <data name="HIPDieselStock" xml:space="preserve">
+    <value>HIP Diesel Stock (litre)</value>
+  </data>
+  <data name="HIPDieselStockRemark" xml:space="preserve">
+    <value>HIP Diesel Stock Remark</value>
+  </data>
 </root>
