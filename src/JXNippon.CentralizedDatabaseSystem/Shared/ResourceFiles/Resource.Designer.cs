@@ -934,6 +934,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FPSO Crude API reading Receiving tank COT.
+        /// </summary>
+        public static string FPSOCrudeAPIReadingReceivingTankCOTNumber {
+            get {
+                return ResourceManager.GetString("FPSOCrudeAPIReadingReceivingTankCOTNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FPSO Cumulative Crude Oil (bbl).
         /// </summary>
         public static string FPSOCumulativeCrudeOil {

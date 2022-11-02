@@ -1,0 +1,9 @@
+﻿
+@if (this.Count < 0)
+{
+    <Tag Color="@(this.GetColor())" Class="panel-summary-tag">No Data</Tag>
+}
+else
+{
+    <Tag Color="@(this.GetColor())" Class="panel-summary-tag">@this.Count</Tag>
+}

@@ -1194,4 +1194,7 @@
   <data name="HIPDieselStockRemark" xml:space="preserve">
     <value>HIP Diesel Stock Remark</value>
   </data>
+  <data name="FPSOCrudeAPIReadingReceivingTankCOTNumber" xml:space="preserve">
+    <value>FPSO Crude API reading Receiving tank COT</value>
+  </data>
 </root>
