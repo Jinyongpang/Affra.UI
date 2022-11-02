@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasa
 {
     public partial class KawasakiExportCompressorDataGrid
     {
+        [Parameter] public Collection<DailyKawasakiExportCompressor> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyKawasakiExportCompressor>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

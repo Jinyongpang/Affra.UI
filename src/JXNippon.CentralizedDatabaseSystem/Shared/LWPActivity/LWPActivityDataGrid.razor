@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLWPActivity" TDialog="LWPActivityDialog" ReportDate="@this.ReportDate"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyLWPActivity" TDialog="LWPActivityDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
           <Columns>
                 <RadzenDataGridColumn TItem="DailyLWPActivity" Property="Remark" Title="Remark" Width="100px" />

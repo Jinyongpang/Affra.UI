@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributi
 {
     public partial class PowerGenerationAndDistributionManagementDataGrid
     {
+        [Parameter] public Collection<DailyPowerGenerationAndDistribution> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyPowerGenerationAndDistribution>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

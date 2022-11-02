@@ -81,12 +81,12 @@
 							<ChildContent> 
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="HIP / LWP SUMMARY" Key="1">
 									<ChildContent>
-										<HIPAndLWPSummaryDataGrid ReportDate="@this.Data.Date" @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) />
+										<HIPAndLWPSummaryDataGrid @bind-Data=@this.Data.DailyHIPAndLWPSummarys ReportDate="@this.Data.Date" @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="FPSO HELANG SUMMARY" Key="1">
 									<ChildContent>
-										<FPSOHelangSummaryDataGrid ReportDate="@this.Data.Date" @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args)) />
+										<FPSOHelangSummaryDataGrid @bind-Data=@this.Data.DailyFPSOHelangSummarys ReportDate="@this.Data.Date" @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -359,12 +359,12 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="HIP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
-										<HIPWellHeadParameterDataGrid ReportDate="@this.Data.Date" @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args)) />
+										<HIPWellHeadParameterDataGrid @bind-Data=@this.Data.DailyHIPWellHeadParameters  ReportDate="@this.Data.Date" @ref="hipWellHeadParameterDataGrid" LoadData=@(args => LoadHIPWellHeadParameterDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="LWP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
-										<LWPWellHeadParameterDataGrid ReportDate="@this.Data.Date" @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args)) />
+										<LWPWellHeadParameterDataGrid @bind-Data=@this.Data.DailyLWPWellHeadParameters ReportDate="@this.Data.Date" @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -380,13 +380,13 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="KAWASAKI EXPORT COMPRESSOR" Key="1">
 									<ChildContent>
-										<KawasakiExportCompressorDataGrid ReportDate="@this.Data.Date" @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args)) />
+										<KawasakiExportCompressorDataGrid @bind-Data=@this.Data.DailyKawasakiExportCompressors  ReportDate="@this.Data.Date" @ref="kawasakiExportCompressorDataGrid" LoadData=@(args => LoadKawasakiExportCompressorDataGridAsync(args)) />
 										<KawasakiExportCompressorDataGridPart2 ReportDate="@this.Data.Date" @ref="kawasakiExportCompressorDataGridPart2" LoadData=@(args => LoadKawasakiExportCompressorDataGridPart2Async(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="ROLLS ROYCE RB-211 ENGINE" Key="1">
 									<ChildContent>
-										<RollsRoyceRB211EngineDataGrid ReportDate="@this.Data.Date" @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args)) />
+										<RollsRoyceRB211EngineDataGrid @bind-Data=@this.Data.DailyRollsRoyceRB211Engines  ReportDate="@this.Data.Date" @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -481,7 +481,7 @@
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
-								<PowerGenerationAndDistributionManagementDataGrid ReportDate="@this.Data.Date" @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args)) />
+								<PowerGenerationAndDistributionManagementDataGrid @bind-Data=@this.Data.DailyPowerGenerationAndDistributions  ReportDate="@this.Data.Date" @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
 						<Panel Class="panel-header" Key="1">
@@ -502,7 +502,7 @@
 										<DescriptionView>
 											<StringDescriptionItem Title="Name" @bind-Value=@this.Data.DailyWaterTank.UtilityName TItem="DailyWaterTank" Item="@this.Data.DailyWaterTank"/>
 											<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailyWaterTank.Status TItem="DailyWaterTank" Item="@this.Data.DailyWaterTank"/>
-											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyWaterTank.Remark TItem="DailyWaterTank" Item="@this.Data.DailyWaterTank"/>
+											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyWaterTank.Remark TItem="DailyWaterTank" Item="@this.Data.DailyWaterTank" IsRequired=false/>
 											<StringDescriptionItem Title="PH" @bind-Value=@this.Data.DailyWaterTank.PH TItem="DailyWaterTank" Item="@this.Data.DailyWaterTank"/>
 										</DescriptionView>
 									</ChildContent>
@@ -512,7 +512,7 @@
 										<DescriptionView>
 											<StringDescriptionItem Title="Name" @bind-Value=@this.Data.DailyNitrogenGenerator.UtilityName TItem="DailyNitrogenGenerator" Item="@this.Data.DailyNitrogenGenerator" />
 											<StringDescriptionItem Title="Status" @bind-Value=@this.Data.DailyNitrogenGenerator.Status TItem="DailyNitrogenGenerator" Item="@this.Data.DailyNitrogenGenerator"/>
-											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyNitrogenGenerator.Remark TItem="DailyNitrogenGenerator" Item="@this.Data.DailyNitrogenGenerator"/>
+											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyNitrogenGenerator.Remark TItem="DailyNitrogenGenerator" Item="@this.Data.DailyNitrogenGenerator" IsRequired=false/>
 											<DecimalDescriptionItem Title="Oxygen %" @bind-Value=@this.Data.DailyNitrogenGenerator.OxygenPercentage TItem="DailyNitrogenGenerator" Item="@this.Data.DailyNitrogenGenerator" />
 										</DescriptionView>
 									</ChildContent>
@@ -585,7 +585,7 @@
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
-								<CommunicationSystemDataGrid ReportDate="@this.Data.Date" @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args)) />
+								<CommunicationSystemDataGrid @bind-Data=@this.Data.DailyCommunicationSystems ReportDate="@this.Data.Date" @ref="communicationSystemDataGrid" LoadData=@(args => LoadCommunicationSystemDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
 						<Panel Class="description-no-shadow panel-header" Key="1">
@@ -596,7 +596,7 @@
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
-								<LWPActivityDataGrid ReportDate="@this.Data.Date" @ref="lWPActivityDataGrid" LoadData=@(args => LoadLWPActivityDataGridAsync(args)) />
+								<LWPActivityDataGrid @bind-Data=@this.Data.DailyLWPActivitys ReportDate="@this.Data.Date" @ref="lWPActivityDataGrid" LoadData=@(args => LoadLWPActivityDataGridAsync(args)) />
 						</ChildContent>
 						</Panel>
 						<Panel Class="description-no-shadow panel-header" Key="1">
@@ -607,7 +607,7 @@
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
-								<VendorActivitiesDataGrid ReportDate="@this.Data.Date" @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args)) />
+								<VendorActivitiesDataGrid @bind-Data=@this.Data.DailyVendorActivitys ReportDate="@this.Data.Date" @ref="vendorActivitiesDataGrid" LoadData=@(args => LoadVendorActivitiesDataGridAsync(args)) />
 						</ChildContent>
 						</Panel>
 						<Panel Class="description-no-shadow panel-header" Key="1">
@@ -618,7 +618,7 @@
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
-								<LogisticDataGrid ReportDate="@this.Data.Date" @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args)) />
+								<LogisticDataGrid @bind-Data=@this.Data.DailyLogistics ReportDate="@this.Data.Date" @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
 						<Panel Class="description-no-shadow panel-header" Key="1">
@@ -629,7 +629,7 @@
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
-								<MaximoWorkOrderDataGrid ReportDate="@this.Data.Date" @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args)) />
+								<MaximoWorkOrderDataGrid @bind-Data=@this.Data.DailyMaximoWorkOrders ReportDate="@this.Data.Date" @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>	
 					</Collapse>

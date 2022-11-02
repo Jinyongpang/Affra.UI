@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities
 {
     public partial class VendorActivitiesDataGrid
     {
+        [Parameter] public Collection<DailyVendorActivity> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyVendorActivity>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

@@ -1,4 +1,5 @@
-﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries;
+﻿using System.Collections.ObjectModel;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 using Microsoft.AspNetCore.Components;
@@ -8,11 +9,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
 {
     public partial class FPSOHelangSummaryDataGrid
     {
+        [Parameter] public Collection<DailyFPSOHelangSummary> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyFPSOHelangSummary>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool ShowDateColumn { get; set; }
         [Parameter] public DateTimeOffset? ReportDate { get; set; }
+        
         public CommonFilter CommonFilter
         {
             get
