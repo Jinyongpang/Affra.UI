@@ -64,7 +64,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         {
             try
             {
-                await this.WorkspaceService.UploadAsync(this.folder, new Domain.WorkspaceAPI.FileParameter(e.File.OpenReadStream(512000000), e.File.Name));
+                foreach (var file in e.GetMultipleFiles(30))
+                {
+                    await this.WorkspaceService.UploadAsync(this.folder, new Domain.WorkspaceAPI.FileParameter(file.OpenReadStream(512000000), file.Name));
+                }
                 this.AffraNotificationService.NotifySuccess("File uploaded!");
             }
             catch (Exception ex)

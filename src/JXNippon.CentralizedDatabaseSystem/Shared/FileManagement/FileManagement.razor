@@ -18,8 +18,8 @@
                         {
                             <Button Type="default" Size="@("large")" Shape="@ButtonShape.Round" OnClick=@(args => ReloadAsync(null))>
                                 <ChildContent>
-                                  <Upload>
-                                        <label><InputFile id="fileInput" OnChange="UploadAsync" hidden/><Icon Type="upload" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Upload</span></label>
+                                  <Upload Multiple ShowUploadList>
+                                        <label><InputFile id="fileInput" OnChange="UploadAsync" hidden multiple/><Icon Type="upload" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Upload</span></label>
                                    </Upload>     
                                 </ChildContent>
                             </Button>
