@@ -202,7 +202,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             if(!args.Column.Property.Contains("Remark") 
                 && string.IsNullOrEmpty(args.Column.GetValue(args.Data) as string))
             {
-                args.Attributes.Add("style", "background-color: yellow");
+                args.Attributes.Add("style", "background-color: #FFFF99");
             }
         }
         public object GetPropValue(object src, string propName)

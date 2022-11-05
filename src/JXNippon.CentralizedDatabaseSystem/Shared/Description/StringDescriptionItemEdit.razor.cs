@@ -64,7 +64,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         private string GetStyle()
         {
             return IsRequired && this.StringVal is null
-                ? "background-color: yellow;"
+                ? "background-color: #FFFF99;"
                 : null;
         }
 
