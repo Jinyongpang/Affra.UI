@@ -70,12 +70,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
                     + " MMscf was "
                     + $"<a style=\"background-color:#02F900;\">{this.GetCondition()}</a>"
                     + " than GODC "
-                    + $"<a style=\"background-color:#00FDFF;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark}</a>"
+                    + $"<a style=\"background-color:#00FDFF;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark.Trim()}</a>"
                     + " plan of "
                     + $"<a style=\"background-color:#FF40FF;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan}</a>"
                     + " MMscf. FPSO daily cumulative Crude Oil into storage tank was "
                     + $"<a style=\"background-color:#FF2800;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeCrudeOil}</a>"
-                    + "bbls.</a>";
+                    + " bbls.</a>";
             }
             else if (fpsoProduction.FPSOCumulativeGasExport == 0)
             {

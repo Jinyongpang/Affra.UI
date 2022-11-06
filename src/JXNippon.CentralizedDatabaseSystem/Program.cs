@@ -37,6 +37,7 @@ using Radzen;
 using JXNippon.CentralizedDatabaseSystem.Domain.Workspaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.WorkspaceAPI;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Workspaces;
+using JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -121,6 +122,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddScoped<IPersonalMessageService, PersonalMessageService>()
     .AddSingleton<IGlobalDataSource, GlobalDataSource>()
     .AddScoped<IExtraColumnService, ExtraColumnService>()
+    .AddScoped<ICombinedDailyReportService, CombinedDailyReportService>()
     .AddScoped<ICommonHelper, CommonHelper>()
     .AddSingleton<IOptions<RoleAuthorizationConfigurations>>(Options.Create(roleAuthorizationConfigurations))
     .AddScoped<IUserService, UserService>()

@@ -80,9 +80,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private VendorActivitiesDataGrid vendorActivitiesDataGrid;
         private LogisticDataGrid logisticDataGrid;
         private MaximoWorkOrderDataGrid maximoWorkOrderDataGrid;
-        private LifeBoatsDataGrid lifeBoatsDataGrid;
-
-        long editId;
+        private LifeBoatsDataGrid lifeBoatsDataGrid;      
+        
+        private CombinedDailyReportTag combinedDailyReportTagRef
+        {
+            set
+            {
+                combinedDailyReportTags.Add(value);
+            }
+        }
+        private ICollection<CombinedDailyReportTag> combinedDailyReportTags = new List<CombinedDailyReportTag>();
         private void SetIsEditing(bool value)
         {
             this.isEditing = value;
@@ -108,12 +115,20 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             try
             {
-                using var scope = ServiceProvider.CreateScope();
-                var service = this.GetGenericService(scope);
-                this.Data.Status = CombinedDailyReportStatus.Approved;
-                await service.UpdateAsync(this.Data, this.Data.Id);
-                this.AffraNotificationService.NotifySuccess("Report approved.");
-                this.DialogService.Close();
+                if (this.CanApprove())
+                {
+                    using var scope = ServiceProvider.CreateScope();
+                    var service = this.GetGenericService(scope);
+                    this.Data.Status = CombinedDailyReportStatus.Approved;
+                    await service.UpdateAsync(this.Data, this.Data.Id);
+                    this.AffraNotificationService.NotifySuccess("Report approved.");
+                    this.DialogService.Close();
+                }
+                else
+                {
+                    this.AffraNotificationService.NotifyWarning("Please complete all the required fields.");
+                }
+                
             }
             catch (Exception ex)
             {
@@ -280,6 +295,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             return result is null
                 ? -1
                 : result.Length;
+        }
+
+        private bool CanApprove()
+        {
+            return this.combinedDailyReportTags
+                .All(x => !x.HasNoViolation);
         }
     }
 }
