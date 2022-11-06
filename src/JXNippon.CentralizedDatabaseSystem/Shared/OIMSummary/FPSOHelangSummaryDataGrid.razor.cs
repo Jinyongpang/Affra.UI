@@ -75,7 +75,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
                     + $"<a style=\"background-color:#FF40FF;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan}</a>"
                     + " MMscf. FPSO daily cumulative Crude Oil into storage tank was "
                     + $"<a style=\"background-color:#FF2800;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeCrudeOil}</a>"
-                    + "bbls.</a>";
+                    + " bbls.</a>";
             }
             else if (fpsoProduction.FPSOCumulativeGasExport == 0)
             {
