@@ -81,7 +81,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
                     + " MMscf) was "
                     + $"<a style=\"background-color:#FF40FF;\">{this.GetCondition()}</a>"
                     + " than SK-10 GODC "
-                    + $"<a style=\"background-color:#FF2800;\">{this.CombinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExportRemark}</a>"
+                    + $"<a style=\"background-color:#FF2800;\">{this.CombinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExportRemark.Trim()}</a>"
                     + " plan of "
                     + $"<a style=\"background-color:#FE9300;\">{this.CombinedDailyReport.DailyHIPProduction?.HIPGasExportGODCPlan}</a>"
                     + " MMscfd</a>";
