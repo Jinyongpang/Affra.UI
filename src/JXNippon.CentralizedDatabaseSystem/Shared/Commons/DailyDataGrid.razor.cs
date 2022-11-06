@@ -1,10 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using Affra.Core.Domain.Services;
+﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
-using JXNippon.CentralizedDatabaseSystem.Domain.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
-using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.TemplateManagements;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -12,7 +9,6 @@ using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.AuditTrails;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
-using Npgsql.TypeMapping;
 using Radzen;
 using Radzen.Blazor;
 using ViewODataService.Affra.Service.View.Domain.Templates;
@@ -24,25 +20,28 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         where TDialog : ComponentBase, IDailyDialog<TItem>
     {
         private RadzenDataGrid<TItem> grid;
-        
+
         private bool isLoading = false;
         private IEnumerable<CustomColumn> customColumns;
         private Collection<TItem> _items { get; set; }
-
         [Parameter] public Collection<TItem> Items { get; set; }
         [Parameter] public EventCallback<Collection<TItem>> ItemsChanged { get; set; }
         [Parameter] public EventCallback<Collection<TItem>> OnItemsChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
+        [Parameter] public bool AllowSorting { get; set; } = true;
+        [Parameter] public bool AllowFiltering { get; set; } = false;
         [Parameter] public RenderFragment Columns { get; set; }
         [Parameter] public EventCallback<IQueryable<TItem>> QueryFilter { get; set; }
+
+        [Parameter] public string[] Subscriptions { get; set; } = new string[0];
+        [Parameter] public DateTimeOffset? ReportDate { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private ContextMenuService ContextMenuService { get; set; }
         [Inject] private IExtraColumnService ExtraColumnService { get; set; }
         [Inject] private IContentUpdateNotificationService ContentUpdateNotificationService { get; set; }
-        [Parameter] public DateTimeOffset? ReportDate { get; set; }
         public CommonFilter CommonFilter { get; set; }
         public int Count { get; set; }
         private bool isDisposed = false;
@@ -54,8 +53,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
                 .GetCustomColumns(typeof(TItem).Name)
                 .ToQueryOperationResponseAsync<CustomColumn>())
                 .ToList();
+            foreach (var subscription in Subscriptions)
+            {
+                await ContentUpdateNotificationService.SubscribeAsync(subscription, OnContentUpdateAsync);
+            }
 
-            await this.ContentUpdateNotificationService.SubscribeAsync(typeof(TItem).Name, OnContentUpdateAsync);
+            await ContentUpdateNotificationService.SubscribeAsync(typeof(TItem).Name, OnContentUpdateAsync);
         }
         public async Task ReloadAsync()
         {
@@ -64,7 +67,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         private Task OnContentUpdateAsync(object obj)
         {
             StateHasChanged();
-            return this.ReloadAsync();
+            return ReloadAsync();
         }
         private async Task LoadDataAsync(LoadDataArgs args)
         {
@@ -90,11 +93,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<TItem>();
 
-            Count = (int)response.Count;
+            Count = (int)response.Count; 
             Items = new Collection<TItem>(response.ToArray());
-            _items = Items;
+            var itemCountBefore = Items.Count;
             await ItemsChanged.InvokeAsync(Items);
             await OnItemsChanged.InvokeAsync(Items);
+            var itemCountAfter = Items.Count;
+            Count = itemCountAfter - itemCountBefore + Count;
+            _items = Items;
             isLoading = false;
         }
 
@@ -187,7 +193,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             {
                 if (!isDisposed)
                 {
-                    await this.ContentUpdateNotificationService.RemoveHandlerAsync(typeof(TItem).Name, OnContentUpdateAsync);
+                    foreach (var subscription in Subscriptions)
+                    {
+                        await ContentUpdateNotificationService.RemoveHandlerAsync(subscription, OnContentUpdateAsync);
+                    }
+                    await ContentUpdateNotificationService.RemoveHandlerAsync(typeof(TItem).Name, OnContentUpdateAsync);
 
                     isDisposed = true;
                 }
@@ -199,10 +209,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         }
         private void CellRender(DataGridCellRenderEventArgs<TItem> args)
         {
-            if(!args.Column.Property.Contains("Remark") 
+            if (!args.Column.Property.Contains("Remark")
                 && string.IsNullOrEmpty(args.Column.GetValue(args.Data) as string))
             {
-                args.Attributes.Add("style", "background-color: yellow");
+                args.Attributes.Add("style", "background-color: #FFFF99");
             }
         }
         public object GetPropValue(object src, string propName)

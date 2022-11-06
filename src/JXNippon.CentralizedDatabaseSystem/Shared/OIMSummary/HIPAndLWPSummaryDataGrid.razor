@@ -5,12 +5,12 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=DataChanged TItem="DailyHIPAndLWPSummary" TDialog="HIPAndLWPSummaryDialog" ReportDate="@this.ReportDate"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" Subscriptions=@(new string[] { "DailySK10Production", "DailyHIPProduction" }) @bind-Items=@this.Data OnItemsChanged=OnDataChangedAsync TItem="DailyHIPAndLWPSummary" TDialog="HIPAndLWPSummaryDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyHIPAndLWPSummary" Property="Remark" Title="Remark">
                     <Template Context="item">
-                        <p style="white-space:pre-wrap">@item.Remark</p>
+                        <p style="white-space:pre-wrap">@((MarkupString)@item.Remark)</p>
                     </Template>
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPAndLWPSummary" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">

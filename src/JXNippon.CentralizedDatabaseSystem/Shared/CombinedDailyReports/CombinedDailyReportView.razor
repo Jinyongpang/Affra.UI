@@ -81,12 +81,12 @@
 							<ChildContent> 
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="HIP / LWP SUMMARY" Key="1">
 									<ChildContent>
-										<HIPAndLWPSummaryDataGrid @bind-Data=@this.Data.DailyHIPAndLWPSummarys ReportDate="@this.Data.Date" @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) />
+										<HIPAndLWPSummaryDataGrid @bind-Data=@this.Data.DailyHIPAndLWPSummarys ReportDate="@this.Data.Date" CombinedDailyReport=@this.Data @ref="hipAndLWPSummaryDataGrid" LoadData=@(args => LoadHIPAndLWPSummaryDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="FPSO HELANG SUMMARY" Key="1">
 									<ChildContent>
-										<FPSOHelangSummaryDataGrid @bind-Data=@this.Data.DailyFPSOHelangSummarys ReportDate="@this.Data.Date" @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args)) />
+										<FPSOHelangSummaryDataGrid @bind-Data=@this.Data.DailyFPSOHelangSummarys ReportDate="@this.Data.Date" CombinedDailyReport=@this.Data @ref="fpsoHelangSummaryDataGrid" LoadData=@(args => LoadFPSOHelangSummaryDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
