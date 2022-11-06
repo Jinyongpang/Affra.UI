@@ -615,7 +615,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>19. LOGISTIC</span>
-									<CombinedDailyReportTag @ref=combinedDailyReportTagRef Count=@this.GetCollectionTotalUnfillProperty(this.Data.DailyLogistics)></CombinedDailyReportTag>
+									<CombinedDailyReportTag @ref=combinedDailyReportTagRef Counts=@(new int[] { this.GetCollectionTotalUnfillProperty(this.Data.DailyLogistics)})></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
