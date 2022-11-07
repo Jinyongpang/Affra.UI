@@ -26,8 +26,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                     HasEmptyRowData = true;
                 }
             }
-            HasNoViolation = this.HasEmptyRowData
-                || this.TotalCount > 0;
+            HasNoViolation = !this.HasEmptyRowData
+                && this.TotalCount == 0;
 
             base.OnInitialized();
         }
