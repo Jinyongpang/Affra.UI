@@ -1,11 +1,15 @@
 ﻿
-@if (this.TotalCount >= 0)
+@if (this.TotalCount > 0)
 {
     
     <Tag Color="@(this.GetColor())" Class="panel-summary-tag">@this.TotalCount</Tag>
 
 }
-else
+else if(this.HasEmptyRowData)
 {
     <Tag Color="@(this.GetColor())" Class="panel-summary-tag">No Data</Tag>
+}
+else
+{
+    <Tag Color="@(this.GetColor())" Class="panel-summary-tag">@this.TotalCount</Tag>
 }
