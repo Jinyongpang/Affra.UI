@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace JXNippon.CentralizedDatabaseSystem.Pages
 {
-    public partial class Home : IDisposable
+    public partial class HomeLegacy : IDisposable
     {
         private bool isDisposed = false;
         private bool isSearchEmpty = false;
