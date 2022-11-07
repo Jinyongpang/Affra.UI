@@ -300,7 +300,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private bool CanApprove()
         {
             return this.combinedDailyReportTags
-                .All(x => !x.HasNoViolation);
+                .All(x => x.HasNoViolation);
         }
     }
 }
