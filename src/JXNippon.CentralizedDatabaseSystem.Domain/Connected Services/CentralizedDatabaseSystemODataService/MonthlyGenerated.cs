@@ -62,6 +62,18 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir
+{
+    public partial class MonthlyReservoirProduction : IMonthly
+    {
+        [IgnoreClientProperty]
+        public DateTime DateUI
+        {
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.FieldMY
 {
     public partial class MonthlyFPSOFieldMY : IMonthly
