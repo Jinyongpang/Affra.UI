@@ -38,6 +38,9 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Workspaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.WorkspaceAPI;
 using JXNippon.CentralizedDatabaseSystem.Infrastructure.Workspaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
+using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
+using JXNippon.CentralizedDatabaseSystem.Domain.ReportAPI;
+using JXNippon.CentralizedDatabaseSystem.Infrastructure.Reports;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -82,6 +85,9 @@ builder.Configuration.GetSection(nameof(RoleAuthorizationConfigurations)).Bind(r
 
 WorkspaceAPIConfigurations workspaceAPIConfigurations = new();
 builder.Configuration.GetSection(nameof(WorkspaceAPIConfigurations)).Bind(workspaceAPIConfigurations);
+
+ReportAPIClientConfigurations reportAPIClientConfigurations = new();
+builder.Configuration.GetSection(nameof(ReportAPIClientConfigurations)).Bind(reportAPIClientConfigurations);
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
@@ -130,6 +136,12 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<WorkspaceAPIConfigurations>>(Options.Create(workspaceAPIConfigurations))
     .AddScoped<IWorkspaceService, WorkspaceService>()
     .AddHttpClient<IWorkspaceAPIClient, JXNippon.CentralizedDatabaseSystem.Infrastructure.Workspaces.WorkspaceAPIClient>()
+    .AddHttpMessageHandler<CreateActivityHandler>()
+    .AddHttpMessageHandler<AuthorizationMessageHandler>()
+    .Services
+    .AddSingleton<IOptions<ReportAPIClientConfigurations>>(Options.Create(reportAPIClientConfigurations))
+    .AddScoped<IReportService, ReportService>()
+    .AddHttpClient<IReportAPIClient, JXNippon.CentralizedDatabaseSystem.Infrastructure.Reports.ReportAPIClient>()
     .AddHttpMessageHandler<CreateActivityHandler>()
     .AddHttpMessageHandler<AuthorizationMessageHandler>()
     .Services
