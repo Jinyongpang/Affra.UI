@@ -1,0 +1,4208 @@
+﻿{
+  "x-generator": "NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Report API",
+    "description": "Report API V1.0.0.0",
+    "termsOfService": "None",
+    "version": "v1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:50007/Report-api"
+    }
+  ],
+  "paths": {
+    "/CombinedDailyReportReport": {
+      "post": {
+        "tags": [
+          "CombinedDailyReportReport"
+        ],
+        "operationId": "CombinedDailyReportReport_Generate",
+        "parameters": [
+          {
+            "name": "templateFile",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "CombinedDailyReportTemplate.xlsx",
+              "nullable": true
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "combinedDailyReport",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CombinedDailyReport"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "guid"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProblemDetails": {
+        "type": "object",
+        "additionalProperties": {
+          "nullable": true
+        },
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "CombinedDailyReport": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "user": {
+                "type": "string",
+                "nullable": true
+              },
+              "lastUpdatedDateTime": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "status": {
+                "$ref": "#/components/schemas/CombinedDailyReportStatus"
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyHealthSafetyEnvironment": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyHealthSafetyEnvironment"
+                  }
+                ]
+              },
+              "dailyLifeBoats": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyLifeBoat"
+                }
+              },
+              "dailyLongTermOverridesInhibitsOnAlarmTrips": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyLongTermOverridesInhibitsOnAlarmTrip"
+                }
+              },
+              "dailyOperatingChanges": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyOperatingChange"
+                }
+              },
+              "dailyLossOfPrimaryContainmentIncident": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyLossOfPrimaryContainmentIncident"
+                  }
+                ]
+              },
+              "dailyHIPAndLWPSummarys": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyHIPAndLWPSummary"
+                }
+              },
+              "dailyFPSOHelangSummarys": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyFPSOHelangSummary"
+                }
+              },
+              "dailySandDisposalDesander": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailySandDisposalDesander"
+                  }
+                ]
+              },
+              "dailyCiNalco": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyCiNalco"
+                  }
+                ]
+              },
+              "dailyInowacInjection": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyInowacInjection"
+                  }
+                ]
+              },
+              "dailyCommunicationSystems": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyCommunicationSystem"
+                }
+              },
+              "dailyLWPActivitys": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyLWPActivity"
+                }
+              },
+              "dailyVendorActivitys": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyVendorActivity"
+                }
+              },
+              "dailyUtilitys": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyUtility"
+                }
+              },
+              "dailyWaterTank": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyWaterTank"
+                  }
+                ]
+              },
+              "dailyNitrogenGenerator": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyNitrogenGenerator"
+                  }
+                ]
+              },
+              "dailyMaximoWorkOrders": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyMaximoWorkOrder"
+                }
+              },
+              "dailyAnalysisResult": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyAnalysisResult"
+                  }
+                ]
+              },
+              "dailyCoolingMediumSystems": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyCoolingMediumSystem"
+                }
+              },
+              "dailyLogistics": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyLogistic"
+                }
+              },
+              "dailyGlycolPumps": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyGlycolPump"
+                }
+              },
+              "dailyGlycolTrains": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyGlycolTrain"
+                }
+              },
+              "dailyGlycolStock": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyGlycolStock"
+                  }
+                ]
+              },
+              "dailyKawasakiExportCompressors": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyKawasakiExportCompressor"
+                }
+              },
+              "dailyRollsRoyceRB211Engines": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyRollsRoyceRB211Engine"
+                }
+              },
+              "dailyHIPWellHeadParameters": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyHIPWellHeadParameter"
+                }
+              },
+              "dailyLWPWellHeadParameters": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyLWPWellHeadParameter"
+                }
+              },
+              "dailyGasCondensateExportSamplerAndExportLine": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyGasCondensateExportSamplerAndExportLine"
+                  }
+                ]
+              },
+              "dailyWellHeadAndSeparationSystem": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyWellHeadAndSeparationSystem"
+                  }
+                ]
+              },
+              "dailyWellStreamCoolers": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyWellStreamCooler"
+                }
+              },
+              "dailySK10Production": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailySK10Production"
+                  }
+                ]
+              },
+              "dailyHIPProduction": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyHIPProduction"
+                  }
+                ]
+              },
+              "dailyFPSOHelangProduction": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyFPSOHelangProduction"
+                  }
+                ]
+              },
+              "dailyMajorEquipmentStatuses": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyMajorEquipmentStatus"
+                }
+              },
+              "dailyDiesel": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyDiesel"
+                  }
+                ]
+              },
+              "dailyProducedWaterTreatmentSystems": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyProducedWaterTreatmentSystem"
+                }
+              },
+              "dailyDeOilerInjection": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DailyDeOilerInjection"
+                  }
+                ]
+              },
+              "dailyPowerGenerationAndDistributions": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyPowerGenerationAndDistribution"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CombinedDailyReportStatus": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Pending",
+          "Rejected",
+          "Approved"
+        ],
+        "enum": [
+          "Pending",
+          "Rejected",
+          "Approved"
+        ]
+      },
+      "DailyHealthSafetyEnvironment": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastLTIDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "sK10DaysLTIFree": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "lastDrillExerciseConducted": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "lastAnnualESDTest": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "nextAnnualESDTest": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "injurious_MTC_FACCount": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "injurious_MTC_FACDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "nearMissCount": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "nearMissDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "propertyDamageCount": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "propertyDamageDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "totalUCUXToday": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "totalUCUXThisMonth": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "hiP_LQ": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "hiP_ALQ": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "total_HIP_POB": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "availableBedding": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "operation_Catering_NonEssential": {
+                "type": "string",
+                "nullable": true
+              },
+              "weather": {
+                "type": "string",
+                "nullable": true
+              },
+              "windSpeed": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "windDirection": {
+                "type": "string",
+                "nullable": true
+              },
+              "swellWaveHeight": {
+                "type": "string",
+                "nullable": true
+              },
+              "visibility": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "BaseEntityType": {
+        "type": "object",
+        "description": "Base type of entity type to include DataServiceContext for function and action invocation",
+        "additionalProperties": false
+      },
+      "DailyLifeBoat": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "lifeBoatName": {
+                "type": "string",
+                "nullable": true
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "startDate": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "lifeBoat": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/LifeBoat"
+                  }
+                ]
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "LifeBoat": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyLifeBoats": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyLifeBoat"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyLongTermOverridesInhibitsOnAlarmTrip": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "tagName": {
+                "type": "string",
+                "nullable": true
+              },
+              "raisedDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "maximoWorkOrder": {
+                "type": "string",
+                "nullable": true
+              },
+              "location": {
+                "type": "string",
+                "nullable": true
+              },
+              "longDescriptionRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "longTermOverridesInhibitsOnAlarmTrip": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/LongTermOverridesInhibitsOnAlarmTrip"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "LongTermOverridesInhibitsOnAlarmTrip": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyLongTermOverridesInhibitsOnAlarmTrips": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyLongTermOverridesInhibitsOnAlarmTrip"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyOperatingChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "tagName": {
+                "type": "string",
+                "nullable": true
+              },
+              "raisedDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "expiredDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "referenceNumber": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "operatingChange": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/OperatingChange"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "OperatingChange": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyOperatingChanges": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyOperatingChange"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyLossOfPrimaryContainmentIncident": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "majorLOPC": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "lastMajorLOPC": {
+                "type": "string",
+                "nullable": true
+              },
+              "minorLOPC": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "lastMinorLOPC": {
+                "type": "string",
+                "nullable": true
+              },
+              "otherLOPC": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "lastOtherLOPC": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyHIPAndLWPSummary": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "isValidatedBySystem": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "systemValidateDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "isValidatedByUser": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "userValidationDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "validationResults": {
+                "type": "string",
+                "nullable": true
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "ModelValidationStatus": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Pending",
+          "Failed",
+          "Success"
+        ],
+        "enum": [
+          "Pending",
+          "Failed",
+          "Success"
+        ]
+      },
+      "DailyFPSOHelangSummary": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "isValidatedBySystem": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "systemValidateDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "isValidatedByUser": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "userValidationDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "validationResults": {
+                "type": "string",
+                "nullable": true
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailySandDisposalDesander": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "sandDisposalDesanderName": {
+                "type": "string",
+                "nullable": true
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "lastSandJettingDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "nextSandJettingDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "eastClusterJettingCycleNumber": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "westClusterJettingCycleNumber": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "drumCollectedNumber": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "accumulatedSandDisposed": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "highestMercuryReading": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "remark1": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "sandDisposalDesander": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SandDisposalDesander"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "SandDisposalDesander": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailySandDisposalDesanders": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailySandDisposalDesander"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyCiNalco": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "yesterdayLevel": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "todayLevel": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "levelDrop": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "actualConsumption": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "dailyTargetRate": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "deviation": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "wellInjectionTarget": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "wellActualInjection": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "trunkLineInjectionTarget": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "trunkLineActualInjection": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "lwpInjectionTarget": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "lwpActualInjection": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "toteTank": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "drum": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyInowacInjection": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "v2010": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcalp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcahp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcblp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcbhp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "target": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "actualInjection": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_DE_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_DE_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_NDE_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_NDE_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_V2400_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_V2400_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_V2430_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_V2430_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_TCALP_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_TCALP_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_V2200_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcA_V2200_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_DE_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_DE_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_NDE_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_NDE_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_V2500_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_V2500_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_V2530_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_V2530_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_TCBLP_PH": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcB_TCBLP_FE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "stock": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "levelDrop": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyCommunicationSystem": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyLWPActivity": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyVendorActivity": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "vendorName": {
+                "type": "string",
+                "nullable": true
+              },
+              "title": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "planForTomorrow": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "vendor": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Vendor"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "Vendor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyVendorActivities": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyVendorActivity"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyUtility": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DailyUtilityBase"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyUtilityBase": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "x-abstract": true,
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "utilityName": {
+                "type": "string",
+                "nullable": true
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "utility": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Utility"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "Utility": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyUtilityBases": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyUtilityBase"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyWaterTank": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DailyUtilityBase"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ph": {
+                "type": "string",
+                "nullable": true
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyNitrogenGenerator": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DailyUtilityBase"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "oxygenPercentage": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyMaximoWorkOrder": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "period": {
+                "type": "string",
+                "nullable": true
+              },
+              "workOrderTypeName": {
+                "type": "string",
+                "nullable": true
+              },
+              "pm": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "cm": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "cb": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "mo": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "total": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "workOrderType": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/WorkOrderType"
+                  }
+                ]
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "WorkOrderType": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyMaximoWorkOrders": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyMaximoWorkOrder"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyAnalysisResult": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "phReading": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "phReadingRange": {
+                "type": "string",
+                "nullable": true
+              },
+              "iron": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ironRange": {
+                "type": "string",
+                "nullable": true
+              },
+              "salinity": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "nitrite": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "nitriteRange": {
+                "type": "string",
+                "nullable": true
+              },
+              "cmFilterS6970": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "cmFilterS6970Range": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyCoolingMediumSystem": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "coolingMediumSystemName": {
+                "type": "string",
+                "nullable": true
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "coolingMediumSystem": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CoolingMediumSystem"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "CoolingMediumSystem": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyCoolingMediumSystems": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyCoolingMediumSystem"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyLogistic": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "logisticName": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "logistic": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Logistic"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "Logistic": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyLogistics": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyLogistic"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyGlycolPump": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "glycolPumpName": {
+                "type": "string",
+                "nullable": true
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "glycolPump": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/GlycolPump"
+                  }
+                ]
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "GlycolPump": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyGlycoPumps": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyGlycolPump"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyGlycolTrain": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "glycolTrainName": {
+                "type": "string",
+                "nullable": true
+              },
+              "previousDayLevel": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "todayReportLevel": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "levelDrop": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "indicator": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "indicatorGuide": {
+                "type": "string",
+                "nullable": true
+              },
+              "flowRate": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ph": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "glycolTrain": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/GlycolTrain"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "GlycolTrain": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyGlycoTrains": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyGlycolTrain"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyGlycolStock": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "glycolStockInToteTank": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "glycolStockInDrum": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyKawasakiExportCompressor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "kawasakiExportCompressorName": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "speedControl": {
+                "type": "string",
+                "nullable": true
+              },
+              "speed": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "pressureSuct": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "pressureDisc": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "throughPut": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "afterCoolerDischLP": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "afterCoolerDischHP": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "recycleValueLP": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "recycleValueHP": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "surgeDeviationLP": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "surgeDeviationHP": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "axialDisp1": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "axialDisp2": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "primaryVentDE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "primaryVentNDE": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "deVibrationX": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "deVibrationY": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ndeVibrationX": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ndeVibrationY": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "outboardThrustBrgTE801": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "outboardThrustBrgTE802": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "inboardThrustBrgTE803": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "inboardThrustBrgTE804": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ndeJournalBrgTE805": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ndeJournalBrgTE806": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "deJournalBrgTE807": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "deJournalBrgTE808": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "kawasakiExportCompressor": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/KawasakiExportCompressor"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "KawasakiExportCompressor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyKawasakiExportCompressors": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyKawasakiExportCompressor"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyRollsRoyceRB211Engine": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "rollsRoyceRB211EngineName": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "ggN1": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "ggN2": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "ptN3": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "ggctBrgLO": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "t6": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "cdp": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "ggAirIntake": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "runningHours": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "startAttempt": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "successfulStarts": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "deSampleColour": {
+                "type": "string",
+                "nullable": true
+              },
+              "ndeSampleColour": {
+                "type": "string",
+                "nullable": true
+              },
+              "turbineWashDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "turbineWashRunnningHours": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "rollsRoyceRB211Engine": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RollsRoyceRB211Engine"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "RollsRoyceRB211Engine": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyRollsRoyceRB211Engines": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyRollsRoyceRB211Engine"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyHIPWellHeadParameter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "hipWellHeadName": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "thp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tht": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "chokePercentage": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "chokeBase": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "chokeMode": {
+                "type": "string",
+                "nullable": true
+              },
+              "pcp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "scp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ccp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "upTime": {
+                "type": "string",
+                "nullable": true
+              },
+              "ci": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ciPumpStatus": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "hipWellHead": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/HIPWellHead"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "HIPWellHead": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyHIPWellHeads": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyHIPWellHeadParameter"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyLWPWellHeadParameter": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "lwpWellHeadName": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "thp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tht": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "chokePercentage": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "chokeMode": {
+                "type": "string",
+                "nullable": true
+              },
+              "pcp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "scp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ccp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "upTime": {
+                "type": "string",
+                "nullable": true
+              },
+              "ci": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "tcp": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "lwpWellHead": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/LWPWellHead"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "LWPWellHead": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyLWPWellHeads": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyLWPWellHeadParameter"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyGasCondensateExportSamplerAndExportLine": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastPiggingDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "nextPiggingDate": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "trunkLinePressure": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "pV2901SP": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "gasSamplerId": {
+                "type": "string",
+                "nullable": true
+              },
+              "lastChangeOut": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "gasSamplerContent": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "nextChangeOut": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "condySamplerId": {
+                "type": "string",
+                "nullable": true
+              },
+              "lastSampling": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "condySamplerContent": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "nextSampling": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "isValidatedBySystem": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "systemValidateDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "isValidatedByUser": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "userValidationDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "validationResults": {
+                "type": "string",
+                "nullable": true
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyWellHeadAndSeparationSystem": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "stationRecyclePV2015": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "stationRecyclePV2015Control": {
+                "type": "string",
+                "nullable": true
+              },
+              "productionSeparatorV2010PV": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "testSeparatorV2000PV": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "sayBoltColour": {
+                "type": "string",
+                "nullable": true
+              },
+              "sandFilterS0400Status": {
+                "type": "string",
+                "nullable": true
+              },
+              "s0400": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyWellStreamCooler": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "wellStreamCoolerName": {
+                "type": "string",
+                "nullable": true
+              },
+              "wellStreamCoolerTemparature": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "wellStreamCooler": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/WellStreamCooler"
+                  }
+                ]
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "WellStreamCooler": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyWellStreamCoolers": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyWellStreamCooler"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailySK10Production": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "sK10CumulativeGasExport": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "sK10GasExportGODCPlan": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "sK10GasExportGODCPlanRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "sK10CumulativeGasExportPerformanceStatus": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PerformanceStatus"
+                  }
+                ]
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "PerformanceStatus": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "AchieveTarget",
+          "BelowTarget",
+          "MetAcceptableRange"
+        ],
+        "enum": [
+          "AchieveTarget",
+          "BelowTarget",
+          "MetAcceptableRange"
+        ]
+      },
+      "DailyHIPProduction": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "hipCumulativeGasExport": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "hipGasExportGODCPlan": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "hipCumulativeGasExportPerformanceStatus": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PerformanceStatus"
+                  }
+                ]
+              },
+              "hipCumulativeGasExportRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "hipCumulativeCondensateExport": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "hipCumulativeCondensateExportRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "hipCumulativeWaterProduction": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "hipCumulativeWaterProductionRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "fuelGas": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "fuelGasRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "hpVent": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "hpVentRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "lpVent": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "lpVentRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "waterContentInGas": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "waterContentInGasRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "condensateWaterCutMeterPercentage": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "condensateWaterCutMeterPPM": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "condensateWaterCutMeterRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "oilInWaterReading": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "oilInWaterReadingRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyFPSOHelangProduction": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "fpsoCumulativeGasExport": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "fpsoGasExportGODCPlan": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "fpsoCumulativeGasExportPerformanceStatus": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PerformanceStatus"
+                  }
+                ]
+              },
+              "fpsoCumulativeGasExportRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "fpsoCumulativeCrudeOil": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "fpsoCumulativeCrudeOilRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "fpsoCrudeAPIReadingInletSep": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "fpsoCrudeAPIReadingReceivingTankCOTNumber": {
+                "type": "string",
+                "nullable": true
+              },
+              "fpsoCrudeAPIReadingReceivingTank": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "estimatedHIPCrudeToFPSO": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "estimatedHIPCrudeToFPSORemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "estimatedLWPCrudeToFPSO": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "estimatedLWPCrudeToFPSORemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "hipCondyDivertToFPSO": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "hipCondyDivertToFPSORemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "fpsoCumulativeWaterProduction": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "fpsoCumulativeWaterProductionRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "fpsoFlaring": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "fpsoFlaringRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "fpsoFuelGasConsumption": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "fpsoFuelGasConsumptionRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyMajorEquipmentStatus": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "majorEquipmentName": {
+                "type": "string",
+                "nullable": true
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "isValidatedBySystem": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "systemValidateDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "isValidatedByUser": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "userValidationDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "validationResults": {
+                "type": "string",
+                "nullable": true
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "majorEquipment": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/MajorEquipment"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "MajorEquipment": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyMajorEquipmentStatuses": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyMajorEquipmentStatus"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyDiesel": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "hipDieselStock": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "hipDieselStockRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "fpsoDieselConsumption": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "fpsoDieselConsumptionRemark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "isValidatedBySystem": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "systemValidateDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "isValidatedByUser": {
+                "$ref": "#/components/schemas/ModelValidationStatus"
+              },
+              "userValidationDateTime": {
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
+              },
+              "validationResults": {
+                "type": "string",
+                "nullable": true
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyProducedWaterTreatmentSystem": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "producedWaterTreatmentSystemName": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "lastSkimmingDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "analyserStatus": {
+                "type": "string",
+                "nullable": true
+              },
+              "iron": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "ph": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "remark2": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "producedWaterTreatmentSystem": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ProducedWaterTreatmentSystem"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "ProducedWaterTreatmentSystem": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyProducedWaterTreatmentSystems": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyProducedWaterTreatmentSystem"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "DailyDeOilerInjection": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "injectionPoint": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "injectionStatus": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "todayLevel": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "yesterdayLevel": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "levelDrop": {
+                "type": "number",
+                "format": "decimal",
+                "nullable": true
+              },
+              "pumpStroke": {
+                "type": "string",
+                "nullable": true
+              },
+              "pumpDischarge": {
+                "type": "string",
+                "nullable": true
+              },
+              "totalTank": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "drums": {
+                "type": "integer",
+                "format": "int32",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DailyPowerGenerationAndDistribution": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "extras": {
+                "type": "string",
+                "nullable": true
+              },
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "powerGeneratorName": {
+                "type": "string",
+                "nullable": true
+              },
+              "status": {
+                "type": "string",
+                "nullable": true
+              },
+              "remark": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "combinedDailyReport": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CombinedDailyReport"
+                  }
+                ]
+              },
+              "powerGenerator": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PowerGenerator"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "PowerGenerator": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseEntityType"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "name": {
+                "type": "string",
+                "nullable": true
+              },
+              "xmin": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "dailyPowerGenerationAndDistributions": {
+                "type": "array",
+                "nullable": true,
+                "items": {
+                  "$ref": "#/components/schemas/DailyPowerGenerationAndDistribution"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "securitySchemes": {
+      "JWT": {
+        "type": "apiKey",
+        "description": "Provide JWT Authentiation",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ]
+}

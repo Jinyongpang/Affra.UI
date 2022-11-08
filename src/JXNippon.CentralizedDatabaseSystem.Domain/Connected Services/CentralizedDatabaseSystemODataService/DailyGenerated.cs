@@ -358,3 +358,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
+
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports
+{
+    public partial class CombinedDailyReport : IDaily
+    {
+        [IgnoreClientProperty] public DateTime DateUI 
+        { 
+            get { return this.Date.ToLocalDateTime(); } 
+            set { this.Date = value.ToUniversalTime(); } 
+        }
+    }
+}
