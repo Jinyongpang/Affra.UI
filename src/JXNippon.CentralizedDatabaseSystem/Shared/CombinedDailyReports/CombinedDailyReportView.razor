@@ -143,17 +143,17 @@
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="LIFEBOATS" Key="1">
 									<ChildContent>
-										<LifeBoatsDataGrid ReportDate="@this.Data.Date" @ref="lifeBoatsDataGrid" LoadData=@(args => LoadLifeBoatsDataGridAsync(args)) />
+										<LifeBoatsDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyLifeBoats @ref="lifeBoatsDataGrid" LoadData=@(args => LoadLifeBoatsDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
 									<ChildContent>
-										<LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid ReportDate="@this.Data.Date" @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args)) />
+										<LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @bind-Data=@this.Data.DailyLongTermOverridesInhibitsOnAlarmTrips ReportDate="@this.Data.Date" @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="MANAGEMENT OF CHANGE (MOC) : OPERATING CHANGE" Key="1">
 									<ChildContent>
-										<OperatingChangeDataGrid ReportDate="@this.Data.Date" @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args)) />
+										<OperatingChangeDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyOperatingChanges @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -239,7 +239,7 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="EQUIPMENT STATUS" Key="1">
 									<ChildContent>
-										<MajorEquipmentStatusDataGrid ReportDate="@this.Data.Date" @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args)) />
+										<MajorEquipmentStatusDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyMajorEquipmentStatuses @ref="majorEquipmentStatusDataGrid" LoadData=@(args => LoadMajorEquipmentDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DIESEL STOCK" Key="1">
@@ -344,7 +344,7 @@
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="WELL STREAM COOLERS" Key="1">
 									<ChildContent>
-										<WellStreamCoolerDataGrid ReportDate="@this.Data.Date" @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args)) />
+										<WellStreamCoolerDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyWellStreamCoolers @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -374,8 +374,7 @@
 							<HeaderTemplate>
 								<div>
 									<span>8. ROLLS ROYCE GAS ENGINE & KAWASAKI COMPRESSION SYSTEM</span>
-									<CombinedDailyReportTag @ref=combinedDailyReportTagRef Counts=@(new int[] { this.GetCollectionTotalUnfillProperty(this.Data.DailyKawasakiExportCompressors)
-									+ this.GetCollectionTotalUnfillProperty(this.Data.DailyRollsRoyceRB211Engines)})></CombinedDailyReportTag>
+									<CombinedDailyReportTag @ref=combinedDailyReportTagRef Counts=@(new int[] { this.GetCollectionTotalUnfillProperty(this.Data.DailyKawasakiExportCompressors), this.GetCollectionTotalUnfillProperty(this.Data.DailyRollsRoyceRB211Engines)})></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -402,12 +401,12 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="GLYCOL PUMP" Key="1">
 									<ChildContent>
-										<GlycolPumpDataGrid ReportDate="@this.Data.Date" @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args)) />
+										<GlycolPumpDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyGlycolPumps @ref="glycolPumpDataGrid" LoadData=@(args => LoadGlycolPumpDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="GLYCOL TRAIN" Key="1">
 									<ChildContent>
-										<GlycolTrainDataGrid ReportDate="@this.Data.Date" @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args)) />
+										<GlycolTrainDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyGlycolTrains @ref="glycolTrainDataGrid" LoadData=@(args => LoadGlycolTrainDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="GLYCOL STOCK" Key="1">
@@ -469,7 +468,7 @@
 								</Panel>
 									<Panel ShowArrow="false" Class="description-no-shadow" Header="COOLING MEDIUM SYSTEM" Key="1">
 									<ChildContent>
-										<CoolingMediumSystemDataGrid ReportDate="@this.Data.Date" @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args)) />
+										<CoolingMediumSystemDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyCoolingMediumSystems @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -495,7 +494,7 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="UTILITIES" Key="1">
 									<ChildContent>
-										<UtilitiesDataGrid ReportDate="@this.Data.Date" @ref="utilitiesDataGrid" LoadData=@(args => LoadUtilitiesDataGridAsync(args)) />
+										<UtilitiesDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyUtilitys @ref="utilitiesDataGrid" LoadData=@(args => LoadUtilitiesDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="WATER TANK" Key="1">
@@ -530,7 +529,7 @@
 							<ChildContent>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="PRODUCED WATER TREATMENT SYSTEM" Key="1">
 									<ChildContent>
-										<ProducedWaterTreatmentSystemManagementDataGrid ReportDate="@this.Data.Date" @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args)) />
+										<ProducedWaterTreatmentSystemManagementDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyProducedWaterTreatmentSystems @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="DE-OILER INJECTION" Key="1">

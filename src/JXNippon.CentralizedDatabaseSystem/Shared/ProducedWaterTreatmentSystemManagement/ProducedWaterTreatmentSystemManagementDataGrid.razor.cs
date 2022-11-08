@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystem
 {
     public partial class ProducedWaterTreatmentSystemManagementDataGrid
     {
+        [Parameter] public Collection<DailyProducedWaterTreatmentSystem> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyProducedWaterTreatmentSystem>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

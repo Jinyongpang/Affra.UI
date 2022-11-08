@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLossOfPrimaryContainmentIncident" TDialog="LossOfPrimaryContainmentIncidentDialog" ReportDate="@this.ReportDate"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyLossOfPrimaryContainmentIncident" TDialog="LossOfPrimaryContainmentIncidentDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyLossOfPrimaryContainmentIncident" Property="MajorLOPC" Title="Major LOPC" />

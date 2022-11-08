@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
 {
     public partial class LifeBoatsDataGrid
     {
+        [Parameter] public Collection<DailyLifeBoat> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyLifeBoat>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

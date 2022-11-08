@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyWellStreamCooler" TDialog="WellStreamCoolerDialog" ReportDate="@this.ReportDate"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyWellStreamCooler" TDialog="WellStreamCoolerDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyWellStreamCooler" Property="WellStreamCoolerName" Filterable="false" Title="Name" Frozen="true" Pickable="false">           

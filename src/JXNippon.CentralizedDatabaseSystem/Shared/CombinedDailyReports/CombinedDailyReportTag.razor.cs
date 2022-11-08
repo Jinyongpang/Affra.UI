@@ -5,7 +5,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
     public partial class CombinedDailyReportTag
     {
         [Parameter] public int[] Counts { get; set; }
-
         public bool HasNoViolation { get; set; }
 
         public bool HasEmptyRowData { get; set; }
@@ -14,7 +13,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         protected override void OnInitialized()
         {
+            base.OnInitialized();
+        }
+
+        private int GetTotalCount()
+        {
             this.TotalCount = 0;
+            this.HasEmptyRowData = false;
             foreach (var item in Counts)
             {
                 if (item >= 0)
@@ -29,7 +34,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             HasNoViolation = !this.HasEmptyRowData
                 && this.TotalCount == 0;
 
-            base.OnInitialized();
+            return this.TotalCount;
+
         }
 
         private string GetColor()

@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOt
 {
     public partial class WaterTankDataGrid
     {
+        [Parameter] public Collection<DailyWaterTank> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyWaterTank>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

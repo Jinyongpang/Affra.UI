@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem
 {
     public partial class CoolingMediumSystemDataGrid
     {
+        [Parameter] public Collection<DailyCoolingMediumSystem> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyCoolingMediumSystem>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
 {
     public partial class LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid
     {
+        [Parameter] public Collection<DailyLongTermOverridesInhibitsOnAlarmTrip> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyLongTermOverridesInhibitsOnAlarmTrip>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
