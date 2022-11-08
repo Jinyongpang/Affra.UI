@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyCoolingMediumSystem" TDialog="CoolingMediumSystemDialog" ReportDate="@this.ReportDate"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyCoolingMediumSystem" TDialog="CoolingMediumSystemDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible" QueryFilter=QueryFilterAsync>
              <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyCoolingMediumSystem" Property="CoolingMediumSystemName" Title="Name">           

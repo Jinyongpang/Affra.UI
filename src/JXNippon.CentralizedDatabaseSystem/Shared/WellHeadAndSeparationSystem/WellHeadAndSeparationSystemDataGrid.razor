@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyWellHeadAndSeparationSystem" TDialog="WellHeadAndSeparationSystemDialog" ReportDate="@this.ReportDate"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyWellHeadAndSeparationSystem" TDialog="WellHeadAndSeparationSystemDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyWellHeadAndSeparationSystem" Property="StationRecyclePV2015" Filterable="false" Title="Station Recycle PV-2015 %" Frozen="true" Pickable="false" />

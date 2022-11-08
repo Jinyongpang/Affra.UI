@@ -1,5 +1,5 @@
 ﻿
-@if (this.TotalCount > 0)
+@if (this.GetTotalCount() > 0)
 {
     
     <Tag Color="@(this.GetColor())" Class="panel-summary-tag">@this.TotalCount</Tag>

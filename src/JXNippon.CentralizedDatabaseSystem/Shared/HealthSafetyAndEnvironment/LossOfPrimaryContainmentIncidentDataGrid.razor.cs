@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
 {
     public partial class LossOfPrimaryContainmentIncidentDataGrid
     {
+        [Parameter] public Collection<DailyLossOfPrimaryContainmentIncident> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyLossOfPrimaryContainmentIncident>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

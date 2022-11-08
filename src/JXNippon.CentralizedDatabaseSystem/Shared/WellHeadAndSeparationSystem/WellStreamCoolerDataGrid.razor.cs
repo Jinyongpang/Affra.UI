@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
 {
     public partial class WellStreamCoolerDataGrid
     {
+        [Parameter] public Collection<DailyWellStreamCooler> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyWellStreamCooler>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment
 {
     public partial class MajorEquipmentStatusDataGrid
     {
+        [Parameter] public Collection<DailyMajorEquipmentStatus> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyMajorEquipmentStatus>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
