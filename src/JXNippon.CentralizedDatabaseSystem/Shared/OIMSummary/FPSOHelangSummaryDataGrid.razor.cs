@@ -65,17 +65,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
             var fpsoProduction = this.CombinedDailyReport.DailyFPSOHelangProduction;
             if (fpsoProduction.FPSOCumulativeGasExport > 0)
             {
-                return $"<a>FPSO Helang cumulative Gas Export of "
-                    + $"<a style=\"background-color:#FEFB00;\">{fpsoProduction.FPSOCumulativeGasExport}</a>"
+                return $"FPSO Helang cumulative Gas Export of "
+                    + $"{fpsoProduction.FPSOCumulativeGasExport}"
                     + " MMscf was "
-                    + $"<a style=\"background-color:#02F900;\">{this.GetCondition()}</a>"
+                    + $"{this.GetCondition()}"
                     + " than GODC "
-                    + $"<a style=\"background-color:#00FDFF;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark?.Trim()}</a>"
+                    + $"{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark?.Trim()}"
                     + " plan of "
-                    + $"<a style=\"background-color:#FF40FF;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan}</a>"
+                    + $"{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan}"
                     + " MMscf. FPSO daily cumulative Crude Oil into storage tank was "
-                    + $"<a style=\"background-color:#FF2800;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeCrudeOil}</a>"
-                    + " bbls.</a>";
+                    + $"{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeCrudeOil}"
+                    + " bbls.";
             }
             else if (fpsoProduction.FPSOCumulativeGasExport == 0)
             {
