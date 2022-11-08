@@ -72,19 +72,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
             var sk10Production = this.CombinedDailyReport.DailySK10Production;
             if (sk10Production.SK10CumulativeGasExport > 0)
             {
-                return $"<a>SK-10 cumulative Gas Export of "
-                    + $"<a style=\"background-color:#FEFB00;\">{sk10Production.SK10CumulativeGasExport}</a>"
+                return "SK-10 cumulative Gas Export of "
+                    + $"{sk10Production.SK10CumulativeGasExport}"
                     + $" MMscf (HIP: "
-                    + $"<a style=\"background-color:#02F900;\">{this.CombinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExport ?? 0}</a>"
+                    + $"{this.CombinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExport ?? 0}"
                     + " MMscf, FPSO Helang: "
-                    + $"<a style=\"background-color:#00FDFF;\">{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExport ?? 0}</a>"
+                    + $"{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExport ?? 0}"
                     + " MMscf) was "
-                    + $"<a style=\"background-color:#FF40FF;\">{this.GetCondition()}</a>"
+                    + $"{this.GetCondition()}"
                     + " than SK-10 GODC "
-                    + $"<a style=\"background-color:#FF2800;\">{this.CombinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExportRemark?.Trim()}</a>"
+                    + $"{this.CombinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExportRemark?.Trim()}"
                     + " plan of "
-                    + $"<a style=\"background-color:#FE9300;\">{this.CombinedDailyReport.DailyHIPProduction?.HIPGasExportGODCPlan}</a>"
-                    + " MMscfd</a>";
+                    + $"{this.CombinedDailyReport.DailyHIPProduction?.HIPGasExportGODCPlan}"
+                    + " MMscfd";
             }
             else if (sk10Production.SK10CumulativeGasExport == 0)
             {
