@@ -127,7 +127,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             {
                 using var serviceScope = ServiceProvider.CreateScope();
                 var cdrService = serviceScope.ServiceProvider.GetRequiredService<ICombinedDailyReportService>();
-                var cdrItem = await cdrService.GetCombinedDailyReportAsync(combinedDailyReport.Date);
+                var cdrItem = await cdrService.GetFullCombinedDailyReportAsync(combinedDailyReport.Date);
                 if (cdrItem is not null)
                 {
                     cdrItem.DailyHIPAndLWPSummarys = cdrService.AppendSummary(cdrItem.DailyHIPAndLWPSummarys, cdrItem);
