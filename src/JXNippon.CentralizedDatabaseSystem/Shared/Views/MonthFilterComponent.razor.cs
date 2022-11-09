@@ -9,6 +9,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     {
         [Parameter] public string Title { get; set; }
 
+        [Parameter] public EventCallback<DateRange> OnChanged { get; set; }
+
         [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
         public DateTime? Start => this.dateRange.Start;
 
@@ -22,7 +24,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         public Task OnRangeSelectAsync(DateTimeChangedEventArgs args)
         {
             this.CalculateDateRange(args.Date);
-
+            OnChanged.InvokeAsync(dateRange);
             return OnDateRangeChanged is null ? Task.CompletedTask : OnDateRangeChanged(dateRange);
         }
 
