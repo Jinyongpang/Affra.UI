@@ -65,6 +65,57 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports
             return data;
         }
 
+        public async Task<CombinedDailyReport> GetFullCombinedDailyReportAsync(DateTimeOffset date)
+        {
+            var query = (DataServiceQuery<CombinedDailyReport>)service.Get();
+            var response = await ((DataServiceQuery<CombinedDailyReport>)query
+                .Expand(x => x.DailyHealthSafetyEnvironment)
+                .Expand(x => x.DailyLifeBoats)
+                .Expand(x => x.DailyLongTermOverridesInhibitsOnAlarmTrips)
+                .Expand(x => x.DailyLossOfPrimaryContainmentIncident)
+                .Expand(x => x.DailyOperatingChanges)
+                .Expand(x => x.DailyHIPAndLWPSummarys)
+                .Expand(x => x.DailyFPSOHelangSummarys)
+                .Expand(x => x.DailySandDisposalDesander)
+                .Expand(x => x.DailyCiNalco)
+                .Expand(x => x.DailyInowacInjection)
+                .Expand(x => x.DailyCommunicationSystems)
+                .Expand(x => x.DailyLWPActivitys)
+                .Expand(x => x.DailyVendorActivitys)
+                .Expand(x => x.DailyUtilitys)
+                .Expand(x => x.DailyWaterTank)
+                .Expand(x => x.DailyNitrogenGenerator)
+                .Expand(x => x.DailyMaximoWorkOrders)
+                .Expand(x => x.DailyAnalysisResult)
+                .Expand(x => x.DailyCoolingMediumSystems)
+                .Expand(x => x.DailyLogistics)
+                .Expand(x => x.DailyGlycolPumps)
+                .Expand(x => x.DailyGlycolTrains)
+                .Expand(x => x.DailyGlycolStock)
+                .Expand(x => x.DailyKawasakiExportCompressors)
+                .Expand(x => x.DailyRollsRoyceRB211Engines)
+                .Expand(x => x.DailyHIPWellHeadParameters)
+                .Expand(x => x.DailyLWPWellHeadParameters)
+                .Expand(x => x.DailyGasCondensateExportSamplerAndExportLine)
+                .Expand(x => x.DailyWellHeadAndSeparationSystem)
+                .Expand(x => x.DailyWellStreamCoolers)
+                .Expand(x => x.DailySK10Production)
+                .Expand(x => x.DailyHIPProduction)
+                .Expand(x => x.DailyFPSOHelangProduction)
+                .Expand(x => x.DailyMajorEquipmentStatuses)
+                .Expand(x => x.DailyDiesel)
+                .Expand(x => x.DailyProducedWaterTreatmentSystems)
+                .Expand(x => x.DailyDeOilerInjection)
+                .Expand(x => x.DailyPowerGenerationAndDistributions)
+                .Where(x => x.Date == date))
+                .ExecuteAsync();
+
+            var cdrItem = response.FirstOrDefault();
+            this.AppendCombinedDailyReport(cdrItem);
+
+            return cdrItem;
+        }
+
         public async Task<CombinedDailyReport> GetCombinedDailyReportAsync(DateTimeOffset date)
         {
             var query = (DataServiceQuery<CombinedDailyReport>)service.Get();
@@ -90,11 +141,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports
 
             var cdrItem = response.FirstOrDefault();
 
+            this.AppendCombinedDailyReport(cdrItem);
+
+            return cdrItem;
+        }
+
+        private void AppendCombinedDailyReport(CombinedDailyReport cdrItem)
+        {
             if (cdrItem is null)
             {
-                return null;
+                return;
             }
-
             cdrItem.DailyHealthSafetyEnvironment ??= new CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyHealthSafetyEnvironment
             {
                 Date = cdrItem.Date
@@ -162,8 +219,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports
                 UtilityName = "Potable Water Tank, T-5250",
                 Date = cdrItem.Date
             };
-
-            return cdrItem;
         }
 
         private string CalculateFPSOSummary(CombinedDailyReport combinedDailyReport)

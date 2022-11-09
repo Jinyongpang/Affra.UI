@@ -9,5 +9,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports
         Collection<DailyFPSOHelangSummary> AppendSummary(Collection<DailyFPSOHelangSummary> data, CombinedDailyReport combinedDailyReport);
         Collection<DailyHIPAndLWPSummary> AppendSummary(Collection<DailyHIPAndLWPSummary> data, CombinedDailyReport combinedDailyReport);
         Task<CombinedDailyReport> GetCombinedDailyReportAsync(DateTimeOffset date);
+        Task<CombinedDailyReport> GetFullCombinedDailyReportAsync(DateTimeOffset date);
     }
 }
