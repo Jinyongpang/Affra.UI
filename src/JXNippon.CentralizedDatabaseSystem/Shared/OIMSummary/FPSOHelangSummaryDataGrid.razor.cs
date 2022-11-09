@@ -1,6 +1,6 @@
-﻿using System.Collections.ObjectModel;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
+﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries;
+using JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 using Microsoft.AspNetCore.Components;
@@ -18,16 +18,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool ShowDateColumn { get; set; }
         [Parameter] public DateTimeOffset? ReportDate { get; set; }
-        
+        [Inject] private ICombinedDailyReportService CombinedDailyReportService { get; set; }
+
         public CommonFilter CommonFilter
         {
             get
             {
-                return this.DailyDataGrid.CommonFilter;
+                return DailyDataGrid.CommonFilter;
             }
             set
             {
-                this.DailyDataGrid.CommonFilter = value;
+                DailyDataGrid.CommonFilter = value;
             }
         }
 
@@ -35,77 +36,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
 
         public Task ReloadAsync()
         {
-            return this.DailyDataGrid.ReloadAsync();
+            return DailyDataGrid.ReloadAsync();
         }
 
         private Task OnDataChangedAsync(Collection<DailyFPSOHelangSummary> data)
         {
-            var result = new List<DailyFPSOHelangSummary>();
-            if (this.ReportDate is not null
-                && this.CombinedDailyReport is not null
-                && this.CombinedDailyReport.DailyFPSOHelangProduction is not null
-                && this.CombinedDailyReport.DailyFPSOHelangProduction.FPSOCumulativeGasExport is not null)
+            if (ReportDate is not null)
             {
-                result.Add(new()
-                {
-                    Date = this.CombinedDailyReport.Date,
-                    Remark = this.CalculateSummary(),
-                });
+                data = CombinedDailyReportService.AppendSummary(data, CombinedDailyReport);
             }
-            foreach (var item in data)
-            {
-                result.Add(item);
-            }
-            data = new Collection<DailyFPSOHelangSummary>(result);
             return DataChanged.InvokeAsync(data);
-        }
-
-        private string CalculateSummary()
-        {
-            var fpsoProduction = this.CombinedDailyReport.DailyFPSOHelangProduction;
-            if (fpsoProduction.FPSOCumulativeGasExport > 0)
-            {
-                return $"FPSO Helang cumulative Gas Export of "
-                    + $"{fpsoProduction.FPSOCumulativeGasExport}"
-                    + " MMscf was "
-                    + $"{this.GetCondition()}"
-                    + " than GODC "
-                    + $"{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark?.Trim()}"
-                    + " plan of "
-                    + $"{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan}"
-                    + " MMscf. FPSO daily cumulative Crude Oil into storage tank was "
-                    + $"{this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeCrudeOil}"
-                    + " bbls.";
-            }
-            else if (fpsoProduction.FPSOCumulativeGasExport == 0)
-            {
-                return "FPSO Helang shutdown";
-            }
-            return string.Empty;
-        }
-
-        private string GetCondition()
-        {
-            var fpsoGasExport = this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExport ?? 0;
-            var fpsoGasExportPlan = this.CombinedDailyReport.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan ?? 0;
-            var difference = fpsoGasExport - fpsoGasExportPlan;
-            if (difference < 0 && difference > -1.0m)
-            {
-                return "Slightly lower";
-            }
-            else if (difference < 0)
-            {
-                return "lower";
-            }
-            else if (difference > 0 && difference < 1.0m)
-            {
-                return "Slightly higher";
-            }
-            else if (difference > 0)
-            {
-                return "higher";
-            }
-            return "Equal";
         }
     }
 }

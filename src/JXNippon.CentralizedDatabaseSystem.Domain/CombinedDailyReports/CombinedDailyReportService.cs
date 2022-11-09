@@ -1,5 +1,7 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Collections.ObjectModel;
+using Affra.Core.Domain.Services;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using Microsoft.OData.Client;
 
@@ -12,6 +14,55 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports
         public CombinedDailyReportService(IUnitGenericService<CombinedDailyReport, ICentralizedDatabaseSystemUnitOfWork> service)
         {
             this.service = service;
+        }
+
+        public Collection<DailyHIPAndLWPSummary> AppendSummary(Collection<DailyHIPAndLWPSummary> data, CombinedDailyReport combinedDailyReport)
+        {
+            var result = new List<DailyHIPAndLWPSummary>();
+            if (combinedDailyReport is not null
+                && combinedDailyReport.DailySK10Production is not null
+                && combinedDailyReport.DailySK10Production.SK10CumulativeGasExport is not null)
+            {
+                result.Add(new()
+                {
+                    Date = combinedDailyReport.Date,
+                    Remark = this.CalculateHIPSummary(combinedDailyReport),
+                });
+
+                result.Add(new()
+                {
+                    Date = combinedDailyReport.Date,
+                    Remark = combinedDailyReport.DailySK10Production.SK10CumulativeGasExport > 0
+                        ? "Refer to section 18 below for details on vendor activities reports."
+                        : "Refer to shutdown daily progress report",
+                });
+            }
+            foreach (var item in data)
+            {
+                result.Add(item);
+            }
+            data = new Collection<DailyHIPAndLWPSummary>(result);
+            return data;
+        }
+        public Collection<DailyFPSOHelangSummary> AppendSummary(Collection<DailyFPSOHelangSummary> data, CombinedDailyReport combinedDailyReport)
+        {
+            var result = new List<DailyFPSOHelangSummary>();
+            if (combinedDailyReport is not null
+                && combinedDailyReport.DailyFPSOHelangProduction is not null
+                && combinedDailyReport.DailyFPSOHelangProduction.FPSOCumulativeGasExport is not null)
+            {
+                result.Add(new()
+                {
+                    Date = combinedDailyReport.Date,
+                    Remark = this.CalculateFPSOSummary(combinedDailyReport),
+                });
+            }
+            foreach (var item in data)
+            {
+                result.Add(item);
+            }
+            data = new Collection<DailyFPSOHelangSummary>(result);
+            return data;
         }
 
         public async Task<CombinedDailyReport> GetCombinedDailyReportAsync(DateTimeOffset date)
@@ -114,5 +165,103 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports
 
             return cdrItem;
         }
+
+        private string CalculateFPSOSummary(CombinedDailyReport combinedDailyReport)
+        {
+            var fpsoProduction = combinedDailyReport.DailyFPSOHelangProduction;
+            if (fpsoProduction.FPSOCumulativeGasExport > 0)
+            {
+                return $"FPSO Helang cumulative Gas Export of "
+                    + $"{fpsoProduction.FPSOCumulativeGasExport}"
+                    + " MMscf was "
+                    + $"{this.GetFPSOCondition(combinedDailyReport)}"
+                    + " than GODC "
+                    + $"{combinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark?.Trim()}"
+                    + " plan of "
+                    + $"{combinedDailyReport.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan}"
+                    + " MMscf. FPSO daily cumulative Crude Oil into storage tank was "
+                    + $"{combinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeCrudeOil}"
+                    + " bbls.";
+            }
+            else if (fpsoProduction.FPSOCumulativeGasExport == 0)
+            {
+                return "FPSO Helang shutdown";
+            }
+            return string.Empty;
+        }
+
+        private string GetFPSOCondition(CombinedDailyReport combinedDailyReport)
+        {
+            var fpsoGasExport = combinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExport ?? 0;
+            var fpsoGasExportPlan = combinedDailyReport.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan ?? 0;
+            var difference = fpsoGasExport - fpsoGasExportPlan;
+            if (difference < 0 && difference > -1.0m)
+            {
+                return "Slightly lower";
+            }
+            else if (difference < 0)
+            {
+                return "lower";
+            }
+            else if (difference > 0 && difference < 1.0m)
+            {
+                return "Slightly higher";
+            }
+            else if (difference > 0)
+            {
+                return "higher";
+            }
+            return "Equal";
+        }
+        private string CalculateHIPSummary(CombinedDailyReport combinedDailyReport)
+        {
+            var sk10Production = combinedDailyReport.DailySK10Production;
+            if (sk10Production.SK10CumulativeGasExport > 0)
+            {
+                return "SK-10 cumulative Gas Export of "
+                    + $"{sk10Production.SK10CumulativeGasExport}"
+                    + $" MMscf (HIP: "
+                    + $"{combinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExport ?? 0}"
+                    + " MMscf, FPSO Helang: "
+                    + $"{combinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExport ?? 0}"
+                    + " MMscf) was "
+                    + $"{this.GetHIPCondition(combinedDailyReport)}"
+                    + " than SK-10 GODC "
+                    + $"{combinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExportRemark?.Trim()}"
+                    + " plan of "
+                    + $"{combinedDailyReport.DailyHIPProduction?.HIPGasExportGODCPlan}"
+                    + " MMscfd";
+            }
+            else if (sk10Production.SK10CumulativeGasExport == 0)
+            {
+                return "SK-10 Helang remain zero production";
+            }
+            return string.Empty;
+        }
+
+        private string GetHIPCondition(CombinedDailyReport combinedDailyReport)
+        {
+            var sk10GasExport = combinedDailyReport.DailySK10Production?.SK10CumulativeGasExport ?? 0;
+            var hipGasExporPlan = combinedDailyReport.DailyHIPProduction?.HIPGasExportGODCPlan ?? 0;
+            var difference = sk10GasExport - hipGasExporPlan;
+            if (difference < 0 && difference > -1.0m)
+            {
+                return "Slightly lower";
+            }
+            else if (difference < 0)
+            {
+                return "lower";
+            }
+            else if (difference > 0 && difference < 1.0m)
+            {
+                return "Slightly higher";
+            }
+            else if (difference > 0)
+            {
+                return "higher";
+            }
+            return "Equal";
+        }
+
     }
 }

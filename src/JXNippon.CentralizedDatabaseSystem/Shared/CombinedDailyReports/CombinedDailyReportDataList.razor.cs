@@ -3,13 +3,14 @@ using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
+using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web.Virtualization;
-using Microsoft.OData.Client;
+using Microsoft.JSInterop;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
@@ -27,6 +28,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         [Inject] private NavigationManager navigationManager { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private IUserService UserService { get; set; }
+        [Inject] private IReportService ReportService { get; set; }
+
+        [Inject] private IJSRuntime JSRuntime { get; set; }
 
         public CommonFilter Filter { get; set; }
 
@@ -38,7 +42,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         public async Task ReloadAsync()
         {
             await virtualize.RefreshDataAsync();
-            this.StateHasChanged();
+            StateHasChanged();
         }
 
         private async ValueTask<ItemsProviderResult<CombinedDailyReport>> LoadDataAsync(ItemsProviderRequest request)
@@ -98,6 +102,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             using var serviceScope = ServiceProvider.CreateScope();
             var cdrService = serviceScope.ServiceProvider.GetRequiredService<ICombinedDailyReportService>();
             var cdrItem = await cdrService.GetCombinedDailyReportAsync(data.Date);
+            if (cdrItem is not null)
+            {
+                cdrItem.DailyHIPAndLWPSummarys = cdrService.AppendSummary(cdrItem.DailyHIPAndLWPSummarys, cdrItem);
+                cdrItem.DailyFPSOHelangSummarys = cdrService.AppendSummary(cdrItem.DailyFPSOHelangSummarys, cdrItem);
+            }
+
             dynamic? dialogResponse;
             dialogResponse = await DialogService.OpenAsync<CombinedDailyReportView>(data.Date.ToLocalTime().ToString("d"),
                        new Dictionary<string, object>() { { "Data", cdrItem } },
@@ -108,7 +118,32 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
             }
 
-            await this.ReloadAsync();
+            await ReloadAsync();
+        }
+
+        private async Task DownloadAsync(CombinedDailyReport combinedDailyReport)
+        {
+            try
+            {
+                using var serviceScope = ServiceProvider.CreateScope();
+                var cdrService = serviceScope.ServiceProvider.GetRequiredService<ICombinedDailyReportService>();
+                var cdrItem = await cdrService.GetCombinedDailyReportAsync(combinedDailyReport.Date);
+                if (cdrItem is not null)
+                {
+                    cdrItem.DailyHIPAndLWPSummarys = cdrService.AppendSummary(cdrItem.DailyHIPAndLWPSummarys, cdrItem);
+                    cdrItem.DailyFPSOHelangSummarys = cdrService.AppendSummary(cdrItem.DailyFPSOHelangSummarys, cdrItem);
+                }
+                var streamResult = await ReportService.GenerateCombinedDailyReportReportAsync(cdrItem);
+                if (streamResult != null)
+                {
+                    using var streamRef = new DotNetStreamReference(streamResult);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{combinedDailyReport.Date.ToLocalTime():d}.xlsx", streamRef);
+                }
+            }
+            catch (Exception ex)
+            {
+                AffraNotificationService.NotifyException(ex);
+            }
         }
     }
 }
