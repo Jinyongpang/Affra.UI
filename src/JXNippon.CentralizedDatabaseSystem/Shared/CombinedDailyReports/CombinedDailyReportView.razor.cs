@@ -309,6 +309,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         private async Task DownloadAsync()
         {
+            isLoading = true;
             try
             {
                 var streamResult = await this.ReportService.GenerateCombinedDailyReportReportAsync(this.Data);
@@ -322,6 +323,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             {
                 AffraNotificationService.NotifyException(ex);
             }
+            isLoading = false;
         }
     }
 }
