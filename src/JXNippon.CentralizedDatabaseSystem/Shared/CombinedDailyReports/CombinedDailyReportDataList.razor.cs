@@ -8,6 +8,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
+using JXNippon.CentralizedDatabaseSystem.Shared.Loadings;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.JSInterop;
@@ -101,7 +102,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             using var serviceScope = ServiceProvider.CreateScope();
             var cdrService = serviceScope.ServiceProvider.GetRequiredService<ICombinedDailyReportService>();
-            var cdrItem = await cdrService.GetCombinedDailyReportAsync(data.Date);
+            var cdrItemTask = cdrService.GetCombinedDailyReportAsync(data.Date);
+            await this.DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = cdrItemTask }, Constant.LoadingDialogOptions);
+            var cdrItem = await cdrItemTask;
             if (cdrItem is not null)
             {
                 cdrItem.DailyHIPAndLWPSummarys = cdrService.AppendSummary(cdrItem.DailyHIPAndLWPSummarys, cdrItem);
@@ -119,6 +122,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             }
 
             await ReloadAsync();
+        }
+
+        private Task DownloadWithLoadingAsync(CombinedDailyReport combinedDailyReport)
+        {
+            var task = this.DownloadAsync(combinedDailyReport);
+            return this.DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Generating report. Please wait...", ["Task"] = task }, Constant.LoadingDialogOptions);
         }
 
         private async Task DownloadAsync(CombinedDailyReport combinedDailyReport)
