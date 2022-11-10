@@ -47,6 +47,10 @@ steps:
 
 - task: NuGetToolInstaller@1
 
+- task: UseDotNet@2
+  inputs:
+    version: '7.x'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore project'
   inputs:
