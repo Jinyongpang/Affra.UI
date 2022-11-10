@@ -59,7 +59,7 @@ steps:
     arguments: '--use-lock-file'
     feedsToUse: 'select'
     vstsFeed: '4ee0bb20-fbf3-4b8a-9f8b-51596098383e'
-    includeNuGetOrg: false
+    includeNuGetOrg: true
     
 - task: DotNetCoreCLI@2
   displayName: 'dotnet unit tests project'
