@@ -15,7 +15,7 @@ variables:
   Minor: '0'
   Patch: $[counter(variables['csprojVersion'], 0)]
   packageVersion: ""
-  frameworkVersion: "net6.0"
+  frameworkVersion: "net7.0"
   serviceName: "JXNippon.CentralizedDatabaseSystem"
   entryProject: '$(Build.SourcesDirectory)/src/$(serviceName)/$(serviceName).csproj' 
 
