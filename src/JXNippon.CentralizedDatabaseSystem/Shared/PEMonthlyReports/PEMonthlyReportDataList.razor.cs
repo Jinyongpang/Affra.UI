@@ -93,23 +93,5 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PEReport, ICentralizedDatabaseSystemUnitOfWork>>();
         }
-
-        private async Task ShowDialogAsync(PEReport data)
-        {
-            using var serviceScope = ServiceProvider.CreateScope();
-            var perService = serviceScope.ServiceProvider.GetRequiredService<IPEMonthlyReportService>();
-            var perItem = await perService.GetPEMonthlyReportAsync(data.Date);
-            dynamic? dialogResponse;
-            dialogResponse = await DialogService.OpenAsync<PEMonthlyReportView>(data.Date.ToLocalTime().ToString("d"),
-                       new Dictionary<string, object>() { { "Data", perItem } },
-                       Constant.FullScreenDialogOptions);
-
-            if (dialogResponse == true)
-            {
-
-            }
-
-            await this.ReloadAsync();
-        }
     }
 }
