@@ -1,0 +1,84 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+
+@if (!initLoading && count == 0)
+{       
+    <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+        <GenericDescription Height="300px" ImageFile="@ImageFile.DataExtraction" Description="No result found.">
+        </GenericDescription>
+    </div>
+      
+}
+<div class="row px-3 py-2">
+    <Virtualize Context="context" ItemsProvider="@LoadDataAsync" TItem=PEReport ItemSize=25 OverscanCount=10 @ref=@this.virtualize>
+        <Placeholder>
+            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:150px;">
+                <Card Class="h-100 data-list-card" Hoverable>
+                    <Body>
+                        <Skeleton Active ParagraphRows=3></Skeleton>
+                    </Body>
+                </Card>  
+            </div>    
+        </Placeholder>
+        <ItemContent>
+            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:200px;">
+                 <Card Class="h-100 data-list-card" @key=@context.Id Bordered>
+                    <Body>
+                        <div class="d-flex flex-row align-items-center">
+                            <div>
+                                <div style="word-break:break-word;">Report Date : @string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", context.Date.ToLocalTime())</div>
+                            </div>
+                        </div>
+                        <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
+                        <div class="row">
+                            <div class="col-md-8 text-truncate card-time">
+                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Updated : {0:d}", context.LastUpdatedDateTime.ToLocalTime())</b>
+                            </div>
+                            <div class="col-md-8 text-truncate card-time">
+                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.LastUpdatedDateTime.ToLocalTime())</b>
+                            </div>
+                            <div class="col-md-4 text-right" style="word-break:break-word;">
+                                @if (context.Status == PEReportStatus.Approved)
+                                {
+                                        <Tooltip Placement="@Placement.BottomLeft" Title="@context.Remark">            
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.Status.ToString())"/>
+                                        </Tooltip>
+                                }
+                                else if (context.Status == PEReportStatus.Rejected)
+                                {
+                                        <Tooltip Placement="@Placement.BottomLeft" Title="@context.Remark">            
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.Status.ToString())"/>
+                                        </Tooltip>
+                                }
+                                else if (context.Status == PEReportStatus.Pending)
+                                {
+                                        <Tooltip Placement="@Placement.BottomLeft" Title="@context.Remark">            
+                                            <RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(context.Status.ToString())"/>
+                                        </Tooltip>
+                                }
+                                else
+                                {
+                                    <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.Status.ToString())"/>
+                                }
+                                    
+                            </div>
+                        </div>
+                    </Body>
+                    <ActionTemplate>        
+                        <CardAction >
+                            <Tooltip Title=@("View...")>
+                                <Icon Class="anticon-big" Type="eye" OnClick="(() => this.ShowDialogAsync(context))"/>
+                            </Tooltip>
+                        </CardAction>
+                        @if (isUserHavePermission)
+                        {
+                            <CardAction>
+                                <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" /></Tooltip>
+                            </CardAction>
+                        }
+                    </ActionTemplate>
+                </Card>
+            </div>        
+        </ItemContent>
+    </Virtualize>
+</div>

@@ -1,0 +1,6 @@
+﻿@page "/WellAllocation/PEMonthlyReport"
+@using JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
+@attribute [Authorize(Policy = "WellAllocation.Read")]
+
+<PageTitle>PE Monthly Report</PageTitle>
+<PEMonthlyReportDataListView></PEMonthlyReportDataListView>
