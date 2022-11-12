@@ -1,20 +1,15 @@
-﻿using Affra.Core.Domain.Services;
-using Affra.Core.Infrastructure.OData.Extensions;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments;
-using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
-using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments;
 using JXNippon.CentralizedDatabaseSystem.Models;
-using JXNippon.CentralizedDatabaseSystem.Notifications;
-using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
+using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 using Microsoft.AspNetCore.Components;
 using Radzen;
-using Radzen.Blazor;
-using JXNippon.CentralizedDatabaseSystem.Shared.Commons;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
 {
     public partial class OperatingChangeDataGrid
     {
+        [Parameter] public Collection<DailyOperatingChange> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyOperatingChange>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
@@ -24,11 +19,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
         {
             get
             {
-                return this.DailyDataGrid.CommonFilter;
+                return DailyDataGrid.CommonFilter;
             }
             set
             {
-                this.DailyDataGrid.CommonFilter = value;
+                DailyDataGrid.CommonFilter = value;
             }
         }
 
@@ -36,7 +31,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
 
         public Task ReloadAsync()
         {
-            return this.DailyDataGrid.ReloadAsync();
+            return DailyDataGrid.ReloadAsync();
         }
     }
 }

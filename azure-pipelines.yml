@@ -15,7 +15,7 @@ variables:
   Minor: '0'
   Patch: $[counter(variables['csprojVersion'], 0)]
   packageVersion: ""
-  frameworkVersion: "net6.0"
+  frameworkVersion: "net7.0"
   serviceName: "JXNippon.CentralizedDatabaseSystem"
   entryProject: '$(Build.SourcesDirectory)/src/$(serviceName)/$(serviceName).csproj' 
 
@@ -47,6 +47,10 @@ steps:
 
 - task: NuGetToolInstaller@1
 
+- task: UseDotNet@2
+  inputs:
+    version: '7.x'
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore project'
   inputs:
@@ -55,7 +59,7 @@ steps:
     arguments: '--use-lock-file'
     feedsToUse: 'select'
     vstsFeed: '4ee0bb20-fbf3-4b8a-9f8b-51596098383e'
-    includeNuGetOrg: false
+    includeNuGetOrg: true
     
 - task: DotNetCoreCLI@2
   displayName: 'dotnet unit tests project'

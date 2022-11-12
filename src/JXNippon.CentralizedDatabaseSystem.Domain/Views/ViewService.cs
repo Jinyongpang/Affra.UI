@@ -130,9 +130,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Views
                     Row? row = view.Rows
                         .Where(row => row.Id == column.RowId)
                         .FirstOrDefault();
-                    row.Columns.Add(column);
-                    column.Row = row;
-                    column.View = view;
+                    if (row != null)
+                    {
+                        row.Columns.Add(column);
+                        column.Row = row;
+                        column.View = view;
+                    }
                 }
             }
         }

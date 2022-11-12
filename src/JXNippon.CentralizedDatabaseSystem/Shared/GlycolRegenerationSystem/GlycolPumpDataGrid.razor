@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyGlycolPump" TDialog="GlycolPumpDialog" ReportDate="@this.ReportDate"
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyGlycolPump" TDialog="GlycolPumpDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyGlycolPump" Property="GlycolPumpName" Title="Glycol Pump Name" />

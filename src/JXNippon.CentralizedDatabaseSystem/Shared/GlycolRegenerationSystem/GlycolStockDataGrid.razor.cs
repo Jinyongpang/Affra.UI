@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem
 {
     public partial class GlycolStockDataGrid
     {
+        [Parameter] public Collection<DailyGlycolStock> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyGlycolStock>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

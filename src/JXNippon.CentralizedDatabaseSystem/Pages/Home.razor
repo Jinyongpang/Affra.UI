@@ -1,6 +1,6 @@
 ﻿@page "/"
 @using JXNippon.CentralizedDatabaseSystem.Shared.Views
-@attribute [Authorize]
+@attribute [Authorize(Policy = "Operation.Read")]
 
 <PageTitle>Home</PageTitle>
-<ViewTab Page="Home"></ViewTab>
+<ViewCarousel Page="Home"></ViewCarousel>

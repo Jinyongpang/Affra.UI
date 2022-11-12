@@ -131,7 +131,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
                 var fileResponse = await this.WorkspaceService.DownloadAsync(id);
                 if (fileResponse != null)
                 {
-
                     using var streamRef = new DotNetStreamReference(stream: fileResponse.Stream);
                     await JSRuntime.InvokeVoidAsync("downloadFileFromStream", dataFile.FileName, streamRef);
                 }

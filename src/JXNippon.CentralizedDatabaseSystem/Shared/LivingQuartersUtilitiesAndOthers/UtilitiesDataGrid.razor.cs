@@ -8,6 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOt
 {
     public partial class UtilitiesDataGrid
     {
+        [Parameter] public Collection<DailyUtility> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyUtility>> DataChanged { get; set; }
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

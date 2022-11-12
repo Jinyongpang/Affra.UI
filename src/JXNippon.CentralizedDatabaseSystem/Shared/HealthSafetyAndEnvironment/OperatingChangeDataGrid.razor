@@ -3,20 +3,20 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyOperatingChange" TDialog="OperatingChangeDialog" ReportDate="@this.ReportDate"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyOperatingChange" TDialog="OperatingChangeDialog" ReportDate="@this.ReportDate"
+                       PagerAlwaysVisible="@PagerAlwaysVisible" RequiredHighlighting="false">
             <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="TagName" Title="Tag Name">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.TagName</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="RaisedDate" Title="Raised Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="RaisedDate" Title="Raised Date" SortOrder="SortOrder.Descending">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.RaisedDateUI)
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="ExpiredDate" Title="Expired Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="ExpiredDate" Title="Expired Date" SortOrder="SortOrder.Descending">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.ExpiredDateUI)
                     </Template>

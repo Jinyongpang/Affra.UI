@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
+﻿using System.Text.Json;
 using Affra.Core.Domain.Services;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
@@ -24,6 +23,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities;
 using JXNippon.CentralizedDatabaseSystem.Shared.WellHead;
 using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
@@ -56,6 +56,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         [Inject] private NavigationManager NavManager { get; set; }
 
         [Inject] private IUserService UserService { get; set; }
+
+        [Inject] private IReportService ReportService { get; set; }
+
+        [Inject] private IJSRuntime JSRuntime { get; set; }
 
         private CommonFilter CommonFilter { get; set; }
         private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
@@ -301,6 +305,25 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             return this.combinedDailyReportTags
                 .All(x => x.HasNoViolation);
+        }
+
+        private async Task DownloadAsync()
+        {
+            isLoading = true;
+            try
+            {
+                var streamResult = await this.ReportService.GenerateCombinedDailyReportReportAsync(this.Data);
+                if (streamResult != null)
+                {
+                    using var streamRef = new DotNetStreamReference(streamResult);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{this.Data.Date.ToLocalTime():d}.xlsx", streamRef);
+                }
+            }
+            catch (Exception ex)
+            {
+                AffraNotificationService.NotifyException(ex);
+            }
+            isLoading = false;
         }
     }
 }

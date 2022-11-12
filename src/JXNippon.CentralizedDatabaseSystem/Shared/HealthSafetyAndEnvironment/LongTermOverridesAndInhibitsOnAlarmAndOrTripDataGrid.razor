@@ -3,15 +3,15 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" TDialog="LongTermOverridesInhibitsOnAlarmTripDialog" ReportDate="@this.ReportDate"
-            PagerAlwaysVisible="@PagerAlwaysVisible">
+        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" TDialog="LongTermOverridesInhibitsOnAlarmTripDialog" ReportDate="@this.ReportDate"
+            PagerAlwaysVisible="@PagerAlwaysVisible" RequiredHighlighting="false">
             <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="TagName" Title="Tag Name">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.TagName</p>
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="RaisedDate" Title="Raised Date" Visible="@ShowDateColumn">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLongTermOverridesInhibitsOnAlarmTrip" Property="RaisedDate" Title="Raised Date">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.RaisedDateUI)
                     </Template>

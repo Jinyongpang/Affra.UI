@@ -8,6 +8,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOt
 {
     public partial class NitrogenGeneratorDataGrid
     {
+        [Parameter] public Collection<DailyNitrogenGenerator> Data { get; set; }
+        [Parameter] public EventCallback<Collection<DailyNitrogenGenerator>> DataChanged { get; set; }
+
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool ShowRefreshButton { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }

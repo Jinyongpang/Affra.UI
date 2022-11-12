@@ -897,8 +897,8 @@
   <data name="Remark" xml:space="preserve">
     <value>Remarks</value>
   </data>
-  <data name="Remark1" xml:space="preserve">
-    <value>Remarks 1</value>
+  <data name="SandJettingRemarks" xml:space="preserve">
+    <value>Sand Jetting Remarks</value>
   </data>
   <data name="Remark2" xml:space="preserve">
     <value>Remarks 2</value>
@@ -1008,11 +1008,11 @@
   <data name="TCA_TCALP_PH" xml:space="preserve">
     <value>TC-A LP pH</value>
   </data>
-  <data name="TCA_V2200_FE" xml:space="preserve">
-    <value>TC-A V-2200 Fe</value>
+  <data name="GlycolContactorPreSrubberV2200FE" xml:space="preserve">
+    <value>Glycol Contactor Pre-Srubber V-2200 FE</value>
   </data>
-  <data name="TCA_V2200_PH" xml:space="preserve">
-    <value>TC-A V-2200 pH</value>
+  <data name="GlycolContactorPreSrubberV2200PH" xml:space="preserve">
+    <value>Glycol Contactor Pre-Srubber V-2200 PH</value>
   </data>
   <data name="TCA_V2400_FE" xml:space="preserve">
     <value>TC-A V-2400 Fe</value>
@@ -1196,5 +1196,8 @@
   </data>
   <data name="FPSOCrudeAPIReadingReceivingTankCOTNumber" xml:space="preserve">
     <value>FPSO Crude API reading Receiving tank COT</value>
+  </data>
+  <data name="StatusRemark" xml:space="preserve">
+    <value>Status Remark</value>
   </data>
 </root>

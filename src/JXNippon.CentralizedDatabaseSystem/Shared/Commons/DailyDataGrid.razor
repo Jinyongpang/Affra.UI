@@ -4,16 +4,25 @@
 @typeparam TDialog
 @inject ICommonHelper CommonHelper;
 
-<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@_items" LoadData="@LoadDataAsync" CellRender="this.CellRender"  
-    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="@this.AllowSorting" AllowFiltering="@this.AllowFiltering" AllowPaging="true" 
-    PageSize="50" PagerHorizontalAlign="HorizontalAlign.Center" TItem="TItem" 
+<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@Count" Data="@_items" LoadData="@LoadDataAsync" CellRender="this.CellRender"
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="@this.AllowSorting" AllowFiltering="@this.AllowFiltering" AllowPaging="true"
+                PageSize="50" PagerHorizontalAlign="HorizontalAlign.Center" TItem="TItem" 
     ColumnWidth="200px" AllowColumnResize="true" ShowPagingSummary="true" 
     AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true"
     PagerAlwaysVisible="@PagerAlwaysVisible" CellContextMenu="@OnCellContextMenu" Responsive>
     <EmptyTemplate>                
-        <div class="row" style="background-color: #FFFF99;" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
-            <a>No data.</a>
-        </div>                    
+        @if (this.RequiredHighlighting)
+        {
+            <div class="row" style="background-color: #FFFF99;" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                <a>No data.</a>
+            </div>
+        }
+        else
+        {
+            <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                <a>No data.</a>
+            </div>
+        }
     </EmptyTemplate>
     <Columns>
         @this.Columns

@@ -24,6 +24,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
             "FPSOProductionDBReport",
             "CondensateStreamReport",
             "DailyGasMeteringReport",
+            "Templates",
         }
             .OrderBy(x => x)
             .ToArray();
