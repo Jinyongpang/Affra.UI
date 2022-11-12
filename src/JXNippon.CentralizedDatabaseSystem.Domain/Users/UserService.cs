@@ -96,6 +96,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
             }
             if (this.globalDataSource.User is null)
             {
+                Console.WriteLine("User is null.");
                 return false;
             }
             else if (this.globalDataSource.User.Email.Equals("jianyi.lim@affra.onmicrosoft.com", StringComparison.OrdinalIgnoreCase))
@@ -104,14 +105,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
             }
             else if (string.IsNullOrEmpty(globalDataSource.User?.Role))
             {
-                return true;
+                Console.WriteLine("Empty role.");
+                return false;
             }
             else if (permission is null)
             {
+
+                Console.WriteLine("No Permission.");
                 return true;
             }
             else if (globalDataSource.User.Role == Administrator)
             {
+                Console.WriteLine("Is administrator.");
                 return true;
             }
             else if (this.globalDataSource.User.RoleGroup?.Permissions?
@@ -125,6 +130,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
                 return true;
             }
 
+            Console.WriteLine("False result.");
             return false;
         }
     }
