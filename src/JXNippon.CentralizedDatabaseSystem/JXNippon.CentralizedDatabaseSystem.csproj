@@ -40,6 +40,7 @@
 	<PackageReference Include="Microsoft.OData.Extensions.Client.Abstractions" Version="1.0.6" />
     <PackageReference Include="Radzen.Blazor" Version="4.3.2" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.22" />
+    <TrimmerRootAssembly Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" />
   </ItemGroup>
 
   <ItemGroup>
