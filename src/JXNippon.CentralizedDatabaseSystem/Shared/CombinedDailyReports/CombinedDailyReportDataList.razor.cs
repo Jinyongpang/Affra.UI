@@ -30,7 +30,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private IUserService UserService { get; set; }
         [Inject] private IReportService ReportService { get; set; }
-
         [Inject] private IJSRuntime JSRuntime { get; set; }
 
         public CommonFilter Filter { get; set; }
@@ -142,7 +141,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                     cdrItem.DailyHIPAndLWPSummarys = cdrService.AppendSummary(cdrItem.DailyHIPAndLWPSummarys, cdrItem);
                     cdrItem.DailyFPSOHelangSummarys = cdrService.AppendSummary(cdrItem.DailyFPSOHelangSummarys, cdrItem);
                 }
-                var streamResult = await ReportService.GenerateCombinedDailyReportReportAsync(cdrItem);
+                var streamResult = await ReportService.GenerateCombinedDailyReportAsync(cdrItem);
                 if (streamResult != null)
                 {
                     using var streamRef = new DotNetStreamReference(streamResult);

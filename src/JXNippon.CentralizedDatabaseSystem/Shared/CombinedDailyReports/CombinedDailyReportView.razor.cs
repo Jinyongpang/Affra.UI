@@ -312,7 +312,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             isLoading = true;
             try
             {
-                var streamResult = await this.ReportService.GenerateCombinedDailyReportReportAsync(this.Data);
+                var streamResult = await this.ReportService.GenerateCombinedDailyReportAsync(this.Data);
                 if (streamResult != null)
                 {
                     using var streamRef = new DotNetStreamReference(streamResult);

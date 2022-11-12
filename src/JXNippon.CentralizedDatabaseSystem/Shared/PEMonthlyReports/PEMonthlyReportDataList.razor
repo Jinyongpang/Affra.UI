@@ -73,7 +73,7 @@
                         @if (isUserHavePermission)
                         {
                             <CardAction>
-                                <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" /></Tooltip>
+                                <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" OnClick="(() => this.DownloadWithLoadingAsync(context))" /></Tooltip>
                             </CardAction>
                         }
                     </ActionTemplate>
