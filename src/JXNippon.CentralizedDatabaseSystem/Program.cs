@@ -150,6 +150,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddHttpMessageHandler<AuthorizationMessageHandler>()
     .Services
     .AddMemoryCache()
+    .AddOptions()
     .AddAuthorizationCore(options =>
     {
         foreach (FeaturePermission featurePermission in Enum.GetValues(typeof(FeaturePermission)))
