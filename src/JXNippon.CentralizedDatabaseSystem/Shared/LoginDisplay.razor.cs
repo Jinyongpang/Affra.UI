@@ -8,6 +8,7 @@ using JXNippon.CentralizedDatabaseSystem.Shared.Users;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Radzen;
 using UserODataService.Affra.Service.User.Domain.Users;
 
@@ -55,8 +56,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared
         private async Task BeginLogout(MouseEventArgs args)
         {
             await LogUserActivityAsync(ActivityType.Logout);
-            await SignOutManager.SetSignOutState();
-            Navigation.NavigateTo("authentication/logout");
+            Navigation.NavigateToLogout("authentication/logout");
         }
 
         private async Task LogUserActivityAsync(ActivityType activityType, ClaimsPrincipal? user = null)
