@@ -1,0 +1,78 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Utilities
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems
+@using JXNippon.CentralizedDatabaseSystem.Shared.OIMSummary
+@using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment
+@using JXNippon.CentralizedDatabaseSystem.Shared.MajorEquipment
+@using JXNippon.CentralizedDatabaseSystem.Shared.Views
+@using JXNippon.CentralizedDatabaseSystem.Shared.WellHeadAndSeparationSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.WellHead
+@using JXNippon.CentralizedDatabaseSystem.Shared.RollsRoyceGasEngineAndKawasakiCompressionSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.PowerGenerationAndDistributionManagement
+@using JXNippon.CentralizedDatabaseSystem.Shared.LivingQuartersUtilitiesAndOthers
+@using JXNippon.CentralizedDatabaseSystem.Shared.ProducedWaterTreatmentSystemManagement
+@using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem
+@using JXNippon.CentralizedDatabaseSystem.Shared.LWPActivity
+@using JXNippon.CentralizedDatabaseSystem.Shared.VendorActivities
+@using JXNippon.CentralizedDatabaseSystem.Shared.Logistic
+@using JXNippon.CentralizedDatabaseSystem.Shared.MaximoWorkOrder
+@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using JXNippon.CentralizedDatabaseSystem.Shared.TableProperty
+
+<Spin Size="large" Spinning=this.isLoading Style="top: 30%;">
+	<RadzenTemplateForm Data="@Data">
+		<ChildContent Context="item">
+			<div class="fullscreen-dialog">
+				<div class="fullscreen-dialog-header sticky">
+					<Icon Type="arrow-left" Theme="outline" Class="fullscreen-dialog-back" OnClick=@(()=> this.DialogService.Close())/>
+					<div class="cdr-title">
+						<div class="p-2" style="font-weight: bold;">PE Monthly Report</div>
+						<div class="p-2" style="font-weight: bold;">
+							<Tag PresetColor="@PresetColor.Green">@Data.Date.ToLocalDateTime().ToString("yyyy MMMM")</Tag>
+						</div>
+					</div>
+					@if(isUserHavePermission)
+					{
+						<div class="cdr-action-buttons">
+							<DropdownButton Style="margin-right: 10px;" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" OnClick=@(() => this.ApproveAsync())>
+								<Unbound Context="button">
+									<Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
+									<span style="font-size: 18px; margin-left: 0px;">Approve</span>
+								</Unbound>
+								<Overlay>
+									<Menu>
+										<MenuItem Key="Reject" OnClick=@(() => this.RejectAsync())>
+											<a>
+												<i class="fas fa-ban fa-fw fa-xl"/> Reject
+											</a>
+										</MenuItem>
+										<MenuItem Key="Export" OnClick=@(()=> this.DownloadAsync())>
+											<a>
+												<i class="fas fa-file-export fa-fw fa-xl"/> Export
+											</a>
+										</MenuItem>
+									</Menu>
+								</Overlay>
+							</DropdownButton>
+						</div>
+					}
+				</div>
+				<Divider/>
+				<div class="col view-dialog-content">
+					<ViewTab Page="PEReport" Date="@(this.date)"></ViewTab>
+				</div>
+			</div>
+		</ChildContent>
+	</RadzenTemplateForm>
+</Spin>

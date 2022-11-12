@@ -1,0 +1,63 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Views
+
+<Layout Class="layout-view">
+    <Header>
+        <div class="row">
+            <div class="col-12 float-right align-items-center text-right mt-1">
+                <Space Size="@("middle")">
+                    <SpaceItem>
+                        <MonthFilterComponent @ref=dateFilterComponent OnChanged=@(args => ReloadAsync(null))></MonthFilterComponent>          
+                    </SpaceItem>
+                    <SpaceItem>
+                        <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick=@(args => ReloadAsync(null))>
+                            <ChildContent>
+                                <Icon Type="reload" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Reload</span>
+                            </ChildContent>
+                        </Button>
+                    </SpaceItem>
+                </Space>
+            </div>
+        </div>       
+    </Header>
+    <Layout Style="height: 100%;">
+        <Sider Class="d-none d-lg-inline" @bind-Collapsed=@isCollapsed  Collapsible>
+            <Menu DefaultSelectedKeys=@(new[] { "All" }) Style="height: 100%;" Mode=@MenuMode.Inline @ref=menu OnMenuItemClicked=OnMenuItemSelectAsync>
+                <MenuItem Key="All">         
+                    <IconTemplate>
+                        <Icon Type="fund-view" Theme="outline" Class="anticon-big"/>
+                    </IconTemplate>
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">All</span>
+                    </ChildContent>
+                </MenuItem>
+                <MenuItem Key="Approved">
+                    <IconTemplate>
+                        <Icon Type="check-circle" Theme="outline" Class="anticon-big"/>
+                    </IconTemplate>
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">Approved</span>
+                    </ChildContent>            
+                </MenuItem>
+                <MenuItem Key="Pending">
+                    <IconTemplate>
+                        <Icon Type="question-circle" Theme="outline" Class="anticon-big"/>
+                    </IconTemplate>
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">Pending</span>
+                    </ChildContent>          
+                </MenuItem>
+                <MenuItem Key="Rejected">
+                    <IconTemplate>
+                        <Icon Type="info-circle" Theme="outline" Class="anticon-big"/>
+                    </IconTemplate>
+                    <ChildContent>
+                        <span style="font-size: 16px; margin-left: 0px;">Rejected</span>
+                    </ChildContent>          
+                </MenuItem>
+            </Menu>
+        </Sider>
+        <Content Style="overflow-y: auto; overflow-x:hidden; height:100%;">
+            <PEMonthlyReportDataList @ref=peMonthlyReportDataList></PEMonthlyReportDataList>
+        </Content>
+    </Layout>
+</Layout>

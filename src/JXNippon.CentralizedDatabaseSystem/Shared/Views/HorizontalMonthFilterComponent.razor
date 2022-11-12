@@ -6,10 +6,10 @@
         </SpaceItem>
     }
     <SpaceItem>
-        <Select Size="large" TItemValue=int TItem="int" @bind-Value=@year DataSource=@years OnSelectedItemChanged=OnChangeAsync></Select>
+        <Select Size="large" TItemValue=int TItem="int" @bind-Value=@year DataSource=@years OnSelectedItemChanged=OnChangeAsync Disabled=@(this.FixDateTime is not null)></Select>
     </SpaceItem>
     <SpaceItem>
-        <RadzenSelectBar @bind-Value=@month TValue="int" Change=OnChangeAsync>
+        <RadzenSelectBar @bind-Value=@month TValue="int" Change=OnChangeAsync Disabled=@(this.FixDateTime is not null)>
             <Items>
                 @for(int i = 0; i < this.months.Count(); i++)
                 {

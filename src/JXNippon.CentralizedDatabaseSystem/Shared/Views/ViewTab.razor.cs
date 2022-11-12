@@ -1,5 +1,4 @@
-﻿using AntDesign;
-using JXNippon.CentralizedDatabaseSystem.Domain.Views;
+﻿using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.AspNetCore.Components;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
@@ -8,6 +7,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     public partial class ViewTab
     {
         [Parameter] public string Page { get; set; }
+        [Parameter] public DateTime? Date { get; set; }
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
 
@@ -26,21 +26,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         {
             using var serviceScope = ServiceProvider.CreateScope();
             IViewService viewService = serviceScope.ServiceProvider.GetService<IViewService>();
-            views = await viewService.GetPageViewsAsync(this.Page);
+            views = await viewService.GetPageViewsAsync(Page);
             if (views.Any())
             {
-                await this.OnTabClickAsync(views.FirstOrDefault().Name);
+                await OnTabClickAsync(views.FirstOrDefault().Name);
             }
         }
 
         public async Task OnTabClickAsync(string key)
         {
-            this.selectedTabKey = key;
+            selectedTabKey = key;
             using var serviceScope = ServiceProvider.CreateScope();
             IViewService viewService = serviceScope.ServiceProvider.GetService<IViewService>();
             view = await viewService.GetViewAsync(key);
             StateHasChanged();
-            await this.viewComponent.ReloadAsync();      
+            await viewComponent.ReloadAsync();
         }
     }
 }

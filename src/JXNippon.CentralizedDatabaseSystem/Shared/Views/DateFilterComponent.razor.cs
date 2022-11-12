@@ -6,6 +6,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
     public partial class DateFilterComponent
     {
+        [Parameter] public DateTime? FixDateTime { get; set; }
+
         [Parameter] public DateFilter DateFilter { get; set; }
 
         [Parameter] public Column Column { get; set; }

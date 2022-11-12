@@ -7,8 +7,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     public partial class LastXPeriodFilterComponent : IDateFilterComponent
     {
         [Parameter] public string Title { get; set; }
+        [Parameter] public DateTime? FixDateTime { get; set; }
 
-        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
+        [Inject] public IGlobalDataSource GlobalDataSource { get; set; }
         public DateTime? Start => this.dateRange.Start;
 
         public DateTime? End => this.dateRange.End;
@@ -27,7 +28,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private void CalculateDateRange()
         {
-            this.dateRange.End = this.GlobalDataSource.GlobalDateFilter.Start.Value.Date;
+            this.dateRange.End = this.AsIDateFilterComponent().InitialDateTime.Value.Date;
 
             if (this.unit == 1)
             {
