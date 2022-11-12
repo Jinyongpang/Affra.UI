@@ -53,6 +53,14 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
+                <RadzenLabel class="dialogTextSize" Text="Equipment Remark" />
+                </div>
+                <div class="col-8">
+                <RadzenTextArea Name="EquipmentRemark" class="w-100" Placeholder="Enter remarks..." @bind-Value="@Item.EquipmentRemark" Disabled=@isViewing></RadzenTextArea>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
                     <RadzenLabel class="dialogTextSize" Text="Last Skimming" />
                 </div>
                 <div class="col-8">
@@ -69,18 +77,10 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Remarks" />
+                <RadzenLabel class="dialogTextSize" Text="Last Skimming Remark" />
                 </div>
                 <div class="col-8">
-                    <RadzenTextArea Name="Remark" class="w-100" Placeholder="Enter remarks..." @bind-Value="@Item.Remark" Disabled=@isViewing></RadzenTextArea>
-                </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Remarks 2" />
-                </div>
-                <div class="col-8">
-                    <RadzenTextArea Name="Remark2" class="w-100" Placeholder="Enter remarks..." @bind-Value="@Item.Remark2" Disabled=@isViewing></RadzenTextArea>
+                <RadzenTextArea Name="LastSkimmingRemark" class="w-100" Placeholder="Enter remarks..." @bind-Value="@Item.LastSkimmingRemark" Disabled=@isViewing></RadzenTextArea>
                 </div>
             </div>
     </ChildContent>
