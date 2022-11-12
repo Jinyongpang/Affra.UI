@@ -88,6 +88,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Users
 
         public async Task<bool> CheckHasPermissionAsync(ClaimsPrincipal claimsPrincipal, Permission permission)
         {
+            Console.WriteLine($"User is null = {globalDataSource.User is null}");
+            Console.WriteLine($"Claism principal is null = {claimsPrincipal is not null}");
+            Console.WriteLine($"claimsPrincipal.Identity?.IsAuthenticated = {claimsPrincipal?.Identity?.IsAuthenticated}");
             if (globalDataSource.User is null
                 && claimsPrincipal is not null
                 && claimsPrincipal.Identity?.IsAuthenticated == true)
