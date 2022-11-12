@@ -13,17 +13,7 @@
                     </div>
                 </Authorizing>
                 <NotAuthorized>
-                    @if (context.User.Identity?.IsAuthenticated != true)
-                    {
-                        <RedirectToLogin />
-                    }
-                    else
-                    {
-                        <div class="result-view d-flex align-items-center justify-content-center gap-3">
-                            <GenericDescription Height="300px" ImageFile="@ImageFile.ErrorForbidden" Description="Sorry, you are not authorized to access this page. Please contact administrator.">
-                            </GenericDescription>
-                        </div>
-                    }
+                    <RedirectToLogin />
                 </NotAuthorized>
             </AuthorizeRouteView>
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
