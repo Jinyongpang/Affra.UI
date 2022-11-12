@@ -12,9 +12,9 @@
                         <StatusGridColumnTemplate Status="@(item.Status)"></StatusGridColumnTemplate>
                     </Template>           
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="Remark" Title="Remark">
+                <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="StatusRemark" Title="Status Remark">
                     <Template Context="item">
-                        <p style="white-space:pre-wrap">@item.Remark</p>
+                        <p style="white-space:pre-wrap">@item.StatusRemark</p>
                     </Template>
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="LastSandJettingDate" Title="Last Sand Jetting Date">
@@ -32,9 +32,9 @@
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="DrumCollectedNumber" Title="No. of Drum Collected" />
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="AccumulatedSandDisposed" Title="Accumulated Sand Disposed" />
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="HighestMercuryReading" Title="Highest Mercury Reading" />
-                <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="Remark1" Title="Remarks">
+                <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="SandJettingRemarks" Title="Sand Jetting Remarks">
                     <Template Context="item">
-                        <p style="white-space:pre-wrap">@item.Remark1</p>
+                        <p style="white-space:pre-wrap">@item.SandJettingRemarks</p>
                     </Template>
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="Date" Title="Date" SortOrder="SortOrder.Descending" Visible="@ShowDateColumn">

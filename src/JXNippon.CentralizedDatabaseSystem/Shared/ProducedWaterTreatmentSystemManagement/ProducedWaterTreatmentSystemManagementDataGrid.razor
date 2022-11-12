@@ -19,6 +19,7 @@
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyProducedWaterTreatmentSystem.Date.ToLocalTime())
                     </Template>
                 </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="EquipmentRemark" Title="Equipment Remark" Width="60px" />
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="LastSkimmingDate" Title="Last Skimming" Width="40px">
                     <Template Context="dailyProducedWaterTreatmentSystem">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyProducedWaterTreatmentSystem.LastSkimmingDate.ToLocalTime())
@@ -31,8 +32,7 @@
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="Iron" Title="Iron (ppm)" Width="30px" />
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="PH" Title="pH" Width="30px" />
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="Remark" Title="Remark" Width="60px"/>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="Remark2" Title="Remark 2" Width="60px"/>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="LastSkimmingRemark" Title="Last Skimming Remark" Width="60px" />
             </Columns>
         </DailyDataGrid>  
     </div>

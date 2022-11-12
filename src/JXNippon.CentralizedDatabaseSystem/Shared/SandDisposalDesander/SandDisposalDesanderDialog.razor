@@ -26,11 +26,11 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Remark" />
+                <RadzenLabel class="dialogTextSize" Text="Status Remark" />
                 </div>
                 <div class="col-8">
-                    <RadzenTextArea Name="Remark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark" Disabled=@isViewing></RadzenTextArea>
-                    <RadzenRequiredValidator Component="Remark" Text="Remark is required" Popup=false/>
+                <RadzenTextArea Name="StatusRemark" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.StatusRemark" Disabled=@isViewing></RadzenTextArea>
+                <RadzenRequiredValidator Component="StatusRemark" Text="Remark is required" Popup =false/>
                 </div>
             </div>
             <div class="row py-2">
@@ -96,11 +96,11 @@
             </div>
             <div class="row py-2">
                 <div class="col-4 align-items-center d-flex">
-                    <RadzenLabel class="dialogTextSize" Text="Remarks" />
+                <RadzenLabel class="dialogTextSize" Text="Sand Jetting Remarks" />
                 </div>
                 <div class="col-8">
-                    <RadzenTextArea Name="Remark1" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.Remark1" Disabled=@isViewing></RadzenTextArea>
-                    <RadzenRequiredValidator Component="Remark1" Text="Remark is required" Popup=false/>
+                <RadzenTextArea Name="SandJettingRemarks" class="w-100" Placeholder="Enter remark..." @bind-Value="@Item.SandJettingRemarks" Disabled=@isViewing></RadzenTextArea>
+                <RadzenRequiredValidator Component="SandJettingRemarks" Text="Remark is required" Popup=false />
                 </div>
             </div>
             <div class="row py-2">

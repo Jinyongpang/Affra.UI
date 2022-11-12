@@ -31,6 +31,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool AllowSorting { get; set; } = true;
         [Parameter] public bool AllowFiltering { get; set; } = false;
+        [Parameter] public bool RequiredHighlighting { get; set; } = true;
         [Parameter] public RenderFragment Columns { get; set; }
         [Parameter] public EventCallback<IQueryable<TItem>> QueryFilter { get; set; }
 

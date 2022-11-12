@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 7/11/2022 9:04:19 AM
+// Generation date: 12/11/2022 8:35:13 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -700,26 +700,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnStatusChanging(string value);
         partial void OnStatusChanged();
         /// <summary>
-        /// There are no comments for Property Remark in the schema.
+        /// There are no comments for Property EquipmentRemark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Remark
+        public string EquipmentRemark
         {
             get
             {
-                return this._Remark;
+                return this._EquipmentRemark;
             }
             set
             {
-                this.OnRemarkChanging(value);
-                this._Remark = value;
-                this.OnRemarkChanged();
+                this.OnEquipmentRemarkChanging(value);
+                this._EquipmentRemark = value;
+                this.OnEquipmentRemarkChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Remark;
-        partial void OnRemarkChanging(string value);
-        partial void OnRemarkChanged();
+        private string _EquipmentRemark;
+        partial void OnEquipmentRemarkChanging(string value);
+        partial void OnEquipmentRemarkChanged();
         /// <summary>
         /// There are no comments for Property LastSkimmingDate in the schema.
         /// </summary>
@@ -805,26 +805,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnPHChanging(global::System.Nullable<decimal> value);
         partial void OnPHChanged();
         /// <summary>
-        /// There are no comments for Property Remark2 in the schema.
+        /// There are no comments for Property LastSkimmingRemark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Remark2
+        public string LastSkimmingRemark
         {
             get
             {
-                return this._Remark2;
+                return this._LastSkimmingRemark;
             }
             set
             {
-                this.OnRemark2Changing(value);
-                this._Remark2 = value;
-                this.OnRemark2Changed();
+                this.OnLastSkimmingRemarkChanging(value);
+                this._LastSkimmingRemark = value;
+                this.OnLastSkimmingRemarkChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Remark2;
-        partial void OnRemark2Changing(string value);
-        partial void OnRemark2Changed();
+        private string _LastSkimmingRemark;
+        partial void OnLastSkimmingRemarkChanging(string value);
+        partial void OnLastSkimmingRemarkChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -14738,47 +14738,47 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnTCA_TCALP_FEChanging(global::System.Nullable<decimal> value);
         partial void OnTCA_TCALP_FEChanged();
         /// <summary>
-        /// There are no comments for Property TCA_V2200_PH in the schema.
+        /// There are no comments for Property GlycolContactorPreSrubberV2200PH in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<decimal> TCA_V2200_PH
+        public global::System.Nullable<decimal> GlycolContactorPreSrubberV2200PH
         {
             get
             {
-                return this._TCA_V2200_PH;
+                return this._GlycolContactorPreSrubberV2200PH;
             }
             set
             {
-                this.OnTCA_V2200_PHChanging(value);
-                this._TCA_V2200_PH = value;
-                this.OnTCA_V2200_PHChanged();
+                this.OnGlycolContactorPreSrubberV2200PHChanging(value);
+                this._GlycolContactorPreSrubberV2200PH = value;
+                this.OnGlycolContactorPreSrubberV2200PHChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<decimal> _TCA_V2200_PH;
-        partial void OnTCA_V2200_PHChanging(global::System.Nullable<decimal> value);
-        partial void OnTCA_V2200_PHChanged();
+        private global::System.Nullable<decimal> _GlycolContactorPreSrubberV2200PH;
+        partial void OnGlycolContactorPreSrubberV2200PHChanging(global::System.Nullable<decimal> value);
+        partial void OnGlycolContactorPreSrubberV2200PHChanged();
         /// <summary>
-        /// There are no comments for Property TCA_V2200_FE in the schema.
+        /// There are no comments for Property GlycolContactorPreSrubberV2200FE in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<decimal> TCA_V2200_FE
+        public global::System.Nullable<decimal> GlycolContactorPreSrubberV2200FE
         {
             get
             {
-                return this._TCA_V2200_FE;
+                return this._GlycolContactorPreSrubberV2200FE;
             }
             set
             {
-                this.OnTCA_V2200_FEChanging(value);
-                this._TCA_V2200_FE = value;
-                this.OnTCA_V2200_FEChanged();
+                this.OnGlycolContactorPreSrubberV2200FEChanging(value);
+                this._GlycolContactorPreSrubberV2200FE = value;
+                this.OnGlycolContactorPreSrubberV2200FEChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<decimal> _TCA_V2200_FE;
-        partial void OnTCA_V2200_FEChanging(global::System.Nullable<decimal> value);
-        partial void OnTCA_V2200_FEChanged();
+        private global::System.Nullable<decimal> _GlycolContactorPreSrubberV2200FE;
+        partial void OnGlycolContactorPreSrubberV2200FEChanging(global::System.Nullable<decimal> value);
+        partial void OnGlycolContactorPreSrubberV2200FEChanged();
         /// <summary>
         /// There are no comments for Property TCB_DE_PH in the schema.
         /// </summary>
@@ -15327,26 +15327,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnStatusChanging(string value);
         partial void OnStatusChanged();
         /// <summary>
-        /// There are no comments for Property Remark in the schema.
+        /// There are no comments for Property StatusRemark in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Remark
+        public string StatusRemark
         {
             get
             {
-                return this._Remark;
+                return this._StatusRemark;
             }
             set
             {
-                this.OnRemarkChanging(value);
-                this._Remark = value;
-                this.OnRemarkChanged();
+                this.OnStatusRemarkChanging(value);
+                this._StatusRemark = value;
+                this.OnStatusRemarkChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Remark;
-        partial void OnRemarkChanging(string value);
-        partial void OnRemarkChanged();
+        private string _StatusRemark;
+        partial void OnStatusRemarkChanging(string value);
+        partial void OnStatusRemarkChanged();
         /// <summary>
         /// There are no comments for Property LastSandJettingDate in the schema.
         /// </summary>
@@ -15495,26 +15495,26 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnHighestMercuryReadingChanging(global::System.Nullable<decimal> value);
         partial void OnHighestMercuryReadingChanged();
         /// <summary>
-        /// There are no comments for Property Remark1 in the schema.
+        /// There are no comments for Property SandJettingRemarks in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string Remark1
+        public string SandJettingRemarks
         {
             get
             {
-                return this._Remark1;
+                return this._SandJettingRemarks;
             }
             set
             {
-                this.OnRemark1Changing(value);
-                this._Remark1 = value;
-                this.OnRemark1Changed();
+                this.OnSandJettingRemarksChanging(value);
+                this._SandJettingRemarks = value;
+                this.OnSandJettingRemarksChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _Remark1;
-        partial void OnRemark1Changing(string value);
-        partial void OnRemark1Changed();
+        private string _SandJettingRemarks;
+        partial void OnSandJettingRemarksChanging(string value);
+        partial void OnSandJettingRemarksChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -50708,48 +50708,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnAverageOfTotalGasChanging(global::System.Nullable<double> value);
         partial void OnAverageOfTotalGasChanged();
         /// <summary>
-        /// There are no comments for Property AverageOfHIP in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<double> AverageOfHIP
-        {
-            get
-            {
-                return this._AverageOfHIP;
-            }
-            set
-            {
-                this.OnAverageOfHIPChanging(value);
-                this._AverageOfHIP = value;
-                this.OnAverageOfHIPChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<double> _AverageOfHIP;
-        partial void OnAverageOfHIPChanging(global::System.Nullable<double> value);
-        partial void OnAverageOfHIPChanged();
-        /// <summary>
-        /// There are no comments for Property AverageOfFPSO in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<double> AverageOfFPSO
-        {
-            get
-            {
-                return this._AverageOfFPSO;
-            }
-            set
-            {
-                this.OnAverageOfFPSOChanging(value);
-                this._AverageOfFPSO = value;
-                this.OnAverageOfFPSOChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<double> _AverageOfFPSO;
-        partial void OnAverageOfFPSOChanging(global::System.Nullable<double> value);
-        partial void OnAverageOfFPSOChanged();
-        /// <summary>
         /// There are no comments for Property Status in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -59012,12 +58970,12 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""ProducedWaterTreatmentSystemName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
-        <Property Name=""Remark"" Type=""Edm.String"" />
+        <Property Name=""EquipmentRemark"" Type=""Edm.String"" />
         <Property Name=""LastSkimmingDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""AnalyserStatus"" Type=""Edm.String"" />
         <Property Name=""Iron"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
-        <Property Name=""Remark2"" Type=""Edm.String"" />
+        <Property Name=""LastSkimmingRemark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
         <NavigationProperty Name=""ProducedWaterTreatmentSystem"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem"" />
@@ -59704,8 +59662,8 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""TCA_V2430_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TCA_TCALP_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TCA_TCALP_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
-        <Property Name=""TCA_V2200_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
-        <Property Name=""TCA_V2200_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GlycolContactorPreSrubberV2200PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""GlycolContactorPreSrubberV2200FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TCB_DE_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TCB_DE_FE"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TCB_NDE_PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
@@ -59732,7 +59690,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""SandDisposalDesanderName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
-        <Property Name=""Remark"" Type=""Edm.String"" />
+        <Property Name=""StatusRemark"" Type=""Edm.String"" />
         <Property Name=""LastSandJettingDate"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""NextSandJettingDate"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""EastClusterJettingCycleNumber"" Type=""Edm.Int32"" />
@@ -59740,7 +59698,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""DrumCollectedNumber"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""AccumulatedSandDisposed"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""HighestMercuryReading"" Type=""Edm.Decimal"" Scale=""Variable"" />
-        <Property Name=""Remark1"" Type=""Edm.String"" />
+        <Property Name=""SandJettingRemarks"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
         <NavigationProperty Name=""SandDisposalDesander"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders.SandDisposalDesander"" />
@@ -61463,8 +61421,6 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""HIP"" Type=""Edm.Int32"" />
         <Property Name=""FPSO"" Type=""Edm.Int32"" />
         <Property Name=""AverageOfTotalGas"" Type=""Edm.Double"" />
-        <Property Name=""AverageOfHIP"" Type=""Edm.Double"" />
-        <Property Name=""AverageOfFPSO"" Type=""Edm.Double"" />
         <Property Name=""Status"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""DailyGasProductionDeliverySchedules"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule)"" />

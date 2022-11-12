@@ -1132,6 +1132,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Glycol Contactor Pre-Srubber V-2200 FE.
+        /// </summary>
+        public static string GlycolContactorPreSrubberV2200FE {
+            get {
+                return ResourceManager.GetString("GlycolContactorPreSrubberV2200FE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Glycol Contactor Pre-Srubber V-2200 PH.
+        /// </summary>
+        public static string GlycolContactorPreSrubberV2200PH {
+            get {
+                return ResourceManager.GetString("GlycolContactorPreSrubberV2200PH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Glycol Pump Name.
         /// </summary>
         public static string GlycolPumpName {
@@ -2392,15 +2410,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remarks 1.
-        /// </summary>
-        public static string Remark1 {
-            get {
-                return ResourceManager.GetString("Remark1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Remarks 2.
         /// </summary>
         public static string Remark2 {
@@ -2469,6 +2478,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string SandFilterS0400Status {
             get {
                 return ResourceManager.GetString("SandFilterS0400Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sand Jetting Remarks.
+        /// </summary>
+        public static string SandJettingRemarks {
+            get {
+                return ResourceManager.GetString("SandJettingRemarks", resourceCulture);
             }
         }
         
@@ -2586,6 +2604,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status Remark.
+        /// </summary>
+        public static string StatusRemark {
+            get {
+                return ResourceManager.GetString("StatusRemark", resourceCulture);
             }
         }
         
@@ -2712,24 +2739,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string TCA_TCALP_PH {
             get {
                 return ResourceManager.GetString("TCA_TCALP_PH", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TC-A V-2200 Fe.
-        /// </summary>
-        public static string TCA_V2200_FE {
-            get {
-                return ResourceManager.GetString("TCA_V2200_FE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TC-A V-2200 pH.
-        /// </summary>
-        public static string TCA_V2200_PH {
-            get {
-                return ResourceManager.GetString("TCA_V2200_PH", resourceCulture);
             }
         }
         
