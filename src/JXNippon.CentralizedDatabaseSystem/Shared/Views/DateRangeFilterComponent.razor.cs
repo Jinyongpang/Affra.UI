@@ -8,10 +8,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     public partial class DateRangeFilterComponent : IDateFilterComponent
     {
         [Parameter] public string Title { get; set; }
+        [Parameter] public DateTime? FixDateTime { get; set; }
 
         [Parameter] public EventCallback<DateRange> OnChanged { get; set; }
 
-        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
+        [Inject] public IGlobalDataSource GlobalDataSource { get; set; }
         public DateTime? Start => this.dateRange.Start;
 
         public DateTime? End => this.dateRange.End;

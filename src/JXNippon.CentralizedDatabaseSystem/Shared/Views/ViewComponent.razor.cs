@@ -37,6 +37,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter]
         public bool HasFocus { get; set; }
 
+        [Parameter] public DateTime? Date { get; set; }
+
         [Parameter]
         public EventCallback<bool> HasFocusChanged { get; set; }
 

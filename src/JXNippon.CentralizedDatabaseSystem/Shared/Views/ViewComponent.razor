@@ -134,7 +134,7 @@
         {
             DateFilter component = JsonSerializer.Deserialize<DateFilter>(col.ColumnComponent);
             return
-    @<DateFilterComponent @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>;
+    @<DateFilterComponent FixDateTime="@this.Date" @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>;
         }
         else if (col.ComponentType == nameof(Domain.Statistics.Statistic))
         {

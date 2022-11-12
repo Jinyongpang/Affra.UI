@@ -2,25 +2,25 @@
 
 @if(this.DateFilter.DateFilterType == DateFilterType.Range)
 {
-    <DateRangeFilterComponent @ref=@Filter Title=@this.Column.Title></DateRangeFilterComponent>
+    <DateRangeFilterComponent FixDateTime="@this.FixDateTime" @ref=@Filter Title=@this.Column.Title></DateRangeFilterComponent>
 }
 else if(this.DateFilter.DateFilterType == DateFilterType.Month)
 {
-    <MonthFilterComponent @ref=@Filter Title=@this.Column.Title></MonthFilterComponent>
+    <MonthFilterComponent FixDateTime="@this.FixDateTime" @ref=@Filter Title=@this.Column.Title></MonthFilterComponent>
 }
 else if(this.DateFilter.DateFilterType == DateFilterType.NinetyMonth)
 {
-    <NinetyDaysFilterComponent @ref=@Filter Title=@this.Column.Title></NinetyDaysFilterComponent>
+    <NinetyDaysFilterComponent FixDateTime="@this.FixDateTime" @ref=@Filter Title=@this.Column.Title></NinetyDaysFilterComponent>
 }
 else if(this.DateFilter.DateFilterType == DateFilterType.LastXPeriod)
 {
-    <LastXPeriodFilterComponent @ref=@Filter Title=@this.Column.Title></LastXPeriodFilterComponent>
+    <LastXPeriodFilterComponent FixDateTime="@this.FixDateTime" @ref=@Filter Title=@this.Column.Title></LastXPeriodFilterComponent>
 }
 else if(this.DateFilter.DateFilterType == DateFilterType.HorizontalMonth)
 {
-    <HorizontalMonthFilterComponent @ref=@Filter Title=@this.Column.Title></HorizontalMonthFilterComponent>
+    <HorizontalMonthFilterComponent FixDateTime="@this.FixDateTime" @ref=@Filter Title=@this.Column.Title></HorizontalMonthFilterComponent>
 }
 else if(this.DateFilter.DateFilterType == DateFilterType.SingleDate)
 {
-    <SingleDateRangeFilterComponent @ref=@Filter Title=@this.Column.Title></SingleDateRangeFilterComponent>
+    <SingleDateRangeFilterComponent FixDateTime="@this.FixDateTime" @ref=@Filter Title=@this.Column.Title></SingleDateRangeFilterComponent>
 }

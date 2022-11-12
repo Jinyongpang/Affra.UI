@@ -10,7 +10,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public string Title { get; set; }
         [Parameter] public string Class { get; set; }
         [Parameter] public bool IsGlobal { get; set; }
-        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
+        [Parameter] public DateTime? FixDateTime { get; set; }
+        [Inject] public IGlobalDataSource GlobalDataSource { get; set; }
         public DateTime? Start => this.dateRange.Start;
 
         public DateTime? End => this.dateRange.End;
@@ -31,7 +32,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         {
             this.CalculateDateRange(IsGlobal
                 ? DateTime.Now.Date
-                : this.GlobalDataSource.GlobalDateFilter.Start.Value.Date);
+                : this.AsIDateFilterComponent().InitialDateTime.Value.Date);
 
             return Task.CompletedTask;
         }

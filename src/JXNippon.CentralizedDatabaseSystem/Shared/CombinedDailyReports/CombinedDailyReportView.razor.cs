@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Affra.Core.Domain.Services;
+﻿using Affra.Core.Domain.Services;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
@@ -30,7 +29,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 {
     public partial class CombinedDailyReportView
     {
-        private static HashSet<Type> RequiredTypes = new HashSet<Type>()
+        private static readonly HashSet<Type> RequiredTypes = new HashSet<Type>()
         {
             typeof(string),
             typeof(DateTimeOffset),
@@ -84,8 +83,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private VendorActivitiesDataGrid vendorActivitiesDataGrid;
         private LogisticDataGrid logisticDataGrid;
         private MaximoWorkOrderDataGrid maximoWorkOrderDataGrid;
-        private LifeBoatsDataGrid lifeBoatsDataGrid;      
-        
+        private LifeBoatsDataGrid lifeBoatsDataGrid;
+
         private CombinedDailyReportTag combinedDailyReportTagRef
         {
             set
@@ -93,20 +92,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 combinedDailyReportTags.Add(value);
             }
         }
-        private ICollection<CombinedDailyReportTag> combinedDailyReportTags = new List<CombinedDailyReportTag>();
+        private readonly ICollection<CombinedDailyReportTag> combinedDailyReportTags = new List<CombinedDailyReportTag>();
         private void SetIsEditing(bool value)
         {
-            this.isEditing = value;
-            this.StateHasChanged();
+            isEditing = value;
+            StateHasChanged();
         }
 
         protected override async Task OnInitializedAsync()
         {
-            CommonFilter = new CommonFilter(NavManager);
-            CommonFilter.Date = this.Data.Date.UtcDateTime;
+            CommonFilter = new CommonFilter(NavManager)
+            {
+                Date = Data.Date.UtcDateTime
+            };
 
-            this.isLoading = false;
-            this.isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true });
+            isLoading = false;
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true });
             await base.OnInitializedAsync();
         }
 
@@ -119,24 +120,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             try
             {
-                if (this.CanApprove())
+                if (CanApprove())
                 {
                     using var scope = ServiceProvider.CreateScope();
-                    var service = this.GetGenericService(scope);
-                    this.Data.Status = CombinedDailyReportStatus.Approved;
-                    await service.UpdateAsync(this.Data, this.Data.Id);
-                    this.AffraNotificationService.NotifySuccess("Report approved.");
-                    this.DialogService.Close();
+                    var service = GetGenericService(scope);
+                    Data.Status = CombinedDailyReportStatus.Approved;
+                    await service.UpdateAsync(Data, Data.Id);
+                    AffraNotificationService.NotifySuccess("Report approved.");
+                    DialogService.Close();
                 }
                 else
                 {
-                    this.AffraNotificationService.NotifyWarning("Please complete all the required fields.");
+                    AffraNotificationService.NotifyWarning("Please complete all the required fields.");
                 }
-                
+
             }
             catch (Exception ex)
             {
-                this.AffraNotificationService.NotifyException(ex);
+                AffraNotificationService.NotifyException(ex);
             }
         }
 
@@ -145,15 +146,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             try
             {
                 using var scope = ServiceProvider.CreateScope();
-                var service = this.GetGenericService(scope);
-                this.Data.Status = CombinedDailyReportStatus.Rejected;
-                await service.UpdateAsync(this.Data, this.Data.Id);
-                this.AffraNotificationService.NotifySuccess("Report rejected.");
-                this.DialogService.Close();
+                var service = GetGenericService(scope);
+                Data.Status = CombinedDailyReportStatus.Rejected;
+                await service.UpdateAsync(Data, Data.Id);
+                AffraNotificationService.NotifySuccess("Report rejected.");
+                DialogService.Close();
             }
             catch (Exception ex)
             {
-                this.AffraNotificationService.NotifyException(ex);
+                AffraNotificationService.NotifyException(ex);
             }
         }
 
@@ -257,7 +258,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             {
                 return -1;
             }
-            return collection.Sum(x => this.GetTotalUnfillProperty(x));
+            return collection.Sum(x => GetTotalUnfillProperty(x));
         }
 
         private string[] GetTotalUnfillPropertyName(object property, string extraExemption = "")
@@ -283,7 +284,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             {
                 query = query.Where(x => x.Name == extraExemption);
             }
-            
+
             var result = query
                 .Select(x => x.Name)
                 .ToArray();
@@ -295,7 +296,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         private int GetTotalUnfillProperty(object property, string extraExemption = "")
         {
-            var result = this.GetTotalUnfillPropertyName(property, extraExemption);
+            var result = GetTotalUnfillPropertyName(property, extraExemption);
             return result is null
                 ? -1
                 : result.Length;
@@ -303,7 +304,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         private bool CanApprove()
         {
-            return this.combinedDailyReportTags
+            return combinedDailyReportTags
                 .All(x => x.HasNoViolation);
         }
 
@@ -312,11 +313,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             isLoading = true;
             try
             {
-                var streamResult = await this.ReportService.GenerateCombinedDailyReportAsync(this.Data);
+                var streamResult = await ReportService.GenerateCombinedDailyReportAsync(Data);
                 if (streamResult != null)
                 {
                     using var streamRef = new DotNetStreamReference(streamResult);
-                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{this.Data.Date.ToLocalTime():d}.xlsx", streamRef);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{Data.Date.ToLocalTime():d}.xlsx", streamRef);
                 }
             }
             catch (Exception ex)

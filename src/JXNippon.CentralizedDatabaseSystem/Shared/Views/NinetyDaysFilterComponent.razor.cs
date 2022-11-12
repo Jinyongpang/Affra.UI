@@ -8,8 +8,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
     public partial class NinetyDaysFilterComponent : IDateFilterComponent
     {
         [Parameter] public string Title { get; set; }
+        [Parameter] public DateTime? FixDateTime { get; set; }
 
-        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
+        [Inject] public IGlobalDataSource GlobalDataSource { get; set; }
 
         public DateTime? Start => this.dateRange.Start;
 
@@ -45,8 +46,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             {
                 years.Add(i);
             }
-            this.month = this.GlobalDataSource.GlobalDateFilter.Start.Value.Month;
-            this.year = this.GlobalDataSource.GlobalDateFilter.Start.Value.Year;
+            this.month = this.AsIDateFilterComponent().InitialDateTime.Value.Month;
+            this.year = this.AsIDateFilterComponent().InitialDateTime.Value.Year;
             this.CalculateDateRange();
             return Task.CompletedTask;
         }

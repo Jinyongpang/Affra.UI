@@ -1,5 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using AntDesign;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
@@ -9,6 +10,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Domain.Workspaces;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Shared.Loadings;
 using Microsoft.AspNetCore.Components;
@@ -99,7 +101,27 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
         {
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PEReport, ICentralizedDatabaseSystemUnitOfWork>>();
         }
-        private async Task DownloadAsync(PEReport input)
+
+		private async Task ShowDialogAsync(PEReport data)
+        {
+			var peReportTask = this.GetFullPEReportAsync(data.Date);
+			await this.DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = peReportTask }, Constant.LoadingDialogOptions);
+			var peReport = await peReportTask;
+
+			dynamic? dialogResponse;
+			dialogResponse = await DialogService.OpenAsync<PEMonthlyReportView>(data.Date.ToLocalTime().ToString("yyyy MMMM"),
+					   new Dictionary<string, object>() { { "Data", peReport } },
+					   Constant.FullScreenDialogOptions);
+
+			if (dialogResponse == true)
+			{
+
+			}
+
+			await ReloadAsync();
+		}
+
+		private async Task DownloadAsync(PEReport input)
         {
             try
             {
@@ -125,7 +147,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
         private async Task<PEReport> GetFullPEReportAsync(DateTimeOffset date)
         {
             using var serviceScope = ServiceProvider.CreateScope();
-            var service = serviceScope.ServiceProvider.GetRequiredService<IGenericService<PEReport>>();
+            var service = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PEReport, ICentralizedDatabaseSystemUnitOfWork>>();
             var query = (DataServiceQuery<PEReport>)service.Get();
             var response = await ((DataServiceQuery<PEReport>)query
                 .Expand(x => x.DailyHIPSales)

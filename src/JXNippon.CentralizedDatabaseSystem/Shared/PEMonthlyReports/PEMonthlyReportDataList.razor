@@ -67,13 +67,13 @@
                     <ActionTemplate>        
                         <CardAction >
                             <Tooltip Title=@("View...")>
-                                <Icon Class="anticon-big" Type="eye"/>
+                                <Icon Class="anticon-big" Type="eye" OnClick="(() => this.ShowDialogAsync(context))"/>
                             </Tooltip>
                         </CardAction>
                         @if (isUserHavePermission)
                         {
                             <CardAction>
-                                <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" OnClick="(() => this.DownloadWithLoadingAsync(context))" /></Tooltip>
+                                <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" OnClick="(() => this.DownloadWithLoadingAsync(context))"/></Tooltip>
                             </CardAction>
                         }
                     </ActionTemplate>
