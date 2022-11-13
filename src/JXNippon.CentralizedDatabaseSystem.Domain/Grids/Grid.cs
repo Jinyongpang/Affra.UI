@@ -7,6 +7,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Grids
     public class Grid : ColumnComponent
     {
         public string Type { get; set; }
+        public bool Split3Months { get; set; }
+        public string Style { get; set; } = "height: 45vh;";
 
         public string DateFilterId { get; set; }
 
