@@ -104,7 +104,29 @@
             }
 
             
-            </div>;
+            </div>
+    ;
+    }
+
+    private RenderFragment GetGrid(Grid grid, IDateFilterComponent dateFilter, Column col)
+    {
+        if (grid.Split3Months)
+        {
+            return @<div class="row">           
+                    @for(int i = 0; i < 3; i++)
+                    {
+                        <div class="col-md-4 col-sm-12">
+                            <DataGridComponent @ref="@gridComponentRef" MonthIndex=i Style="@grid.Style" Split3Months=@grid.Split3Months DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize((int)col.Id) PageNumbersCount=GetPageNumbersCount((int)col.Id)></DataGridComponent>
+                        </div>
+                    }               
+           </div>;
+
+        }
+        else
+        {            
+            return  @<DataGridComponent @ref="@gridComponentRef" Style="@grid.Style" Split3Months=@grid.Split3Months DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize((int)col.Id) PageNumbersCount=GetPageNumbersCount((int)col.Id)></DataGridComponent>;
+        }
+
     }
 
     private RenderFragment GetColumnComponent(Row row, Column col)
@@ -116,13 +138,12 @@
             return
     @<ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
                                             Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col"></ChartComponent>;
-    }
+        }
         else if (col.ComponentType == nameof(Grid))
         {
             Grid grid = JsonSerializer.Deserialize<Grid>(col.ColumnComponent);
             var dateFilter = this.GetDateFilterComponent(grid.DateFilterId);
-            return
-    @<DataGridComponent @ref="@gridComponentRef" DateFilter=@dateFilter TType="@grid.ActualType.AssemblyQualifiedName" Subscription="@grid.Type" GridColumns="@grid.GridColumns" Column="@col" PageSize=GetPageSize((int)col.Id) PageNumbersCount=GetPageNumbersCount((int)col.Id)></DataGridComponent>;
+            return this.GetGrid(grid, dateFilter, col);
         }
         else if (col.ComponentType == nameof(AnnouncementCard))
         {
