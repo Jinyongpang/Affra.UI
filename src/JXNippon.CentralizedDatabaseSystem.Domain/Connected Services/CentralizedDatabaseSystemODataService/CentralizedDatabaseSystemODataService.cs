@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 12/11/2022 8:35:13 PM
+// Generation date: 14/11/2022 12:10:33 AM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -50708,6 +50708,48 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnAverageOfTotalGasChanging(global::System.Nullable<double> value);
         partial void OnAverageOfTotalGasChanged();
         /// <summary>
+        /// There are no comments for Property AverageOfHIP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<double> AverageOfHIP
+        {
+            get
+            {
+                return this._AverageOfHIP;
+            }
+            set
+            {
+                this.OnAverageOfHIPChanging(value);
+                this._AverageOfHIP = value;
+                this.OnAverageOfHIPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<double> _AverageOfHIP;
+        partial void OnAverageOfHIPChanging(global::System.Nullable<double> value);
+        partial void OnAverageOfHIPChanged();
+        /// <summary>
+        /// There are no comments for Property AverageOfFPSO in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<double> AverageOfFPSO
+        {
+            get
+            {
+                return this._AverageOfFPSO;
+            }
+            set
+            {
+                this.OnAverageOfFPSOChanging(value);
+                this._AverageOfFPSO = value;
+                this.OnAverageOfFPSOChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<double> _AverageOfFPSO;
+        partial void OnAverageOfFPSOChanging(global::System.Nullable<double> value);
+        partial void OnAverageOfFPSOChanged();
+        /// <summary>
         /// There are no comments for Property Status in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -61421,6 +61463,8 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""HIP"" Type=""Edm.Int32"" />
         <Property Name=""FPSO"" Type=""Edm.Int32"" />
         <Property Name=""AverageOfTotalGas"" Type=""Edm.Double"" />
+        <Property Name=""AverageOfHIP"" Type=""Edm.Double"" />
+        <Property Name=""AverageOfFPSO"" Type=""Edm.Double"" />
         <Property Name=""Status"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""DailyGasProductionDeliverySchedules"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule)"" />
