@@ -54,7 +54,7 @@
                     && (row.Columns is null
                     || row.Columns.Count == 0))
                 {
-                    <div class="col py-1" ondragover="event.preventDefault();" @ondrop=@(args => HandleDropOnRowAsync(args, row)) @ondragenter="@(args => HandleDragEnter((int)row.Id))">
+                    <div class="col py-2" ondragover="event.preventDefault();" @ondrop=@(args => HandleDropOnRowAsync(args, row)) @ondragenter="@(args => HandleDragEnter((int)row.Id))">
                         <Card Style="text-align: center;" Class="h-100 card-shadow"> 
                             <TitleTemplate>
                             </TitleTemplate>
@@ -89,7 +89,7 @@
                         <Spin/>
                     </Placeholder>
                     <ItemContent>
-                        <div class="col py-3 px-3 can-drop" style=@this.CheckOnDrag(col) ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave((int)col.Id))" @ondrop=@(args => HandleDropOnColumnAsync(args, col))/> 
+                        <div class="col py-2 px-1 can-drop" style=@this.CheckOnDrag(col) ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave((int)col.Id))" @ondrop=@(args => HandleDropOnColumnAsync(args, col))/> 
                         @this.GetColumnComponentCard(row, col)
                     </ItemContent>
                 </Virtualize>
@@ -98,7 +98,7 @@
             {
                 foreach (var col in row.Columns)
                 {
-                    <div class="col py-3 px-3 can-drop" style=@this.CheckOnDrag(col) ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave((int)col.Id))" @ondrop=@(args => HandleDropOnColumnAsync(args, col))/> 
+                    <div class="col py-2 px-1 can-drop" style=@this.CheckOnDrag(col) ondragover="event.preventDefault();" @ondragleave="@(args => HandleDragLeave((int)col.Id))" @ondrop=@(args => HandleDropOnColumnAsync(args, col))/> 
                         @this.GetColumnComponentCard(row, col)
                 }
             }
@@ -180,7 +180,7 @@
             : $"col-md-{columnComponent.WidthGridSize}";
 
         return
-    @<div class="col-sm-12 py-3 @draggableClass @this.GetFocusClass((int)col.Id, @widthGridSize)" draggable="@isDraggable" ondragover="event.preventDefault();"
+    @<div class="col-sm-12 py-2 @draggableClass @this.GetFocusClass((int)col.Id, @widthGridSize)" draggable="@isDraggable" ondragover="event.preventDefault();"
                                         @ondrop=@(args => HandleDropOnColumnAsync(args, col))
                                         @ondragstart=@(args => HandleDragStart(args, row, col, (int)col.Id))         
                                         @ondragenter="@(args => HandleDragEnter((int)col.Id))"
