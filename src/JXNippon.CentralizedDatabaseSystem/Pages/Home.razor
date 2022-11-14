@@ -3,4 +3,11 @@
 @attribute [Authorize(Policy = "Operation.Read")]
 
 <PageTitle>Home</PageTitle>
-<ViewCarousel Page="Home"></ViewCarousel>
+<RadzenSplitter>
+    <RadzenSplitterPane Size="20%" Style="height: calc(100vh - 5rem); overflow-y: auto;">
+        <ViewCarousel Page="HomeSider"></ViewCarousel>
+    </RadzenSplitterPane>
+    <RadzenSplitterPane Size="80%" Style="height: calc(100vh - 5rem); overflow-y: auto;">
+        <ViewCarousel Page="Home"></ViewCarousel>
+    </RadzenSplitterPane>
+</RadzenSplitter>

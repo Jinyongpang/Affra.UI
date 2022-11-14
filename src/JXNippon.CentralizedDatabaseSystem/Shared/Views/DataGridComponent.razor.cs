@@ -30,12 +30,14 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public EventCallback<IQueryable> LoadData { get; set; }
         [Parameter] public IQueryable Queryable { get; set; }
         [Parameter] public string TType { get; set; }
+        [Parameter] public string Style { get; set; } = "height: 45vh;";
         [Parameter] public string Subscription { get; set; }
         [Parameter] public IEnumerable<GridColumn> GridColumns { get; set; }
         [Parameter] public Column Column { get; set; }
         [Parameter] public int PageSize { get; set; }
         [Parameter] public int PageNumbersCount { get; set; }
-
+        [Parameter] public bool Split3Months { get; set; }
+        [Parameter] public int MonthIndex { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IViewService ViewService { get; set; }
@@ -81,7 +83,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
-            items = await GetDailyItemsAsync(TType, DateFilter?.Start, DateFilter?.End, args);
+            items = await GetDailyItemsAsync(TType, DateFilter?.Start, DateFilter?.End, args, this.MonthIndex);
             itemsDictionary = await MergeOverridenTypeAsync(items) ?? new List<ExpandoObject>();
             isLoading = false;
             this.StateHasChanged();
@@ -161,7 +163,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             return null;
         }
 
-        private async Task<IEnumerable<IDaily>> GetDailyItemsAsync(string type, DateTimeOffset? start, DateTimeOffset? end, LoadDataArgs args = null)
+        private async Task<IEnumerable<IDaily>> GetDailyItemsAsync(string type, DateTimeOffset? start, DateTimeOffset? end, LoadDataArgs args = null, int? index = null)
         {
             using var serviceScope = ServiceProvider.CreateScope();
             var service = ViewService.GetGenericService(serviceScope, type);
@@ -192,13 +194,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             
             if (start != null && end != null)
             {
-                Queryable = Queryable
-                    .Cast<IDaily>()
-                    .Where(item => item.Date >= start.Value.ToUniversalTime())
-                    .Where(item => item.Date <= end.Value.ToUniversalTime());
+                if (this.Split3Months)
+                {
+                    var actualStart = start.Value.AddMonths(index.Value);
+                    var actualEnd = actualStart.AddMonths(1).AddDays(-1);
+                    Queryable = Queryable
+                        .Cast<IDaily>()
+                        .Where(item => item.Date >= actualStart.ToUniversalTime())
+                        .Where(item => item.Date <= actualEnd.ToUniversalTime());
+                }
+                else
+                {
+                    Queryable = Queryable
+                        .Cast<IDaily>()
+                        .Where(item => item.Date >= start.Value.ToUniversalTime())
+                        .Where(item => item.Date <= end.Value.ToUniversalTime());
+                }               
             }
-
-            if (args?.Sorts is null)
+            if (string.IsNullOrEmpty(args?.OrderBy))
             {
                 Queryable = Queryable
                     .Cast<IDaily>()

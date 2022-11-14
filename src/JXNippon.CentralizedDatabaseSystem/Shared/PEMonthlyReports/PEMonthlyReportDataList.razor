@@ -26,7 +26,7 @@
                     <Body>
                         <div class="d-flex flex-row align-items-center">
                             <div>
-                                <div style="word-break:break-word;">Report Date : @string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", context.Date.ToLocalTime())</div>
+                                <div style="word-break:break-word;">Report Date : @string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:yyyy MMMM}", context.Date.ToLocalTime())</div>
                             </div>
                         </div>
                         <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
