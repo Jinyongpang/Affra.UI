@@ -211,7 +211,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
                         .Where(item => item.Date <= end.Value.ToUniversalTime());
                 }               
             }
-            if (!string.IsNullOrEmpty(args?.OrderBy))
+            if (string.IsNullOrEmpty(args?.OrderBy))
             {
                 Queryable = Queryable
                     .Cast<IDaily>()
