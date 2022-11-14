@@ -12,6 +12,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public TItem Item { get; set; }
         [Parameter] public long ItemId { get; set; }
         [Parameter] public bool IsRequired { get; set; }
+        [Parameter] public string DefaultStringValue { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Parameter] public EventCallback<decimal?> DecimalChanged { get; set; }
