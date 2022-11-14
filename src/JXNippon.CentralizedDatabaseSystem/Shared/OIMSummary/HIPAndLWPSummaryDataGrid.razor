@@ -10,6 +10,11 @@
             TDialog="HIPAndLWPSummaryDialog" ReportDate="@this.ReportDate" AllowSorting=false
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
+                <RadzenDataGridColumn TItem="DailyHIPAndLWPSummary" Property="Row" Title="Row">
+                    <Template Context="item">
+                        <p style="white-space:pre-wrap">@((this.Data.ToList().IndexOf(item) + 1))</p>
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailyHIPAndLWPSummary" Property="Remark" Title="Remark">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@((MarkupString)@item.Remark)</p>
