@@ -64,7 +64,25 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments { public partial class DailyLifeBoat : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments 
+{ 
+    public partial class DailyLifeBoat : IDaily, IExtras, IEntity 
+    { 
+        [IgnoreClientProperty] 
+        public DateTime DateUI 
+        { 
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+
+		[IgnoreClientProperty]
+		public DateTime? NTDDateUI
+		{
+			get { return this.NTD?.ToLocalDateTime(); }
+			set { this.NTD = value?.ToUniversalTime(); }
+		}
+	} 
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments
 {
     public partial class DailyLongTermOverridesInhibitsOnAlarmTrip : IDaily, IExtras, IEntity

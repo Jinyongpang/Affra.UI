@@ -15,6 +15,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
 
         [Parameter] public int? Span { get; set; }
         [Parameter] public bool IsRequired { get; set; } = true;
+        [Parameter] public string DefaultStringValue { get; set; } = "";
 
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
         [Parameter] public TItem Item { get; set; }

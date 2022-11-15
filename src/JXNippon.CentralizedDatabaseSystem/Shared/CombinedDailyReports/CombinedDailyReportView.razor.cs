@@ -125,6 +125,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                     using var scope = ServiceProvider.CreateScope();
                     var service = GetGenericService(scope);
                     Data.Status = CombinedDailyReportStatus.Approved;
+                    Data.Revision = Data.Revision++;
                     await service.UpdateAsync(Data, Data.Id);
                     AffraNotificationService.NotifySuccess("Report approved.");
                     DialogService.Close();

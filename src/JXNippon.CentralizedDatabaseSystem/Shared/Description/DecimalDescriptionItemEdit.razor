@@ -14,8 +14,13 @@ else
         <div class="d-flex justify-content-center" >
             @if (this.Decimal != null)
             {
-                @this.Decimal;
-            } 
+                @this.Decimal
+                ;
+            }
+            else if(!this.IsRequired)
+            {
+                @this.DefaultStringValue
+            }
         </div>
     </td>
     
