@@ -318,7 +318,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 if (streamResult != null)
                 {
                     using var streamRef = new DotNetStreamReference(streamResult);
-                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{Data.Date.ToLocalTime():d}.xlsx", streamRef);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{Data.Date.ToLocalTime():d}_Rev{Data.Revision}.xlsx", streamRef);
                 }
             }
             catch (Exception ex)

@@ -6,13 +6,18 @@
 <div class="row">
     <div class="col">
         <RadzenDataGrid Data="@data" Count=count PageSize="50" TItem="SectionNote"
-                        CellContextMenu="@OnCellContextMenu" Responsive>
+                        CellContextMenu="@OnCellContextMenu" ColumnWidth="200px" Responsive>
             <EmptyTemplate>
                 <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
                     <a>NTR</a>
                 </div>
             </EmptyTemplate>
             <Columns>
+                <RadzenDataGridColumn TItem="SectionNote" Property="Row" Title="No." Width="10px">
+                    <Template Context="item">
+                        @((this.Data.ToList().IndexOf(item) + 1))
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="SectionNote" Property="Note" Title="Note"/>
             </Columns>
         </RadzenDataGrid>

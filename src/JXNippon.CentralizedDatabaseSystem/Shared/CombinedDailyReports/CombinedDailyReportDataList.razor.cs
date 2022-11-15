@@ -1,6 +1,7 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
@@ -145,7 +146,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 if (streamResult != null)
                 {
                     using var streamRef = new DotNetStreamReference(streamResult);
-                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{combinedDailyReport.Date.ToLocalTime():d}.xlsx", streamRef);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{combinedDailyReport.Date.ToLocalTime():d}_Rev{combinedDailyReport.Revision}.xlsx", streamRef);
                 }
             }
             catch (Exception ex)

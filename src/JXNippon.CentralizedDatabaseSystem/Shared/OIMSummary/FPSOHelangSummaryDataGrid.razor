@@ -6,7 +6,7 @@
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.OnDataChangedAsync TItem="DailyFPSOHelangSummary" TDialog="FPSOHelangSummaryDialog" ReportDate="@this.ReportDate"
             PagerAlwaysVisible="@PagerAlwaysVisible" Subscriptions=@(new string[] { "DailyFPSOHelangProduction"}) AllowSorting=false>
             <Columns>
-                <RadzenDataGridColumn TItem="DailyFPSOHelangSummary" Property="Row" Title="Row">
+                <RadzenDataGridColumn TItem="DailyFPSOHelangSummary" Property="Row" Title="No." Width="10px">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@((this.Data.ToList().IndexOf(item) + 1))</p>
                     </Template>
