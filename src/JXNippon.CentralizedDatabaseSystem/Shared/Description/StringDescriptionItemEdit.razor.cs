@@ -8,7 +8,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
     public partial class StringDescriptionItemEdit<TItem>
         where TItem : class
     {
-        [Parameter] public string StringVal { get; set; }
+		[Parameter] public bool IsEditable { get; set; }
+		[Parameter] public string StringVal { get; set; }
         [Parameter] public TItem Item { get; set; }
         [Parameter] public long ItemId { get; set; }
         [Parameter] public bool IsRequired { get; set; }
@@ -26,8 +27,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
 
         private async Task StartEdit()
         {
-            isEditing = true;
-            this.StateHasChanged();
+            if(IsEditable)
+            {
+				isEditing = true;
+				this.StateHasChanged();
+			}   
         }
 
         private async Task StopEdit()

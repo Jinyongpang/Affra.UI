@@ -7,7 +7,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
     public partial class StringDescriptionItem<TItem>
         where TItem : class
     {
-        [Parameter] public bool IsEditing { get; set; }
+        [Parameter] public bool IsEditable { get; set; }
 
         [Parameter] public string Title { get; set; }
 

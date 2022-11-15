@@ -1,4 +1,5 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems
@@ -37,6 +38,22 @@
 					<Icon Type="arrow-left" Theme="outline" Class="fullscreen-dialog-back" OnClick=@(()=> this.DialogService.Close())/>
 					<div class="cdr-title">
 						<div class="p-2" style="font-weight: bold;">Combined Daily Operations Report</div>
+						@if(this.Data.Status == CombinedDailyReportStatus.Approved)
+						{
+							<div class="p-2" style="font-weight: bold;">
+								<Tooltip Placement="@Placement.BottomLeft" Title="@("Report is approved.")">   
+									<Icon Style="color: deepskyblue;" Class="anticon-big" Type="check-circle" Theme="outline"/>
+								</Tooltip>	
+							</div>					
+						}
+						else if(this.Data.Status == CombinedDailyReportStatus.Rejected)
+						{
+							<div class="p-2" style="font-weight: bold;">
+								<Tooltip Placement="@Placement.BottomLeft" Title="@("Report is rejected.")">   								
+									<Icon Style="color: orange;" Class="anticon-big" Type="exclamation-circle" Theme="outline"/>
+								</Tooltip>
+							</div>					
+						}
 						<div class="p-2" style="font-weight: bold;">
 							<Tag PresetColor="@PresetColor.Green">@Data.Date.ToLocalDateTime().ToString("dddd, d MMMM yyyy")</Tag>
 						</div>
@@ -68,8 +85,17 @@
 					}
 				</div>
 				<Divider/>
-				<div class="col view-dialog-content">
+				<div class="col view-dialog-content">					
 					<Collapse DefaultActiveKey="@(new[] {"1" })">
+						<Panel Class="panel-header" Key="1">
+							<ChildContent> 
+								<DescriptionView>
+									<StringDescriptionItem Title="OIM" Value=@this.Data.User TItem="CombinedDailyReport" Item="@this.Data" IsRequired=false/>
+									<StringDescriptionItem Title="Revision" Value=@this.Data.Revision.ToString() TItem="CombinedDailyReport" Item="@this.Data"/>
+									<StringDescriptionItem Title="Period" Value=@($"From 0600 hrs {this.Data.DateUI:d/MM/yyyy} to 0600 hrs {this.Data.DateUI.AddDays(1):d/MM/yyyy}") TItem="CombinedDailyReport" Item="@this.Data" />
+								</DescriptionView>
+							</ChildContent>
+						</Panel>
 						<Panel Class="panel-header" Key="1">
 							<HeaderTemplate>
 								<div>
