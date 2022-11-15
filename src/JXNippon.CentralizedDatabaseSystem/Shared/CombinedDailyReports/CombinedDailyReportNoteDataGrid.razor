@@ -1,0 +1,53 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
+@using JXNippon.CentralizedDatabaseSystem.Domain.CommonHelpers
+@using JXNippon.CentralizedDatabaseSystem.Domain.Extensions
+@inject ICommonHelper CommonHelper;
+
+<div class="row">
+    <div class="col">
+        <RadzenDataGrid Data="@data" Count=count PageSize="50" TItem="SectionNote"
+                        CellContextMenu="@OnCellContextMenu" Responsive>
+            <EmptyTemplate>
+                <div class="row" @oncontextmenu=@(args => OnCellContextMenu(args)) @oncontextmenu:preventDefault="true">
+                    <a>NTR</a>
+                </div>
+            </EmptyTemplate>
+            <Columns>
+                <RadzenDataGridColumn TItem="SectionNote" Property="Note" Title="Note"/>
+            </Columns>
+        </RadzenDataGrid>
+    </div>
+</div>
+@code
+{
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        bool hasRowData = (args as DataGridCellMouseEventArgs<SectionNote>) != null
+        && (args as DataGridCellMouseEventArgs<SectionNote>).Data != null;
+        ContextMenuService.Open(args, ds =>
+    @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<SectionNote>, e))">
+        <AuthorizeView Policy="CombinedDailyReport.ReadWrite">
+            <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add" />
+            <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData />
+            <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData />
+        </AuthorizeView>
+    </RadzenMenu>
+    );
+    }
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<SectionNote> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new(), i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+    }
+}

@@ -763,3 +763,8 @@ a {
 th, .rz-cell-filter {
     background-color: #92CDDC !important;
 }
+
+.cdr-view {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
