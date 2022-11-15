@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 14/11/2022 12:10:33 AM
+// Generation date: 14/11/2022 11:58:46 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -17341,6 +17341,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private string _StartDate;
         partial void OnStartDateChanging(string value);
         partial void OnStartDateChanged();
+        /// <summary>
+        /// There are no comments for Property NTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> NTD
+        {
+            get
+            {
+                return this._NTD;
+            }
+            set
+            {
+                this.OnNTDChanging(value);
+                this._NTD = value;
+                this.OnNTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _NTD;
+        partial void OnNTDChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnNTDChanged();
         /// <summary>
         /// There are no comments for Property Remark in the schema.
         /// </summary>
@@ -52791,15 +52812,22 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
+        /// <param name="revision">Initial value of Revision.</param>
         /// <param name="lastUpdatedDateTime">Initial value of LastUpdatedDateTime.</param>
         /// <param name="status">Initial value of Status.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static CombinedDailyReport CreateCombinedDailyReport(long ID, global::System.DateTimeOffset date, global::System.DateTimeOffset lastUpdatedDateTime, global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReportStatus status, long xmin)
+        public static CombinedDailyReport CreateCombinedDailyReport(long ID, 
+                    global::System.DateTimeOffset date, 
+                    int revision, 
+                    global::System.DateTimeOffset lastUpdatedDateTime, 
+                    global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReportStatus status, 
+                    long xmin)
         {
             CombinedDailyReport combinedDailyReport = new CombinedDailyReport();
             combinedDailyReport.Id = ID;
             combinedDailyReport.Date = date;
+            combinedDailyReport.Revision = revision;
             combinedDailyReport.LastUpdatedDateTime = lastUpdatedDateTime;
             combinedDailyReport.Status = status;
             combinedDailyReport.xmin = xmin;
@@ -52868,6 +52896,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private string _User;
         partial void OnUserChanging(string value);
         partial void OnUserChanged();
+        /// <summary>
+        /// There are no comments for Property Revision in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Revision
+        {
+            get
+            {
+                return this._Revision;
+            }
+            set
+            {
+                this.OnRevisionChanging(value);
+                this._Revision = value;
+                this.OnRevisionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Revision;
+        partial void OnRevisionChanging(int value);
+        partial void OnRevisionChanged();
         /// <summary>
         /// There are no comments for Property LastUpdatedDateTime in the schema.
         /// </summary>
@@ -52952,6 +53001,804 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property HIPAndLWPSummaryNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> HIPAndLWPSummaryNotes
+        {
+            get
+            {
+                return this._HIPAndLWPSummaryNotes;
+            }
+            set
+            {
+                this.OnHIPAndLWPSummaryNotesChanging(value);
+                this._HIPAndLWPSummaryNotes = value;
+                this.OnHIPAndLWPSummaryNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _HIPAndLWPSummaryNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnHIPAndLWPSummaryNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnHIPAndLWPSummaryNotesChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOHelangSummaryNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> FPSOHelangSummaryNotes
+        {
+            get
+            {
+                return this._FPSOHelangSummaryNotes;
+            }
+            set
+            {
+                this.OnFPSOHelangSummaryNotesChanging(value);
+                this._FPSOHelangSummaryNotes = value;
+                this.OnFPSOHelangSummaryNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _FPSOHelangSummaryNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnFPSOHelangSummaryNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnFPSOHelangSummaryNotesChanged();
+        /// <summary>
+        /// There are no comments for Property HealthSafetyEnvironmentNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> HealthSafetyEnvironmentNotes
+        {
+            get
+            {
+                return this._HealthSafetyEnvironmentNotes;
+            }
+            set
+            {
+                this.OnHealthSafetyEnvironmentNotesChanging(value);
+                this._HealthSafetyEnvironmentNotes = value;
+                this.OnHealthSafetyEnvironmentNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _HealthSafetyEnvironmentNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnHealthSafetyEnvironmentNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnHealthSafetyEnvironmentNotesChanged();
+        /// <summary>
+        /// There are no comments for Property LifeBoatNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> LifeBoatNotes
+        {
+            get
+            {
+                return this._LifeBoatNotes;
+            }
+            set
+            {
+                this.OnLifeBoatNotesChanging(value);
+                this._LifeBoatNotes = value;
+                this.OnLifeBoatNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _LifeBoatNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnLifeBoatNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnLifeBoatNotesChanged();
+        /// <summary>
+        /// There are no comments for Property LongTermOverridesInhibitsOnAlarmTripNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> LongTermOverridesInhibitsOnAlarmTripNotes
+        {
+            get
+            {
+                return this._LongTermOverridesInhibitsOnAlarmTripNotes;
+            }
+            set
+            {
+                this.OnLongTermOverridesInhibitsOnAlarmTripNotesChanging(value);
+                this._LongTermOverridesInhibitsOnAlarmTripNotes = value;
+                this.OnLongTermOverridesInhibitsOnAlarmTripNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _LongTermOverridesInhibitsOnAlarmTripNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnLongTermOverridesInhibitsOnAlarmTripNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnLongTermOverridesInhibitsOnAlarmTripNotesChanged();
+        /// <summary>
+        /// There are no comments for Property OperatingChangeNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> OperatingChangeNotes
+        {
+            get
+            {
+                return this._OperatingChangeNotes;
+            }
+            set
+            {
+                this.OnOperatingChangeNotesChanging(value);
+                this._OperatingChangeNotes = value;
+                this.OnOperatingChangeNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _OperatingChangeNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnOperatingChangeNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnOperatingChangeNotesChanged();
+        /// <summary>
+        /// There are no comments for Property LossOfPrimaryContainmentIncidentNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> LossOfPrimaryContainmentIncidentNotes
+        {
+            get
+            {
+                return this._LossOfPrimaryContainmentIncidentNotes;
+            }
+            set
+            {
+                this.OnLossOfPrimaryContainmentIncidentNotesChanging(value);
+                this._LossOfPrimaryContainmentIncidentNotes = value;
+                this.OnLossOfPrimaryContainmentIncidentNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _LossOfPrimaryContainmentIncidentNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnLossOfPrimaryContainmentIncidentNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnLossOfPrimaryContainmentIncidentNotesChanged();
+        /// <summary>
+        /// There are no comments for Property SandDisposalDesanderNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> SandDisposalDesanderNotes
+        {
+            get
+            {
+                return this._SandDisposalDesanderNotes;
+            }
+            set
+            {
+                this.OnSandDisposalDesanderNotesChanging(value);
+                this._SandDisposalDesanderNotes = value;
+                this.OnSandDisposalDesanderNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _SandDisposalDesanderNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnSandDisposalDesanderNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnSandDisposalDesanderNotesChanged();
+        /// <summary>
+        /// There are no comments for Property CiNalcoNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> CiNalcoNotes
+        {
+            get
+            {
+                return this._CiNalcoNotes;
+            }
+            set
+            {
+                this.OnCiNalcoNotesChanging(value);
+                this._CiNalcoNotes = value;
+                this.OnCiNalcoNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _CiNalcoNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnCiNalcoNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnCiNalcoNotesChanged();
+        /// <summary>
+        /// There are no comments for Property InowacInjectionNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> InowacInjectionNotes
+        {
+            get
+            {
+                return this._InowacInjectionNotes;
+            }
+            set
+            {
+                this.OnInowacInjectionNotesChanging(value);
+                this._InowacInjectionNotes = value;
+                this.OnInowacInjectionNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _InowacInjectionNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnInowacInjectionNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnInowacInjectionNotesChanged();
+        /// <summary>
+        /// There are no comments for Property CommunicationSystemNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> CommunicationSystemNotes
+        {
+            get
+            {
+                return this._CommunicationSystemNotes;
+            }
+            set
+            {
+                this.OnCommunicationSystemNotesChanging(value);
+                this._CommunicationSystemNotes = value;
+                this.OnCommunicationSystemNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _CommunicationSystemNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnCommunicationSystemNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnCommunicationSystemNotesChanged();
+        /// <summary>
+        /// There are no comments for Property LWPActivityNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> LWPActivityNotes
+        {
+            get
+            {
+                return this._LWPActivityNotes;
+            }
+            set
+            {
+                this.OnLWPActivityNotesChanging(value);
+                this._LWPActivityNotes = value;
+                this.OnLWPActivityNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _LWPActivityNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnLWPActivityNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnLWPActivityNotesChanged();
+        /// <summary>
+        /// There are no comments for Property VendorActivityNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> VendorActivityNotes
+        {
+            get
+            {
+                return this._VendorActivityNotes;
+            }
+            set
+            {
+                this.OnVendorActivityNotesChanging(value);
+                this._VendorActivityNotes = value;
+                this.OnVendorActivityNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _VendorActivityNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnVendorActivityNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnVendorActivityNotesChanged();
+        /// <summary>
+        /// There are no comments for Property UtilityNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> UtilityNotes
+        {
+            get
+            {
+                return this._UtilityNotes;
+            }
+            set
+            {
+                this.OnUtilityNotesChanging(value);
+                this._UtilityNotes = value;
+                this.OnUtilityNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _UtilityNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnUtilityNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnUtilityNotesChanged();
+        /// <summary>
+        /// There are no comments for Property WaterTankNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> WaterTankNotes
+        {
+            get
+            {
+                return this._WaterTankNotes;
+            }
+            set
+            {
+                this.OnWaterTankNotesChanging(value);
+                this._WaterTankNotes = value;
+                this.OnWaterTankNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _WaterTankNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnWaterTankNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnWaterTankNotesChanged();
+        /// <summary>
+        /// There are no comments for Property NitrogenGeneratorNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> NitrogenGeneratorNotes
+        {
+            get
+            {
+                return this._NitrogenGeneratorNotes;
+            }
+            set
+            {
+                this.OnNitrogenGeneratorNotesChanging(value);
+                this._NitrogenGeneratorNotes = value;
+                this.OnNitrogenGeneratorNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _NitrogenGeneratorNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnNitrogenGeneratorNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnNitrogenGeneratorNotesChanged();
+        /// <summary>
+        /// There are no comments for Property MaximoWorkOrderNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> MaximoWorkOrderNotes
+        {
+            get
+            {
+                return this._MaximoWorkOrderNotes;
+            }
+            set
+            {
+                this.OnMaximoWorkOrderNotesChanging(value);
+                this._MaximoWorkOrderNotes = value;
+                this.OnMaximoWorkOrderNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _MaximoWorkOrderNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnMaximoWorkOrderNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnMaximoWorkOrderNotesChanged();
+        /// <summary>
+        /// There are no comments for Property AnalysisResultNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> AnalysisResultNotes
+        {
+            get
+            {
+                return this._AnalysisResultNotes;
+            }
+            set
+            {
+                this.OnAnalysisResultNotesChanging(value);
+                this._AnalysisResultNotes = value;
+                this.OnAnalysisResultNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _AnalysisResultNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnAnalysisResultNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnAnalysisResultNotesChanged();
+        /// <summary>
+        /// There are no comments for Property CoolingMediumSystemNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> CoolingMediumSystemNotes
+        {
+            get
+            {
+                return this._CoolingMediumSystemNotes;
+            }
+            set
+            {
+                this.OnCoolingMediumSystemNotesChanging(value);
+                this._CoolingMediumSystemNotes = value;
+                this.OnCoolingMediumSystemNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _CoolingMediumSystemNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnCoolingMediumSystemNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnCoolingMediumSystemNotesChanged();
+        /// <summary>
+        /// There are no comments for Property LogisticNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> LogisticNotes
+        {
+            get
+            {
+                return this._LogisticNotes;
+            }
+            set
+            {
+                this.OnLogisticNotesChanging(value);
+                this._LogisticNotes = value;
+                this.OnLogisticNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _LogisticNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnLogisticNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnLogisticNotesChanged();
+        /// <summary>
+        /// There are no comments for Property GlycolPumpNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> GlycolPumpNotes
+        {
+            get
+            {
+                return this._GlycolPumpNotes;
+            }
+            set
+            {
+                this.OnGlycolPumpNotesChanging(value);
+                this._GlycolPumpNotes = value;
+                this.OnGlycolPumpNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _GlycolPumpNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnGlycolPumpNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnGlycolPumpNotesChanged();
+        /// <summary>
+        /// There are no comments for Property GlycolTrainNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> GlycolTrainNotes
+        {
+            get
+            {
+                return this._GlycolTrainNotes;
+            }
+            set
+            {
+                this.OnGlycolTrainNotesChanging(value);
+                this._GlycolTrainNotes = value;
+                this.OnGlycolTrainNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _GlycolTrainNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnGlycolTrainNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnGlycolTrainNotesChanged();
+        /// <summary>
+        /// There are no comments for Property GlycolStockNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> GlycolStockNotes
+        {
+            get
+            {
+                return this._GlycolStockNotes;
+            }
+            set
+            {
+                this.OnGlycolStockNotesChanging(value);
+                this._GlycolStockNotes = value;
+                this.OnGlycolStockNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _GlycolStockNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnGlycolStockNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnGlycolStockNotesChanged();
+        /// <summary>
+        /// There are no comments for Property KawasakiExportCompressorNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> KawasakiExportCompressorNotes
+        {
+            get
+            {
+                return this._KawasakiExportCompressorNotes;
+            }
+            set
+            {
+                this.OnKawasakiExportCompressorNotesChanging(value);
+                this._KawasakiExportCompressorNotes = value;
+                this.OnKawasakiExportCompressorNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _KawasakiExportCompressorNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnKawasakiExportCompressorNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnKawasakiExportCompressorNotesChanged();
+        /// <summary>
+        /// There are no comments for Property RollsRoyceRB211EngineNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> RollsRoyceRB211EngineNotes
+        {
+            get
+            {
+                return this._RollsRoyceRB211EngineNotes;
+            }
+            set
+            {
+                this.OnRollsRoyceRB211EngineNotesChanging(value);
+                this._RollsRoyceRB211EngineNotes = value;
+                this.OnRollsRoyceRB211EngineNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _RollsRoyceRB211EngineNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnRollsRoyceRB211EngineNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnRollsRoyceRB211EngineNotesChanged();
+        /// <summary>
+        /// There are no comments for Property HIPWellHeadParameterNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> HIPWellHeadParameterNotes
+        {
+            get
+            {
+                return this._HIPWellHeadParameterNotes;
+            }
+            set
+            {
+                this.OnHIPWellHeadParameterNotesChanging(value);
+                this._HIPWellHeadParameterNotes = value;
+                this.OnHIPWellHeadParameterNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _HIPWellHeadParameterNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnHIPWellHeadParameterNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnHIPWellHeadParameterNotesChanged();
+        /// <summary>
+        /// There are no comments for Property LWPWellHeadParameterNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> LWPWellHeadParameterNotes
+        {
+            get
+            {
+                return this._LWPWellHeadParameterNotes;
+            }
+            set
+            {
+                this.OnLWPWellHeadParameterNotesChanging(value);
+                this._LWPWellHeadParameterNotes = value;
+                this.OnLWPWellHeadParameterNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _LWPWellHeadParameterNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnLWPWellHeadParameterNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnLWPWellHeadParameterNotesChanged();
+        /// <summary>
+        /// There are no comments for Property GasCondensateExportSamplerAndExportLineNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> GasCondensateExportSamplerAndExportLineNotes
+        {
+            get
+            {
+                return this._GasCondensateExportSamplerAndExportLineNotes;
+            }
+            set
+            {
+                this.OnGasCondensateExportSamplerAndExportLineNotesChanging(value);
+                this._GasCondensateExportSamplerAndExportLineNotes = value;
+                this.OnGasCondensateExportSamplerAndExportLineNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _GasCondensateExportSamplerAndExportLineNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnGasCondensateExportSamplerAndExportLineNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnGasCondensateExportSamplerAndExportLineNotesChanged();
+        /// <summary>
+        /// There are no comments for Property WellHeadAndSeparationSystemNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> WellHeadAndSeparationSystemNotes
+        {
+            get
+            {
+                return this._WellHeadAndSeparationSystemNotes;
+            }
+            set
+            {
+                this.OnWellHeadAndSeparationSystemNotesChanging(value);
+                this._WellHeadAndSeparationSystemNotes = value;
+                this.OnWellHeadAndSeparationSystemNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _WellHeadAndSeparationSystemNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnWellHeadAndSeparationSystemNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnWellHeadAndSeparationSystemNotesChanged();
+        /// <summary>
+        /// There are no comments for Property WellStreamCoolerNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> WellStreamCoolerNotes
+        {
+            get
+            {
+                return this._WellStreamCoolerNotes;
+            }
+            set
+            {
+                this.OnWellStreamCoolerNotesChanging(value);
+                this._WellStreamCoolerNotes = value;
+                this.OnWellStreamCoolerNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _WellStreamCoolerNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnWellStreamCoolerNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnWellStreamCoolerNotesChanged();
+        /// <summary>
+        /// There are no comments for Property SK10ProductionNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> SK10ProductionNotes
+        {
+            get
+            {
+                return this._SK10ProductionNotes;
+            }
+            set
+            {
+                this.OnSK10ProductionNotesChanging(value);
+                this._SK10ProductionNotes = value;
+                this.OnSK10ProductionNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _SK10ProductionNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnSK10ProductionNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnSK10ProductionNotesChanged();
+        /// <summary>
+        /// There are no comments for Property HIPProductionNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> HIPProductionNotes
+        {
+            get
+            {
+                return this._HIPProductionNotes;
+            }
+            set
+            {
+                this.OnHIPProductionNotesChanging(value);
+                this._HIPProductionNotes = value;
+                this.OnHIPProductionNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _HIPProductionNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnHIPProductionNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnHIPProductionNotesChanged();
+        /// <summary>
+        /// There are no comments for Property FPSOHelangProductionNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> FPSOHelangProductionNotes
+        {
+            get
+            {
+                return this._FPSOHelangProductionNotes;
+            }
+            set
+            {
+                this.OnFPSOHelangProductionNotesChanging(value);
+                this._FPSOHelangProductionNotes = value;
+                this.OnFPSOHelangProductionNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _FPSOHelangProductionNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnFPSOHelangProductionNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnFPSOHelangProductionNotesChanged();
+        /// <summary>
+        /// There are no comments for Property MajorEquipmentStatusNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> MajorEquipmentStatusNotes
+        {
+            get
+            {
+                return this._MajorEquipmentStatusNotes;
+            }
+            set
+            {
+                this.OnMajorEquipmentStatusNotesChanging(value);
+                this._MajorEquipmentStatusNotes = value;
+                this.OnMajorEquipmentStatusNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _MajorEquipmentStatusNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnMajorEquipmentStatusNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnMajorEquipmentStatusNotesChanged();
+        /// <summary>
+        /// There are no comments for Property DieselNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> DieselNotes
+        {
+            get
+            {
+                return this._DieselNotes;
+            }
+            set
+            {
+                this.OnDieselNotesChanging(value);
+                this._DieselNotes = value;
+                this.OnDieselNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _DieselNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnDieselNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnDieselNotesChanged();
+        /// <summary>
+        /// There are no comments for Property ProducedWaterTreatmentSystemNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> ProducedWaterTreatmentSystemNotes
+        {
+            get
+            {
+                return this._ProducedWaterTreatmentSystemNotes;
+            }
+            set
+            {
+                this.OnProducedWaterTreatmentSystemNotesChanging(value);
+                this._ProducedWaterTreatmentSystemNotes = value;
+                this.OnProducedWaterTreatmentSystemNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _ProducedWaterTreatmentSystemNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnProducedWaterTreatmentSystemNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnProducedWaterTreatmentSystemNotesChanged();
+        /// <summary>
+        /// There are no comments for Property DeOilerInjectionNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> DeOilerInjectionNotes
+        {
+            get
+            {
+                return this._DeOilerInjectionNotes;
+            }
+            set
+            {
+                this.OnDeOilerInjectionNotesChanging(value);
+                this._DeOilerInjectionNotes = value;
+                this.OnDeOilerInjectionNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _DeOilerInjectionNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnDeOilerInjectionNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnDeOilerInjectionNotesChanged();
+        /// <summary>
+        /// There are no comments for Property PowerGenerationAndDistributionNotes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> PowerGenerationAndDistributionNotes
+        {
+            get
+            {
+                return this._PowerGenerationAndDistributionNotes;
+            }
+            set
+            {
+                this.OnPowerGenerationAndDistributionNotesChanging(value);
+                this._PowerGenerationAndDistributionNotes = value;
+                this.OnPowerGenerationAndDistributionNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _PowerGenerationAndDistributionNotes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnPowerGenerationAndDistributionNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnPowerGenerationAndDistributionNotesChanged();
         /// <summary>
         /// There are no comments for Property DailyHealthSafetyEnvironment in the schema.
         /// </summary>
@@ -53750,6 +54597,33 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution> _DailyPowerGenerationAndDistributions = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution>();
         partial void OnDailyPowerGenerationAndDistributionsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution> value);
         partial void OnDailyPowerGenerationAndDistributionsChanged();
+    }
+    /// <summary>
+    /// There are no comments for SectionNote in the schema.
+    /// </summary>
+    public partial class SectionNote
+    {
+        /// <summary>
+        /// There are no comments for Property Note in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Note
+        {
+            get
+            {
+                return this._Note;
+            }
+            set
+            {
+                this.OnNoteChanging(value);
+                this._Note = value;
+                this.OnNoteChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Note;
+        partial void OnNoteChanging(string value);
+        partial void OnNoteChanged();
     }
     /// <summary>
     /// There are no comments for CombinedDailyReportStatus in the schema.
@@ -59833,6 +60707,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""LifeBoatName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Edm.String"" />
         <Property Name=""StartDate"" Type=""Edm.String"" />
+        <Property Name=""NTD"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
         <NavigationProperty Name=""LifeBoat"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.LifeBoat"" />
@@ -61587,10 +62462,49 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""User"" Type=""Edm.String"" />
+        <Property Name=""Revision"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""LastUpdatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReportStatus"" Nullable=""false"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""HIPAndLWPSummaryNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""FPSOHelangSummaryNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""HealthSafetyEnvironmentNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""LifeBoatNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""LongTermOverridesInhibitsOnAlarmTripNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""OperatingChangeNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""LossOfPrimaryContainmentIncidentNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""SandDisposalDesanderNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""CiNalcoNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""InowacInjectionNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""CommunicationSystemNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""LWPActivityNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""VendorActivityNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""UtilityNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""WaterTankNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""NitrogenGeneratorNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""MaximoWorkOrderNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""AnalysisResultNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""CoolingMediumSystemNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""LogisticNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""GlycolPumpNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""GlycolTrainNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""GlycolStockNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""KawasakiExportCompressorNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""RollsRoyceRB211EngineNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""HIPWellHeadParameterNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""LWPWellHeadParameterNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""GasCondensateExportSamplerAndExportLineNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""WellHeadAndSeparationSystemNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""WellStreamCoolerNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""SK10ProductionNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""HIPProductionNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""FPSOHelangProductionNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""MajorEquipmentStatusNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""DieselNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""ProducedWaterTreatmentSystemNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""DeOilerInjectionNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
+        <Property Name=""PowerGenerationAndDistributionNotes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
         <NavigationProperty Name=""DailyHealthSafetyEnvironment"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyHealthSafetyEnvironment"" />
         <NavigationProperty Name=""DailyLifeBoats"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat)"" />
         <NavigationProperty Name=""DailyLongTermOverridesInhibitsOnAlarmTrips"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip)"" />
@@ -61630,6 +62544,9 @@ namespace CentralizedDatabaseSystemODataService.Default
         <NavigationProperty Name=""DailyDeOilerInjection"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyDeOilerInjection"" />
         <NavigationProperty Name=""DailyPowerGenerationAndDistributions"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution)"" />
       </EntityType>
+      <ComplexType Name=""SectionNote"">
+        <Property Name=""Note"" Type=""Edm.String"" />
+      </ComplexType>
       <EnumType Name=""CombinedDailyReportStatus"">
         <Member Name=""Pending"" Value=""0"" />
         <Member Name=""Rejected"" Value=""1"" />

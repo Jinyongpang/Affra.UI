@@ -129,6 +129,12 @@
 										</DescriptionView>
 									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.HealthSafetyEnvironmentNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 								<Panel ShowArrow="false" Header="LOSS OF PRIMARY CONTAINMENT (LOPC) INCIDENT" Key="1">
 									<ChildContent>
 										<DescriptionView>
@@ -139,11 +145,17 @@
 											<IntegerDescriptionItem Title="OtherLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.OtherLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
 											<StringDescriptionItem Title="LastOtherLOPC" @bind-Value=@this.Data.DailyLossOfPrimaryContainmentIncident.LastOtherLOPC TItem="DailyLossOfPrimaryContainmentIncident" Item="@this.Data.DailyLossOfPrimaryContainmentIncident"/>
 										</DescriptionView>
-								</ChildContent>
+									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="LIFEBOATS" Key="1">
 									<ChildContent>
 										<LifeBoatsDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyLifeBoats @ref="lifeBoatsDataGrid" LoadData=@(args => LoadLifeBoatsDataGridAsync(args)) />
+									</ChildContent>
+								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.LifeBoatNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="MANAGEMENT OF CHANGE (MOC) : LONG TERM OVERRIDES & INHIBITS ON ALARM AND/ OR TRIP" Key="1">
@@ -155,7 +167,7 @@
 									<ChildContent>
 										<OperatingChangeDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyOperatingChanges @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args)) />
 									</ChildContent>
-								</Panel>
+								</Panel>	
 							</ChildContent>
 						</Panel>
 							<Panel Class="panel-header" Key="1">
@@ -173,6 +185,12 @@
 											<DecimalDescriptionItem Title="SK10GasExportGODCPlan" @bind-Value=@this.Data.DailySK10Production.SK10GasExportGODCPlan TItem="DailySK10Production" Item="@this.Data.DailySK10Production"/>
 											<StringDescriptionItem Title="SK10GasExportGODCPlanRemark" @bind-Value=@this.Data.DailySK10Production.SK10GasExportGODCPlanRemark TItem="DailySK10Production" Item="@this.Data.DailySK10Production" IsRequired=false/>
 										</DescriptionView>
+									</ChildContent>
+								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="SK10 NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.SK10ProductionNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="HIP" Key="1">
@@ -201,6 +219,12 @@
 										</DescriptionView>
 									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="HIP NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.HIPProductionNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 								<Panel ShowArrow="false" Header="FPSO Helang" Key="1">
 									<ChildContent>
 										<DescriptionView>
@@ -227,6 +251,12 @@
 										</DescriptionView>
 									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="FPSO NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.FPSOHelangProductionNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Class="panel-header" Key="1">
@@ -245,13 +275,19 @@
 								<Panel ShowArrow="false" Header="DIESEL STOCK" Key="1">
 									<ChildContent>
 										<DescriptionView>
-										<DecimalDescriptionItem Title="HIPDieselStock" @bind-Value=@this.Data.DailyDiesel.HIPDieselStock TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
-										<StringDescriptionItem Title="HIPDieselStockRemark" @bind-Value=@this.Data.DailyDiesel.HIPDieselStockRemark TItem="DailyDiesel" Item="@this.Data.DailyDiesel" IsRequired=false/>
-										<DecimalDescriptionItem Title="FPSODieselConsumption" @bind-Value=@this.Data.DailyDiesel.FPSODieselConsumption TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
-										<StringDescriptionItem Title="FPSODieselConsumptionRemark" @bind-Value=@this.Data.DailyDiesel.FPSODieselConsumptionRemark TItem="DailyDiesel" Item="@this.Data.DailyDiesel" IsRequired=false/>
-									</DescriptionView>
-								</ChildContent>
+											<DecimalDescriptionItem Title="HIPDieselStock" @bind-Value=@this.Data.DailyDiesel.HIPDieselStock TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
+											<StringDescriptionItem Title="HIPDieselStockRemark" @bind-Value=@this.Data.DailyDiesel.HIPDieselStockRemark TItem="DailyDiesel" Item="@this.Data.DailyDiesel" IsRequired=false/>
+											<DecimalDescriptionItem Title="FPSODieselConsumption" @bind-Value=@this.Data.DailyDiesel.FPSODieselConsumption TItem="DailyDiesel" Item="@this.Data.DailyDiesel"/>
+											<StringDescriptionItem Title="FPSODieselConsumptionRemark" @bind-Value=@this.Data.DailyDiesel.FPSODieselConsumptionRemark TItem="DailyDiesel" Item="@this.Data.DailyDiesel" IsRequired=false/>
+										</DescriptionView>
+									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.MajorEquipmentStatusNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>	
 							</ChildContent>
 						</Panel>
 						<Panel Class="panel-header" Key="1">
@@ -280,6 +316,12 @@
 											<IntegerDescriptionItem Title="ToteTank" @bind-Value=@this.Data.DailyCiNalco.ToteTank TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
 											<IntegerDescriptionItem Title="Drum" @bind-Value=@this.Data.DailyCiNalco.Drum TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
 										</DescriptionView>
+									</ChildContent>
+								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.CiNalcoNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
 									</ChildContent>
 								</Panel>
 								<Panel ShowArrow="false" Header="INOWAC SBN-810 INJECTION" Key="1">
@@ -319,6 +361,12 @@
 										</DescriptionView>
 									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.InowacInjectionNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Class="panel-header" Key="1">
@@ -347,6 +395,12 @@
 										<WellStreamCoolerDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyWellStreamCoolers @ref="wellStreamCoolerDataGrid" LoadData=@(args => LoadWellStreamCoolerDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.WellHeadAndSeparationSystemNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Class="panel-header" Key="1">
@@ -354,7 +408,7 @@
 								<div>
 									<span>7. WELLHEAD</span>
 									<CombinedDailyReportTag @ref=combinedDailyReportTagRef Counts=@(new int[] { this.GetCollectionTotalUnfillProperty(this.Data.DailyHIPWellHeadParameters)
-									+ this.GetCollectionTotalUnfillProperty(this.Data.DailyLWPWellHeadParameters)})></CombinedDailyReportTag>
+									, this.GetCollectionTotalUnfillProperty(this.Data.DailyLWPWellHeadParameters)})></CombinedDailyReportTag>
 								</div>
 							</HeaderTemplate>
 							<ChildContent>
@@ -366,6 +420,12 @@
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="LWP WELLHEAD PARAMETERS" Key="1">
 									<ChildContent>
 										<LWPWellHeadParameterDataGrid @bind-Data=@this.Data.DailyLWPWellHeadParameters ReportDate="@this.Data.Date" @ref="lwpWellHeadParameterDataGrid" LoadData=@(args => LoadLWPWellHeadParameterDataGridAsync(args)) />
+									</ChildContent>
+								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.HIPAndLWPSummaryNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -387,6 +447,12 @@
 								<Panel ShowArrow="false" Class="description-no-shadow" Header="ROLLS ROYCE RB-211 ENGINE" Key="1">
 									<ChildContent>
 										<RollsRoyceRB211EngineDataGrid @bind-Data=@this.Data.DailyRollsRoyceRB211Engines  ReportDate="@this.Data.Date" @ref="rollsRoyceRB211EngineDataGrid" LoadData=@(args => LoadRollsRoyceRB211EngineDataGridAsync(args)) />
+									</ChildContent>
+								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.RollsRoyceRB211EngineNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
 									</ChildContent>
 								</Panel>
 							</ChildContent>
@@ -417,6 +483,12 @@
 										</DescriptionView>
 									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.GlycolPumpNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Class="panel-header" Key="1">
@@ -441,6 +513,12 @@
 									<DecimalDescriptionItem Title="CondySamplerContent" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.CondySamplerContent TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
 									<DateDescriptionItem Title="NextSamplingUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.NextSamplingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
 								</DescriptionView>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.GasCondensateExportSamplerAndExportLineNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Class="panel-header" Key="1">
@@ -471,6 +549,12 @@
 										<CoolingMediumSystemDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyCoolingMediumSystems @ref="coolingMediumSystemDataGrid" LoadData=@(args => LoadCoolingMediumSystemDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.CoolingMediumSystemNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Class="description-no-shadow panel-header" Key="1">
@@ -482,7 +566,13 @@
 							</HeaderTemplate>
 							<ChildContent>
 								<PowerGenerationAndDistributionManagementDataGrid @bind-Data=@this.Data.DailyPowerGenerationAndDistributions  ReportDate="@this.Data.Date" @ref="powerGenerationAndDistributionManagementDataGrid" LoadData=@(args => LoadPowerGenerationAndDistributionManagementDataGridAsync(args)) />
-							</ChildContent>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.PowerGenerationAndDistributionNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
+								</ChildContent>
 						</Panel>
 						<Panel Class="panel-header" Key="1">
 							<HeaderTemplate>
@@ -517,6 +607,12 @@
 										</DescriptionView>
 									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.UtilityNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Class="panel-header" Key="1">
@@ -532,21 +628,33 @@
 										<ProducedWaterTreatmentSystemManagementDataGrid ReportDate="@this.Data.Date" @bind-Data=@this.Data.DailyProducedWaterTreatmentSystems @ref="producedWaterTreatmentSystemManagementDataGrid" LoadData=@(args => LoadProducedWaterTreatmentSystemManagementDataGridAsync(args)) />
 									</ChildContent>
 								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.ProducedWaterTreatmentSystemNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 								<Panel ShowArrow="false" Header="DE-OILER INJECTION" Key="1">
 									<ChildContent>
 										<DescriptionView>
-										<StringDescriptionItem Title="InjectionPoint" @bind-Value=@this.Data.DailyDeOilerInjection.InjectionPoint TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-										<StringDescriptionItem Title="InjectionStatus" @bind-Value=@this.Data.DailyDeOilerInjection.InjectionStatus TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-										<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyDeOilerInjection.Remark TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection" IsRequired=false/>
-										<DecimalDescriptionItem Title="TodayLevel" @bind-Value=@this.Data.DailyDeOilerInjection.TodayLevel TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-										<DecimalDescriptionItem Title="YesterdayLevel" @bind-Value=@this.Data.DailyDeOilerInjection.YesterdayLevel TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-										<DecimalDescriptionItem Title="LevelDrop" @bind-Value=@this.Data.DailyDeOilerInjection.LevelDrop TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-										<StringDescriptionItem Title="PumpStroke" @bind-Value=@this.Data.DailyDeOilerInjection.PumpStroke TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-										<StringDescriptionItem Title="PumpDischarge" @bind-Value=@this.Data.DailyDeOilerInjection.PumpDischarge TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-										<IntegerDescriptionItem Title="TotalTank" @bind-Value=@this.Data.DailyDeOilerInjection.TotalTank TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-										<IntegerDescriptionItem Title="Drums" @bind-Value=@this.Data.DailyDeOilerInjection.Drums TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
-									</DescriptionView>
-								</ChildContent>
+											<StringDescriptionItem Title="InjectionPoint" @bind-Value=@this.Data.DailyDeOilerInjection.InjectionPoint TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+											<StringDescriptionItem Title="InjectionStatus" @bind-Value=@this.Data.DailyDeOilerInjection.InjectionStatus TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+											<StringDescriptionItem Title="Remark" @bind-Value=@this.Data.DailyDeOilerInjection.Remark TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection" IsRequired=false/>
+											<DecimalDescriptionItem Title="TodayLevel" @bind-Value=@this.Data.DailyDeOilerInjection.TodayLevel TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+											<DecimalDescriptionItem Title="YesterdayLevel" @bind-Value=@this.Data.DailyDeOilerInjection.YesterdayLevel TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+											<DecimalDescriptionItem Title="LevelDrop" @bind-Value=@this.Data.DailyDeOilerInjection.LevelDrop TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+											<StringDescriptionItem Title="PumpStroke" @bind-Value=@this.Data.DailyDeOilerInjection.PumpStroke TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+											<StringDescriptionItem Title="PumpDischarge" @bind-Value=@this.Data.DailyDeOilerInjection.PumpDischarge TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+											<IntegerDescriptionItem Title="TotalTank" @bind-Value=@this.Data.DailyDeOilerInjection.TotalTank TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+											<IntegerDescriptionItem Title="Drums" @bind-Value=@this.Data.DailyDeOilerInjection.Drums TItem="DailyDeOilerInjection" Item="@this.Data.DailyDeOilerInjection"/>
+										</DescriptionView>
+									</ChildContent>
+								</Panel>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.DeOilerInjectionNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
 								</Panel>
 							</ChildContent>
 						</Panel>
@@ -575,6 +683,12 @@
 									<DecimalDescriptionItem Title="HighestMercuryReading" @bind-Value=@this.Data.DailySandDisposalDesander.HighestMercuryReading TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander"/>
 									<StringDescriptionItem Title="SandJettingRemarks" @bind-Value=@this.Data.DailySandDisposalDesander.SandJettingRemarks TItem="DailySandDisposalDesander" Item="@this.Data.DailySandDisposalDesander" IsRequired=false />
 								</DescriptionView>
+								<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+									<ChildContent>
+										<CombinedDailyReportNoteDataGrid Data="@this.Data.SandDisposalDesanderNotes" CombinedDailyReport="@this.Data">
+										</CombinedDailyReportNoteDataGrid>
+									</ChildContent>
+								</Panel>
 							</ChildContent>
 						</Panel>
 						<Panel Class="description-no-shadow panel-header" Key="1">
@@ -621,17 +735,23 @@
 								<LogisticDataGrid @bind-Data=@this.Data.DailyLogistics ReportDate="@this.Data.Date" @ref="logisticDataGrid" LoadData=@(args => LoadLogisticDataGridAsync(args)) />
 							</ChildContent>
 						</Panel>
-						<Panel Class="description-no-shadow panel-header" Key="1">
-							<HeaderTemplate>
-								<div>
-									<span>20. MAXIMO WORK ORDER</span>
-									<CombinedDailyReportTag @ref=combinedDailyReportTagRef Counts=@(new int[] { this.GetCollectionTotalUnfillProperty(this.Data.DailyMaximoWorkOrders)})></CombinedDailyReportTag>
-								</div>
-							</HeaderTemplate>
-							<ChildContent>
-								<MaximoWorkOrderDataGrid @bind-Data=@this.Data.DailyMaximoWorkOrders ReportDate="@this.Data.Date" @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args)) />
-							</ChildContent>
-						</Panel>	
+							<Panel Class="description-no-shadow panel-header" Key="1">
+								<HeaderTemplate>
+									<div>
+										<span>20. MAXIMO WORK ORDER</span>
+										<CombinedDailyReportTag @ref=combinedDailyReportTagRef Counts=@(new int[] { this.GetCollectionTotalUnfillProperty(this.Data.DailyMaximoWorkOrders)})></CombinedDailyReportTag>
+									</div>
+								</HeaderTemplate>
+								<ChildContent>
+									<MaximoWorkOrderDataGrid @bind-Data=@this.Data.DailyMaximoWorkOrders ReportDate="@this.Data.Date" @ref="maximoWorkOrderDataGrid" LoadData=@(args => LoadMaximoWorkOrderDataGridAsync(args)) />
+									<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
+										<ChildContent>
+											<CombinedDailyReportNoteDataGrid Data="@this.Data.MaximoWorkOrderNotes" CombinedDailyReport="@this.Data">
+											</CombinedDailyReportNoteDataGrid>
+										</ChildContent>
+									</Panel>
+								</ChildContent>
+							</Panel>	
 					</Collapse>
 				</div>
 			</div>

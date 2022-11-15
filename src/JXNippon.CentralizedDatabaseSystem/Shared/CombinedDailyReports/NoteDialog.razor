@@ -1,0 +1,28 @@
+﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
+<RadzenTemplateForm TItem="SectionNote" Data="@Data" Submit="@(async (SectionNote args) => { await SubmitAsync(args); })">
+    <div class="row py-2">
+        <div class="col-4 align-items-center d-flex">
+            <RadzenLabel class="dialogTextSize" Text="Note" />
+        </div>
+        <div class="col-8">
+            <RadzenTextArea Name="Note" class="w-100" Rows=5 Placeholder="Enter note..." @bind-Value="@this.Data.Note"></RadzenTextArea>
+            <RadzenRequiredValidator Component="Note" Text="Note is required" Popup=false />
+        </div>
+    </div>
+    <div class="row justify-content-center py-4">
+        <div class="col-md-12 d-flex align-items-end justify-content-center">
+            <Button HtmlType="submit" Type="primary" Size="@("large")">
+                <ChildContent>
+                    <Icon Type="save" Theme="outline" Class="anticon-big" />
+                    <span style="font-size: 18px; margin-left: 10px;">Save</span>
+                </ChildContent>
+            </Button>
+            <Button Style="display: inline-block; margin-left: 10px;" Size="@("large")" OnClick="@Cancel">
+                <ChildContent>
+                    <Icon Type="close-circle" Theme="outline" Class="anticon-big" />
+                    <span style="font-size: 18px; margin-left: 10px;">Cancel</span>
+                </ChildContent>
+            </Button>
+        </div>
+    </div>
+</RadzenTemplateForm>
