@@ -381,7 +381,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
 {
     public partial class CombinedDailyReport : IDaily
     {
-        [IgnoreClientProperty] public DateTime DateUI 
+        [IgnoreClientProperty] 
+        public DateTime DateUI 
         { 
             get { return this.Date.ToLocalDateTime(); } 
             set { this.Date = value.ToUniversalTime(); } 
@@ -390,6 +391,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
 
     public partial class SectionNote
     {
+		[IgnoreClientProperty] 
         public int Row { get; set; }
     }
 }
