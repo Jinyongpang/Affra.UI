@@ -15,7 +15,11 @@ else
             @if (this.Integer != null)
             {
                 @this.Integer
-            } 
+            }
+            else if(!this.IsRequired)
+            {
+                @this.DefaultStringValue
+            }
         </div>
     </td>  
 }

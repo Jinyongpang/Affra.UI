@@ -13,6 +13,11 @@
                     </Template>           
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLifeBoat" Property="StartDate" Title="Start Date" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLifeBoat" Property="NTD" Title="NTD" SortOrder="SortOrder.Descending">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.NTDDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyLifeBoat" Property="Remark" Title="Remarks">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@item.Remark</p>

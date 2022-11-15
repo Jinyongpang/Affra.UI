@@ -17,6 +17,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
 
         [Parameter] public bool IsRequired { get; set; } = true;
 
+        [Parameter] public string DefaultStringValue { get; set; } = "";
+
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
         [Parameter] public TItem Item { get; set; }
         [Parameter] public long ItemId { get; set; }
