@@ -387,4 +387,9 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             set { this.Date = value.ToUniversalTime(); } 
         }
     }
+
+    public partial class SectionNote
+    {
+        public int Row { get; set; }
+    }
 }

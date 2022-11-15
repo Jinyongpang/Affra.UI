@@ -10,7 +10,7 @@
             TDialog="HIPAndLWPSummaryDialog" ReportDate="@this.ReportDate" AllowSorting=false
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
-                <RadzenDataGridColumn TItem="DailyHIPAndLWPSummary" Property="Row" Title="Row">
+                <RadzenDataGridColumn TItem="DailyHIPAndLWPSummary" Property="Row" Title="No." Width="10px">
                     <Template Context="item">
                         <p style="white-space:pre-wrap">@((this.Data.ToList().IndexOf(item) + 1))</p>
                     </Template>

@@ -102,7 +102,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             using var serviceScope = ServiceProvider.CreateScope();
             var cdrService = serviceScope.ServiceProvider.GetRequiredService<ICombinedDailyReportService>();
             var cdrItemTask = cdrService.GetCombinedDailyReportAsync(data.Date);
-            await this.DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = cdrItemTask }, Constant.LoadingDialogOptions);
+            await DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = cdrItemTask }, Constant.LoadingDialogOptions);
             var cdrItem = await cdrItemTask;
             if (cdrItem is not null)
             {
@@ -125,8 +125,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         private Task DownloadWithLoadingAsync(CombinedDailyReport combinedDailyReport)
         {
-            var task = this.DownloadAsync(combinedDailyReport);
-            return this.DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Generating report. Please wait...", ["Task"] = task }, Constant.LoadingDialogOptions);
+            var task = DownloadAsync(combinedDailyReport);
+            return DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Generating report. Please wait...", ["Task"] = task }, Constant.LoadingDialogOptions);
         }
 
         private async Task DownloadAsync(CombinedDailyReport combinedDailyReport)
@@ -145,7 +145,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 if (streamResult != null)
                 {
                     using var streamRef = new DotNetStreamReference(streamResult);
-                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{combinedDailyReport.Date.ToLocalTime():d}.xlsx", streamRef);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{combinedDailyReport.Date.ToLocalTime():d}_Rev{combinedDailyReport.Revision}.xlsx", streamRef);
                 }
             }
             catch (Exception ex)
