@@ -1,7 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
-using DocumentFormat.OpenXml.Drawing.Charts;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
@@ -103,7 +102,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             using var serviceScope = ServiceProvider.CreateScope();
             var cdrService = serviceScope.ServiceProvider.GetRequiredService<ICombinedDailyReportService>();
             var cdrItemTask = cdrService.GetCombinedDailyReportAsync(data.Date);
-            await this.DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = cdrItemTask }, Constant.LoadingDialogOptions);
+            await DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = cdrItemTask }, Constant.LoadingDialogOptions);
             var cdrItem = await cdrItemTask;
             if (cdrItem is not null)
             {
@@ -126,8 +125,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         private Task DownloadWithLoadingAsync(CombinedDailyReport combinedDailyReport)
         {
-            var task = this.DownloadAsync(combinedDailyReport);
-            return this.DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Generating report. Please wait...", ["Task"] = task }, Constant.LoadingDialogOptions);
+            var task = DownloadAsync(combinedDailyReport);
+            return DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Generating report. Please wait...", ["Task"] = task }, Constant.LoadingDialogOptions);
         }
 
         private async Task DownloadAsync(CombinedDailyReport combinedDailyReport)
