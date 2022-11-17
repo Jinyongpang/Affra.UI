@@ -1200,4 +1200,19 @@
   <data name="StatusRemark" xml:space="preserve">
     <value>Status Remark</value>
   </data>
+  <data name="PD1" xml:space="preserve">
+    <value>PD1: Turnaround (Maintenance Shutdown with Accommodation Workbarge)</value>
+  </data>
+  <data name="PD2" xml:space="preserve">
+    <value>PD2: Maintenance Shutdown without Accommodation Workbarge</value>
+  </data>
+  <data name="PD3" xml:space="preserve">
+    <value>PD3: Operational</value>
+  </data>
+  <data name="UPD1" xml:space="preserve">
+    <value>UPD1: ESD</value>
+  </data>
+  <data name="UPD2" xml:space="preserve">
+    <value>UPD2: USD / PSD</value>
+  </data>
 </root>

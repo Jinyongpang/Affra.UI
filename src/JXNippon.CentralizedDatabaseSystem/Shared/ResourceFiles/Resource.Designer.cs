@@ -2104,6 +2104,33 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PD1: Turnaround (Maintenance Shutdown with Accommodation Workbarge).
+        /// </summary>
+        public static string PD1 {
+            get {
+                return ResourceManager.GetString("PD1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PD2: Maintenance Shutdown without Accommodation Workbarge.
+        /// </summary>
+        public static string PD2 {
+            get {
+                return ResourceManager.GetString("PD2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PD3: Operational.
+        /// </summary>
+        public static string PD3 {
+            get {
+                return ResourceManager.GetString("PD3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pending For Approval.
         /// </summary>
         public static string PendingForApproval {
@@ -3108,6 +3135,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string UnplannedDowntime {
             get {
                 return ResourceManager.GetString("UnplannedDowntime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPD1: ESD.
+        /// </summary>
+        public static string UPD1 {
+            get {
+                return ResourceManager.GetString("UPD1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPD2: USD / PSD.
+        /// </summary>
+        public static string UPD2 {
+            get {
+                return ResourceManager.GetString("UPD2", resourceCulture);
             }
         }
         

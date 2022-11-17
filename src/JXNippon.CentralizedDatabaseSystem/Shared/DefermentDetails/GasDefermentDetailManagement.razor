@@ -1,0 +1,74 @@
+﻿@using AntDesign;
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments
+
+<Layout Class="layout-view">
+    <Sider Class="d-none d-lg-inline" @bind-Collapsed=@isCollapsed Collapsible>
+        <Layout Style="height: 100%;">
+            <Header>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Status</span>
+                    </div>
+                </div>
+            </Header>
+            <Content style="overflow-y: auto; max-height: 100%;">
+                <Menu DefaultSelectedKeys=@(new[] { "All" }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnGasMenuItemSelectAsync>
+                    <MenuItem Key="All">
+                        <IconTemplate>
+                            <Icon Type="global" Theme="outline" Class="anticon-big" />
+                        </IconTemplate>
+                        <ChildContent>
+                            <span style="font-size: 16px; margin-left: 0px;">All</span>
+                        </ChildContent>
+                    </MenuItem>
+                    <MenuItem Key="Open">
+                        <IconTemplate>
+                            <Icon Type="clock-circle" Theme="outline" Class="anticon-big" />
+                        </IconTemplate>
+                        <ChildContent>
+                            <span style="font-size: 16px; margin-left: 0px;">Open</span>
+                        </ChildContent>
+                    </MenuItem>
+                    <MenuItem Key="Close">
+                        <IconTemplate>
+                            <Icon Type="check-circle" Theme="outline" Class="anticon-big" />
+                        </IconTemplate>
+                        <ChildContent>
+                            <span style="font-size: 16px; margin-left: 0px;">Close</span>
+                        </ChildContent>
+                    </MenuItem>
+                </Menu>
+            </Content>
+        </Layout>
+    </Sider>
+    <Layout Style="height:100%;">
+        <Header Style="border-left: 1px solid #dbe0ea">
+            <div class="row">
+                <div class="col-6">
+                    <span>Master Deferment (Gas)</span>
+                </div>
+                <AuthorizeView Policy="Deferment.ReadWrite">
+                    <div class="col-6 float-right align-items-center text-right mt-1">
+                        <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick=AddGasDefermentDialogAsync>
+                            <ChildContent>
+                                <Icon Type="plus-circle" Theme="outline" Class="anticon-big" /><span style="font-size: 18px; margin-left: 10px;">Add</span>
+                            </ChildContent>
+                        </Button>
+                    </div>
+                </AuthorizeView>
+            </div>
+        </Header>
+        <Content Style="height:100%;">
+            <GasDefermentDetailGrid @ref=gasDefermentDetailGrid />
+        </Content>
+    </Layout>
+</Layout>
+@code {
+    private Task AddGasDefermentDialogAsync()
+    {
+        return this.gasDefermentDetailGrid.ShowDialogAsync(
+                                new GasDefermentDetail() { StartDateUI = DateTime.Now, EndDateUI = DateTime.Now },
+                                0,
+                                "Add");
+    }
+}

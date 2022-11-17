@@ -6,9 +6,9 @@ using Radzen;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
 {
-    public partial class DefermentDetailDialog
+    public partial class OilDefermentDetailDialog
     {
-        [Parameter] public DefermentDetail Item { get; set; }
+        [Parameter] public OilDefermentDetail Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
@@ -18,26 +18,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
         private string ddPrimaryCause = string.Empty;
         private string ddSecondaryCause = string.Empty;
         private string ddStatus = string.Empty;
-        private string ddActionStatus = string.Empty;
-        private string ddPlannedUnplanned = string.Empty;
 
         private readonly Dictionary<string, string> downtimeCategorydict = new Dictionary<string, string>();
         private readonly Dictionary<string, string> downtimeTypedict = new Dictionary<string, string>();
         private readonly Dictionary<string, string> primaryCausedict = new Dictionary<string, string>();
         private readonly Dictionary<string, string> secondaryCausedict = new Dictionary<string, string>();
         private readonly Dictionary<string, string> statusdict = new Dictionary<string, string>();
-        private readonly Dictionary<string, string> planUnplanneddict = new Dictionary<string, string>();
 
         private bool isViewing { get => MenuAction == 3; }
-        protected Task SubmitAsync(DefermentDetail arg)
+        protected Task SubmitAsync(OilDefermentDetail arg)
         {
             arg.DowntimeCategory = Enum.Parse<DefermentDetailDowntimeCategory>(downtimeCategorydict[ddDowntimeCategory]);
             arg.DowntimeType = Enum.Parse<DefermentDetailDowntimeType>(downtimeTypedict[ddDowntimeType]);
             arg.PrimaryCause = Enum.Parse<DefermentDetailPrimaryCause>(primaryCausedict[ddPrimaryCause]);
             arg.SecondaryCause = Enum.Parse<DefermentDetailSecondaryCause>(secondaryCausedict[ddSecondaryCause]);
             arg.Status = Enum.Parse<DefermentDetailStatus>(statusdict[ddStatus]);
-            arg.PlannedUnplanned = Enum.Parse<DefermentDetailPlannedUnplanned>(planUnplanneddict[ddPlannedUnplanned]);
-            arg.Action_Status = Enum.Parse<DefermentDetailStatus>(statusdict[ddActionStatus]);
 
             DialogService.Close(true);
             return Task.CompletedTask;
@@ -67,16 +62,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             if (ddStatus != null)
             {
                 ddStatus = stringLocalizer[Item.Status.ToString()];
-            }
-
-            if (ddActionStatus != null)
-            {
-                ddActionStatus = stringLocalizer[Item.Status.ToString()];
-            }
-
-            if (ddPlannedUnplanned != null)
-            {
-                ddPlannedUnplanned = stringLocalizer[Item.PlannedUnplanned.ToString()];
             }
 
             return LoadAllDefermentEnum();
@@ -111,11 +96,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             foreach (var val in Enum.GetValues(typeof(DefermentDetailStatus)).Cast<DefermentDetailStatus>())
             {
                 statusdict.Add(stringLocalizer[val.ToString()], val.ToString());
-            }
-
-            foreach (var val in Enum.GetValues(typeof(DefermentDetailPlannedUnplanned)).Cast<DefermentDetailPlannedUnplanned>())
-            {
-                planUnplanneddict.Add(stringLocalizer[val.ToString()], val.ToString());
             }
 
             return Task.CompletedTask;

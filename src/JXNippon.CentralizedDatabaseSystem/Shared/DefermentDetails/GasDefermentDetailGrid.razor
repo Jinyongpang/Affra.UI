@@ -1,0 +1,199 @@
+﻿@using AntDesign;
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments
+@using System.Text.Json
+
+<div class="row h-100">
+    <div class="col h-100">
+        <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;"
+            IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
+            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting="true" AllowFiltering="false" 
+            ColumnWidth="200px" TItem="GasDefermentDetail" AllowVirtualization="true"
+            AllowColumnResize="true" CellContextMenu="@OnCellContextMenu"
+            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true" >
+            <EmptyTemplate>    
+                <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                    <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No deferment detail created.">
+                    </GenericDescription>
+                </div>
+            </EmptyTemplate>
+            <Columns>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Field" Title="Reporting" Width="90px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Field" Title="Field" Width="80px" />
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Facility_Platform" Width="150px">
+                    <HeaderTemplate>
+                        <div>Facility /<br />Platform</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="DowntimeCategory" Width="110px">
+                    <HeaderTemplate>
+                        <div>Downtime<br />Category</div>
+                    </HeaderTemplate>
+                    <Template Context="item">
+                        @(stringLocalizer[item.DowntimeCategory.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="StartDate" Width="100px">
+                    <HeaderTemplate>
+                        <div>Start<br />Date</div>
+                    </HeaderTemplate>
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.StartDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="EndDate" Width="100px">
+                    <HeaderTemplate>
+                        <div>End<br />Date</div>
+                    </HeaderTemplate>
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.EndDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="PrimaryCause" Width="100px">
+                    <HeaderTemplate>
+                        <div>Primary<br />Cause</div>
+                    </HeaderTemplate>
+                    <Template Context="item">
+                        @(stringLocalizer[item.PrimaryCause.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="SecondaryCause" Width="150px">
+                    <HeaderTemplate>
+                        <div>Secondary<br />Cause</div>
+                    </HeaderTemplate>
+                    <Template Context="item">
+                        @(stringLocalizer[item.SecondaryCause.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="CumulativeVolume_kb" Width="110px">
+                    <HeaderTemplate>
+                        <div>Cum Volume<br />(MMscf)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="AnnualizedLoss_MMscfd" Width="110px">
+                    <HeaderTemplate>
+                        <div>Annualized Loss<br />(MMscf/d)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="DowntimeType" Width="100px">
+                    <HeaderTemplate>
+                        <div>Downtime<br />Type</div>
+                    </HeaderTemplate>
+                    <Template Context="item">
+                        @(stringLocalizer[item.DowntimeType.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="ProblemStatement_Remark" Width="200px">
+                    <HeaderTemplate>
+                        <div>Problem Statement /<br />Remark</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="WayForwardDescription" Width="200px" >
+                    <HeaderTemplate>
+                        <div>Way Forward<br />Description</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Status" Title="Status" Width="100px">
+                    <Template Context="item">
+                        @(stringLocalizer[item.Status.ToString()])
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="HLCapacity" Width="100px">
+                    <HeaderTemplate>
+                        <div>HL<br />Capacity</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="LYCapacity" Width="100px">
+                    <HeaderTemplate>
+                        <div>LY<br />Capacity</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="BUCapacity" Width="100px">
+                    <HeaderTemplate>
+                        <div>BU<br />Capacity</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="MonthlyLoss_MMscfd" Title="Monthly loss " Width="120px">
+                    <HeaderTemplate>
+                        <div>Monthly loss<br />(MMscfd)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="HL_Loss_MMscfd" Title="HL Loss (MMscfd)" Width="100px">
+                    <HeaderTemplate>
+                        <div>HL Loss<br />(MMscfd)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="LY_Loss_MMscfd" Title="LY Loss (MMscfd)" Width="100px">
+                    <HeaderTemplate>
+                        <div>LY Loss<br />(MMscfd)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="BU_Loss_MMscfd" Title="BU Loss (MMscfd)" Width="100px">
+                    <HeaderTemplate>
+                        <div>BU Loss<br />(MMscfd)</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Month" Title="Month" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Year" Title="Year" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="DurationDay" Title="Duration (day)" Width="100px">
+                    <HeaderTemplate>
+                        <div>Duration<br />(day)</div>
+                    </HeaderTemplate>
+                    <Template Context="item">
+                        @(Math.Round((decimal)item.DurationDay, 2))
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="TotalDays" Title="Total Days" Width="100px">
+                    <HeaderTemplate>
+                        <div>Total<br />Days</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+            </Columns>
+        </RadzenDataGrid>  
+    </div>
+</div>
+
+@code {
+
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        Console.WriteLine(JsonSerializer.Serialize(args));
+        bool hasRowData = (args as DataGridCellMouseEventArgs<GasDefermentDetail>) != null;
+        ContextMenuService.Open(args, ds =>
+    @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<GasDefermentDetail>, e))">
+                    <AuthorizeView Policy="Deferment.ReadWrite">
+                        <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
+                        <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                        <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                    </AuthorizeView>
+                    <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+    </RadzenMenu>
+    );
+    }
+
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<GasDefermentDetail> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new GasDefermentDetail() { }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();
+        }
+    }
+}

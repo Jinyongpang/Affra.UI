@@ -1,0 +1,364 @@
+﻿@using AntDesign;
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+
+<Layout Class="layout-view">
+    <Sider Width="100" >
+        <Layout Style="height: 100%;background-color: white;">
+            <Header>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Year</span>
+                    </div>
+                </div>
+            </Header>
+            <Content style="overflow-y: auto; max-height: 100%;">
+                @if (YearList is not null)
+                {
+                    <Menu DefaultSelectedKeys=@(new[] { YearList[0].ToString() }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
+                        @foreach (int yearItem in YearList)
+                        {
+                            <MenuItem Key="@yearItem.ToString()"><span style="font-size: 16px; margin-left: 0px;">@yearItem</span></MenuItem>
+                        }
+                    </Menu>
+                }
+            </Content>
+        </Layout>
+    </Sider>
+    <Layout Style="height:100%;">
+        <Header Style="border-left: 1px solid #dbe0ea">
+            <div class="row">
+                <div class="col-6">
+                    <span>Helang Oil Template Report</span>
+                </div>
+            </div>
+        </Header>
+        <Content Style="height:100%;background-color: white;">
+            @if(this.Items is not null)
+            {
+                <DefermentTableView Year="@Items.Year" ReportName="Helang">
+                    <DefermentTableRow Title="Working Days" Unit="days">
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.January.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.February.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.March.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.April.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.May.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.June.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.July.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.August.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.September.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.October.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.November.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.December.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.YTD.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.YEP.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.Q1.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.Q2.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.Q3.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.Q4.WorkingDay TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="TP (Actual + Projection)" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.January.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.February.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.March.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.April.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.May.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.June.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.July.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.August.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.September.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.October.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.November.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.December.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YTD.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YEP.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q1.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q2.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q3.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q4.TP TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Surface Constraint" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.January.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.February.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.March.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.April.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.May.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.June.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.July.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.August.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.September.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.October.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.November.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.December.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YTD.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YEP.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q1.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q2.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q3.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q4.SurfaceConstraint TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Prodction System Capacity (PSC)" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualProductionSystemCapacity TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Planned Deferment (PD) (Actual + Projection)" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualPlannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Planned Deferment (PD)" Unit="%">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualPlannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Unplanned Deferment (UPD) - WORPE" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualUnplannedDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Unplanned Deferment (UPD) - WORPE" Unit="%">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualUnplannedDefermentPercentage TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="a) Well Related ( Actual + Projection)" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.WellRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="b) Operation Related  ( Actual + Projection)" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.OperationRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="c) Rotating Equipment  ( Actual + Projection)" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.RotatingEquipment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="d) Process Related ( Actual + Projection)" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.ProcessRelated TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="e) External Deferment ( Actual + Projection)" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.ExternalDeferment TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Theoretical Production" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalTheoreticalProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Metered Production" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.January.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.February.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.March.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.April.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.May.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.June.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.July.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.August.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.September.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.October.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.November.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.December.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YTD.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YEP.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q1.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q2.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q3.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q4.TotalMeteredProduction TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Unaccounted Gain/Loss" Unit="MMscf/d">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.UnaccountedGainLoss TItem="HelangOilTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                </DefermentTableView>
+            }
+        </Content>
+    </Layout>
+</Layout>
