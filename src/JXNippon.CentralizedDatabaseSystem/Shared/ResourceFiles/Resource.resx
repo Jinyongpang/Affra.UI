@@ -403,7 +403,7 @@
     <value>Closed Out</value>
   </data>
   <data name="AccumulatedSandDisposed" xml:space="preserve">
-    <value>Last Sand Disposal</value>
+    <value>Accumulated Sand Disposed</value>
   </data>
   <data name="ActualConsumption" xml:space="preserve">
     <value>Actual Consumption</value>
@@ -1214,5 +1214,8 @@
   </data>
   <data name="UPD2" xml:space="preserve">
     <value>UPD2: USD / PSD</value>
+  </data>
+  <data name="LastSandDisposalDateUI" xml:space="preserve">
+    <value>Last Sand Disposal</value>
   </data>
 </root>

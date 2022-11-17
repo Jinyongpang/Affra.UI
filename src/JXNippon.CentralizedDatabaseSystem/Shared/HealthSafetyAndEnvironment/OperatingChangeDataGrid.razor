@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TItem="DailyOperatingChange" TDialog="OperatingChangeDialog" ReportDate="@this.ReportDate"
+        <OperatingChangeDailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TDialog="OperatingChangeDialog" ReportDate="@this.ReportDate"
                        PagerAlwaysVisible="@PagerAlwaysVisible" RequiredHighlighting="false">
             <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="TagName" Title="Tag Name">
@@ -37,6 +37,6 @@
                     </Template>
                 </RadzenDataGridColumn>
             </Columns>
-        </DailyDataGrid>  
+        </OperatingChangeDailyDataGrid>  
     </div>
 </div>

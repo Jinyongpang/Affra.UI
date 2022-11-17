@@ -29,6 +29,11 @@
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="EastClusterJettingCycleNumber" Title="No. of East Cluster Jetting Cycle" />
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="WestClusterJettingCycleNumber" Title="No. of West Cluster Jetting Cycle" />
+                <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="LastSandDisposalDate" Title="Last Sand Disposal Date">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.LastSandDisposalDateUI)
+                    </Template>
+                </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="DrumCollectedNumber" Title="No. of Drum Collected" />
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="AccumulatedSandDisposed" Title="Accumulated Sand Disposed" />
                 <RadzenDataGridColumn TItem="DailySandDisposalDesander" Property="HighestMercuryReading" Title="Highest Mercury Reading" />

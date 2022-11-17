@@ -600,7 +600,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="producedWaterTreatmentSystemName">Initial value of ProducedWaterTreatmentSystemName.</param>
         /// <param name="date">Initial value of Date.</param>
-        /// <param name="lastSkimmingDate">Initial value of LastSkimmingDate.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         public static DailyProducedWaterTreatmentSystem CreateDailyProducedWaterTreatmentSystem(long ID, string producedWaterTreatmentSystemName, global::System.DateTimeOffset date, global::System.DateTimeOffset lastSkimmingDate, long xmin)
@@ -609,7 +608,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             dailyProducedWaterTreatmentSystem.Id = ID;
             dailyProducedWaterTreatmentSystem.ProducedWaterTreatmentSystemName = producedWaterTreatmentSystemName;
             dailyProducedWaterTreatmentSystem.Date = date;
-            dailyProducedWaterTreatmentSystem.LastSkimmingDate = lastSkimmingDate;
             dailyProducedWaterTreatmentSystem.xmin = xmin;
             return dailyProducedWaterTreatmentSystem;
         }
@@ -1647,7 +1645,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="majorEquipmentName">Initial value of MajorEquipmentName.</param>
-        /// <param name="status">Initial value of Status.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         /// <param name="isValidatedBySystem">Initial value of IsValidatedBySystem.</param>
         /// <param name="isValidatedByUser">Initial value of IsValidatedByUser.</param>
@@ -1655,7 +1652,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         public static DailyMajorEquipmentStatus CreateDailyMajorEquipmentStatus(long ID, 
                     global::System.DateTimeOffset date, 
                     string majorEquipmentName, 
-                    string status, 
                     long xmin, 
                     global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedBySystem, 
                     global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus isValidatedByUser)
@@ -1664,7 +1660,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             dailyMajorEquipmentStatus.Id = ID;
             dailyMajorEquipmentStatus.Date = date;
             dailyMajorEquipmentStatus.MajorEquipmentName = majorEquipmentName;
-            dailyMajorEquipmentStatus.Status = status;
             dailyMajorEquipmentStatus.xmin = xmin;
             dailyMajorEquipmentStatus.IsValidatedBySystem = isValidatedBySystem;
             dailyMajorEquipmentStatus.IsValidatedByUser = isValidatedByUser;
@@ -16072,6 +16067,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private global::System.Nullable<int> _WestClusterJettingCycleNumber;
         partial void OnWestClusterJettingCycleNumberChanging(global::System.Nullable<int> value);
         partial void OnWestClusterJettingCycleNumberChanged();
+        /// <summary>
+        /// There are no comments for Property LastSandDisposalDate in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<global::System.DateTimeOffset> LastSandDisposalDate
+        {
+            get
+            {
+                return this._LastSandDisposalDate;
+            }
+            set
+            {
+                this.OnLastSandDisposalDateChanging(value);
+                this._LastSandDisposalDate = value;
+                this.OnLastSandDisposalDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<global::System.DateTimeOffset> _LastSandDisposalDate;
+        partial void OnLastSandDisposalDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
+        partial void OnLastSandDisposalDateChanged();
         /// <summary>
         /// There are no comments for Property DrumCollectedNumber in the schema.
         /// </summary>
