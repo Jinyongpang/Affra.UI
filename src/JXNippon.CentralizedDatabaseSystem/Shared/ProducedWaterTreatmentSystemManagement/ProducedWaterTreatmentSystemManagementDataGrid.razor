@@ -22,7 +22,7 @@
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="EquipmentRemark" Title="Equipment Remark" Width="60px" />
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="LastSkimmingDate" Title="Last Skimming" Width="40px">
                     <Template Context="dailyProducedWaterTreatmentSystem">
-                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyProducedWaterTreatmentSystem.LastSkimmingDate.ToLocalTime())
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", dailyProducedWaterTreatmentSystem.LastSkimmingDateUI)
                     </Template>
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyProducedWaterTreatmentSystem" Property="AnalyserStatus" Title="Analyser Status"  Width="40px">

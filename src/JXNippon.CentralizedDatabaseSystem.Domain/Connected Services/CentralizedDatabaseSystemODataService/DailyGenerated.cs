@@ -175,6 +175,13 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.NextSandJettingDate.ToLocalDateTime(); }
             set { this.NextSandJettingDate = value.ToUniversalTime(); }
         }
+
+        [IgnoreClientProperty]
+        public DateTime? LastSandDisposalDateUI
+        {
+            get { return this.LastSandDisposalDate.ToLocalDateTime(); }
+            set { this.LastSandDisposalDate = value.ToUniversalTime(); }
+        }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
@@ -299,7 +306,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
 
         [IgnoreClientProperty]
-        public DateTime LastSkimmingDateUI
+        public DateTime? LastSkimmingDateUI
         {
             get { return this.LastSkimmingDate.ToLocalDateTime(); }
             set { this.LastSkimmingDate = value.ToUniversalTime(); }
