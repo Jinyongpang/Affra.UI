@@ -137,9 +137,6 @@
                                 <TabPane Tab="Management Of Change (MOC) : Long Term Overrides & Inhibits On Alarm And/Or Trip" Key="4">
                                     <LongTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid @ref="longTermOverridesAndInhibitsOnAlarmAndOrTripDataGrid" LoadData=@(args => LoadLongTermOverridesAndInhibitsOnAlarmAndOrTripDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(1) PagerAlwaysVisible=@CheckIsFocused(1)/>
                                 </TabPane>
-                                <TabPane Tab="Management Of Change (MOC) : Operating Change" Key="5">
-                                    <OperatingChangeDataGrid @ref="operatingChangeDataGrid" LoadData=@(args => LoadOperatingChangeDataGridAsync(args)) ShowDateColumn=@CheckIsFocused(1) PagerAlwaysVisible=@CheckIsFocused(1)/>
-                                </TabPane>
                             </Tabs>
                         }
                     </ChildContent>

@@ -5,3 +5,32 @@
 <div class="px-1">
     <ViewComponent @ref="viewComponent" View=@view @bind-HasFocus=@this.hasFocus />
 </div>
+<div class="fixed-widgets">
+    <Space>
+        <SpaceItem>
+            <div @onclick="(()=> this.UpdateViewAsync(-1))">
+                <Avatar Size="large" Class="fixed-widgets-avatar"><Content><i class="fa-solid fa-backward"></i></Content></Avatar>
+            </div>
+        </SpaceItem>
+        <SpaceItem>
+            @if (this.isPaused)
+            {
+                <div @onclick=SwitchPlayPause>
+                    <Avatar Size="large" Class="fixed-widgets-avatar"><Content><i class="fa-solid fa-play"></i></Content></Avatar>
+                </div>
+            }
+            else
+            {
+                <div @onclick=SwitchPlayPause>
+                    <Avatar Size="large" Class="fixed-widgets-avatar"><Content><i class="fa-solid fa-pause"></i></Content></Avatar>
+                </div>
+            }
+        </SpaceItem>
+        <SpaceItem>
+            <div @onclick="(()=> this.UpdateViewAsync(1))">
+                <Avatar Size="large" Class="fixed-widgets-avatar"><Content><i class="fa-solid fa-forward"></i></Content></Avatar>
+            </div>
+        </SpaceItem>
+    </Space>
+   
+</div>
