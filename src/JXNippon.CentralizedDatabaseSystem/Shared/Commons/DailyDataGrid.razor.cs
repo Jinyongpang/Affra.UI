@@ -70,7 +70,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             StateHasChanged();
             return ReloadAsync();
         }
-        private async Task LoadDataAsync(LoadDataArgs args)
+        protected async virtual Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
             await LoadData.InvokeAsync();
