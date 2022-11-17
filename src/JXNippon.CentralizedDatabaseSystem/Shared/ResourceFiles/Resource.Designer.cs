@@ -61,7 +61,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last Sand Disposal.
+        ///   Looks up a localized string similar to Accumulated Sand Disposed.
         /// </summary>
         public static string AccumulatedSandDisposed {
             get {
@@ -1524,6 +1524,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles {
         public static string LastSamplingUI {
             get {
                 return ResourceManager.GetString("LastSamplingUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Sand Disposal.
+        /// </summary>
+        public static string LastSandDisposalDateUI {
+            get {
+                return ResourceManager.GetString("LastSandDisposalDateUI", resourceCulture);
             }
         }
         

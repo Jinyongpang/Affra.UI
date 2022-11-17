@@ -403,7 +403,7 @@
     <value>Closed Out</value>
   </data>
   <data name="AccumulatedSandDisposed" xml:space="preserve">
-    <value>Last Sand Disposal</value>
+    <value>Accumulated Sand Disposed</value>
   </data>
   <data name="ActualConsumption" xml:space="preserve">
     <value>Actual Consumption</value>
@@ -1199,5 +1199,8 @@
   </data>
   <data name="StatusRemark" xml:space="preserve">
     <value>Status Remark</value>
+  </data>
+  <data name="LastSandDisposalDateUI" xml:space="preserve">
+    <value>Last Sand Disposal</value>
   </data>
 </root>
