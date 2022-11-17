@@ -36,7 +36,7 @@
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Status" Type="Edm.String" />
         <Property Name="EquipmentRemark" Type="Edm.String" />
-        <Property Name="LastSkimmingDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="LastSkimmingDate" Type="Edm.DateTimeOffset" />
         <Property Name="AnalyserStatus" Type="Edm.String" />
         <Property Name="Iron" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="PH" Type="Edm.Decimal" Scale="Variable" />
@@ -84,7 +84,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="MajorEquipmentName" Type="Edm.String" Nullable="false" />
-        <Property Name="Status" Type="Edm.String" Nullable="false" />
+        <Property Name="Status" Type="Edm.String" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <Property Name="IsValidatedBySystem" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus" Nullable="false" />
@@ -760,6 +760,7 @@
         <Property Name="NextSandJettingDate" Type="Edm.DateTimeOffset" />
         <Property Name="EastClusterJettingCycleNumber" Type="Edm.Int32" />
         <Property Name="WestClusterJettingCycleNumber" Type="Edm.Int32" />
+        <Property Name="LastSandDisposalDate" Type="Edm.DateTimeOffset" />
         <Property Name="DrumCollectedNumber" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="AccumulatedSandDisposed" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="HighestMercuryReading" Type="Edm.Decimal" Scale="Variable" />
@@ -2493,298 +2494,71 @@
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="DailyGasProductionDeliverySchedules" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule)" />
       </EntityType>
-      <EntityType Name="GasDefermentDetail">
+      <EntityType Name="DefermentDetail">
         <Key>
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Reporting" Type="Edm.String" />
         <Property Name="Field" Type="Edm.String" />
         <Property Name="Facility_Platform" Type="Edm.String" />
+        <Property Name="StartDate" Type="Edm.DateTimeOffset" />
+        <Property Name="EndDate" Type="Edm.DateTimeOffset" />
         <Property Name="DowntimeCategory" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory" />
-        <Property Name="StartDate" Type="Edm.DateTimeOffset" Nullable="false" />
-        <Property Name="EndDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="DowntimeType" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType" />
         <Property Name="PrimaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause" />
         <Property Name="SecondaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause" />
         <Property Name="CumulativeVolume_kb" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="AnnualizedLoss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="DowntimeType" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType" />
+        <Property Name="AnnualizedVolume_kb_d" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="ProblemStatement_Remark" Type="Edm.String" />
         <Property Name="WayForwardDescription" Type="Edm.String" />
         <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" />
         <Property Name="HLCapacity" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="LYCapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LACapacity" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="BUCapacity" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="MonthlyLoss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="HL_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="LY_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="BU_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="PlannedUnplanned" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPlannedUnplanned" />
+        <Property Name="Month_MMscf" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month_KBBL" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="HL_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Layang_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Beryl_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LossVolume_Kbbl" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LossAnnualized_Kbd" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="Month" Type="Edm.String" />
         <Property Name="Year" Type="Edm.String" />
         <Property Name="DurationDay" Type="Edm.Double" />
-        <Property Name="TotalDays" Type="Edm.Int32" />
+        <Property Name="ProductionMaintenance_Onshore_Team_Action" Type="Edm.String" />
+        <Property Name="Action_Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" />
+        <Property Name="SK10_24_Hrs_Shutdown_Notification_Report" Type="Edm.String" />
+        <Property Name="SK10_Unplanned_Production_Interruption_Report" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="DefermentDetailMapping" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping" />
       </EntityType>
-      <EntityType Name="OilDefermentDetail">
+      <EntityType Name="DefermentDetailMapping">
         <Key>
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Reporting" Type="Edm.String" />
-        <Property Name="Field" Type="Edm.String" />
-        <Property Name="Facility_Platform" Type="Edm.String" />
-        <Property Name="DowntimeCategory" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory" />
-        <Property Name="StartDate" Type="Edm.DateTimeOffset" Nullable="false" />
-        <Property Name="EndDate" Type="Edm.DateTimeOffset" Nullable="false" />
-        <Property Name="PrimaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause" />
-        <Property Name="SecondaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause" />
-        <Property Name="CumulativeVolume_kb" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="AnnualizedLoss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="DowntimeType" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType" />
-        <Property Name="ProblemStatement_Remark" Type="Edm.String" />
-        <Property Name="WayForwardDescription" Type="Edm.String" />
-        <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" />
-        <Property Name="HLCapacity" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="LYCapacity" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="BUCapacity" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="MonthlyLoss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="HL_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="LY_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="BU_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="Month" Type="Edm.String" />
-        <Property Name="Year" Type="Edm.String" />
-        <Property Name="DurationDay" Type="Edm.Double" />
-        <Property Name="TotalDays" Type="Edm.Int32" />
+        <Property Name="No" Type="Edm.String" />
+        <Property Name="DefermentDetailId" Type="Edm.Int64" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="DefermentDetail" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail">
+          <ReferentialConstraint Property="DefermentDetailId" ReferencedProperty="Id" />
+        </NavigationProperty>
       </EntityType>
-      <EntityType Name="SK10OilTemplateReport">
-        <Key>
-          <PropertyRef Name="Id" />
-        </Key>
-        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
-        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
-      </EntityType>
-      <EntityType Name="SK10GasTemplateReport">
-        <Key>
-          <PropertyRef Name="Id" />
-        </Key>
-        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
-        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
-      </EntityType>
-      <EntityType Name="HelangGasTemplateReport">
-        <Key>
-          <PropertyRef Name="Id" />
-        </Key>
-        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
-        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
-      </EntityType>
-      <EntityType Name="HelangOilTemplateReport">
-        <Key>
-          <PropertyRef Name="Id" />
-        </Key>
-        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
-        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
-      </EntityType>
-      <EntityType Name="LayangGasTemplateReport">
-        <Key>
-          <PropertyRef Name="Id" />
-        </Key>
-        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
-        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
-      </EntityType>
-      <EntityType Name="LayangOilTemplateReport">
-        <Key>
-          <PropertyRef Name="Id" />
-        </Key>
-        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
-        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
-        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
-      </EntityType>
-      <EntityType Name="BerylGasTemplateReport">
-        <Key>
-          <PropertyRef Name="Id" />
-        </Key>
-        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
-        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
-        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
-      </EntityType>
-      <ComplexType Name="OilTemplateReportDetail">
-        <Property Name="WorkingDay" Type="Edm.Int32" Nullable="false" />
-        <Property Name="TP" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="SurfaceConstraint" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualProductionSystemCapacity" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualPlannedDeferment" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualPlannedDefermentPercentage" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualUnplannedDeferment" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualUnplannedDefermentPercentage" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="WellRelated" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="OperationRelated" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RotatingEquipment" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="ProcessRelated" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="ExternalDeferment" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalTheoreticalProduction" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalMeteredProduction" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="UnaccountedGainLoss" Type="Edm.Decimal" Scale="Variable" />
-      </ComplexType>
-      <ComplexType Name="GasTemplateReportDetail">
-        <Property Name="WorkingDay" Type="Edm.Int32" Nullable="false" />
-        <Property Name="TP" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="SurfaceConstraint" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualProductionSystemCapacity" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="GasUtilization" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualPlannedDeferment" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualPlannedDefermentPercentage" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualUnplannedDeferment" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalActualUnplannedDefermentPercentage" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="WellRelated" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="OperationRelated" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="RotatingEquipment" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="ProcessRelated" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="ExternalDeferment" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalTheoreticalProduction" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TotalMeteredProduction" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="UnaccountedGainLoss" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="GasNomination" Type="Edm.Decimal" Scale="Variable" />
-      </ComplexType>
       <EnumType Name="DeliveryScheduleStatus">
         <Member Name="Firm" Value="0" />
         <Member Name="Outlook" Value="1" />
       </EnumType>
       <EnumType Name="DefermentDetailDowntimeCategory">
-        <Member Name="PD" Value="0" />
-        <Member Name="UPD" Value="1" />
+        <Member Name="PlannedDowntime" Value="0" />
+        <Member Name="UnplannedDowntime" Value="1" />
         <Member Name="Low" Value="2" />
+      </EnumType>
+      <EnumType Name="DefermentDetailDowntimeType">
+        <Member Name="NA" Value="0" />
+        <Member Name="Tripped" Value="1" />
+        <Member Name="Slowdown" Value="2" />
+        <Member Name="Cascaded" Value="3" />
       </EnumType>
       <EnumType Name="DefermentDetailPrimaryCause">
         <Member Name="NA" Value="0" />
@@ -2821,16 +2595,13 @@
         <Member Name="E3" Value="23" />
         <Member Name="E4" Value="24" />
       </EnumType>
-      <EnumType Name="DefermentDetailDowntimeType">
-        <Member Name="PD1" Value="0" />
-        <Member Name="PD2" Value="1" />
-        <Member Name="PD3" Value="2" />
-        <Member Name="UPD1" Value="3" />
-        <Member Name="UPD2" Value="4" />
-      </EnumType>
       <EnumType Name="DefermentDetailStatus">
         <Member Name="Open" Value="0" />
         <Member Name="Closed" Value="1" />
+      </EnumType>
+      <EnumType Name="DefermentDetailPlannedUnplanned">
+        <Member Name="U" Value="0" />
+        <Member Name="P" Value="1" />
       </EnumType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -3868,6 +3639,22 @@
             </Collection>
           </Annotation>
         </EntitySet>
+        <EntitySet Name="DefermentDetail" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail">
+          <NavigationPropertyBinding Path="DefermentDetailMapping" Target="DefermentDetailMapping" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="DefermentDetailMapping" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping">
+          <NavigationPropertyBinding Path="DefermentDetail" Target="DefermentDetail" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
         <EntitySet Name="CombinedDailyReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport">
           <NavigationPropertyBinding Path="DailyAnalysisResult" Target="DailyAnalysisResult" />
           <NavigationPropertyBinding Path="DailyCiNalco" Target="DailyCiNalco" />
@@ -3966,69 +3753,6 @@
         <EntitySet Name="MonthlyReservoirProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction">
           <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <NavigationPropertyBinding Path="ProductionZone" Target="ProductionZone" />
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="GasDefermentDetail" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail">
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="OilDefermentDetail" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail">
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="SK10OilTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport">
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="SK10GasTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport">
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="HelangGasTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport">
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="HelangOilTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport">
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="LayangGasTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport">
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="LayangOilTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport">
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="BerylGasTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport">
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
