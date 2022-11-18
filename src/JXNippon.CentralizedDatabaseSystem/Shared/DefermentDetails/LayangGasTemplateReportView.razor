@@ -1,0 +1,404 @@
+﻿@using AntDesign;
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+
+<Layout Class="layout-view">
+    <Sider Width="100" >
+        <Layout Style="height: 100%;background-color: white;">
+            <Header>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Year</span>
+                    </div>
+                </div>
+            </Header>
+            <Content style="overflow-y: auto; max-height: 100%;">
+                @if (YearList is not null)
+                {
+                    <Menu DefaultSelectedKeys=@(new[] { YearList[0].ToString() }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
+                        @foreach (int yearItem in YearList)
+                        {
+                            <MenuItem Key="@yearItem.ToString()"><span style="font-size: 16px; margin-left: 0px;">@yearItem</span></MenuItem>
+                        }
+                    </Menu>
+                }
+            </Content>
+        </Layout>
+    </Sider>
+    <Layout Style="height:100%;">
+        <Header Style="border-left: 1px solid #dbe0ea">
+            <div class="row">
+                <div class="col-6">
+                    <span>Layang Gas Template Report</span>
+                </div>
+            </div>
+        </Header>
+        <Content Style="height:100%;background-color: white;">
+            @if(this.Items is not null)
+            {
+                <DefermentTableView Year="@Items.Year" ReportName="Layang">
+                    <DefermentTableRow Title="Working Days" Unit="days">
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.January.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.February.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.March.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.April.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.May.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.June.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.July.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.August.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.September.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.October.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.November.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.December.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.YTD.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.YEP.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.Q1.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.Q2.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.Q3.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <IntegerMonthlyDataItem @bind-Value=@this.Items.Q4.WorkingDay TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="TP (Actual + Projection)" Unit="MMscfd">
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.January.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.February.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.March.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.April.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.May.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.June.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.July.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.August.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.September.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.October.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.November.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.December.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YTD.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YEP.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q1.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q2.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q3.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q4.TP TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Surface Constraint" Unit="MMscfd">
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.January.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.February.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.March.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.April.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.May.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.June.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.July.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.August.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.September.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.October.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.November.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.December.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YTD.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YEP.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q1.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q2.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q3.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q4.SurfaceConstraint TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Prodction System Capacity (PSC)" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualProductionSystemCapacity TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Gas Utilization (GL, GI, Flare, Fuel)" Unit="MMscfd">
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.January.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.February.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.March.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.April.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.May.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.June.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.July.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.August.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.September.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.October.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.November.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.December.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YTD.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YEP.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q1.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q2.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q3.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q4.GasUtilization TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Planned Deferment (PD) (Actual + Projection)" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualPlannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Planned Deferment (PD)" Unit="%">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualPlannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Unplanned Deferment (UPD) - WORPE" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualUnplannedDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Actual Unplanned Deferment (UPD) - WORPE" Unit="%">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalActualUnplannedDefermentPercentage TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="a) Well Related ( Actual + Projection)" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.WellRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="b) Operation Related  ( Actual + Projection)" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.OperationRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="c) Rotating Equipment  ( Actual + Projection)" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.RotatingEquipment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="d) Process Related ( Actual + Projection)" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.ProcessRelated TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="e) External Deferment ( Actual + Projection)" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.ExternalDeferment TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Theoretical Production" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.TotalTheoreticalProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Total Metered Production" Unit="MMscfd">
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.January.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.February.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.March.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.April.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.May.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.June.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.July.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.August.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.September.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.October.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.November.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.December.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YTD.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YEP.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q1.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q2.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q3.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q4.TotalMeteredProduction TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Unaccounted Gain/Loss" Unit="MMscfd">
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.January.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.February.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.March.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.April.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.May.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.June.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.July.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.August.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.September.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.October.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.November.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.December.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YTD.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.YEP.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q1.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q2.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q3.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem @bind-Value=@this.Items.Q4.UnaccountedGainLoss TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                    <DefermentTableRow Title="Gas Nomination" Unit="MMscfd">
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.January.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.February.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.March.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.April.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.May.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.June.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.July.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.August.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.September.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.October.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.November.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.December.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YTD.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.YEP.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q1.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q2.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q3.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                        <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q4.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
+                    </DefermentTableRow>
+                </DefermentTableView>
+            }
+        </Content>
+    </Layout>
+</Layout>

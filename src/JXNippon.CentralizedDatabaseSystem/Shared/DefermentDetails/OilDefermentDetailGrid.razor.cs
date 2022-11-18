@@ -14,14 +14,14 @@ using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
 {
-    public partial class DefermentDetailGrid
+    public partial class OilDefermentDetailGrid
     {
         private readonly AntDesign.Menu menu;
         private readonly string search;
         private bool isLoading = false;
-        public string DefermentDetailFilter { get; set; }
-        private RadzenDataGrid<DefermentDetail> grid;
-        private IEnumerable<DefermentDetail> items;
+        public string OilDefermentDetailFilter { get; set; }
+        private RadzenDataGrid<OilDefermentDetail> grid;
+        private IEnumerable<OilDefermentDetail> items;
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
@@ -34,7 +34,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             return grid.FirstPage(true);
         }
 
-        public async Task ShowDialogAsync(DefermentDetail data, int menuAction, string title)
+        public async Task ShowDialogAsync(OilDefermentDetail data, int menuAction, string title)
         {
             ContextMenuService.Close();
             dynamic? response;
@@ -55,7 +55,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             }
             else
             {
-                response = await DialogService.OpenAsync<DefermentDetailDialog>(title,
+                response = await DialogService.OpenAsync<OilDefermentDetailDialog>(title,
                            new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction } },
                            Constant.DialogOptions);
 
@@ -94,9 +94,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             await grid.Reload();
         }
 
-        private IGenericService<DefermentDetail> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<OilDefermentDetail> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DefermentDetail, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<OilDefermentDetail, ICentralizedDatabaseSystemUnitOfWork>>();
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)
@@ -104,22 +104,22 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             isLoading = true;
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<DefermentDetail>? service = GetGenericService(serviceScope);
+            IGenericService<OilDefermentDetail>? service = GetGenericService(serviceScope);
             var query = service.Get();
 
-            if (DefermentDetailFilter == "Open")
+            if (OilDefermentDetailFilter == "Open")
             {
                 query = query.Where(x => x.Status == DefermentDetailStatus.Open);
             }
-            else if (DefermentDetailFilter == "Closed")
+            else if (OilDefermentDetailFilter == "Closed")
             {
                 query = query.Where(x => x.Status == DefermentDetailStatus.Closed);
             }
 
-            Microsoft.OData.Client.QueryOperationResponse<DefermentDetail>? response = await query
+            Microsoft.OData.Client.QueryOperationResponse<OilDefermentDetail>? response = await query
                 .OrderBy(x => x.StartDate)
                 .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<DefermentDetail>();
+                .ToQueryOperationResponseAsync<OilDefermentDetail>();
 
             Count = (int)response.Count;
             items = response.ToList();

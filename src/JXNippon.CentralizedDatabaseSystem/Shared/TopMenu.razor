@@ -45,8 +45,25 @@
                     <TitleTemplate><div><Icon Type="hourglass" Theme="@GetTheme("Deferment")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
                     <ChildContent>
                         <MenuItem RouterLink="deferment/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="DefermentDashboard"><a href="deferment/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-                        <MenuItem RouterLink="deferment/report" RouterMatch="NavLinkMatch.Prefix" Key="DefermentReport"><a href="deferment/report"><Icon Type="fund-view" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title">Deferment Report</span></a></MenuItem>
-                    <MenuItem RouterLink="deferment/defermentdetail" RouterMatch="NavLinkMatch.Prefix" Key="DefermentDetail"><a href="deferment/defermentdetail"><Icon Type="diff" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title">Deferment Detail</span></a></MenuItem>
+                        <SubMenu Key="GasDeferment">
+                            <TitleTemplate><span class="toprow-nav-title">Gas Deferment</span></TitleTemplate>
+                            <ChildContent>
+                                <MenuItem RouterLink="deferment/gasdefermentdetail" RouterMatch="NavLinkMatch.Prefix" Key="DefermentGasDefermentDetail"><a href="deferment/gasdefermentdetail"><span class="toprow-nav-title">Master Deferment</span></a></MenuItem>
+                                <MenuItem RouterLink="deferment/sk10gastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentSK10GasTemplateReportView"><a href="deferment/SK10GasTemplateReportView"><span class="toprow-nav-title">SK10</span></a></MenuItem>
+                                <MenuItem RouterLink="deferment/helanggastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentHelangGasTemplateReportView"><a href="deferment/HelangGasTemplateReportView"><span class="toprow-nav-title">Helang</span></a></MenuItem>
+                                <MenuItem RouterLink="deferment/layanggastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentLayangGasTemplateReportView"><a href="deferment/LayangGasTemplateReportView"><span class="toprow-nav-title">Layang</span></a></MenuItem>
+                                <MenuItem RouterLink="deferment/berylgastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentBerylGasTemplateReportView"><a href="deferment/BerylGasTemplateReportView"><span class="toprow-nav-title">Beryl</span></a></MenuItem>
+                            </ChildContent>
+                        </SubMenu>
+                        <SubMenu Key="OilDeferment">
+                            <TitleTemplate><span class="toprow-nav-title">Oil Deferment</span></TitleTemplate>
+                            <ChildContent>
+                                <MenuItem RouterLink="deferment/oildefermentdetail" RouterMatch="NavLinkMatch.Prefix" Key="DefermentOilDefermentDetail"><a href="deferment/oildefermentdetail"><span class="toprow-nav-title">Master Deferment</span></a></MenuItem>
+                                <MenuItem RouterLink="deferment/sk10oiltemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentSK10OilTemplateReportView"><a href="deferment/SK10OilTemplateReportView"><span class="toprow-nav-title">SK10</span></a></MenuItem>
+                                <MenuItem RouterLink="deferment/helangoiltemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentHelangOilTemplateReportView"><a href="deferment/HelangOilTemplateReportView"><span class="toprow-nav-title">Helang</span></a></MenuItem>
+                                <MenuItem RouterLink="deferment/layangoiltemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentLayangOilTemplateReportView"><a href="deferment/LayangOilTemplateReportView"><span class="toprow-nav-title">Layang</span></a></MenuItem>
+                            </ChildContent>
+                        </SubMenu>
                     </ChildContent>
                 </SubMenu>
             </Authorized>

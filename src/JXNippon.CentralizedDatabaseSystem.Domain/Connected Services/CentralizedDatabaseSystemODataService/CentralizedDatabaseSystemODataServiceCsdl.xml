@@ -35,12 +35,12 @@
         <Property Name="ProducedWaterTreatmentSystemName" Type="Edm.String" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Status" Type="Edm.String" />
-        <Property Name="Remark" Type="Edm.String" />
-        <Property Name="LastSkimmingDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="EquipmentRemark" Type="Edm.String" />
+        <Property Name="LastSkimmingDate" Type="Edm.DateTimeOffset" />
         <Property Name="AnalyserStatus" Type="Edm.String" />
         <Property Name="Iron" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="PH" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="Remark2" Type="Edm.String" />
+        <Property Name="LastSkimmingRemark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="ProducedWaterTreatmentSystem" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.ProducedWaterTreatmentSystem" />
@@ -84,7 +84,7 @@
         <Property Name="Extras" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="MajorEquipmentName" Type="Edm.String" Nullable="false" />
-        <Property Name="Status" Type="Edm.String" Nullable="false" />
+        <Property Name="Status" Type="Edm.String" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <Property Name="IsValidatedBySystem" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus" Nullable="false" />
@@ -727,8 +727,8 @@
         <Property Name="TCA_V2430_FE" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TCA_TCALP_PH" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TCA_TCALP_FE" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TCA_V2200_PH" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="TCA_V2200_FE" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="GlycolContactorPreSrubberV2200PH" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="GlycolContactorPreSrubberV2200FE" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TCB_DE_PH" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TCB_DE_FE" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TCB_NDE_PH" Type="Edm.Decimal" Scale="Variable" />
@@ -755,15 +755,16 @@
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="SandDisposalDesanderName" Type="Edm.String" Nullable="false" />
         <Property Name="Status" Type="Edm.String" />
-        <Property Name="Remark" Type="Edm.String" />
+        <Property Name="StatusRemark" Type="Edm.String" />
         <Property Name="LastSandJettingDate" Type="Edm.DateTimeOffset" />
         <Property Name="NextSandJettingDate" Type="Edm.DateTimeOffset" />
         <Property Name="EastClusterJettingCycleNumber" Type="Edm.Int32" />
         <Property Name="WestClusterJettingCycleNumber" Type="Edm.Int32" />
+        <Property Name="LastSandDisposalDate" Type="Edm.DateTimeOffset" />
         <Property Name="DrumCollectedNumber" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="AccumulatedSandDisposed" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="HighestMercuryReading" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="Remark1" Type="Edm.String" />
+        <Property Name="SandJettingRemarks" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="CombinedDailyReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport" />
         <NavigationProperty Name="SandDisposalDesander" Type="Affra.Service.CentralizedDatabaseSystem.Domain.SandDisposalDesanders.SandDisposalDesander" />
@@ -856,6 +857,7 @@
         <Property Name="LifeBoatName" Type="Edm.String" Nullable="false" />
         <Property Name="Status" Type="Edm.String" />
         <Property Name="StartDate" Type="Edm.String" />
+        <Property Name="NTD" Type="Edm.DateTimeOffset" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="LifeBoat" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.LifeBoat" />
@@ -983,6 +985,8 @@
         <Property Name="PipelinePressure" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="PipelineTemparature" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHIPFieldD">
         <Key>
@@ -1005,6 +1009,8 @@
         <Property Name="PipelinePressure" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="PipelineTemparature" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.FieldMY" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1026,7 +1032,9 @@
         <Property Name="WaterProduced" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WGR" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="MonthlyHIPFieldMY">
         <Key>
@@ -1046,7 +1054,9 @@
         <Property Name="WaterProduced" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WGR" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1070,9 +1080,11 @@
         <Property Name="CumulativeProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="CumulativeProductionWater" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <NavigationProperty Name="ProductionZone" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZone" />
         <NavigationProperty Name="Well" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.Well" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="Well">
         <Key>
@@ -1114,8 +1126,10 @@
         <Property Name="CumulativeProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="CumulativeProductionWater" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <NavigationProperty Name="ProductionZone" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.ProductionZone" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1138,8 +1152,10 @@
         <Property Name="CumulativeProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="CumulativeProductionWater" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <NavigationProperty Name="Well" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.Well" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellTests" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1184,8 +1200,10 @@
         <Property Name="Category" Type="Edm.String" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <NavigationProperty Name="Well" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.Well" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellCondensateProductions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1222,6 +1240,8 @@
         <Property Name="BU3" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalHIP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalFPSO" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyAllocatedWellCondensateProduction">
         <Key>
@@ -1262,6 +1282,8 @@
         <Property Name="RatioHelang" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="RatioLayang" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="RatioBeryl" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellGasProductions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1298,6 +1320,8 @@
         <Property Name="BU3" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalHIP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalFPSO" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyAllocatedWellGasProduction">
         <Key>
@@ -1336,6 +1360,8 @@
         <Property Name="RatioHelang" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="RatioLayang" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="RatioBeryl" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellWaterProductions" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1372,6 +1398,8 @@
         <Property Name="BU3" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalHIP" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalFPSO" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyAllocatedWellWaterProduction">
         <Key>
@@ -1410,6 +1438,8 @@
         <Property Name="RatioHelang" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="RatioLayang" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="RatioBeryl" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -1452,6 +1482,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL2WellProductionCalculation">
         <Key>
@@ -1492,6 +1524,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL3WellProductionCalculation">
         <Key>
@@ -1532,6 +1566,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL4WellProductionCalculation">
         <Key>
@@ -1572,6 +1608,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL5WellProductionCalculation">
         <Key>
@@ -1612,6 +1650,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL6WellProductionCalculation">
         <Key>
@@ -1652,6 +1692,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL7WellProductionCalculation">
         <Key>
@@ -1692,6 +1734,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL8WellProductionCalculation">
         <Key>
@@ -1732,6 +1776,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL9WellProductionCalculation">
         <Key>
@@ -1772,6 +1818,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL10WellProductionCalculation">
         <Key>
@@ -1802,6 +1850,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL11WellProductionCalculation">
         <Key>
@@ -1837,6 +1887,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHL12WellProductionCalculation">
         <Key>
@@ -1887,6 +1939,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHM1WellProductionCalculation">
         <Key>
@@ -1922,6 +1976,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHM2WellProductionCalculation">
         <Key>
@@ -1957,6 +2013,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHM3WellProductionCalculation">
         <Key>
@@ -1987,6 +2045,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHM4WellProductionCalculation">
         <Key>
@@ -2017,6 +2077,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyHM5WellProductionCalculation">
         <Key>
@@ -2047,6 +2109,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyLA1WellProductionCalculation">
         <Key>
@@ -2092,6 +2156,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyLA2WellProductionCalculation">
         <Key>
@@ -2137,6 +2203,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyLA3WellProductionCalculation">
         <Key>
@@ -2167,6 +2235,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyBU1ST1WellProductionCalculation">
         <Key>
@@ -2207,6 +2277,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyBU2WellProductionCalculation">
         <Key>
@@ -2237,6 +2309,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyBU3WellProductionCalculation">
         <Key>
@@ -2267,6 +2341,8 @@
         <Property Name="WellProductionGas" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionCondensate" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="WellProductionWater" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.SalesD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -2297,6 +2373,8 @@
         <Property Name="YieldCondStreamC5Plus" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="ExportYieldC1_C4" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="ExportYieldC5Plus" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyFPSOSale">
         <Key>
@@ -2310,6 +2388,8 @@
         <Property Name="GasStreamC1_C4_MMBtu" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="GasStreamGHV" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="GasStreamC5Plus" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyGasMetering">
         <Key>
@@ -2322,6 +2402,8 @@
         <Property Name="StdVolC1_C4" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="EnergyC1_C4" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="LiqStdVolC5Plus" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="DailyCondensateCalculated">
         <Key>
@@ -2334,6 +2416,8 @@
         <Property Name="VolumeC1_C4" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="EnergyC1_C4" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="VolumeC5Plus" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.SalesMY" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -2356,7 +2440,9 @@
         <Property Name="TotalNetProductionC1_C4_MMscf" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalNetProductionC1_C4_MMBtu" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="TotalNetProductionC5Plus" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
       <EntityType Name="MonthlyFPSOSale">
         <Key>
@@ -2370,7 +2456,9 @@
         <Property Name="GasStreamC1_C4_MMBtu" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="GasStreamGHV" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="GasStreamC5Plus" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="PEReport" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport" />
       </EntityType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -2400,75 +2488,304 @@
         <Property Name="HIP" Type="Edm.Int32" />
         <Property Name="FPSO" Type="Edm.Int32" />
         <Property Name="AverageOfTotalGas" Type="Edm.Double" />
+        <Property Name="AverageOfHIP" Type="Edm.Double" />
+        <Property Name="AverageOfFPSO" Type="Edm.Double" />
         <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DeliveryScheduleStatus" Nullable="false" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="DailyGasProductionDeliverySchedules" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DailyGasProductionDeliverySchedule)" />
       </EntityType>
-      <EntityType Name="DefermentDetail">
+      <EntityType Name="GasDefermentDetail">
         <Key>
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Reporting" Type="Edm.String" />
         <Property Name="Field" Type="Edm.String" />
         <Property Name="Facility_Platform" Type="Edm.String" />
-        <Property Name="StartDate" Type="Edm.DateTimeOffset" />
-        <Property Name="EndDate" Type="Edm.DateTimeOffset" />
         <Property Name="DowntimeCategory" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory" />
-        <Property Name="DowntimeType" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType" />
+        <Property Name="StartDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="EndDate" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="PrimaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause" />
         <Property Name="SecondaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause" />
         <Property Name="CumulativeVolume_kb" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="AnnualizedVolume_kb_d" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="AnnualizedLoss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="DowntimeType" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType" />
         <Property Name="ProblemStatement_Remark" Type="Edm.String" />
         <Property Name="WayForwardDescription" Type="Edm.String" />
         <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" />
         <Property Name="HLCapacity" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="LACapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LYCapacity" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="BUCapacity" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="PlannedUnplanned" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPlannedUnplanned" />
-        <Property Name="Month_MMscf" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="Month_KBBL" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="HL_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="Layang_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="Beryl_MMscfd" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="LossVolume_Kbbl" Type="Edm.Decimal" Scale="Variable" />
-        <Property Name="LossAnnualized_Kbd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="MonthlyLoss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="HL_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LY_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="BU_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
         <Property Name="Month" Type="Edm.String" />
         <Property Name="Year" Type="Edm.String" />
         <Property Name="DurationDay" Type="Edm.Double" />
-        <Property Name="ProductionMaintenance_Onshore_Team_Action" Type="Edm.String" />
-        <Property Name="Action_Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" />
-        <Property Name="SK10_24_Hrs_Shutdown_Notification_Report" Type="Edm.String" />
-        <Property Name="SK10_Unplanned_Production_Interruption_Report" Type="Edm.String" />
+        <Property Name="TotalDays" Type="Edm.Int32" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
-        <NavigationProperty Name="DefermentDetailMapping" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping" />
       </EntityType>
-      <EntityType Name="DefermentDetailMapping">
+      <EntityType Name="OilDefermentDetail">
         <Key>
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
-        <Property Name="No" Type="Edm.String" />
-        <Property Name="DefermentDetailId" Type="Edm.Int64" />
+        <Property Name="Reporting" Type="Edm.String" />
+        <Property Name="Field" Type="Edm.String" />
+        <Property Name="Facility_Platform" Type="Edm.String" />
+        <Property Name="DowntimeCategory" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory" />
+        <Property Name="StartDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="EndDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="PrimaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause" />
+        <Property Name="SecondaryCause" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause" />
+        <Property Name="CumulativeVolume_kb" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="AnnualizedLoss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="DowntimeType" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType" />
+        <Property Name="ProblemStatement_Remark" Type="Edm.String" />
+        <Property Name="WayForwardDescription" Type="Edm.String" />
+        <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus" />
+        <Property Name="HLCapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LYCapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="BUCapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="MonthlyLoss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="HL_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="LY_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="BU_Loss_MMscfd" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="Month" Type="Edm.String" />
+        <Property Name="Year" Type="Edm.String" />
+        <Property Name="DurationDay" Type="Edm.Double" />
+        <Property Name="TotalDays" Type="Edm.Int32" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
-        <NavigationProperty Name="DefermentDetail" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail">
-          <ReferentialConstraint Property="DefermentDetailId" ReferencedProperty="Id" />
-        </NavigationProperty>
       </EntityType>
+      <EntityType Name="SK10OilTemplateReport">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
+        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+      </EntityType>
+      <EntityType Name="SK10GasTemplateReport">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
+        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+      </EntityType>
+      <EntityType Name="HelangGasTemplateReport">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
+        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+      </EntityType>
+      <EntityType Name="HelangOilTemplateReport">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
+        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+      </EntityType>
+      <EntityType Name="LayangGasTemplateReport">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
+        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+      </EntityType>
+      <EntityType Name="LayangOilTemplateReport">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
+        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+      </EntityType>
+      <EntityType Name="BerylGasTemplateReport">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Year" Type="Edm.Int32" Nullable="false" />
+        <Property Name="January" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="February" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="March" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="April" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="May" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="June" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="July" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="August" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="September" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="October" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="November" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="December" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="YTD" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="YEP" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q1" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q2" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q3" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="Q4" Type="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+      </EntityType>
+      <ComplexType Name="OilTemplateReportDetail">
+        <Property Name="WorkingDay" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TP" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="SurfaceConstraint" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualProductionSystemCapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualPlannedDeferment" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualPlannedDefermentPercentage" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualUnplannedDeferment" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualUnplannedDefermentPercentage" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="WellRelated" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="OperationRelated" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RotatingEquipment" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="ProcessRelated" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="ExternalDeferment" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalTheoreticalProduction" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalMeteredProduction" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="UnaccountedGainLoss" Type="Edm.Decimal" Scale="Variable" />
+      </ComplexType>
+      <ComplexType Name="GasTemplateReportDetail">
+        <Property Name="WorkingDay" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TP" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="SurfaceConstraint" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualProductionSystemCapacity" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="GasUtilization" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualPlannedDeferment" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualPlannedDefermentPercentage" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualUnplannedDeferment" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalActualUnplannedDefermentPercentage" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="WellRelated" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="OperationRelated" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="RotatingEquipment" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="ProcessRelated" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="ExternalDeferment" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalTheoreticalProduction" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="TotalMeteredProduction" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="UnaccountedGainLoss" Type="Edm.Decimal" Scale="Variable" />
+        <Property Name="GasNomination" Type="Edm.Decimal" Scale="Variable" />
+      </ComplexType>
       <EnumType Name="DeliveryScheduleStatus">
         <Member Name="Firm" Value="0" />
         <Member Name="Outlook" Value="1" />
       </EnumType>
       <EnumType Name="DefermentDetailDowntimeCategory">
-        <Member Name="PlannedDowntime" Value="0" />
-        <Member Name="UnplannedDowntime" Value="1" />
+        <Member Name="PD" Value="0" />
+        <Member Name="UPD" Value="1" />
         <Member Name="Low" Value="2" />
-      </EnumType>
-      <EnumType Name="DefermentDetailDowntimeType">
-        <Member Name="NA" Value="0" />
-        <Member Name="Tripped" Value="1" />
-        <Member Name="Slowdown" Value="2" />
-        <Member Name="Cascaded" Value="3" />
       </EnumType>
       <EnumType Name="DefermentDetailPrimaryCause">
         <Member Name="NA" Value="0" />
@@ -2505,13 +2822,16 @@
         <Member Name="E3" Value="23" />
         <Member Name="E4" Value="24" />
       </EnumType>
+      <EnumType Name="DefermentDetailDowntimeType">
+        <Member Name="PD1" Value="0" />
+        <Member Name="PD2" Value="1" />
+        <Member Name="PD3" Value="2" />
+        <Member Name="UPD1" Value="3" />
+        <Member Name="UPD2" Value="4" />
+      </EnumType>
       <EnumType Name="DefermentDetailStatus">
         <Member Name="Open" Value="0" />
         <Member Name="Closed" Value="1" />
-      </EnumType>
-      <EnumType Name="DefermentDetailPlannedUnplanned">
-        <Member Name="U" Value="0" />
-        <Member Name="P" Value="1" />
       </EnumType>
     </Schema>
     <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -2522,10 +2842,49 @@
         <Property Name="Id" Type="Edm.Int64" Nullable="false" />
         <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="User" Type="Edm.String" />
+        <Property Name="Revision" Type="Edm.Int32" Nullable="false" />
         <Property Name="LastUpdatedDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReportStatus" Nullable="false" />
         <Property Name="Remark" Type="Edm.String" />
         <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <Property Name="HIPAndLWPSummaryNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="FPSOHelangSummaryNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="HealthSafetyEnvironmentNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="LifeBoatNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="LongTermOverridesInhibitsOnAlarmTripNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="OperatingChangeNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="LossOfPrimaryContainmentIncidentNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="SandDisposalDesanderNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="CiNalcoNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="InowacInjectionNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="CommunicationSystemNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="LWPActivityNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="VendorActivityNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="UtilityNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="WaterTankNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="NitrogenGeneratorNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="MaximoWorkOrderNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="AnalysisResultNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="CoolingMediumSystemNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="LogisticNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="GlycolPumpNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="GlycolTrainNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="GlycolStockNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="KawasakiExportCompressorNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="RollsRoyceRB211EngineNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="HIPWellHeadParameterNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="LWPWellHeadParameterNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="GasCondensateExportSamplerAndExportLineNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="WellHeadAndSeparationSystemNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="WellStreamCoolerNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="SK10ProductionNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="HIPProductionNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="FPSOHelangProductionNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="MajorEquipmentStatusNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="DieselNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="ProducedWaterTreatmentSystemNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="DeOilerInjectionNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
+        <Property Name="PowerGenerationAndDistributionNotes" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)" />
         <NavigationProperty Name="DailyHealthSafetyEnvironment" Type="Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyHealthSafetyEnvironment" />
         <NavigationProperty Name="DailyLifeBoats" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLifeBoat)" />
         <NavigationProperty Name="DailyLongTermOverridesInhibitsOnAlarmTrips" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments.DailyLongTermOverridesInhibitsOnAlarmTrip)" />
@@ -2565,7 +2924,72 @@
         <NavigationProperty Name="DailyDeOilerInjection" Type="Affra.Service.CentralizedDatabaseSystem.Domain.ProducedWaterTreatmentSystems.DailyDeOilerInjection" />
         <NavigationProperty Name="DailyPowerGenerationAndDistributions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions.DailyPowerGenerationAndDistribution)" />
       </EntityType>
+      <ComplexType Name="SectionNote">
+        <Property Name="Note" Type="Edm.String" />
+      </ComplexType>
       <EnumType Name="CombinedDailyReportStatus">
+        <Member Name="Pending" Value="0" />
+        <Member Name="Rejected" Value="1" />
+        <Member Name="Approved" Value="2" />
+      </EnumType>
+    </Schema>
+    <Schema Namespace="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="PEReport">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="Date" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="User" Type="Edm.String" />
+        <Property Name="LastUpdatedDateTime" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="Status" Type="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReportStatus" Nullable="false" />
+        <Property Name="Remark" Type="Edm.String" />
+        <Property Name="xmin" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="DailyHIPSales" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.SalesD.DailyHIPSale)" />
+        <NavigationProperty Name="DailyFPSOSales" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.SalesD.DailyFPSOSale)" />
+        <NavigationProperty Name="DailyGasMeterings" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.SalesD.DailyGasMetering)" />
+        <NavigationProperty Name="DailyCondensateCalculateds" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.SalesD.DailyCondensateCalculated)" />
+        <NavigationProperty Name="MonthlyHIPSale" Type="Affra.Service.CentralizedDatabaseSystem.Domain.SalesMY.MonthlyHIPSale" />
+        <NavigationProperty Name="MonthlyFPSOSale" Type="Affra.Service.CentralizedDatabaseSystem.Domain.SalesMY.MonthlyFPSOSale" />
+        <NavigationProperty Name="DailyHIPFieldDs" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD)" />
+        <NavigationProperty Name="DailyFPSOFieldDs" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD)" />
+        <NavigationProperty Name="MonthlyHIPFieldMY" Type="Affra.Service.CentralizedDatabaseSystem.Domain.FieldMY.MonthlyHIPFieldMY" />
+        <NavigationProperty Name="MonthlyFPSOFieldMY" Type="Affra.Service.CentralizedDatabaseSystem.Domain.FieldMY.MonthlyFPSOFieldMY" />
+        <NavigationProperty Name="MonthlyReservoirs" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoir)" />
+        <NavigationProperty Name="MonthlyReservoirProductions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction)" />
+        <NavigationProperty Name="MonthlyWellProductions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductions.MonthlyWellProduction)" />
+        <NavigationProperty Name="MonthlyWellTests" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellTests.MonthlyWellTest)" />
+        <NavigationProperty Name="DailyEstimatedWellGasProductions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellGasProductions.DailyEstimatedWellGasProduction)" />
+        <NavigationProperty Name="DailyAllocatedWellGasProductions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellGasProductions.DailyAllocatedWellGasProduction)" />
+        <NavigationProperty Name="DailyEstimatedWellCondensateProductions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellCondensateProductions.DailyEstimatedWellCondensateProduction)" />
+        <NavigationProperty Name="DailyAllocatedWellCondensateProductions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellCondensateProductions.DailyAllocatedWellCondensateProduction)" />
+        <NavigationProperty Name="DailyEstimatedWellWaterProductions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellWaterProductions.DailyEstimatedWellWaterProduction)" />
+        <NavigationProperty Name="DailyAllocatedWellWaterProductions" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellWaterProductions.DailyAllocatedWellWaterProduction)" />
+        <NavigationProperty Name="DailyHL1WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL1WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL2WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL2WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL3WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL3WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL4WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL4WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL5WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL5WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL6WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL6WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL7WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL7WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL8WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL8WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL9WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL9WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL10WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL10WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL11WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL11WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHL12WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL12WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHM1WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM1WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHM2WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM2WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHM3WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM3WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHM4WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM4WellProductionCalculation)" />
+        <NavigationProperty Name="DailyHM5WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM5WellProductionCalculation)" />
+        <NavigationProperty Name="DailyLA1WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyLA1WellProductionCalculation)" />
+        <NavigationProperty Name="DailyLA2WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyLA2WellProductionCalculation)" />
+        <NavigationProperty Name="DailyLA3WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyLA3WellProductionCalculation)" />
+        <NavigationProperty Name="DailyBU1ST1WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyBU1ST1WellProductionCalculation)" />
+        <NavigationProperty Name="DailyBU2WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyBU2WellProductionCalculation)" />
+        <NavigationProperty Name="DailyBU3WellProductionCalculations" Type="Collection(Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyBU3WellProductionCalculation)" />
+      </EntityType>
+      <EnumType Name="PEReportStatus">
         <Member Name="Pending" Value="0" />
         <Member Name="Rejected" Value="1" />
         <Member Name="Approved" Value="2" />
@@ -3071,6 +3495,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyFPSOFieldD" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyFPSOFieldD">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3078,6 +3503,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHIPFieldD" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.FieldD.DailyHIPFieldD">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3085,6 +3511,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="MonthlyFPSOFieldMY" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.FieldMY.MonthlyFPSOFieldMY">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3092,6 +3519,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="MonthlyHIPFieldMY" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.FieldMY.MonthlyHIPFieldMY">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3099,6 +3527,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="MonthlyReservoir" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoir">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <NavigationPropertyBinding Path="ProductionZone" Target="ProductionZone" />
           <NavigationPropertyBinding Path="Well" Target="Well" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
@@ -3127,6 +3556,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="MonthlyWellProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductions.MonthlyWellProduction">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <NavigationPropertyBinding Path="Well" Target="Well" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -3135,6 +3565,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="MonthlyWellTest" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellTests.MonthlyWellTest">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <NavigationPropertyBinding Path="Well" Target="Well" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
@@ -3143,6 +3574,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyEstimatedWellCondensateProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellCondensateProductions.DailyEstimatedWellCondensateProduction">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3150,6 +3582,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyAllocatedWellCondensateProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellCondensateProductions.DailyAllocatedWellCondensateProduction">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3157,6 +3590,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyEstimatedWellGasProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellGasProductions.DailyEstimatedWellGasProduction">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3164,6 +3598,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyAllocatedWellGasProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellGasProductions.DailyAllocatedWellGasProduction">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3171,6 +3606,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyEstimatedWellWaterProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellWaterProductions.DailyEstimatedWellWaterProduction">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3178,6 +3614,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyAllocatedWellWaterProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellWaterProductions.DailyAllocatedWellWaterProduction">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3185,6 +3622,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL1WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL1WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3192,6 +3630,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL2WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL2WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3199,6 +3638,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL3WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL3WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3206,6 +3646,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL4WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL4WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3213,6 +3654,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL5WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL5WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3220,6 +3662,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL6WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL6WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3227,6 +3670,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL7WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL7WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3234,6 +3678,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL8WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL8WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3241,6 +3686,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL9WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL9WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3248,6 +3694,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL10WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL10WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3255,6 +3702,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL11WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL11WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3262,6 +3710,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHL12WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHL12WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3269,6 +3718,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHM1WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM1WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3276,6 +3726,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHM2WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM2WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3283,6 +3734,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHM3WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM3WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3290,6 +3742,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHM4WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM4WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3297,6 +3750,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHM5WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyHM5WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3304,6 +3758,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyLA1WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyLA1WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3311,6 +3766,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyLA2WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyLA2WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3318,6 +3774,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyLA3WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyLA3WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3325,6 +3782,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyBU1ST1WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyBU1ST1WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3332,6 +3790,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyBU2WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyBU2WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3339,6 +3798,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyBU3WellProductionCalculation" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.WellProductionCalculations.DailyBU3WellProductionCalculation">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3346,6 +3806,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyHIPSale" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.SalesD.DailyHIPSale">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3353,6 +3814,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyFPSOSale" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.SalesD.DailyFPSOSale">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3360,6 +3822,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyGasMetering" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.SalesD.DailyGasMetering">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3367,6 +3830,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="DailyCondensateCalculated" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.SalesD.DailyCondensateCalculated">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3374,6 +3838,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="MonthlyHIPSale" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.SalesMY.MonthlyHIPSale">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3381,6 +3846,7 @@
           </Annotation>
         </EntitySet>
         <EntitySet Name="MonthlyFPSOSale" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.SalesMY.MonthlyFPSOSale">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3397,22 +3863,6 @@
         </EntitySet>
         <EntitySet Name="MonthlyGasProductionDeliverySchedule" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule">
           <NavigationPropertyBinding Path="DailyGasProductionDeliverySchedules" Target="DailyGasProductionDeliverySchedule" />
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="DefermentDetail" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail">
-          <NavigationPropertyBinding Path="DefermentDetailMapping" Target="DefermentDetailMapping" />
-          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
-            <Collection>
-              <PropertyPath>xmin</PropertyPath>
-            </Collection>
-          </Annotation>
-        </EntitySet>
-        <EntitySet Name="DefermentDetailMapping" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping">
-          <NavigationPropertyBinding Path="DefermentDetail" Target="DefermentDetail" />
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
@@ -3464,8 +3914,122 @@
             </Collection>
           </Annotation>
         </EntitySet>
+        <EntitySet Name="PEReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport">
+          <NavigationPropertyBinding Path="DailyAllocatedWellCondensateProductions" Target="DailyAllocatedWellCondensateProduction" />
+          <NavigationPropertyBinding Path="DailyAllocatedWellGasProductions" Target="DailyAllocatedWellGasProduction" />
+          <NavigationPropertyBinding Path="DailyAllocatedWellWaterProductions" Target="DailyAllocatedWellWaterProduction" />
+          <NavigationPropertyBinding Path="DailyBU1ST1WellProductionCalculations" Target="DailyBU1ST1WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyBU2WellProductionCalculations" Target="DailyBU2WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyBU3WellProductionCalculations" Target="DailyBU3WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyCondensateCalculateds" Target="DailyCondensateCalculated" />
+          <NavigationPropertyBinding Path="DailyEstimatedWellCondensateProductions" Target="DailyEstimatedWellCondensateProduction" />
+          <NavigationPropertyBinding Path="DailyEstimatedWellGasProductions" Target="DailyEstimatedWellGasProduction" />
+          <NavigationPropertyBinding Path="DailyEstimatedWellWaterProductions" Target="DailyEstimatedWellWaterProduction" />
+          <NavigationPropertyBinding Path="DailyFPSOFieldDs" Target="DailyFPSOFieldD" />
+          <NavigationPropertyBinding Path="DailyFPSOSales" Target="DailyFPSOSale" />
+          <NavigationPropertyBinding Path="DailyGasMeterings" Target="DailyGasMetering" />
+          <NavigationPropertyBinding Path="DailyHIPFieldDs" Target="DailyHIPFieldD" />
+          <NavigationPropertyBinding Path="DailyHIPSales" Target="DailyHIPSale" />
+          <NavigationPropertyBinding Path="DailyHL10WellProductionCalculations" Target="DailyHL10WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL11WellProductionCalculations" Target="DailyHL11WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL12WellProductionCalculations" Target="DailyHL12WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL1WellProductionCalculations" Target="DailyHL1WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL2WellProductionCalculations" Target="DailyHL2WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL3WellProductionCalculations" Target="DailyHL3WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL4WellProductionCalculations" Target="DailyHL4WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL5WellProductionCalculations" Target="DailyHL5WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL6WellProductionCalculations" Target="DailyHL6WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL7WellProductionCalculations" Target="DailyHL7WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL8WellProductionCalculations" Target="DailyHL8WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHL9WellProductionCalculations" Target="DailyHL9WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHM1WellProductionCalculations" Target="DailyHM1WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHM2WellProductionCalculations" Target="DailyHM2WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHM3WellProductionCalculations" Target="DailyHM3WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHM4WellProductionCalculations" Target="DailyHM4WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyHM5WellProductionCalculations" Target="DailyHM5WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyLA1WellProductionCalculations" Target="DailyLA1WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyLA2WellProductionCalculations" Target="DailyLA2WellProductionCalculation" />
+          <NavigationPropertyBinding Path="DailyLA3WellProductionCalculations" Target="DailyLA3WellProductionCalculation" />
+          <NavigationPropertyBinding Path="MonthlyFPSOFieldMY" Target="MonthlyFPSOFieldMY" />
+          <NavigationPropertyBinding Path="MonthlyFPSOSale" Target="MonthlyFPSOSale" />
+          <NavigationPropertyBinding Path="MonthlyHIPFieldMY" Target="MonthlyHIPFieldMY" />
+          <NavigationPropertyBinding Path="MonthlyHIPSale" Target="MonthlyHIPSale" />
+          <NavigationPropertyBinding Path="MonthlyReservoirProductions" Target="MonthlyReservoirProduction" />
+          <NavigationPropertyBinding Path="MonthlyReservoirs" Target="MonthlyReservoir" />
+          <NavigationPropertyBinding Path="MonthlyWellProductions" Target="MonthlyWellProduction" />
+          <NavigationPropertyBinding Path="MonthlyWellTests" Target="MonthlyWellTest" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
         <EntitySet Name="MonthlyReservoirProduction" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction">
+          <NavigationPropertyBinding Path="PEReport" Target="PEReport" />
           <NavigationPropertyBinding Path="ProductionZone" Target="ProductionZone" />
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="GasDefermentDetail" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail">
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="OilDefermentDetail" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail">
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="SK10OilTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport">
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="SK10GasTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport">
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="HelangGasTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport">
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="HelangOilTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport">
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="LayangGasTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport">
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="LayangOilTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport">
+          <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name="BerylGasTemplateReport" EntityType="Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport">
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

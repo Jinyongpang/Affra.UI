@@ -1,0 +1,7 @@
+﻿@page "/Deferment/OilDefermentDetail"
+@using JXNippon.CentralizedDatabaseSystem.Shared.Views
+
+@attribute [Authorize(Policy = "Deferment.Read")]
+
+<PageTitle>Oil Deferment Detail</PageTitle>
+<JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails.OilDefermentDetailManagement />
