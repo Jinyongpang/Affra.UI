@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 11/18/2022 12:08:52 AM
+// Generation date: 11/18/2022 8:02:51 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -53143,71 +53143,54 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDailyGasProductionDeliverySchedulesChanged();
     }
     /// <summary>
-    /// There are no comments for DefermentDetailSingle in the schema.
+    /// There are no comments for GasDefermentDetailSingle in the schema.
     /// </summary>
-    public partial class DefermentDetailSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DefermentDetail>
+    public partial class GasDefermentDetailSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<GasDefermentDetail>
     {
         /// <summary>
-        /// Initialize a new DefermentDetailSingle object.
+        /// Initialize a new GasDefermentDetailSingle object.
         /// </summary>
-        public DefermentDetailSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+        public GasDefermentDetailSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
             : base(context, path) {}
 
         /// <summary>
-        /// Initialize a new DefermentDetailSingle object.
+        /// Initialize a new GasDefermentDetailSingle object.
         /// </summary>
-        public DefermentDetailSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+        public GasDefermentDetailSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
             : base(context, path, isComposable) {}
 
         /// <summary>
-        /// Initialize a new DefermentDetailSingle object.
+        /// Initialize a new GasDefermentDetailSingle object.
         /// </summary>
-        public DefermentDetailSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DefermentDetail> query)
+        public GasDefermentDetailSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<GasDefermentDetail> query)
             : base(query) {}
 
-        /// <summary>
-        /// There are no comments for DefermentDetailMapping in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle DefermentDetailMapping
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._DefermentDetailMapping == null))
-                {
-                    this._DefermentDetailMapping = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle(this.Context, GetPath("DefermentDetailMapping"));
-                }
-                return this._DefermentDetailMapping;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle _DefermentDetailMapping;
     }
     /// <summary>
-    /// There are no comments for DefermentDetail in the schema.
+    /// There are no comments for GasDefermentDetail in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    public partial class DefermentDetail : global::Microsoft.OData.Client.BaseEntityType
+    public partial class GasDefermentDetail : global::Microsoft.OData.Client.BaseEntityType
     {
         /// <summary>
-        /// Create a new DefermentDetail object.
+        /// Create a new GasDefermentDetail object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="startDate">Initial value of StartDate.</param>
+        /// <param name="endDate">Initial value of EndDate.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public static DefermentDetail CreateDefermentDetail(long ID, long xmin)
+        public static GasDefermentDetail CreateGasDefermentDetail(long ID, global::System.DateTimeOffset startDate, global::System.DateTimeOffset endDate, long xmin)
         {
-            DefermentDetail defermentDetail = new DefermentDetail();
-            defermentDetail.Id = ID;
-            defermentDetail.xmin = xmin;
-            return defermentDetail;
+            GasDefermentDetail gasDefermentDetail = new GasDefermentDetail();
+            gasDefermentDetail.Id = ID;
+            gasDefermentDetail.StartDate = startDate;
+            gasDefermentDetail.EndDate = endDate;
+            gasDefermentDetail.xmin = xmin;
+            return gasDefermentDetail;
         }
         /// <summary>
         /// There are no comments for Property Id in the schema.
@@ -53232,6 +53215,28 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _Id;
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Reporting in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Reporting
+        {
+            get
+            {
+                return this._Reporting;
+            }
+            set
+            {
+                this.OnReportingChanging(value);
+                this._Reporting = value;
+                this.OnReportingChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _Reporting;
+        partial void OnReportingChanging(string value);
+        partial void OnReportingChanged();
         /// <summary>
         /// There are no comments for Property Field in the schema.
         /// </summary>
@@ -53277,50 +53282,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnFacility_PlatformChanging(string value);
         partial void OnFacility_PlatformChanged();
         /// <summary>
-        /// There are no comments for Property StartDate in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual global::System.Nullable<global::System.DateTimeOffset> StartDate
-        {
-            get
-            {
-                return this._StartDate;
-            }
-            set
-            {
-                this.OnStartDateChanging(value);
-                this._StartDate = value;
-                this.OnStartDateChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<global::System.DateTimeOffset> _StartDate;
-        partial void OnStartDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
-        partial void OnStartDateChanged();
-        /// <summary>
-        /// There are no comments for Property EndDate in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual global::System.Nullable<global::System.DateTimeOffset> EndDate
-        {
-            get
-            {
-                return this._EndDate;
-            }
-            set
-            {
-                this.OnEndDateChanging(value);
-                this._EndDate = value;
-                this.OnEndDateChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<global::System.DateTimeOffset> _EndDate;
-        partial void OnEndDateChanging(global::System.Nullable<global::System.DateTimeOffset> value);
-        partial void OnEndDateChanged();
-        /// <summary>
         /// There are no comments for Property DowntimeCategory in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
@@ -53343,27 +53304,51 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDowntimeCategoryChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory> value);
         partial void OnDowntimeCategoryChanged();
         /// <summary>
-        /// There are no comments for Property DowntimeType in the schema.
+        /// There are no comments for Property StartDate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> DowntimeType
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "StartDate is required.")]
+        public virtual global::System.DateTimeOffset StartDate
         {
             get
             {
-                return this._DowntimeType;
+                return this._StartDate;
             }
             set
             {
-                this.OnDowntimeTypeChanging(value);
-                this._DowntimeType = value;
-                this.OnDowntimeTypeChanged();
+                this.OnStartDateChanging(value);
+                this._StartDate = value;
+                this.OnStartDateChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> _DowntimeType;
-        partial void OnDowntimeTypeChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> value);
-        partial void OnDowntimeTypeChanged();
+        private global::System.DateTimeOffset _StartDate;
+        partial void OnStartDateChanging(global::System.DateTimeOffset value);
+        partial void OnStartDateChanged();
+        /// <summary>
+        /// There are no comments for Property EndDate in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "EndDate is required.")]
+        public virtual global::System.DateTimeOffset EndDate
+        {
+            get
+            {
+                return this._EndDate;
+            }
+            set
+            {
+                this.OnEndDateChanging(value);
+                this._EndDate = value;
+                this.OnEndDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.DateTimeOffset _EndDate;
+        partial void OnEndDateChanging(global::System.DateTimeOffset value);
+        partial void OnEndDateChanged();
         /// <summary>
         /// There are no comments for Property PrimaryCause in the schema.
         /// </summary>
@@ -53431,27 +53416,49 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnCumulativeVolume_kbChanging(global::System.Nullable<decimal> value);
         partial void OnCumulativeVolume_kbChanged();
         /// <summary>
-        /// There are no comments for Property AnnualizedVolume_kb_d in the schema.
+        /// There are no comments for Property AnnualizedLoss_MMscfd in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Nullable<decimal> AnnualizedVolume_kb_d
+        public virtual global::System.Nullable<decimal> AnnualizedLoss_MMscfd
         {
             get
             {
-                return this._AnnualizedVolume_kb_d;
+                return this._AnnualizedLoss_MMscfd;
             }
             set
             {
-                this.OnAnnualizedVolume_kb_dChanging(value);
-                this._AnnualizedVolume_kb_d = value;
-                this.OnAnnualizedVolume_kb_dChanged();
+                this.OnAnnualizedLoss_MMscfdChanging(value);
+                this._AnnualizedLoss_MMscfd = value;
+                this.OnAnnualizedLoss_MMscfdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<decimal> _AnnualizedVolume_kb_d;
-        partial void OnAnnualizedVolume_kb_dChanging(global::System.Nullable<decimal> value);
-        partial void OnAnnualizedVolume_kb_dChanged();
+        private global::System.Nullable<decimal> _AnnualizedLoss_MMscfd;
+        partial void OnAnnualizedLoss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnAnnualizedLoss_MMscfdChanged();
+        /// <summary>
+        /// There are no comments for Property DowntimeType in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> DowntimeType
+        {
+            get
+            {
+                return this._DowntimeType;
+            }
+            set
+            {
+                this.OnDowntimeTypeChanging(value);
+                this._DowntimeType = value;
+                this.OnDowntimeTypeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> _DowntimeType;
+        partial void OnDowntimeTypeChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> value);
+        partial void OnDowntimeTypeChanged();
         /// <summary>
         /// There are no comments for Property ProblemStatement_Remark in the schema.
         /// </summary>
@@ -53541,27 +53548,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnHLCapacityChanging(global::System.Nullable<decimal> value);
         partial void OnHLCapacityChanged();
         /// <summary>
-        /// There are no comments for Property LACapacity in the schema.
+        /// There are no comments for Property LYCapacity in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Nullable<decimal> LACapacity
+        public virtual global::System.Nullable<decimal> LYCapacity
         {
             get
             {
-                return this._LACapacity;
+                return this._LYCapacity;
             }
             set
             {
-                this.OnLACapacityChanging(value);
-                this._LACapacity = value;
-                this.OnLACapacityChanged();
+                this.OnLYCapacityChanging(value);
+                this._LYCapacity = value;
+                this.OnLYCapacityChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<decimal> _LACapacity;
-        partial void OnLACapacityChanging(global::System.Nullable<decimal> value);
-        partial void OnLACapacityChanged();
+        private global::System.Nullable<decimal> _LYCapacity;
+        partial void OnLYCapacityChanging(global::System.Nullable<decimal> value);
+        partial void OnLYCapacityChanged();
         /// <summary>
         /// There are no comments for Property BUCapacity in the schema.
         /// </summary>
@@ -53585,181 +53592,93 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnBUCapacityChanging(global::System.Nullable<decimal> value);
         partial void OnBUCapacityChanged();
         /// <summary>
-        /// There are no comments for Property PlannedUnplanned in the schema.
+        /// There are no comments for Property MonthlyLoss_MMscfd in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPlannedUnplanned> PlannedUnplanned
+        public virtual global::System.Nullable<decimal> MonthlyLoss_MMscfd
         {
             get
             {
-                return this._PlannedUnplanned;
+                return this._MonthlyLoss_MMscfd;
             }
             set
             {
-                this.OnPlannedUnplannedChanging(value);
-                this._PlannedUnplanned = value;
-                this.OnPlannedUnplannedChanged();
+                this.OnMonthlyLoss_MMscfdChanging(value);
+                this._MonthlyLoss_MMscfd = value;
+                this.OnMonthlyLoss_MMscfdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPlannedUnplanned> _PlannedUnplanned;
-        partial void OnPlannedUnplannedChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPlannedUnplanned> value);
-        partial void OnPlannedUnplannedChanged();
+        private global::System.Nullable<decimal> _MonthlyLoss_MMscfd;
+        partial void OnMonthlyLoss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyLoss_MMscfdChanged();
         /// <summary>
-        /// There are no comments for Property Month_MMscf in the schema.
+        /// There are no comments for Property HL_Loss_MMscfd in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Nullable<decimal> Month_MMscf
+        public virtual global::System.Nullable<decimal> HL_Loss_MMscfd
         {
             get
             {
-                return this._Month_MMscf;
+                return this._HL_Loss_MMscfd;
             }
             set
             {
-                this.OnMonth_MMscfChanging(value);
-                this._Month_MMscf = value;
-                this.OnMonth_MMscfChanged();
+                this.OnHL_Loss_MMscfdChanging(value);
+                this._HL_Loss_MMscfd = value;
+                this.OnHL_Loss_MMscfdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<decimal> _Month_MMscf;
-        partial void OnMonth_MMscfChanging(global::System.Nullable<decimal> value);
-        partial void OnMonth_MMscfChanged();
+        private global::System.Nullable<decimal> _HL_Loss_MMscfd;
+        partial void OnHL_Loss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnHL_Loss_MMscfdChanged();
         /// <summary>
-        /// There are no comments for Property Month_KBBL in the schema.
+        /// There are no comments for Property LY_Loss_MMscfd in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Nullable<decimal> Month_KBBL
+        public virtual global::System.Nullable<decimal> LY_Loss_MMscfd
         {
             get
             {
-                return this._Month_KBBL;
+                return this._LY_Loss_MMscfd;
             }
             set
             {
-                this.OnMonth_KBBLChanging(value);
-                this._Month_KBBL = value;
-                this.OnMonth_KBBLChanged();
+                this.OnLY_Loss_MMscfdChanging(value);
+                this._LY_Loss_MMscfd = value;
+                this.OnLY_Loss_MMscfdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<decimal> _Month_KBBL;
-        partial void OnMonth_KBBLChanging(global::System.Nullable<decimal> value);
-        partial void OnMonth_KBBLChanged();
+        private global::System.Nullable<decimal> _LY_Loss_MMscfd;
+        partial void OnLY_Loss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnLY_Loss_MMscfdChanged();
         /// <summary>
-        /// There are no comments for Property HL_MMscfd in the schema.
+        /// There are no comments for Property BU_Loss_MMscfd in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Nullable<decimal> HL_MMscfd
+        public virtual global::System.Nullable<decimal> BU_Loss_MMscfd
         {
             get
             {
-                return this._HL_MMscfd;
+                return this._BU_Loss_MMscfd;
             }
             set
             {
-                this.OnHL_MMscfdChanging(value);
-                this._HL_MMscfd = value;
-                this.OnHL_MMscfdChanged();
+                this.OnBU_Loss_MMscfdChanging(value);
+                this._BU_Loss_MMscfd = value;
+                this.OnBU_Loss_MMscfdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<decimal> _HL_MMscfd;
-        partial void OnHL_MMscfdChanging(global::System.Nullable<decimal> value);
-        partial void OnHL_MMscfdChanged();
-        /// <summary>
-        /// There are no comments for Property Layang_MMscfd in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual global::System.Nullable<decimal> Layang_MMscfd
-        {
-            get
-            {
-                return this._Layang_MMscfd;
-            }
-            set
-            {
-                this.OnLayang_MMscfdChanging(value);
-                this._Layang_MMscfd = value;
-                this.OnLayang_MMscfdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<decimal> _Layang_MMscfd;
-        partial void OnLayang_MMscfdChanging(global::System.Nullable<decimal> value);
-        partial void OnLayang_MMscfdChanged();
-        /// <summary>
-        /// There are no comments for Property Beryl_MMscfd in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual global::System.Nullable<decimal> Beryl_MMscfd
-        {
-            get
-            {
-                return this._Beryl_MMscfd;
-            }
-            set
-            {
-                this.OnBeryl_MMscfdChanging(value);
-                this._Beryl_MMscfd = value;
-                this.OnBeryl_MMscfdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<decimal> _Beryl_MMscfd;
-        partial void OnBeryl_MMscfdChanging(global::System.Nullable<decimal> value);
-        partial void OnBeryl_MMscfdChanged();
-        /// <summary>
-        /// There are no comments for Property LossVolume_Kbbl in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual global::System.Nullable<decimal> LossVolume_Kbbl
-        {
-            get
-            {
-                return this._LossVolume_Kbbl;
-            }
-            set
-            {
-                this.OnLossVolume_KbblChanging(value);
-                this._LossVolume_Kbbl = value;
-                this.OnLossVolume_KbblChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<decimal> _LossVolume_Kbbl;
-        partial void OnLossVolume_KbblChanging(global::System.Nullable<decimal> value);
-        partial void OnLossVolume_KbblChanged();
-        /// <summary>
-        /// There are no comments for Property LossAnnualized_Kbd in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual global::System.Nullable<decimal> LossAnnualized_Kbd
-        {
-            get
-            {
-                return this._LossAnnualized_Kbd;
-            }
-            set
-            {
-                this.OnLossAnnualized_KbdChanging(value);
-                this._LossAnnualized_Kbd = value;
-                this.OnLossAnnualized_KbdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<decimal> _LossAnnualized_Kbd;
-        partial void OnLossAnnualized_KbdChanging(global::System.Nullable<decimal> value);
-        partial void OnLossAnnualized_KbdChanged();
+        private global::System.Nullable<decimal> _BU_Loss_MMscfd;
+        partial void OnBU_Loss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnBU_Loss_MMscfdChanged();
         /// <summary>
         /// There are no comments for Property Month in the schema.
         /// </summary>
@@ -53827,93 +53746,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnDurationDayChanging(global::System.Nullable<double> value);
         partial void OnDurationDayChanged();
         /// <summary>
-        /// There are no comments for Property ProductionMaintenance_Onshore_Team_Action in the schema.
+        /// There are no comments for Property TotalDays in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual string ProductionMaintenance_Onshore_Team_Action
+        public virtual global::System.Nullable<int> TotalDays
         {
             get
             {
-                return this._ProductionMaintenance_Onshore_Team_Action;
+                return this._TotalDays;
             }
             set
             {
-                this.OnProductionMaintenance_Onshore_Team_ActionChanging(value);
-                this._ProductionMaintenance_Onshore_Team_Action = value;
-                this.OnProductionMaintenance_Onshore_Team_ActionChanged();
+                this.OnTotalDaysChanging(value);
+                this._TotalDays = value;
+                this.OnTotalDaysChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private string _ProductionMaintenance_Onshore_Team_Action;
-        partial void OnProductionMaintenance_Onshore_Team_ActionChanging(string value);
-        partial void OnProductionMaintenance_Onshore_Team_ActionChanged();
-        /// <summary>
-        /// There are no comments for Property Action_Status in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> Action_Status
-        {
-            get
-            {
-                return this._Action_Status;
-            }
-            set
-            {
-                this.OnAction_StatusChanging(value);
-                this._Action_Status = value;
-                this.OnAction_StatusChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> _Action_Status;
-        partial void OnAction_StatusChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> value);
-        partial void OnAction_StatusChanged();
-        /// <summary>
-        /// There are no comments for Property SK10_24_Hrs_Shutdown_Notification_Report in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual string SK10_24_Hrs_Shutdown_Notification_Report
-        {
-            get
-            {
-                return this._SK10_24_Hrs_Shutdown_Notification_Report;
-            }
-            set
-            {
-                this.OnSK10_24_Hrs_Shutdown_Notification_ReportChanging(value);
-                this._SK10_24_Hrs_Shutdown_Notification_Report = value;
-                this.OnSK10_24_Hrs_Shutdown_Notification_ReportChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private string _SK10_24_Hrs_Shutdown_Notification_Report;
-        partial void OnSK10_24_Hrs_Shutdown_Notification_ReportChanging(string value);
-        partial void OnSK10_24_Hrs_Shutdown_Notification_ReportChanged();
-        /// <summary>
-        /// There are no comments for Property SK10_Unplanned_Production_Interruption_Report in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual string SK10_Unplanned_Production_Interruption_Report
-        {
-            get
-            {
-                return this._SK10_Unplanned_Production_Interruption_Report;
-            }
-            set
-            {
-                this.OnSK10_Unplanned_Production_Interruption_ReportChanging(value);
-                this._SK10_Unplanned_Production_Interruption_Report = value;
-                this.OnSK10_Unplanned_Production_Interruption_ReportChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private string _SK10_Unplanned_Production_Interruption_Report;
-        partial void OnSK10_Unplanned_Production_Interruption_ReportChanging(string value);
-        partial void OnSK10_Unplanned_Production_Interruption_ReportChanged();
+        private global::System.Nullable<int> _TotalDays;
+        partial void OnTotalDaysChanging(global::System.Nullable<int> value);
+        partial void OnTotalDaysChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -53937,95 +53790,56 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
-        /// <summary>
-        /// There are no comments for Property DefermentDetailMapping in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping DefermentDetailMapping
-        {
-            get
-            {
-                return this._DefermentDetailMapping;
-            }
-            set
-            {
-                this.OnDefermentDetailMappingChanging(value);
-                this._DefermentDetailMapping = value;
-                this.OnDefermentDetailMappingChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping _DefermentDetailMapping;
-        partial void OnDefermentDetailMappingChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping value);
-        partial void OnDefermentDetailMappingChanged();
     }
     /// <summary>
-    /// There are no comments for DefermentDetailMappingSingle in the schema.
+    /// There are no comments for OilDefermentDetailSingle in the schema.
     /// </summary>
-    public partial class DefermentDetailMappingSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DefermentDetailMapping>
+    public partial class OilDefermentDetailSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<OilDefermentDetail>
     {
         /// <summary>
-        /// Initialize a new DefermentDetailMappingSingle object.
+        /// Initialize a new OilDefermentDetailSingle object.
         /// </summary>
-        public DefermentDetailMappingSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+        public OilDefermentDetailSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
             : base(context, path) {}
 
         /// <summary>
-        /// Initialize a new DefermentDetailMappingSingle object.
+        /// Initialize a new OilDefermentDetailSingle object.
         /// </summary>
-        public DefermentDetailMappingSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+        public OilDefermentDetailSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
             : base(context, path, isComposable) {}
 
         /// <summary>
-        /// Initialize a new DefermentDetailMappingSingle object.
+        /// Initialize a new OilDefermentDetailSingle object.
         /// </summary>
-        public DefermentDetailMappingSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DefermentDetailMapping> query)
+        public OilDefermentDetailSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<OilDefermentDetail> query)
             : base(query) {}
 
-        /// <summary>
-        /// There are no comments for DefermentDetail in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle DefermentDetail
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._DefermentDetail == null))
-                {
-                    this._DefermentDetail = new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle(this.Context, GetPath("DefermentDetail"));
-                }
-                return this._DefermentDetail;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle _DefermentDetail;
     }
     /// <summary>
-    /// There are no comments for DefermentDetailMapping in the schema.
+    /// There are no comments for OilDefermentDetail in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    public partial class DefermentDetailMapping : global::Microsoft.OData.Client.BaseEntityType
+    public partial class OilDefermentDetail : global::Microsoft.OData.Client.BaseEntityType
     {
         /// <summary>
-        /// Create a new DefermentDetailMapping object.
+        /// Create a new OilDefermentDetail object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="startDate">Initial value of StartDate.</param>
+        /// <param name="endDate">Initial value of EndDate.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public static DefermentDetailMapping CreateDefermentDetailMapping(long ID, long xmin)
+        public static OilDefermentDetail CreateOilDefermentDetail(long ID, global::System.DateTimeOffset startDate, global::System.DateTimeOffset endDate, long xmin)
         {
-            DefermentDetailMapping defermentDetailMapping = new DefermentDetailMapping();
-            defermentDetailMapping.Id = ID;
-            defermentDetailMapping.xmin = xmin;
-            return defermentDetailMapping;
+            OilDefermentDetail oilDefermentDetail = new OilDefermentDetail();
+            oilDefermentDetail.Id = ID;
+            oilDefermentDetail.StartDate = startDate;
+            oilDefermentDetail.EndDate = endDate;
+            oilDefermentDetail.xmin = xmin;
+            return oilDefermentDetail;
         }
         /// <summary>
         /// There are no comments for Property Id in the schema.
@@ -54051,49 +53865,557 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property No in the schema.
+        /// There are no comments for Property Reporting in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual string No
+        public virtual string Reporting
         {
             get
             {
-                return this._No;
+                return this._Reporting;
             }
             set
             {
-                this.OnNoChanging(value);
-                this._No = value;
-                this.OnNoChanged();
+                this.OnReportingChanging(value);
+                this._Reporting = value;
+                this.OnReportingChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private string _No;
-        partial void OnNoChanging(string value);
-        partial void OnNoChanged();
+        private string _Reporting;
+        partial void OnReportingChanging(string value);
+        partial void OnReportingChanged();
         /// <summary>
-        /// There are no comments for Property DefermentDetailId in the schema.
+        /// There are no comments for Property Field in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::System.Nullable<long> DefermentDetailId
+        public virtual string Field
         {
             get
             {
-                return this._DefermentDetailId;
+                return this._Field;
             }
             set
             {
-                this.OnDefermentDetailIdChanging(value);
-                this._DefermentDetailId = value;
-                this.OnDefermentDetailIdChanged();
+                this.OnFieldChanging(value);
+                this._Field = value;
+                this.OnFieldChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::System.Nullable<long> _DefermentDetailId;
-        partial void OnDefermentDetailIdChanging(global::System.Nullable<long> value);
-        partial void OnDefermentDetailIdChanged();
+        private string _Field;
+        partial void OnFieldChanging(string value);
+        partial void OnFieldChanged();
+        /// <summary>
+        /// There are no comments for Property Facility_Platform in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Facility_Platform
+        {
+            get
+            {
+                return this._Facility_Platform;
+            }
+            set
+            {
+                this.OnFacility_PlatformChanging(value);
+                this._Facility_Platform = value;
+                this.OnFacility_PlatformChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _Facility_Platform;
+        partial void OnFacility_PlatformChanging(string value);
+        partial void OnFacility_PlatformChanged();
+        /// <summary>
+        /// There are no comments for Property DowntimeCategory in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory> DowntimeCategory
+        {
+            get
+            {
+                return this._DowntimeCategory;
+            }
+            set
+            {
+                this.OnDowntimeCategoryChanging(value);
+                this._DowntimeCategory = value;
+                this.OnDowntimeCategoryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory> _DowntimeCategory;
+        partial void OnDowntimeCategoryChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeCategory> value);
+        partial void OnDowntimeCategoryChanged();
+        /// <summary>
+        /// There are no comments for Property StartDate in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "StartDate is required.")]
+        public virtual global::System.DateTimeOffset StartDate
+        {
+            get
+            {
+                return this._StartDate;
+            }
+            set
+            {
+                this.OnStartDateChanging(value);
+                this._StartDate = value;
+                this.OnStartDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.DateTimeOffset _StartDate;
+        partial void OnStartDateChanging(global::System.DateTimeOffset value);
+        partial void OnStartDateChanged();
+        /// <summary>
+        /// There are no comments for Property EndDate in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "EndDate is required.")]
+        public virtual global::System.DateTimeOffset EndDate
+        {
+            get
+            {
+                return this._EndDate;
+            }
+            set
+            {
+                this.OnEndDateChanging(value);
+                this._EndDate = value;
+                this.OnEndDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.DateTimeOffset _EndDate;
+        partial void OnEndDateChanging(global::System.DateTimeOffset value);
+        partial void OnEndDateChanged();
+        /// <summary>
+        /// There are no comments for Property PrimaryCause in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause> PrimaryCause
+        {
+            get
+            {
+                return this._PrimaryCause;
+            }
+            set
+            {
+                this.OnPrimaryCauseChanging(value);
+                this._PrimaryCause = value;
+                this.OnPrimaryCauseChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause> _PrimaryCause;
+        partial void OnPrimaryCauseChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailPrimaryCause> value);
+        partial void OnPrimaryCauseChanged();
+        /// <summary>
+        /// There are no comments for Property SecondaryCause in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause> SecondaryCause
+        {
+            get
+            {
+                return this._SecondaryCause;
+            }
+            set
+            {
+                this.OnSecondaryCauseChanging(value);
+                this._SecondaryCause = value;
+                this.OnSecondaryCauseChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause> _SecondaryCause;
+        partial void OnSecondaryCauseChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSecondaryCause> value);
+        partial void OnSecondaryCauseChanged();
+        /// <summary>
+        /// There are no comments for Property CumulativeVolume_kb in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> CumulativeVolume_kb
+        {
+            get
+            {
+                return this._CumulativeVolume_kb;
+            }
+            set
+            {
+                this.OnCumulativeVolume_kbChanging(value);
+                this._CumulativeVolume_kb = value;
+                this.OnCumulativeVolume_kbChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _CumulativeVolume_kb;
+        partial void OnCumulativeVolume_kbChanging(global::System.Nullable<decimal> value);
+        partial void OnCumulativeVolume_kbChanged();
+        /// <summary>
+        /// There are no comments for Property AnnualizedLoss_MMscfd in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> AnnualizedLoss_MMscfd
+        {
+            get
+            {
+                return this._AnnualizedLoss_MMscfd;
+            }
+            set
+            {
+                this.OnAnnualizedLoss_MMscfdChanging(value);
+                this._AnnualizedLoss_MMscfd = value;
+                this.OnAnnualizedLoss_MMscfdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _AnnualizedLoss_MMscfd;
+        partial void OnAnnualizedLoss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnAnnualizedLoss_MMscfdChanged();
+        /// <summary>
+        /// There are no comments for Property DowntimeType in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> DowntimeType
+        {
+            get
+            {
+                return this._DowntimeType;
+            }
+            set
+            {
+                this.OnDowntimeTypeChanging(value);
+                this._DowntimeType = value;
+                this.OnDowntimeTypeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> _DowntimeType;
+        partial void OnDowntimeTypeChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailDowntimeType> value);
+        partial void OnDowntimeTypeChanged();
+        /// <summary>
+        /// There are no comments for Property ProblemStatement_Remark in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string ProblemStatement_Remark
+        {
+            get
+            {
+                return this._ProblemStatement_Remark;
+            }
+            set
+            {
+                this.OnProblemStatement_RemarkChanging(value);
+                this._ProblemStatement_Remark = value;
+                this.OnProblemStatement_RemarkChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _ProblemStatement_Remark;
+        partial void OnProblemStatement_RemarkChanging(string value);
+        partial void OnProblemStatement_RemarkChanged();
+        /// <summary>
+        /// There are no comments for Property WayForwardDescription in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string WayForwardDescription
+        {
+            get
+            {
+                return this._WayForwardDescription;
+            }
+            set
+            {
+                this.OnWayForwardDescriptionChanging(value);
+                this._WayForwardDescription = value;
+                this.OnWayForwardDescriptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _WayForwardDescription;
+        partial void OnWayForwardDescriptionChanging(string value);
+        partial void OnWayForwardDescriptionChanged();
+        /// <summary>
+        /// There are no comments for Property Status in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> Status
+        {
+            get
+            {
+                return this._Status;
+            }
+            set
+            {
+                this.OnStatusChanging(value);
+                this._Status = value;
+                this.OnStatusChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> _Status;
+        partial void OnStatusChanging(global::System.Nullable<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailStatus> value);
+        partial void OnStatusChanged();
+        /// <summary>
+        /// There are no comments for Property HLCapacity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> HLCapacity
+        {
+            get
+            {
+                return this._HLCapacity;
+            }
+            set
+            {
+                this.OnHLCapacityChanging(value);
+                this._HLCapacity = value;
+                this.OnHLCapacityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _HLCapacity;
+        partial void OnHLCapacityChanging(global::System.Nullable<decimal> value);
+        partial void OnHLCapacityChanged();
+        /// <summary>
+        /// There are no comments for Property LYCapacity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> LYCapacity
+        {
+            get
+            {
+                return this._LYCapacity;
+            }
+            set
+            {
+                this.OnLYCapacityChanging(value);
+                this._LYCapacity = value;
+                this.OnLYCapacityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _LYCapacity;
+        partial void OnLYCapacityChanging(global::System.Nullable<decimal> value);
+        partial void OnLYCapacityChanged();
+        /// <summary>
+        /// There are no comments for Property BUCapacity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> BUCapacity
+        {
+            get
+            {
+                return this._BUCapacity;
+            }
+            set
+            {
+                this.OnBUCapacityChanging(value);
+                this._BUCapacity = value;
+                this.OnBUCapacityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _BUCapacity;
+        partial void OnBUCapacityChanging(global::System.Nullable<decimal> value);
+        partial void OnBUCapacityChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyLoss_MMscfd in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> MonthlyLoss_MMscfd
+        {
+            get
+            {
+                return this._MonthlyLoss_MMscfd;
+            }
+            set
+            {
+                this.OnMonthlyLoss_MMscfdChanging(value);
+                this._MonthlyLoss_MMscfd = value;
+                this.OnMonthlyLoss_MMscfdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _MonthlyLoss_MMscfd;
+        partial void OnMonthlyLoss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyLoss_MMscfdChanged();
+        /// <summary>
+        /// There are no comments for Property HL_Loss_MMscfd in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> HL_Loss_MMscfd
+        {
+            get
+            {
+                return this._HL_Loss_MMscfd;
+            }
+            set
+            {
+                this.OnHL_Loss_MMscfdChanging(value);
+                this._HL_Loss_MMscfd = value;
+                this.OnHL_Loss_MMscfdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _HL_Loss_MMscfd;
+        partial void OnHL_Loss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnHL_Loss_MMscfdChanged();
+        /// <summary>
+        /// There are no comments for Property LY_Loss_MMscfd in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> LY_Loss_MMscfd
+        {
+            get
+            {
+                return this._LY_Loss_MMscfd;
+            }
+            set
+            {
+                this.OnLY_Loss_MMscfdChanging(value);
+                this._LY_Loss_MMscfd = value;
+                this.OnLY_Loss_MMscfdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _LY_Loss_MMscfd;
+        partial void OnLY_Loss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnLY_Loss_MMscfdChanged();
+        /// <summary>
+        /// There are no comments for Property BU_Loss_MMscfd in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> BU_Loss_MMscfd
+        {
+            get
+            {
+                return this._BU_Loss_MMscfd;
+            }
+            set
+            {
+                this.OnBU_Loss_MMscfdChanging(value);
+                this._BU_Loss_MMscfd = value;
+                this.OnBU_Loss_MMscfdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _BU_Loss_MMscfd;
+        partial void OnBU_Loss_MMscfdChanging(global::System.Nullable<decimal> value);
+        partial void OnBU_Loss_MMscfdChanged();
+        /// <summary>
+        /// There are no comments for Property Month in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Month
+        {
+            get
+            {
+                return this._Month;
+            }
+            set
+            {
+                this.OnMonthChanging(value);
+                this._Month = value;
+                this.OnMonthChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _Month;
+        partial void OnMonthChanging(string value);
+        partial void OnMonthChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual string Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private string _Year;
+        partial void OnYearChanging(string value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property DurationDay in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<double> DurationDay
+        {
+            get
+            {
+                return this._DurationDay;
+            }
+            set
+            {
+                this.OnDurationDayChanging(value);
+                this._DurationDay = value;
+                this.OnDurationDayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<double> _DurationDay;
+        partial void OnDurationDayChanging(global::System.Nullable<double> value);
+        partial void OnDurationDayChanged();
+        /// <summary>
+        /// There are no comments for Property TotalDays in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<int> TotalDays
+        {
+            get
+            {
+                return this._TotalDays;
+            }
+            set
+            {
+                this.OnTotalDaysChanging(value);
+                this._TotalDays = value;
+                this.OnTotalDaysChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<int> _TotalDays;
+        partial void OnTotalDaysChanging(global::System.Nullable<int> value);
+        partial void OnTotalDaysChanged();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
@@ -54117,28 +54439,4388 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for SK10OilTemplateReportSingle in the schema.
+    /// </summary>
+    public partial class SK10OilTemplateReportSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<SK10OilTemplateReport>
+    {
         /// <summary>
-        /// There are no comments for Property DefermentDetail in the schema.
+        /// Initialize a new SK10OilTemplateReportSingle object.
+        /// </summary>
+        public SK10OilTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new SK10OilTemplateReportSingle object.
+        /// </summary>
+        public SK10OilTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new SK10OilTemplateReportSingle object.
+        /// </summary>
+        public SK10OilTemplateReportSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<SK10OilTemplateReport> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for SK10OilTemplateReport in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class SK10OilTemplateReport : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new SK10OilTemplateReport object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static SK10OilTemplateReport CreateSK10OilTemplateReport(long ID, int year, long xmin)
+        {
+            SK10OilTemplateReport sK10OilTemplateReport = new SK10OilTemplateReport();
+            sK10OilTemplateReport.Id = ID;
+            sK10OilTemplateReport.Year = year;
+            sK10OilTemplateReport.xmin = xmin;
+            return sK10OilTemplateReport;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
 
-        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail DefermentDetail
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
         {
             get
             {
-                return this._DefermentDetail;
+                return this._Id;
             }
             set
             {
-                this.OnDefermentDetailChanging(value);
-                this._DefermentDetail = value;
-                this.OnDefermentDetailChanged();
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail _DefermentDetail;
-        partial void OnDefermentDetailChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail value);
-        partial void OnDefermentDetailChanged();
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Year is required.")]
+        public virtual int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _January;
+        partial void OnJanuaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _February;
+        partial void OnFebruaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _March;
+        partial void OnMarchChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _April;
+        partial void OnAprilChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _May;
+        partial void OnMayChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _June;
+        partial void OnJuneChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _July;
+        partial void OnJulyChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _August;
+        partial void OnAugustChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _September;
+        partial void OnSeptemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _October;
+        partial void OnOctoberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _November;
+        partial void OnNovemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _December;
+        partial void OnDecemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _YTD;
+        partial void OnYTDChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _YEP;
+        partial void OnYEPChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q1;
+        partial void OnQ1Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q2;
+        partial void OnQ2Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q3;
+        partial void OnQ3Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q4;
+        partial void OnQ4Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ4Changed();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for SK10GasTemplateReportSingle in the schema.
+    /// </summary>
+    public partial class SK10GasTemplateReportSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<SK10GasTemplateReport>
+    {
+        /// <summary>
+        /// Initialize a new SK10GasTemplateReportSingle object.
+        /// </summary>
+        public SK10GasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new SK10GasTemplateReportSingle object.
+        /// </summary>
+        public SK10GasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new SK10GasTemplateReportSingle object.
+        /// </summary>
+        public SK10GasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<SK10GasTemplateReport> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for SK10GasTemplateReport in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class SK10GasTemplateReport : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new SK10GasTemplateReport object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static SK10GasTemplateReport CreateSK10GasTemplateReport(long ID, int year, long xmin)
+        {
+            SK10GasTemplateReport sK10GasTemplateReport = new SK10GasTemplateReport();
+            sK10GasTemplateReport.Id = ID;
+            sK10GasTemplateReport.Year = year;
+            sK10GasTemplateReport.xmin = xmin;
+            return sK10GasTemplateReport;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Year is required.")]
+        public virtual int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _January;
+        partial void OnJanuaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _February;
+        partial void OnFebruaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _March;
+        partial void OnMarchChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _April;
+        partial void OnAprilChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _May;
+        partial void OnMayChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _June;
+        partial void OnJuneChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _July;
+        partial void OnJulyChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _August;
+        partial void OnAugustChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _September;
+        partial void OnSeptemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _October;
+        partial void OnOctoberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _November;
+        partial void OnNovemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _December;
+        partial void OnDecemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _YTD;
+        partial void OnYTDChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _YEP;
+        partial void OnYEPChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q1;
+        partial void OnQ1Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q2;
+        partial void OnQ2Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q3;
+        partial void OnQ3Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q4;
+        partial void OnQ4Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ4Changed();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for HelangGasTemplateReportSingle in the schema.
+    /// </summary>
+    public partial class HelangGasTemplateReportSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<HelangGasTemplateReport>
+    {
+        /// <summary>
+        /// Initialize a new HelangGasTemplateReportSingle object.
+        /// </summary>
+        public HelangGasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new HelangGasTemplateReportSingle object.
+        /// </summary>
+        public HelangGasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new HelangGasTemplateReportSingle object.
+        /// </summary>
+        public HelangGasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<HelangGasTemplateReport> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for HelangGasTemplateReport in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class HelangGasTemplateReport : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new HelangGasTemplateReport object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static HelangGasTemplateReport CreateHelangGasTemplateReport(long ID, int year, long xmin)
+        {
+            HelangGasTemplateReport helangGasTemplateReport = new HelangGasTemplateReport();
+            helangGasTemplateReport.Id = ID;
+            helangGasTemplateReport.Year = year;
+            helangGasTemplateReport.xmin = xmin;
+            return helangGasTemplateReport;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Year is required.")]
+        public virtual int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _January;
+        partial void OnJanuaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _February;
+        partial void OnFebruaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _March;
+        partial void OnMarchChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _April;
+        partial void OnAprilChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _May;
+        partial void OnMayChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _June;
+        partial void OnJuneChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _July;
+        partial void OnJulyChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _August;
+        partial void OnAugustChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _September;
+        partial void OnSeptemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _October;
+        partial void OnOctoberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _November;
+        partial void OnNovemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _December;
+        partial void OnDecemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _YTD;
+        partial void OnYTDChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _YEP;
+        partial void OnYEPChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q1;
+        partial void OnQ1Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q2;
+        partial void OnQ2Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q3;
+        partial void OnQ3Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q4;
+        partial void OnQ4Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ4Changed();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for HelangOilTemplateReportSingle in the schema.
+    /// </summary>
+    public partial class HelangOilTemplateReportSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<HelangOilTemplateReport>
+    {
+        /// <summary>
+        /// Initialize a new HelangOilTemplateReportSingle object.
+        /// </summary>
+        public HelangOilTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new HelangOilTemplateReportSingle object.
+        /// </summary>
+        public HelangOilTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new HelangOilTemplateReportSingle object.
+        /// </summary>
+        public HelangOilTemplateReportSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<HelangOilTemplateReport> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for HelangOilTemplateReport in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class HelangOilTemplateReport : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new HelangOilTemplateReport object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static HelangOilTemplateReport CreateHelangOilTemplateReport(long ID, int year, long xmin)
+        {
+            HelangOilTemplateReport helangOilTemplateReport = new HelangOilTemplateReport();
+            helangOilTemplateReport.Id = ID;
+            helangOilTemplateReport.Year = year;
+            helangOilTemplateReport.xmin = xmin;
+            return helangOilTemplateReport;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Year is required.")]
+        public virtual int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _January;
+        partial void OnJanuaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _February;
+        partial void OnFebruaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _March;
+        partial void OnMarchChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _April;
+        partial void OnAprilChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _May;
+        partial void OnMayChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _June;
+        partial void OnJuneChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _July;
+        partial void OnJulyChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _August;
+        partial void OnAugustChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _September;
+        partial void OnSeptemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _October;
+        partial void OnOctoberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _November;
+        partial void OnNovemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _December;
+        partial void OnDecemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _YTD;
+        partial void OnYTDChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _YEP;
+        partial void OnYEPChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q1;
+        partial void OnQ1Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q2;
+        partial void OnQ2Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q3;
+        partial void OnQ3Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q4;
+        partial void OnQ4Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ4Changed();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for LayangGasTemplateReportSingle in the schema.
+    /// </summary>
+    public partial class LayangGasTemplateReportSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<LayangGasTemplateReport>
+    {
+        /// <summary>
+        /// Initialize a new LayangGasTemplateReportSingle object.
+        /// </summary>
+        public LayangGasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new LayangGasTemplateReportSingle object.
+        /// </summary>
+        public LayangGasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new LayangGasTemplateReportSingle object.
+        /// </summary>
+        public LayangGasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<LayangGasTemplateReport> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for LayangGasTemplateReport in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class LayangGasTemplateReport : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new LayangGasTemplateReport object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static LayangGasTemplateReport CreateLayangGasTemplateReport(long ID, int year, long xmin)
+        {
+            LayangGasTemplateReport layangGasTemplateReport = new LayangGasTemplateReport();
+            layangGasTemplateReport.Id = ID;
+            layangGasTemplateReport.Year = year;
+            layangGasTemplateReport.xmin = xmin;
+            return layangGasTemplateReport;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Year is required.")]
+        public virtual int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _January;
+        partial void OnJanuaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _February;
+        partial void OnFebruaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _March;
+        partial void OnMarchChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _April;
+        partial void OnAprilChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _May;
+        partial void OnMayChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _June;
+        partial void OnJuneChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _July;
+        partial void OnJulyChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _August;
+        partial void OnAugustChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _September;
+        partial void OnSeptemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _October;
+        partial void OnOctoberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _November;
+        partial void OnNovemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _December;
+        partial void OnDecemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _YTD;
+        partial void OnYTDChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _YEP;
+        partial void OnYEPChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q1;
+        partial void OnQ1Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q2;
+        partial void OnQ2Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q3;
+        partial void OnQ3Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q4;
+        partial void OnQ4Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ4Changed();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for LayangOilTemplateReportSingle in the schema.
+    /// </summary>
+    public partial class LayangOilTemplateReportSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<LayangOilTemplateReport>
+    {
+        /// <summary>
+        /// Initialize a new LayangOilTemplateReportSingle object.
+        /// </summary>
+        public LayangOilTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new LayangOilTemplateReportSingle object.
+        /// </summary>
+        public LayangOilTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new LayangOilTemplateReportSingle object.
+        /// </summary>
+        public LayangOilTemplateReportSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<LayangOilTemplateReport> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for LayangOilTemplateReport in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class LayangOilTemplateReport : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new LayangOilTemplateReport object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static LayangOilTemplateReport CreateLayangOilTemplateReport(long ID, int year, long xmin)
+        {
+            LayangOilTemplateReport layangOilTemplateReport = new LayangOilTemplateReport();
+            layangOilTemplateReport.Id = ID;
+            layangOilTemplateReport.Year = year;
+            layangOilTemplateReport.xmin = xmin;
+            return layangOilTemplateReport;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Year is required.")]
+        public virtual int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _January;
+        partial void OnJanuaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _February;
+        partial void OnFebruaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _March;
+        partial void OnMarchChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _April;
+        partial void OnAprilChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _May;
+        partial void OnMayChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _June;
+        partial void OnJuneChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _July;
+        partial void OnJulyChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _August;
+        partial void OnAugustChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _September;
+        partial void OnSeptemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _October;
+        partial void OnOctoberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _November;
+        partial void OnNovemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _December;
+        partial void OnDecemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _YTD;
+        partial void OnYTDChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _YEP;
+        partial void OnYEPChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q1;
+        partial void OnQ1Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q2;
+        partial void OnQ2Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q3;
+        partial void OnQ3Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail _Q4;
+        partial void OnQ4Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilTemplateReportDetail value);
+        partial void OnQ4Changed();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for BerylGasTemplateReportSingle in the schema.
+    /// </summary>
+    public partial class BerylGasTemplateReportSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<BerylGasTemplateReport>
+    {
+        /// <summary>
+        /// Initialize a new BerylGasTemplateReportSingle object.
+        /// </summary>
+        public BerylGasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new BerylGasTemplateReportSingle object.
+        /// </summary>
+        public BerylGasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new BerylGasTemplateReportSingle object.
+        /// </summary>
+        public BerylGasTemplateReportSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<BerylGasTemplateReport> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for BerylGasTemplateReport in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class BerylGasTemplateReport : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new BerylGasTemplateReport object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static BerylGasTemplateReport CreateBerylGasTemplateReport(long ID, int year, long xmin)
+        {
+            BerylGasTemplateReport berylGasTemplateReport = new BerylGasTemplateReport();
+            berylGasTemplateReport.Id = ID;
+            berylGasTemplateReport.Year = year;
+            berylGasTemplateReport.xmin = xmin;
+            return berylGasTemplateReport;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Id is required.")]
+        public virtual long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "Year is required.")]
+        public virtual int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _January;
+        partial void OnJanuaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _February;
+        partial void OnFebruaryChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _March;
+        partial void OnMarchChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _April;
+        partial void OnAprilChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _May;
+        partial void OnMayChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _June;
+        partial void OnJuneChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _July;
+        partial void OnJulyChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _August;
+        partial void OnAugustChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _September;
+        partial void OnSeptemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _October;
+        partial void OnOctoberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _November;
+        partial void OnNovemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _December;
+        partial void OnDecemberChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _YTD;
+        partial void OnYTDChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _YEP;
+        partial void OnYEPChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q1;
+        partial void OnQ1Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q2;
+        partial void OnQ2Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q3;
+        partial void OnQ3Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail _Q4;
+        partial void OnQ4Changing(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasTemplateReportDetail value);
+        partial void OnQ4Changed();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "xmin is required.")]
+        public virtual long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// There are no comments for OilTemplateReportDetail in the schema.
+    /// </summary>
+    public partial class OilTemplateReportDetail
+    {
+        /// <summary>
+        /// Create a new OilTemplateReportDetail object.
+        /// </summary>
+        /// <param name="workingDay">Initial value of WorkingDay.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static OilTemplateReportDetail CreateOilTemplateReportDetail(int workingDay)
+        {
+            OilTemplateReportDetail oilTemplateReportDetail = new OilTemplateReportDetail();
+            oilTemplateReportDetail.WorkingDay = workingDay;
+            return oilTemplateReportDetail;
+        }
+        /// <summary>
+        /// There are no comments for Property WorkingDay in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "WorkingDay is required.")]
+        public virtual int WorkingDay
+        {
+            get
+            {
+                return this._WorkingDay;
+            }
+            set
+            {
+                this.OnWorkingDayChanging(value);
+                this._WorkingDay = value;
+                this.OnWorkingDayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private int _WorkingDay;
+        partial void OnWorkingDayChanging(int value);
+        partial void OnWorkingDayChanged();
+        /// <summary>
+        /// There are no comments for Property TP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TP
+        {
+            get
+            {
+                return this._TP;
+            }
+            set
+            {
+                this.OnTPChanging(value);
+                this._TP = value;
+                this.OnTPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TP;
+        partial void OnTPChanging(global::System.Nullable<decimal> value);
+        partial void OnTPChanged();
+        /// <summary>
+        /// There are no comments for Property SurfaceConstraint in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> SurfaceConstraint
+        {
+            get
+            {
+                return this._SurfaceConstraint;
+            }
+            set
+            {
+                this.OnSurfaceConstraintChanging(value);
+                this._SurfaceConstraint = value;
+                this.OnSurfaceConstraintChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _SurfaceConstraint;
+        partial void OnSurfaceConstraintChanging(global::System.Nullable<decimal> value);
+        partial void OnSurfaceConstraintChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualProductionSystemCapacity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualProductionSystemCapacity
+        {
+            get
+            {
+                return this._TotalActualProductionSystemCapacity;
+            }
+            set
+            {
+                this.OnTotalActualProductionSystemCapacityChanging(value);
+                this._TotalActualProductionSystemCapacity = value;
+                this.OnTotalActualProductionSystemCapacityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualProductionSystemCapacity;
+        partial void OnTotalActualProductionSystemCapacityChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualProductionSystemCapacityChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualPlannedDeferment in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualPlannedDeferment
+        {
+            get
+            {
+                return this._TotalActualPlannedDeferment;
+            }
+            set
+            {
+                this.OnTotalActualPlannedDefermentChanging(value);
+                this._TotalActualPlannedDeferment = value;
+                this.OnTotalActualPlannedDefermentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualPlannedDeferment;
+        partial void OnTotalActualPlannedDefermentChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualPlannedDefermentChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualPlannedDefermentPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualPlannedDefermentPercentage
+        {
+            get
+            {
+                return this._TotalActualPlannedDefermentPercentage;
+            }
+            set
+            {
+                this.OnTotalActualPlannedDefermentPercentageChanging(value);
+                this._TotalActualPlannedDefermentPercentage = value;
+                this.OnTotalActualPlannedDefermentPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualPlannedDefermentPercentage;
+        partial void OnTotalActualPlannedDefermentPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualPlannedDefermentPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualUnplannedDeferment in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualUnplannedDeferment
+        {
+            get
+            {
+                return this._TotalActualUnplannedDeferment;
+            }
+            set
+            {
+                this.OnTotalActualUnplannedDefermentChanging(value);
+                this._TotalActualUnplannedDeferment = value;
+                this.OnTotalActualUnplannedDefermentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualUnplannedDeferment;
+        partial void OnTotalActualUnplannedDefermentChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualUnplannedDefermentChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualUnplannedDefermentPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualUnplannedDefermentPercentage
+        {
+            get
+            {
+                return this._TotalActualUnplannedDefermentPercentage;
+            }
+            set
+            {
+                this.OnTotalActualUnplannedDefermentPercentageChanging(value);
+                this._TotalActualUnplannedDefermentPercentage = value;
+                this.OnTotalActualUnplannedDefermentPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualUnplannedDefermentPercentage;
+        partial void OnTotalActualUnplannedDefermentPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualUnplannedDefermentPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property WellRelated in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> WellRelated
+        {
+            get
+            {
+                return this._WellRelated;
+            }
+            set
+            {
+                this.OnWellRelatedChanging(value);
+                this._WellRelated = value;
+                this.OnWellRelatedChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _WellRelated;
+        partial void OnWellRelatedChanging(global::System.Nullable<decimal> value);
+        partial void OnWellRelatedChanged();
+        /// <summary>
+        /// There are no comments for Property OperationRelated in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> OperationRelated
+        {
+            get
+            {
+                return this._OperationRelated;
+            }
+            set
+            {
+                this.OnOperationRelatedChanging(value);
+                this._OperationRelated = value;
+                this.OnOperationRelatedChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _OperationRelated;
+        partial void OnOperationRelatedChanging(global::System.Nullable<decimal> value);
+        partial void OnOperationRelatedChanged();
+        /// <summary>
+        /// There are no comments for Property RotatingEquipment in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> RotatingEquipment
+        {
+            get
+            {
+                return this._RotatingEquipment;
+            }
+            set
+            {
+                this.OnRotatingEquipmentChanging(value);
+                this._RotatingEquipment = value;
+                this.OnRotatingEquipmentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _RotatingEquipment;
+        partial void OnRotatingEquipmentChanging(global::System.Nullable<decimal> value);
+        partial void OnRotatingEquipmentChanged();
+        /// <summary>
+        /// There are no comments for Property ProcessRelated in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> ProcessRelated
+        {
+            get
+            {
+                return this._ProcessRelated;
+            }
+            set
+            {
+                this.OnProcessRelatedChanging(value);
+                this._ProcessRelated = value;
+                this.OnProcessRelatedChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _ProcessRelated;
+        partial void OnProcessRelatedChanging(global::System.Nullable<decimal> value);
+        partial void OnProcessRelatedChanged();
+        /// <summary>
+        /// There are no comments for Property ExternalDeferment in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> ExternalDeferment
+        {
+            get
+            {
+                return this._ExternalDeferment;
+            }
+            set
+            {
+                this.OnExternalDefermentChanging(value);
+                this._ExternalDeferment = value;
+                this.OnExternalDefermentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _ExternalDeferment;
+        partial void OnExternalDefermentChanging(global::System.Nullable<decimal> value);
+        partial void OnExternalDefermentChanged();
+        /// <summary>
+        /// There are no comments for Property TotalTheoreticalProduction in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalTheoreticalProduction
+        {
+            get
+            {
+                return this._TotalTheoreticalProduction;
+            }
+            set
+            {
+                this.OnTotalTheoreticalProductionChanging(value);
+                this._TotalTheoreticalProduction = value;
+                this.OnTotalTheoreticalProductionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalTheoreticalProduction;
+        partial void OnTotalTheoreticalProductionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalTheoreticalProductionChanged();
+        /// <summary>
+        /// There are no comments for Property TotalMeteredProduction in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalMeteredProduction
+        {
+            get
+            {
+                return this._TotalMeteredProduction;
+            }
+            set
+            {
+                this.OnTotalMeteredProductionChanging(value);
+                this._TotalMeteredProduction = value;
+                this.OnTotalMeteredProductionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalMeteredProduction;
+        partial void OnTotalMeteredProductionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalMeteredProductionChanged();
+        /// <summary>
+        /// There are no comments for Property UnaccountedGainLoss in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> UnaccountedGainLoss
+        {
+            get
+            {
+                return this._UnaccountedGainLoss;
+            }
+            set
+            {
+                this.OnUnaccountedGainLossChanging(value);
+                this._UnaccountedGainLoss = value;
+                this.OnUnaccountedGainLossChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _UnaccountedGainLoss;
+        partial void OnUnaccountedGainLossChanging(global::System.Nullable<decimal> value);
+        partial void OnUnaccountedGainLossChanged();
+    }
+    /// <summary>
+    /// There are no comments for GasTemplateReportDetail in the schema.
+    /// </summary>
+    public partial class GasTemplateReportDetail
+    {
+        /// <summary>
+        /// Create a new GasTemplateReportDetail object.
+        /// </summary>
+        /// <param name="workingDay">Initial value of WorkingDay.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public static GasTemplateReportDetail CreateGasTemplateReportDetail(int workingDay)
+        {
+            GasTemplateReportDetail gasTemplateReportDetail = new GasTemplateReportDetail();
+            gasTemplateReportDetail.WorkingDay = workingDay;
+            return gasTemplateReportDetail;
+        }
+        /// <summary>
+        /// There are no comments for Property WorkingDay in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        [global::System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage = "WorkingDay is required.")]
+        public virtual int WorkingDay
+        {
+            get
+            {
+                return this._WorkingDay;
+            }
+            set
+            {
+                this.OnWorkingDayChanging(value);
+                this._WorkingDay = value;
+                this.OnWorkingDayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private int _WorkingDay;
+        partial void OnWorkingDayChanging(int value);
+        partial void OnWorkingDayChanged();
+        /// <summary>
+        /// There are no comments for Property TP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TP
+        {
+            get
+            {
+                return this._TP;
+            }
+            set
+            {
+                this.OnTPChanging(value);
+                this._TP = value;
+                this.OnTPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TP;
+        partial void OnTPChanging(global::System.Nullable<decimal> value);
+        partial void OnTPChanged();
+        /// <summary>
+        /// There are no comments for Property SurfaceConstraint in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> SurfaceConstraint
+        {
+            get
+            {
+                return this._SurfaceConstraint;
+            }
+            set
+            {
+                this.OnSurfaceConstraintChanging(value);
+                this._SurfaceConstraint = value;
+                this.OnSurfaceConstraintChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _SurfaceConstraint;
+        partial void OnSurfaceConstraintChanging(global::System.Nullable<decimal> value);
+        partial void OnSurfaceConstraintChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualProductionSystemCapacity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualProductionSystemCapacity
+        {
+            get
+            {
+                return this._TotalActualProductionSystemCapacity;
+            }
+            set
+            {
+                this.OnTotalActualProductionSystemCapacityChanging(value);
+                this._TotalActualProductionSystemCapacity = value;
+                this.OnTotalActualProductionSystemCapacityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualProductionSystemCapacity;
+        partial void OnTotalActualProductionSystemCapacityChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualProductionSystemCapacityChanged();
+        /// <summary>
+        /// There are no comments for Property GasUtilization in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> GasUtilization
+        {
+            get
+            {
+                return this._GasUtilization;
+            }
+            set
+            {
+                this.OnGasUtilizationChanging(value);
+                this._GasUtilization = value;
+                this.OnGasUtilizationChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _GasUtilization;
+        partial void OnGasUtilizationChanging(global::System.Nullable<decimal> value);
+        partial void OnGasUtilizationChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualPlannedDeferment in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualPlannedDeferment
+        {
+            get
+            {
+                return this._TotalActualPlannedDeferment;
+            }
+            set
+            {
+                this.OnTotalActualPlannedDefermentChanging(value);
+                this._TotalActualPlannedDeferment = value;
+                this.OnTotalActualPlannedDefermentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualPlannedDeferment;
+        partial void OnTotalActualPlannedDefermentChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualPlannedDefermentChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualPlannedDefermentPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualPlannedDefermentPercentage
+        {
+            get
+            {
+                return this._TotalActualPlannedDefermentPercentage;
+            }
+            set
+            {
+                this.OnTotalActualPlannedDefermentPercentageChanging(value);
+                this._TotalActualPlannedDefermentPercentage = value;
+                this.OnTotalActualPlannedDefermentPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualPlannedDefermentPercentage;
+        partial void OnTotalActualPlannedDefermentPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualPlannedDefermentPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualUnplannedDeferment in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualUnplannedDeferment
+        {
+            get
+            {
+                return this._TotalActualUnplannedDeferment;
+            }
+            set
+            {
+                this.OnTotalActualUnplannedDefermentChanging(value);
+                this._TotalActualUnplannedDeferment = value;
+                this.OnTotalActualUnplannedDefermentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualUnplannedDeferment;
+        partial void OnTotalActualUnplannedDefermentChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualUnplannedDefermentChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualUnplannedDefermentPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalActualUnplannedDefermentPercentage
+        {
+            get
+            {
+                return this._TotalActualUnplannedDefermentPercentage;
+            }
+            set
+            {
+                this.OnTotalActualUnplannedDefermentPercentageChanging(value);
+                this._TotalActualUnplannedDefermentPercentage = value;
+                this.OnTotalActualUnplannedDefermentPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalActualUnplannedDefermentPercentage;
+        partial void OnTotalActualUnplannedDefermentPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualUnplannedDefermentPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property WellRelated in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> WellRelated
+        {
+            get
+            {
+                return this._WellRelated;
+            }
+            set
+            {
+                this.OnWellRelatedChanging(value);
+                this._WellRelated = value;
+                this.OnWellRelatedChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _WellRelated;
+        partial void OnWellRelatedChanging(global::System.Nullable<decimal> value);
+        partial void OnWellRelatedChanged();
+        /// <summary>
+        /// There are no comments for Property OperationRelated in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> OperationRelated
+        {
+            get
+            {
+                return this._OperationRelated;
+            }
+            set
+            {
+                this.OnOperationRelatedChanging(value);
+                this._OperationRelated = value;
+                this.OnOperationRelatedChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _OperationRelated;
+        partial void OnOperationRelatedChanging(global::System.Nullable<decimal> value);
+        partial void OnOperationRelatedChanged();
+        /// <summary>
+        /// There are no comments for Property RotatingEquipment in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> RotatingEquipment
+        {
+            get
+            {
+                return this._RotatingEquipment;
+            }
+            set
+            {
+                this.OnRotatingEquipmentChanging(value);
+                this._RotatingEquipment = value;
+                this.OnRotatingEquipmentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _RotatingEquipment;
+        partial void OnRotatingEquipmentChanging(global::System.Nullable<decimal> value);
+        partial void OnRotatingEquipmentChanged();
+        /// <summary>
+        /// There are no comments for Property ProcessRelated in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> ProcessRelated
+        {
+            get
+            {
+                return this._ProcessRelated;
+            }
+            set
+            {
+                this.OnProcessRelatedChanging(value);
+                this._ProcessRelated = value;
+                this.OnProcessRelatedChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _ProcessRelated;
+        partial void OnProcessRelatedChanging(global::System.Nullable<decimal> value);
+        partial void OnProcessRelatedChanged();
+        /// <summary>
+        /// There are no comments for Property ExternalDeferment in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> ExternalDeferment
+        {
+            get
+            {
+                return this._ExternalDeferment;
+            }
+            set
+            {
+                this.OnExternalDefermentChanging(value);
+                this._ExternalDeferment = value;
+                this.OnExternalDefermentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _ExternalDeferment;
+        partial void OnExternalDefermentChanging(global::System.Nullable<decimal> value);
+        partial void OnExternalDefermentChanged();
+        /// <summary>
+        /// There are no comments for Property TotalTheoreticalProduction in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalTheoreticalProduction
+        {
+            get
+            {
+                return this._TotalTheoreticalProduction;
+            }
+            set
+            {
+                this.OnTotalTheoreticalProductionChanging(value);
+                this._TotalTheoreticalProduction = value;
+                this.OnTotalTheoreticalProductionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalTheoreticalProduction;
+        partial void OnTotalTheoreticalProductionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalTheoreticalProductionChanged();
+        /// <summary>
+        /// There are no comments for Property TotalMeteredProduction in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> TotalMeteredProduction
+        {
+            get
+            {
+                return this._TotalMeteredProduction;
+            }
+            set
+            {
+                this.OnTotalMeteredProductionChanging(value);
+                this._TotalMeteredProduction = value;
+                this.OnTotalMeteredProductionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _TotalMeteredProduction;
+        partial void OnTotalMeteredProductionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalMeteredProductionChanged();
+        /// <summary>
+        /// There are no comments for Property UnaccountedGainLoss in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> UnaccountedGainLoss
+        {
+            get
+            {
+                return this._UnaccountedGainLoss;
+            }
+            set
+            {
+                this.OnUnaccountedGainLossChanging(value);
+                this._UnaccountedGainLoss = value;
+                this.OnUnaccountedGainLossChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _UnaccountedGainLoss;
+        partial void OnUnaccountedGainLossChanging(global::System.Nullable<decimal> value);
+        partial void OnUnaccountedGainLossChanged();
+        /// <summary>
+        /// There are no comments for Property GasNomination in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+
+        public virtual global::System.Nullable<decimal> GasNomination
+        {
+            get
+            {
+                return this._GasNomination;
+            }
+            set
+            {
+                this.OnGasNominationChanging(value);
+                this._GasNomination = value;
+                this.OnGasNominationChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::System.Nullable<decimal> _GasNomination;
+        partial void OnGasNominationChanging(global::System.Nullable<decimal> value);
+        partial void OnGasNominationChanged();
     }
     /// <summary>
     /// There are no comments for DeliveryScheduleStatus in the schema.
@@ -54153,19 +58835,9 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
     /// </summary>
     public enum DefermentDetailDowntimeCategory
     {
-        PlannedDowntime = 0,
-        UnplannedDowntime = 1,
+        PD = 0,
+        UPD = 1,
         Low = 2
-    }
-    /// <summary>
-    /// There are no comments for DefermentDetailDowntimeType in the schema.
-    /// </summary>
-    public enum DefermentDetailDowntimeType
-    {
-        NA = 0,
-        Tripped = 1,
-        Slowdown = 2,
-        Cascaded = 3
     }
     /// <summary>
     /// There are no comments for DefermentDetailPrimaryCause in the schema.
@@ -54211,20 +58883,23 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         E4 = 24
     }
     /// <summary>
+    /// There are no comments for DefermentDetailDowntimeType in the schema.
+    /// </summary>
+    public enum DefermentDetailDowntimeType
+    {
+        PD1 = 0,
+        PD2 = 1,
+        PD3 = 2,
+        UPD1 = 3,
+        UPD2 = 4
+    }
+    /// <summary>
     /// There are no comments for DefermentDetailStatus in the schema.
     /// </summary>
     public enum DefermentDetailStatus
     {
         Open = 0,
         Closed = 1
-    }
-    /// <summary>
-    /// There are no comments for DefermentDetailPlannedUnplanned in the schema.
-    /// </summary>
-    public enum DefermentDetailPlannedUnplanned
-    {
-        U = 0,
-        P = 1
     }
     /// <summary>
     /// Class containing all extension methods
@@ -54278,50 +58953,211 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliveryScheduleSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
         /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle specified by key from an entity set
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetailSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="_keys">dictionary with the names and values of keys</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
         {
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
         /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle specified by key from an entity set
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetailSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail> _source,
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail> _source,
             long id)
         {
             global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
         /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle specified by key from an entity set
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetailSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="_keys">dictionary with the names and values of keys</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
         {
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
         /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle specified by key from an entity set
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetailSingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping> _source,
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetailSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail> _source,
             long id)
         {
             global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMappingSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetailSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="_keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport> _source, global::System.Collections.Generic.IDictionary<string, object> _keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReportSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReportSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> _keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReportSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, _keys)));
         }
     }
 }
@@ -61393,40 +66229,6 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.MonthlyGasProductionDeliverySchedule> _MonthlyGasProductionDeliverySchedule;
         /// <summary>
-        /// There are no comments for DefermentDetail in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail> DefermentDetail
-        {
-            get
-            {
-                if ((this._DefermentDetail == null))
-                {
-                    this._DefermentDetail = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail>("DefermentDetail");
-                }
-                return this._DefermentDetail;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail> _DefermentDetail;
-        /// <summary>
-        /// There are no comments for DefermentDetailMapping in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping> DefermentDetailMapping
-        {
-            get
-            {
-                if ((this._DefermentDetailMapping == null))
-                {
-                    this._DefermentDetailMapping = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping>("DefermentDetailMapping");
-                }
-                return this._DefermentDetailMapping;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping> _DefermentDetailMapping;
-        /// <summary>
         /// There are no comments for CombinedDailyReport in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
@@ -61477,6 +66279,159 @@ namespace CentralizedDatabaseSystemODataService.Default
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction> _MonthlyReservoirProduction;
+        /// <summary>
+        /// There are no comments for GasDefermentDetail in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail> GasDefermentDetail
+        {
+            get
+            {
+                if ((this._GasDefermentDetail == null))
+                {
+                    this._GasDefermentDetail = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail>("GasDefermentDetail");
+                }
+                return this._GasDefermentDetail;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail> _GasDefermentDetail;
+        /// <summary>
+        /// There are no comments for OilDefermentDetail in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail> OilDefermentDetail
+        {
+            get
+            {
+                if ((this._OilDefermentDetail == null))
+                {
+                    this._OilDefermentDetail = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail>("OilDefermentDetail");
+                }
+                return this._OilDefermentDetail;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail> _OilDefermentDetail;
+        /// <summary>
+        /// There are no comments for SK10OilTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport> SK10OilTemplateReport
+        {
+            get
+            {
+                if ((this._SK10OilTemplateReport == null))
+                {
+                    this._SK10OilTemplateReport = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport>("SK10OilTemplateReport");
+                }
+                return this._SK10OilTemplateReport;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport> _SK10OilTemplateReport;
+        /// <summary>
+        /// There are no comments for SK10GasTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport> SK10GasTemplateReport
+        {
+            get
+            {
+                if ((this._SK10GasTemplateReport == null))
+                {
+                    this._SK10GasTemplateReport = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport>("SK10GasTemplateReport");
+                }
+                return this._SK10GasTemplateReport;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport> _SK10GasTemplateReport;
+        /// <summary>
+        /// There are no comments for HelangGasTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport> HelangGasTemplateReport
+        {
+            get
+            {
+                if ((this._HelangGasTemplateReport == null))
+                {
+                    this._HelangGasTemplateReport = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport>("HelangGasTemplateReport");
+                }
+                return this._HelangGasTemplateReport;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport> _HelangGasTemplateReport;
+        /// <summary>
+        /// There are no comments for HelangOilTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport> HelangOilTemplateReport
+        {
+            get
+            {
+                if ((this._HelangOilTemplateReport == null))
+                {
+                    this._HelangOilTemplateReport = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport>("HelangOilTemplateReport");
+                }
+                return this._HelangOilTemplateReport;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport> _HelangOilTemplateReport;
+        /// <summary>
+        /// There are no comments for LayangGasTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport> LayangGasTemplateReport
+        {
+            get
+            {
+                if ((this._LayangGasTemplateReport == null))
+                {
+                    this._LayangGasTemplateReport = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport>("LayangGasTemplateReport");
+                }
+                return this._LayangGasTemplateReport;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport> _LayangGasTemplateReport;
+        /// <summary>
+        /// There are no comments for LayangOilTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport> LayangOilTemplateReport
+        {
+            get
+            {
+                if ((this._LayangOilTemplateReport == null))
+                {
+                    this._LayangOilTemplateReport = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport>("LayangOilTemplateReport");
+                }
+                return this._LayangOilTemplateReport;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport> _LayangOilTemplateReport;
+        /// <summary>
+        /// There are no comments for BerylGasTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport> BerylGasTemplateReport
+        {
+            get
+            {
+                if ((this._BerylGasTemplateReport == null))
+                {
+                    this._BerylGasTemplateReport = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport>("BerylGasTemplateReport");
+                }
+                return this._BerylGasTemplateReport;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport> _BerylGasTemplateReport;
         /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
@@ -62310,22 +67265,6 @@ namespace CentralizedDatabaseSystemODataService.Default
             base.AddObject("MonthlyGasProductionDeliverySchedule", monthlyGasProductionDeliverySchedule);
         }
         /// <summary>
-        /// There are no comments for DefermentDetail in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public virtual void AddToDefermentDetail(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetail defermentDetail)
-        {
-            base.AddObject("DefermentDetail", defermentDetail);
-        }
-        /// <summary>
-        /// There are no comments for DefermentDetailMapping in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
-        public virtual void AddToDefermentDetailMapping(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.DefermentDetailMapping defermentDetailMapping)
-        {
-            base.AddObject("DefermentDetailMapping", defermentDetailMapping);
-        }
-        /// <summary>
         /// There are no comments for CombinedDailyReport in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
@@ -62348,6 +67287,78 @@ namespace CentralizedDatabaseSystemODataService.Default
         public virtual void AddToMonthlyReservoirProduction(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Reservoir.MonthlyReservoirProduction monthlyReservoirProduction)
         {
             base.AddObject("MonthlyReservoirProduction", monthlyReservoirProduction);
+        }
+        /// <summary>
+        /// There are no comments for GasDefermentDetail in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToGasDefermentDetail(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.GasDefermentDetail gasDefermentDetail)
+        {
+            base.AddObject("GasDefermentDetail", gasDefermentDetail);
+        }
+        /// <summary>
+        /// There are no comments for OilDefermentDetail in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToOilDefermentDetail(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.OilDefermentDetail oilDefermentDetail)
+        {
+            base.AddObject("OilDefermentDetail", oilDefermentDetail);
+        }
+        /// <summary>
+        /// There are no comments for SK10OilTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToSK10OilTemplateReport(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10OilTemplateReport sK10OilTemplateReport)
+        {
+            base.AddObject("SK10OilTemplateReport", sK10OilTemplateReport);
+        }
+        /// <summary>
+        /// There are no comments for SK10GasTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToSK10GasTemplateReport(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.SK10GasTemplateReport sK10GasTemplateReport)
+        {
+            base.AddObject("SK10GasTemplateReport", sK10GasTemplateReport);
+        }
+        /// <summary>
+        /// There are no comments for HelangGasTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToHelangGasTemplateReport(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangGasTemplateReport helangGasTemplateReport)
+        {
+            base.AddObject("HelangGasTemplateReport", helangGasTemplateReport);
+        }
+        /// <summary>
+        /// There are no comments for HelangOilTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToHelangOilTemplateReport(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.HelangOilTemplateReport helangOilTemplateReport)
+        {
+            base.AddObject("HelangOilTemplateReport", helangOilTemplateReport);
+        }
+        /// <summary>
+        /// There are no comments for LayangGasTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToLayangGasTemplateReport(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangGasTemplateReport layangGasTemplateReport)
+        {
+            base.AddObject("LayangGasTemplateReport", layangGasTemplateReport);
+        }
+        /// <summary>
+        /// There are no comments for LayangOilTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToLayangOilTemplateReport(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.LayangOilTemplateReport layangOilTemplateReport)
+        {
+            base.AddObject("LayangOilTemplateReport", layangOilTemplateReport);
+        }
+        /// <summary>
+        /// There are no comments for BerylGasTemplateReport in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
+        public virtual void AddToBerylGasTemplateReport(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport berylGasTemplateReport)
+        {
+            base.AddObject("BerylGasTemplateReport", berylGasTemplateReport);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "#VersionNumber#")]
         private abstract class GeneratedEdmModel
