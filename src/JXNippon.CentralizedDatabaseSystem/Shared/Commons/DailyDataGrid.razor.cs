@@ -21,9 +21,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
     {
         private RadzenDataGrid<TItem> grid;
 
-        private bool isLoading = false;
+        protected bool isLoading = false;
         private IEnumerable<CustomColumn> customColumns;
-        private Collection<TItem> _items { get; set; }
+        protected Collection<TItem> _items { get; set; }
         [Parameter] public Collection<TItem> Items { get; set; }
         [Parameter] public EventCallback<Collection<TItem>> ItemsChanged { get; set; }
         [Parameter] public EventCallback<Collection<TItem>> OnItemsChanged { get; set; }
@@ -37,6 +37,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
         [Parameter] public string[] Subscriptions { get; set; } = new string[0];
         [Parameter] public DateTimeOffset? ReportDate { get; set; }
+        [Parameter] public bool IsShowWriteOption { get; set; } = true;
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }

@@ -1,10 +1,9 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.HealthSafetyEnvironments
-@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
 <div class="row">
     <div class="col">
         <OperatingChangeDailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" @bind-Items=@this.Data OnItemsChanged=@this.DataChanged TDialog="OperatingChangeDialog" ReportDate="@this.ReportDate"
-                       PagerAlwaysVisible="@PagerAlwaysVisible" RequiredHighlighting="false">
+                       PagerAlwaysVisible="@PagerAlwaysVisible" RequiredHighlighting="false" IsShowWriteOption="false">
             <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyOperatingChange" Property="TagName" Title="Tag Name">
                     <Template Context="item">

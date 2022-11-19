@@ -46,19 +46,32 @@
     {
         bool hasRowData = (args as DataGridCellMouseEventArgs<TItem>) != null
             && (args as DataGridCellMouseEventArgs<TItem>).Data.AsIEntity().Id != 0;
-        ContextMenuService.Open(args, ds =>
-           @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<TItem>, e))">
+
+        if (!this.IsShowWriteOption)
+        {
+            ContextMenuService.Open(args, ds =>
+            @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<TItem>, e))">
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData />
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh" />
+            </RadzenMenu>
+            );
+        }
+        else
+        {
+            ContextMenuService.Open(args, ds =>
+            @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<TItem>, e))">
                 <AuthorizeView Policy="CombinedDailyReport.ReadWrite">
-                    <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add"/>
-                    <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
-                    <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add" />
+                    <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData />
+                    <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData />
                 </AuthorizeView>
-                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
-                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
-                <RadzenMenuItem Text="History..." Value="5" Icon="history" Visible=@hasRowData/>
-                <RadzenMenuItem Text="Deletion History..." Value="6" Icon="dns"/>
-        </RadzenMenu>
-    );  
+                <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData />
+                <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh" />
+                <RadzenMenuItem Text="History..." Value="5" Icon="history" Visible=@hasRowData />
+                <RadzenMenuItem Text="Deletion History..." Value="6" Icon="dns" />
+            </RadzenMenu>
+            );
+        } 
     }
     private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<TItem> args, MenuItemEventArgs e)
     {
