@@ -37,6 +37,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
         [Parameter] public string[] Subscriptions { get; set; } = new string[0];
         [Parameter] public DateTimeOffset? ReportDate { get; set; }
+        [Parameter] public bool IsShowWriteOption { get; set; } = true;
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }

@@ -47,9 +47,7 @@
         bool hasRowData = (args as DataGridCellMouseEventArgs<TItem>) != null
             && (args as DataGridCellMouseEventArgs<TItem>).Data.AsIEntity().Id != 0;
 
-        bool isMOC = (args as DataGridCellMouseEventArgs<TItem>).Data.GetType().Name == "DailyOperatingChange";
-
-        if (isMOC)
+        if (!this.IsShowWriteOption)
         {
             ContextMenuService.Open(args, ds =>
             @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<TItem>, e))">
