@@ -38,6 +38,28 @@
 					<Icon Type="arrow-left" Theme="outline" Class="fullscreen-dialog-back" OnClick=@(()=> this.DialogService.Close())/>
 					<div class="cdr-title">
 						<div class="p-2" style="font-weight: bold;">PE Monthly Report</div>
+						@if (this.Data.Status == CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReportStatus.Approved)
+						{
+							<div class="p-2" style="font-weight: bold;">
+								<Tooltip Placement="@Placement.BottomLeft" Title="@("Report is approved.")">
+									<Icon Style="color: deepskyblue;" Class="anticon-big" Type="check-circle" Theme="outline" />
+								</Tooltip>
+							</div>
+						}
+						else if (this.Data.Status == CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReportStatus.Rejected)
+						{
+							<div class="p-2" style="font-weight: bold;">
+								<Tooltip Placement="@Placement.BottomLeft" Title="@("Report is rejected.")">
+									<Icon Style="color: orange;" Class="anticon-big" Type="exclamation-circle" Theme="outline" />
+								</Tooltip>
+							</div>
+						}
+						else if (this.Data.Status == CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReportStatus.Pending)
+						{
+							<div class="p-2" style="font-weight: bold;">
+								<Tag PresetColor="@PresetColor.Yellow">Pending</Tag>
+							</div>
+						}
 						<div class="p-2" style="font-weight: bold;">
 							<Tag PresetColor="@PresetColor.Green">@Data.Date.ToLocalDateTime().ToString("yyyy MMMM")</Tag>
 						</div>

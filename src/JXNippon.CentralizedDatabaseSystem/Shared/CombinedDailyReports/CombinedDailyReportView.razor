@@ -54,6 +54,12 @@
 								</Tooltip>
 							</div>					
 						}
+						else if(this.Data.Status == CombinedDailyReportStatus.Pending)
+						{
+							<div class="p-2" style="font-weight: bold;">
+								<Tag PresetColor="@PresetColor.Yellow">Pending</Tag>					
+							</div>					
+						}
 						<div class="p-2" style="font-weight: bold;">
 							<Tag PresetColor="@PresetColor.Green">@Data.Date.ToLocalDateTime().ToString("dddd, d MMMM yyyy")</Tag>
 						</div>
