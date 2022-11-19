@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 19/11/2022 12:48:28 AM
+// Generation date: 20/11/2022 1:07:05 AM
 namespace ReportODataService.Affra.Service.Report.Domain.Reports
 {
     /// <summary>
@@ -200,6 +200,27 @@ namespace ReportODataService.Affra.Service.Report.Domain.Reports
         partial void OnStatusChanging(global::ReportODataService.Affra.Service.Report.Domain.Reports.ReportGenerationStatus value);
         partial void OnStatusChanged();
         /// <summary>
+        /// There are no comments for Property ErrorMessage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string ErrorMessage
+        {
+            get
+            {
+                return this._ErrorMessage;
+            }
+            set
+            {
+                this.OnErrorMessageChanging(value);
+                this._ErrorMessage = value;
+                this.OnErrorMessageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _ErrorMessage;
+        partial void OnErrorMessageChanging(string value);
+        partial void OnErrorMessageChanged();
+        /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -363,6 +384,7 @@ namespace ReportODataService.Default
         <Property Name=""CreatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""CompletedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Affra.Service.Report.Domain.Reports.ReportGenerationStatus"" Nullable=""false"" />
+        <Property Name=""ErrorMessage"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
       <EnumType Name=""ReportGenerationStatus"">
