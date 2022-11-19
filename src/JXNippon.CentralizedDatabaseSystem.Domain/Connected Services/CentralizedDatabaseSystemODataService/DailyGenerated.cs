@@ -418,3 +418,16 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         public int Row { get; set; }
     }
 }
+
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports
+{
+    public partial class PEReport : IMonthly
+    {
+        [IgnoreClientProperty]
+        public DateTime DateUI
+        {
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+    }
+}

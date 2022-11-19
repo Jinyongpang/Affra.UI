@@ -5,7 +5,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Reports
 {
     public interface IReportService
     {
-        Task<Stream> GenerateCombinedDailyReportAsync(CombinedDailyReport combinedDailyReport, CancellationToken cancellationToken = default);
-        Task<Stream> GeneratePEReportAsync(PEReport peReport, CancellationToken cancellationToken = default);
+        Task<Stream> DownloadReportAsync(Guid referenceId, CancellationToken cancellationToken = default);
+        Task<Guid> GenerateCombinedDailyReportAsync(CombinedDailyReport combinedDailyReport, CancellationToken cancellationToken = default);
+        Task<Guid> GeneratePEReportAsync(PEReport peReport, CancellationToken cancellationToken = default);
     }
 }

@@ -45,7 +45,7 @@
       "SerializeTypeInformation": false,
       "QueryNullValue": "",
       "ClassName": "ReportAPIClient",
-      "OperationGenerationMode": 1,
+      "OperationGenerationMode": 4,
       "AdditionalNamespaceUsages": [],
       "AdditionalContractNamespaceUsages": [],
       "GenerateOptionalParameters": false,

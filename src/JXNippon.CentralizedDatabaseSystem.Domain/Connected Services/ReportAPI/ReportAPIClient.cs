@@ -96,7 +96,7 @@
                     client_.Dispose();
             }
         }
-        public async System.Threading.Tasks.Task<System.Guid> GeneratePEReportAsync(string templateFile, CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport peReport, System.Threading.CancellationToken cancellationToken)
+        public async Task<Guid> GeneratePEReportAsync(string templateFile, CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReport peReport, CancellationToken cancellationToken)
         {
             if (peReport == null)
                 throw new System.ArgumentNullException("peReport");
@@ -190,6 +190,5 @@
                     client_.Dispose();
             }
         }
-
     }
 }

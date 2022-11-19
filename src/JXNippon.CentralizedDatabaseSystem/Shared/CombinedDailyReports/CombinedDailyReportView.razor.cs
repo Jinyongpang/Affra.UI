@@ -1,6 +1,7 @@
 ﻿using Affra.Core.Domain.Services;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
 using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -48,6 +49,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         [Parameter] public CombinedDailyReport Data { get; set; }
 
         [Inject] private DialogService DialogService { get; set; }
+        [Inject] private IGlobalDataSource GlobalDataSource { get; set; }
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
 
@@ -120,12 +122,26 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             try
             {
-                if (CanApprove())
+                if (this.Data.Status == CombinedDailyReportStatus.Approved)
+                {
+                    AffraNotificationService.NotifyInfo("The report has already been approved.");
+                }
+                else if (CanApprove())
                 {
                     using var scope = ServiceProvider.CreateScope();
                     var service = GetGenericService(scope);
+                    var referenceId = await this.ReportService.GenerateCombinedDailyReportAsync(Data);
                     Data.Status = CombinedDailyReportStatus.Approved;
-                    Data.Revision = Data.Revision++;
+                    Data.Revision++;
+                    Data.LastApproval = new()
+                    {
+                        ApprovedDateTime = DateTime.UtcNow,
+                        ReportReferenceId = referenceId,
+                        Revision = Data.Revision,
+                        ApprovedBy = this.GlobalDataSource.User.Name,
+                        FileName = $"COMBINED DAILY REPORT {Data.DateUI:yyyyMMdd} Rev{Data.Revision}.xlsx",
+                    };
+                    Data.Approvals.Add(Data.LastApproval);
                     await service.UpdateAsync(Data, Data.Id);
                     AffraNotificationService.NotifySuccess("Report approved.");
                     DialogService.Close();
@@ -314,11 +330,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             isLoading = true;
             try
             {
-                var streamResult = await ReportService.GenerateCombinedDailyReportAsync(Data);
+                if (Data.LastApproval is null)
+                {
+                    throw new InvalidOperationException("Report never approved before.");
+                }
+                var streamResult = await ReportService.DownloadReportAsync(Data.LastApproval.ReportReferenceId);
                 if (streamResult != null)
                 {
                     using var streamRef = new DotNetStreamReference(streamResult);
-                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{Data.Date.ToLocalTime():d}_Rev{Data.Revision}.xlsx", streamRef);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", Data.LastApproval.FileName, streamRef);
                 }
             }
             catch (Exception ex)
