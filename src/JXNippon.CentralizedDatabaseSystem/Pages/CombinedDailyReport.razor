@@ -40,11 +40,6 @@
                     </SpaceItem>
                 </Space>      
             </div>
-            <AuthorizeView Policy="CombinedDailyReport.ReadWrite">
-                <div class="col-sm-12 col-md-4 col-xl-2 py-2">      
-                    <RadzenButton  Style="width: 100%;" Text="Export" Icon="grid_on" ButtonStyle="ButtonStyle.Primary"/>
-                </div>
-            </AuthorizeView>
             <div class="col-sm-12 col-md-4 col-xl-2 py-2">      
                 <RadzenButton Style="width: 100%;" Click="@ReloadAsync" Text="Refresh" Icon="refresh" ButtonStyle="ButtonStyle.Light"/>
             </div>  
@@ -62,7 +57,7 @@
                                     @if (Item is null || Item?.DailyHIPAndLWPSummarys?.Count == 0 && Item?.DailyFPSOHelangSummarys?.Count == 0){
                                         CDRClass = emptyCDRClass;
                                     }
-                                    <h4>
+                                    <h4 class="m-0 d-flex align-items-center title">
                                         1. OIM Summary
                                     </h4>
                                 </SpaceItem>

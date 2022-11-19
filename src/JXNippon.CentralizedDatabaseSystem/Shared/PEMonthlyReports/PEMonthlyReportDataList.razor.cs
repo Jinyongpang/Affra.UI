@@ -1,16 +1,11 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
-using AntDesign;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
-using JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
-using JXNippon.CentralizedDatabaseSystem.Domain.PEMonthlyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
-using JXNippon.CentralizedDatabaseSystem.Domain.Workspaces;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
-using JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Shared.Loadings;
 using Microsoft.AspNetCore.Components;
@@ -47,7 +42,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
         public async Task ReloadAsync()
         {
             await virtualize.RefreshDataAsync();
-            this.StateHasChanged();
+            StateHasChanged();
         }
 
         private async ValueTask<ItemsProviderResult<PEReport>> LoadDataAsync(ItemsProviderRequest request)
@@ -102,35 +97,38 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<PEReport, ICentralizedDatabaseSystemUnitOfWork>>();
         }
 
-		private async Task ShowDialogAsync(PEReport data)
+        private async Task ShowDialogAsync(PEReport data)
         {
-			var peReportTask = this.GetFullPEReportAsync(data.Date);
-			await this.DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = peReportTask }, Constant.LoadingDialogOptions);
-			var peReport = await peReportTask;
+            var peReportTask = GetFullPEReportAsync(data.Date);
+            await DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = peReportTask }, Constant.LoadingDialogOptions);
+            var peReport = await peReportTask;
 
-			dynamic? dialogResponse;
-			dialogResponse = await DialogService.OpenAsync<PEMonthlyReportView>(data.Date.ToLocalTime().ToString("yyyy MMMM"),
-					   new Dictionary<string, object>() { { "Data", peReport } },
-					   Constant.FullScreenDialogOptions);
+            dynamic? dialogResponse;
+            dialogResponse = await DialogService.OpenAsync<PEMonthlyReportView>(data.Date.ToLocalTime().ToString("yyyy MMMM"),
+                       new Dictionary<string, object>() { { "Data", peReport } },
+                       Constant.FullScreenDialogOptions);
 
-			if (dialogResponse == true)
-			{
+            if (dialogResponse == true)
+            {
 
-			}
+            }
 
-			await ReloadAsync();
-		}
+            await ReloadAsync();
+        }
 
-		private async Task DownloadAsync(PEReport input)
+        private async Task DownloadAsync(PEReport input)
         {
             try
             {
-                var peReport = await this.GetFullPEReportAsync(input.Date);
-                var streamResult = await ReportService.GeneratePEReportAsync(peReport);
+                if (input.LastApproval is null)
+                {
+                    throw new InvalidOperationException("Report never approved before.");
+                }
+                var streamResult = await ReportService.DownloadReportAsync(input.LastApproval.ReportReferenceId);
                 if (streamResult != null)
                 {
                     using var streamRef = new DotNetStreamReference(streamResult);
-                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"PEReport{peReport.Date.ToLocalTime():yyyy MMMM}.xlsx", streamRef);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", input.LastApproval.FileName, streamRef);
                 }
             }
             catch (Exception ex)
@@ -138,10 +136,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
                 AffraNotificationService.NotifyException(ex);
             }
         }
+
         private Task DownloadWithLoadingAsync(PEReport peReport)
         {
-            var task = this.DownloadAsync(peReport);
-            return this.DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Generating report. Please wait...", ["Task"] = task }, Constant.LoadingDialogOptions);
+            var task = DownloadAsync(peReport);
+            return DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Generating report. Please wait...", ["Task"] = task }, Constant.LoadingDialogOptions);
         }
 
         private async Task<PEReport> GetFullPEReportAsync(DateTimeOffset date)

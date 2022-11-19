@@ -89,6 +89,9 @@ builder.Configuration.GetSection(nameof(WorkspaceAPIConfigurations)).Bind(worksp
 ReportAPIClientConfigurations reportAPIClientConfigurations = new();
 builder.Configuration.GetSection(nameof(ReportAPIClientConfigurations)).Bind(reportAPIClientConfigurations);
 
+ReportConfigurations reportConfigurations = new();
+builder.Configuration.GetSection(nameof(ReportConfigurations)).Bind(reportConfigurations);
+
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<IDataExtractorUnitOfWork, DataExtractorUnitOfWork>()
     .AddSingleton<IOptions<DataExtractorConfigurations>>(Options.Create(dataExtractorConfigurations))
@@ -102,6 +105,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddSingleton<IOptions<ManagementOfChangeConfigurations>>(Options.Create(managementOfChangeConfigurations))
     .AddScoped<IUserUnitOfWork, UserUnitOfWork>()
     .AddSingleton<IOptions<UserConfigurations>>(Options.Create(userConfigurations))
+    .AddScoped<IReportUnitOfWork, ReportUnitOfWork>()
+    .AddSingleton<IOptions<ReportConfigurations>>(Options.Create(reportConfigurations))
     .AddUnitGenericService()
     .AddODataHttpClient(nameof(DataExtractorUnitOfWork))
     .AddODataHttpClient(nameof(CentralizedDatabaseSystemUnitOfWork))
@@ -109,6 +114,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddODataHttpClient(nameof(NotificationUnitOfWork))
     .AddODataHttpClient(nameof(ManagementOfChangeUnitOfWork))
     .AddODataHttpClient(nameof(UserUnitOfWork))
+    .AddODataHttpClient(nameof(ReportUnitOfWork))
     .AddScoped<CreateActivityHandler>()
     .AddScoped<JXNippon.CentralizedDatabaseSystem.Handlers.AuthorizationMessageHandler>()
     .AddScoped<NotificationService>()

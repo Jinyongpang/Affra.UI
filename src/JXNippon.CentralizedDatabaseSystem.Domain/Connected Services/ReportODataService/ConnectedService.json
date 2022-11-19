@@ -14,9 +14,9 @@
     "OperationImportsGenerator": 0,
     "IncludeExtensionsT4File": false,
     "GenerateOperationImports": false,
-    "ServiceName": "CentralizedDatabaseSystemODataService",
+    "ServiceName": "ReportODataService",
     "AcceptAllUntrustedCertificates": false,
-    "Endpoint": "http://localhost:50001/CentralizedDatabaseSystem-api/odata/$metadata",
+    "Endpoint": "http://localhost:50007/Report-api/odata/$metadata",
     "EdmxVersion": {
       "Major": 4,
       "Minor": 0,
@@ -25,9 +25,9 @@
       "MajorRevision": 0,
       "MinorRevision": 0
     },
-    "GeneratedFileNamePrefix": "CentralizedDatabaseSystemODataService",
+    "GeneratedFileNamePrefix": "ReportODataService",
     "UseNameSpacePrefix": true,
-    "NamespacePrefix": "CentralizedDatabaseSystemODataService",
+    "NamespacePrefix": "ReportODataService",
     "UseDataServiceCollection": false,
     "UseAsyncDataServiceCollection": false,
     "OpenGeneratedFilesOnComplete": false,

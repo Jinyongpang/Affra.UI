@@ -1,4 +1,8 @@
-﻿@if (Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase)
+﻿@if(Status is null)
+{
+    
+}
+else if (Status.Equals("Online", StringComparison.InvariantCultureIgnoreCase)
     || Status.Equals("Duty", StringComparison.InvariantCultureIgnoreCase)
     || Status.Equals("In Service", StringComparison.InvariantCultureIgnoreCase))
 {

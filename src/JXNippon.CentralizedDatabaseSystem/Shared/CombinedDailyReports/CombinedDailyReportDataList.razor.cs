@@ -133,19 +133,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         {
             try
             {
-                using var serviceScope = ServiceProvider.CreateScope();
-                var cdrService = serviceScope.ServiceProvider.GetRequiredService<ICombinedDailyReportService>();
-                var cdrItem = await cdrService.GetFullCombinedDailyReportAsync(combinedDailyReport.Date);
-                if (cdrItem is not null)
+                if (combinedDailyReport.LastApproval is null)
                 {
-                    cdrItem.DailyHIPAndLWPSummarys = cdrService.AppendSummary(cdrItem.DailyHIPAndLWPSummarys, cdrItem);
-                    cdrItem.DailyFPSOHelangSummarys = cdrService.AppendSummary(cdrItem.DailyFPSOHelangSummarys, cdrItem);
+                    throw new InvalidOperationException("Report never approved before.");
                 }
-                var streamResult = await ReportService.GenerateCombinedDailyReportAsync(cdrItem);
+                var streamResult = await ReportService.DownloadReportAsync(combinedDailyReport.LastApproval.ReportReferenceId);
                 if (streamResult != null)
                 {
                     using var streamRef = new DotNetStreamReference(streamResult);
-                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", $"CombinedDailyReport_{combinedDailyReport.Date.ToLocalTime():d}_Rev{combinedDailyReport.Revision}.xlsx", streamRef);
+                    await JSRuntime.InvokeVoidAsync("downloadFileFromStream", combinedDailyReport.LastApproval.FileName, streamRef);
                 }
             }
             catch (Exception ex)

@@ -230,8 +230,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports
                     + $"{fpsoProduction.FPSOCumulativeGasExport}"
                     + " MMscf was "
                     + $"{this.GetFPSOCondition(combinedDailyReport)}"
-                    + " than GODC "
-                    + $"{combinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark?.Trim()}"
+                    + " than GODC"
+                    + (string.IsNullOrWhiteSpace(combinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark)
+                        ? string.Empty
+                        : $" {combinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExportRemark?.Trim()}")
                     + " plan of "
                     + $"{combinedDailyReport.DailyFPSOHelangProduction?.FPSOGasExportGODCPlan}"
                     + " MMscf. FPSO daily cumulative Crude Oil into storage tank was "
@@ -281,8 +283,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports
                     + $"{combinedDailyReport.DailyFPSOHelangProduction?.FPSOCumulativeGasExport ?? 0}"
                     + " MMscf) was "
                     + $"{this.GetHIPCondition(combinedDailyReport)}"
-                    + " than SK-10 GODC "
-                    + $"{combinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExportRemark?.Trim()}"
+                    + " than SK-10 GODC"
+                    + (string.IsNullOrWhiteSpace(combinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExportRemark)
+                        ? string.Empty
+                        : $" {combinedDailyReport.DailyHIPProduction?.HIPCumulativeGasExportRemark?.Trim()}")
                     + " plan of "
                     + $"{combinedDailyReport.DailyHIPProduction?.HIPGasExportGODCPlan}"
                     + " MMscfd";
