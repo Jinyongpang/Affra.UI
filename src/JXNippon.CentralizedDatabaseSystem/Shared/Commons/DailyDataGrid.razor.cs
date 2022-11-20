@@ -34,7 +34,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         [Parameter] public bool RequiredHighlighting { get; set; } = true;
         [Parameter] public RenderFragment Columns { get; set; }
         [Parameter] public EventCallback<IQueryable<TItem>> QueryFilter { get; set; }
-
+        [Parameter] public bool DisableSyncFromYesterday { get; set; }
         [Parameter] public string[] Subscriptions { get; set; } = new string[0];
         [Parameter] public DateTimeOffset? ReportDate { get; set; }
         [Parameter] public bool IsShowWriteOption { get; set; } = true;
@@ -218,9 +218,55 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
                 args.Attributes.Add("style", "background-color: #FFFF99");
             }
         }
+
         public object GetPropValue(object src, string propName)
         {
             return src.GetType().GetProperty(propName).GetValue(src, null);
+        }
+
+        private async Task SyncFromYesterdayAsync()
+        {
+            var response = await DialogService.OpenAsync<GenericConfirmationDialog>("Sync from yesterday?",
+               new Dictionary<string, object>() { },
+               new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+
+            if (response == true)
+            {
+                try
+                {
+                    using var serviceScope = ServiceProvider.CreateScope();
+                    var service = GetGenericService(serviceScope);
+                    foreach (var item in this.Items)
+                    {
+                        await service.DeleteByIdAsync(item.Id);
+                    }
+
+                    var start = this.ReportDate.Value.AddDays(-1);
+                    var end = start.AddDays(1);
+                    var yesterdays = await service.Get()
+                        .Where(x => x.Date >= start)
+                        .Where(x => x.Date < end)
+                        .OrderBy(x => x.Id)
+                        .ToQueryOperationResponseAsync<TItem>();
+
+                    using var serviceScope2 = ServiceProvider.CreateScope();
+                    var service2 = GetGenericService(serviceScope2);
+                    foreach (var item in yesterdays)
+                    {
+                        item.Id = 0;
+                        item.Date = this.ReportDate.Value.ToUniversalTime();
+                        await service2.InsertAsync(item);
+                    }
+
+                    AffraNotificationService.NotifySuccess("Synced from yesterday completed.");
+
+                }
+                catch (Exception ex) 
+                {
+                    AffraNotificationService.NotifyException(ex);
+                }
+            }
+            await grid.Reload();
         }
     }
 }

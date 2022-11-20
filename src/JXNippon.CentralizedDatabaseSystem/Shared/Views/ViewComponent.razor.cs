@@ -314,7 +314,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             }
             else if (this.CheckIsFocused(i))
             {
-                return "focused-card col";
+                return "focused-card col py-4";
             }
             else
             {
