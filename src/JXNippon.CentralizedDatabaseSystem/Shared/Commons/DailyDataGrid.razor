@@ -63,6 +63,10 @@
                 <AuthorizeView Policy="CombinedDailyReport.ReadWrite">
                     <RadzenMenuItem Text="Add ..." Value="0" Icon="note_add" />
                     <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData />
+                    @if (!this.DisableSyncFromYesterday && this.ReportDate is not null)
+                    {
+                        <RadzenMenuItem Text="Sync From Yesterday ..." Value="7" Icon="find_replace"/>
+                    }
                     <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData />
                 </AuthorizeView>
                 <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData />
@@ -70,7 +74,7 @@
                 <RadzenMenuItem Text="History..." Value="5" Icon="history" Visible=@hasRowData />
                 <RadzenMenuItem Text="Deletion History..." Value="6" Icon="dns" />
             </RadzenMenu>
-            );
+    );
         } 
     }
     private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<TItem> args, MenuItemEventArgs e)
@@ -114,6 +118,10 @@
         else if (i == 4)
         {
             await grid.Reload();      
+        }
+        else if (i == 7)
+        {
+            await SyncFromYesterdayAsync();
         }
     }
 }
