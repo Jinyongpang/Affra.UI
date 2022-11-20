@@ -13,7 +13,7 @@
                 </div>
             </Header>
             <Content style="overflow-y: auto; max-height: 100%;">
-                @if (YearList is not null)
+                @if (YearList is not null && YearList.Count > 0)
                 {
                     <Menu DefaultSelectedKeys=@(new[] { YearList[0].ToString() }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
                         @foreach (int yearItem in YearList)
@@ -398,6 +398,13 @@
                         <DecimalMonthlyDataItem Year="@this.Items.Year.ToString()" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.Items.Q4.GasNomination TItem="LayangGasTemplateReport" ItemId="@this.Items.Id" Item="@this.Items" />
                     </DefermentTableRow>
                 </DefermentTableView>
+            }
+            else
+            {
+                <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                    <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No gas master deferment created.">
+                    </GenericDescription>
+                </div>
             }
         </Content>
     </Layout>

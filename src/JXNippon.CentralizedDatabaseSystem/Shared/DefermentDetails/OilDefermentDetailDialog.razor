@@ -44,7 +44,7 @@
                     <RadzenLabel class="dialogTextSize" Text="Start Date" />
                 </div>
                 <div class="col-8">
-                    <DatePicker @bind-Value="Item.StartDateUI" Format="yyyy/MM/dd hh:mm tt" ShowTime='@("hh:mm tt")' Disabled="@isViewing" />
+                    <DatePicker @bind-Value="Item.StartDateUI" Format="yyyy/MM/dd hh:mm tt" ShowTime='@("hh:mm tt")' OnChange=OnStartDateChange Disabled="@isViewing" />
                 </div>
             </div>
             <div class="row py-2">
@@ -52,7 +52,7 @@
                     <RadzenLabel class="dialogTextSize" Text="End Date" />
                 </div>
                 <div class="col-8">
-                    <DatePicker @bind-Value="Item.EndDateUI" Format="yyyy/MM/dd hh:mm tt" ShowTime='@("hh:mm tt")' Disabled="@isViewing" />
+                    <DatePicker @bind-Value="Item.EndDateUI" Format="yyyy/MM/dd hh:mm tt" ShowTime='@("hh:mm tt")' OnChange=OnEndDateChange Disabled="@isViewing" />
                 </div>
             </div>
             <div class="row py-2">
@@ -206,7 +206,7 @@
                     <RadzenLabel class="dialogTextSize" Text="Duration (day)" />
                 </div>
                 <div class="col-8">
-                    <RadzenNumeric class="w-100" @bind-Value="@Item.DurationDay" Disabled=true />
+                    <RadzenNumeric class="w-100" @bind-Value="@Item.DurationDay" Format="0.00" Disabled=true />
                 </div>
             </div>
             <div class="row py-2">

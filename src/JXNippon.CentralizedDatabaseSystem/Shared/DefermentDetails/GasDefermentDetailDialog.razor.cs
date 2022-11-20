@@ -1,4 +1,5 @@
-﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments;
+﻿using AntDesign;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments;
 using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
@@ -99,6 +100,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             }
 
             return Task.CompletedTask;
+        }
+        private void OnStartDateChange(DateTimeChangedEventArgs args)
+        {
+            Item.Month = args.Date.Value.ToString("MMM");
+            Item.TotalDays = DateTime.DaysInMonth(args.Date.Value.Year, args.Date.Value.Month);
+            Item.Year = args.Date.Value.Year.ToString();
+        }
+        private void OnEndDateChange(DateTimeChangedEventArgs args)
+        {
+            Item.DurationDay = (args.Date.Value - Item.StartDate).TotalDays;
         }
     }
 }
