@@ -12,10 +12,10 @@
 <div class="row px-3 py-2">
     <Virtualize Context="context" ItemsProvider="@LoadDataAsync" TItem=CombinedDailyReport ItemSize=25 OverscanCount=10 @ref=@this.virtualize>
         <Placeholder>
-            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:150px;">
+            <div class="col-sm-12 col-md-4 py-2 pr-1" style="min-height:150px;">
                 <Card Class="h-100 data-list-card" Hoverable>
                     <Body>
-                        <Skeleton Active ParagraphRows=3></Skeleton>
+                        <Skeleton Active ParagraphRows=4></Skeleton>
                     </Body>
                 </Card>  
             </div>    
