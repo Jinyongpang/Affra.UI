@@ -116,6 +116,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
     .AddODataHttpClient(nameof(UserUnitOfWork))
     .AddODataHttpClient(nameof(ReportUnitOfWork))
     .AddScoped<CreateActivityHandler>()
+    .AddScoped<ODataEnumHandler>()
     .AddScoped<JXNippon.CentralizedDatabaseSystem.Handlers.AuthorizationMessageHandler>()
     .AddScoped<NotificationService>()
     .AddScoped<TooltipService>()

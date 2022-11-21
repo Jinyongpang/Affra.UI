@@ -3,7 +3,6 @@ using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
-using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
@@ -115,10 +114,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             {
                 query = query.Where(x => x.Status == DefermentDetailStatus.Closed);
             }
-
             Microsoft.OData.Client.QueryOperationResponse<GasDefermentDetail>? response = await query
                 .OrderBy(x => x.StartDate)
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
+                .AppendQueryWithFilterDescriptor(args.Filters, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<GasDefermentDetail>();
 
             Count = (int)response.Count;

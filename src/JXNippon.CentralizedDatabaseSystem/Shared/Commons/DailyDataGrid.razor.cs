@@ -30,7 +30,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         [Parameter] public EventCallback<LoadDataArgs> LoadData { get; set; }
         [Parameter] public bool PagerAlwaysVisible { get; set; }
         [Parameter] public bool AllowSorting { get; set; } = true;
-        [Parameter] public bool AllowFiltering { get; set; } = false;
+        [Parameter] public bool AllowFiltering { get; set; } = true;
         [Parameter] public bool RequiredHighlighting { get; set; } = true;
         [Parameter] public RenderFragment Columns { get; set; }
         [Parameter] public EventCallback<IQueryable<TItem>> QueryFilter { get; set; }
@@ -92,7 +92,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             await QueryFilter.InvokeAsync(query);
 
             var response = await query
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
+                .AppendQueryWithFilterDescriptor(args.Filters, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<TItem>();
 
             Count = (int)response.Count; 

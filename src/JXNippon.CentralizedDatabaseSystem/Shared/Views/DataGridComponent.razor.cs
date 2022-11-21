@@ -169,28 +169,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             var service = ViewService.GetGenericService(serviceScope, type);
             Queryable = service.Get();
             Queryable = Queryable
-                .AppendQuery(orderBy: args?.OrderBy);
-
-            if (args?.Filters is not null)
-            {
-                foreach (var filter in args?.Filters)
-                {
-                    if (filter.FilterValue is not null
-                        && filter.FilterValue as string != string.Empty)
-                    {
-                        try
-                        {
-                            Queryable = Queryable
-                                   .Where($"x => x.{filter.Property} {GetOperator(filter.FilterOperator)} \"{filter.FilterValue}\"");
-
-                        }
-                        catch (Exception ex)
-                        {
-                            AffraNotificationService.NotifyException(ex);
-                        }
-                    }
-                }
-            }
+                .AppendQueryWithFilterDescriptor(this.Type, filterDescriptors: args.Filters, orderBy: args?.OrderBy);
             
             if (start != null && end != null)
             {
