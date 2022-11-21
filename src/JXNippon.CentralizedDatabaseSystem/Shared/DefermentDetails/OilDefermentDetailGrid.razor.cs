@@ -118,7 +118,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
 
             Microsoft.OData.Client.QueryOperationResponse<OilDefermentDetail>? response = await query
                 .OrderBy(x => x.StartDate)
-                .AppendQuery(args.Filter, args.Skip, args.Top, args.OrderBy)
+                .AppendQueryWithFilterDescriptor(args.Filters, args.Skip, args.Top, args.OrderBy)
                 .ToQueryOperationResponseAsync<OilDefermentDetail>();
 
             Count = (int)response.Count;
