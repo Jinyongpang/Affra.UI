@@ -10,6 +10,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Extensions
             return services.AddODataClient(name)
                 .AddHttpClient()
                 .AddHttpMessageHandler<CreateActivityHandler>()
+                .AddHttpMessageHandler<ODataEnumHandler>()
                 .AddHttpMessageHandler<AuthorizationMessageHandler>()
                 .Services;
         }
