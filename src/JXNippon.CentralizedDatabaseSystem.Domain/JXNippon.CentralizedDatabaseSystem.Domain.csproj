@@ -25,9 +25,9 @@
 	<PackageReference Include="Microsoft.OData.Extensions.Client" Version="1.0.6" />
 	<PackageReference Include="Microsoft.Spatial" Version="7.12.5" />
 	<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-	<PackageReference Include="Radzen.Blazor" Version="4.3.6" />
+	<PackageReference Include="Radzen.Blazor" Version="4.3.7" />
 	<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.22" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.23" />
 	<PackageReference Include="System.Net.Http" Version="4.3.4" />
 	<PackageReference Include="System.Text.Json" Version="7.0.0" />
   </ItemGroup>
