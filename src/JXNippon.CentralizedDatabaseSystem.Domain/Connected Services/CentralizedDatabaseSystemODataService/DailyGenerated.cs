@@ -402,7 +402,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
 
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports
 {
-    public partial class CombinedDailyReport : IDaily
+    public partial class CombinedDailyReport : IDaily, IEntity
     {
         [IgnoreClientProperty] 
         public DateTime DateUI 
@@ -421,7 +421,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
 
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports
 {
-    public partial class PEReport : IMonthly
+    public partial class PEReport : IMonthly, IEntity
     {
         [IgnoreClientProperty]
         public DateTime DateUI

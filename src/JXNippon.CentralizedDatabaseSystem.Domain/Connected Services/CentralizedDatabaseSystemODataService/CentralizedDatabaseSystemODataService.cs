@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 19/11/2022 10:48:43 PM
+// Generation date: 21/11/2022 10:06:16 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -60426,6 +60426,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnUserChanging(string value);
         partial void OnUserChanged();
         /// <summary>
+        /// There are no comments for Property Notes in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> Notes
+        {
+            get
+            {
+                return this._Notes;
+            }
+            set
+            {
+                this.OnNotesChanging(value);
+                this._Notes = value;
+                this.OnNotesChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> _Notes = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote>();
+        partial void OnNotesChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote> value);
+        partial void OnNotesChanged();
+        /// <summary>
         /// There are no comments for Property LastUpdatedDateTime in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -67851,6 +67872,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Approvals"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Approvals.Approval)"" />
         <Property Name=""LastApproval"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Approvals.Approval"" />
         <Property Name=""User"" Type=""Edm.String"" />
+        <Property Name=""Notes"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.SectionNote)"" />
         <Property Name=""LastUpdatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Status"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.PEReports.PEReportStatus"" Nullable=""false"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
