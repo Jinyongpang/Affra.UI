@@ -9,9 +9,9 @@
             IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
             FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering
             FilterMode="FilterMode.Advanced"
-            ColumnWidth="200px" TItem="GasDefermentDetail" AllowVirtualization AllowGrouping
+            ColumnWidth="200px" TItem="GasDefermentDetail" AllowGrouping
             AllowColumnResize CellContextMenu="@OnCellContextMenu"
-            AllowMultiColumnSorting ShowMultiColumnSortingIndex >
+            AllowMultiColumnSorting ShowMultiColumnSortingIndex AllowPaging PageSize="60">
             <EmptyTemplate>    
                 <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
                     <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No deferment detail created.">

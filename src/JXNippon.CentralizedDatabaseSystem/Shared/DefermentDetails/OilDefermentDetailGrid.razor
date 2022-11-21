@@ -8,9 +8,9 @@
         <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;"
             IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
             FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering
-                        ColumnWidth="200px" TItem="OilDefermentDetail" AllowVirtualization
+                        ColumnWidth="200px" TItem="OilDefermentDetail"
                         AllowColumnResize AllowGrouping CellContextMenu="@OnCellContextMenu"
-            AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true" >
+                        AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true" AllowPaging PageSize="60">
             <EmptyTemplate>    
                 <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
                     <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No deferment detail created.">

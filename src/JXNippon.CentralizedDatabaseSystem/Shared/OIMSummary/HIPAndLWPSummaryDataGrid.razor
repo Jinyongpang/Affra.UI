@@ -7,7 +7,7 @@
     <div class="col">
         <DailyDataGrid @ref=DailyDataGrid LoadData="@LoadData" Subscriptions=@(new string[] { "DailySK10Production", "DailyHIPProduction" }) 
             @bind-Items=@this.Data OnItemsChanged=OnDataChangedAsync TItem="DailyHIPAndLWPSummary"
-            TDialog="HIPAndLWPSummaryDialog" ReportDate="@this.ReportDate" AllowSorting=false
+            TDialog="HIPAndLWPSummaryDialog" ReportDate="@this.ReportDate" AllowSorting=false AllowFiltering=false
             PagerAlwaysVisible="@PagerAlwaysVisible">
             <Columns>
                 <RadzenDataGridColumn TItem="DailyHIPAndLWPSummary" Property="Row" Title="No." Width="10px">
