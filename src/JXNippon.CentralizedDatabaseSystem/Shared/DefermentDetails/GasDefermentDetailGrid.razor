@@ -6,8 +6,8 @@
 <div class="row h-100">
     <div class="col h-100">
         <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;"
-            IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" 
-            FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering
+            IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync"
+                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering AllowColumnPicking
             FilterMode="FilterMode.Advanced"
             ColumnWidth="200px" TItem="GasDefermentDetail" AllowGrouping
             AllowColumnResize CellContextMenu="@OnCellContextMenu"
@@ -19,14 +19,14 @@
                 </div>
             </EmptyTemplate>
             <Columns>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Field" Title="Reporting" Width="90px" />
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Field" Title="Field" Width="80px" />
-                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Facility_Platform" Width="150px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Reporting" Title="Reporting" Width="150px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Field" Title="Field" Width="120px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Facility_Platform" Title="Facility Platform" Width="150px">
                     <HeaderTemplate>
                         <div>Facility /<br />Platform</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="DowntimeCategory" Width="110px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="DowntimeCategory" Title="Downtime Category" Width="110px">
                     <HeaderTemplate>
                         <div>Downtime<br />Category</div>
                     </HeaderTemplate>
@@ -34,7 +34,7 @@
                         @(stringLocalizer[item.DowntimeCategory.ToString()])
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="StartDate" Width="100px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="StartDate" Title="Start Date" Width="100px">
                     <HeaderTemplate>
                         <div>Start<br />Date</div>
                     </HeaderTemplate>
@@ -42,7 +42,7 @@
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.StartDateUI)
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="EndDate" Width="100px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="EndDate" Title="End Date"  Width="100px">
                     <HeaderTemplate>
                         <div>End<br />Date</div>
                     </HeaderTemplate>
@@ -50,7 +50,7 @@
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.EndDateUI)
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="PrimaryCause" Width="100px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="PrimaryCause" Title="Primmary Cause" Width="100px">
                     <HeaderTemplate>
                         <div>Primary<br />Cause</div>
                     </HeaderTemplate>
@@ -58,7 +58,7 @@
                         @(stringLocalizer[item.PrimaryCause.ToString()])
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="SecondaryCause" Width="150px">
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="SecondaryCause" Title="Secondary Cause"  Width="150px">
                     <HeaderTemplate>
                         <div>Secondary<br />Cause</div>
                     </HeaderTemplate>
@@ -66,17 +66,17 @@
                         @(stringLocalizer[item.SecondaryCause.ToString()])
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="CumulativeVolume_kb" Width="110px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="CumulativeVolume_kb" Title="Cumulative Volume"  Width="110px">
                     <HeaderTemplate>
                         <div>Cum Volume<br />(MMscf)</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="AnnualizedLoss_MMscfd" Width="110px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="AnnualizedLoss_MMscfd" Title="Annualized Loss"  Width="110px">
                     <HeaderTemplate>
                         <div>Annualized Loss<br />(MMscf/d)</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="DowntimeType" Width="100px">
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="DowntimeType" Title="Downtime Type" Width="100px">
                     <HeaderTemplate>
                         <div>Downtime<br />Type</div>
                     </HeaderTemplate>
@@ -84,12 +84,12 @@
                         @(stringLocalizer[item.DowntimeType.ToString()])
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="ProblemStatement_Remark" Width="200px">
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="ProblemStatement_Remark" Title="Problem Statement"  Width="200px">
                     <HeaderTemplate>
                         <div>Problem Statement /<br />Remark</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="WayForwardDescription" Width="200px" >
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="WayForwardDescription" Title="Way Forward Description" Width="200px">
                     <HeaderTemplate>
                         <div>Way Forward<br />Description</div>
                     </HeaderTemplate>
@@ -99,17 +99,17 @@
                         @(stringLocalizer[item.Status.ToString()])
                     </Template>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="HLCapacity" Width="100px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="HLCapacity" Title="HL Capacity" Width="100px">
                     <HeaderTemplate>
                         <div>HL<br />Capacity</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="LYCapacity" Width="100px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="LYCapacity" Title="LY Capacity" Width="100px">
                     <HeaderTemplate>
                         <div>LY<br />Capacity</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="BUCapacity" Width="100px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="BUCapacity" Title="BU Capacity" Width="100px">
                     <HeaderTemplate>
                         <div>BU<br />Capacity</div>
                     </HeaderTemplate>

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
 using System.Linq.Dynamic.Core;
-using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments;
-using Microsoft.OData.Client;
 using Radzen;
-using Radzen.Blazor;
 
 namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
 {
@@ -15,6 +9,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
     /// </summary>
     public static class QueryableExtension
     {
+        private static Func<FilterDescriptor, bool> canFilter = (c) => c.FilterOperator == FilterOperator.IsNull
+                || c.FilterOperator == FilterOperator.IsNotNull
+                || c.FilterOperator == FilterOperator.IsEmpty
+                || c.FilterOperator == FilterOperator.IsNotEmpty
+                || !(c.FilterValue == null || c.FilterValue as string == string.Empty);
         public static IQueryable<T> AppendQueryWithFilterDescriptor<T>(this IQueryable<T> queryable, IEnumerable<FilterDescriptor> filterDescriptors = default, int? skip = null, int? top = null, string orderBy = default)
         {
             Type type = typeof(T);
@@ -132,8 +131,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
         /// <returns>System.String.</returns>
         public static string ToFilterString(this IEnumerable<FilterDescriptor> filterDescriptors, Type type)
         {
-            Func<FilterDescriptor, bool> canFilter = (c) => !(c.FilterValue == null || c.FilterValue as string == string.Empty);
-
             if (filterDescriptors.Where(canFilter).Any())
             {
                 var firstLogicalFilterOperator = filterDescriptors.FirstOrDefault()?.LogicalFilterOperator;
@@ -145,7 +142,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
                     var value = filter.FilterValue;
                     var secondValue = filter.SecondFilterValue;
 
-                    if (value is not null && !string.IsNullOrEmpty(value.ToString()))
+                    if ((value is not null && !string.IsNullOrEmpty(value.ToString()))
+                        || filter.FilterOperator == FilterOperator.IsNotNull
+                        || filter.FilterOperator == FilterOperator.IsNull
+                        || filter.FilterOperator == FilterOperator.IsEmpty
+                        || filter.FilterOperator == FilterOperator.IsNotEmpty)
                     {
                         var linqOperator = LinqFilterOperators[filter.FilterOperator];
                         if (linqOperator == null)
@@ -155,13 +156,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
 
                         var booleanOperator = filter.LogicalFilterOperator == LogicalFilterOperator.And ? "and" : "or";
 
-                        if (secondValue is null || string.IsNullOrEmpty(secondValue.ToString()))
+                        if ((secondValue is not null && !string.IsNullOrEmpty(secondValue.ToString()))
+                           || filter.SecondFilterOperator == FilterOperator.IsNotNull
+                           || filter.SecondFilterOperator == FilterOperator.IsNull
+                           || filter.SecondFilterOperator == FilterOperator.IsEmpty
+                           || filter.SecondFilterOperator == FilterOperator.IsNotEmpty) 
                         {
-                            whereList.Add(GetColumnFilter(type, filter));
+                            whereList.Add($"({GetColumnFilter(type, filter)} {booleanOperator} {GetColumnFilter(type, filter, true)})");
                         }
                         else
                         {
-                            whereList.Add($"({GetColumnFilter(type, filter)} {booleanOperator} {GetColumnFilter(type, filter, true)})");
+                            whereList.Add(GetColumnFilter(type, filter));
                         }
                     }
                 }
@@ -196,7 +201,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
                 property = $"({property})";
             }
 
-            var filterOperator = !second ? filter.FilterOperator: filter.SecondFilterOperator;
+            var filterOperator = !second ? filter.FilterOperator : filter.SecondFilterOperator;
 
             var linqOperator = LinqFilterOperators[filterOperator];
             if (linqOperator == null)
@@ -204,9 +209,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
                 linqOperator = "==";
             }
 
-            if (filterValue is string stringValue)
+            if (type == typeof(string))
             {
-                string filterCaseSensitivityOperator =  ".ToLower()";
+                string stringValue = filterValue as string;
+                string filterCaseSensitivityOperator = ".ToLower()";
 
                 if (!string.IsNullOrEmpty(stringValue) && filterOperator == FilterOperator.Contains)
                 {
@@ -234,19 +240,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
                 }
                 else if (filterOperator == FilterOperator.IsNull)
                 {
-                    return $@"np({property}) == null";
+                    return $@"{property} == null";
                 }
                 else if (filterOperator == FilterOperator.IsEmpty)
                 {
-                    return $@"np({property}) == """"";
+                    return $@"{property} == """"";
                 }
                 else if (filterOperator == FilterOperator.IsNotEmpty)
                 {
-                    return $@"np({property}) != """"";
+                    return $@"{property} != """"";
                 }
                 else if (filterOperator == FilterOperator.IsNotNull)
                 {
-                    return $@"np({property}) != null";
+                    return $@"{property} != null";
                 }
             }
             else if (type.IsEnum || type.IsNullableEnum())
@@ -266,7 +272,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
                 }
             }
             else if (PropertyAccess.IsNumeric(type))
-            {   
+            {
                 if (filterOperator == FilterOperator.IsNull || filterOperator == FilterOperator.IsNotNull)
                 {
                     return $"{property} {linqOperator} null";
@@ -340,8 +346,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
         /// <returns>IQueryable&lt;T&gt;.</returns>
         public static IQueryable Where(this IQueryable source, IEnumerable<FilterDescriptor> filterDescriptors, Type type)
         {
-            Func<FilterDescriptor, bool> canFilter = (c) => !(c.FilterValue == null || c.FilterValue as string == string.Empty);
-
             if (filterDescriptors.Where(canFilter).Any())
             {
                 return source.Where(filterDescriptors.ToFilterString(type));
@@ -349,7 +353,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
 
             return source;
         }
-       
+
         /// <summary>
         /// Selects the many recursive.
         /// </summary>
