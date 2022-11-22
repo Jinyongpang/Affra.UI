@@ -111,8 +111,8 @@
             }
             else
             {
-                <ChartComponent TType="@Item.ActualType" AxisTitle="@Item.AxisTitle" FormatString="@Item.FormatString" 
-                    Step="@TimeSpan.FromMinutes(Item.StepInMinutes)" ValueAxisStep="@Item.ValueAxisStep" Chart=@Item ChartSeries="@Item.ChartSeries"></ChartComponent>
+                <ChartComponent Chart="@Item" TType="@Item.ActualType" HasSubscription=true AxisTitle="@Item.AxisTitle" FormatString="@Item.FormatString"
+                             Step="@TimeSpan.FromMinutes(Item.StepInMinutes)" ValueAxisStep="@Item.ValueAxisStep" ChartSeries="@Item.ChartSeries" Column="@Column"></ChartComponent>
             }
            
         </div>
