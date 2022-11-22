@@ -136,7 +136,7 @@
             Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
             var dateFilter = this.GetDateFilterComponent(chart.DateFilterId);
             return
-    @<ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+    @<ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter Chart="@chart" TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
                                             Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col"></ChartComponent>;
         }
         else if (col.ComponentType == nameof(Grid))

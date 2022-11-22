@@ -3,7 +3,7 @@
 @using JXNippon.CentralizedDatabaseSystem.Models
 @using System.Collections.Concurrent
 
-<RadzenChart @ref="chart" class="@this.GetChartClassName()">
+<RadzenChart @ref="chart" class="@this.GetChartClassName()" Style="@this.Chart?.Style">
     @{   
         bool haveData = false;
         string[] colors = Constants.Constant.Colors;

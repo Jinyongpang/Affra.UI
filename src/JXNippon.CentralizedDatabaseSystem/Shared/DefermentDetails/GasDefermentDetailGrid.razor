@@ -12,16 +12,10 @@
             ColumnWidth="200px" TItem="GasDefermentDetail" AllowGrouping
             AllowColumnResize CellContextMenu="@OnCellContextMenu"
             AllowMultiColumnSorting ShowMultiColumnSortingIndex AllowPaging PageSize="60">
-            <EmptyTemplate>    
-                <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
-                    <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No deferment detail created.">
-                    </GenericDescription>
-                </div>
-            </EmptyTemplate>
             <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Reporting" Title="Reporting" Width="150px" />
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Field" Title="Field" Width="120px" />
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Facility_Platform" Title="Facility Platform" Width="150px">
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="GasDefermentDetail" Property="Facility_Platform" Title="Facility Platform" Width="150px">
                     <HeaderTemplate>
                         <div>Facility /<br />Platform</div>
                     </HeaderTemplate>

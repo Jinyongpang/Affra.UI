@@ -774,3 +774,11 @@ th, .rz-cell-filter {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+.rz-grid-filter-active {
+    color: var(--rz-danger-dark) !important;
+}
+
+.rz-badge-info.rz-shade-lighter {
+    background-color: var(--rz-white) !important;
+}
