@@ -1,4 +1,5 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Collections.Concurrent;
+using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
@@ -12,7 +13,9 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.JSInterop;
 using Microsoft.OData.Client;
+using NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages;
 using Radzen;
+using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
 {
@@ -74,11 +77,25 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
                     .Skip(request.StartIndex)
                     .Take(request.Count)
                     .ToQueryOperationResponseAsync<PEReport>();
-
+                
                 count = (int)peMonthlyReportsResponse.Count;
-                var combinedDailyReportsList = peMonthlyReportsResponse.ToList();
-
-                return new ItemsProviderResult<PEReport>(combinedDailyReportsList, count);
+                var peMonthlyReportsList = peMonthlyReportsResponse.ToList();
+                foreach (var email in peMonthlyReportsList
+                    .Where(x => !string.IsNullOrEmpty(x.User))
+                    .Select(x => x.User))
+                {
+                    if (!this.users.TryGetValue(email, out var user))
+                    {
+                        using var serviceScopeUser = ServiceProvider.CreateScope();
+                        var userService = this.GetUserGenericService(serviceScopeUser);
+                        user = (await userService.Get()
+                            .Where(x => x.Email.ToUpper() == email.ToUpper())
+                            .ToQueryOperationResponseAsync<User>())
+                            .FirstOrDefault();
+                        this.users[email] = user;
+                    }
+                }
+                return new ItemsProviderResult<PEReport>(peMonthlyReportsList, count);
             }
             finally
             {
@@ -200,6 +217,44 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
 
             return cdrItem;
         }
+        private IGenericService<User> GetUserGenericService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<User, IUserUnitOfWork>>();
+        }
 
+        private string GetAvatarName(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return "NA";
+            }
+            if (this.users.TryGetValue(email, out var user)
+                && user is not null)
+            {
+                return this.UserService.GetAvatarName(user.Name);
+            }
+
+            return $"{email[0]}";
+        }
+
+        private string GetAvatarColor(string email)
+        {
+            if (!string.IsNullOrEmpty(email) && this.users.TryGetValue(email, out var user))
+            {
+                return user?.UserPersonalization?.AvatarColor ?? string.Empty;
+            }
+            return string.Empty;
+        }
+
+        private string GetAvatarIcon(string email)
+        {
+            if (!string.IsNullOrEmpty(email) && this.users.TryGetValue(email, out var user))
+            {
+                return user?.UserPersonalization?.AvatarId > 0
+                     ? $"avatar\\{user?.UserPersonalization?.AvatarId}.png"
+                     : string.Empty;
+            }
+            return string.Empty;
+        }
     }
 }

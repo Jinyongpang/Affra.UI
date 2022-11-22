@@ -1,0 +1,11 @@
+﻿<Space>
+    @if (!string.IsNullOrEmpty(this.Title))
+    {   
+        <SpaceItem>
+            <span>@this.Title</span>
+        </SpaceItem>
+    }
+    <SpaceItem>
+        <DatePicker @ref=datePicker TValue="DateTime?" Picker="@DatePickerType.Year" @bind-Value=@this.dateRange.Start OnChange=OnRangeSelectAsync/>
+    </SpaceItem>
+</Space>   

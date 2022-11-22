@@ -8,5 +8,6 @@
         NinetyMonth,
         HorizontalMonth,
         LastXPeriod,
+        Year,
     }
 }

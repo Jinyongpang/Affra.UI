@@ -1,4 +1,5 @@
-﻿using Affra.Core.Domain.Services;
+﻿using System.Collections.Concurrent;
+using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 using Microsoft.JSInterop;
 using Radzen;
+using UserODataService.Affra.Service.User.Domain.Users;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 {
@@ -23,6 +25,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private bool initLoading = true;
         private bool isUserHavePermission = true;
         private Virtualize<CombinedDailyReport> virtualize;
+        private IDictionary<string, User> users = new ConcurrentDictionary<string, User>(StringComparer.OrdinalIgnoreCase);
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
@@ -76,7 +79,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
                 count = (int)combinedDailyReportsResponse.Count;
                 var combinedDailyReportsList = combinedDailyReportsResponse.ToList();
-
+                foreach (var email in combinedDailyReportsList
+                .Where(x => !string.IsNullOrEmpty(x.User))
+                .Select(x => x.User))
+                {
+                    if (!this.users.TryGetValue(email, out var user))
+                    {
+                        using var serviceScopeUser = ServiceProvider.CreateScope();
+                        var userService = this.GetUserGenericService(serviceScopeUser);
+                        user = (await userService.Get()
+                            .Where(x => x.Email.ToUpper() == email.ToUpper())
+                            .ToQueryOperationResponseAsync<User>())
+                            .FirstOrDefault();
+                        this.users[email] = user;
+                    }
+                }
                 return new ItemsProviderResult<CombinedDailyReport>(combinedDailyReportsList, count);
             }
             finally
@@ -148,6 +165,45 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             {
                 AffraNotificationService.NotifyException(ex);
             }
+        }
+        private IGenericService<User> GetUserGenericService(IServiceScope serviceScope)
+        {
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<User, IUserUnitOfWork>>();
+        }
+
+        private string GetAvatarName(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return "NA";
+            }
+            if (this.users.TryGetValue(email, out var user)
+                && user is not null)
+            {
+                return this.UserService.GetAvatarName(user.Name);
+            }
+
+            return $"{email[0]}";
+        }
+
+        private string GetAvatarColor(string email)
+        {
+            if (!string.IsNullOrEmpty(email) && this.users.TryGetValue(email, out var user))
+            {
+                return user?.UserPersonalization?.AvatarColor ?? string.Empty;
+            }
+            return string.Empty;
+        }
+
+        private string GetAvatarIcon(string email)
+        {
+            if (!string.IsNullOrEmpty(email) && this.users.TryGetValue(email, out var user))
+            {
+                return user?.UserPersonalization?.AvatarId > 0
+                     ? $"avatar\\{user?.UserPersonalization?.AvatarId}.png"
+                     : string.Empty;
+            }
+            return string.Empty;
         }
     }
 }
