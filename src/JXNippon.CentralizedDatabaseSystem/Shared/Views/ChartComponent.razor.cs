@@ -31,6 +31,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Parameter] public object ValueAxisStep { get; set; }
         [Parameter] public string AxisTitle { get; set; }
         [Parameter] public IEnumerable<ChartSeries> ChartSeries { get; set; }
+        [Parameter] public Chart Chart { get; set; }
         [Parameter] public IQueryable<dynamic> Queryable { get; set; }
         [Parameter] public Type TType { get; set; }
         [Parameter] public bool HasSubscription { get; set; }

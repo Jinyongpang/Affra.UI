@@ -96,6 +96,14 @@
                         <Switch Checked="false" CheckedChildren="Simple" UnCheckedChildren="Default" @bind-Value="@Item.IsSimpleCard" Disabled=@isViewing/>      
                     </div>
                 </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Chart Style" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="ChartStyle" class="w-100" Placeholder="Enter chart style..." @bind-Value="@Item.Style" Disabled=@isViewing></RadzenTextBox>
+                    </div>
+                </div>
             }
             else if (this.current == 1)
             {

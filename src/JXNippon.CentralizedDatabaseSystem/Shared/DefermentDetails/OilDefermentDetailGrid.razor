@@ -11,16 +11,10 @@
                         ColumnWidth="200px" TItem="OilDefermentDetail"
                         AllowColumnResize AllowGrouping CellContextMenu="@OnCellContextMenu" AllowColumnPicking
                         AllowMultiColumnSorting ShowMultiColumnSortingIndex AllowPaging PageSize="60">
-            <EmptyTemplate>    
-                <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
-                    <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No deferment detail created.">
-                    </GenericDescription>
-                </div>
-            </EmptyTemplate>
             <Columns>
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="OilDefermentDetail" Property="Reporting" Title="Reporting" Width="150px" />
                 <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="OilDefermentDetail" Property="Field" Title="Field" Width="120px" />
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="OilDefermentDetail" Property="Facility_Platform" Title="Facility Platform" Width="150px">
+                <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="OilDefermentDetail" Property="Facility_Platform" Title="Facility Platform" Width="150px">
                     <HeaderTemplate>
                         <div>Facility /<br />Platform</div>
                     </HeaderTemplate>
