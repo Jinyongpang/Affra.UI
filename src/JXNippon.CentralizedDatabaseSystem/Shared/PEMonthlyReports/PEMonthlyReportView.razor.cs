@@ -71,6 +71,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
                     var referenceId = await this.ReportService.GeneratePEReportAsync(Data);
                     Data.Status = PEReportStatus.Approved;
                     Data.Revision++;
+                    Data.User = this.GlobalDataSource.User.Email;
                     Data.LastApproval = new()
                     {
                         ApprovedDateTime = DateTime.UtcNow,
@@ -98,7 +99,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
 				using var scope = ServiceProvider.CreateScope();
 				var service = GetGenericService(scope);
 				Data.Status = PEReportStatus.Rejected;
-				await service.UpdateAsync(Data, Data.Id);
+                Data.User = this.GlobalDataSource.User.Email;
+                await service.UpdateAsync(Data, Data.Id);
 				AffraNotificationService.NotifySuccess("Report rejected.");
 				DialogService.Close();
 			}

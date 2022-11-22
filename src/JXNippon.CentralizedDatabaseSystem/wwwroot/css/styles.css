@@ -18,7 +18,7 @@
 }
 
 .card-time {
-    color: #6FB2D2;
+    color: var(--rz-primary-dark);
 }
 
 .toprow-nav-title {
@@ -59,7 +59,7 @@
 }
 
 .title {
-    color: #0AA1DD;
+    color: var(--rz-primary-darker);
 }
 
 .search-icon {

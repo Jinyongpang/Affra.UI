@@ -25,47 +25,74 @@
                  <Card Class="h-100 data-list-card" @key=@context.Id Bordered>
                     <TitleTemplate>
                         <div class="d-flex flex-row align-items-center">
-                            <span class="mb-0 title" href="#">Report Date : @string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", context.Date.ToLocalTime())</span>
+                            <span class="mb-0 title" href="#">Combined Daily Report : @string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", context.Date.ToLocalTime())</span>
+                            @if (context.Status == CombinedDailyReportStatus.Approved)
+                            {
+                                <div class="p-2" style="font-weight: bold;">
+                                    <Tooltip Placement="@Placement.BottomLeft" Title="@("Report is approved.")">
+                                        <Icon Style="color: deepskyblue;" Class="anticon-big" Type="check-circle" Theme="outline" />
+                                    </Tooltip>
+                                </div>
+                            }
+                            else if (context.Status == CombinedDailyReportStatus.Rejected)
+                            {
+                                <div class="p-2" style="font-weight: bold;">
+                                    <Tooltip Placement="@Placement.BottomLeft" Title="@("Report is rejected.")">
+                                        <Icon Style="color: orange;" Class="anticon-big" Type="exclamation-circle" Theme="outline" />
+                                    </Tooltip>
+                                </div>
+                            }
                         </div>
                     </TitleTemplate>
                     <Body>
+                        <div class="d-flex flex-row align-items-center">
+                            <div>
+                                <Space>
+                                    <SpaceItem>
+                                        <Avatar Src=@this.GetAvatarIcon(context.User) Style=@($"vertical-align: middle; background-color: {this.GetAvatarColor(context.User)};") Size="64">
+                                            <span style="font-size: 32px;">@this.GetAvatarName(context.User)</span>
+                                        </Avatar>
+                                    </SpaceItem>
+                                    <SpaceItem>
+                                        <div style="word-break:break-word;">OIM : @(string.IsNullOrEmpty(context.User) ? "N/A" : context.User)</div>
+                                        <div style="font-size: .8em">Revision : @context.Revision</div>
+                                    </SpaceItem>
+                                </Space>
+
+                            </div>
+                        </div>
+                        <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
                         <div class="row">
                             <div class="col-md-8 text-truncate card-time">
-                                <b>Revision : @context.Revision</b>
+                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Updated : {0:d}", context.LastUpdatedDateTime.ToLocalTime())</b>
                             </div>
                             <div class="col-md-8 text-truncate card-time">
-                                <b>Approved By : @( string.IsNullOrEmpty(context.User) ? "N/A" : context.User)</b>
-                            </div>
-                            <div class="col-md-8 text-truncate card-time">
-                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Approved At : {0:dd/MM/yyyy H:mm}", context.LastApproval?.ApprovedDateTime.ToLocalTime())</b>
-                            </div>
-                            <div class="col-md-8 text-truncate card-time">
-                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "Last Updated : {0:dd/MM/yyyy H:mm}", context.LastUpdatedDateTime.ToLocalTime())</b>
+                                <b>@string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:t}", context.LastUpdatedDateTime.ToLocalTime())</b>
                             </div>
                             <div class="col-md-4 text-right" style="word-break:break-word;">
                                 @if (context.Status == CombinedDailyReportStatus.Approved)
                                 {
-                                        <Tooltip Placement="@Placement.BottomLeft" Title="@context.Remark">            
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.Status.ToString())"/>
-                                        </Tooltip>
+                                    <Tooltip Placement="@Placement.BottomLeft" Title="@context.Remark">
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(context.Status.ToString())" />
+                                    </Tooltip>
                                 }
                                 else if (context.Status == CombinedDailyReportStatus.Rejected)
                                 {
-                                        <Tooltip Placement="@Placement.BottomLeft" Title="@context.Remark">            
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.Status.ToString())"/>
-                                        </Tooltip>
+                                    <Tooltip Placement="@Placement.BottomLeft" Title="@context.Remark">
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(context.Status.ToString())" />
+                                    </Tooltip>
                                 }
                                 else if (context.Status == CombinedDailyReportStatus.Pending)
                                 {
-                                        <Tooltip Placement="@Placement.BottomLeft" Title="@context.Remark">            
-                                            <RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(context.Status.ToString())"/>
-                                        </Tooltip>
+                                    <Tooltip Placement="@Placement.BottomLeft" Title="@context.Remark">
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(context.Status.ToString())" />
+                                    </Tooltip>
                                 }
                                 else
                                 {
-                                    <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.Status.ToString())"/>
+                                    <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.Status.ToString())" />
                                 }
-                                    
+
                             </div>
                         </div>
                     </Body>

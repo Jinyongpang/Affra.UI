@@ -24,3 +24,7 @@ else if(this.DateFilter.DateFilterType == DateFilterType.SingleDate)
 {
     <SingleDateRangeFilterComponent FixDateTime="@this.FixDateTime" @ref=@Filter Title=@this.Column.Title></SingleDateRangeFilterComponent>
 }
+else if (this.DateFilter.DateFilterType == DateFilterType.Year)
+{
+    <YearFilterComponent FixDateTime="@this.FixDateTime" @ref=@Filter Title=@this.Column.Title></YearFilterComponent>
+}

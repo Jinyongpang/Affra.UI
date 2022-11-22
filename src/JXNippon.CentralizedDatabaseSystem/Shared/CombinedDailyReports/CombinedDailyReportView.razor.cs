@@ -133,6 +133,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                     var referenceId = await this.ReportService.GenerateCombinedDailyReportAsync(Data);
                     Data.Status = CombinedDailyReportStatus.Approved;
                     Data.Revision++;
+                    Data.User = this.GlobalDataSource.User.Email;
                     Data.LastApproval = new()
                     {
                         ApprovedDateTime = DateTime.UtcNow,
@@ -165,6 +166,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 using var scope = ServiceProvider.CreateScope();
                 var service = GetGenericService(scope);
                 Data.Status = CombinedDailyReportStatus.Rejected;
+                Data.User = this.GlobalDataSource.User.Email;
                 await service.UpdateAsync(Data, Data.Id);
                 AffraNotificationService.NotifySuccess("Report rejected.");
                 DialogService.Close();
