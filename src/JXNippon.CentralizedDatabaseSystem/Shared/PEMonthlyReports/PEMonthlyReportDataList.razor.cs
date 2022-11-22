@@ -23,6 +23,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
         private bool initLoading = true;
         private bool isUserHavePermission = true;
         private Virtualize<PEReport> virtualize;
+        private IDictionary<string, User> users = new ConcurrentDictionary<string, User>(StringComparer.OrdinalIgnoreCase);
 
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
