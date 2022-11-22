@@ -167,9 +167,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         {
             using var serviceScope = ServiceProvider.CreateScope();
             var service = ViewService.GetGenericService(serviceScope, type);
+            var actualType = Type.GetType(type);
             Queryable = service.Get();
             Queryable = Queryable
-                .AppendQueryWithFilterDescriptor(this.Type, filterDescriptors: args.Filters, orderBy: args?.OrderBy);
+                .AppendQueryWithFilterDescriptor(actualType, filterDescriptors: args?.Filters, orderBy: args?.OrderBy);
             
             if (start != null && end != null)
             {
