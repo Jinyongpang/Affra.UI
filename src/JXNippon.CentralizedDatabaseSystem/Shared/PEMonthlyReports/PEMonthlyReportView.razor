@@ -1,6 +1,7 @@
 ﻿@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PEReports;
 @using JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 @using JXNippon.CentralizedDatabaseSystem.Shared.TableProperty
+@using JXNippon.CentralizedDatabaseSystem.Shared.Views
 
 <Spin Size="large" Spinning=this.isLoading Style="top: 30%;">
 	<RadzenTemplateForm Data="@Data">
@@ -62,7 +63,8 @@
 						</div>
 					}
 				</div>
-				<Divider/>
+				<Divider/>	
+				<div class="col view-dialog-content">
 					<Collapse DefaultActiveKey="@(new[] {"1" })">
 						<Panel ShowArrow="false" Class="description-no-shadow" Header="NOTES" Key="1">
 							<ChildContent>
@@ -71,8 +73,7 @@
 							</ChildContent>
 						</Panel>
 					</Collapse>
-				<Divider />
-				<div class="col view-dialog-content">
+					<Divider />
 					<ViewTab Page="PEReport" Date="@(this.date)"></ViewTab>
 				</div>
 			</div>
