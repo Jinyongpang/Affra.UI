@@ -192,14 +192,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
         private static string GetColumnFilter(Type objectType, FilterDescriptor filter, bool second = false)
         {
             var property = filter.Property;
-            Type propertyType = objectType.GetProperty(property).PropertyType;
+            var properties = property.Split('.');
+
+            Type propertyType = objectType;
+            foreach (var prop in properties)
+            {
+                propertyType = propertyType.GetProperty(prop).PropertyType;
+            }
             Type type = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
             object filterValue = !second ? filter.FilterValue : filter.SecondFilterValue;
-
-            if (property.IndexOf(".") != -1)
-            {
-                property = $"({property})";
-            }
 
             var filterOperator = !second ? filter.FilterOperator : filter.SecondFilterOperator;
 
@@ -346,10 +347,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
         /// <returns>IQueryable&lt;T&gt;.</returns>
         public static IQueryable Where(this IQueryable source, IEnumerable<FilterDescriptor> filterDescriptors, Type type)
         {
-            if (filterDescriptors.Where(canFilter).Any())
+            try
             {
-                return source.Where(filterDescriptors.ToFilterString(type));
+                if (filterDescriptors.Where(canFilter).Any())
+                {
+                    return source.Where(filterDescriptors.ToFilterString(type));
+                }
             }
+            catch (Exception ex)
+            { 
+            }      
 
             return source;
         }

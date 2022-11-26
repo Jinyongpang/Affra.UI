@@ -782,3 +782,7 @@ th, .rz-cell-filter {
 .rz-badge-info.rz-shade-lighter {
     background-color: var(--rz-white) !important;
 }
+
+.cardlist-toggle > div > span.anticon {
+    line-height: 28px;
+}
