@@ -1,5 +1,4 @@
 ﻿using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
-using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using Microsoft.OData.Client;
 
 namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain.ManagementOfChanges
@@ -11,6 +10,12 @@ namespace ManagementOfChangeODataService.Affra.Service.ManagementOfChange.Domain
         {
             get { return this.CreatedDateTime.ToLocalDateTime(); }
             set { this.CreatedDateTime = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public string ExtensionsString 
+        { 
+            get { return string.Join(',', this.Extensions?.Select(x => x.ReviewDateUI.ToLocalTime().ToString("d"))); }
         }
     }
 }
