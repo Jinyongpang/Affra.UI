@@ -3,7 +3,10 @@
 <Layout Class="layout-view">
     <Header>
         <div class="row">
-            <div class="col-12 float-right align-items-center text-right mt-1">
+            <div class="col-3">
+                <span>PE Monthly Report</span>
+            </div>
+            <div class="col-9 float-right align-items-center text-right mt-1">
                 <Space Size="@("middle")">
                     <SpaceItem>
                         <YearFilterComponent @ref=dateFilterComponent OnChanged=@(args => ReloadAsync(null))></YearFilterComponent>          
