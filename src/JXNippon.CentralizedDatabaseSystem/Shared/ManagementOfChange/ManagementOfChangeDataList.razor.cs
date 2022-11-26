@@ -53,12 +53,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private async Task LoadDataAsync(LoadDataArgs args)
         {
             isLoading = true;
-
             using var serviceScope = ServiceProvider.CreateScope();
             var query = this.GetManagementOfChangeQuery(serviceScope);
 
             Microsoft.OData.Client.QueryOperationResponse<ManagementOfChangeRecord>? response = await query
-                .AppendQueryWithFilterDescriptor(args.Filters, args.Skip, args.Top, args.OrderBy)
+                .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
                 .ToQueryOperationResponseAsync<ManagementOfChangeRecord>();
 
             count = (int)response.Count;
