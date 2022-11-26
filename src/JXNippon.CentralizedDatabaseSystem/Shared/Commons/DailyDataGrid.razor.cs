@@ -92,7 +92,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             await QueryFilter.InvokeAsync(query);
 
             var response = await query
-                .AppendQueryWithFilterDescriptor(args.Filters, args.Skip, args.Top, args.OrderBy)
+                .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
                 .ToQueryOperationResponseAsync<TItem>();
 
             Count = (int)response.Count; 

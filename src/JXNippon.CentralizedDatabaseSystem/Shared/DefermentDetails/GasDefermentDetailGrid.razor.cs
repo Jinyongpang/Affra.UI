@@ -116,7 +116,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
             }
             Microsoft.OData.Client.QueryOperationResponse<GasDefermentDetail>? response = await query
                 .OrderBy(x => x.StartDate)
-                .AppendQueryWithFilterDescriptor(args.Filters, args.Skip, args.Top, args.OrderBy)
+                .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
                 .ToQueryOperationResponseAsync<GasDefermentDetail>();
 
             Count = (int)response.Count;
