@@ -91,9 +91,9 @@ else
                     </div>
                 </EmptyTemplate>
                 <Columns>
-                    <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="ManagementOfChangeRecord" Property="TitleOfChange" Title="Title" Width="180px" />
+                    <RadzenDataGridColumn HeaderCssClass="center-grid-title" TItem="ManagementOfChangeRecord" Property="TitleOfChange" Title="Title" Width="180px" />
                     <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="ManagementOfChangeRecord" Property="ManagementOfChangeField" Title="Field" Width="80px" />
-                    <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="ManagementOfChangeRecord" Property="Identification.Duration" Title="Duration" Width="80px">
+                    <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="ManagementOfChangeRecord" Property="Identification.DurationOfChange" Title="Duration" Width="80px">
                         <Template>
                             @(context.Identification.DurationOfChange) days
                         </Template>
