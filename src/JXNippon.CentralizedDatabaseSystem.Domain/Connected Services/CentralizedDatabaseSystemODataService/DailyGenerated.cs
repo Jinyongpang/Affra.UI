@@ -195,9 +195,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.Date.ToLocalDateTime(); }
             set { this.Date = value.ToUniversalTime(); }
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections { public partial class DailyInowacInjection : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
@@ -221,9 +218,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.Date.ToLocalDateTime(); } 
             set { this.Date = value.ToUniversalTime(); } 
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems { public partial class DailyGlycolStock : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
@@ -234,9 +228,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         { get { return this.Date.ToLocalDateTime(); }
             set { this.Date = value.ToUniversalTime(); }
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems
@@ -256,9 +247,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.TurbineWashDate.ToLocalDateTime(); }
             set { this.TurbineWashDate = value.ToUniversalTime(); }
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads 
@@ -271,9 +259,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.Date.ToLocalDateTime(); }
             set { this.Date = value.ToUniversalTime(); } 
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads 
@@ -286,9 +271,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.Date.ToLocalDateTime(); }
             set { this.Date = value.ToUniversalTime(); }
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines
@@ -343,9 +325,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.NextSampling.ToLocalDateTime(); }
             set { this.NextSampling = value.ToUniversalTime(); }
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems 
@@ -358,9 +337,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.Date.ToLocalDateTime(); }
             set { this.Date = value.ToUniversalTime(); }
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems 
@@ -373,9 +349,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.Date.ToLocalDateTime(); } 
             set { this.Date = value.ToUniversalTime(); }
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions { public partial class DailySK10Production : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
@@ -389,9 +362,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.Date.ToLocalDateTime(); } 
             set { this.Date = value.ToUniversalTime(); } 
         }
-
-        [IgnoreClientProperty]
-        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions { public partial class DailyFPSOHelangProduction : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }

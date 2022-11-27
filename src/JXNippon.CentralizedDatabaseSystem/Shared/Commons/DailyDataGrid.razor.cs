@@ -219,16 +219,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
                 args.Attributes.Add("style", "background-color: #FFFF99");
             }
 
-            IUniformanceValidation? uniformanceValidation = null;
-            try
+            if (args.Data is IUniformanceValidation uniformanceValidation)
             {
-                uniformanceValidation = args.Data.AsIUniformanceValidation();
-            }
-            catch{ }
-
-            if (uniformanceValidation != null)
-            {
-				var result = uniformanceValidation.UniformanceResultsUI
+				var result = uniformanceValidation.UniformanceResults
 					.Where(x => x.PropertyName == args.Column.Property)
 					.FirstOrDefault();
 

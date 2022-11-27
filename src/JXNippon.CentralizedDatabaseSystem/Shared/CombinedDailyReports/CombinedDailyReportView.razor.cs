@@ -4,6 +4,7 @@ using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSys
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
@@ -128,270 +129,66 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             uniformanceErrorResults = new List<UniformanceResult>();
             uniformanceNotInToleranceResults = new List<UniformanceResult>();
             //DailyHIPProduction
-            CalculateDailyHIPProductionUniformanceResult();
+            CalculateUniformanceResult(this.Data.DailyHIPProduction);
 
             //DailyCINalco
-            CalculateDailyCINalcoUniformanceResult();
+            CalculateUniformanceResult(this.Data.DailyCiNalco);
 
             //DailyWellHeadSeparationSystem
-            CalculateDailyWellHeadAndSeparationSystemUniformanceResult();
+            CalculateUniformanceResult(this.Data.DailyWellHeadAndSeparationSystem);
 
             //DailyWellStreamCooler
-            CalculateDailyWellStreamCoolerUniformanceResult();
+            CalculateUniformanceResult(this.Data.DailyWellStreamCoolers.ToArray());
 
             //DailyHIPWellHeadParameter
-            CalculateDailyHIPWellHeadParameterUniformanceResult();
+            CalculateUniformanceResult(this.Data.DailyHIPWellHeadParameters.ToArray());
 
             //DailyLWPWellHeadParameter
-            CalculateDailyLWPWellHeadParameterUniformanceResult();
+            CalculateUniformanceResult(this.Data.DailyLWPWellHeadParameters.ToArray());
 
             //DailyKawasaki
-            CalculateDailyKawasakiExportCompressorUniformanceResult();
+            CalculateUniformanceResult(this.Data.DailyKawasakiExportCompressors.ToArray());
 
             //DailyRollsRoyce
-            CalculateDailyRollsRoyceRB211EngineUniformanceResult();
+            CalculateUniformanceResult(this.Data.DailyRollsRoyceRB211Engines.ToArray());
 
             //DailyGlycolTrain
-            CalculateDailyGlycolTrainUniformanceResult();
+            CalculateUniformanceResult(this.Data.DailyGlycolTrains.ToArray());
 
-			//DailyGasexportLine
-			CalculateDailyGasCondensateExportSamplerAndExportLineUniformanceResult();
-		}
+            //DailyGasexportLine
+            CalculateUniformanceResult(this.Data.DailyGasCondensateExportSamplerAndExportLine);
+        }
 
-        private void CalculateDailyHIPProductionUniformanceResult()
+        private void CalculateUniformanceResult(params IUniformanceValidation[] uniformanceValidations)
         {
-            var errorList = this.Data.DailyHIPProduction.UniformanceResults
+            foreach (var uniformanceValidation in uniformanceValidations)
+            {
+                var errorList = uniformanceValidation.UniformanceResults
                 .Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
                 .ToList();
 
-            if (errorList.Count > 0)
-            {
-				this.uniformanceErrorResults.AddRange(errorList);
-			}
+                if (errorList.Count > 0)
+                {
+                    this.uniformanceErrorResults.AddRange(errorList);
+                }
 
-			var notInToleranceList = this.Data.DailyHIPProduction.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-				.ToList();
+                var notInToleranceList = uniformanceValidation.UniformanceResults
+                    .Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
+                    .ToList();
 
-			if (notInToleranceList.Count > 0)
-			{
-				this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-			}
-		}
-
-		private void CalculateDailyCINalcoUniformanceResult()
-		{
-			var errorList = this.Data.DailyCiNalco.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
-				.ToList();
-
-			if (errorList.Count > 0)
-			{
-				this.uniformanceErrorResults.AddRange(errorList);
-			}
-
-			var notInToleranceList = this.Data.DailyCiNalco.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-				.ToList();
-
-			if (notInToleranceList.Count > 0)
-			{
-				this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-			}
-		}
-
-		private void CalculateDailyWellHeadAndSeparationSystemUniformanceResult()
-		{
-			var errorList = this.Data.DailyWellHeadAndSeparationSystem.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
-				.ToList();
-
-			if (errorList.Count > 0)
-			{
-				this.uniformanceErrorResults.AddRange(errorList);
-			}
-
-			var notInToleranceList = this.Data.DailyWellHeadAndSeparationSystem.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-				.ToList();
-
-			if (notInToleranceList.Count > 0)
-			{
-				this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-			}
-		}
-
-		private void CalculateDailyGasCondensateExportSamplerAndExportLineUniformanceResult()
-		{
-			var errorList = this.Data.DailyGasCondensateExportSamplerAndExportLine.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
-				.ToList();
-
-			if (errorList.Count > 0)
-			{
-				this.uniformanceErrorResults.AddRange(errorList);
-			}
-
-			var notInToleranceList = this.Data.DailyGasCondensateExportSamplerAndExportLine.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-				.ToList();
-
-			if (notInToleranceList.Count > 0)
-			{
-				this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-			}
-		}
-
-		private void CalculateDailyWellStreamCoolerUniformanceResult()
-		{
-            foreach (var cooler in this.Data.DailyWellStreamCoolers)
-            {
-				var errorList = cooler.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
-				.ToList();
-
-				if (errorList.Count > 0)
-				{
-					this.uniformanceErrorResults.AddRange(errorList);
-				}
-
-				var notInToleranceList = cooler.UniformanceResults
-					.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-					.ToList();
-
-				if (notInToleranceList.Count > 0)
-				{
-					this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-				}
-			}
-		}
-
-		private void CalculateDailyHIPWellHeadParameterUniformanceResult()
-		{
-			foreach (var wellHeadParameter in this.Data.DailyHIPWellHeadParameters)
-			{
-				var errorList = wellHeadParameter.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
-				.ToList();
-
-				if (errorList.Count > 0)
-				{
-					this.uniformanceErrorResults.AddRange(errorList);
-				}
-
-				var notInToleranceList = wellHeadParameter.UniformanceResults
-					.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-					.ToList();
-
-				if (notInToleranceList.Count > 0)
-				{
-					this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-				}
-			}
-		}
-
-		private void CalculateDailyLWPWellHeadParameterUniformanceResult()
-		{
-			foreach (var wellHeadParameter in this.Data.DailyLWPWellHeadParameters)
-			{
-				var errorList = wellHeadParameter.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
-				.ToList();
-
-				if (errorList.Count > 0)
-				{
-					this.uniformanceErrorResults.AddRange(errorList);
-				}
-
-				var notInToleranceList = wellHeadParameter.UniformanceResults
-					.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-					.ToList();
-
-				if (notInToleranceList.Count > 0)
-				{
-					this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-				}
-			}
-		}
-
-		private void CalculateDailyKawasakiExportCompressorUniformanceResult()
-		{
-			foreach (var dailyKawasakiExportCompressor in this.Data.DailyKawasakiExportCompressors)
-			{
-				var errorList = dailyKawasakiExportCompressor.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
-				.ToList();
-
-				if (errorList.Count > 0)
-				{
-					this.uniformanceErrorResults.AddRange(errorList);
-				}
-
-				var notInToleranceList = dailyKawasakiExportCompressor.UniformanceResults
-					.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-					.ToList();
-
-				if (notInToleranceList.Count > 0)
-				{
-					this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-				}
-			}
-		}
-
-		private void CalculateDailyRollsRoyceRB211EngineUniformanceResult()
-		{
-			foreach (var dailyRollsRoyceRB211Engine in this.Data.DailyRollsRoyceRB211Engines)
-			{
-				var errorList = dailyRollsRoyceRB211Engine.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
-				.ToList();
-
-				if (errorList.Count > 0)
-				{
-					this.uniformanceErrorResults.AddRange(errorList);
-				}
-
-				var notInToleranceList = dailyRollsRoyceRB211Engine.UniformanceResults
-					.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-					.ToList();
-
-				if (notInToleranceList.Count > 0)
-				{
-					this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-				}
-			}
-		}
-
-		private void CalculateDailyGlycolTrainUniformanceResult()
-		{
-			foreach (var dailyGlycolTrain in this.Data.DailyGlycolTrains)
-			{
-				var errorList = dailyGlycolTrain.UniformanceResults
-				.Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
-				.ToList();
-
-				if (errorList.Count > 0)
-				{
-					this.uniformanceErrorResults.AddRange(errorList);
-				}
-
-				var notInToleranceList = dailyGlycolTrain.UniformanceResults
-					.Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
-					.ToList();
-
-				if (notInToleranceList.Count > 0)
-				{
-					this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
-				}
-			}
+                if (notInToleranceList.Count > 0)
+                {
+                    this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
+                }
+            }
 		}
 
 		private async Task<bool> ShowDialogAsync(int errorCount, int notInToleranceCount)
 		{
 			dynamic? response;
-
-			response = await DialogService.OpenAsync<CombinedDailyReportApprovalConfirmationDialog>("Approval",
-						   new Dictionary<string, object>() { ["UniformanceErrorCount"] = errorCount, ["UniformanceNotInToleranceCount"] = notInToleranceCount},
+            string confirmationText = $"This report have {errorCount} uniformance error and {notInToleranceCount} not within tolerance. Are you sure to approve?";
+            response = await DialogService.OpenAsync<GenericConfirmationDialog>("Approval",
+						   new Dictionary<string, object>() { ["ConfirmationText"] = confirmationText},
 						   new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
 
             return response == true;
