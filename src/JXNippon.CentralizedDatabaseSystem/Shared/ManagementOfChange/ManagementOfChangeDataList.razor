@@ -105,6 +105,11 @@ else
                         </Template>
                     </RadzenDataGridColumn>
                     <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="ManagementOfChangeRecord" Property="CreatedBy" Title="Creator" Width="200px" />
+                    <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="ManagementOfChangeRecord" Property="CreateDateTimeUI" Title="Created At" Width="100px">
+                        <Template>
+                            @string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", context.CreateDateTimeUI)
+                        </Template>
+                    </RadzenDataGridColumn>
                     <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="ManagementOfChangeRecord" Property="ManagementOfChangeStatus" Title="Status" Width="150px">
                        <Template>
                                 @this.GetStatusLabel(context)
