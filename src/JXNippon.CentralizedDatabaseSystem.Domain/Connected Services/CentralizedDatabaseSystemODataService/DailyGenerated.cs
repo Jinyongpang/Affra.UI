@@ -1,4 +1,5 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
+﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances;
+using JXNippon.CentralizedDatabaseSystem.Domain.Extensions;
 using JXNippon.CentralizedDatabaseSystem.Domain.Helpers;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using Microsoft.OData.Client;
@@ -186,7 +187,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections
 {
-    public partial class DailyCiNalco : IDaily, IExtras, IEntity
+    public partial class DailyCiNalco : IDaily, IExtras, IEntity, IUniformanceValidation
     {
         [IgnoreClientProperty]
         public DateTime DateUI
@@ -194,6 +195,9 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.Date.ToLocalDateTime(); }
             set { this.Date = value.ToUniversalTime(); }
         }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ChemicalInjections { public partial class DailyInowacInjection : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
@@ -209,12 +213,35 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CoolingMediumSystems { public partial class DailyCoolingMediumSystem : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics { public partial class DailyLogistic : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems { public partial class DailyGlycolPump : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems { public partial class DailyGlycolTrain : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems { public partial class DailyGlycolTrain : IDaily, IExtras, IEntity, IUniformanceValidation 
+    { 
+        [IgnoreClientProperty] 
+        public DateTime DateUI 
+        { 
+            get { return this.Date.ToLocalDateTime(); } 
+            set { this.Date = value.ToUniversalTime(); } 
+        }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems { public partial class DailyGlycolStock : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems { public partial class DailyKawasakiExportCompressor : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems { public partial class DailyKawasakiExportCompressor : IDaily, IExtras, IEntity, IUniformanceValidation
+    { 
+        [IgnoreClientProperty]
+        public DateTime DateUI 
+        { get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems
 {
-    public partial class DailyRollsRoyceRB211Engine : IDaily, IExtras, IEntity
+    public partial class DailyRollsRoyceRB211Engine : IDaily, IExtras, IEntity, IUniformanceValidation
     {
         [IgnoreClientProperty]
         public DateTime DateUI
@@ -229,13 +256,44 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.TurbineWashDate.ToLocalDateTime(); }
             set { this.TurbineWashDate = value.ToUniversalTime(); }
         }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads { public partial class DailyHIPWellHeadParameter : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads { public partial class DailyLWPWellHeadParameter : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads 
+{ 
+    public partial class DailyHIPWellHeadParameter : IDaily, IExtras, IEntity, IUniformanceValidation
+    { 
+        [IgnoreClientProperty] 
+        public DateTime DateUI 
+        { 
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); } 
+        }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
+    }
+}
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads 
+{ 
+    public partial class DailyLWPWellHeadParameter : IDaily, IExtras, IEntity, IUniformanceValidation
+    { 
+        [IgnoreClientProperty]
+        public DateTime DateUI 
+        { 
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines
 {
-    public partial class DailyGasCondensateExportSamplerAndExportLine : IDaily, IExtras, IEntity
+    public partial class DailyGasCondensateExportSamplerAndExportLine : IDaily, IExtras, IEntity, IUniformanceValidation
     {
         [IgnoreClientProperty]
         public DateTime DateUI
@@ -285,12 +343,57 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             get { return this.NextSampling.ToLocalDateTime(); }
             set { this.NextSampling = value.ToUniversalTime(); }
         }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
     }
 }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems { public partial class DailyWellHeadAndSeparationSystem : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems { public partial class DailyWellStreamCooler : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems 
+{ 
+    public partial class DailyWellHeadAndSeparationSystem : IDaily, IExtras, IEntity, IUniformanceValidation
+    { 
+        [IgnoreClientProperty] 
+        public DateTime DateUI 
+        { 
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
+    }
+}
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems 
+{ 
+    public partial class DailyWellStreamCooler : IDaily, IExtras, IEntity, IUniformanceValidation
+    { 
+        [IgnoreClientProperty] 
+        public DateTime DateUI 
+        { 
+            get { return this.Date.ToLocalDateTime(); } 
+            set { this.Date = value.ToUniversalTime(); }
+        }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions { public partial class DailySK10Production : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
-namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions { public partial class DailyHIPProduction : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions 
+{ 
+    public partial class DailyHIPProduction : IDaily, IExtras, IEntity, IUniformanceValidation
+    { 
+        [IgnoreClientProperty] 
+        public DateTime DateUI 
+        {
+            get { return this.Date.ToLocalDateTime(); } 
+            set { this.Date = value.ToUniversalTime(); } 
+        }
+
+        [IgnoreClientProperty]
+        public ICollection<UniformanceResult> UniformanceResultsUI { get { return this.UniformanceResults; } }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.DailyProductions { public partial class DailyFPSOHelangProduction : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses { public partial class DailyMajorEquipmentStatus : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.MajorEquipmentStatuses { public partial class DailyDiesel : IDaily, IExtras, IEntity { [IgnoreClientProperty] public DateTime DateUI { get { return this.Date.ToLocalDateTime(); } set { this.Date = value.ToUniversalTime(); } } } }

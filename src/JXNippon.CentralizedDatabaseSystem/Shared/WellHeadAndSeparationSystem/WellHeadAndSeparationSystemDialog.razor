@@ -65,8 +65,8 @@
                     <RadzenLabel class="dialogTextSize" Text="S-0400 ΔP (bar)" />
                 </div>
                 <div class="col-8">
-                    <RadzenAutoComplete Name="S0400" class="w-100" @bind-Value="@Item.S0400" Disabled=@isViewing FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
-                        Placeholder="Enter S-0400 ΔP..." TextProperty="S0400"></RadzenAutoComplete>
+                <RadzenNumeric Name="S0400" class="w-100" @bind-Value="@Item.S0400" Disabled=@isViewing
+                               Placeholder="Enter S-0400 ΔP ..." TextProperty="S0400"></RadzenNumeric>
                 </div>
             </div>
             <div class="row py-2">

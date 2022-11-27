@@ -1,5 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.ContentUpdates;
 using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
@@ -217,6 +218,27 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             {
                 args.Attributes.Add("style", "background-color: #FFFF99");
             }
+
+            IUniformanceValidation? uniformanceValidation = null;
+            try
+            {
+                uniformanceValidation = args.Data.AsIUniformanceValidation();
+            }
+            catch{ }
+
+            if (uniformanceValidation != null)
+            {
+				var result = uniformanceValidation.UniformanceResultsUI
+					.Where(x => x.PropertyName == args.Column.Property)
+					.FirstOrDefault();
+
+				if (result is not null
+					&& (result.ValidationResult == UniformanceResultStatus.NotInTolerance
+						|| result.ValidationResult == UniformanceResultStatus.UniformanceError))
+				{
+					args.Attributes.Add("style", "background-color: #FFA500");
+				}
+			}
         }
 
         public object GetPropValue(object src, string propName)
