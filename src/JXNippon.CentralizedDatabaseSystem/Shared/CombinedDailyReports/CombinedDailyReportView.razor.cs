@@ -1,12 +1,16 @@
 ﻿using Affra.Core.Domain.Services;
+using AntDesign;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
+using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.DataSources;
+using JXNippon.CentralizedDatabaseSystem.Domain.Interfaces;
 using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using JXNippon.CentralizedDatabaseSystem.Shared.CommunicationSystem;
+using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Shared.CoolingMediumSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.GlycolRegenerationSystem;
 using JXNippon.CentralizedDatabaseSystem.Shared.HealthSafetyAndEnvironment;
@@ -62,6 +66,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         [Inject] private IJSRuntime JSRuntime { get; set; }
 
+        private List<UniformanceResult> uniformanceNotInToleranceResults { get; set; }
+        private List<UniformanceResult> uniformanceErrorResults { get; set; }
         private CommonFilter CommonFilter { get; set; }
         private FPSOHelangSummaryDataGrid fpsoHelangSummaryDataGrid;
         private HIPAndLWPSummaryDataGrid hipAndLWPSummaryDataGrid;
@@ -118,8 +124,79 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<CombinedDailyReport, ICentralizedDatabaseSystemUnitOfWork>>();
         }
 
-        private async Task ApproveAsync()
+        private void CalculateUniformanceValidationResult()
         {
+            uniformanceErrorResults = new List<UniformanceResult>();
+            uniformanceNotInToleranceResults = new List<UniformanceResult>();
+            //DailyHIPProduction
+            CalculateUniformanceResult(this.Data.DailyHIPProduction);
+
+            //DailyCINalco
+            CalculateUniformanceResult(this.Data.DailyCiNalco);
+
+            //DailyWellHeadSeparationSystem
+            CalculateUniformanceResult(this.Data.DailyWellHeadAndSeparationSystem);
+
+            //DailyWellStreamCooler
+            CalculateUniformanceResult(this.Data.DailyWellStreamCoolers.ToArray());
+
+            //DailyHIPWellHeadParameter
+            CalculateUniformanceResult(this.Data.DailyHIPWellHeadParameters.ToArray());
+
+            //DailyLWPWellHeadParameter
+            CalculateUniformanceResult(this.Data.DailyLWPWellHeadParameters.ToArray());
+
+            //DailyKawasaki
+            CalculateUniformanceResult(this.Data.DailyKawasakiExportCompressors.ToArray());
+
+            //DailyRollsRoyce
+            CalculateUniformanceResult(this.Data.DailyRollsRoyceRB211Engines.ToArray());
+
+            //DailyGlycolTrain
+            CalculateUniformanceResult(this.Data.DailyGlycolTrains.ToArray());
+
+            //DailyGasexportLine
+            CalculateUniformanceResult(this.Data.DailyGasCondensateExportSamplerAndExportLine);
+        }
+
+        private void CalculateUniformanceResult(params IUniformanceValidation[] uniformanceValidations)
+        {
+            foreach (var uniformanceValidation in uniformanceValidations)
+            {
+                var errorList = uniformanceValidation.UniformanceResults
+                .Where(x => x.ValidationResult == UniformanceResultStatus.UniformanceError)
+                .ToList();
+
+                if (errorList.Count > 0)
+                {
+                    this.uniformanceErrorResults.AddRange(errorList);
+                }
+
+                var notInToleranceList = uniformanceValidation.UniformanceResults
+                    .Where(x => x.ValidationResult == UniformanceResultStatus.NotInTolerance)
+                    .ToList();
+
+                if (notInToleranceList.Count > 0)
+                {
+                    this.uniformanceNotInToleranceResults.AddRange(notInToleranceList);
+                }
+            }
+		}
+
+		private async Task<bool> ShowDialogAsync(int errorCount, int notInToleranceCount)
+		{
+			dynamic? response;
+            string confirmationText = $"This report have {errorCount} uniformance error and {notInToleranceCount} not within tolerance. Are you sure to approve?";
+            response = await DialogService.OpenAsync<GenericConfirmationDialog>("Approval",
+						   new Dictionary<string, object>() { ["ConfirmationText"] = confirmationText},
+						   new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+
+            return response == true;
+		}
+
+		private async Task ApproveAsync()
+        {
+            bool isProceed = true;
             try
             {
                 if (this.Data.Status == CombinedDailyReportStatus.Approved)
@@ -128,24 +205,35 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 }
                 else if (CanApprove())
                 {
-                    using var scope = ServiceProvider.CreateScope();
-                    var service = GetGenericService(scope);
-                    var referenceId = await this.ReportService.GenerateCombinedDailyReportAsync(Data);
-                    Data.Status = CombinedDailyReportStatus.Approved;
-                    Data.Revision++;
-                    Data.User = this.GlobalDataSource.User.Email;
-                    Data.LastApproval = new()
+                    CalculateUniformanceValidationResult();
+
+                    if (uniformanceNotInToleranceResults.Count > 0
+                        || uniformanceErrorResults.Count > 0)
                     {
-                        ApprovedDateTime = DateTime.UtcNow,
-                        ReportReferenceId = referenceId,
-                        Revision = Data.Revision,
-                        ApprovedBy = this.GlobalDataSource.User.Name,
-                        FileName = $"COMBINED DAILY REPORT {Data.DateUI:yyyyMMdd} Rev{Data.Revision}.xlsx",
-                    };
-                    Data.Approvals.Add(Data.LastApproval);
-                    await service.UpdateAsync(Data, Data.Id);
-                    AffraNotificationService.NotifySuccess("Report approved.");
-                    DialogService.Close();
+                        isProceed = await ShowDialogAsync(uniformanceErrorResults.Count, uniformanceNotInToleranceResults.Count);
+                    }
+
+                    if (isProceed)
+                    {
+						using var scope = ServiceProvider.CreateScope();
+						var service = GetGenericService(scope);
+						var referenceId = await this.ReportService.GenerateCombinedDailyReportAsync(Data);
+						Data.Status = CombinedDailyReportStatus.Approved;
+						Data.Revision++;
+						Data.User = this.GlobalDataSource.User.Email;
+						Data.LastApproval = new()
+						{
+							ApprovedDateTime = DateTime.UtcNow,
+							ReportReferenceId = referenceId,
+							Revision = Data.Revision,
+							ApprovedBy = this.GlobalDataSource.User.Name,
+							FileName = $"COMBINED DAILY REPORT {Data.DateUI:yyyyMMdd} Rev{Data.Revision}.xlsx",
+						};
+						Data.Approvals.Add(Data.LastApproval);
+						await service.UpdateAsync(Data, Data.Id);
+						AffraNotificationService.NotifySuccess("Report approved.");
+						DialogService.Close();
+					}
                 }
                 else
                 {

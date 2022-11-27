@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 21/11/2022 10:06:16 PM
+// Generation date: 27/11/2022 1:09:26 AM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -3350,6 +3350,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
+        /// <summary>
         /// There are no comments for Property CombinedDailyReport in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -4327,7 +4348,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// There are no comments for Property S0400 in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public string S0400
+        public global::System.Nullable<decimal> S0400
         {
             get
             {
@@ -4341,8 +4362,8 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private string _S0400;
-        partial void OnS0400Changing(string value);
+        private global::System.Nullable<decimal> _S0400;
+        partial void OnS0400Changing(global::System.Nullable<decimal> value);
         partial void OnS0400Changed();
         /// <summary>
         /// There are no comments for Property xmin in the schema.
@@ -4365,6 +4386,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
         /// <summary>
         /// There are no comments for Property CombinedDailyReport in the schema.
         /// </summary>
@@ -4605,6 +4647,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
         /// <summary>
         /// There are no comments for Property WellStreamCooler in the schema.
         /// </summary>
@@ -5393,6 +5456,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnValidationResultsChanging(string value);
         partial void OnValidationResultsChanged();
         /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
+        /// <summary>
         /// There are no comments for Property CombinedDailyReport in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -5937,6 +6021,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
         /// <summary>
         /// There are no comments for Property CombinedDailyReport in the schema.
         /// </summary>
@@ -6581,6 +6686,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
         /// <summary>
         /// There are no comments for Property CombinedDailyReport in the schema.
         /// </summary>
@@ -7663,6 +7789,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
         /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
+        /// <summary>
         /// There are no comments for Property CombinedDailyReport in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -8350,6 +8497,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
         /// <summary>
         /// There are no comments for Property CombinedDailyReport in the schema.
         /// </summary>
@@ -9424,6 +9592,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
         /// <summary>
         /// There are no comments for Property CombinedDailyReport in the schema.
         /// </summary>
@@ -14221,6 +14410,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property UniformanceResults in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> UniformanceResults
+        {
+            get
+            {
+                return this._UniformanceResults;
+            }
+            set
+            {
+                this.OnUniformanceResultsChanging(value);
+                this._UniformanceResults = value;
+                this.OnUniformanceResultsChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> _UniformanceResults = new global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult>();
+        partial void OnUniformanceResultsChanging(global::System.Collections.ObjectModel.Collection<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult> value);
+        partial void OnUniformanceResultsChanged();
         /// <summary>
         /// There are no comments for Property CombinedDailyReport in the schema.
         /// </summary>
@@ -61602,6 +61812,121 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnRevisionChanged();
     }
 }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances
+{
+    /// <summary>
+    /// There are no comments for UniformanceResult in the schema.
+    /// </summary>
+    public partial class UniformanceResult
+    {
+        /// <summary>
+        /// Create a new UniformanceResult object.
+        /// </summary>
+        /// <param name="validationResult">Initial value of ValidationResult.</param>
+        /// <param name="lastQueryDateTime">Initial value of LastQueryDateTime.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static UniformanceResult CreateUniformanceResult(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResultStatus validationResult, global::System.DateTimeOffset lastQueryDateTime)
+        {
+            UniformanceResult uniformanceResult = new UniformanceResult();
+            uniformanceResult.ValidationResult = validationResult;
+            uniformanceResult.LastQueryDateTime = lastQueryDateTime;
+            return uniformanceResult;
+        }
+        /// <summary>
+        /// There are no comments for Property PropertyName in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string PropertyName
+        {
+            get
+            {
+                return this._PropertyName;
+            }
+            set
+            {
+                this.OnPropertyNameChanging(value);
+                this._PropertyName = value;
+                this.OnPropertyNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _PropertyName;
+        partial void OnPropertyNameChanging(string value);
+        partial void OnPropertyNameChanged();
+        /// <summary>
+        /// There are no comments for Property UniformanceValue in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> UniformanceValue
+        {
+            get
+            {
+                return this._UniformanceValue;
+            }
+            set
+            {
+                this.OnUniformanceValueChanging(value);
+                this._UniformanceValue = value;
+                this.OnUniformanceValueChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _UniformanceValue;
+        partial void OnUniformanceValueChanging(global::System.Nullable<decimal> value);
+        partial void OnUniformanceValueChanged();
+        /// <summary>
+        /// There are no comments for Property ValidationResult in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResultStatus ValidationResult
+        {
+            get
+            {
+                return this._ValidationResult;
+            }
+            set
+            {
+                this.OnValidationResultChanging(value);
+                this._ValidationResult = value;
+                this.OnValidationResultChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResultStatus _ValidationResult;
+        partial void OnValidationResultChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResultStatus value);
+        partial void OnValidationResultChanged();
+        /// <summary>
+        /// There are no comments for Property LastQueryDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset LastQueryDateTime
+        {
+            get
+            {
+                return this._LastQueryDateTime;
+            }
+            set
+            {
+                this.OnLastQueryDateTimeChanging(value);
+                this._LastQueryDateTime = value;
+                this.OnLastQueryDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _LastQueryDateTime;
+        partial void OnLastQueryDateTimeChanging(global::System.DateTimeOffset value);
+        partial void OnLastQueryDateTimeChanged();
+    }
+    /// <summary>
+    /// There are no comments for UniformanceResultStatus in the schema.
+    /// </summary>
+    public enum UniformanceResultStatus
+    {
+        UniformanceError = 0,
+        NotInTolerance = 1,
+        WithinTolerance = 2
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity
 {
     /// <summary>
@@ -61766,6 +62091,11 @@ namespace CentralizedDatabaseSystemODataService.Default
                 return resolvedType;
             }
             resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -61951,6 +62281,10 @@ namespace CentralizedDatabaseSystemODataService.Default
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.OIMSummaries.", clientType.Name);
+            }
+            if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.", clientType.Name);
             }
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments", global::System.StringComparison.Ordinal))
             {
@@ -65094,6 +65428,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""OilInWaterReading"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""OilInWaterReadingRemark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
       </EntityType>
       <EntityType Name=""DailyFPSOHelangProduction"">
@@ -65142,8 +65477,9 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""TestSeparatorV2000PV"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""SayBoltColour"" Type=""Edm.String"" />
         <Property Name=""SandFilterS0400Status"" Type=""Edm.String"" />
-        <Property Name=""S0400"" Type=""Edm.String"" />
+        <Property Name=""S0400"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
       </EntityType>
       <EntityType Name=""DailyWellStreamCooler"">
@@ -65156,6 +65492,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""WellStreamCoolerName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""WellStreamCoolerTemparature"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""WellStreamCooler"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeadAndSeparationSystems.WellStreamCooler"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
       </EntityType>
@@ -65195,6 +65532,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""IsValidatedByUser"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity.ModelValidationStatus"" Nullable=""false"" />
         <Property Name=""UserValidationDateTime"" Type=""Edm.DateTimeOffset"" />
         <Property Name=""ValidationResults"" Type=""Edm.String"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
       </EntityType>
     </Schema>
@@ -65222,6 +65560,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""TCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""CIPumpStatus"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
         <NavigationProperty Name=""HIPWellHead"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.HIPWellHead"" />
       </EntityType>
@@ -65255,6 +65594,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""CI"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TCP"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
         <NavigationProperty Name=""LWPWellHead"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.WellHeads.LWPWellHead"" />
       </EntityType>
@@ -65306,6 +65646,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""DEJournalBrgTE808"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""Remark"" Type=""Edm.String"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
         <NavigationProperty Name=""KawasakiExportCompressor"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.KawasakiExportCompressor"" />
       </EntityType>
@@ -65341,6 +65682,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""TurbineWashDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""TurbineWashRunnningHours"" Type=""Edm.Int32"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
         <NavigationProperty Name=""RollsRoyceRB211Engine"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.RollsRoyceGasEngineAndKawasakiCompressionSystems.RollsRoyceRB211Engine"" />
       </EntityType>
@@ -65394,6 +65736,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""FlowRate"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""PH"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
         <NavigationProperty Name=""GlycolTrain"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.GlycolRegenerationSystems.GlycolTrain"" />
       </EntityType>
@@ -65627,6 +65970,7 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""ToteTank"" Type=""Edm.Int32"" />
         <Property Name=""Drum"" Type=""Edm.Int32"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""UniformanceResults"" Type=""Collection(Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResult)"" />
         <NavigationProperty Name=""CombinedDailyReport"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports.CombinedDailyReport"" />
       </EntityType>
       <EntityType Name=""DailyInowacInjection"">
@@ -67935,6 +68279,19 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""FileName"" Type=""Edm.String"" />
         <Property Name=""Revision"" Type=""Edm.Int32"" Nullable=""false"" />
       </ComplexType>
+    </Schema>
+    <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <ComplexType Name=""UniformanceResult"">
+        <Property Name=""PropertyName"" Type=""Edm.String"" />
+        <Property Name=""UniformanceValue"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ValidationResult"" Type=""Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResultStatus"" Nullable=""false"" />
+        <Property Name=""LastQueryDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+      </ComplexType>
+      <EnumType Name=""UniformanceResultStatus"">
+        <Member Name=""UniformanceError"" Value=""0"" />
+        <Member Name=""NotInTolerance"" Value=""1"" />
+        <Member Name=""WithinTolerance"" Value=""2"" />
+      </EnumType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EnumType Name=""ModelValidationStatus"">
