@@ -1,0 +1,90 @@
+﻿@using JXNippon.CentralizedDatabaseSystem.Models
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport
+
+<RadzenTemplateForm Data="@Item" Submit="@( async (AvailabilityAndReliability args) => { await SubmitAsync(args); })">
+    <div class="row">
+        <div class="col">
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Equipment Type" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="EquipmentType" class="w-100" Placeholder="Enter Equipment Type..." @bind-Value="@Item.EquipmentType" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="EquipmentType" Text="Equipment type is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Equipment ID" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="EquipmentID" class="w-100" Placeholder="Enter Equipment ID..." @bind-Value="@Item.EquipmentID" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="EquipmentID" Text="Equipment ID is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Equipment Description" />
+                </div>
+                <div class="col-8">
+                    <RadzenTextBox Name="EquipmentDescription" class="w-100" Placeholder="Enter Equipment Description..." @bind-Value="@Item.EquipmentDescription" Disabled=@isViewing></RadzenTextBox>
+                    <RadzenRequiredValidator Component="EquipmentDescription" Text="Equipment description is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Uptime" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="Uptime" class="w-100" @bind-Value="@Item.Uptime" Disabled=@isViewing
+                                   Placeholder="Enter Uptime ..."></RadzenNumeric>
+                    <RadzenRequiredValidator Component="Uptime" Text="Uptime is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Downtime" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="Downtime" class="w-100" @bind-Value="@Item.Downtime" Disabled=@isViewing
+                                   Placeholder="Enter Downtime ..."></RadzenNumeric>
+                    <RadzenRequiredValidator Component="Downtime" Text="Downtime is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Standby" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="Standby" class="w-100" @bind-Value="@Item.Standby" Disabled=@isViewing
+                                   Placeholder="Enter Standby ..."></RadzenNumeric>
+                    <RadzenRequiredValidator Component="Standby" Text="Standby is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Maintenance" />
+                </div>
+                <div class="col-8">
+                    <RadzenNumeric Name="Maintenance" class="w-100" @bind-Value="@Item.Maintenance" Disabled=@isViewing
+                                   Placeholder="Enter Maintenance ..."></RadzenNumeric>
+                    <RadzenRequiredValidator Component="Maintenance" Text="Maintenance is required" Popup=false />
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-4 align-items-center d-flex">
+                    <RadzenLabel class="dialogTextSize" Text="Date" />
+                </div>
+                <div class="col-8">
+                    <DatePicker @bind-Value="Item.DateUI" Format="yyyy/MM/dd" Disabled="@isViewing" />
+                </div>
+            </div>
+            <div class="row justify-content-center py-4" hidden=@isViewing>
+                <div class="col-md-12 d-flex align-items-end justify-content-center">
+                    <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" Disabled=@isViewing/>
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Icon="cancel" style="display: inline-block; margin-left: 10px;" Text="Cancel" Click="@Cancel"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</RadzenTemplateForm>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 21/11/2022 10:06:16 PM
+// Generation date: 27/11/2022 12:46:47
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -61473,6 +61473,297 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport
+{
+    /// <summary>
+    /// There are no comments for AvailabilityAndReliabilitySingle in the schema.
+    /// </summary>
+    public partial class AvailabilityAndReliabilitySingle : global::Microsoft.OData.Client.DataServiceQuerySingle<AvailabilityAndReliability>
+    {
+        /// <summary>
+        /// Initialize a new AvailabilityAndReliabilitySingle object.
+        /// </summary>
+        public AvailabilityAndReliabilitySingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new AvailabilityAndReliabilitySingle object.
+        /// </summary>
+        public AvailabilityAndReliabilitySingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new AvailabilityAndReliabilitySingle object.
+        /// </summary>
+        public AvailabilityAndReliabilitySingle(global::Microsoft.OData.Client.DataServiceQuerySingle<AvailabilityAndReliability> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for AvailabilityAndReliability in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class AvailabilityAndReliability : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new AvailabilityAndReliability object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static AvailabilityAndReliability CreateAvailabilityAndReliability(long ID, global::System.DateTimeOffset date, long xmin)
+        {
+            AvailabilityAndReliability availabilityAndReliability = new AvailabilityAndReliability();
+            availabilityAndReliability.Id = ID;
+            availabilityAndReliability.Date = date;
+            availabilityAndReliability.xmin = xmin;
+            return availabilityAndReliability;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property EquipmentType in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string EquipmentType
+        {
+            get
+            {
+                return this._EquipmentType;
+            }
+            set
+            {
+                this.OnEquipmentTypeChanging(value);
+                this._EquipmentType = value;
+                this.OnEquipmentTypeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _EquipmentType;
+        partial void OnEquipmentTypeChanging(string value);
+        partial void OnEquipmentTypeChanged();
+        /// <summary>
+        /// There are no comments for Property EquipmentID in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string EquipmentID
+        {
+            get
+            {
+                return this._EquipmentID;
+            }
+            set
+            {
+                this.OnEquipmentIDChanging(value);
+                this._EquipmentID = value;
+                this.OnEquipmentIDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _EquipmentID;
+        partial void OnEquipmentIDChanging(string value);
+        partial void OnEquipmentIDChanged();
+        /// <summary>
+        /// There are no comments for Property EquipmentDescription in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string EquipmentDescription
+        {
+            get
+            {
+                return this._EquipmentDescription;
+            }
+            set
+            {
+                this.OnEquipmentDescriptionChanging(value);
+                this._EquipmentDescription = value;
+                this.OnEquipmentDescriptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _EquipmentDescription;
+        partial void OnEquipmentDescriptionChanging(string value);
+        partial void OnEquipmentDescriptionChanged();
+        /// <summary>
+        /// There are no comments for Property Uptime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> Uptime
+        {
+            get
+            {
+                return this._Uptime;
+            }
+            set
+            {
+                this.OnUptimeChanging(value);
+                this._Uptime = value;
+                this.OnUptimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _Uptime;
+        partial void OnUptimeChanging(global::System.Nullable<decimal> value);
+        partial void OnUptimeChanged();
+        /// <summary>
+        /// There are no comments for Property Downtime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> Downtime
+        {
+            get
+            {
+                return this._Downtime;
+            }
+            set
+            {
+                this.OnDowntimeChanging(value);
+                this._Downtime = value;
+                this.OnDowntimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _Downtime;
+        partial void OnDowntimeChanging(global::System.Nullable<decimal> value);
+        partial void OnDowntimeChanged();
+        /// <summary>
+        /// There are no comments for Property Standby in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> Standby
+        {
+            get
+            {
+                return this._Standby;
+            }
+            set
+            {
+                this.OnStandbyChanging(value);
+                this._Standby = value;
+                this.OnStandbyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _Standby;
+        partial void OnStandbyChanging(global::System.Nullable<decimal> value);
+        partial void OnStandbyChanged();
+        /// <summary>
+        /// There are no comments for Property Maintenance in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> Maintenance
+        {
+            get
+            {
+                return this._Maintenance;
+            }
+            set
+            {
+                this.OnMaintenanceChanging(value);
+                this._Maintenance = value;
+                this.OnMaintenanceChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _Maintenance;
+        partial void OnMaintenanceChanging(global::System.Nullable<decimal> value);
+        partial void OnMaintenanceChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+    }
+    /// <summary>
+    /// Class containing all extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+    }
+}
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Approvals
 {
     /// <summary>
@@ -61661,6 +61952,11 @@ namespace CentralizedDatabaseSystemODataService.Default
                 return resolvedType;
             }
             resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport", "CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -61867,6 +62163,10 @@ namespace CentralizedDatabaseSystemODataService.Default
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.GasCondensateExportSamplerAndExportLines.", clientType.Name);
+            }
+            if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.", clientType.Name);
             }
             if (clientType.Namespace.Equals("CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions", global::System.StringComparison.Ordinal))
             {
@@ -63991,6 +64291,23 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport> _BerylGasTemplateReport;
         /// <summary>
+        /// There are no comments for AvailabilityAndReliability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability> AvailabilityAndReliability
+        {
+            get
+            {
+                if ((this._AvailabilityAndReliability == null))
+                {
+                    this._AvailabilityAndReliability = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability>("AvailabilityAndReliability");
+                }
+                return this._AvailabilityAndReliability;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability> _AvailabilityAndReliability;
+        /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -64917,6 +65234,14 @@ namespace CentralizedDatabaseSystemODataService.Default
         public void AddToBerylGasTemplateReport(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport berylGasTemplateReport)
         {
             base.AddObject("BerylGasTemplateReport", berylGasTemplateReport);
+        }
+        /// <summary>
+        /// There are no comments for AvailabilityAndReliability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToAvailabilityAndReliability(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability availabilityAndReliability)
+        {
+            base.AddObject("AvailabilityAndReliability", availabilityAndReliability);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -67927,6 +68252,23 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Member Name=""Approved"" Value=""2"" />
       </EnumType>
     </Schema>
+    <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""AvailabilityAndReliability"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""EquipmentType"" Type=""Edm.String"" />
+        <Property Name=""EquipmentID"" Type=""Edm.String"" />
+        <Property Name=""EquipmentDescription"" Type=""Edm.String"" />
+        <Property Name=""Uptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""Downtime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""Standby"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""Maintenance"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+      </EntityType>
+    </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.Approvals"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <ComplexType Name=""Approval"">
         <Property Name=""ReportReferenceId"" Type=""Edm.Guid"" Nullable=""false"" />
@@ -68971,6 +69313,13 @@ namespace CentralizedDatabaseSystemODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""BerylGasTemplateReport"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""AvailabilityAndReliability"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability"">
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

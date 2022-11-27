@@ -9,5 +9,6 @@
         Deferment,
         PEReport,
         Administration,
+        AvailabilityAndReliability,
     }
 }

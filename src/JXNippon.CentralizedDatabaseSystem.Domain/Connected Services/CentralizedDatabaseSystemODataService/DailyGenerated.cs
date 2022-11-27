@@ -431,3 +431,16 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         }
     }
 }
+
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport
+{
+    public partial class AvailabilityAndReliability : IEntity
+    {
+        [IgnoreClientProperty]
+        public DateTime DateUI
+        {
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+    }
+}

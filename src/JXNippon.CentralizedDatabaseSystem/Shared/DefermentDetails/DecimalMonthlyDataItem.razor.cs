@@ -1,5 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 
@@ -16,6 +17,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
         [Parameter] public string Year { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
+        [Inject] private IUserService UserService { get; set; }
         [Parameter] public EventCallback<decimal?> ValueChanged { get; set; }
         [Parameter] public EventCallback<string> OnDataUpdate { get; set; }
 
@@ -28,7 +30,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.DefermentDetails
 
         private async Task StartEdit()
         {
-            if (IsEditable)
+            if (IsEditable && await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Deferment), HasReadPermissoin = true, HasWritePermission = true }))
             {
                 isEditing = true;
                 this.StateHasChanged();
