@@ -2,20 +2,23 @@
 <Layout Class="layout-view">
     <Header>
         <div class="row">
-            <div class="col-12 float-right align-items-center text-right mt-1">
+            <div class="col-3">
+                <span>Operation Instruction</span>
+            </div>
+            <div class="col-9 float-right align-items-center text-right mt-1">
                 <Space Size="@("middle")">
                     <SpaceItem>
                         <Search Size="@("large")" Placeholder="Search..." Style="20vw;" OnChange=@(args => ReloadAsync(null)) @bind-Value=search ClassicSearchIcon />
-                    </SpaceItem>
-                    <AuthorizeView Policy="ManagementOfChange.ReadWrite">
-                        <SpaceItem>
+                    </SpaceItem>                   
+                    <SpaceItem>
+                        <AuthorizeView Policy="ManagementOfChange.ReadWrite">
                             <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick="@(() => ShowDialogAsync(new OperationInstructionRecord()))">
                                 <ChildContent>
                                     <Icon Type="plus-circle" Theme="outline" Class="anticon-big" /><span style="font-size: 18px; margin-left: 10px;">Add</span>
                                 </ChildContent>
                             </Button>
-                        </SpaceItem>
-                    </AuthorizeView>
+                        </AuthorizeView>
+                    </SpaceItem>
                 </Space>
             </div>
         </div>       

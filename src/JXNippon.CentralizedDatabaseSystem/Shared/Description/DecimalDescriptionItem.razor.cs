@@ -1,4 +1,5 @@
-﻿using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
+﻿using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances;
+using JXNippon.CentralizedDatabaseSystem.Shared.ResourceFiles;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 
@@ -24,5 +25,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public long ItemId { get; set; }
 
         [Parameter] public EventCallback<decimal?> ValueChanged { get; set; }
-    }
+        [Parameter] public ICollection<UniformanceResult> UniformanceResults { get; set; } = null;
+	}
 }

@@ -1,5 +1,6 @@
 ﻿using Affra.Core.Domain.Services;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
+using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
 using Microsoft.AspNetCore.Components;
 
@@ -15,6 +16,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
         [Parameter] public string DefaultStringValue { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
+        [Inject] private IUserService UserService { get; set; }
         [Parameter] public EventCallback<int?> IntegerChanged { get; set; }
         [Parameter] public EventCallback<int?> OnIntegerChanged { get; set; }
 
@@ -27,7 +29,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Description
 
         private async Task StartEdit()
         {
-            isEditing = true;
+            isEditing = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true });
             this.StateHasChanged();
         }
 

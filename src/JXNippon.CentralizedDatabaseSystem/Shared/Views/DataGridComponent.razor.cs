@@ -170,7 +170,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
             var actualType = Type.GetType(type);
             Queryable = service.Get();
             Queryable = Queryable
-                .AppendQueryWithFilterDescriptor(actualType, filterDescriptors: args?.Filters, orderBy: args?.OrderBy);
+                .AppendQuery(actualType, filterDescriptors: args?.Filters, sortDescriptors: args?.Sorts);
             
             if (start != null && end != null)
             {

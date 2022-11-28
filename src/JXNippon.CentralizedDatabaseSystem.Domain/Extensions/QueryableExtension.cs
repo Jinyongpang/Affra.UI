@@ -14,21 +14,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
                 || c.FilterOperator == FilterOperator.IsEmpty
                 || c.FilterOperator == FilterOperator.IsNotEmpty
                 || !(c.FilterValue == null || c.FilterValue as string == string.Empty);
-        public static IQueryable<T> AppendQueryWithFilterDescriptor<T>(this IQueryable<T> queryable, IEnumerable<FilterDescriptor> filterDescriptors = default, int? skip = null, int? top = null, string orderBy = default)
+
+        private static Func<SortDescriptor, bool> canOrder = (c) => !string.IsNullOrEmpty(c.Property);
+
+        public static IQueryable<T> AppendQuery<T>(this IQueryable<T> queryable, IEnumerable<FilterDescriptor> filterDescriptors = default, int? skip = null, int? top = null, IEnumerable<SortDescriptor> sortDescriptors = default)
         {
             Type type = typeof(T);
-            return AppendQueryWithFilterDescriptor(queryable, type, filterDescriptors, skip, top, orderBy) as IQueryable<T>;
+            return AppendQuery(queryable, type, filterDescriptors, skip, top, sortDescriptors) as IQueryable<T>;
         }
-        public static IQueryable AppendQueryWithFilterDescriptor(this IQueryable queryable, Type type, IEnumerable<FilterDescriptor> filterDescriptors = default, int? skip = null, int? top = null, string orderBy = default)
+        public static IQueryable AppendQuery(this IQueryable queryable, Type type, IEnumerable<FilterDescriptor> filterDescriptors = default, int? skip = null, int? top = null, IEnumerable<SortDescriptor> sortDescriptors = default)
         {
             if (filterDescriptors is not null)
             {
                 queryable = queryable.Where(filterDescriptors, type);
             }
 
-            if (!string.IsNullOrEmpty(orderBy))
+            if (sortDescriptors is not null)
             {
-                queryable = queryable.OrderBy(orderBy);
+                queryable = queryable.OrderBy(sortDescriptors);
             }
             if (skip != null)
             {
@@ -192,14 +195,15 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
         private static string GetColumnFilter(Type objectType, FilterDescriptor filter, bool second = false)
         {
             var property = filter.Property;
-            Type propertyType = objectType.GetProperty(property).PropertyType;
+            var properties = property.Split('.');
+
+            Type propertyType = objectType;
+            foreach (var prop in properties)
+            {
+                propertyType = propertyType.GetProperty(prop).PropertyType;
+            }
             Type type = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
             object filterValue = !second ? filter.FilterValue : filter.SecondFilterValue;
-
-            if (property.IndexOf(".") != -1)
-            {
-                property = $"({property})";
-            }
 
             var filterOperator = !second ? filter.FilterOperator : filter.SecondFilterOperator;
 
@@ -337,6 +341,27 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
         {
             return typeof(IEnumerable).IsAssignableFrom(type) || typeof(IEnumerable<>).IsAssignableFrom(type);
         }
+        public static string ToSortString(this IEnumerable<SortDescriptor> sortDescriptors)
+        {
+            return string.Join(",", sortDescriptors.Select(x => x.SortOrder == SortOrder.Ascending
+                ? $"{x.Property} asc"
+                : $"{x.Property} desc"));
+        }
+            public static IQueryable OrderBy(this IQueryable source, IEnumerable<SortDescriptor> filterDescriptors)
+        {
+            try
+            {
+                if (filterDescriptors.Where(canOrder).Any())
+                {
+                    return source.OrderBy(filterDescriptors.ToSortString());
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return source;
+        }
 
         /// <summary>
         /// Wheres the specified filters.
@@ -346,10 +371,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Domain.Extensions
         /// <returns>IQueryable&lt;T&gt;.</returns>
         public static IQueryable Where(this IQueryable source, IEnumerable<FilterDescriptor> filterDescriptors, Type type)
         {
-            if (filterDescriptors.Where(canFilter).Any())
+            try
             {
-                return source.Where(filterDescriptors.ToFilterString(type));
+                if (filterDescriptors.Where(canFilter).Any())
+                {
+                    return source.Where(filterDescriptors.ToFilterString(type));
+                }
             }
+            catch (Exception ex)
+            { 
+            }      
 
             return source;
         }

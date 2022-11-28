@@ -20,6 +20,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         private Menu menu;
         private string search;
         private string status;
+        private string cardListToggleString;
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private IServiceProvider ServiceProvider { get; set; }

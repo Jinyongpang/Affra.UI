@@ -2,37 +2,46 @@
 <Layout Class="layout-view">
     <Header>
         <div class="row">
-            <div class="col-12 float-right align-items-center text-right mt-1">
+            <div class="col-3">
+                <span>Management Of Change</span>
+            </div>
+            <div class="col-9 float-right align-items-center text-right mt-1">
                 <Space Size="@("middle")">
                     <SpaceItem>
                         <Search Size="@("large")" Placeholder="Search..." Style="20vw;" OnChange=@(args => ReloadAsync(null)) @bind-Value=search ClassicSearchIcon/>
                     </SpaceItem>
-                    <AuthorizeView Policy="ManagementOfChange.ReadWrite">
-                        <SpaceItem>
-                            <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick="@(() => ShowDialogAsync(new ManagementOfChangeRecord()))">
-                                <ChildContent>
-                                    <Icon Type="plus-circle" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Add</span>
-                                </ChildContent>
-                            </Button>
-                        </SpaceItem>
+                    <SpaceItem>
+                        <Segmented TValue="string" @bind-Value=@cardListToggleString>
+                            <SegmentedItem Value=@("Card") Icon="@IconType.Outline.Appstore" Class="cardlist-toggle" />
+                            <SegmentedItem Value=@("Grid") Icon="@IconType.Outline.Bars" Class="cardlist-toggle" />
+                        </Segmented>
+                    </SpaceItem>
+                    <SpaceItem>
+                    <AuthorizeView Policy="ManagementOfChange.ReadWrite">                       
+                        <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick="@(() => ShowDialogAsync(new ManagementOfChangeRecord()))">
+                            <ChildContent>
+                                <Icon Type="plus-circle" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Add</span>
+                            </ChildContent>
+                        </Button>
                     </AuthorizeView>
+                     </SpaceItem>
                 </Space>
             </div>
         </div>       
     </Header>
     <Layout Style="height: 100%;">
-        <Sider Width=250>
+        <Sider Width=250 Collapsible>
             <Menu DefaultSelectedKeys=@(new[] { "All" }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
                 <MenuItem Key="All"><span style="font-size: 16px; margin-left: 0px;">All</span></MenuItem>
                     @foreach (var mocStatus in Enum.GetValues(typeof(ManagementOfChangeStatus)).Cast<ManagementOfChangeStatus>().ToList())
                     {
-                    <MenuItem Key="@mocStatus.ToString()"><span style="font-size: 16px; margin-left: 0px;">@(stringLocalizer[mocStatus.ToString()])</span></MenuItem>
+                        <MenuItem Key="@mocStatus.ToString()"><span style="font-size: 16px; margin-left: 0px;">@(stringLocalizer[mocStatus.ToString()])</span></MenuItem>
                     }
             </Menu>
         </Sider>
         <Layout>
             <Content Style="overflow-y: auto; overflow-x:hidden; height:100%;">
-                <ManagementOfChangeDataList @ref=managementOfChangeDataList></ManagementOfChangeDataList>
+                <ManagementOfChangeDataList @ref=managementOfChangeDataList DisplayType="@this.cardListToggleString"></ManagementOfChangeDataList>
             </Content>
         </Layout>
     </Layout>

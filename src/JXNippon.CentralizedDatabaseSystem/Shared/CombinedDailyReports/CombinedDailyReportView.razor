@@ -246,14 +246,14 @@
 											<StringDescriptionItem Title="FuelGasRemark"@bind-Value=@this.Data.DailyHIPProduction.FuelGasRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction" IsRequired=false/>
 											<DecimalDescriptionItem Title="HPVent" @bind-Value=@this.Data.DailyHIPProduction.HPVent TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
 											<DecimalDescriptionItem Title="LPVent" @bind-Value=@this.Data.DailyHIPProduction.LPVent TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
-											<DecimalDescriptionItem Title="WaterContentInGas" @bind-Value=@this.Data.DailyHIPProduction.WaterContentInGas TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="WaterContentInGas" @bind-Value=@this.Data.DailyHIPProduction.WaterContentInGas TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction" UniformanceResults=@this.Data.DailyHIPProduction.UniformanceResults/>
 											<StringDescriptionItem Title="HPVentRemark" @bind-Value=@this.Data.DailyHIPProduction.HPVentRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"IsRequired=false/>
 											<StringDescriptionItem Title="LPVentRemark" @bind-Value=@this.Data.DailyHIPProduction.LPVentRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction" IsRequired=false/>
 											<StringDescriptionItem Title="WaterContentInGasRemark" @bind-Value=@this.Data.DailyHIPProduction.WaterContentInGasRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
-											<DecimalDescriptionItem Title="CondensateWaterCutMeterPercentage" @bind-Value=@this.Data.DailyHIPProduction.CondensateWaterCutMeterPercentage TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="CondensateWaterCutMeterPercentage" @bind-Value=@this.Data.DailyHIPProduction.CondensateWaterCutMeterPercentage TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction" UniformanceResults=@this.Data.DailyHIPProduction.UniformanceResults/>
 											<DecimalDescriptionItem Title="CondensateWaterCutMeterPPM" @bind-Value=@this.Data.DailyHIPProduction.CondensateWaterCutMeterPPM TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
 											<StringDescriptionItem Title="CondensateWaterCutMeterRemark" @bind-Value=@this.Data.DailyHIPProduction.CondensateWaterCutMeterRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction" IsRequired=false/>
-											<DecimalDescriptionItem Title="OilInWaterReading" @bind-Value=@this.Data.DailyHIPProduction.OilInWaterReading TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction"/>
+											<DecimalDescriptionItem Title="OilInWaterReading" @bind-Value=@this.Data.DailyHIPProduction.OilInWaterReading TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction" UniformanceResults=@this.Data.DailyHIPProduction.UniformanceResults />
 											<StringDescriptionItem Title="OilInWaterReadingRemark" @bind-Value=@this.Data.DailyHIPProduction.OilInWaterReadingRemark TItem="DailyHIPProduction" Item="@this.Data.DailyHIPProduction" IsRequired=false/>
 										</DescriptionView>
 									</ChildContent>
@@ -344,8 +344,8 @@
 								<Panel ShowArrow="false" Header="CI NALCO, EC-1310A" Key="1">
 									<ChildContent>
 										<DescriptionView>
-											<DecimalDescriptionItem Title="TodayLevel" @bind-Value=@this.Data.DailyCiNalco.TodayLevel TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
-											<DecimalDescriptionItem Title="YesterdayLevel" @bind-Value=@this.Data.DailyCiNalco.YesterdayLevel TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
+											<DecimalDescriptionItem Title="TodayLevel" @bind-Value=@this.Data.DailyCiNalco.TodayLevel TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco" UniformanceResults=@this.Data.DailyCiNalco.UniformanceResults/>
+											<DecimalDescriptionItem Title="YesterdayLevel" @bind-Value=@this.Data.DailyCiNalco.YesterdayLevel TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco" UniformanceResults=@this.Data.DailyCiNalco.UniformanceResults/>
 											<DecimalDescriptionItem Title="LevelDrop" @bind-Value=@this.Data.DailyCiNalco.LevelDrop TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
 											<DecimalDescriptionItem Title="ActualConsumption" @bind-Value=@this.Data.DailyCiNalco.ActualConsumption TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
 											<DecimalDescriptionItem Title="DailyTargetRate" @bind-Value=@this.Data.DailyCiNalco.DailyTargetRate TItem="DailyCiNalco" Item="@this.Data.DailyCiNalco"/>
@@ -431,13 +431,13 @@
 								<Panel ShowArrow="false" Header="WELLHEAD & SEPARATION SYSTEM" Key="1">
 									<ChildContent>
 										<DescriptionView>
-										<DecimalDescriptionItem Title="StationRecyclePV2015" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.StationRecyclePV2015 TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
+										<DecimalDescriptionItem Title="StationRecyclePV2015" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.StationRecyclePV2015 TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem" UniformanceResults=@this.Data.DailyWellHeadAndSeparationSystem.UniformanceResults/>
 										<StringDescriptionItem Title="StationRecyclePV2015Control" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.StationRecyclePV2015Control TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
-										<DecimalDescriptionItem Title="ProductionSeparatorV2010PV" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.ProductionSeparatorV2010PV TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
-										<DecimalDescriptionItem Title="TestSeparatorV2000PV" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.TestSeparatorV2000PV TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
+										<DecimalDescriptionItem Title="ProductionSeparatorV2010PV" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.ProductionSeparatorV2010PV TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem" UniformanceResults=@this.Data.DailyWellHeadAndSeparationSystem.UniformanceResults />
+										<DecimalDescriptionItem Title="TestSeparatorV2000PV" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.TestSeparatorV2000PV TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem" UniformanceResults=@this.Data.DailyWellHeadAndSeparationSystem.UniformanceResults/>
 										<StringDescriptionItem Title="SayBoltColour" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.SayBoltColour TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
 										<StringDescriptionItem Title="SandFilterS0400Status" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.SandFilterS0400Status TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
-										<StringDescriptionItem Title="S0400" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.S0400 TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem"/>
+										<DecimalDescriptionItem Title="S0400" @bind-Value=@this.Data.DailyWellHeadAndSeparationSystem.S0400 TItem="DailyWellHeadAndSeparationSystem" Item="@this.Data.DailyWellHeadAndSeparationSystem" UniformanceResults=@this.Data.DailyWellHeadAndSeparationSystem.UniformanceResults />
 									</DescriptionView>
 								</ChildContent>
 								</Panel>
@@ -557,8 +557,8 @@
 									<DateDescriptionItem Title="NextPiggingDateUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.NextPiggingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
 									<DateDescriptionItem Title="NextChangeOutUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.NextChangeOutDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
 									<DateDescriptionItem Title="NextSamplingUI" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.NextSamplingDateUI TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" />
-									<DecimalDescriptionItem Title="TrunkLinePressure" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.TrunkLinePressure TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
-									<DecimalDescriptionItem Title="PV2901SP" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.PV2901SP TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
+									<DecimalDescriptionItem Title="TrunkLinePressure" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.TrunkLinePressure TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" UniformanceResults=@this.Data.DailyGasCondensateExportSamplerAndExportLine.UniformanceResults/>
+									<DecimalDescriptionItem Title="PV2901SP" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.PV2901SP TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine" UniformanceResults=@this.Data.DailyGasCondensateExportSamplerAndExportLine.UniformanceResults/>
 									<td class="ant-descriptions-item-label col-sm-12 col-md-2"></td>
 									<td class="ant-descriptions-item-content col-sm-12 col-md-2" colspan="1"></td>
 									<StringDescriptionItem Title="GasSamplerId" @bind-Value=@this.Data.DailyGasCondensateExportSamplerAndExportLine.GasSamplerId TItem="DailyGasCondensateExportSamplerAndExportLine" Item="@this.Data.DailyGasCondensateExportSamplerAndExportLine"/>
