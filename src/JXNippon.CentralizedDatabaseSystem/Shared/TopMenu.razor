@@ -4,76 +4,75 @@
 @inject IGlobalDataSource GlobalDataSource
 
 <Menu @ref=menu Mode=MenuMode.Horizontal DefaultSelectedKeys="@(new string[] { "Home" })" Class="top-menu">
-    <img src="img/jxnipponhomelogo.png" style="padding: 10px; object-fit: scale-down;" />
-    <MenuItem Key="Home" RouterLink="#" RouterMatch="NavLinkMatch.Prefix">
-        <a href="#"><Icon Type="home" Theme="@GetTheme("Home")" Class="top-row-icon" /><span class="toprow-nav-title d-none d-lg-inline">Home</span></a>
-    </MenuItem>
-        <AuthorizeView Policy="Operation.Read">
-            <Authorized>
-                <SubMenu Key="Operation" Class="d-none d-md-inline-block">
-                    <TitleTemplate><div><Icon Type="global" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Operation</span></div></TitleTemplate>
-                    <ChildContent>
-                        <MenuItemGroup Title="Operation">
-                            <MenuItem RouterLink="operation/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="OperationDashboard"><a href="operation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-                            <MenuItem RouterLink="operation/combineddailyreport" RouterMatch="NavLinkMatch.Prefix" Key="OperationCombinedDailyReport"><a href="operation/combineddailyreport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Combined Daily Report</span></a></MenuItem>
-                            <MenuItem RouterLink="operation/combineddailyreportsection" RouterMatch="NavLinkMatch.Prefix" Key="OperationCombinedDailyReportSection"><a href="operation/combineddailyreportsection"><Icon Type="build" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Combined Daily Report Sections</span></a></MenuItem>
-                        </MenuItemGroup>
-                        <MenuItemGroup Title="Management Of Change">
-                            <MenuItem RouterLink="operation/managementofchange" RouterMatch="NavLinkMatch.Prefix" Key="OperationManagementOfChange"><a href="operation/managementofchange"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change</span></a></MenuItem>
-                            <MenuItem RouterLink="operation/operationinstruction" RouterMatch="NavLinkMatch.Prefix" Key="OperationOperationInstruction"><a href="operation/operationinstruction"><Icon Type="diff" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Operation Instruction</span></a></MenuItem>
-                        </MenuItemGroup>
-                    </ChildContent>
-                </SubMenu>
-             </Authorized>
-        </AuthorizeView>
-        <AuthorizeView Policy="WellAllocation.Read">
-            <Authorized>
-                 <SubMenu Key="WellAllocation" Class="d-none d-md-inline-block">
-                    <TitleTemplate><div><Icon Type="cluster" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Well Allocation</span></div></TitleTemplate>
-                    <ChildContent>
-                        <MenuItem RouterLink="wellallocation/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationDashboard"><a href="wellallocation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-                        <MenuItem RouterLink="wellallocation/pereport" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationPEReport"><a href="wellallocation/pereport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">PE Report Dashboard</span></a></MenuItem>
-                        <MenuItem RouterLink="wellallocation/pemonthlyreport" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationPEMonthlyReport"><a href="wellallocation/pemonthlyreport"><Icon Type="snippets" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">PE Monthly Report Approval</span></a></MenuItem>
-                    </ChildContent>
-                </SubMenu>
+    <a href="#">
+        <img src="img/jxnipponhomelogo.png" style="padding: 10px; object-fit: scale-down;"/>
+    </a>
+    <AuthorizeView Policy="Operation.Read">
+        <Authorized>
+            <SubMenu Key="Operation" Class="d-none d-md-inline-block">
+                <TitleTemplate><div><Icon Type="global" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Operation</span></div></TitleTemplate>
+                <ChildContent>
+                    <MenuItemGroup Title="Operation">
+                        <MenuItem RouterLink="operation/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="OperationDashboard"><a href="operation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+                        <MenuItem RouterLink="operation/combineddailyreport" RouterMatch="NavLinkMatch.Prefix" Key="OperationCombinedDailyReport"><a href="operation/combineddailyreport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Combined Daily Report</span></a></MenuItem>
+                        <MenuItem RouterLink="operation/combineddailyreportsection" RouterMatch="NavLinkMatch.Prefix" Key="OperationCombinedDailyReportSection"><a href="operation/combineddailyreportsection"><Icon Type="build" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Combined Daily Report Sections</span></a></MenuItem>
+                    </MenuItemGroup>
+                    <MenuItemGroup Title="Management Of Change">
+                        <MenuItem RouterLink="operation/managementofchange" RouterMatch="NavLinkMatch.Prefix" Key="OperationManagementOfChange"><a href="operation/managementofchange"><Icon Type="user-switch" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Management Of Change</span></a></MenuItem>
+                        <MenuItem RouterLink="operation/operationinstruction" RouterMatch="NavLinkMatch.Prefix" Key="OperationOperationInstruction"><a href="operation/operationinstruction"><Icon Type="diff" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Operation Instruction</span></a></MenuItem>
+                    </MenuItemGroup>
+                </ChildContent>
+            </SubMenu>
             </Authorized>
-        </AuthorizeView>
-        <AuthorizeView Policy="Deferment.Read">
-            <Authorized>
-                <SubMenu Key="Deferment" Class="d-none d-md-inline-block">
-                    <TitleTemplate><div><Icon Type="hourglass" Theme="@GetTheme("Deferment")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
-                    <ChildContent>
-                        <MenuItem RouterLink="deferment/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="DefermentDashboard"><a href="deferment/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-                        <SubMenu Key="GasDeferment">
-                            <TitleTemplate><span class="toprow-nav-title">Gas Deferment</span></TitleTemplate>
-                            <ChildContent>
-                                <MenuItem RouterLink="deferment/gasdefermentdetail" RouterMatch="NavLinkMatch.Prefix" Key="DefermentGasDefermentDetail"><a href="deferment/gasdefermentdetail"><span class="toprow-nav-title">Master Deferment</span></a></MenuItem>
-                                <MenuItem RouterLink="deferment/sk10gastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentSK10GasTemplateReportView"><a href="deferment/SK10GasTemplateReportView"><span class="toprow-nav-title">SK10</span></a></MenuItem>
-                                <MenuItem RouterLink="deferment/helanggastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentHelangGasTemplateReportView"><a href="deferment/HelangGasTemplateReportView"><span class="toprow-nav-title">Helang</span></a></MenuItem>
-                                <MenuItem RouterLink="deferment/layanggastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentLayangGasTemplateReportView"><a href="deferment/LayangGasTemplateReportView"><span class="toprow-nav-title">Layang</span></a></MenuItem>
-                                <MenuItem RouterLink="deferment/berylgastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentBerylGasTemplateReportView"><a href="deferment/BerylGasTemplateReportView"><span class="toprow-nav-title">Beryl</span></a></MenuItem>
-                            </ChildContent>
-                        </SubMenu>
-                        <SubMenu Key="OilDeferment">
-                            <TitleTemplate><span class="toprow-nav-title">Oil Deferment</span></TitleTemplate>
-                            <ChildContent>
-                                <MenuItem RouterLink="deferment/oildefermentdetail" RouterMatch="NavLinkMatch.Prefix" Key="DefermentOilDefermentDetail"><a href="deferment/oildefermentdetail"><span class="toprow-nav-title">Master Deferment</span></a></MenuItem>
-                                <MenuItem RouterLink="deferment/sk10oiltemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentSK10OilTemplateReportView"><a href="deferment/SK10OilTemplateReportView"><span class="toprow-nav-title">SK10</span></a></MenuItem>
-                                <MenuItem RouterLink="deferment/helangoiltemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentHelangOilTemplateReportView"><a href="deferment/HelangOilTemplateReportView"><span class="toprow-nav-title">Helang</span></a></MenuItem>
-                                <MenuItem RouterLink="deferment/layangoiltemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentLayangOilTemplateReportView"><a href="deferment/LayangOilTemplateReportView"><span class="toprow-nav-title">Layang</span></a></MenuItem>
-                            </ChildContent>
-                        </SubMenu>
-                    </ChildContent>
-                </SubMenu>
-            </Authorized>
+    </AuthorizeView>
+    <AuthorizeView Policy="WellAllocation.Read">
+        <Authorized>
+                <SubMenu Key="WellAllocation" Class="d-none d-md-inline-block">
+                <TitleTemplate><div><Icon Type="cluster" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Well Allocation</span></div></TitleTemplate>
+                <ChildContent>
+                    <MenuItem RouterLink="wellallocation/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationDashboard"><a href="wellallocation/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+                    <MenuItem RouterLink="wellallocation/pereport" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationPEReport"><a href="wellallocation/pereport"><Icon Type="fund-view" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">PE Report Dashboard</span></a></MenuItem>
+                    <MenuItem RouterLink="wellallocation/pemonthlyreport" RouterMatch="NavLinkMatch.Prefix" Key="WellAllocationPEMonthlyReport"><a href="wellallocation/pemonthlyreport"><Icon Type="snippets" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">PE Monthly Report Approval</span></a></MenuItem>
+                </ChildContent>
+            </SubMenu>
+        </Authorized>
+    </AuthorizeView>
+    <AuthorizeView Policy="Deferment.Read">
+        <Authorized>
+            <SubMenu Key="Deferment" Class="d-none d-md-inline-block">
+                <TitleTemplate><div><Icon Type="hourglass" Theme="@GetTheme("Deferment")" Class="top-row-icon"/><span class="toprow-nav-title d-none d-lg-inline">Deferment</span></div></TitleTemplate>
+                <ChildContent>
+                    <MenuItem RouterLink="deferment/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="DefermentDashboard"><a href="deferment/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon"/><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+                    <SubMenu Key="GasDeferment">
+                        <TitleTemplate><span class="toprow-nav-title">Gas Deferment</span></TitleTemplate>
+                        <ChildContent>
+                            <MenuItem RouterLink="deferment/gasdefermentdetail" RouterMatch="NavLinkMatch.Prefix" Key="DefermentGasDefermentDetail"><a href="deferment/gasdefermentdetail"><span class="toprow-nav-title">Master Deferment</span></a></MenuItem>
+                            <MenuItem RouterLink="deferment/sk10gastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentSK10GasTemplateReportView"><a href="deferment/SK10GasTemplateReportView"><span class="toprow-nav-title">SK10</span></a></MenuItem>
+                            <MenuItem RouterLink="deferment/helanggastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentHelangGasTemplateReportView"><a href="deferment/HelangGasTemplateReportView"><span class="toprow-nav-title">Helang</span></a></MenuItem>
+                            <MenuItem RouterLink="deferment/layanggastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentLayangGasTemplateReportView"><a href="deferment/LayangGasTemplateReportView"><span class="toprow-nav-title">Layang</span></a></MenuItem>
+                            <MenuItem RouterLink="deferment/berylgastemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentBerylGasTemplateReportView"><a href="deferment/BerylGasTemplateReportView"><span class="toprow-nav-title">Beryl</span></a></MenuItem>
+                        </ChildContent>
+                    </SubMenu>
+                    <SubMenu Key="OilDeferment">
+                        <TitleTemplate><span class="toprow-nav-title">Oil Deferment</span></TitleTemplate>
+                        <ChildContent>
+                            <MenuItem RouterLink="deferment/oildefermentdetail" RouterMatch="NavLinkMatch.Prefix" Key="DefermentOilDefermentDetail"><a href="deferment/oildefermentdetail"><span class="toprow-nav-title">Master Deferment</span></a></MenuItem>
+                            <MenuItem RouterLink="deferment/sk10oiltemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentSK10OilTemplateReportView"><a href="deferment/SK10OilTemplateReportView"><span class="toprow-nav-title">SK10</span></a></MenuItem>
+                            <MenuItem RouterLink="deferment/helangoiltemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentHelangOilTemplateReportView"><a href="deferment/HelangOilTemplateReportView"><span class="toprow-nav-title">Helang</span></a></MenuItem>
+                            <MenuItem RouterLink="deferment/layangoiltemplatereportview" RouterMatch="NavLinkMatch.Prefix" Key="DefermentLayangOilTemplateReportView"><a href="deferment/LayangOilTemplateReportView"><span class="toprow-nav-title">Layang</span></a></MenuItem>
+                        </ChildContent>
+                    </SubMenu>
+                </ChildContent>
+            </SubMenu>
+        </Authorized>
     </AuthorizeView>
     <AuthorizeView Policy="AvailabilityAndReliability.Read">
         <Authorized>
             <SubMenu Key="AvailabilityAndReliability" Class="d-none d-md-inline-block">
-                <TitleTemplate><div><Icon Type="cluster" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title d-none d-lg-inline">Availability & Reliability</span></div></TitleTemplate>
+                <TitleTemplate><div><Icon Type="schedule" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title d-none d-lg-inline">Availability & Reliability</span></div></TitleTemplate>
                 <ChildContent>
                     <MenuItem RouterLink="availabilityandreliability/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="AvailabilityAndReliabilityDashboard"><a href="availabilityandreliability/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
-                    <MenuItem RouterLink="availabilityandreliability/availabilityandreliabilityreportmanagement" RouterMatch="NavLinkMatch.Prefix" Key="AvailabilityAndReliabilityAvailabilityAndReliabilityReportManagement"><a href="availabilityandreliability/availabilityandreliabilityreportmanagement"><Icon Type="fund-view" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title">Availability & Reliability</span></a></MenuItem>
+                    <MenuItem RouterLink="availabilityandreliability/availabilityandreliabilityreportmanagement" RouterMatch="NavLinkMatch.Prefix" Key="AvailabilityAndReliabilityAvailabilityAndReliabilityReportManagement"><a href="availabilityandreliability/availabilityandreliabilityreportmanagement"><Icon Type="schedule" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title">Availability & Reliability</span></a></MenuItem>
                 </ChildContent>
             </SubMenu>
         </Authorized>
