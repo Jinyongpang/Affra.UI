@@ -60,6 +60,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Pages\AvailabilityAndReliabilityReportManagement.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Shared\ResourceFiles\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>

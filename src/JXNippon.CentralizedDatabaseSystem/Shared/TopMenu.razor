@@ -67,6 +67,17 @@
                 </SubMenu>
             </Authorized>
     </AuthorizeView>
+    <AuthorizeView Policy="AvailabilityAndReliability.Read">
+        <Authorized>
+            <SubMenu Key="AvailabilityAndReliability" Class="d-none d-md-inline-block">
+                <TitleTemplate><div><Icon Type="cluster" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title d-none d-lg-inline">Availability & Reliability</span></div></TitleTemplate>
+                <ChildContent>
+                    <MenuItem RouterLink="availabilityandreliability/dashboard" RouterMatch="NavLinkMatch.Prefix" Key="AvailabilityAndReliabilityDashboard"><a href="availabilityandreliability/dashboard"><Icon Type="dashboard" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title">Dashboard</span></a></MenuItem>
+                    <MenuItem RouterLink="availabilityandreliability/availabilityandreliabilityreportmanagement" RouterMatch="NavLinkMatch.Prefix" Key="AvailabilityAndReliabilityAvailabilityAndReliabilityReportManagement"><a href="availabilityandreliability/availabilityandreliabilityreportmanagement"><Icon Type="fund-view" Theme="outline" Class="top-row-icon" /><span class="toprow-nav-title">Availability & Reliability</span></a></MenuItem>
+                </ChildContent>
+            </SubMenu>
+        </Authorized>
+    </AuthorizeView>
     <AuthorizeView Policy="Administration.Read">
         <Authorized>
            <SubMenu Key="More" Class="d-none d-md-inline-block">

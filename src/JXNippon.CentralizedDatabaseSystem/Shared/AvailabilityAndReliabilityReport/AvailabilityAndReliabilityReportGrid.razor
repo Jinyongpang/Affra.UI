@@ -1,0 +1,87 @@
+﻿@using AntDesign;
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport
+@using System.Text.Json
+
+<div class="row h-100">
+    <div class="col h-100">
+        <RadzenDataGrid @ref="grid" Style="border-right: 0px !important; border-top: 0px !important; border-left: 1px solid #dbe0ea !important; border-bottom: 0px !important; height: 100% !important; box-shadow:none !important;"
+            IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" Render=OnRender
+                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering AllowColumnPicking
+            FilterMode="FilterMode.Advanced"
+                        ColumnWidth="200px" TItem="DailyAvailabilityAndReliability" AllowGrouping
+            AllowColumnResize CellContextMenu="@OnCellContextMenu"
+            AllowMultiColumnSorting ShowMultiColumnSortingIndex AllowPaging PageSize="60">
+            <Columns>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="EquipmentType" Width="150px">
+                    <HeaderTemplate>
+                        <div>Equipment<br />Type</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="EquipmentID" Width="150px">
+                    <HeaderTemplate>
+                        <div>Equipment<br />ID</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="EquipmentDescription" Width="150px">
+                    <HeaderTemplate>
+                        <div>Equipment<br />Description</div>
+                    </HeaderTemplate>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Uptime" Title="Uptime" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Downtime" Title="Downtime" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Standby" Title="Standby" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Maintenance" Title="Maintenance" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Date" Title="Date" Width="100px">
+                    <Template Context="item">
+                        @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
+                    </Template>
+                </RadzenDataGridColumn>
+            </Columns>
+        </RadzenDataGrid>  
+    </div>
+</div>
+
+@code {
+
+    private void OnCellContextMenu(MouseEventArgs args)
+    {
+        Console.WriteLine(JsonSerializer.Serialize(args));
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyAvailabilityAndReliability>) != null;
+        ContextMenuService.Open(args, ds =>
+    @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyAvailabilityAndReliability>, e))">
+                    <AuthorizeView Policy="AvailabilityAndReliability.ReadWrite">
+                        <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
+                        <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
+                        <RadzenMenuItem Text="Delete ..." Value="2" Icon="delete" Visible=@hasRowData/>
+                    </AuthorizeView>
+                    <RadzenMenuItem Text="View ..." Value="3" Icon="launch" Visible=@hasRowData/>
+                    <RadzenMenuItem Text="Refresh" Value="4" Icon="refresh"/>
+    </RadzenMenu>
+    );
+    }
+
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyAvailabilityAndReliability> args, MenuItemEventArgs e)
+    {
+        int i = (int)e.Value;
+        if (i == 0)
+        {
+            await ShowDialogAsync(new DailyAvailabilityAndReliability() { }, i, "Add");
+        }
+        else if (i == 1)
+        {
+            await ShowDialogAsync(args.Data, i, "Edit");
+        }
+        else if (i == 2)
+        {
+            await ShowDialogAsync(args.Data, i, "Delete");
+        }
+        else if (i == 3)
+        {
+            await ShowDialogAsync(args.Data, i, "View");
+        }
+        else if (i == 4)
+        {
+            await grid.Reload();
+        }
+    }
+}
