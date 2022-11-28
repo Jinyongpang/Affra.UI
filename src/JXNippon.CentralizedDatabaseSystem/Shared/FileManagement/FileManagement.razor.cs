@@ -39,10 +39,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
 
-        private Task ReloadAsync(string status = null)
+        private Task ReloadAsync(string status = null, string searchInput = null)
         {
             fileManagementDataList.FileManagementFilter.Status = GetStatusFilter(status);
-            fileManagementDataList.FileManagementFilter.Search = search;
+            fileManagementDataList.FileManagementFilter.Search = searchInput ?? search;
             fileManagementDataList.Folder = this.folder;
 
             return fileManagementDataList.ReloadAsync();
