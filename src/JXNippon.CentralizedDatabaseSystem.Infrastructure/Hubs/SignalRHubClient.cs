@@ -8,8 +8,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
 {
     public class SignalRHubClient<T> : IHubClient<T>  where T : HubClientConfigurationsBase
     {
+        private IHubConnectionBuilder _hubConnectionBuilder;
+        private HubConnection _hubConnection;
         private readonly T hubClientConfigurations;
         private readonly IAccessTokenProvider accessTokenProvider;
+        private object lockObject = new object();
 
         public SignalRHubClient(IOptions<T> hubClientConfigurations, IAccessTokenProvider accessTokenProvider)
         {
@@ -19,7 +22,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
 
         public IHubSubscription Subscribe<T1>(ICollection<string> methodNames, Func<T1, Task> handler, CancellationToken cancellationToken = default)
         {
-            var hubConnectionBuilder = new HubConnectionBuilder()
+            lock (lockObject)
+            {
+                _hubConnectionBuilder ??= new HubConnectionBuilder()
                 .WithUrl(hubClientConfigurations.Url, options =>
                 {
                     options.AccessTokenProvider = async () =>
@@ -28,17 +33,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
                         accessTokenResult.TryGetToken(out var accessToken);
                         return accessToken.Value;
                     };
+
                 })
                 .WithAutomaticReconnect()
                 .AddJsonProtocol();
 
-            HubConnection hubConnection = hubConnectionBuilder.Build();
-            foreach (var method in methodNames)
-            {
-                hubConnection.On(method, handler);
-            }
-            IHubSubscription hubScription = new SignalRHubSubscription(hubConnection);
-            return hubScription;
+                _hubConnection ??= _hubConnectionBuilder.Build();
+                foreach (var method in methodNames)
+                {
+                    _hubConnection.On(method, handler);
+                }
+                IHubSubscription hubScription = new SignalRHubSubscription(_hubConnection);
+                return hubScription;
+            }          
         }
     }
 }
