@@ -1,7 +1,7 @@
 ﻿@using JXNippon.CentralizedDatabaseSystem.Models
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport
 
-<RadzenTemplateForm Data="@Item" Submit="@( async (AvailabilityAndReliability args) => { await SubmitAsync(args); })">
+<RadzenTemplateForm Data="@Item" Submit="@( async (DailyAvailabilityAndReliability args) => { await SubmitAsync(args); })">
     <div class="row">
         <div class="col">
             <div class="row py-2">

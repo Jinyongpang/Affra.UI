@@ -8,30 +8,30 @@
             IsLoading="@isLoading" Count="@Count" Data="@items" LoadData="@LoadDataAsync" Render=OnRender
                         FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering AllowColumnPicking
             FilterMode="FilterMode.Advanced"
-            ColumnWidth="200px" TItem="AvailabilityAndReliability" AllowGrouping
+                        ColumnWidth="200px" TItem="DailyAvailabilityAndReliability" AllowGrouping
             AllowColumnResize CellContextMenu="@OnCellContextMenu"
             AllowMultiColumnSorting ShowMultiColumnSortingIndex AllowPaging PageSize="60">
             <Columns>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="AvailabilityAndReliability" Property="EquipmentType" Width="150px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="EquipmentType" Width="150px">
                     <HeaderTemplate>
                         <div>Equipment<br />Type</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="AvailabilityAndReliability" Property="EquipmentID" Width="150px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="EquipmentID" Width="150px">
                     <HeaderTemplate>
                         <div>Equipment<br />ID</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="AvailabilityAndReliability" Property="EquipmentDescription" Width="150px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="EquipmentDescription" Width="150px">
                     <HeaderTemplate>
                         <div>Equipment<br />Description</div>
                     </HeaderTemplate>
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="AvailabilityAndReliability" Property="Uptime" Title="Uptime" Width="100px" />
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="AvailabilityAndReliability" Property="Downtime" Title="Downtime" Width="100px" />
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="AvailabilityAndReliability" Property="Standby" Title="Standby" Width="100px" />
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="AvailabilityAndReliability" Property="Maintenance" Title="Maintenance" Width="100px" />
-                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="AvailabilityAndReliability" Property="Date" Title="Date" Width="100px">
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Uptime" Title="Uptime" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Downtime" Title="Downtime" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Standby" Title="Standby" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Maintenance" Title="Maintenance" Width="100px" />
+                <RadzenDataGridColumn CssClass="center-grid-content" HeaderCssClass="center-grid-title" TItem="DailyAvailabilityAndReliability" Property="Date" Title="Date" Width="100px">
                     <Template Context="item">
                         @String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:d}", item.DateUI)
                     </Template>
@@ -46,9 +46,9 @@
     private void OnCellContextMenu(MouseEventArgs args)
     {
         Console.WriteLine(JsonSerializer.Serialize(args));
-        bool hasRowData = (args as DataGridCellMouseEventArgs<AvailabilityAndReliability>) != null;
+        bool hasRowData = (args as DataGridCellMouseEventArgs<DailyAvailabilityAndReliability>) != null;
         ContextMenuService.Open(args, ds =>
-    @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<AvailabilityAndReliability>, e))">
+    @<RadzenMenu Click="@(e => OnMenuItemClickAsync(args as DataGridCellMouseEventArgs<DailyAvailabilityAndReliability>, e))">
                     <AuthorizeView Policy="AvailabilityAndReliability.ReadWrite">
                         <RadzenMenuItem Text="Add" Value="0" Icon="note_add"/>
                         <RadzenMenuItem Text="Edit ..." Value="1" Icon="description" Visible=@hasRowData/>
@@ -60,12 +60,12 @@
     );
     }
 
-    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<AvailabilityAndReliability> args, MenuItemEventArgs e)
+    private async Task OnMenuItemClickAsync(DataGridCellMouseEventArgs<DailyAvailabilityAndReliability> args, MenuItemEventArgs e)
     {
         int i = (int)e.Value;
         if (i == 0)
         {
-            await ShowDialogAsync(new AvailabilityAndReliability() { }, i, "Add");
+            await ShowDialogAsync(new DailyAvailabilityAndReliability() { }, i, "Add");
         }
         else if (i == 1)
         {

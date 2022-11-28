@@ -9,13 +9,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityRe
 {
     public partial class AvailabilityAndReliabilityReportDialog
     {
-        [Parameter] public AvailabilityAndReliability Item { get; set; }
+        [Parameter] public DailyAvailabilityAndReliability Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
         [Inject] private DialogService DialogService { get; set; }
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
 
         private bool isViewing { get => MenuAction == 3; }
-        protected Task SubmitAsync(AvailabilityAndReliability arg)
+        protected Task SubmitAsync(DailyAvailabilityAndReliability arg)
         {
             DialogService.Close(true);
             return Task.CompletedTask;

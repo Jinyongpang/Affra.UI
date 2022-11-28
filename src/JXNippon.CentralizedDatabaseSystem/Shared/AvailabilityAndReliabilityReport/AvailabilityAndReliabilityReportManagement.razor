@@ -36,7 +36,7 @@
     private Task AddAvailabilityAndReliabilityDialogAsync()
     {
         return this.availabilityAndReliabilityReportGrid.ShowDialogAsync(
-                                new AvailabilityAndReliability() { DateUI = DateTime.Now },
+                                new DailyAvailabilityAndReliability() { DateUI = DateTime.Now },
                                 0,
                                 "Add");
     }

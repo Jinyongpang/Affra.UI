@@ -5,8 +5,8 @@ using ViewODataService.Affra.Service.View.Domain.Views;
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 {
     public partial class ViewDialog
-    {
-        private string[] datas = new[] { "Home", "HomeSider", "Operation", "WellAllocation", "Deferment", "PEReport", };
+    { 
+        private string[] datas = new[] { "Home", "HomeSider", "Operation", "WellAllocation", "Deferment", "PEReport", "AvailabilityAndReliability", };
         [Parameter] public View Item { get; set; }
 
         [Inject] private DialogService DialogService { get; set; }

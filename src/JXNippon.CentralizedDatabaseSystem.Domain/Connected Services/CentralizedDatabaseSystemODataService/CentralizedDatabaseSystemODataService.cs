@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 28/11/2022 00:06:07
+// Generation date: 28/11/2022 4:44:37 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -61686,52 +61686,52 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport
 {
     /// <summary>
-    /// There are no comments for AvailabilityAndReliabilitySingle in the schema.
+    /// There are no comments for DailyAvailabilityAndReliabilitySingle in the schema.
     /// </summary>
-    public partial class AvailabilityAndReliabilitySingle : global::Microsoft.OData.Client.DataServiceQuerySingle<AvailabilityAndReliability>
+    public partial class DailyAvailabilityAndReliabilitySingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DailyAvailabilityAndReliability>
     {
         /// <summary>
-        /// Initialize a new AvailabilityAndReliabilitySingle object.
+        /// Initialize a new DailyAvailabilityAndReliabilitySingle object.
         /// </summary>
-        public AvailabilityAndReliabilitySingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+        public DailyAvailabilityAndReliabilitySingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
             : base(context, path) {}
 
         /// <summary>
-        /// Initialize a new AvailabilityAndReliabilitySingle object.
+        /// Initialize a new DailyAvailabilityAndReliabilitySingle object.
         /// </summary>
-        public AvailabilityAndReliabilitySingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+        public DailyAvailabilityAndReliabilitySingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
             : base(context, path, isComposable) {}
 
         /// <summary>
-        /// Initialize a new AvailabilityAndReliabilitySingle object.
+        /// Initialize a new DailyAvailabilityAndReliabilitySingle object.
         /// </summary>
-        public AvailabilityAndReliabilitySingle(global::Microsoft.OData.Client.DataServiceQuerySingle<AvailabilityAndReliability> query)
+        public DailyAvailabilityAndReliabilitySingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DailyAvailabilityAndReliability> query)
             : base(query) {}
 
     }
     /// <summary>
-    /// There are no comments for AvailabilityAndReliability in the schema.
+    /// There are no comments for DailyAvailabilityAndReliability in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    public partial class AvailabilityAndReliability : global::Microsoft.OData.Client.BaseEntityType
+    public partial class DailyAvailabilityAndReliability : global::Microsoft.OData.Client.BaseEntityType
     {
         /// <summary>
-        /// Create a new AvailabilityAndReliability object.
+        /// Create a new DailyAvailabilityAndReliability object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
         /// <param name="date">Initial value of Date.</param>
         /// <param name="xmin">Initial value of xmin.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static AvailabilityAndReliability CreateAvailabilityAndReliability(long ID, global::System.DateTimeOffset date, long xmin)
+        public static DailyAvailabilityAndReliability CreateDailyAvailabilityAndReliability(long ID, global::System.DateTimeOffset date, long xmin)
         {
-            AvailabilityAndReliability availabilityAndReliability = new AvailabilityAndReliability();
-            availabilityAndReliability.Id = ID;
-            availabilityAndReliability.Date = date;
-            availabilityAndReliability.xmin = xmin;
-            return availabilityAndReliability;
+            DailyAvailabilityAndReliability dailyAvailabilityAndReliability = new DailyAvailabilityAndReliability();
+            dailyAvailabilityAndReliability.Id = ID;
+            dailyAvailabilityAndReliability.Date = date;
+            dailyAvailabilityAndReliability.xmin = xmin;
+            return dailyAvailabilityAndReliability;
         }
         /// <summary>
         /// There are no comments for Property Id in the schema.
@@ -61950,27 +61950,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
     public static class ExtensionMethods
     {
         /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle specified by key from an entity set
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliabilitySingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="keys">dictionary with the names and values of keys</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliabilitySingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
         {
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliabilitySingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
         /// <summary>
-        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle specified by key from an entity set
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliabilitySingle specified by key from an entity set
         /// </summary>
         /// <param name="_source">source entity set</param>
         /// <param name="id">The value of id</param>
-        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability> _source,
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliabilitySingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability> _source,
             long id)
         {
             global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
             {
                 { "Id", id }
             };
-            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliabilitySingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliabilitySingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
@@ -62101,6 +62101,121 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private int _Revision;
         partial void OnRevisionChanging(int value);
         partial void OnRevisionChanged();
+    }
+}
+namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances
+{
+    /// <summary>
+    /// There are no comments for UniformanceResult in the schema.
+    /// </summary>
+    public partial class UniformanceResult
+    {
+        /// <summary>
+        /// Create a new UniformanceResult object.
+        /// </summary>
+        /// <param name="validationResult">Initial value of ValidationResult.</param>
+        /// <param name="lastQueryDateTime">Initial value of LastQueryDateTime.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static UniformanceResult CreateUniformanceResult(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResultStatus validationResult, global::System.DateTimeOffset lastQueryDateTime)
+        {
+            UniformanceResult uniformanceResult = new UniformanceResult();
+            uniformanceResult.ValidationResult = validationResult;
+            uniformanceResult.LastQueryDateTime = lastQueryDateTime;
+            return uniformanceResult;
+        }
+        /// <summary>
+        /// There are no comments for Property PropertyName in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string PropertyName
+        {
+            get
+            {
+                return this._PropertyName;
+            }
+            set
+            {
+                this.OnPropertyNameChanging(value);
+                this._PropertyName = value;
+                this.OnPropertyNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _PropertyName;
+        partial void OnPropertyNameChanging(string value);
+        partial void OnPropertyNameChanged();
+        /// <summary>
+        /// There are no comments for Property UniformanceValue in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> UniformanceValue
+        {
+            get
+            {
+                return this._UniformanceValue;
+            }
+            set
+            {
+                this.OnUniformanceValueChanging(value);
+                this._UniformanceValue = value;
+                this.OnUniformanceValueChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _UniformanceValue;
+        partial void OnUniformanceValueChanging(global::System.Nullable<decimal> value);
+        partial void OnUniformanceValueChanged();
+        /// <summary>
+        /// There are no comments for Property ValidationResult in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResultStatus ValidationResult
+        {
+            get
+            {
+                return this._ValidationResult;
+            }
+            set
+            {
+                this.OnValidationResultChanging(value);
+                this._ValidationResult = value;
+                this.OnValidationResultChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResultStatus _ValidationResult;
+        partial void OnValidationResultChanging(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Uniformances.UniformanceResultStatus value);
+        partial void OnValidationResultChanged();
+        /// <summary>
+        /// There are no comments for Property LastQueryDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset LastQueryDateTime
+        {
+            get
+            {
+                return this._LastQueryDateTime;
+            }
+            set
+            {
+                this.OnLastQueryDateTimeChanging(value);
+                this._LastQueryDateTime = value;
+                this.OnLastQueryDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _LastQueryDateTime;
+        partial void OnLastQueryDateTimeChanging(global::System.DateTimeOffset value);
+        partial void OnLastQueryDateTimeChanged();
+    }
+    /// <summary>
+    /// There are no comments for UniformanceResultStatus in the schema.
+    /// </summary>
+    public enum UniformanceResultStatus
+    {
+        UniformanceError = 0,
+        NotInTolerance = 1,
+        WithinTolerance = 2
     }
 }
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.ValidationEntity
@@ -64510,22 +64625,22 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Deferments.BerylGasTemplateReport> _BerylGasTemplateReport;
         /// <summary>
-        /// There are no comments for AvailabilityAndReliability in the schema.
+        /// There are no comments for DailyAvailabilityAndReliability in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability> AvailabilityAndReliability
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability> DailyAvailabilityAndReliability
         {
             get
             {
-                if ((this._AvailabilityAndReliability == null))
+                if ((this._DailyAvailabilityAndReliability == null))
                 {
-                    this._AvailabilityAndReliability = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability>("AvailabilityAndReliability");
+                    this._DailyAvailabilityAndReliability = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability>("DailyAvailabilityAndReliability");
                 }
-                return this._AvailabilityAndReliability;
+                return this._DailyAvailabilityAndReliability;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability> _AvailabilityAndReliability;
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability> _DailyAvailabilityAndReliability;
         /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
@@ -65455,12 +65570,12 @@ namespace CentralizedDatabaseSystemODataService.Default
             base.AddObject("BerylGasTemplateReport", berylGasTemplateReport);
         }
         /// <summary>
-        /// There are no comments for AvailabilityAndReliability in the schema.
+        /// There are no comments for DailyAvailabilityAndReliability in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public void AddToAvailabilityAndReliability(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability availabilityAndReliability)
+        public void AddToDailyAvailabilityAndReliability(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability dailyAvailabilityAndReliability)
         {
-            base.AddObject("AvailabilityAndReliability", availabilityAndReliability);
+            base.AddObject("DailyAvailabilityAndReliability", dailyAvailabilityAndReliability);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -68482,7 +68597,7 @@ namespace CentralizedDatabaseSystemODataService.Default
       </EnumType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityType Name=""AvailabilityAndReliability"">
+      <EntityType Name=""DailyAvailabilityAndReliability"">
         <Key>
           <PropertyRef Name=""Id"" />
         </Key>
@@ -69561,7 +69676,7 @@ namespace CentralizedDatabaseSystemODataService.Default
             </Collection>
           </Annotation>
         </EntitySet>
-        <EntitySet Name=""AvailabilityAndReliability"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.AvailabilityAndReliability"">
+        <EntitySet Name=""DailyAvailabilityAndReliability"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability"">
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

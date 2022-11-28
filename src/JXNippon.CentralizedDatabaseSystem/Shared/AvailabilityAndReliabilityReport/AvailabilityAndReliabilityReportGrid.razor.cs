@@ -20,8 +20,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityRe
         private readonly AntDesign.Menu menu;
         private readonly string search;
         private bool isLoading = false;
-        private RadzenDataGrid<AvailabilityAndReliability> grid;
-        private IEnumerable<AvailabilityAndReliability> items;
+        private RadzenDataGrid<DailyAvailabilityAndReliability> grid;
+        private IEnumerable<DailyAvailabilityAndReliability> items;
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private AffraNotificationService AffraNotificationService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
@@ -42,7 +42,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityRe
             return grid.FirstPage(true);
         }
 
-        public async Task ShowDialogAsync(AvailabilityAndReliability data, int menuAction, string title)
+        public async Task ShowDialogAsync(DailyAvailabilityAndReliability data, int menuAction, string title)
         {
             ContextMenuService.Close();
             dynamic? response;
@@ -102,9 +102,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityRe
             await grid.Reload();
         }
 
-        private IGenericService<AvailabilityAndReliability> GetGenericService(IServiceScope serviceScope)
+        private IGenericService<DailyAvailabilityAndReliability> GetGenericService(IServiceScope serviceScope)
         {
-            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<AvailabilityAndReliability, ICentralizedDatabaseSystemUnitOfWork>>();
+            return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<DailyAvailabilityAndReliability, ICentralizedDatabaseSystemUnitOfWork>>();
         }
 
         private async Task LoadDataAsync(LoadDataArgs args)
@@ -112,7 +112,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityRe
             isLoading = true;
 
             using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<AvailabilityAndReliability>? service = GetGenericService(serviceScope);
+            IGenericService<DailyAvailabilityAndReliability>? service = GetGenericService(serviceScope);
             var query = service.Get();
 
             if (Filter.DateRange?.Start != null)
@@ -124,10 +124,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityRe
                     .Where(availabilityAndReliability => availabilityAndReliability.Date <= end);
             }
 
-            Microsoft.OData.Client.QueryOperationResponse<AvailabilityAndReliability>? response = await query
+            Microsoft.OData.Client.QueryOperationResponse<DailyAvailabilityAndReliability>? response = await query
                 .OrderBy(x => x.Date)
-                .AppendQueryWithFilterDescriptor(args.Filters, args.Skip, args.Top, args.OrderBy)
-                .ToQueryOperationResponseAsync<AvailabilityAndReliability>();
+                .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
+                .ToQueryOperationResponseAsync<DailyAvailabilityAndReliability>();
 
             Count = (int)response.Count;
             items = response.ToList();
@@ -135,7 +135,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityRe
 
             StateHasChanged();
         }
-        private void OnRender(DataGridRenderEventArgs<AvailabilityAndReliability> args)
+        private void OnRender(DataGridRenderEventArgs<DailyAvailabilityAndReliability> args)
         {
             if (args.FirstRender)
             {
