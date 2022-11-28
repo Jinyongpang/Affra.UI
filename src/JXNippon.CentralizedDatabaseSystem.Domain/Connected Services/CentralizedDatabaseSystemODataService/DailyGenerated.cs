@@ -512,7 +512,7 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
 
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport
 {
-    public partial class DailyAvailabilityAndReliability : IEntity
+    public partial class DailyAvailabilityAndReliability : IDaily, IEntity
     {
         [IgnoreClientProperty]
         public DateTime DateUI

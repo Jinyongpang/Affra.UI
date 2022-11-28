@@ -25,9 +25,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
             "CondensateStreamReport",
             "DailyGasMeteringReport",
             "Templates",
+            "AvailabilityAndReliabilityReport",
         }
             .OrderBy(x => x)
             .ToArray();
+
         private FileManagementDataList fileManagementDataList;
         private Menu menu;
         private string search;
