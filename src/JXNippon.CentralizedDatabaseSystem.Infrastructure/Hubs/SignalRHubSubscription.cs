@@ -6,11 +6,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
     public class SignalRHubSubscription : IHubSubscription
     {
         private readonly HubConnection hubConnection;
+        private readonly ICollection<IDisposable> handlers;
         private bool disposed;
 
-        public SignalRHubSubscription(HubConnection hubConnection)
+        public SignalRHubSubscription(HubConnection hubConnection, ICollection<IDisposable> handlers)
         { 
             this.hubConnection = hubConnection;
+            this.handlers = handlers;
         }
 
         public event Func<Exception?, Task>? Closed;
@@ -24,6 +26,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
                 this.hubConnection.Closed -= Closed;
                 this.hubConnection.Reconnecting -= Reconnecting;
                 this.hubConnection.Reconnected -= Reconnected;
+                foreach(var handler in this.handlers) 
+                {
+                    handler.Dispose();
+                }
                 await hubConnection.DisposeAsync();
                 disposed = true;
             }

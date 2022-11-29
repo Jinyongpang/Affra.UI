@@ -60,8 +60,7 @@
                                 Title="@group.Title" ValueProperty="Value"
                                 Stroke=@color
                                 LineType="@((LineType)Enum.Parse(typeof(LineType), series.LineType))"
-                                Smooth="@series.Smooth" 
-                                >
+                                Smooth="@series.Smooth">
                                 <TooltipTemplate Context="data">           
                                     @(string.Format(this.FormatString, data.Category)) : @this.GetFormattedString(series.ValueFormatString, data.Value)
                                     </TooltipTemplate>
@@ -128,13 +127,10 @@
                         };
                     default:
                         {
-                            break;       
+                            break;
                         }
                 }
-
-            }
-            
-
+            }         
         }
             <Empty Class=@this.GetEmptyClassName()/>
         </Spin>
@@ -144,5 +140,5 @@
         <RadzenGridLines/>
         <RadzenAxisTitle Text="@AxisTitle"/>
     </RadzenValueAxis>
-    <RadzenLegend Position=LegendPosition.Bottom></RadzenLegend>
+    <RadzenLegend Position=@this.Chart.LegendPosition Visible=@this.Chart.ShowLegend></RadzenLegend>
 </RadzenChart>

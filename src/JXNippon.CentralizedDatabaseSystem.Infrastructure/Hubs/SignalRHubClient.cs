@@ -33,11 +33,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
                 .AddJsonProtocol();
 
             HubConnection hubConnection = hubConnectionBuilder.Build();
+            ICollection<IDisposable> handlers = new List<IDisposable>();
             foreach (var method in methodNames)
             {
-                hubConnection.On(method, handler);
+                handlers.Add(hubConnection.On(method, handler));
             }
-            IHubSubscription hubScription = new SignalRHubSubscription(hubConnection);
+            IHubSubscription hubScription = new SignalRHubSubscription(hubConnection, handlers);
             return hubScription;
         }
     }

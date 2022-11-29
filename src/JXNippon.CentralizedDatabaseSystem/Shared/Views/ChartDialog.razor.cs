@@ -5,6 +5,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Filters;
 using JXNippon.CentralizedDatabaseSystem.Domain.Views;
 using Microsoft.AspNetCore.Components;
 using Radzen;
+using Radzen.Blazor;
 using ViewODataService.Affra.Service.View.Domain.Views;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
@@ -18,6 +19,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private IViewService ViewService { get; set; }
         [Inject] private DialogService DialogService { get; set; }
+        
+        private static IEnumerable<string> LegendPositionTypes = Enum.GetValues(typeof(LegendPosition))
+           .Cast<LegendPosition>()
+           .Select(x => x.ToString())
+           .ToList();
 
         private IEnumerable<string> types;
         private bool isViewing { get => MenuAction == 3; }
@@ -26,7 +32,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         private AntDesign.Steps steps;
 
         private string[] dateFiltersId;
-
+       
         protected override Task OnInitializedAsync()
         {
             Column.ViewName = View.Name;
