@@ -7,8 +7,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
     {
         private readonly HubConnection hubConnection;
         private bool disposed;
-        private bool isStarted;
-        private object isStartedLock = new object();
 
         public SignalRHubSubscription(HubConnection hubConnection)
         { 
@@ -21,7 +19,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
 
         public async ValueTask DisposeAsync()
         {
-            return;
             if (!disposed && hubConnection is not null)
             {
                 this.hubConnection.Closed -= Closed;
@@ -32,30 +29,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Hubs
             }
         }
 
-        public async Task StartAsync(CancellationToken cancellationToken = default)
-        {       
-            bool isStartedInner = false;
-            lock (isStartedLock)
-            {
-                isStartedInner = this.isStarted;
-                if (!isStarted)
-                {
-                    this.hubConnection.Closed += Closed;
-                    this.hubConnection.Reconnecting += Reconnecting;
-                    this.hubConnection.Reconnected += Reconnected;
-                    this.isStarted = true;
-                }
-            }
-            try
-            {
-                if (!isStartedInner)
-                {
-                    await this.hubConnection.StartAsync(cancellationToken);
-                }
-            }
-            catch
-            {
-            }
+        public Task StartAsync(CancellationToken cancellationToken = default)
+        {
+            this.hubConnection.Closed += Closed;
+            this.hubConnection.Reconnecting += Reconnecting;
+            this.hubConnection.Reconnected += Reconnected;
+            return this.hubConnection.StartAsync(cancellationToken);
         }
     }
 }

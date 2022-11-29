@@ -6,8 +6,8 @@
 @using JXNippon.CentralizedDatabaseSystem.Domain.Views
 @using JXNippon.CentralizedDatabaseSystem.Models
 
-<RadzenDataGrid @key=@this.Column?.Id @ref="grid" IsLoading="@isLoading" Count="@this.Count" Data="@this.itemsDictionary" LoadData="@this.LoadDataAsync"
-                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering
+<RadzenDataGrid @ref="grid" IsLoading="@isLoading" Count="@this.Count" Data="@this.itemsDictionary" LoadData="@this.LoadDataAsync" 
+    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowSorting AllowFiltering
     FilterMode=FilterMode.Simple
     FilterDelay=100
     PageSize="@this.PageSize"
