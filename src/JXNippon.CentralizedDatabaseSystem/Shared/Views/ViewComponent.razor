@@ -136,7 +136,7 @@
             Chart chart = JsonSerializer.Deserialize<Chart>(col.ColumnComponent);
             var dateFilter = this.GetDateFilterComponent(chart.DateFilterId);
             return
-    @<ChartComponent @key=col.Id @ref="@chartComponentRef" DateFilter=@dateFilter Chart="@chart" TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
+    @<ChartComponent @ref="@chartComponentRef" DateFilter=@dateFilter Chart="@chart" TType="@chart.ActualType" HasSubscription=true AxisTitle="@chart.AxisTitle" FormatString="@chart.FormatString" 
                                             Step="@TimeSpan.FromMinutes(chart.StepInMinutes)" ValueAxisStep="@chart.ValueAxisStep" ChartSeries="@chart.ChartSeries" Column="@col"></ChartComponent>;
         }
         else if (col.ComponentType == nameof(Grid))
@@ -149,13 +149,13 @@
         {
             AnnouncementCard component = JsonSerializer.Deserialize<AnnouncementCard>(col.ColumnComponent);
             return
-    @<AnnouncementCardComponent @key=col.Id @ref="@announcementComponentRef" AnnouncementCard=@component Column=@col HasSubscription=@(!this.IsDesignMode)></AnnouncementCardComponent>;
+    @<AnnouncementCardComponent @ref="@announcementComponentRef" AnnouncementCard=@component Column=@col HasSubscription=@(!this.IsDesignMode)></AnnouncementCardComponent>;
         }
         else if (col.ComponentType == nameof(DateFilter))
         {
             DateFilter component = JsonSerializer.Deserialize<DateFilter>(col.ColumnComponent);
             return
-    @<DateFilterComponent @key=col.Id FixDateTime="@this.Date" @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>;
+    @<DateFilterComponent FixDateTime="@this.Date" @ref=@dateFilterComponentRef DateFilter=@component Column=@col></DateFilterComponent>;
         }
         else if (col.ComponentType == nameof(Domain.Statistics.Statistic))
         {
@@ -163,7 +163,7 @@
             var dateFilter = this.GetDateFilterComponent(component.DateFilterId);
 
             return
-    @<StatisticsComponent @key=col.Id @ref=@statisticsComponentRef TType="@component.ActualType.AssemblyQualifiedName" DateFilter=@dateFilter Statistic=@component Column=@col></StatisticsComponent>;
+    @<StatisticsComponent @ref=@statisticsComponentRef TType="@component.ActualType.AssemblyQualifiedName" DateFilter=@dateFilter Statistic=@component Column=@col></StatisticsComponent>;
         }
         else
         {

@@ -82,6 +82,26 @@
                 </div>
                 <div class="row py-2">
                     <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Show Legend" />
+                    </div>
+                    <div class="col-8">
+                        <Switch Checked="true" CheckedChildren="Show" UnCheckedChildren="Hide" @bind-Value="@Item.ShowLegend" Disabled=@isViewing />
+                    </div>
+                </div>
+                @if (Item.ShowLegend)
+                {
+
+                    <div class="row py-2">
+                        <div class="col-4 align-items-center d-flex">
+                            <RadzenLabel class="dialogTextSize" Text="Legend Position" />
+                        </div>
+                        <div class="col-8">
+                            <RadzenDropDown Name="LegendPosition" class="w-100" Placeholder="Select ..." FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data="@LegendPositionTypes" @bind-Value="@Item.LegendPositionString" TValue="string" AllowClear="true" Disabled=@isViewing></RadzenDropDown>
+                        </div>
+                    </div>
+                }
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
                         <RadzenLabel class="dialogTextSize" Text="Width Size" />
                     </div>
                     <div class="col-8">
