@@ -7,11 +7,14 @@
             <div class="col-9 float-right align-items-center text-right mt-1">
                 <Space Size="@("middle")">
                     <SpaceItem>
-                        <RadzenDropDown Change=@(() => ReloadAsync()) Placeholder="Select folder..." Data=@Folders @bind-Value=@folder TValue=string AllowClear>
-                            <Template>
-                                <Icon Type="folder-open" Theme="outline" Style="font-size: 20px; vertical-align: 0px; margin-right: 2px;"/>@context
-                            </Template>
-                        </RadzenDropDown>
+                        <Select Size="@("large")" Style="min-width: 20vw;" Class="text-left" OnSelectedItemChanged=@(() => ReloadAsync()) Placeholder="Select folder..." TItem=Folder DataSource=@Folders @bind-Value=@folder TItemValue=string ValueName="@nameof(Folder.FolderName)" LabelName="@nameof(Folder.FolderName)" AllowClear>
+                            <SuffixIcon>
+                                <Icon Type="folder-open" Theme="outline" Style="font-size: 20px;" />
+                            </SuffixIcon>
+                            <ItemTemplate>
+                                <Icon Type="folder-open" Theme="outline" Style="font-size: 20px; vertical-align: 0px; margin-right: 2px;" />@((context as Folder).FolderName)
+                            </ItemTemplate>
+                        </Select>
                     </SpaceItem>
                     <SpaceItem>
                         <Search Size="@("large")" Placeholder="Search file..." Style="width: 20vw;" OnInput=@(args => ReloadAsync(searchInput : args.Value as string))  @bind-Value=search ClassicSearchIcon/>

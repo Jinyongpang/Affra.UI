@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Components.Forms;
 
 namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 {
+    public class Folder
+    {
+        public string FolderName { get; set; }
+    }
     public partial class FileManagement
     {
         private const string All = "All";
-        private static string[] Folders = new string[] 
+        private static Folder[] Folders = new string[] 
         { 
             "FPSODailyReport", 
             "FPSOLabDailyReport", 
@@ -28,6 +32,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
             "AvailabilityAndReliabilityReport",
         }
             .OrderBy(x => x)
+            .Select(x => new Folder()
+            { 
+                FolderName = x,
+            })
             .ToArray();
 
         private FileManagementDataList fileManagementDataList;
