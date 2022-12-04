@@ -8,7 +8,7 @@
             <div class="col-9 float-right align-items-center text-right mt-1">
                 <Space Size="@("middle")">
                     <SpaceItem>
-                        <Search Size="@("large")" Placeholder="Search..." Style="20vw;" OnChange=@(args => ReloadAsync(null)) @bind-Value=search ClassicSearchIcon/>
+                        <Search Size="@("large")" Placeholder="Search..." Style="20vw;" OnInput=@(args => ReloadAsync(searchInput : args.Value as string)) @bind-Value=search ClassicSearchIcon />
                     </SpaceItem>
                     <SpaceItem>
                         <Segmented TValue="string" @bind-Value=@cardListToggleString>

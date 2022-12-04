@@ -16,14 +16,6 @@
     border-right-color: var(--rz-primary-light);
 }
 
-.card-time {
-    color: var(--rz-primary-dark);
-}
-
-.title {
-    color: var(--rz-primary-darker);
-}
-
 .ant-card-actions > li > span:hover {
     color: var(--rz-primary-darker);
 }
@@ -73,4 +65,8 @@
 
 .ant-menu-item-selected a, .ant-menu-item-selected a:hover {
     color: var(--rz-primary);
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+    border-color: var(--rz-primary-light);
 }

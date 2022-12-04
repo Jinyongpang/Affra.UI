@@ -26,10 +26,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         [Inject] private IServiceProvider ServiceProvider { get; set; }
         [Inject] private IStringLocalizer<Resource> stringLocalizer { get; set; }
 
-        private Task ReloadAsync(string status = null)
+        private Task ReloadAsync(string status = null, string searchInput = null)
         {
             managementOfChangeDataList.ManagementOfChangeFilter.Status = GetStatusFilter(status ?? this.status);
-            managementOfChangeDataList.ManagementOfChangeFilter.Search = search;
+            managementOfChangeDataList.ManagementOfChangeFilter.Search = searchInput ?? search;
             return managementOfChangeDataList.ReloadAsync();
         }
 
