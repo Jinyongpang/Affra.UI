@@ -17,7 +17,7 @@
                         </Select>
                     </SpaceItem>
                     <SpaceItem>
-                        <Search Size="@("large")" Placeholder="Search file..." Style="width: 20vw;" OnInput=@(args => ReloadAsync(searchInput : args.Value as string))  @bind-Value=search ClassicSearchIcon/>
+                        <Search Size="@("large")" Placeholder="Search file..." Style="width: 20vw;" OnInput=@(args => ReloadAsync(searchInput : args.Value as string)) @bind-Value=search ClassicSearchIcon/>
                     </SpaceItem>
                     <SpaceItem>
                         @if (!string.IsNullOrEmpty(this.folder))
