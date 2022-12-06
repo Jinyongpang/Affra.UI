@@ -1,4 +1,6 @@
 ﻿using System.Linq.Dynamic.Core;
+using System.Net;
+using System.Text.Json;
 using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.Logistics;
@@ -56,14 +58,39 @@ namespace JXNippon.CentralizedDatabaseSystem.Pages
             // var a = (DataServiceQuery)s.Get().Execute<IQueryable<DailyLogistic>>(Eval.Expression);
             var response = await s
               .ToQueryOperationResponseAsync<DailyLogistic>();
-            
-           
+
+
             var service = this.ViewService.GetGenericService(serviceScope, TType);
             Queryable = service.Get();
             var q = (DataServiceQuery)Queryable;
 
             var items = (await q.ExecuteAsync());
 
+        }
+
+        public async Task UniformanceTEst()
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13;
+            var request = new
+            {
+                TagName = "AT2210_LB",
+                StartDateTime = "Now-:1",
+                EndDateTime = "Now-:0"
+            };
+            using var httpRequest = new HttpRequestMessage();
+            var content = new StringContent(JsonSerializer.Serialize(request));
+            content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+            httpRequest.Content = content;
+            httpRequest.Method = new HttpMethod("POST");
+            httpRequest.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", "YWRtaW5pc3RyYXRvcjpub2V4YWRtaW4=");
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append("https://phd02.nmiri.com.my:3152").Append("/GetData");
+            httpRequest.RequestUri = new Uri(urlBuilder_.ToString(), UriKind.RelativeOrAbsolute);
+            var client = new HttpClient();
+            var httpResponse = await client.SendAsync(httpRequest).ConfigureAwait(false);
+            httpResponse.EnsureSuccessStatusCode();
+            var result = await httpResponse.Content.ReadAsStringAsync();
+            Console.WriteLine(result);
         }
     }
 }
