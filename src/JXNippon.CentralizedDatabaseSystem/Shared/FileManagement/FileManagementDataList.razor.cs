@@ -89,7 +89,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
                 if (!string.IsNullOrEmpty(Folder))
                 {
                     query = query
-                        .Where(x => x.FolderName.ToUpper().Contains(Folder.ToUpper()));
+                        .Where(x => x.Section.ToUpper() == Folder.ToUpper());
                 }
 
                 Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
