@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 6/10/2022 8:28:24 PM
+// Generation date: 7/12/2022 3:17:35 PM
 namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
 {
     /// <summary>
@@ -105,6 +105,27 @@ namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
         private string _FolderName;
         partial void OnFolderNameChanging(string value);
         partial void OnFolderNameChanged();
+        /// <summary>
+        /// There are no comments for Property Section in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Section
+        {
+            get
+            {
+                return this._Section;
+            }
+            set
+            {
+                this.OnSectionChanging(value);
+                this._Section = value;
+                this.OnSectionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Section;
+        partial void OnSectionChanging(string value);
+        partial void OnSectionChanged();
         /// <summary>
         /// There are no comments for Property FileName in the schema.
         /// </summary>
@@ -314,6 +335,336 @@ namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
         }
     }
 }
+namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders
+{
+    /// <summary>
+    /// There are no comments for DataFolderSingle in the schema.
+    /// </summary>
+    public partial class DataFolderSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<DataFolder>
+    {
+        /// <summary>
+        /// Initialize a new DataFolderSingle object.
+        /// </summary>
+        public DataFolderSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new DataFolderSingle object.
+        /// </summary>
+        public DataFolderSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new DataFolderSingle object.
+        /// </summary>
+        public DataFolderSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<DataFolder> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for DataFolder in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class DataFolder : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new DataFolder object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="lastModifiedDateTime">Initial value of LastModifiedDateTime.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static DataFolder CreateDataFolder(long ID, long xmin, global::System.DateTimeOffset lastModifiedDateTime)
+        {
+            DataFolder dataFolder = new DataFolder();
+            dataFolder.Id = ID;
+            dataFolder.xmin = xmin;
+            dataFolder.LastModifiedDateTime = lastModifiedDateTime;
+            return dataFolder;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Section in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Section
+        {
+            get
+            {
+                return this._Section;
+            }
+            set
+            {
+                this.OnSectionChanging(value);
+                this._Section = value;
+                this.OnSectionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Section;
+        partial void OnSectionChanging(string value);
+        partial void OnSectionChanged();
+        /// <summary>
+        /// There are no comments for Property Folder in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Folder
+        {
+            get
+            {
+                return this._Folder;
+            }
+            set
+            {
+                this.OnFolderChanging(value);
+                this._Folder = value;
+                this.OnFolderChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Folder;
+        partial void OnFolderChanging(string value);
+        partial void OnFolderChanged();
+        /// <summary>
+        /// There are no comments for Property FolderName in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FolderName
+        {
+            get
+            {
+                return this._FolderName;
+            }
+            set
+            {
+                this.OnFolderNameChanging(value);
+                this._FolderName = value;
+                this.OnFolderNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FolderName;
+        partial void OnFolderNameChanging(string value);
+        partial void OnFolderNameChanged();
+        /// <summary>
+        /// There are no comments for Property Folders in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.Folder> Folders
+        {
+            get
+            {
+                return this._Folders;
+            }
+            set
+            {
+                this.OnFoldersChanging(value);
+                this._Folders = value;
+                this.OnFoldersChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.Folder> _Folders = new global::System.Collections.ObjectModel.Collection<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.Folder>();
+        partial void OnFoldersChanging(global::System.Collections.ObjectModel.Collection<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.Folder> value);
+        partial void OnFoldersChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property LastModifiedDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset LastModifiedDateTime
+        {
+            get
+            {
+                return this._LastModifiedDateTime;
+            }
+            set
+            {
+                this.OnLastModifiedDateTimeChanging(value);
+                this._LastModifiedDateTime = value;
+                this.OnLastModifiedDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _LastModifiedDateTime;
+        partial void OnLastModifiedDateTimeChanging(global::System.DateTimeOffset value);
+        partial void OnLastModifiedDateTimeChanged();
+    }
+    /// <summary>
+    /// There are no comments for Folder in the schema.
+    /// </summary>
+    public partial class Folder
+    {
+        /// <summary>
+        /// Create a new Folder object.
+        /// </summary>
+        /// <param name="lastModifiedDateTime">Initial value of LastModifiedDateTime.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static Folder CreateFolder(global::System.DateTimeOffset lastModifiedDateTime)
+        {
+            Folder folder = new Folder();
+            folder.LastModifiedDateTime = lastModifiedDateTime;
+            return folder;
+        }
+        /// <summary>
+        /// There are no comments for Property Folder1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        [global::Microsoft.OData.Client.OriginalNameAttribute("Folder")]
+        public string Folder1
+        {
+            get
+            {
+                return this._Folder1;
+            }
+            set
+            {
+                this.OnFolder1Changing(value);
+                this._Folder1 = value;
+                this.OnFolder1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Folder1;
+        partial void OnFolder1Changing(string value);
+        partial void OnFolder1Changed();
+        /// <summary>
+        /// There are no comments for Property FolderName in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string FolderName
+        {
+            get
+            {
+                return this._FolderName;
+            }
+            set
+            {
+                this.OnFolderNameChanging(value);
+                this._FolderName = value;
+                this.OnFolderNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _FolderName;
+        partial void OnFolderNameChanging(string value);
+        partial void OnFolderNameChanged();
+        /// <summary>
+        /// There are no comments for Property LastModifiedDateTime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset LastModifiedDateTime
+        {
+            get
+            {
+                return this._LastModifiedDateTime;
+            }
+            set
+            {
+                this.OnLastModifiedDateTimeChanging(value);
+                this._LastModifiedDateTime = value;
+                this.OnLastModifiedDateTimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _LastModifiedDateTime;
+        partial void OnLastModifiedDateTimeChanging(global::System.DateTimeOffset value);
+        partial void OnLastModifiedDateTimeChanged();
+        /// <summary>
+        /// There are no comments for Property Folders in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Collections.ObjectModel.Collection<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.Folder> Folders
+        {
+            get
+            {
+                return this._Folders;
+            }
+            set
+            {
+                this.OnFoldersChanging(value);
+                this._Folders = value;
+                this.OnFoldersChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Collections.ObjectModel.Collection<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.Folder> _Folders = new global::System.Collections.ObjectModel.Collection<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.Folder>();
+        partial void OnFoldersChanging(global::System.Collections.ObjectModel.Collection<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.Folder> value);
+        partial void OnFoldersChanged();
+    }
+    /// <summary>
+    /// Class containing all extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Get an entity of type global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolder as global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolderSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolderSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolder> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolderSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolder as global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolderSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolderSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolder> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolderSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+    }
+}
 namespace DataExtractorODataService.Default
 {
     /// <summary>
@@ -343,7 +694,12 @@ namespace DataExtractorODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.DataExtractor.Domain.DataFiles", "DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "Affra.Service.DataExtractor.Domain.DataFolders", "DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "Affra.Service.DataExtractor.Domain.DataFiles", "DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -363,6 +719,10 @@ namespace DataExtractorODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
+            if (clientType.Namespace.Equals("DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("Affra.Service.DataExtractor.Domain.DataFolders.", clientType.Name);
+            }
             if (clientType.Namespace.Equals("DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles", global::System.StringComparison.Ordinal))
             {
                 return string.Concat("Affra.Service.DataExtractor.Domain.DataFiles.", clientType.Name);
@@ -391,12 +751,37 @@ namespace DataExtractorODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile> _DataFile;
         /// <summary>
+        /// There are no comments for DataFolder in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolder> DataFolder
+        {
+            get
+            {
+                if ((this._DataFolder == null))
+                {
+                    this._DataFolder = base.CreateQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolder>("DataFolder");
+                }
+                return this._DataFolder;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolder> _DataFolder;
+        /// <summary>
         /// There are no comments for DataFile in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         public void AddToDataFile(global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles.DataFile dataFile)
         {
             base.AddObject("DataFile", dataFile);
+        }
+        /// <summary>
+        /// There are no comments for DataFolder in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToDataFolder(global::DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders.DataFolder dataFolder)
+        {
+            base.AddObject("DataFolder", dataFolder);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -413,6 +798,7 @@ namespace DataExtractorODataService.Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
         <Property Name=""FolderName"" Type=""Edm.String"" />
+        <Property Name=""Section"" Type=""Edm.String"" />
         <Property Name=""FileName"" Type=""Edm.String"" />
         <Property Name=""LastModifiedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""JobStartDateTime"" Type=""Edm.DateTimeOffset"" />
@@ -429,9 +815,36 @@ namespace DataExtractorODataService.Default
         <Member Name=""Completed"" Value=""3"" />
       </EnumType>
     </Schema>
+    <Schema Namespace=""Affra.Service.DataExtractor.Domain.DataFolders"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""DataFolder"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Section"" Type=""Edm.String"" />
+        <Property Name=""Folder"" Type=""Edm.String"" />
+        <Property Name=""FolderName"" Type=""Edm.String"" />
+        <Property Name=""Folders"" Type=""Collection(Affra.Service.DataExtractor.Domain.DataFolders.Folder)"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""LastModifiedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+      </EntityType>
+      <ComplexType Name=""Folder"">
+        <Property Name=""Folder"" Type=""Edm.String"" />
+        <Property Name=""FolderName"" Type=""Edm.String"" />
+        <Property Name=""LastModifiedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Folders"" Type=""Collection(Affra.Service.DataExtractor.Domain.DataFolders.Folder)"" />
+      </ComplexType>
+    </Schema>
     <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityContainer Name=""Container"">
         <EntitySet Name=""DataFile"" EntityType=""Affra.Service.DataExtractor.Domain.DataFiles.DataFile"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""DataFolder"" EntityType=""Affra.Service.DataExtractor.Domain.DataFolders.DataFolder"">
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
