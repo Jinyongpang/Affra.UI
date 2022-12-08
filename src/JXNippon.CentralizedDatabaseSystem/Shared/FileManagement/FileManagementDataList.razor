@@ -7,21 +7,20 @@
         <GenericDescription Height="300px" ImageFile="@ImageFile.NoData" Description="No result found.">
         </GenericDescription>
     </div>
-      
 }
 <div class="row px-3 py-2">
     <Virtualize Context="context" ItemsProvider="@LoadDataAsync" TItem=DataFile ItemSize=50 OverscanCount=10 @ref=@this.virtualize>
         <Placeholder>
-            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:200px;">
+            <div class="col-sm-12 col-md-4 py-2 pr-1" style="min-height:200px;">
                 <Card Class="h-100">
                     <Body>
-                        <Skeleton Active></Skeleton>
+                        <Skeleton ParagraphRows=5 Active></Skeleton>
                     </Body>
                 </Card>  
             </div>    
         </Placeholder>
         <ItemContent>
-            <div class="col-sm-12 col-md-3 py-2 pr-1" style="min-height:200px;">
+            <div class="col-sm-12 col-md-4 py-2 pr-1" style="min-height:200px;">
                 <Card Style="min-height:200px;" Class="data-list-card">
                     <TitleTemplate>
                         <div class="d-flex flex-row align-items-center">
@@ -86,6 +85,10 @@
                                 else if (context.ProcessStatus == FileProcessStatus.Pending)
                                 {
                                     <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(context.ProcessStatus.ToString())"/>
+                                }
+                                else if (context.ProcessStatus == FileProcessStatus.Skipped)
+                                {
+                                    <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Text="@(context.ProcessStatus.ToString())" />
                                 }
                                 else
                                 {

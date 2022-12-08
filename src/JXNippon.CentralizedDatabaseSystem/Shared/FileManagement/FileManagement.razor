@@ -1,4 +1,6 @@
-﻿<Layout Class="layout-view">
+﻿@using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
+
+<Layout Class="layout-view">
     <Header>
         <div class="row">
             <div class="col-3">
@@ -7,20 +9,27 @@
             <div class="col-9 float-right align-items-center text-right mt-1">
                 <Space Size="@("middle")">
                     <SpaceItem>
-                        <Select Size="@("large")" Style="min-width: 20vw;" Class="text-left" OnSelectedItemChanged=@(() => ReloadAsync()) Placeholder="Select folder..." TItem=Folder DataSource=@Folders @bind-Value=@folder TItemValue=string ValueName="@nameof(Folder.FolderName)" LabelName="@nameof(Folder.FolderName)" AllowClear>
-                            <SuffixIcon>
-                                <Icon Type="folder-open" Theme="outline" Style="font-size: 20px;" />
-                            </SuffixIcon>
-                            <ItemTemplate>
-                                <Icon Type="folder-open" Theme="outline" Style="font-size: 20px; vertical-align: 0px; margin-right: 2px;" />@((context as Folder).FolderName)
-                            </ItemTemplate>
+                        <Select Mode="tags"
+                                @bind-Values="@selectedStatuses"
+                                Placeholder="Status"
+                                TItemValue="string"
+                                TItem="string"
+                                Size="@("large")" Style="min-width: 20vw;" Class="text-left"
+                                OnSelectedItemsChanged="OnStatusFilterChangedAsync"
+                                AllowClear>
+                            <SelectOptions>
+                                @foreach (var item in FileProcessStatusHolders)
+                                {
+                                    <SelectOption TItemValue="string" TItem="string" Value=@item Label=@item />
+                                }
+                            </SelectOptions>           
                         </Select>
                     </SpaceItem>
                     <SpaceItem>
                         <Search Size="@("large")" Placeholder="Search file..." Style="width: 20vw;" OnInput=@(args => ReloadAsync(searchInput : args.Value as string)) @bind-Value=search ClassicSearchIcon/>
                     </SpaceItem>
                     <SpaceItem>
-                        @if (!string.IsNullOrEmpty(this.folder))
+                        @if (false && !string.IsNullOrEmpty(this.folder))
                         {
                             <Button Type="default" Size="@("large")" Shape="@ButtonShape.Round" OnClick=@(args => ReloadAsync(null))>
                                 <ChildContent>
@@ -41,49 +50,11 @@
         </div>       
     </Header>
     <Layout Style="height: 100%;">
-        <Sider Class="d-none d-lg-inline" Collapsed Collapsible>
-            <Menu DefaultSelectedKeys=@(new[] { "All" }) Style="height: 100%;" Mode=@MenuMode.Inline @ref=menu OnMenuItemClicked=OnMenuItemSelectAsync>
-                <MenuItem Key="All">         
-                    <IconTemplate>
-                        <Icon Type="file" Theme="outline" Class="anticon-big"/>
-                    </IconTemplate>
-                    <ChildContent>
-                        <span style="font-size: 16px; margin-left: 0px;">All</span>
-                    </ChildContent>
-                </MenuItem>
-                <MenuItem Key="Processing">
-                    <IconTemplate>
-                        <Icon Type="loading" Theme="outline" Class="anticon-big"/>
-                    </IconTemplate>
-                    <ChildContent>
-                        <span style="font-size: 16px; margin-left: 0px;">Processing</span>
-                    </ChildContent>                
-                </MenuItem>
-                <MenuItem Key="Completed">
-                    <IconTemplate>
-                        <Icon Type="file-done" Theme="outline" Class="anticon-big"/>
-                    </IconTemplate>
-                    <ChildContent>
-                        <span style="font-size: 16px; margin-left: 0px;">Completed</span>
-                    </ChildContent>            
-                </MenuItem>
-                <MenuItem Key="Pending">
-                    <IconTemplate>
-                        <Icon Type="field-time" Theme="outline" Class="anticon-big"/>
-                    </IconTemplate>
-                    <ChildContent>
-                        <span style="font-size: 16px; margin-left: 0px;">Pending</span>
-                    </ChildContent>          
-                </MenuItem>
-                <MenuItem Key="Failed">
-                    <IconTemplate>
-                        <Icon Type="file-exclamation" Theme="outline" Class="anticon-big"/>
-                    </IconTemplate>
-                    <ChildContent>
-                        <span style="font-size: 16px; margin-left: 0px;">Failed</span>
-                    </ChildContent>          
-                </MenuItem>
-            </Menu>
+        <Sider Class="d-none d-lg-inline" Width="300">
+            <RadzenTree Data=@this.folders Expand=@LoadFolder ValueChanged=@OnValueChangedAsync Style="background-color: white; width: 100%; height: 100%">
+                <RadzenTreeLevel Text=@this.GetTextForNode Template=@this.FolderTemplate>
+                </RadzenTreeLevel>
+            </RadzenTree>
         </Sider>
         <Content Style="overflow-y: auto; overflow-x:hidden; height:100%;">
             <FileManagementDataList @ref=fileManagementDataList></FileManagementDataList>

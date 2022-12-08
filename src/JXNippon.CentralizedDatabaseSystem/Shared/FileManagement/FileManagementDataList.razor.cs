@@ -2,6 +2,7 @@
 using Affra.Core.Infrastructure.OData.Extensions;
 using AntDesign;
 using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles;
+using DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFolders;
 using JXNippon.CentralizedDatabaseSystem.Domain.FileManagements;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Domain.Workspaces;
@@ -43,7 +44,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         [Inject] private IJSRuntime JSRuntime { get; set; }
 
         public CommonFilter FileManagementFilter { get; set; }
-
+        public IEnumerable<string> FileProcessStatusFilters { get; set; }
         public string Folder { get; set; }
 
         protected override Task OnInitializedAsync()
@@ -77,6 +78,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
                     var status = (FileProcessStatus)Enum.Parse(typeof(FileProcessStatus), FileManagementFilter.Status);
                     query = query.Where(dataFile => dataFile.ProcessStatus == status);
                 }
+                if (FileProcessStatusFilters != null && FileProcessStatusFilters.Any())
+                {
+                    query = query.Where(dataFile => FileProcessStatusFilters.Contains(dataFile.ProcessStatus.ToString()));
+                }
                 if (FileManagementFilter.Date != null)
                 {
                     var start = TimeZoneInfo.ConvertTimeToUtc(FileManagementFilter.Date.Value);
@@ -89,7 +94,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
                 if (!string.IsNullOrEmpty(Folder))
                 {
                     query = query
-                        .Where(x => x.Section.ToUpper() == Folder.ToUpper());
+                        .Where(x => x.FolderName.ToUpper() == Folder.ToUpper());
                 }
 
                 Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
