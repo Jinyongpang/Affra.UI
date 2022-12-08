@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 7/12/2022 3:17:35 PM
+// Generation date: 8/12/2022 2:30:25 PM
 namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
 {
     /// <summary>
@@ -303,7 +303,8 @@ namespace DataExtractorODataService.Affra.Service.DataExtractor.Domain.DataFiles
         Pending = 0,
         Processing = 1,
         Failed = 2,
-        Completed = 3
+        Completed = 3,
+        Skipped = 4
     }
     /// <summary>
     /// Class containing all extension methods
@@ -813,6 +814,7 @@ namespace DataExtractorODataService.Default
         <Member Name=""Processing"" Value=""1"" />
         <Member Name=""Failed"" Value=""2"" />
         <Member Name=""Completed"" Value=""3"" />
+        <Member Name=""Skipped"" Value=""4"" />
       </EnumType>
     </Schema>
     <Schema Namespace=""Affra.Service.DataExtractor.Domain.DataFolders"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">

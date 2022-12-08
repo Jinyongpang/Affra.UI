@@ -323,7 +323,7 @@ body {
     border: 0px !important;
     box-shadow: none;
     height: calc(100vh - 5rem);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .ant-carousel .slick-dots-bottom {
