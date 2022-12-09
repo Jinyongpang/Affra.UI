@@ -93,6 +93,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
                 isLoading = false;
                 StateHasChanged();
             }
+            return new ItemsProviderResult<User>(Array.Empty<User>(), count);
         }
 
         private async Task ShowActivityDialogAsync(User user)

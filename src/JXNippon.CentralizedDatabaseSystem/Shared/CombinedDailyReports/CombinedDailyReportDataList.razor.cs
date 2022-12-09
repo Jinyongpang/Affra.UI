@@ -106,6 +106,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 isLoading = false;
                 StateHasChanged();
             }
+            return new ItemsProviderResult<CombinedDailyReport>(Array.Empty<CombinedDailyReport>(), count);
         }
 
         private void HandleException(Exception ex)

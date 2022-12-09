@@ -141,6 +141,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 isLoading = false;
                 StateHasChanged();
             }
+            return new ItemsProviderResult<ManagementOfChangeRecord>(Array.Empty<ManagementOfChangeRecord>(), count);
         }
         public async Task ReloadAsync()
         {

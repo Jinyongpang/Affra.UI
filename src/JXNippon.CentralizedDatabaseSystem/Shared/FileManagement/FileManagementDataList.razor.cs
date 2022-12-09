@@ -122,6 +122,8 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
             {
                 this.AffraNotificationService.NotifyException(ex);
             }
+
+            return new ItemsProviderResult<DataFile>(Array.Empty<DataFile>(), count);
         }
 
         private void HandleException(Exception ex)
