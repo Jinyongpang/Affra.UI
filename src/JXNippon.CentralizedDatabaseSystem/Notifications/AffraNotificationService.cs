@@ -27,6 +27,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Notifications
 
         public void NotifyException(Exception exception)
         {
+            Console.WriteLine(exception);
             this.globalDataSource.AddException(exception);
             if (exception is AffraODataException odataEx)
             {

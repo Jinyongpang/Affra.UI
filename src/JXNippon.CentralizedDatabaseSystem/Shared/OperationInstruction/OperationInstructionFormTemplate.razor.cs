@@ -53,7 +53,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
                     break;
                 case OperationInstructionCurrentStep.ApprovalSubmitForApproval:
                     currentStep = 2;
-                    await LoadApprovalUsernames();
+                    await LoadApprovalUsernamesAsync();
                     break;
                 case OperationInstructionCurrentStep.Completed:
                     disableAllInput = true;
@@ -63,43 +63,63 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         }
         private async Task LoadEndoserUsernames()
         {
-            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
-
-            EndorserUsername = new List<string>();
-
-            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
-            {
-                EndorserUsername.Add(manager);
-
-                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+            try 
+            { 
+                Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+                if (string.IsNullOrEmpty(person.Department))
                 {
-                    EndorserUsername.Add(delegation);
+                    throw new ArgumentNullException("No department found!");
                 }
+                EndorserUsername = new List<string>();
+
+                foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
+                {
+                    EndorserUsername.Add(manager);
+
+                    foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+                    {
+                        EndorserUsername.Add(delegation);
+                    }
+                }
+
+                EndorserUsername = EndorserUsername.Distinct().ToList();
+
+                StateHasChanged();
             }
-
-            EndorserUsername = EndorserUsername.Distinct().ToList();
-
-            StateHasChanged();
-        }
-        private async Task LoadApprovalUsernames()
+            catch(Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
+}
+        private async Task LoadApprovalUsernamesAsync()
         {
-            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
-
-            approvalUsername = new List<string>();
-
-            foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
+            try
             {
-                approvalUsername.Add(manager);
-
-                foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+                Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+                if (string.IsNullOrEmpty(person.Department))
                 {
-                    approvalUsername.Add(delegation);
+                    throw new ArgumentNullException("No department found!");
                 }
+                approvalUsername = new List<string>();
+
+                foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
+                {
+                    approvalUsername.Add(manager);
+
+                    foreach (string delegation in await UserServiceClient.Delegation_GetDelegationsAsync(manager, person.Department))
+                    {
+                        approvalUsername.Add(delegation);
+                    }
+                }
+
+                approvalUsername = approvalUsername.Distinct().ToList();
+
+                StateHasChanged();
             }
-
-            approvalUsername = approvalUsername.Distinct().ToList();
-
-            StateHasChanged();
+            catch(Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
         }
         private void OnStepChange(int current)
         {
@@ -116,27 +136,34 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         }
         private async void OnCreateButtonClick()
         {
-            if (Item.EstimatedDuration <= 0)
+            try
             {
-                AffraNotificationService.NotifyWarning("Estimated duration cannot be less than or equal 0.");
-                return;
+                if (Item.EstimatedDuration <= 0)
+                {
+                    AffraNotificationService.NotifyWarning("Estimated duration cannot be less than or equal 0.");
+                    return;
+                }
+
+                Item.OperationInstructionStatus = OperationInstructionStatus.New;
+
+                Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.EndorsementSubmitForApproval;
+                currentStep = 1;
+
+                Item.OperationInstructionNo = $"OI-{Item.OperationInstructionField.ToString()}-{DateTime.Now:yyyy}-{DateTime.Now:yyyyMMddHHmmss}";
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                var service = this.GetGenericOIService(serviceScope);
+
+                await service.InsertAsync(Item);
+                AffraNotificationService.NotifyItemCreated();
+
+                await LoadEndoserUsernames();
             }
-
-            Item.OperationInstructionStatus = OperationInstructionStatus.New;
-
-            Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.EndorsementSubmitForApproval;
-            currentStep = 1;
-
-            Item.OperationInstructionNo = $"OI-{Item.OperationInstructionField.ToString()}-{DateTime.Now:yyyy}-{DateTime.Now:yyyyMMddHHmmss}";
-
-            using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.GetGenericOIService(serviceScope);
-
-            await service.InsertAsync(Item);
-            AffraNotificationService.NotifyItemCreated(); 
-            
-            await LoadEndoserUsernames();
-        }
+            catch(Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
+}
         private void OnCloseDialogClicked()
         {
             DialogService.Close(false);
@@ -149,7 +176,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
         {
             currentStep--;
         }
-        private async void OnEndorsementSubmitButtonClick()
+        private async Task OnEndorsementSubmitButtonClickAsync()
         {
             Item.OperationInstructionStatus = OperationInstructionStatus.PendingForApproval;
             Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.EndorsementPendingForApproval;
@@ -167,7 +194,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.OperationInstruction
                 }
             });
         }
-        private async void OnApprovalSubmitButtonClick()
+        private async Task OnApprovalSubmitButtonClickAsync()
         {
             Item.OperationInstructionStatus = OperationInstructionStatus.PendingForApproval;
             Item.OperationInstructionCurrentStep = OperationInstructionCurrentStep.ApprovalPendingForApproval;

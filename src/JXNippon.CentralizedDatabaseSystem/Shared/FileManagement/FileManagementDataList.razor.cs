@@ -61,60 +61,69 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 
         private async ValueTask<ItemsProviderResult<DataFile>> LoadDataAsync(ItemsProviderRequest request)
         {
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
-            isLoading = true;
-            StateHasChanged();
             try
             {
-                using var serviceScope = ServiceProvider.CreateScope();
-                IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
-                var query = fileService.Get();
-                if (!string.IsNullOrEmpty(FileManagementFilter.Search))
-                {
-                    query = query.Where(dataFile => dataFile.FileName.ToUpper().Contains(FileManagementFilter.Search.ToUpper()));
-                }
-                if (FileManagementFilter.Status != null)
-                {
-                    var status = (FileProcessStatus)Enum.Parse(typeof(FileProcessStatus), FileManagementFilter.Status);
-                    query = query.Where(dataFile => dataFile.ProcessStatus == status);
-                }
-                if (FileProcessStatusFilters != null && FileProcessStatusFilters.Any())
-                {
-                    query = query.Where(dataFile => FileProcessStatusFilters.Contains(dataFile.ProcessStatus.ToString()));
-                }
-                if (FileManagementFilter.Date != null)
-                {
-                    var start = TimeZoneInfo.ConvertTimeToUtc(FileManagementFilter.Date.Value);
-                    var end = TimeZoneInfo.ConvertTimeToUtc(FileManagementFilter.Date.Value.AddDays(1));
-                    query = query
-                        .Where(dataFile => dataFile.LastModifiedDateTime >= start)
-                        .Where(dataFile => dataFile.LastModifiedDateTime < end);
-                }
-
-                if (!string.IsNullOrEmpty(Folder))
-                {
-                    query = query
-                        .Where(x => x.FolderName.ToUpper() == Folder.ToUpper());
-                }
-
-                Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
-                    .OrderByDescending(file => file.LastModifiedDateTime)
-                    .Skip(request.StartIndex)
-                    .Take(request.Count)
-                    .ToQueryOperationResponseAsync<DataFile>();
-
-                count = (int)filesResponse.Count;
-                var filesList = filesResponse.ToList();
-
-                isLoading = false;
-                return new ItemsProviderResult<DataFile>(filesList, count);
-            }
-            finally
-            {
-                initLoading = false;
-                isLoading = false;
+                isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
+                isLoading = true;
                 StateHasChanged();
+                try
+                {
+                    using var serviceScope = ServiceProvider.CreateScope();
+                    IGenericService<DataFile>? fileService = this.GetGenericFileService(serviceScope);
+                    var query = fileService.Get();
+                    if (!string.IsNullOrEmpty(FileManagementFilter.Search))
+                    {
+                        query = query.Where(dataFile => dataFile.FileName.ToUpper().Contains(FileManagementFilter.Search.ToUpper()));
+                    }
+                    if (FileManagementFilter.Status != null)
+                    {
+                        var status = (FileProcessStatus)Enum.Parse(typeof(FileProcessStatus), FileManagementFilter.Status);
+                        query = query.Where(dataFile => dataFile.ProcessStatus == status);
+                    }
+                    if (FileProcessStatusFilters != null && FileProcessStatusFilters.Any())
+                    {
+                        query = query.Where(dataFile => FileProcessStatusFilters.Contains(dataFile.ProcessStatus.ToString()));
+                    }
+                    if (FileManagementFilter.Date != null)
+                    {
+                        var start = TimeZoneInfo.ConvertTimeToUtc(FileManagementFilter.Date.Value);
+                        var end = TimeZoneInfo.ConvertTimeToUtc(FileManagementFilter.Date.Value.AddDays(1));
+                        query = query
+                            .Where(dataFile => dataFile.LastModifiedDateTime >= start)
+                            .Where(dataFile => dataFile.LastModifiedDateTime < end);
+                    }
+
+                    if (!string.IsNullOrEmpty(Folder))
+                    {
+                        query = query
+                            .Where(x => x.FolderName.ToUpper() == Folder.ToUpper());
+                    }
+
+                    Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
+                        .OrderByDescending(file => file.LastModifiedDateTime)
+                        .Skip(request.StartIndex)
+                        .Take(request.Count)
+                        .ToQueryOperationResponseAsync<DataFile>();
+
+                    count = (int)filesResponse.Count;
+                    var filesList = filesResponse.ToList();
+
+                    isLoading = false;
+                    return new ItemsProviderResult<DataFile>(filesList, count);
+                }
+                finally
+                {
+                    initLoading = false;
+                    isLoading = false;
+                    StateHasChanged();
+                }
             }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
+
+            return new ItemsProviderResult<DataFile>(Array.Empty<DataFile>(), count);
         }
 
         private void HandleException(Exception ex)

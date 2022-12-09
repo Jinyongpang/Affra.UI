@@ -52,9 +52,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
         private async ValueTask<ItemsProviderResult<PEReport>> LoadDataAsync(ItemsProviderRequest request)
         {
             isLoading = true;
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.WellAllocation), HasReadPermissoin = true, HasWritePermission = true });
             try
             {
+                isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.WellAllocation), HasReadPermissoin = true, HasWritePermission = true });
                 using var serviceScope = ServiceProvider.CreateScope();
                 IGenericService<PEReport>? peMonthlyReportService = GetGenericService(serviceScope);
                 var query = peMonthlyReportService.Get();
@@ -97,12 +97,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
                 }
                 return new ItemsProviderResult<PEReport>(peMonthlyReportsList, count);
             }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
             finally
             {
                 initLoading = false;
                 isLoading = false;
                 StateHasChanged();
             }
+            return new ItemsProviderResult<PEReport>(Array.Empty<PEReport>(), count);
         }
 
         private void HandleException(Exception ex)

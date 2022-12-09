@@ -51,17 +51,24 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
         protected override async Task OnInitializedAsync()
         {
-            using var serviceScope = ServiceProvider.CreateScope();
-            customColumns = (await serviceScope.ServiceProvider.GetRequiredService<IExtraColumnService>()
-                .GetCustomColumns(typeof(TItem).Name)
-                .ToQueryOperationResponseAsync<CustomColumn>())
-                .ToList();
-            foreach (var subscription in Subscriptions)
+            try
             {
-                await ContentUpdateNotificationService.SubscribeAsync(subscription, OnContentUpdateAsync);
-            }
+                using var serviceScope = ServiceProvider.CreateScope();
+                customColumns = (await serviceScope.ServiceProvider.GetRequiredService<IExtraColumnService>()
+                    .GetCustomColumns(typeof(TItem).Name)
+                    .ToQueryOperationResponseAsync<CustomColumn>())
+                    .ToList();
+                foreach (var subscription in Subscriptions)
+                {
+                    await ContentUpdateNotificationService.SubscribeAsync(subscription, OnContentUpdateAsync);
+                }
 
-            await ContentUpdateNotificationService.SubscribeAsync(typeof(TItem).Name, OnContentUpdateAsync);
+                await ContentUpdateNotificationService.SubscribeAsync(typeof(TItem).Name, OnContentUpdateAsync);
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
         }
         public async Task ReloadAsync()
         {
@@ -74,37 +81,44 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
         }
         protected async virtual Task LoadDataAsync(LoadDataArgs args)
         {
-            isLoading = true;
-            await LoadData.InvokeAsync();
-            using var serviceScope = ServiceProvider.CreateScope();
-            var service = GetGenericService(serviceScope);
-            var query = service.Get();
-            if (CommonFilter != null)
+            try
             {
-                if (CommonFilter.Date != null)
+                isLoading = true;
+                await LoadData.InvokeAsync();
+                using var serviceScope = ServiceProvider.CreateScope();
+                var service = GetGenericService(serviceScope);
+                var query = service.Get();
+                if (CommonFilter != null)
                 {
-                    var start = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value);
-                    var end = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value.AddDays(1));
-                    query = query
-                        .Where(x => x.Date >= start)
-                        .Where(x => x.Date < end);
+                    if (CommonFilter.Date != null)
+                    {
+                        var start = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value);
+                        var end = TimeZoneInfo.ConvertTimeToUtc(CommonFilter.Date.Value.AddDays(1));
+                        query = query
+                            .Where(x => x.Date >= start)
+                            .Where(x => x.Date < end);
+                    }
                 }
+                await QueryFilter.InvokeAsync(query);
+
+                var response = await query
+                    .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
+                    .ToQueryOperationResponseAsync<TItem>();
+
+                Count = (int)response.Count;
+                Items = new Collection<TItem>(response.ToArray());
+                var itemCountBefore = Items.Count;
+                await ItemsChanged.InvokeAsync(Items);
+                await OnItemsChanged.InvokeAsync(Items);
+                var itemCountAfter = Items.Count;
+                Count = itemCountAfter - itemCountBefore + Count;
+                _items = Items;
+                isLoading = false;
             }
-            await QueryFilter.InvokeAsync(query);
-
-            var response = await query
-                .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
-                .ToQueryOperationResponseAsync<TItem>();
-
-            Count = (int)response.Count; 
-            Items = new Collection<TItem>(response.ToArray());
-            var itemCountBefore = Items.Count;
-            await ItemsChanged.InvokeAsync(Items);
-            await OnItemsChanged.InvokeAsync(Items);
-            var itemCountAfter = Items.Count;
-            Count = itemCountAfter - itemCountBefore + Count;
-            _items = Items;
-            isLoading = false;
+            catch (Exception ex)
+            { 
+                this.AffraNotificationService.NotifyException(ex);
+            }           
         }
 
         private void HandleException(Exception ex)
@@ -119,76 +133,85 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
         private async Task ShowDialogAsync(TItem data, int menuAction, string title)
         {
-            ContextMenuService.Close();
-            dynamic? response;
-            if (menuAction == 2)
+            try
             {
-                response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
-                           new Dictionary<string, object>() { },
-                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
 
-                if (response == true)
+
+                ContextMenuService.Close();
+                dynamic? response;
+                if (menuAction == 2)
                 {
-                    using var serviceScope = ServiceProvider.CreateScope();
-                    var service = GetGenericService(serviceScope);
-                    await service.DeleteAsync(data);
+                    response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
+                               new Dictionary<string, object>() { },
+                               new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
 
-                    AffraNotificationService.NotifyItemDeleted();
-                }
-            }
-            else if (menuAction == 5)
-            {
-                _ = await DialogService.OpenAsync<AuditTrailTable>(title,
-                           new Dictionary<string, object>() { ["Id"] = data.Id, ["TableName"] = typeof(TItem).Name },
-                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
-                return;
-            }
-            else if (menuAction == 6)
-            {
-                _ = await DialogService.OpenAsync<AuditTrailTable>(title,
-                           new Dictionary<string, object>() { ["Action"] = CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.Action.Delete, ["TableName"] = typeof(TItem).Name },
-                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
-                return;
-            }
-            else
-            {
-                response = await DialogService.OpenAsync<TDialog>(title,
-                           new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "CustomColumns", customColumns } },
-                           Constant.DialogOptions);
-
-                if (response == true)
-                {
-                    try
+                    if (response == true)
                     {
                         using var serviceScope = ServiceProvider.CreateScope();
                         var service = GetGenericService(serviceScope);
+                        await service.DeleteAsync(data);
 
-                        if (data.AsIEntity().Id > 0)
-                        {
-                            isLoading = true;
-                            await service.UpdateAsync(data, data.AsIEntity().Id);
-                            AffraNotificationService.NotifyItemUpdated();
-                        }
-                        else
-                        {
-                            isLoading = true;
-                            await service.InsertAsync(data);
-                            AffraNotificationService.NotifyItemCreated();
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        AffraNotificationService.NotifyException(ex);
-                    }
-                    finally
-                    {
-                        isLoading = false;
+                        AffraNotificationService.NotifyItemDeleted();
                     }
                 }
-            }
+                else if (menuAction == 5)
+                {
+                    _ = await DialogService.OpenAsync<AuditTrailTable>(title,
+                               new Dictionary<string, object>() { ["Id"] = data.Id, ["TableName"] = typeof(TItem).Name },
+                               new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+                    return;
+                }
+                else if (menuAction == 6)
+                {
+                    _ = await DialogService.OpenAsync<AuditTrailTable>(title,
+                               new Dictionary<string, object>() { ["Action"] = CentralizedDatabaseSystemODataService.Affra.Core.Domain.AuditTrails.Action.Delete, ["TableName"] = typeof(TItem).Name },
+                               new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
+                    return;
+                }
+                else
+                {
+                    response = await DialogService.OpenAsync<TDialog>(title,
+                               new Dictionary<string, object>() { { "Item", data }, { "MenuAction", menuAction }, { "CustomColumns", customColumns } },
+                               Constant.DialogOptions);
 
-            await grid.Reload();
+                    if (response == true)
+                    {
+                        try
+                        {
+                            using var serviceScope = ServiceProvider.CreateScope();
+                            var service = GetGenericService(serviceScope);
+
+                            if (data.AsIEntity().Id > 0)
+                            {
+                                isLoading = true;
+                                await service.UpdateAsync(data, data.AsIEntity().Id);
+                                AffraNotificationService.NotifyItemUpdated();
+                            }
+                            else
+                            {
+                                isLoading = true;
+                                await service.InsertAsync(data);
+                                AffraNotificationService.NotifyItemCreated();
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            AffraNotificationService.NotifyException(ex);
+                        }
+                        finally
+                        {
+                            isLoading = false;
+                        }
+                    }
+                }
+
+                await grid.Reload();
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
         }
         public async ValueTask DisposeAsync()
         {
@@ -207,7 +230,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Commons
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                this.AffraNotificationService.NotifyException(ex);
             }
         }
         private void CellRender(DataGridCellRenderEventArgs<TItem> args)

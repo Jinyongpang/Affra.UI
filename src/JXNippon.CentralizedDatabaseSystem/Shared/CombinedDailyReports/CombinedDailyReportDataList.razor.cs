@@ -51,9 +51,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
         private async ValueTask<ItemsProviderResult<CombinedDailyReport>> LoadDataAsync(ItemsProviderRequest request)
         {
             isLoading = true;
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true });
             try
             {
+                isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true });
                 using var serviceScope = ServiceProvider.CreateScope();
                 IGenericService<CombinedDailyReport>? combinedDailyReportService = GetGenericService(serviceScope);
                 var query = combinedDailyReportService.Get();
@@ -96,12 +96,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                 }
                 return new ItemsProviderResult<CombinedDailyReport>(combinedDailyReportsList, count);
             }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
             finally
             {
                 initLoading = false;
                 isLoading = false;
                 StateHasChanged();
             }
+            return new ItemsProviderResult<CombinedDailyReport>(Array.Empty<CombinedDailyReport>(), count);
         }
 
         private void HandleException(Exception ex)
@@ -116,28 +121,35 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         private async Task ShowDialogAsync(CombinedDailyReport data)
         {
-            using var serviceScope = ServiceProvider.CreateScope();
-            var cdrService = serviceScope.ServiceProvider.GetRequiredService<ICombinedDailyReportService>();
-            var cdrItemTask = cdrService.GetCombinedDailyReportAsync(data.Date);
-            await DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = cdrItemTask }, Constant.LoadingDialogOptions);
-            var cdrItem = await cdrItemTask;
-            if (cdrItem is not null)
+            try
             {
-                cdrItem.DailyHIPAndLWPSummarys = cdrService.AppendSummary(cdrItem.DailyHIPAndLWPSummarys, cdrItem);
-                cdrItem.DailyFPSOHelangSummarys = cdrService.AppendSummary(cdrItem.DailyFPSOHelangSummarys, cdrItem);
+                using var serviceScope = ServiceProvider.CreateScope();
+                var cdrService = serviceScope.ServiceProvider.GetRequiredService<ICombinedDailyReportService>();
+                var cdrItemTask = cdrService.GetCombinedDailyReportAsync(data.Date);
+                await DialogService.OpenAsync<LoadingMessage>("", new() { ["Message"] = "Retrieving report. Please wait...", ["Task"] = cdrItemTask }, Constant.LoadingDialogOptions);
+                var cdrItem = await cdrItemTask;
+                if (cdrItem is not null)
+                {
+                    cdrItem.DailyHIPAndLWPSummarys = cdrService.AppendSummary(cdrItem.DailyHIPAndLWPSummarys, cdrItem);
+                    cdrItem.DailyFPSOHelangSummarys = cdrService.AppendSummary(cdrItem.DailyFPSOHelangSummarys, cdrItem);
+                }
+
+                dynamic? dialogResponse;
+                dialogResponse = await DialogService.OpenAsync<CombinedDailyReportView>(data.Date.ToLocalTime().ToString("d"),
+                           new Dictionary<string, object>() { { "Data", cdrItem } },
+                           Constant.FullScreenDialogOptions);
+
+                if (dialogResponse == true)
+                {
+
+                }
+
+                await ReloadAsync();
             }
-
-            dynamic? dialogResponse;
-            dialogResponse = await DialogService.OpenAsync<CombinedDailyReportView>(data.Date.ToLocalTime().ToString("d"),
-                       new Dictionary<string, object>() { { "Data", cdrItem } },
-                       Constant.FullScreenDialogOptions);
-
-            if (dialogResponse == true)
+            catch (Exception ex)
             {
-
+                this.AffraNotificationService.NotifyException(ex);
             }
-
-            await ReloadAsync();
         }
 
         private Task DownloadWithLoadingAsync(CombinedDailyReport combinedDailyReport)

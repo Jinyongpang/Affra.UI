@@ -52,12 +52,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         private async ValueTask<ItemsProviderResult<User>> LoadDataAsync(ItemsProviderRequest request)
         {
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             isLoading = true;
             StateHasChanged();
 
-            try 
-            { 
+            try
+            {
+                isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
                 using var serviceScope = ServiceProvider.CreateScope();
                 IGenericService<User>? userService = this.GetGenericService(serviceScope);
                 var query = userService.Get();
@@ -83,12 +83,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
                 isLoading = false;
                 return new ItemsProviderResult<User>(usersList, count);
             }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
             finally
             {
                 initLoading = false;
                 isLoading = false;
                 StateHasChanged();
             }
+            return new ItemsProviderResult<User>(Array.Empty<User>(), count);
         }
 
         private async Task ShowActivityDialogAsync(User user)
