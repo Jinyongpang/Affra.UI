@@ -1,12 +1,4 @@
-﻿.ant-btn-primary {
-    border-color: var(--rz-primary);
-    background-color: var(--rz-primary);
-}
-
-    .ant-btn-primary:hover, .ant-btn-primary:focus {
-        border-color: var(--rz-primary);
-        background: var(--rz-primary);
-    }
+﻿
 
 .ant-layout-sider-trigger {
     background-color: var(--rz-primary-light);
@@ -69,4 +61,20 @@
 
 .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
     border-color: var(--rz-primary-light);
+}
+
+.ant-btn-primary {
+    border-color: var(--rz-primary-lighter);
+    background-color: var(--rz-primary);
+}
+
+    .ant-btn-primary:hover, .ant-btn-primary:focus {
+        color: var(--rz-primary-light);
+        border-color: var(--rz-primary-light);
+        background: var(--rz-primary-lighter);
+    }
+
+
+.ant-btn-group .ant-btn-primary:first-child:not(:last-child), .ant-btn-group > .ant-btn:last-child:not(:first-child), .ant-btn-group > span:last-child:not(:first-child) > .ant-btn {
+    border-color: var(--rz-base-200);
 }
