@@ -43,52 +43,60 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
 
         private async ValueTask<ItemsProviderResult<PersonalMessage>> LoadDataAsync(ItemsProviderRequest request)
         {
-            isLoading = true;
-            StateHasChanged();
-
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<PersonalMessage>? personalMessageService = this.GetGenericService(serviceScope);
-            var query = (DataServiceQuery<PersonalMessage>)personalMessageService.Get();
-
-            if (this.PersonalMessageStatus is not null)
-            { 
-                query = (DataServiceQuery<PersonalMessage>)query.Where(x => x.Status == this.PersonalMessageStatus);
-            }
-
-            QueryOperationResponse<PersonalMessage>? response = await query
-                .Expand(x => x.Message)
-                .OrderByDescending(x => x.CreatedDateTime)
-                .Skip(request.StartIndex)
-                .Take(request.Count)
-                .ToQueryOperationResponseAsync<PersonalMessage>();
-
-            count = (int)response.Count;
-            var personalMessages = response.ToList();
-            foreach (var email in personalMessages
-                .Where(x => !string.IsNullOrEmpty(x.Message.CreatedBy))
-                .Select(x => x.Message.CreatedBy))
+            try
             {
-                if (!this.users.TryGetValue(email, out var user))
+                isLoading = true;
+                StateHasChanged();
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<PersonalMessage>? personalMessageService = this.GetGenericService(serviceScope);
+                var query = (DataServiceQuery<PersonalMessage>)personalMessageService.Get();
+
+                if (this.PersonalMessageStatus is not null)
                 {
-                    using var serviceScopeUser = ServiceProvider.CreateScope();
-                    var userService = this.GetUserGenericService(serviceScopeUser);
-                    user = (await userService.Get()
-                        .Where(x => x.Email.ToUpper() == email.ToUpper())
-                        .ToQueryOperationResponseAsync<User>())
-                        .FirstOrDefault();
-                    this.users[email] = user;
-                }               
+                    query = (DataServiceQuery<PersonalMessage>)query.Where(x => x.Status == this.PersonalMessageStatus);
+                }
+
+                QueryOperationResponse<PersonalMessage>? response = await query
+                    .Expand(x => x.Message)
+                    .OrderByDescending(x => x.CreatedDateTime)
+                    .Skip(request.StartIndex)
+                    .Take(request.Count)
+                    .ToQueryOperationResponseAsync<PersonalMessage>();
+
+                count = (int)response.Count;
+                var personalMessages = response.ToList();
+                foreach (var email in personalMessages
+                    .Where(x => !string.IsNullOrEmpty(x.Message.CreatedBy))
+                    .Select(x => x.Message.CreatedBy))
+                {
+                    if (!this.users.TryGetValue(email, out var user))
+                    {
+                        using var serviceScopeUser = ServiceProvider.CreateScope();
+                        var userService = this.GetUserGenericService(serviceScopeUser);
+                        user = (await userService.Get()
+                            .Where(x => x.Email.ToUpper() == email.ToUpper())
+                            .ToQueryOperationResponseAsync<User>())
+                            .FirstOrDefault();
+                        this.users[email] = user;
+                    }
+                }
+
+                isLoading = false;
+
+                if (personalMessages.DistinctBy(x => x.Id).Count() != personalMessages.Count)
+                {
+                    AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
+                }
+
+                StateHasChanged();
+                return new ItemsProviderResult<PersonalMessage>(personalMessages, count);
             }
-
-            isLoading = false;
-
-            if (personalMessages.DistinctBy(x => x.Id).Count() != personalMessages.Count)
+            catch (Exception ex)
             {
-                AffraNotificationService.NotifyWarning("Data have changed. Kindly reload.");
+                this.AffraNotificationService.NotifyException(ex);
             }
-
-            StateHasChanged();
-            return new ItemsProviderResult<PersonalMessage>(personalMessages, count);
+            return new ItemsProviderResult<PersonalMessage>(Array.Empty<PersonalMessage>(), count);
         }
 
         private void HandleException(Exception ex)
@@ -97,19 +105,26 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Notifications
         }
         private async Task MarkAsReadAsync(PersonalMessage personalMessage)
         {
-            if (personalMessage is null
-                || personalMessage.Status == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Read)
+            try
             {
-                return;
-            }
-            using var serviceScope = ServiceProvider.CreateScope();
-            var service = serviceScope.ServiceProvider.GetRequiredService<IPersonalMessageService>();
-            await service.MarkAsReadAsync(personalMessage);
+                if (personalMessage is null
+                    || personalMessage.Status == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Read)
+                {
+                    return;
+                }
+                using var serviceScope = ServiceProvider.CreateScope();
+                var service = serviceScope.ServiceProvider.GetRequiredService<IPersonalMessageService>();
+                await service.MarkAsReadAsync(personalMessage);
 
-            if (this.PersonalMessageStatus == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Unread)
+                if (this.PersonalMessageStatus == NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.PersonalMessageStatus.Unread)
+                {
+                    await this._dataList.RefreshDataAsync();
+                    this.StateHasChanged();
+                }
+            }
+            catch (Exception ex)
             {
-                await this._dataList.RefreshDataAsync();
-                this.StateHasChanged();
+                this.AffraNotificationService.NotifyException(ex);
             }
         }
         private IGenericService<PersonalMessage> GetGenericService(IServiceScope serviceScope)

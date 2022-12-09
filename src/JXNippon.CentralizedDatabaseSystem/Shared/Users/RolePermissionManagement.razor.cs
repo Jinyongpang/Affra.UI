@@ -48,28 +48,36 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         public async Task ReloadAsync()
         {
-            if (Item is null)
+            try
             {
-                return;
-            }
-            using var scope = ServiceProvider.CreateScope();
-            var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
-            Item = await userService.GetRoleAsync(Item.Name);
-            if (Item.Permissions is null)
-            {
-                Item.Permissions = new Collection<Permission>();
-            }
-            foreach (var permission in this._permissions)
-            {
-                if (Item.Permissions?.Any(x => x.Name == permission.Name) == false)
+                if (Item is null)
                 {
-                    Item.Permissions.Add(new Permission() { 
-                        Name = permission.Name,
-                    });
+                    return;
                 }
+                using var scope = ServiceProvider.CreateScope();
+                var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
+                Item = await userService.GetRoleAsync(Item.Name);
+                if (Item.Permissions is null)
+                {
+                    Item.Permissions = new Collection<Permission>();
+                }
+                foreach (var permission in this._permissions)
+                {
+                    if (Item.Permissions?.Any(x => x.Name == permission.Name) == false)
+                    {
+                        Item.Permissions.Add(new Permission()
+                        {
+                            Name = permission.Name,
+                        });
+                    }
+                }
+                await (collectionView?.ReloadAsync() ?? Task.CompletedTask);
+                this.StateHasChanged();
             }
-            await (collectionView?.ReloadAsync() ?? Task.CompletedTask);
-            this.StateHasChanged();
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
         }
 
 

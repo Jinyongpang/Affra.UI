@@ -52,19 +52,26 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async Task LoadDataAsync(LoadDataArgs args)
         {
-            isLoading = true;
-            using var serviceScope = ServiceProvider.CreateScope();
-            var query = this.GetManagementOfChangeQuery(serviceScope);
+            try
+            {
+                isLoading = true;
+                using var serviceScope = ServiceProvider.CreateScope();
+                var query = this.GetManagementOfChangeQuery(serviceScope);
 
-            Microsoft.OData.Client.QueryOperationResponse<ManagementOfChangeRecord>? response = await query
-                .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
-                .ToQueryOperationResponseAsync<ManagementOfChangeRecord>();
+                Microsoft.OData.Client.QueryOperationResponse<ManagementOfChangeRecord>? response = await query
+                    .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
+                    .ToQueryOperationResponseAsync<ManagementOfChangeRecord>();
 
-            count = (int)response.Count;
-            items = response.ToList();
-            isLoading = false;
+                count = (int)response.Count;
+                items = response.ToList();
+                isLoading = false;
 
-            StateHasChanged();
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
         }
 
         private IQueryable<ManagementOfChangeRecord> GetManagementOfChangeQuery(IServiceScope serviceScope)
@@ -96,12 +103,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
         private async ValueTask<ItemsProviderResult<ManagementOfChangeRecord>> LoadDataAsync(ItemsProviderRequest request)
         {
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.ManagementOfChange), HasReadPermissoin = true, HasWritePermission = true});
             isLoading = true;
             StateHasChanged();
 
             try
             {
+                isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.ManagementOfChange), HasReadPermissoin = true, HasWritePermission = true });
                 using var serviceScope = ServiceProvider.CreateScope();
                 var query = this.GetManagementOfChangeQuery(serviceScope);
 
@@ -123,6 +130,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 }
 
                 return new ItemsProviderResult<ManagementOfChangeRecord>(managementOfChangeList, count);
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
             }
             finally
             {

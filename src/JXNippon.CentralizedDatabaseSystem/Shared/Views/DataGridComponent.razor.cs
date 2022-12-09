@@ -59,14 +59,21 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
-            gridColumnDictionary = GridColumns.ToDictionary(x => $"{x.Type}{x.Property}");
-            if (!string.IsNullOrEmpty(Subscription))
+            try
             {
-                await ContentUpdateNotificationService.SubscribeAsync(Subscription, OnContentUpdateAsync);
+                gridColumnDictionary = GridColumns.ToDictionary(x => $"{x.Type}{x.Property}");
+                if (!string.IsNullOrEmpty(Subscription))
+                {
+                    await ContentUpdateNotificationService.SubscribeAsync(Subscription, OnContentUpdateAsync);
+                }
+                if (DateFilter is not null)
+                {
+                    DateFilter.OnDateRangeChanged += OnDateRangeChangedAsync;
+                }
             }
-            if (DateFilter is not null)
+            catch (Exception ex)
             {
-                DateFilter.OnDateRangeChanged += OnDateRangeChangedAsync;
+                this.AffraNotificationService.NotifyException(ex);
             }
         }
 
@@ -82,11 +89,19 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         private async Task LoadDataAsync(LoadDataArgs args)
         {
-            isLoading = true;
-            items = await GetDailyItemsAsync(TType, DateFilter?.Start, DateFilter?.End, args, this.MonthIndex);
-            itemsDictionary = await MergeOverridenTypeAsync(items) ?? new List<ExpandoObject>();
-            isLoading = false;
-            this.StateHasChanged();
+            try
+            {
+
+                isLoading = true;
+                items = await GetDailyItemsAsync(TType, DateFilter?.Start, DateFilter?.End, args, this.MonthIndex);
+                itemsDictionary = await MergeOverridenTypeAsync(items) ?? new List<ExpandoObject>();
+                isLoading = false;
+                this.StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
         }
 
         private async Task<IEnumerable<IDictionary<string, object>>?> MergeOverridenTypeAsync(IEnumerable<IDaily> dailyItems)
