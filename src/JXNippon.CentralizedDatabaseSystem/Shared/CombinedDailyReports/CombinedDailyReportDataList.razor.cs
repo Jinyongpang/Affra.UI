@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using Affra.Core.Domain.Services;
 using Affra.Core.Infrastructure.OData.Extensions;
+using AntDesign;
 using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
 using JXNippon.CentralizedDatabaseSystem.Domain.CentralizedDatabaseSystemServices;
 using JXNippon.CentralizedDatabaseSystem.Domain.CombinedDailyReports;
@@ -8,6 +9,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.AuditTrails;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Shared.Loadings;
 using Microsoft.AspNetCore.Components;
@@ -37,10 +39,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         public CommonFilter Filter { get; set; }
 
-        protected override Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true });
             Filter = new CommonFilter(navigationManager);
-            return Task.CompletedTask;
         }
         public async Task ReloadAsync()
         {
@@ -53,7 +55,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
             isLoading = true;
             try
             {
-                isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.CombinedDailyReport), HasReadPermissoin = true, HasWritePermission = true });
                 using var serviceScope = ServiceProvider.CreateScope();
                 IGenericService<CombinedDailyReport>? combinedDailyReportService = GetGenericService(serviceScope);
                 var query = combinedDailyReportService.Get();
@@ -216,6 +217,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                      : string.Empty;
             }
             return string.Empty;
+        }
+
+        private async Task ShowAuditTrailAsync(CombinedDailyReport combinedDailyReport)
+        {
+            _ = await DialogService.OpenAsync<AuditTrailTable>($"Combined Daily Report : {combinedDailyReport.DateUI.ToDateString()}",
+                              new Dictionary<string, object>() { ["Id"] = combinedDailyReport.Id, ["TableName"] = typeof(CombinedDailyReport).Name },
+                              new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
         }
     }
 }

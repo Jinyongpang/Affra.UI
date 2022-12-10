@@ -102,12 +102,12 @@
                                 <Icon Class="anticon-big" Type="eye" OnClick="(() => this.ShowDialogAsync(context))"/>
                             </Tooltip>
                         </CardAction>
-                        @if (isUserHavePermission)
-                        {
-                            <CardAction>
-                                <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" OnClick="(() => this.DownloadWithLoadingAsync(context))"/></Tooltip>
-                            </CardAction>
-                        }
+                        <CardAction>
+                            <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" OnClick="(() => this.DownloadWithLoadingAsync(context))"/></Tooltip>
+                        </CardAction>
+                        <CardAction>
+                            <Tooltip Title=@("View History ...")><Icon Class="anticon-big" Type="clock-circle" OnClick="(() => this.ShowAuditTrailAsync(context))" /></Tooltip>
+                        </CardAction>
                     </ActionTemplate>
                 </Card>
             </div>        
