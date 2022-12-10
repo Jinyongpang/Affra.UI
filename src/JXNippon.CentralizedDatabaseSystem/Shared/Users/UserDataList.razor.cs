@@ -38,10 +38,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         public CommonFilter CommonFilter { get; set; }
 
-        protected override Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             this.CommonFilter = new CommonFilter(navigationManager);
-            return Task.CompletedTask;
         }
 
         public async Task ReloadAsync()
@@ -57,7 +57,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
             try
             {
-                isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
                 using var serviceScope = ServiceProvider.CreateScope();
                 IGenericService<User>? userService = this.GetGenericService(serviceScope);
                 var query = userService.Get();
