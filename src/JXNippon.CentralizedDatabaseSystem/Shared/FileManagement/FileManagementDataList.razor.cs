@@ -47,10 +47,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         public IEnumerable<string> FileProcessStatusFilters { get; set; }
         public string Folder { get; set; }
 
-        protected override Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
             this.FileManagementFilter = new CommonFilter(navigationManager);
-            return Task.CompletedTask;
         }
 
         public async Task ReloadAsync()
@@ -63,7 +63,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         {
             try
             {
-                isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
                 isLoading = true;
                 StateHasChanged();
                 try
