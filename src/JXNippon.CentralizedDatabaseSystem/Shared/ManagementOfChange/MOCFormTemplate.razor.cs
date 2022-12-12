@@ -298,9 +298,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             return string.Empty;
         }
 
-            return string.Empty;
-        }
-
         private async Task<ICollection<string>> GetLineManagersAndDelegationsAsync()
         {
             try 
