@@ -128,10 +128,14 @@
                                     </DescriptionsItem>
                                     <DescriptionsItem Span="2" Title="Date"><DatePicker Disabled="true" @bind-Value="Item.EndorsedByDateTimeUI" Format="yyyy/MM/dd" /></DescriptionsItem>
                                     <DescriptionsItem Class="signature-description" Span="2" Title="Signature">
-                                        @if(Item.EndorserSignature != string.Empty){
+                                        @if(!string.IsNullOrEmpty(Item?.EndorserSignature))
+                                        {
                                             <h4 style="text-align:center">Approved</h4>
-                                        }else{
-                                            @if (Item.EndorsedBy.Equals(GlobalDataSource.User.Email, StringComparison.OrdinalIgnoreCase) && (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.EndorsementPendingForApproval)){
+                                        }
+                                        else
+                                        {
+                                            @if (Item.EndorsedBy?.Equals(GlobalDataSource?.User?.Email, StringComparison.OrdinalIgnoreCase) ?? false && (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.EndorsementPendingForApproval))
+                                            {
                                                 <Button Class="approveButtonStyle" Disabled="@(Item.OperationInstructionCurrentStep != OperationInstructionCurrentStep.EndorsementPendingForApproval)" OnClick="ShowEndorsementConfirmationDialogAsync" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large">
                                                     <ChildContent>
                                                         <Icon Class="anticon-big" Type="safety-certificate" Theme="outline"/>
@@ -172,7 +176,7 @@
                                         }
                                         @if (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.EndorsementSubmitForApproval)
                                         {
-                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnEndorsementSubmitButtonClick">
+                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnEndorsementSubmitButtonClickAsync">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />
@@ -226,7 +230,7 @@
                                         </Button>
                                         @if (Item.OperationInstructionCurrentStep == OperationInstructionCurrentStep.ApprovalSubmitForApproval)
                                         {
-                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnApprovalSubmitButtonClick">
+                                            <Button Class="moc-previous-button" Type="@AntDesign.ButtonType.Primary" Size="@AntDesign.ButtonSize.Large" Shape="@ButtonShape.Round" OnClick="OnApprovalSubmitButtonClickAsync">
                                                 <ChildContent>
                                                     <span style="font-size: 18px; margin-left: 0px;">Submit For Approval</span>
                                                     <Icon Class="anticon-big" Type="form" Theme="outline" />

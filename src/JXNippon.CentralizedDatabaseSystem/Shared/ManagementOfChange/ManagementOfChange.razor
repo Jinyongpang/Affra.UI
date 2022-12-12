@@ -35,7 +35,7 @@
                 <MenuItem Key="All"><span style="font-size: 16px; margin-left: 0px;">All</span></MenuItem>
                     @foreach (var mocStatus in Enum.GetValues(typeof(ManagementOfChangeStatus)).Cast<ManagementOfChangeStatus>().ToList())
                     {
-                        <MenuItem Key="@mocStatus.ToString()"><span style="font-size: 16px; margin-left: 0px;">@(stringLocalizer[mocStatus.ToString()])</span></MenuItem>
+                        <MenuItem Key="@mocStatus.ToString()">@this.GetStatusLabel(mocStatus)</MenuItem>
                     }
             </Menu>
         </Sider>
@@ -46,3 +46,42 @@
         </Layout>
     </Layout>
 </Layout>
+
+@code{
+    private RenderFragment GetStatusLabel(ManagementOfChangeStatus status)
+    {
+        @if (status == ManagementOfChangeStatus.ClosedOut)
+        {
+            return @<RadzenBadge BadgeStyle="BadgeStyle.Secondary" Text="@(stringLocalizer[status.ToString()])" />;
+        }
+        else if (status == ManagementOfChangeStatus.Extension)
+        {
+            return @<RadzenBadge BadgeStyle="BadgeStyle.Primary" Text="@(stringLocalizer[status.ToString()])" />;
+        }
+        else if (status == ManagementOfChangeStatus.PendingForApproval)
+        {
+            return @<RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(stringLocalizer[status.ToString()])" />;
+        }
+        else if (status == ManagementOfChangeStatus.PendingForCloseOut)
+        {
+            return @<RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(stringLocalizer[status.ToString()])" />;
+        }
+        else if (status == ManagementOfChangeStatus.Approved)
+        {
+            return @<RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(stringLocalizer[status.ToString()])" />;
+        }
+        else if (status == ManagementOfChangeStatus.Rejected)
+        {
+            return @<RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(stringLocalizer[status.ToString()])" />;
+        }
+        else if (status == ManagementOfChangeStatus.Deleted)
+        {
+            return @<RadzenBadge BadgeStyle="BadgeStyle.Dark" Text="@(stringLocalizer[status.ToString()])" />;
+        }
+        else
+        {
+            return @<RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(stringLocalizer[status.ToString()])" />;
+        }
+    }
+                       
+ }

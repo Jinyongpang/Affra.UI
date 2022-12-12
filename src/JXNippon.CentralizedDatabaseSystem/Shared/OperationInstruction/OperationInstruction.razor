@@ -24,12 +24,37 @@
         </div>       
     </Header>
     <Layout Style="height: 100%;">
-        <Sider Width=250>
+        <Sider Width=250 Collapsible>
             <Menu DefaultSelectedKeys=@(new[] { "All" }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
                 <MenuItem Key="All"><span style="font-size: 16px; margin-left: 0px;">All</span></MenuItem>
                     @foreach (var oiStatus in Enum.GetValues(typeof(OperationInstructionStatus)).Cast<OperationInstructionStatus>().ToList())
                     {
-                        <MenuItem Key="@oiStatus.ToString()"><span style="font-size: 16px; margin-left: 0px;">@(stringLocalizer[oiStatus.ToString()])</span></MenuItem>
+                        <MenuItem Key="@oiStatus.ToString()">
+                            @if (oiStatus == OperationInstructionStatus.Completed)
+                            {
+                                <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(stringLocalizer[oiStatus.ToString()])" />
+                            }
+                            else if (oiStatus == OperationInstructionStatus.PendingForApproval)
+                            {
+                                <RadzenBadge BadgeStyle="BadgeStyle.Warning" Text="@(stringLocalizer[oiStatus.ToString()])" />
+                            }
+                            else if (oiStatus == OperationInstructionStatus.Approved)
+                            {
+                                <RadzenBadge BadgeStyle="BadgeStyle.Success" Text="@(stringLocalizer[oiStatus.ToString()])" />
+                            }
+                            else if (oiStatus == OperationInstructionStatus.Rejected)
+                            {
+                                <RadzenBadge BadgeStyle="BadgeStyle.Danger" Text="@(stringLocalizer[oiStatus.ToString()])" />
+                            }
+                            else if (oiStatus == OperationInstructionStatus.Deleted)
+                            {
+                                <RadzenBadge BadgeStyle="BadgeStyle.Dark" Text="@(stringLocalizer[oiStatus.ToString()])" />
+                            }
+                            else
+                            {
+                                <RadzenBadge BadgeStyle="BadgeStyle.Light" Text="@(stringLocalizer[oiStatus.ToString()])" />
+                            }
+                        </MenuItem>
                     }
             </Menu>
         </Sider>

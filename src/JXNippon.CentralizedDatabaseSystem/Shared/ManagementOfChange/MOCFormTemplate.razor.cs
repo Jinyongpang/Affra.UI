@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using OpenAPI.UserService;
 using Radzen;
+using System;
+using System.Collections.Generic;
 using Message = NotificationODataService.Affra.Service.Notification.Domain.PersonalMessages.Message;
 using User = UserODataService.Affra.Service.User.Domain.Users.User;
 
@@ -128,19 +130,26 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async Task LoadSCECodeAsync()
         {
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<SCEElementRecord>? sceService = GetGenericSCEService(serviceScope);
-            var query = sceService.Get();
+            try
+            {
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<SCEElementRecord>? sceService = GetGenericSCEService(serviceScope);
+                var query = sceService.Get();
 
-            Microsoft.OData.Client.QueryOperationResponse<SCEElementRecord>? sceResponse = await query
-                .OrderBy(x => x.SCECode)
-                .ToQueryOperationResponseAsync<SCEElementRecord>();
+                Microsoft.OData.Client.QueryOperationResponse<SCEElementRecord>? sceResponse = await query
+                    .OrderBy(x => x.SCECode)
+                    .ToQueryOperationResponseAsync<SCEElementRecord>();
 
-            sceCodes = sceResponse
-                .Select(x => x.SCECode)
-                .ToList();
+                sceCodes = sceResponse
+                    .Select(x => x.SCECode)
+                    .ToList();
 
-            StateHasChanged();
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }          
         }
         private async Task OnNextButtonClick()
         {
@@ -289,6 +298,9 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             return string.Empty;
         }
 
+            return string.Empty;
+        }
+
         private async Task<ICollection<string>> GetLineManagersAndDelegationsAsync()
         {
             try 
@@ -296,7 +308,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
                 Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
 
                 var results = new List<string>();
-
+                if (string.IsNullOrEmpty(person.Department))
+                {
+                    throw new ArgumentNullException("No department found!");
+                }
                 foreach (string manager in await UserServiceClient.Manager_GetManagersAsync(person.Department))
                 {
                     results.Add(manager);
@@ -309,12 +324,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
 
                 return results.Distinct().ToList();
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 this.AffraNotificationService.NotifyException(ex);
             }
-
-            return Array.Empty<string>();
+            return Array.Empty<string>();            
         }
 
         private void OnCloseDialogClicked()

@@ -36,56 +36,63 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
 
         private async Task ShowDialogAsync(SectionNote data, int menuAction, string title)
         {
-            ContextMenuService.Close();
-            dynamic? response;
-            if (menuAction == 2)
+            try
             {
-                response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
-                           new Dictionary<string, object>() { },
-                           new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
-
-                if (response == true)
+                ContextMenuService.Close();
+                dynamic? response;
+                if (menuAction == 2)
                 {
-                    Data.Remove(data);
-                    using var serviceScope = ServiceProvider.CreateScope();
-                    var cdrService = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<TItem, ICentralizedDatabaseSystemUnitOfWork>>();
-                    await cdrService.UpdateAsync(CombinedDailyReport, CombinedDailyReport.Id);
-                    await OnDataChangedAsync(Data);
-                    AffraNotificationService.NotifyItemDeleted();
-                    this.data = Data.AsQueryable();
-                    count = Data.Count;
-                    StateHasChanged();
-                }
-            }
-            else
-            {
-                response = await DialogService.OpenAsync<NoteDialog>(title,
-                           new Dictionary<string, object>() { { "Data", data }, { "MenuAction", menuAction } },
-                           Constant.DialogOptions);
+                    response = await DialogService.OpenAsync<GenericConfirmationDialog>(title,
+                               new Dictionary<string, object>() { },
+                               new DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
 
-                if (response == true)
-                {
-                    try
+                    if (response == true)
                     {
-                        if (menuAction == 0)
-                        {
-                            Data.Add(data);
-                        }
+                        Data.Remove(data);
                         using var serviceScope = ServiceProvider.CreateScope();
                         var cdrService = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<TItem, ICentralizedDatabaseSystemUnitOfWork>>();
                         await cdrService.UpdateAsync(CombinedDailyReport, CombinedDailyReport.Id);
                         await OnDataChangedAsync(Data);
+                        AffraNotificationService.NotifyItemDeleted();
+                        this.data = Data.AsQueryable();
+                        count = Data.Count;
+                        StateHasChanged();
                     }
-                    catch (Exception ex)
-                    {
-                        AffraNotificationService.NotifyException(ex);
-                    }
-
-                    AffraNotificationService.NotifyItemUpdated();
-                    this.data = Data.AsQueryable();
-                    count = Data.Count;
-                    StateHasChanged();
                 }
+                else
+                {
+                    response = await DialogService.OpenAsync<NoteDialog>(title,
+                               new Dictionary<string, object>() { { "Data", data }, { "MenuAction", menuAction } },
+                               Constant.DialogOptions);
+
+                    if (response == true)
+                    {
+                        try
+                        {
+                            if (menuAction == 0)
+                            {
+                                Data.Add(data);
+                            }
+                            using var serviceScope = ServiceProvider.CreateScope();
+                            var cdrService = serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<TItem, ICentralizedDatabaseSystemUnitOfWork>>();
+                            await cdrService.UpdateAsync(CombinedDailyReport, CombinedDailyReport.Id);
+                            await OnDataChangedAsync(Data);
+                        }
+                        catch (Exception ex)
+                        {
+                            AffraNotificationService.NotifyException(ex);
+                        }
+
+                        AffraNotificationService.NotifyItemUpdated();
+                        this.data = Data.AsQueryable();
+                        count = Data.Count;
+                        StateHasChanged();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
             }
         }
     }

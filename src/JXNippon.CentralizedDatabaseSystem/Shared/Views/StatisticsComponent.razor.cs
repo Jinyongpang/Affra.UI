@@ -35,53 +35,60 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         }
         private async Task LoadDataAsync()
         {
-            isLoading = true;
-            using var serviceScope = ServiceProvider.CreateScope();
-            var service = this.ViewService.GetGenericService(serviceScope, TType);
-            IQueryable<dynamic> queryable = service.Get();
-
-            if (DateFilter?.Start != null && DateFilter?.End != null)
+            try
             {
-                DateTime start = DateFilter.Start.Value.ToUniversalTime();
-                if (this.Statistic.ComparePrevious)
+                isLoading = true;
+                using var serviceScope = ServiceProvider.CreateScope();
+                var service = this.ViewService.GetGenericService(serviceScope, TType);
+                IQueryable<dynamic> queryable = service.Get();
+
+                if (DateFilter?.Start != null && DateFilter?.End != null)
                 {
-                    start = start.AddDays(-1);
-
-                    if (TType.StartsWith("Monthly"))
+                    DateTime start = DateFilter.Start.Value.ToUniversalTime();
+                    if (this.Statistic.ComparePrevious)
                     {
-                        start = start.AddMonths(-1)
-                            .AddDays(-1);
+                        start = start.AddDays(-1);
+
+                        if (TType.StartsWith("Monthly"))
+                        {
+                            start = start.AddMonths(-1)
+                                .AddDays(-1);
+                        }
                     }
+                    queryable = queryable
+                        .Cast<IDaily>()
+                        .Where(item => item.Date >= start)
+                        .Where(item => item.Date <= DateFilter.End.Value.ToUniversalTime());
                 }
-                queryable = queryable
+
+                var q = (DataServiceQuery<IDaily>)queryable
                     .Cast<IDaily>()
-                    .Where(item => item.Date >= start)
-                    .Where(item => item.Date <= DateFilter.End.Value.ToUniversalTime());
+                    .OrderByDescending(x => x.Date)
+                    .Take(2);
+
+
+                var typeItems = (await q.ExecuteAsync())
+                    .ToList();
+
+                value = null;
+                previousValue = null;
+
+                if (typeItems.Any())
+                {
+                    value = ViewService.GetPropValue(typeItems.FirstOrDefault(), this.Statistic.Property);
+                }
+
+                if (typeItems.Count > 1)
+                {
+                    previousValue = ViewService.GetPropValue(typeItems[1], this.Statistic.Property);
+                }
+
+                isLoading = false;
             }
-
-            var q = (DataServiceQuery<IDaily>)queryable
-                .Cast<IDaily>()
-                .OrderByDescending(x => x.Date)
-                .Take(2);
-
-
-            var typeItems = (await q.ExecuteAsync())
-                .ToList();
-
-            value = null;
-            previousValue = null;
-
-            if (typeItems.Any())
+            catch (Exception ex)
             {
-                value = ViewService.GetPropValue(typeItems.FirstOrDefault(), this.Statistic.Property);
+                this.AffraNotificationService.NotifyException(ex);
             }
-
-            if (typeItems.Count > 1)
-            {
-                previousValue = ViewService.GetPropValue(typeItems[1], this.Statistic.Property);
-            }
-
-            isLoading = false;
         }
 
         protected override async Task OnInitializedAsync()

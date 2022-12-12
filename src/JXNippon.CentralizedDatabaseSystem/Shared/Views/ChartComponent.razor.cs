@@ -51,21 +51,28 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
 
         protected override async Task OnInitializedAsync()
         {
-            if (this.HasSubscription)
+            try
             {
-                var actualTypes = this.GetActualTypes();
-                foreach (var type in actualTypes)
+                if (this.HasSubscription)
                 {
-                    await this.ContentUpdateNotificationService.SubscribeAsync(type.Name, OnContentUpdateAsync);
+                    var actualTypes = this.GetActualTypes();
+                    foreach (var type in actualTypes)
+                    {
+                        await this.ContentUpdateNotificationService.SubscribeAsync(type.Name, OnContentUpdateAsync);
+                    }
                 }
-            }
 
-            if (DateFilter is not null)
-            {
-                DateFilter.OnDateRangeChanged += this.OnDateRangeChangedAsync;
+                if (DateFilter is not null)
+                {
+                    DateFilter.OnDateRangeChanged += this.OnDateRangeChangedAsync;
+                }
+                await ReloadAsync();
+                await base.OnInitializedAsync();
             }
-            await ReloadAsync();
-            await base.OnInitializedAsync();
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }          
         }
 
         private Task OnContentUpdateAsync(object obj)
@@ -75,11 +82,18 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Views
         }
 
         public async Task ReloadAsync()
-        {           
-            await LoadDataAsync();
-            await (chart?.Reload() ?? Task.CompletedTask);
-            this.StateHasChanged();
-        }
+        {
+            try 
+            {        
+                await LoadDataAsync();
+                await (chart?.Reload() ?? Task.CompletedTask);
+                this.StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
+}
 
         private async Task LoadDataAsync()
         {

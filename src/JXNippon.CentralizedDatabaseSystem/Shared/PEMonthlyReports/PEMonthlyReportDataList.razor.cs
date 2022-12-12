@@ -7,6 +7,7 @@ using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
 using JXNippon.CentralizedDatabaseSystem.Domain.Users;
 using JXNippon.CentralizedDatabaseSystem.Models;
 using JXNippon.CentralizedDatabaseSystem.Notifications;
+using JXNippon.CentralizedDatabaseSystem.Shared.AuditTrails;
 using JXNippon.CentralizedDatabaseSystem.Shared.Constants;
 using JXNippon.CentralizedDatabaseSystem.Shared.Loadings;
 using Microsoft.AspNetCore.Components;
@@ -38,10 +39,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
 
         public CommonFilter Filter { get; set; }
 
-        protected override Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
+            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.WellAllocation), HasReadPermissoin = true, HasWritePermission = true });
             Filter = new CommonFilter(navigationManager);
-            return Task.CompletedTask;
         }
         public async Task ReloadAsync()
         {
@@ -52,7 +53,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
         private async ValueTask<ItemsProviderResult<PEReport>> LoadDataAsync(ItemsProviderRequest request)
         {
             isLoading = true;
-            isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.WellAllocation), HasReadPermissoin = true, HasWritePermission = true });
             try
             {
                 using var serviceScope = ServiceProvider.CreateScope();
@@ -97,12 +97,17 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
                 }
                 return new ItemsProviderResult<PEReport>(peMonthlyReportsList, count);
             }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
             finally
             {
                 initLoading = false;
                 isLoading = false;
                 StateHasChanged();
             }
+            return new ItemsProviderResult<PEReport>(Array.Empty<PEReport>(), count);
         }
 
         private void HandleException(Exception ex)
@@ -255,6 +260,13 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.PEMonthlyReports
                      : string.Empty;
             }
             return string.Empty;
+        }
+
+        private async Task ShowAuditTrailAsync(PEReport pEReport)
+        {
+            _ = await DialogService.OpenAsync<AuditTrailTable>(string.Format(System.Globalization.CultureInfo.CurrentCulture, "PE Report : {0:yyyy MMMM}", pEReport.DateUI),
+                              new Dictionary<string, object>() { ["Id"] = pEReport.Id, ["TableName"] = typeof(PEReport).Name },
+                              new Radzen.DialogOptions() { Style = Constant.DialogStyle, Resizable = true, Draggable = true });
         }
     }
 }
