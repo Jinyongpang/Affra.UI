@@ -184,68 +184,76 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
         }
         private async void OnCreateButtonClick()
         {
-            if (Item.TitleOfChange == string.Empty)
+            try
             {
-                AffraNotificationService.NotifyWarning("Title of change is required.");
-                return;
-            }
-            if (Item.Identification.DescriptionOfChange == string.Empty)
-            {
-                AffraNotificationService.NotifyWarning("Description of change is required.");
-                return;
-            }
-            if (Item.Identification.DurationOfChange <= 0)
-            {
-                AffraNotificationService.NotifyWarning("Duration of change cannot be less than or equal 0.");
-                return;
-            }
-            if (Item.Identification.SCETagNumber == string.Empty)
-            {
-                AffraNotificationService.NotifyWarning("SCE tag number is required.");
-                return;
-            }
+                if (Item.TitleOfChange == string.Empty)
+                {
+                    AffraNotificationService.NotifyWarning("Title of change is required.");
+                    return;
+                }
+                if (Item.Identification.DescriptionOfChange == string.Empty)
+                {
+                    AffraNotificationService.NotifyWarning("Description of change is required.");
+                    return;
+                }
+                if (Item.Identification.DurationOfChange <= 0)
+                {
+                    AffraNotificationService.NotifyWarning("Duration of change cannot be less than or equal 0.");
+                    return;
+                }
+                if (Item.Identification.SCETagNumber == string.Empty)
+                {
+                    AffraNotificationService.NotifyWarning("SCE tag number is required.");
+                    return;
+                }
 
-            Item.ManagementOfChangeStatus = ManagementOfChangeStatus.New;
+                Item.ManagementOfChangeStatus = ManagementOfChangeStatus.New;
 
-            if (Item.Identification.DetailOfChange == DetailOfChange.FacilitiesImprovementPlan)
-            {
-                Item.CloseOut.CloseOutState = CloseOutState.MadePermanentState;
-                Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseOutSubmitForApproval;
-                currentStep = 4;
-                await LoadCloseOutAuthoritiesAsync();
+                if (Item.Identification.DetailOfChange == DetailOfChange.FacilitiesImprovementPlan)
+                {
+                    Item.CloseOut.CloseOutState = CloseOutState.MadePermanentState;
+                    Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.CloseOutSubmitForApproval;
+                    currentStep = 4;
+                    await LoadCloseOutAuthoritiesAsync();
+                }
+                else
+                {
+                    Item.CloseOut.CloseOutState = CloseOutState.RevertOriginalState;
+                    Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.RiskEvaluation;
+                    currentStep = 1;
+                }
+
+                Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
+
+                string categoriesOfChange = "";
+                if (Item.Identification.DetailOfChange == DetailOfChange.FacilitiesImprovementPlan)
+                {
+                    categoriesOfChange = "FIP";
+                }
+                else if (Item.Identification.DetailOfChange == DetailOfChange.OperatingChangeAndNonRoutineOperations)
+                {
+                    categoriesOfChange = "OCR";
+                }
+                else
+                {
+                    categoriesOfChange = "PCSC";
+                }
+
+                Item.RecordNumber = $"MOC-{person.Department}-{Item.ManagementOfChangeField}-{categoriesOfChange}-{DateTime.Now:yyyy}-{DateTime.Now:yyyyMMddHHmmss}";
+
+                using var serviceScope = ServiceProvider.CreateScope();
+                var service = GetGenericMOCService(serviceScope);
+
+                await service.InsertAsync(Item);
+
+                AffraNotificationService.NotifyItemCreated();
             }
-            else
+            catch(Exception ex) 
             {
-                Item.CloseOut.CloseOutState = CloseOutState.RevertOriginalState;
-                Item.ManagementOfChangeCurrentStep = ManagementOfChangeCurrentStep.RiskEvaluation;
-                currentStep = 1;
+                this.AffraNotificationService.NotifyException(ex);
             }
-
-            Person person = await UserServiceClient.Person_GetPersonAsync(GlobalDataSource.User.Email);
-
-            string categoriesOfChange = "";
-            if (Item.Identification.DetailOfChange == DetailOfChange.FacilitiesImprovementPlan)
-            {
-                categoriesOfChange = "FIP";
-            }
-            else if (Item.Identification.DetailOfChange == DetailOfChange.OperatingChangeAndNonRoutineOperations)
-            {
-                categoriesOfChange = "OCR";
-            }
-            else
-            {
-                categoriesOfChange = "PCSC";
-            }
-
-            Item.RecordNumber = $"MOC-{person.Department}-{Item.ManagementOfChangeField}-{categoriesOfChange}-{DateTime.Now:yyyy}-{DateTime.Now:yyyyMMddHHmmss}";
-
-            using var serviceScope = ServiceProvider.CreateScope();
-            var service = GetGenericMOCService(serviceScope);
-
-            await service.InsertAsync(Item);
-
-            AffraNotificationService.NotifyItemCreated();
         }
+
         private async Task LoadLineManagersAsync()
         {
             lineManagerUsername = await GetLineManagersAndDelegationsAsync();
@@ -287,7 +295,6 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.ManagementOfChange
             {
                 this.AffraNotificationService.NotifyException(ex);
             }
-
             return string.Empty;
         }
 

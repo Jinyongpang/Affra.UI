@@ -78,3 +78,19 @@
 .ant-btn-group .ant-btn-primary:first-child:not(:last-child), .ant-btn-group > .ant-btn:last-child:not(:first-child), .ant-btn-group > span:last-child:not(:first-child) > .ant-btn {
     border-color: var(--rz-base-200);
 }
+
+.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
+    background: var(--rz-primary);
+}
+
+.ant-steps-item-process .ant-steps-item-icon, .ant-steps-item-finish .ant-steps-item-icon {
+    border-color: var(--rz-primary);
+}
+
+.anticon-check {
+    color: var(--rz-primary);
+}
+
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
+    background-color: var(--rz-secondary);
+}
