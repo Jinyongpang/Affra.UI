@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 12/12/2022 21:42:24
+// Generation date: 14/12/2022 22:43:59
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -61981,15 +61981,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new MonthlyHIPAvailabilityAndReliabilityCalculation object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="date">Initial value of Date.</param>
         /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static MonthlyHIPAvailabilityAndReliabilityCalculation CreateMonthlyHIPAvailabilityAndReliabilityCalculation(long ID, global::System.DateTimeOffset date, long xmin)
+        public static MonthlyHIPAvailabilityAndReliabilityCalculation CreateMonthlyHIPAvailabilityAndReliabilityCalculation(long ID, long xmin, global::System.DateTimeOffset date)
         {
             MonthlyHIPAvailabilityAndReliabilityCalculation monthlyHIPAvailabilityAndReliabilityCalculation = new MonthlyHIPAvailabilityAndReliabilityCalculation();
             monthlyHIPAvailabilityAndReliabilityCalculation.Id = ID;
-            monthlyHIPAvailabilityAndReliabilityCalculation.Date = date;
             monthlyHIPAvailabilityAndReliabilityCalculation.xmin = xmin;
+            monthlyHIPAvailabilityAndReliabilityCalculation.Date = date;
             return monthlyHIPAvailabilityAndReliabilityCalculation;
         }
         /// <summary>
@@ -62014,27 +62014,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property Date in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Date
-        {
-            get
-            {
-                return this._Date;
-            }
-            set
-            {
-                this.OnDateChanging(value);
-                this._Date = value;
-                this.OnDateChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Date;
-        partial void OnDateChanging(global::System.DateTimeOffset value);
-        partial void OnDateChanged();
-        /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -62055,6 +62034,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
         /// <summary>
         /// There are no comments for Property TotalUnplannedInterruption in the schema.
         /// </summary>
@@ -62266,26 +62266,47 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnYEPAvailabilityChanging(global::System.Nullable<decimal> value);
         partial void OnYEPAvailabilityChanged();
         /// <summary>
-        /// There are no comments for Property TotalActualPlannedUptime in the schema.
+        /// There are no comments for Property MonthlyActualPlannedUptime in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<decimal> TotalActualPlannedUptime
+        public global::System.Nullable<decimal> MonthlyActualPlannedUptime
         {
             get
             {
-                return this._TotalActualPlannedUptime;
+                return this._MonthlyActualPlannedUptime;
             }
             set
             {
-                this.OnTotalActualPlannedUptimeChanging(value);
-                this._TotalActualPlannedUptime = value;
-                this.OnTotalActualPlannedUptimeChanged();
+                this.OnMonthlyActualPlannedUptimeChanging(value);
+                this._MonthlyActualPlannedUptime = value;
+                this.OnMonthlyActualPlannedUptimeChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<decimal> _TotalActualPlannedUptime;
-        partial void OnTotalActualPlannedUptimeChanging(global::System.Nullable<decimal> value);
-        partial void OnTotalActualPlannedUptimeChanged();
+        private global::System.Nullable<decimal> _MonthlyActualPlannedUptime;
+        partial void OnMonthlyActualPlannedUptimeChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyActualPlannedUptimeChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyTarget in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> MonthlyTarget
+        {
+            get
+            {
+                return this._MonthlyTarget;
+            }
+            set
+            {
+                this.OnMonthlyTargetChanging(value);
+                this._MonthlyTarget = value;
+                this.OnMonthlyTargetChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _MonthlyTarget;
+        partial void OnMonthlyTargetChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyTargetChanged();
     }
     /// <summary>
     /// There are no comments for MonthlyLayangAvailabilityAndReliabilityCalculationSingle in the schema.
@@ -62324,15 +62345,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new MonthlyLayangAvailabilityAndReliabilityCalculation object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="date">Initial value of Date.</param>
         /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static MonthlyLayangAvailabilityAndReliabilityCalculation CreateMonthlyLayangAvailabilityAndReliabilityCalculation(long ID, global::System.DateTimeOffset date, long xmin)
+        public static MonthlyLayangAvailabilityAndReliabilityCalculation CreateMonthlyLayangAvailabilityAndReliabilityCalculation(long ID, long xmin, global::System.DateTimeOffset date)
         {
             MonthlyLayangAvailabilityAndReliabilityCalculation monthlyLayangAvailabilityAndReliabilityCalculation = new MonthlyLayangAvailabilityAndReliabilityCalculation();
             monthlyLayangAvailabilityAndReliabilityCalculation.Id = ID;
-            monthlyLayangAvailabilityAndReliabilityCalculation.Date = date;
             monthlyLayangAvailabilityAndReliabilityCalculation.xmin = xmin;
+            monthlyLayangAvailabilityAndReliabilityCalculation.Date = date;
             return monthlyLayangAvailabilityAndReliabilityCalculation;
         }
         /// <summary>
@@ -62357,27 +62378,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property Date in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Date
-        {
-            get
-            {
-                return this._Date;
-            }
-            set
-            {
-                this.OnDateChanging(value);
-                this._Date = value;
-                this.OnDateChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Date;
-        partial void OnDateChanging(global::System.DateTimeOffset value);
-        partial void OnDateChanged();
-        /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -62398,6 +62398,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
         /// <summary>
         /// There are no comments for Property TotalUnplannedInterruption in the schema.
         /// </summary>
@@ -62609,26 +62630,47 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnYEPAvailabilityChanging(global::System.Nullable<decimal> value);
         partial void OnYEPAvailabilityChanged();
         /// <summary>
-        /// There are no comments for Property TotalActualPlannedUptime in the schema.
+        /// There are no comments for Property MonthlyActualPlannedUptime in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<decimal> TotalActualPlannedUptime
+        public global::System.Nullable<decimal> MonthlyActualPlannedUptime
         {
             get
             {
-                return this._TotalActualPlannedUptime;
+                return this._MonthlyActualPlannedUptime;
             }
             set
             {
-                this.OnTotalActualPlannedUptimeChanging(value);
-                this._TotalActualPlannedUptime = value;
-                this.OnTotalActualPlannedUptimeChanged();
+                this.OnMonthlyActualPlannedUptimeChanging(value);
+                this._MonthlyActualPlannedUptime = value;
+                this.OnMonthlyActualPlannedUptimeChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<decimal> _TotalActualPlannedUptime;
-        partial void OnTotalActualPlannedUptimeChanging(global::System.Nullable<decimal> value);
-        partial void OnTotalActualPlannedUptimeChanged();
+        private global::System.Nullable<decimal> _MonthlyActualPlannedUptime;
+        partial void OnMonthlyActualPlannedUptimeChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyActualPlannedUptimeChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyTarget in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> MonthlyTarget
+        {
+            get
+            {
+                return this._MonthlyTarget;
+            }
+            set
+            {
+                this.OnMonthlyTargetChanging(value);
+                this._MonthlyTarget = value;
+                this.OnMonthlyTargetChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _MonthlyTarget;
+        partial void OnMonthlyTargetChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyTargetChanged();
     }
     /// <summary>
     /// There are no comments for MonthlyFPSOAvailabilityAndReliabilityCalculationSingle in the schema.
@@ -62667,15 +62709,15 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         /// Create a new MonthlyFPSOAvailabilityAndReliabilityCalculation object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
-        /// <param name="date">Initial value of Date.</param>
         /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="date">Initial value of Date.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public static MonthlyFPSOAvailabilityAndReliabilityCalculation CreateMonthlyFPSOAvailabilityAndReliabilityCalculation(long ID, global::System.DateTimeOffset date, long xmin)
+        public static MonthlyFPSOAvailabilityAndReliabilityCalculation CreateMonthlyFPSOAvailabilityAndReliabilityCalculation(long ID, long xmin, global::System.DateTimeOffset date)
         {
             MonthlyFPSOAvailabilityAndReliabilityCalculation monthlyFPSOAvailabilityAndReliabilityCalculation = new MonthlyFPSOAvailabilityAndReliabilityCalculation();
             monthlyFPSOAvailabilityAndReliabilityCalculation.Id = ID;
-            monthlyFPSOAvailabilityAndReliabilityCalculation.Date = date;
             monthlyFPSOAvailabilityAndReliabilityCalculation.xmin = xmin;
+            monthlyFPSOAvailabilityAndReliabilityCalculation.Date = date;
             return monthlyFPSOAvailabilityAndReliabilityCalculation;
         }
         /// <summary>
@@ -62700,27 +62742,6 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnIdChanging(long value);
         partial void OnIdChanged();
         /// <summary>
-        /// There are no comments for Property Date in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.DateTimeOffset Date
-        {
-            get
-            {
-                return this._Date;
-            }
-            set
-            {
-                this.OnDateChanging(value);
-                this._Date = value;
-                this.OnDateChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.DateTimeOffset _Date;
-        partial void OnDateChanging(global::System.DateTimeOffset value);
-        partial void OnDateChanged();
-        /// <summary>
         /// There are no comments for Property xmin in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -62741,6 +62762,27 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         private long _xmin;
         partial void OnxminChanging(long value);
         partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
         /// <summary>
         /// There are no comments for Property TotalUnplannedInterruption in the schema.
         /// </summary>
@@ -62952,26 +62994,47 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnYEPAvailabilityChanging(global::System.Nullable<decimal> value);
         partial void OnYEPAvailabilityChanged();
         /// <summary>
-        /// There are no comments for Property TotalActualPlannedUptime in the schema.
+        /// There are no comments for Property MonthlyActualPlannedUptime in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        public global::System.Nullable<decimal> TotalActualPlannedUptime
+        public global::System.Nullable<decimal> MonthlyActualPlannedUptime
         {
             get
             {
-                return this._TotalActualPlannedUptime;
+                return this._MonthlyActualPlannedUptime;
             }
             set
             {
-                this.OnTotalActualPlannedUptimeChanging(value);
-                this._TotalActualPlannedUptime = value;
-                this.OnTotalActualPlannedUptimeChanged();
+                this.OnMonthlyActualPlannedUptimeChanging(value);
+                this._MonthlyActualPlannedUptime = value;
+                this.OnMonthlyActualPlannedUptimeChanged();
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
-        private global::System.Nullable<decimal> _TotalActualPlannedUptime;
-        partial void OnTotalActualPlannedUptimeChanging(global::System.Nullable<decimal> value);
-        partial void OnTotalActualPlannedUptimeChanged();
+        private global::System.Nullable<decimal> _MonthlyActualPlannedUptime;
+        partial void OnMonthlyActualPlannedUptimeChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyActualPlannedUptimeChanged();
+        /// <summary>
+        /// There are no comments for Property MonthlyTarget in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> MonthlyTarget
+        {
+            get
+            {
+                return this._MonthlyTarget;
+            }
+            set
+            {
+                this.OnMonthlyTargetChanging(value);
+                this._MonthlyTarget = value;
+                this.OnMonthlyTargetChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _MonthlyTarget;
+        partial void OnMonthlyTargetChanging(global::System.Nullable<decimal> value);
+        partial void OnMonthlyTargetChanged();
     }
     /// <summary>
     /// Class containing all extension methods
@@ -69790,8 +69853,8 @@ namespace CentralizedDatabaseSystemODataService.Default
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""TotalUnplannedInterruption"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TotalPlannedInterrupion"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TotalStandby"" Type=""Edm.Decimal"" Scale=""Variable"" />
@@ -69802,15 +69865,16 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""YTDAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""YEPReliability"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""YEPAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
-        <Property Name=""TotalActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""MonthlyActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""MonthlyTarget"" Type=""Edm.Decimal"" Scale=""Variable"" />
       </EntityType>
       <EntityType Name=""MonthlyLayangAvailabilityAndReliabilityCalculation"">
         <Key>
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""TotalUnplannedInterruption"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TotalPlannedInterrupion"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TotalStandby"" Type=""Edm.Decimal"" Scale=""Variable"" />
@@ -69821,15 +69885,16 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""YTDAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""YEPReliability"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""YEPAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
-        <Property Name=""TotalActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""MonthlyActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""MonthlyTarget"" Type=""Edm.Decimal"" Scale=""Variable"" />
       </EntityType>
       <EntityType Name=""MonthlyFPSOAvailabilityAndReliabilityCalculation"">
         <Key>
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
-        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""TotalUnplannedInterruption"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TotalPlannedInterrupion"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""TotalStandby"" Type=""Edm.Decimal"" Scale=""Variable"" />
@@ -69840,7 +69905,8 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""YTDAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""YEPReliability"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""YEPAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
-        <Property Name=""TotalActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""MonthlyActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""MonthlyTarget"" Type=""Edm.Decimal"" Scale=""Variable"" />
       </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.Approvals"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
