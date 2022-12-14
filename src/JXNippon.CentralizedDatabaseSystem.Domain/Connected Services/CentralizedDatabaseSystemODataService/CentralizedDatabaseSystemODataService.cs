@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 28/11/2022 4:44:37 PM
+// Generation date: 12/12/2022 21:42:24
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -61945,6 +61945,1035 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnxminChanged();
     }
     /// <summary>
+    /// There are no comments for MonthlyHIPAvailabilityAndReliabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class MonthlyHIPAvailabilityAndReliabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyHIPAvailabilityAndReliabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new MonthlyHIPAvailabilityAndReliabilityCalculationSingle object.
+        /// </summary>
+        public MonthlyHIPAvailabilityAndReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyHIPAvailabilityAndReliabilityCalculationSingle object.
+        /// </summary>
+        public MonthlyHIPAvailabilityAndReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyHIPAvailabilityAndReliabilityCalculationSingle object.
+        /// </summary>
+        public MonthlyHIPAvailabilityAndReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyHIPAvailabilityAndReliabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for MonthlyHIPAvailabilityAndReliabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class MonthlyHIPAvailabilityAndReliabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new MonthlyHIPAvailabilityAndReliabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static MonthlyHIPAvailabilityAndReliabilityCalculation CreateMonthlyHIPAvailabilityAndReliabilityCalculation(long ID, global::System.DateTimeOffset date, long xmin)
+        {
+            MonthlyHIPAvailabilityAndReliabilityCalculation monthlyHIPAvailabilityAndReliabilityCalculation = new MonthlyHIPAvailabilityAndReliabilityCalculation();
+            monthlyHIPAvailabilityAndReliabilityCalculation.Id = ID;
+            monthlyHIPAvailabilityAndReliabilityCalculation.Date = date;
+            monthlyHIPAvailabilityAndReliabilityCalculation.xmin = xmin;
+            return monthlyHIPAvailabilityAndReliabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property TotalUnplannedInterruption in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalUnplannedInterruption
+        {
+            get
+            {
+                return this._TotalUnplannedInterruption;
+            }
+            set
+            {
+                this.OnTotalUnplannedInterruptionChanging(value);
+                this._TotalUnplannedInterruption = value;
+                this.OnTotalUnplannedInterruptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalUnplannedInterruption;
+        partial void OnTotalUnplannedInterruptionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalUnplannedInterruptionChanged();
+        /// <summary>
+        /// There are no comments for Property TotalPlannedInterrupion in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalPlannedInterrupion
+        {
+            get
+            {
+                return this._TotalPlannedInterrupion;
+            }
+            set
+            {
+                this.OnTotalPlannedInterrupionChanging(value);
+                this._TotalPlannedInterrupion = value;
+                this.OnTotalPlannedInterrupionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalPlannedInterrupion;
+        partial void OnTotalPlannedInterrupionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalPlannedInterrupionChanged();
+        /// <summary>
+        /// There are no comments for Property TotalStandby in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalStandby
+        {
+            get
+            {
+                return this._TotalStandby;
+            }
+            set
+            {
+                this.OnTotalStandbyChanging(value);
+                this._TotalStandby = value;
+                this.OnTotalStandbyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalStandby;
+        partial void OnTotalStandbyChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalStandbyChanged();
+        /// <summary>
+        /// There are no comments for Property TotalOnDuty in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalOnDuty
+        {
+            get
+            {
+                return this._TotalOnDuty;
+            }
+            set
+            {
+                this.OnTotalOnDutyChanging(value);
+                this._TotalOnDuty = value;
+                this.OnTotalOnDutyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalOnDuty;
+        partial void OnTotalOnDutyChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalOnDutyChanged();
+        /// <summary>
+        /// There are no comments for Property AvailabilityPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> AvailabilityPercentage
+        {
+            get
+            {
+                return this._AvailabilityPercentage;
+            }
+            set
+            {
+                this.OnAvailabilityPercentageChanging(value);
+                this._AvailabilityPercentage = value;
+                this.OnAvailabilityPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _AvailabilityPercentage;
+        partial void OnAvailabilityPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnAvailabilityPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property ReliabilityPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> ReliabilityPercentage
+        {
+            get
+            {
+                return this._ReliabilityPercentage;
+            }
+            set
+            {
+                this.OnReliabilityPercentageChanging(value);
+                this._ReliabilityPercentage = value;
+                this.OnReliabilityPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _ReliabilityPercentage;
+        partial void OnReliabilityPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnReliabilityPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property YTDReliabillity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YTDReliabillity
+        {
+            get
+            {
+                return this._YTDReliabillity;
+            }
+            set
+            {
+                this.OnYTDReliabillityChanging(value);
+                this._YTDReliabillity = value;
+                this.OnYTDReliabillityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YTDReliabillity;
+        partial void OnYTDReliabillityChanging(global::System.Nullable<decimal> value);
+        partial void OnYTDReliabillityChanged();
+        /// <summary>
+        /// There are no comments for Property YTDAvailability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YTDAvailability
+        {
+            get
+            {
+                return this._YTDAvailability;
+            }
+            set
+            {
+                this.OnYTDAvailabilityChanging(value);
+                this._YTDAvailability = value;
+                this.OnYTDAvailabilityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YTDAvailability;
+        partial void OnYTDAvailabilityChanging(global::System.Nullable<decimal> value);
+        partial void OnYTDAvailabilityChanged();
+        /// <summary>
+        /// There are no comments for Property YEPReliability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YEPReliability
+        {
+            get
+            {
+                return this._YEPReliability;
+            }
+            set
+            {
+                this.OnYEPReliabilityChanging(value);
+                this._YEPReliability = value;
+                this.OnYEPReliabilityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YEPReliability;
+        partial void OnYEPReliabilityChanging(global::System.Nullable<decimal> value);
+        partial void OnYEPReliabilityChanged();
+        /// <summary>
+        /// There are no comments for Property YEPAvailability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YEPAvailability
+        {
+            get
+            {
+                return this._YEPAvailability;
+            }
+            set
+            {
+                this.OnYEPAvailabilityChanging(value);
+                this._YEPAvailability = value;
+                this.OnYEPAvailabilityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YEPAvailability;
+        partial void OnYEPAvailabilityChanging(global::System.Nullable<decimal> value);
+        partial void OnYEPAvailabilityChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualPlannedUptime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalActualPlannedUptime
+        {
+            get
+            {
+                return this._TotalActualPlannedUptime;
+            }
+            set
+            {
+                this.OnTotalActualPlannedUptimeChanging(value);
+                this._TotalActualPlannedUptime = value;
+                this.OnTotalActualPlannedUptimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalActualPlannedUptime;
+        partial void OnTotalActualPlannedUptimeChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualPlannedUptimeChanged();
+    }
+    /// <summary>
+    /// There are no comments for MonthlyLayangAvailabilityAndReliabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class MonthlyLayangAvailabilityAndReliabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyLayangAvailabilityAndReliabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new MonthlyLayangAvailabilityAndReliabilityCalculationSingle object.
+        /// </summary>
+        public MonthlyLayangAvailabilityAndReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyLayangAvailabilityAndReliabilityCalculationSingle object.
+        /// </summary>
+        public MonthlyLayangAvailabilityAndReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyLayangAvailabilityAndReliabilityCalculationSingle object.
+        /// </summary>
+        public MonthlyLayangAvailabilityAndReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyLayangAvailabilityAndReliabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for MonthlyLayangAvailabilityAndReliabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class MonthlyLayangAvailabilityAndReliabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new MonthlyLayangAvailabilityAndReliabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static MonthlyLayangAvailabilityAndReliabilityCalculation CreateMonthlyLayangAvailabilityAndReliabilityCalculation(long ID, global::System.DateTimeOffset date, long xmin)
+        {
+            MonthlyLayangAvailabilityAndReliabilityCalculation monthlyLayangAvailabilityAndReliabilityCalculation = new MonthlyLayangAvailabilityAndReliabilityCalculation();
+            monthlyLayangAvailabilityAndReliabilityCalculation.Id = ID;
+            monthlyLayangAvailabilityAndReliabilityCalculation.Date = date;
+            monthlyLayangAvailabilityAndReliabilityCalculation.xmin = xmin;
+            return monthlyLayangAvailabilityAndReliabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property TotalUnplannedInterruption in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalUnplannedInterruption
+        {
+            get
+            {
+                return this._TotalUnplannedInterruption;
+            }
+            set
+            {
+                this.OnTotalUnplannedInterruptionChanging(value);
+                this._TotalUnplannedInterruption = value;
+                this.OnTotalUnplannedInterruptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalUnplannedInterruption;
+        partial void OnTotalUnplannedInterruptionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalUnplannedInterruptionChanged();
+        /// <summary>
+        /// There are no comments for Property TotalPlannedInterrupion in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalPlannedInterrupion
+        {
+            get
+            {
+                return this._TotalPlannedInterrupion;
+            }
+            set
+            {
+                this.OnTotalPlannedInterrupionChanging(value);
+                this._TotalPlannedInterrupion = value;
+                this.OnTotalPlannedInterrupionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalPlannedInterrupion;
+        partial void OnTotalPlannedInterrupionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalPlannedInterrupionChanged();
+        /// <summary>
+        /// There are no comments for Property TotalStandby in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalStandby
+        {
+            get
+            {
+                return this._TotalStandby;
+            }
+            set
+            {
+                this.OnTotalStandbyChanging(value);
+                this._TotalStandby = value;
+                this.OnTotalStandbyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalStandby;
+        partial void OnTotalStandbyChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalStandbyChanged();
+        /// <summary>
+        /// There are no comments for Property TotalOnDuty in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalOnDuty
+        {
+            get
+            {
+                return this._TotalOnDuty;
+            }
+            set
+            {
+                this.OnTotalOnDutyChanging(value);
+                this._TotalOnDuty = value;
+                this.OnTotalOnDutyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalOnDuty;
+        partial void OnTotalOnDutyChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalOnDutyChanged();
+        /// <summary>
+        /// There are no comments for Property AvailabilityPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> AvailabilityPercentage
+        {
+            get
+            {
+                return this._AvailabilityPercentage;
+            }
+            set
+            {
+                this.OnAvailabilityPercentageChanging(value);
+                this._AvailabilityPercentage = value;
+                this.OnAvailabilityPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _AvailabilityPercentage;
+        partial void OnAvailabilityPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnAvailabilityPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property ReliabilityPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> ReliabilityPercentage
+        {
+            get
+            {
+                return this._ReliabilityPercentage;
+            }
+            set
+            {
+                this.OnReliabilityPercentageChanging(value);
+                this._ReliabilityPercentage = value;
+                this.OnReliabilityPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _ReliabilityPercentage;
+        partial void OnReliabilityPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnReliabilityPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property YTDReliabillity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YTDReliabillity
+        {
+            get
+            {
+                return this._YTDReliabillity;
+            }
+            set
+            {
+                this.OnYTDReliabillityChanging(value);
+                this._YTDReliabillity = value;
+                this.OnYTDReliabillityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YTDReliabillity;
+        partial void OnYTDReliabillityChanging(global::System.Nullable<decimal> value);
+        partial void OnYTDReliabillityChanged();
+        /// <summary>
+        /// There are no comments for Property YTDAvailability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YTDAvailability
+        {
+            get
+            {
+                return this._YTDAvailability;
+            }
+            set
+            {
+                this.OnYTDAvailabilityChanging(value);
+                this._YTDAvailability = value;
+                this.OnYTDAvailabilityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YTDAvailability;
+        partial void OnYTDAvailabilityChanging(global::System.Nullable<decimal> value);
+        partial void OnYTDAvailabilityChanged();
+        /// <summary>
+        /// There are no comments for Property YEPReliability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YEPReliability
+        {
+            get
+            {
+                return this._YEPReliability;
+            }
+            set
+            {
+                this.OnYEPReliabilityChanging(value);
+                this._YEPReliability = value;
+                this.OnYEPReliabilityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YEPReliability;
+        partial void OnYEPReliabilityChanging(global::System.Nullable<decimal> value);
+        partial void OnYEPReliabilityChanged();
+        /// <summary>
+        /// There are no comments for Property YEPAvailability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YEPAvailability
+        {
+            get
+            {
+                return this._YEPAvailability;
+            }
+            set
+            {
+                this.OnYEPAvailabilityChanging(value);
+                this._YEPAvailability = value;
+                this.OnYEPAvailabilityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YEPAvailability;
+        partial void OnYEPAvailabilityChanging(global::System.Nullable<decimal> value);
+        partial void OnYEPAvailabilityChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualPlannedUptime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalActualPlannedUptime
+        {
+            get
+            {
+                return this._TotalActualPlannedUptime;
+            }
+            set
+            {
+                this.OnTotalActualPlannedUptimeChanging(value);
+                this._TotalActualPlannedUptime = value;
+                this.OnTotalActualPlannedUptimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalActualPlannedUptime;
+        partial void OnTotalActualPlannedUptimeChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualPlannedUptimeChanged();
+    }
+    /// <summary>
+    /// There are no comments for MonthlyFPSOAvailabilityAndReliabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class MonthlyFPSOAvailabilityAndReliabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyFPSOAvailabilityAndReliabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new MonthlyFPSOAvailabilityAndReliabilityCalculationSingle object.
+        /// </summary>
+        public MonthlyFPSOAvailabilityAndReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyFPSOAvailabilityAndReliabilityCalculationSingle object.
+        /// </summary>
+        public MonthlyFPSOAvailabilityAndReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new MonthlyFPSOAvailabilityAndReliabilityCalculationSingle object.
+        /// </summary>
+        public MonthlyFPSOAvailabilityAndReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<MonthlyFPSOAvailabilityAndReliabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for MonthlyFPSOAvailabilityAndReliabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class MonthlyFPSOAvailabilityAndReliabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new MonthlyFPSOAvailabilityAndReliabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static MonthlyFPSOAvailabilityAndReliabilityCalculation CreateMonthlyFPSOAvailabilityAndReliabilityCalculation(long ID, global::System.DateTimeOffset date, long xmin)
+        {
+            MonthlyFPSOAvailabilityAndReliabilityCalculation monthlyFPSOAvailabilityAndReliabilityCalculation = new MonthlyFPSOAvailabilityAndReliabilityCalculation();
+            monthlyFPSOAvailabilityAndReliabilityCalculation.Id = ID;
+            monthlyFPSOAvailabilityAndReliabilityCalculation.Date = date;
+            monthlyFPSOAvailabilityAndReliabilityCalculation.xmin = xmin;
+            return monthlyFPSOAvailabilityAndReliabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.DateTimeOffset Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.DateTimeOffset _Date;
+        partial void OnDateChanging(global::System.DateTimeOffset value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property TotalUnplannedInterruption in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalUnplannedInterruption
+        {
+            get
+            {
+                return this._TotalUnplannedInterruption;
+            }
+            set
+            {
+                this.OnTotalUnplannedInterruptionChanging(value);
+                this._TotalUnplannedInterruption = value;
+                this.OnTotalUnplannedInterruptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalUnplannedInterruption;
+        partial void OnTotalUnplannedInterruptionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalUnplannedInterruptionChanged();
+        /// <summary>
+        /// There are no comments for Property TotalPlannedInterrupion in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalPlannedInterrupion
+        {
+            get
+            {
+                return this._TotalPlannedInterrupion;
+            }
+            set
+            {
+                this.OnTotalPlannedInterrupionChanging(value);
+                this._TotalPlannedInterrupion = value;
+                this.OnTotalPlannedInterrupionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalPlannedInterrupion;
+        partial void OnTotalPlannedInterrupionChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalPlannedInterrupionChanged();
+        /// <summary>
+        /// There are no comments for Property TotalStandby in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalStandby
+        {
+            get
+            {
+                return this._TotalStandby;
+            }
+            set
+            {
+                this.OnTotalStandbyChanging(value);
+                this._TotalStandby = value;
+                this.OnTotalStandbyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalStandby;
+        partial void OnTotalStandbyChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalStandbyChanged();
+        /// <summary>
+        /// There are no comments for Property TotalOnDuty in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalOnDuty
+        {
+            get
+            {
+                return this._TotalOnDuty;
+            }
+            set
+            {
+                this.OnTotalOnDutyChanging(value);
+                this._TotalOnDuty = value;
+                this.OnTotalOnDutyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalOnDuty;
+        partial void OnTotalOnDutyChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalOnDutyChanged();
+        /// <summary>
+        /// There are no comments for Property AvailabilityPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> AvailabilityPercentage
+        {
+            get
+            {
+                return this._AvailabilityPercentage;
+            }
+            set
+            {
+                this.OnAvailabilityPercentageChanging(value);
+                this._AvailabilityPercentage = value;
+                this.OnAvailabilityPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _AvailabilityPercentage;
+        partial void OnAvailabilityPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnAvailabilityPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property ReliabilityPercentage in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> ReliabilityPercentage
+        {
+            get
+            {
+                return this._ReliabilityPercentage;
+            }
+            set
+            {
+                this.OnReliabilityPercentageChanging(value);
+                this._ReliabilityPercentage = value;
+                this.OnReliabilityPercentageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _ReliabilityPercentage;
+        partial void OnReliabilityPercentageChanging(global::System.Nullable<decimal> value);
+        partial void OnReliabilityPercentageChanged();
+        /// <summary>
+        /// There are no comments for Property YTDReliabillity in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YTDReliabillity
+        {
+            get
+            {
+                return this._YTDReliabillity;
+            }
+            set
+            {
+                this.OnYTDReliabillityChanging(value);
+                this._YTDReliabillity = value;
+                this.OnYTDReliabillityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YTDReliabillity;
+        partial void OnYTDReliabillityChanging(global::System.Nullable<decimal> value);
+        partial void OnYTDReliabillityChanged();
+        /// <summary>
+        /// There are no comments for Property YTDAvailability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YTDAvailability
+        {
+            get
+            {
+                return this._YTDAvailability;
+            }
+            set
+            {
+                this.OnYTDAvailabilityChanging(value);
+                this._YTDAvailability = value;
+                this.OnYTDAvailabilityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YTDAvailability;
+        partial void OnYTDAvailabilityChanging(global::System.Nullable<decimal> value);
+        partial void OnYTDAvailabilityChanged();
+        /// <summary>
+        /// There are no comments for Property YEPReliability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YEPReliability
+        {
+            get
+            {
+                return this._YEPReliability;
+            }
+            set
+            {
+                this.OnYEPReliabilityChanging(value);
+                this._YEPReliability = value;
+                this.OnYEPReliabilityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YEPReliability;
+        partial void OnYEPReliabilityChanging(global::System.Nullable<decimal> value);
+        partial void OnYEPReliabilityChanged();
+        /// <summary>
+        /// There are no comments for Property YEPAvailability in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> YEPAvailability
+        {
+            get
+            {
+                return this._YEPAvailability;
+            }
+            set
+            {
+                this.OnYEPAvailabilityChanging(value);
+                this._YEPAvailability = value;
+                this.OnYEPAvailabilityChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _YEPAvailability;
+        partial void OnYEPAvailabilityChanging(global::System.Nullable<decimal> value);
+        partial void OnYEPAvailabilityChanged();
+        /// <summary>
+        /// There are no comments for Property TotalActualPlannedUptime in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::System.Nullable<decimal> TotalActualPlannedUptime
+        {
+            get
+            {
+                return this._TotalActualPlannedUptime;
+            }
+            set
+            {
+                this.OnTotalActualPlannedUptimeChanging(value);
+                this._TotalActualPlannedUptime = value;
+                this.OnTotalActualPlannedUptimeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::System.Nullable<decimal> _TotalActualPlannedUptime;
+        partial void OnTotalActualPlannedUptimeChanging(global::System.Nullable<decimal> value);
+        partial void OnTotalActualPlannedUptimeChanged();
+    }
+    /// <summary>
     /// Class containing all extension methods
     /// </summary>
     public static class ExtensionMethods
@@ -61971,6 +63000,75 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 { "Id", id }
             };
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliabilitySingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
@@ -64642,6 +65740,57 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability> _DailyAvailabilityAndReliability;
         /// <summary>
+        /// There are no comments for MonthlyHIPAvailabilityAndReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculation> MonthlyHIPAvailabilityAndReliabilityCalculation
+        {
+            get
+            {
+                if ((this._MonthlyHIPAvailabilityAndReliabilityCalculation == null))
+                {
+                    this._MonthlyHIPAvailabilityAndReliabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculation>("MonthlyHIPAvailabilityAndReliabilityCalculation");
+                }
+                return this._MonthlyHIPAvailabilityAndReliabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculation> _MonthlyHIPAvailabilityAndReliabilityCalculation;
+        /// <summary>
+        /// There are no comments for MonthlyLayangAvailabilityAndReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculation> MonthlyLayangAvailabilityAndReliabilityCalculation
+        {
+            get
+            {
+                if ((this._MonthlyLayangAvailabilityAndReliabilityCalculation == null))
+                {
+                    this._MonthlyLayangAvailabilityAndReliabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculation>("MonthlyLayangAvailabilityAndReliabilityCalculation");
+                }
+                return this._MonthlyLayangAvailabilityAndReliabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculation> _MonthlyLayangAvailabilityAndReliabilityCalculation;
+        /// <summary>
+        /// There are no comments for MonthlyFPSOAvailabilityAndReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation> MonthlyFPSOAvailabilityAndReliabilityCalculation
+        {
+            get
+            {
+                if ((this._MonthlyFPSOAvailabilityAndReliabilityCalculation == null))
+                {
+                    this._MonthlyFPSOAvailabilityAndReliabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation>("MonthlyFPSOAvailabilityAndReliabilityCalculation");
+                }
+                return this._MonthlyFPSOAvailabilityAndReliabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation> _MonthlyFPSOAvailabilityAndReliabilityCalculation;
+        /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -65576,6 +66725,30 @@ namespace CentralizedDatabaseSystemODataService.Default
         public void AddToDailyAvailabilityAndReliability(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability dailyAvailabilityAndReliability)
         {
             base.AddObject("DailyAvailabilityAndReliability", dailyAvailabilityAndReliability);
+        }
+        /// <summary>
+        /// There are no comments for MonthlyHIPAvailabilityAndReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToMonthlyHIPAvailabilityAndReliabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculation monthlyHIPAvailabilityAndReliabilityCalculation)
+        {
+            base.AddObject("MonthlyHIPAvailabilityAndReliabilityCalculation", monthlyHIPAvailabilityAndReliabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for MonthlyLayangAvailabilityAndReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToMonthlyLayangAvailabilityAndReliabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculation monthlyLayangAvailabilityAndReliabilityCalculation)
+        {
+            base.AddObject("MonthlyLayangAvailabilityAndReliabilityCalculation", monthlyLayangAvailabilityAndReliabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for MonthlyFPSOAvailabilityAndReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToMonthlyFPSOAvailabilityAndReliabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation monthlyFPSOAvailabilityAndReliabilityCalculation)
+        {
+            base.AddObject("MonthlyFPSOAvailabilityAndReliabilityCalculation", monthlyFPSOAvailabilityAndReliabilityCalculation);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -68612,6 +69785,63 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
       </EntityType>
+      <EntityType Name=""MonthlyHIPAvailabilityAndReliabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""TotalUnplannedInterruption"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalPlannedInterrupion"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalStandby"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalOnDuty"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""AvailabilityPercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ReliabilityPercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YTDReliabillity"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YTDAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YEPReliability"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YEPAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+      </EntityType>
+      <EntityType Name=""MonthlyLayangAvailabilityAndReliabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""TotalUnplannedInterruption"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalPlannedInterrupion"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalStandby"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalOnDuty"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""AvailabilityPercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ReliabilityPercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YTDReliabillity"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YTDAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YEPReliability"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YEPAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+      </EntityType>
+      <EntityType Name=""MonthlyFPSOAvailabilityAndReliabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""TotalUnplannedInterruption"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalPlannedInterrupion"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalStandby"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalOnDuty"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""AvailabilityPercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""ReliabilityPercentage"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YTDReliabillity"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YTDAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YEPReliability"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""YEPAvailability"" Type=""Edm.Decimal"" Scale=""Variable"" />
+        <Property Name=""TotalActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
+      </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.Approvals"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <ComplexType Name=""Approval"">
@@ -69677,6 +70907,27 @@ namespace CentralizedDatabaseSystemODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""DailyAvailabilityAndReliability"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.DailyAvailabilityAndReliability"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""MonthlyHIPAvailabilityAndReliabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyHIPAvailabilityAndReliabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""MonthlyLayangAvailabilityAndReliabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyLayangAvailabilityAndReliabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""MonthlyFPSOAvailabilityAndReliabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation"">
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>
