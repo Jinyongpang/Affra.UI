@@ -47,59 +47,73 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityRe
         }
         public async Task LoadDataAsync(int? year = null, int? month = null)
         {
-            using var serviceScopeUser = ServiceProvider.CreateScope();
-            var hipService = this.GetHIPGenericService(serviceScopeUser);
-            var layangService = this.GetLayangGenericService(serviceScopeUser);
-            var fpsoService = this.GetFPSOGenericService(serviceScopeUser);
-
-            if (year is null && month is null)
+            try
             {
-                HIPItems = (await hipService.Get()
-                    .Where(x => x.Date.Year == DateTime.Now.Year && x.Date.Month == DateTime.Now.Month)
-                    .ToQueryOperationResponseAsync<MonthlyHIPAvailabilityAndReliabilityCalculation>())
-                    .FirstOrDefault();
+                using var serviceScopeUser = ServiceProvider.CreateScope();
+                var hipService = this.GetHIPGenericService(serviceScopeUser);
+                var layangService = this.GetLayangGenericService(serviceScopeUser);
+                var fpsoService = this.GetFPSOGenericService(serviceScopeUser);
 
-                LayangItems = (await layangService.Get()
-                    .Where(x => x.Date.Year == DateTime.Now.Year && x.Date.Month == DateTime.Now.Month)
-                    .ToQueryOperationResponseAsync<MonthlyLayangAvailabilityAndReliabilityCalculation>())
-                    .FirstOrDefault();
+                if (year is null && month is null)
+                {
+                    HIPItems = (await hipService.Get()
+                        .Where(x => x.Date.Year == DateTime.Now.Year && x.Date.Month == DateTime.Now.Month)
+                        .ToQueryOperationResponseAsync<MonthlyHIPAvailabilityAndReliabilityCalculation>())
+                        .FirstOrDefault();
 
-                FPSOItems = (await fpsoService.Get()
-                    .Where(x => x.Date.Year == DateTime.Now.Year && x.Date.Month == DateTime.Now.Month)
-                    .ToQueryOperationResponseAsync<MonthlyFPSOAvailabilityAndReliabilityCalculation>())
-                    .FirstOrDefault();
+                    LayangItems = (await layangService.Get()
+                        .Where(x => x.Date.Year == DateTime.Now.Year && x.Date.Month == DateTime.Now.Month)
+                        .ToQueryOperationResponseAsync<MonthlyLayangAvailabilityAndReliabilityCalculation>())
+                        .FirstOrDefault();
+
+                    FPSOItems = (await fpsoService.Get()
+                        .Where(x => x.Date.Year == DateTime.Now.Year && x.Date.Month == DateTime.Now.Month)
+                        .ToQueryOperationResponseAsync<MonthlyFPSOAvailabilityAndReliabilityCalculation>())
+                        .FirstOrDefault();
+                }
+                else
+                {
+                    HIPItems = (await hipService.Get()
+                        .Where(x => x.Date.Year == year && x.Date.Month == month)
+                        .ToQueryOperationResponseAsync<MonthlyHIPAvailabilityAndReliabilityCalculation>())
+                        .FirstOrDefault();
+
+                    LayangItems = (await layangService.Get()
+                        .Where(x => x.Date.Year == year && x.Date.Month == month)
+                        .ToQueryOperationResponseAsync<MonthlyLayangAvailabilityAndReliabilityCalculation>())
+                        .FirstOrDefault();
+
+                    FPSOItems = (await fpsoService.Get()
+                        .Where(x => x.Date.Year == year && x.Date.Month == month)
+                        .ToQueryOperationResponseAsync<MonthlyFPSOAvailabilityAndReliabilityCalculation>())
+                        .FirstOrDefault();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                HIPItems = (await hipService.Get()
-                    .Where(x => x.Date.Year == year && x.Date.Month == month)
-                    .ToQueryOperationResponseAsync<MonthlyHIPAvailabilityAndReliabilityCalculation>())
-                    .FirstOrDefault();
-
-                LayangItems = (await layangService.Get()
-                    .Where(x => x.Date.Year == year && x.Date.Month == month)
-                    .ToQueryOperationResponseAsync<MonthlyLayangAvailabilityAndReliabilityCalculation>())
-                    .FirstOrDefault();
-
-                FPSOItems = (await fpsoService.Get()
-                    .Where(x => x.Date.Year == year && x.Date.Month == month)
-                    .ToQueryOperationResponseAsync<MonthlyFPSOAvailabilityAndReliabilityCalculation>())
-                    .FirstOrDefault();
+                this.AffraNotificationService.NotifyException(ex);
             }
-
+            
             StateHasChanged();
         }
         public async Task LoadYearAsync(int? selectedYear = null)
         {
-            using var serviceScopeUser = ServiceProvider.CreateScope();
-            var service = this.GetHIPGenericService(serviceScopeUser);
+            try
+            {
+                using var serviceScopeUser = ServiceProvider.CreateScope();
+                var service = this.GetHIPGenericService(serviceScopeUser);
 
-            YearList = (await service.Get()
-                .ToQueryOperationResponseAsync<MonthlyHIPAvailabilityAndReliabilityCalculation>())
-                .Select(x => x.Date.Year)
-                .OrderDescending()
-                .Distinct()
-                .ToList();
+                YearList = (await service.Get()
+                    .ToQueryOperationResponseAsync<MonthlyHIPAvailabilityAndReliabilityCalculation>())
+                    .Select(x => x.Date.Year)
+                    .OrderDescending()
+                    .Distinct()
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
+            }
 
             StateHasChanged();
         }
