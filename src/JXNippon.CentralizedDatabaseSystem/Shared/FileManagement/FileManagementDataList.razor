@@ -59,8 +59,12 @@
                     <Body>
                         <div class="d-flex flex-row align-items-center">
                             <div>
+                                <div style="word-break:break-word;">Section : @context.Section</div>
                                 <div style="word-break:break-word;">Folder : @this.GetFolderName(@context.FolderName)</div>
-                                <div style="font-size: .8em">Attempts: @(context.NumberOfAttempts)</div>
+                                <div style="word-break:break-word; font-size: .8em;">
+                                    @string.Format(System.Globalization.CultureInfo.CurrentCulture, "Processed At : {0:dd/MM/yyyy HH:mm}", context.JobStartDateTime.ToLocalDateTime())
+                                </div>
+                                <div style="font-size: .8em;">Attempts: @(context.NumberOfAttempts)</div>
                             </div>
                         </div>
                         <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
@@ -93,7 +97,7 @@
                                 else
                                 {
                                     <RadzenBadge BadgeStyle="BadgeStyle.Info" Text="@(context.ProcessStatus.ToString())"/>
-                                }                                  
+                                }
                             </div>
                         </div>
                     </Body>
@@ -110,9 +114,9 @@
                                     </Popconfirm>
                                 </Tooltip>
                             </CardAction>
-                            <CardAction>
+                            @*<CardAction>
                                 <Tooltip Title=@("Download ...")><Icon Class="anticon-big" Type="download" OnClick=@(() => this.DownloadAsync(context))/></Tooltip>
-                            </CardAction>
+                            </CardAction>*@
                         }
                     </ActionTemplate>
                 </Card>  
