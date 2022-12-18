@@ -1,13 +1,12 @@
 ﻿using Affra.Core.Domain.UnitOfWorks;
 using Affra.Core.Infrastructure.OData.UnitOfWorks;
 using JXNippon.CentralizedDatabaseSystem.Domain.Reports;
-using JXNippon.CentralizedDatabaseSystem.Infrastructure.Reports;
 using Microsoft.Extensions.Options;
 using Microsoft.OData.Extensions.Client;
 using ReportODataService.Affra.Service.Report.Domain.Reports;
 using ReportODataService.Default;
 
-namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.ManagementOfChanges
+namespace JXNippon.CentralizedDatabaseSystem.Infrastructure.Reports
 {
     public class ReportUnitOfWork : ODataUnitOfWorkBase, IReportUnitOfWork
     {
