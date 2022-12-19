@@ -1,0 +1,54 @@
+﻿@using AntDesign;
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport;
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+
+<Layout Class="layout-view">
+    <Sider Width="250" >
+        <Layout Style="height: 100%;background-color: white;">
+            <Header>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Year</span>
+                    </div>
+                </div>
+            </Header>
+            <Content style="overflow-y: auto; max-height: 100%;">
+                @if (YearList is not null && YearList.Count > 0)
+                {
+                    <Menu DefaultSelectedKeys=@(new[] { YearList[0].ToString() }) DefaultOpenKeys=@(new[] { YearList[0].ToString() }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
+                        @foreach (int yearItem in YearList)
+                        {
+                            <MenuItem Key="@yearItem.ToString()"><span style="font-size: 16px; margin-left: 0px;">@yearItem.ToString()</span></MenuItem>
+                        }
+                    </Menu>
+                }
+            </Content>
+        </Layout>
+    </Sider>
+    <Layout Style="height:100%;">
+        <Header Style="border-left: 1px solid #dbe0ea">
+            <div class="row">
+                <div class="col-6">
+                    <span>Monthly Availability And Reliability Dashboard</span>
+                </div>
+            </div>
+        </Header>
+        <Content Style="height:100%;background-color: white;">
+            @if(this.HIPItems is not null)
+            {
+                <AvailabilityAndReliabilityDashboardTableView Year="@HIPItems.Date.Year">
+                    <AvailabilityAndReliabilityDashboardTableRow Title="HIP" Measure="Reliability">
+
+                    </AvailabilityAndReliabilityDashboardTableRow>
+                </AvailabilityAndReliabilityDashboardTableView>
+            }
+            else
+            {
+                <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                    <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No facilities data created.">
+                    </GenericDescription>
+                </div>
+            }
+        </Content>
+    </Layout>
+</Layout>
