@@ -1,9 +1,10 @@
 ﻿@using AntDesign;
 @using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport;
 @using JXNippon.CentralizedDatabaseSystem.Shared.Description
+@using System.Reflection;
 
 <Layout Class="layout-view">
-    <Sider Width="250" >
+    <Sider Width="150" >
         <Layout Style="height: 100%;background-color: white;">
             <Header>
                 <div class="row">
@@ -34,11 +35,66 @@
             </div>
         </Header>
         <Content Style="height:100%;background-color: white;">
-            @if(this.HIPItems is not null)
+            @if(this.HIPAvailabilityItems is not null)
             {
-                <AvailabilityAndReliabilityDashboardTableView Year="@HIPItems.Date.Year">
-                    <AvailabilityAndReliabilityDashboardTableRow Title="HIP" Measure="Reliability">
+                <AvailabilityAndReliabilityDashboardTableView Year="@HIPAvailabilityItems.Year">
+                    <AvailabilityAndReliabilityDashboardTableRow Title="HIP" Measure="Availability" RowSpan="2">
+                        @for (int i = 0; i < PropertyNames.Length; i++)
+                        {
+                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.HIPAvailabilityItems, PropertyNames[i].ToString())" />
+                        }
+                    </AvailabilityAndReliabilityDashboardTableRow>
+                    <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
+                        @for (int i = 0; i < PropertyNames.Length; i++)
+                        {
+                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.HIPReliabilityItems, PropertyNames[i].ToString())" />
+                        }
+                    </AvailabilityAndReliabilityDashboardTableRow>
 
+                    <AvailabilityAndReliabilityDashboardTableRow Title="Layang" Measure="Availability" RowSpan="2">
+                        @for (int i = 0; i < PropertyNames.Length; i++)
+                        {
+                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.LayangAvailabilityItems, PropertyNames[i].ToString())" />
+                        }
+                    </AvailabilityAndReliabilityDashboardTableRow>
+                    <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
+                        @for (int i = 0; i < PropertyNames.Length; i++)
+                        {
+                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.LayangReliabilityItems, PropertyNames[i].ToString())" />
+                        }
+                    </AvailabilityAndReliabilityDashboardTableRow>
+
+                    <AvailabilityAndReliabilityDashboardTableRow Title="FPSO" Measure="Availability" RowSpan="2">
+                        @for (int i = 0; i < PropertyNames.Length; i++)
+                        {
+                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.FPSOAvailabilityItems, PropertyNames[i].ToString())" />
+                        }
+                    </AvailabilityAndReliabilityDashboardTableRow>
+                    <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
+                        @for (int i = 0; i < PropertyNames.Length; i++)
+                        {
+                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.FPSOReliabilityItems, PropertyNames[i].ToString())" />
+                        }
+                    </AvailabilityAndReliabilityDashboardTableRow>
+
+                    <AvailabilityAndReliabilityDashboardTableRow Title="Average" Measure="Availability" RowSpan="2">
+                        @for (int i = 0; i < PropertyNames.Length; i++)
+                        {
+                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.AverageAvailabilityItems, PropertyNames[i].ToString())" />
+                        }
+                    </AvailabilityAndReliabilityDashboardTableRow>
+                    <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
+                        @for (int i = 0; i < PropertyNames.Length; i++)
+                        {
+                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.AverageReliabilityItems, PropertyNames[i].ToString())" />
+                        }
+                    </AvailabilityAndReliabilityDashboardTableRow>
+
+                    <AvailabilityAndReliabilityDashboardTableRow Title="" Measure="Target" RowSpan="1">
+                        @for (int i = 0; i < PropertyNames.Length; i++)
+                        {
+                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.TargetItems, PropertyNames[i].ToString())" />
+                        }
                     </AvailabilityAndReliabilityDashboardTableRow>
                 </AvailabilityAndReliabilityDashboardTableView>
             }

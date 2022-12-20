@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 14/12/2022 22:43:59
+// Generation date: 12/20/2022 2:30:08 PM
 namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.PowerGenerationAndDistributions
 {
     /// <summary>
@@ -63037,6 +63037,4920 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
         partial void OnMonthlyTargetChanged();
     }
     /// <summary>
+    /// There are no comments for YearlyAverageAvailabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class YearlyAverageAvailabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyAverageAvailabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new YearlyAverageAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyAverageAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new YearlyAverageAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyAverageAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new YearlyAverageAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyAverageAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyAverageAvailabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for YearlyAverageAvailabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class YearlyAverageAvailabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new YearlyAverageAvailabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="january">Initial value of January.</param>
+        /// <param name="february">Initial value of February.</param>
+        /// <param name="march">Initial value of March.</param>
+        /// <param name="april">Initial value of April.</param>
+        /// <param name="may">Initial value of May.</param>
+        /// <param name="june">Initial value of June.</param>
+        /// <param name="july">Initial value of July.</param>
+        /// <param name="august">Initial value of August.</param>
+        /// <param name="september">Initial value of September.</param>
+        /// <param name="october">Initial value of October.</param>
+        /// <param name="november">Initial value of November.</param>
+        /// <param name="december">Initial value of December.</param>
+        /// <param name="yTD">Initial value of YTD.</param>
+        /// <param name="yEP">Initial value of YEP.</param>
+        /// <param name="q1">Initial value of Q1.</param>
+        /// <param name="q2">Initial value of Q2.</param>
+        /// <param name="q3">Initial value of Q3.</param>
+        /// <param name="q4">Initial value of Q4.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static YearlyAverageAvailabilityCalculation CreateYearlyAverageAvailabilityCalculation(long ID, 
+                    long xmin, 
+                    int year, 
+                    double january, 
+                    double february, 
+                    double march, 
+                    double april, 
+                    double may, 
+                    double june, 
+                    double july, 
+                    double august, 
+                    double september, 
+                    double october, 
+                    double november, 
+                    double december, 
+                    double yTD, 
+                    double yEP, 
+                    double q1, 
+                    double q2, 
+                    double q3, 
+                    double q4)
+        {
+            YearlyAverageAvailabilityCalculation yearlyAverageAvailabilityCalculation = new YearlyAverageAvailabilityCalculation();
+            yearlyAverageAvailabilityCalculation.Id = ID;
+            yearlyAverageAvailabilityCalculation.xmin = xmin;
+            yearlyAverageAvailabilityCalculation.Year = year;
+            yearlyAverageAvailabilityCalculation.January = january;
+            yearlyAverageAvailabilityCalculation.February = february;
+            yearlyAverageAvailabilityCalculation.March = march;
+            yearlyAverageAvailabilityCalculation.April = april;
+            yearlyAverageAvailabilityCalculation.May = may;
+            yearlyAverageAvailabilityCalculation.June = june;
+            yearlyAverageAvailabilityCalculation.July = july;
+            yearlyAverageAvailabilityCalculation.August = august;
+            yearlyAverageAvailabilityCalculation.September = september;
+            yearlyAverageAvailabilityCalculation.October = october;
+            yearlyAverageAvailabilityCalculation.November = november;
+            yearlyAverageAvailabilityCalculation.December = december;
+            yearlyAverageAvailabilityCalculation.YTD = yTD;
+            yearlyAverageAvailabilityCalculation.YEP = yEP;
+            yearlyAverageAvailabilityCalculation.Q1 = q1;
+            yearlyAverageAvailabilityCalculation.Q2 = q2;
+            yearlyAverageAvailabilityCalculation.Q3 = q3;
+            yearlyAverageAvailabilityCalculation.Q4 = q4;
+            return yearlyAverageAvailabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _January;
+        partial void OnJanuaryChanging(double value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _February;
+        partial void OnFebruaryChanging(double value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _March;
+        partial void OnMarchChanging(double value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _April;
+        partial void OnAprilChanging(double value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _May;
+        partial void OnMayChanging(double value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _June;
+        partial void OnJuneChanging(double value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _July;
+        partial void OnJulyChanging(double value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _August;
+        partial void OnAugustChanging(double value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _September;
+        partial void OnSeptemberChanging(double value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _October;
+        partial void OnOctoberChanging(double value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _November;
+        partial void OnNovemberChanging(double value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _December;
+        partial void OnDecemberChanging(double value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YTD;
+        partial void OnYTDChanging(double value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YEP;
+        partial void OnYEPChanging(double value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q1;
+        partial void OnQ1Changing(double value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q2;
+        partial void OnQ2Changing(double value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q3;
+        partial void OnQ3Changing(double value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q4;
+        partial void OnQ4Changing(double value);
+        partial void OnQ4Changed();
+    }
+    /// <summary>
+    /// There are no comments for YearlyAverageReliabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class YearlyAverageReliabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyAverageReliabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new YearlyAverageReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyAverageReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new YearlyAverageReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyAverageReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new YearlyAverageReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyAverageReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyAverageReliabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for YearlyAverageReliabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class YearlyAverageReliabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new YearlyAverageReliabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="january">Initial value of January.</param>
+        /// <param name="february">Initial value of February.</param>
+        /// <param name="march">Initial value of March.</param>
+        /// <param name="april">Initial value of April.</param>
+        /// <param name="may">Initial value of May.</param>
+        /// <param name="june">Initial value of June.</param>
+        /// <param name="july">Initial value of July.</param>
+        /// <param name="august">Initial value of August.</param>
+        /// <param name="september">Initial value of September.</param>
+        /// <param name="october">Initial value of October.</param>
+        /// <param name="november">Initial value of November.</param>
+        /// <param name="december">Initial value of December.</param>
+        /// <param name="yTD">Initial value of YTD.</param>
+        /// <param name="yEP">Initial value of YEP.</param>
+        /// <param name="q1">Initial value of Q1.</param>
+        /// <param name="q2">Initial value of Q2.</param>
+        /// <param name="q3">Initial value of Q3.</param>
+        /// <param name="q4">Initial value of Q4.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static YearlyAverageReliabilityCalculation CreateYearlyAverageReliabilityCalculation(long ID, 
+                    long xmin, 
+                    int year, 
+                    double january, 
+                    double february, 
+                    double march, 
+                    double april, 
+                    double may, 
+                    double june, 
+                    double july, 
+                    double august, 
+                    double september, 
+                    double october, 
+                    double november, 
+                    double december, 
+                    double yTD, 
+                    double yEP, 
+                    double q1, 
+                    double q2, 
+                    double q3, 
+                    double q4)
+        {
+            YearlyAverageReliabilityCalculation yearlyAverageReliabilityCalculation = new YearlyAverageReliabilityCalculation();
+            yearlyAverageReliabilityCalculation.Id = ID;
+            yearlyAverageReliabilityCalculation.xmin = xmin;
+            yearlyAverageReliabilityCalculation.Year = year;
+            yearlyAverageReliabilityCalculation.January = january;
+            yearlyAverageReliabilityCalculation.February = february;
+            yearlyAverageReliabilityCalculation.March = march;
+            yearlyAverageReliabilityCalculation.April = april;
+            yearlyAverageReliabilityCalculation.May = may;
+            yearlyAverageReliabilityCalculation.June = june;
+            yearlyAverageReliabilityCalculation.July = july;
+            yearlyAverageReliabilityCalculation.August = august;
+            yearlyAverageReliabilityCalculation.September = september;
+            yearlyAverageReliabilityCalculation.October = october;
+            yearlyAverageReliabilityCalculation.November = november;
+            yearlyAverageReliabilityCalculation.December = december;
+            yearlyAverageReliabilityCalculation.YTD = yTD;
+            yearlyAverageReliabilityCalculation.YEP = yEP;
+            yearlyAverageReliabilityCalculation.Q1 = q1;
+            yearlyAverageReliabilityCalculation.Q2 = q2;
+            yearlyAverageReliabilityCalculation.Q3 = q3;
+            yearlyAverageReliabilityCalculation.Q4 = q4;
+            return yearlyAverageReliabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _January;
+        partial void OnJanuaryChanging(double value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _February;
+        partial void OnFebruaryChanging(double value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _March;
+        partial void OnMarchChanging(double value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _April;
+        partial void OnAprilChanging(double value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _May;
+        partial void OnMayChanging(double value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _June;
+        partial void OnJuneChanging(double value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _July;
+        partial void OnJulyChanging(double value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _August;
+        partial void OnAugustChanging(double value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _September;
+        partial void OnSeptemberChanging(double value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _October;
+        partial void OnOctoberChanging(double value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _November;
+        partial void OnNovemberChanging(double value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _December;
+        partial void OnDecemberChanging(double value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YTD;
+        partial void OnYTDChanging(double value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YEP;
+        partial void OnYEPChanging(double value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q1;
+        partial void OnQ1Changing(double value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q2;
+        partial void OnQ2Changing(double value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q3;
+        partial void OnQ3Changing(double value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q4;
+        partial void OnQ4Changing(double value);
+        partial void OnQ4Changed();
+    }
+    /// <summary>
+    /// There are no comments for YearlyTargetCalculationSingle in the schema.
+    /// </summary>
+    public partial class YearlyTargetCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyTargetCalculation>
+    {
+        /// <summary>
+        /// Initialize a new YearlyTargetCalculationSingle object.
+        /// </summary>
+        public YearlyTargetCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new YearlyTargetCalculationSingle object.
+        /// </summary>
+        public YearlyTargetCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new YearlyTargetCalculationSingle object.
+        /// </summary>
+        public YearlyTargetCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyTargetCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for YearlyTargetCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class YearlyTargetCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new YearlyTargetCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="january">Initial value of January.</param>
+        /// <param name="february">Initial value of February.</param>
+        /// <param name="march">Initial value of March.</param>
+        /// <param name="april">Initial value of April.</param>
+        /// <param name="may">Initial value of May.</param>
+        /// <param name="june">Initial value of June.</param>
+        /// <param name="july">Initial value of July.</param>
+        /// <param name="august">Initial value of August.</param>
+        /// <param name="september">Initial value of September.</param>
+        /// <param name="october">Initial value of October.</param>
+        /// <param name="november">Initial value of November.</param>
+        /// <param name="december">Initial value of December.</param>
+        /// <param name="yTD">Initial value of YTD.</param>
+        /// <param name="yEP">Initial value of YEP.</param>
+        /// <param name="q1">Initial value of Q1.</param>
+        /// <param name="q2">Initial value of Q2.</param>
+        /// <param name="q3">Initial value of Q3.</param>
+        /// <param name="q4">Initial value of Q4.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static YearlyTargetCalculation CreateYearlyTargetCalculation(long ID, 
+                    long xmin, 
+                    int year, 
+                    double january, 
+                    double february, 
+                    double march, 
+                    double april, 
+                    double may, 
+                    double june, 
+                    double july, 
+                    double august, 
+                    double september, 
+                    double october, 
+                    double november, 
+                    double december, 
+                    double yTD, 
+                    double yEP, 
+                    double q1, 
+                    double q2, 
+                    double q3, 
+                    double q4)
+        {
+            YearlyTargetCalculation yearlyTargetCalculation = new YearlyTargetCalculation();
+            yearlyTargetCalculation.Id = ID;
+            yearlyTargetCalculation.xmin = xmin;
+            yearlyTargetCalculation.Year = year;
+            yearlyTargetCalculation.January = january;
+            yearlyTargetCalculation.February = february;
+            yearlyTargetCalculation.March = march;
+            yearlyTargetCalculation.April = april;
+            yearlyTargetCalculation.May = may;
+            yearlyTargetCalculation.June = june;
+            yearlyTargetCalculation.July = july;
+            yearlyTargetCalculation.August = august;
+            yearlyTargetCalculation.September = september;
+            yearlyTargetCalculation.October = october;
+            yearlyTargetCalculation.November = november;
+            yearlyTargetCalculation.December = december;
+            yearlyTargetCalculation.YTD = yTD;
+            yearlyTargetCalculation.YEP = yEP;
+            yearlyTargetCalculation.Q1 = q1;
+            yearlyTargetCalculation.Q2 = q2;
+            yearlyTargetCalculation.Q3 = q3;
+            yearlyTargetCalculation.Q4 = q4;
+            return yearlyTargetCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _January;
+        partial void OnJanuaryChanging(double value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _February;
+        partial void OnFebruaryChanging(double value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _March;
+        partial void OnMarchChanging(double value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _April;
+        partial void OnAprilChanging(double value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _May;
+        partial void OnMayChanging(double value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _June;
+        partial void OnJuneChanging(double value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _July;
+        partial void OnJulyChanging(double value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _August;
+        partial void OnAugustChanging(double value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _September;
+        partial void OnSeptemberChanging(double value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _October;
+        partial void OnOctoberChanging(double value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _November;
+        partial void OnNovemberChanging(double value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _December;
+        partial void OnDecemberChanging(double value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YTD;
+        partial void OnYTDChanging(double value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YEP;
+        partial void OnYEPChanging(double value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q1;
+        partial void OnQ1Changing(double value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q2;
+        partial void OnQ2Changing(double value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q3;
+        partial void OnQ3Changing(double value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q4;
+        partial void OnQ4Changing(double value);
+        partial void OnQ4Changed();
+    }
+    /// <summary>
+    /// There are no comments for YearlyHIPAvailabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class YearlyHIPAvailabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyHIPAvailabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new YearlyHIPAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyHIPAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new YearlyHIPAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyHIPAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new YearlyHIPAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyHIPAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyHIPAvailabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for YearlyHIPAvailabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class YearlyHIPAvailabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new YearlyHIPAvailabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="january">Initial value of January.</param>
+        /// <param name="february">Initial value of February.</param>
+        /// <param name="march">Initial value of March.</param>
+        /// <param name="april">Initial value of April.</param>
+        /// <param name="may">Initial value of May.</param>
+        /// <param name="june">Initial value of June.</param>
+        /// <param name="july">Initial value of July.</param>
+        /// <param name="august">Initial value of August.</param>
+        /// <param name="september">Initial value of September.</param>
+        /// <param name="october">Initial value of October.</param>
+        /// <param name="november">Initial value of November.</param>
+        /// <param name="december">Initial value of December.</param>
+        /// <param name="yTD">Initial value of YTD.</param>
+        /// <param name="yEP">Initial value of YEP.</param>
+        /// <param name="q1">Initial value of Q1.</param>
+        /// <param name="q2">Initial value of Q2.</param>
+        /// <param name="q3">Initial value of Q3.</param>
+        /// <param name="q4">Initial value of Q4.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static YearlyHIPAvailabilityCalculation CreateYearlyHIPAvailabilityCalculation(long ID, 
+                    long xmin, 
+                    int year, 
+                    double january, 
+                    double february, 
+                    double march, 
+                    double april, 
+                    double may, 
+                    double june, 
+                    double july, 
+                    double august, 
+                    double september, 
+                    double october, 
+                    double november, 
+                    double december, 
+                    double yTD, 
+                    double yEP, 
+                    double q1, 
+                    double q2, 
+                    double q3, 
+                    double q4)
+        {
+            YearlyHIPAvailabilityCalculation yearlyHIPAvailabilityCalculation = new YearlyHIPAvailabilityCalculation();
+            yearlyHIPAvailabilityCalculation.Id = ID;
+            yearlyHIPAvailabilityCalculation.xmin = xmin;
+            yearlyHIPAvailabilityCalculation.Year = year;
+            yearlyHIPAvailabilityCalculation.January = january;
+            yearlyHIPAvailabilityCalculation.February = february;
+            yearlyHIPAvailabilityCalculation.March = march;
+            yearlyHIPAvailabilityCalculation.April = april;
+            yearlyHIPAvailabilityCalculation.May = may;
+            yearlyHIPAvailabilityCalculation.June = june;
+            yearlyHIPAvailabilityCalculation.July = july;
+            yearlyHIPAvailabilityCalculation.August = august;
+            yearlyHIPAvailabilityCalculation.September = september;
+            yearlyHIPAvailabilityCalculation.October = october;
+            yearlyHIPAvailabilityCalculation.November = november;
+            yearlyHIPAvailabilityCalculation.December = december;
+            yearlyHIPAvailabilityCalculation.YTD = yTD;
+            yearlyHIPAvailabilityCalculation.YEP = yEP;
+            yearlyHIPAvailabilityCalculation.Q1 = q1;
+            yearlyHIPAvailabilityCalculation.Q2 = q2;
+            yearlyHIPAvailabilityCalculation.Q3 = q3;
+            yearlyHIPAvailabilityCalculation.Q4 = q4;
+            return yearlyHIPAvailabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _January;
+        partial void OnJanuaryChanging(double value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _February;
+        partial void OnFebruaryChanging(double value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _March;
+        partial void OnMarchChanging(double value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _April;
+        partial void OnAprilChanging(double value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _May;
+        partial void OnMayChanging(double value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _June;
+        partial void OnJuneChanging(double value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _July;
+        partial void OnJulyChanging(double value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _August;
+        partial void OnAugustChanging(double value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _September;
+        partial void OnSeptemberChanging(double value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _October;
+        partial void OnOctoberChanging(double value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _November;
+        partial void OnNovemberChanging(double value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _December;
+        partial void OnDecemberChanging(double value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YTD;
+        partial void OnYTDChanging(double value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YEP;
+        partial void OnYEPChanging(double value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q1;
+        partial void OnQ1Changing(double value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q2;
+        partial void OnQ2Changing(double value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q3;
+        partial void OnQ3Changing(double value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q4;
+        partial void OnQ4Changing(double value);
+        partial void OnQ4Changed();
+    }
+    /// <summary>
+    /// There are no comments for YearlyHIPReliabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class YearlyHIPReliabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyHIPReliabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new YearlyHIPReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyHIPReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new YearlyHIPReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyHIPReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new YearlyHIPReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyHIPReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyHIPReliabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for YearlyHIPReliabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class YearlyHIPReliabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new YearlyHIPReliabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="january">Initial value of January.</param>
+        /// <param name="february">Initial value of February.</param>
+        /// <param name="march">Initial value of March.</param>
+        /// <param name="april">Initial value of April.</param>
+        /// <param name="may">Initial value of May.</param>
+        /// <param name="june">Initial value of June.</param>
+        /// <param name="july">Initial value of July.</param>
+        /// <param name="august">Initial value of August.</param>
+        /// <param name="september">Initial value of September.</param>
+        /// <param name="october">Initial value of October.</param>
+        /// <param name="november">Initial value of November.</param>
+        /// <param name="december">Initial value of December.</param>
+        /// <param name="yTD">Initial value of YTD.</param>
+        /// <param name="yEP">Initial value of YEP.</param>
+        /// <param name="q1">Initial value of Q1.</param>
+        /// <param name="q2">Initial value of Q2.</param>
+        /// <param name="q3">Initial value of Q3.</param>
+        /// <param name="q4">Initial value of Q4.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static YearlyHIPReliabilityCalculation CreateYearlyHIPReliabilityCalculation(long ID, 
+                    long xmin, 
+                    int year, 
+                    double january, 
+                    double february, 
+                    double march, 
+                    double april, 
+                    double may, 
+                    double june, 
+                    double july, 
+                    double august, 
+                    double september, 
+                    double october, 
+                    double november, 
+                    double december, 
+                    double yTD, 
+                    double yEP, 
+                    double q1, 
+                    double q2, 
+                    double q3, 
+                    double q4)
+        {
+            YearlyHIPReliabilityCalculation yearlyHIPReliabilityCalculation = new YearlyHIPReliabilityCalculation();
+            yearlyHIPReliabilityCalculation.Id = ID;
+            yearlyHIPReliabilityCalculation.xmin = xmin;
+            yearlyHIPReliabilityCalculation.Year = year;
+            yearlyHIPReliabilityCalculation.January = january;
+            yearlyHIPReliabilityCalculation.February = february;
+            yearlyHIPReliabilityCalculation.March = march;
+            yearlyHIPReliabilityCalculation.April = april;
+            yearlyHIPReliabilityCalculation.May = may;
+            yearlyHIPReliabilityCalculation.June = june;
+            yearlyHIPReliabilityCalculation.July = july;
+            yearlyHIPReliabilityCalculation.August = august;
+            yearlyHIPReliabilityCalculation.September = september;
+            yearlyHIPReliabilityCalculation.October = october;
+            yearlyHIPReliabilityCalculation.November = november;
+            yearlyHIPReliabilityCalculation.December = december;
+            yearlyHIPReliabilityCalculation.YTD = yTD;
+            yearlyHIPReliabilityCalculation.YEP = yEP;
+            yearlyHIPReliabilityCalculation.Q1 = q1;
+            yearlyHIPReliabilityCalculation.Q2 = q2;
+            yearlyHIPReliabilityCalculation.Q3 = q3;
+            yearlyHIPReliabilityCalculation.Q4 = q4;
+            return yearlyHIPReliabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _January;
+        partial void OnJanuaryChanging(double value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _February;
+        partial void OnFebruaryChanging(double value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _March;
+        partial void OnMarchChanging(double value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _April;
+        partial void OnAprilChanging(double value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _May;
+        partial void OnMayChanging(double value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _June;
+        partial void OnJuneChanging(double value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _July;
+        partial void OnJulyChanging(double value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _August;
+        partial void OnAugustChanging(double value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _September;
+        partial void OnSeptemberChanging(double value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _October;
+        partial void OnOctoberChanging(double value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _November;
+        partial void OnNovemberChanging(double value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _December;
+        partial void OnDecemberChanging(double value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YTD;
+        partial void OnYTDChanging(double value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YEP;
+        partial void OnYEPChanging(double value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q1;
+        partial void OnQ1Changing(double value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q2;
+        partial void OnQ2Changing(double value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q3;
+        partial void OnQ3Changing(double value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q4;
+        partial void OnQ4Changing(double value);
+        partial void OnQ4Changed();
+    }
+    /// <summary>
+    /// There are no comments for YearlyFPSOAvailabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class YearlyFPSOAvailabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyFPSOAvailabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new YearlyFPSOAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyFPSOAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new YearlyFPSOAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyFPSOAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new YearlyFPSOAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyFPSOAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyFPSOAvailabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for YearlyFPSOAvailabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class YearlyFPSOAvailabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new YearlyFPSOAvailabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="january">Initial value of January.</param>
+        /// <param name="february">Initial value of February.</param>
+        /// <param name="march">Initial value of March.</param>
+        /// <param name="april">Initial value of April.</param>
+        /// <param name="may">Initial value of May.</param>
+        /// <param name="june">Initial value of June.</param>
+        /// <param name="july">Initial value of July.</param>
+        /// <param name="august">Initial value of August.</param>
+        /// <param name="september">Initial value of September.</param>
+        /// <param name="october">Initial value of October.</param>
+        /// <param name="november">Initial value of November.</param>
+        /// <param name="december">Initial value of December.</param>
+        /// <param name="yTD">Initial value of YTD.</param>
+        /// <param name="yEP">Initial value of YEP.</param>
+        /// <param name="q1">Initial value of Q1.</param>
+        /// <param name="q2">Initial value of Q2.</param>
+        /// <param name="q3">Initial value of Q3.</param>
+        /// <param name="q4">Initial value of Q4.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static YearlyFPSOAvailabilityCalculation CreateYearlyFPSOAvailabilityCalculation(long ID, 
+                    long xmin, 
+                    int year, 
+                    double january, 
+                    double february, 
+                    double march, 
+                    double april, 
+                    double may, 
+                    double june, 
+                    double july, 
+                    double august, 
+                    double september, 
+                    double october, 
+                    double november, 
+                    double december, 
+                    double yTD, 
+                    double yEP, 
+                    double q1, 
+                    double q2, 
+                    double q3, 
+                    double q4)
+        {
+            YearlyFPSOAvailabilityCalculation yearlyFPSOAvailabilityCalculation = new YearlyFPSOAvailabilityCalculation();
+            yearlyFPSOAvailabilityCalculation.Id = ID;
+            yearlyFPSOAvailabilityCalculation.xmin = xmin;
+            yearlyFPSOAvailabilityCalculation.Year = year;
+            yearlyFPSOAvailabilityCalculation.January = january;
+            yearlyFPSOAvailabilityCalculation.February = february;
+            yearlyFPSOAvailabilityCalculation.March = march;
+            yearlyFPSOAvailabilityCalculation.April = april;
+            yearlyFPSOAvailabilityCalculation.May = may;
+            yearlyFPSOAvailabilityCalculation.June = june;
+            yearlyFPSOAvailabilityCalculation.July = july;
+            yearlyFPSOAvailabilityCalculation.August = august;
+            yearlyFPSOAvailabilityCalculation.September = september;
+            yearlyFPSOAvailabilityCalculation.October = october;
+            yearlyFPSOAvailabilityCalculation.November = november;
+            yearlyFPSOAvailabilityCalculation.December = december;
+            yearlyFPSOAvailabilityCalculation.YTD = yTD;
+            yearlyFPSOAvailabilityCalculation.YEP = yEP;
+            yearlyFPSOAvailabilityCalculation.Q1 = q1;
+            yearlyFPSOAvailabilityCalculation.Q2 = q2;
+            yearlyFPSOAvailabilityCalculation.Q3 = q3;
+            yearlyFPSOAvailabilityCalculation.Q4 = q4;
+            return yearlyFPSOAvailabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _January;
+        partial void OnJanuaryChanging(double value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _February;
+        partial void OnFebruaryChanging(double value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _March;
+        partial void OnMarchChanging(double value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _April;
+        partial void OnAprilChanging(double value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _May;
+        partial void OnMayChanging(double value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _June;
+        partial void OnJuneChanging(double value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _July;
+        partial void OnJulyChanging(double value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _August;
+        partial void OnAugustChanging(double value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _September;
+        partial void OnSeptemberChanging(double value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _October;
+        partial void OnOctoberChanging(double value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _November;
+        partial void OnNovemberChanging(double value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _December;
+        partial void OnDecemberChanging(double value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YTD;
+        partial void OnYTDChanging(double value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YEP;
+        partial void OnYEPChanging(double value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q1;
+        partial void OnQ1Changing(double value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q2;
+        partial void OnQ2Changing(double value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q3;
+        partial void OnQ3Changing(double value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q4;
+        partial void OnQ4Changing(double value);
+        partial void OnQ4Changed();
+    }
+    /// <summary>
+    /// There are no comments for YearlyFPSOReliabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class YearlyFPSOReliabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyFPSOReliabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new YearlyFPSOReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyFPSOReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new YearlyFPSOReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyFPSOReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new YearlyFPSOReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyFPSOReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyFPSOReliabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for YearlyFPSOReliabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class YearlyFPSOReliabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new YearlyFPSOReliabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="january">Initial value of January.</param>
+        /// <param name="february">Initial value of February.</param>
+        /// <param name="march">Initial value of March.</param>
+        /// <param name="april">Initial value of April.</param>
+        /// <param name="may">Initial value of May.</param>
+        /// <param name="june">Initial value of June.</param>
+        /// <param name="july">Initial value of July.</param>
+        /// <param name="august">Initial value of August.</param>
+        /// <param name="september">Initial value of September.</param>
+        /// <param name="october">Initial value of October.</param>
+        /// <param name="november">Initial value of November.</param>
+        /// <param name="december">Initial value of December.</param>
+        /// <param name="yTD">Initial value of YTD.</param>
+        /// <param name="yEP">Initial value of YEP.</param>
+        /// <param name="q1">Initial value of Q1.</param>
+        /// <param name="q2">Initial value of Q2.</param>
+        /// <param name="q3">Initial value of Q3.</param>
+        /// <param name="q4">Initial value of Q4.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static YearlyFPSOReliabilityCalculation CreateYearlyFPSOReliabilityCalculation(long ID, 
+                    long xmin, 
+                    int year, 
+                    double january, 
+                    double february, 
+                    double march, 
+                    double april, 
+                    double may, 
+                    double june, 
+                    double july, 
+                    double august, 
+                    double september, 
+                    double october, 
+                    double november, 
+                    double december, 
+                    double yTD, 
+                    double yEP, 
+                    double q1, 
+                    double q2, 
+                    double q3, 
+                    double q4)
+        {
+            YearlyFPSOReliabilityCalculation yearlyFPSOReliabilityCalculation = new YearlyFPSOReliabilityCalculation();
+            yearlyFPSOReliabilityCalculation.Id = ID;
+            yearlyFPSOReliabilityCalculation.xmin = xmin;
+            yearlyFPSOReliabilityCalculation.Year = year;
+            yearlyFPSOReliabilityCalculation.January = january;
+            yearlyFPSOReliabilityCalculation.February = february;
+            yearlyFPSOReliabilityCalculation.March = march;
+            yearlyFPSOReliabilityCalculation.April = april;
+            yearlyFPSOReliabilityCalculation.May = may;
+            yearlyFPSOReliabilityCalculation.June = june;
+            yearlyFPSOReliabilityCalculation.July = july;
+            yearlyFPSOReliabilityCalculation.August = august;
+            yearlyFPSOReliabilityCalculation.September = september;
+            yearlyFPSOReliabilityCalculation.October = october;
+            yearlyFPSOReliabilityCalculation.November = november;
+            yearlyFPSOReliabilityCalculation.December = december;
+            yearlyFPSOReliabilityCalculation.YTD = yTD;
+            yearlyFPSOReliabilityCalculation.YEP = yEP;
+            yearlyFPSOReliabilityCalculation.Q1 = q1;
+            yearlyFPSOReliabilityCalculation.Q2 = q2;
+            yearlyFPSOReliabilityCalculation.Q3 = q3;
+            yearlyFPSOReliabilityCalculation.Q4 = q4;
+            return yearlyFPSOReliabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _January;
+        partial void OnJanuaryChanging(double value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _February;
+        partial void OnFebruaryChanging(double value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _March;
+        partial void OnMarchChanging(double value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _April;
+        partial void OnAprilChanging(double value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _May;
+        partial void OnMayChanging(double value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _June;
+        partial void OnJuneChanging(double value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _July;
+        partial void OnJulyChanging(double value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _August;
+        partial void OnAugustChanging(double value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _September;
+        partial void OnSeptemberChanging(double value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _October;
+        partial void OnOctoberChanging(double value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _November;
+        partial void OnNovemberChanging(double value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _December;
+        partial void OnDecemberChanging(double value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YTD;
+        partial void OnYTDChanging(double value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YEP;
+        partial void OnYEPChanging(double value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q1;
+        partial void OnQ1Changing(double value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q2;
+        partial void OnQ2Changing(double value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q3;
+        partial void OnQ3Changing(double value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q4;
+        partial void OnQ4Changing(double value);
+        partial void OnQ4Changed();
+    }
+    /// <summary>
+    /// There are no comments for YearlyLayangAvailabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class YearlyLayangAvailabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyLayangAvailabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new YearlyLayangAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyLayangAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new YearlyLayangAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyLayangAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new YearlyLayangAvailabilityCalculationSingle object.
+        /// </summary>
+        public YearlyLayangAvailabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyLayangAvailabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for YearlyLayangAvailabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class YearlyLayangAvailabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new YearlyLayangAvailabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="january">Initial value of January.</param>
+        /// <param name="february">Initial value of February.</param>
+        /// <param name="march">Initial value of March.</param>
+        /// <param name="april">Initial value of April.</param>
+        /// <param name="may">Initial value of May.</param>
+        /// <param name="june">Initial value of June.</param>
+        /// <param name="july">Initial value of July.</param>
+        /// <param name="august">Initial value of August.</param>
+        /// <param name="september">Initial value of September.</param>
+        /// <param name="october">Initial value of October.</param>
+        /// <param name="november">Initial value of November.</param>
+        /// <param name="december">Initial value of December.</param>
+        /// <param name="yTD">Initial value of YTD.</param>
+        /// <param name="yEP">Initial value of YEP.</param>
+        /// <param name="q1">Initial value of Q1.</param>
+        /// <param name="q2">Initial value of Q2.</param>
+        /// <param name="q3">Initial value of Q3.</param>
+        /// <param name="q4">Initial value of Q4.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static YearlyLayangAvailabilityCalculation CreateYearlyLayangAvailabilityCalculation(long ID, 
+                    long xmin, 
+                    int year, 
+                    double january, 
+                    double february, 
+                    double march, 
+                    double april, 
+                    double may, 
+                    double june, 
+                    double july, 
+                    double august, 
+                    double september, 
+                    double october, 
+                    double november, 
+                    double december, 
+                    double yTD, 
+                    double yEP, 
+                    double q1, 
+                    double q2, 
+                    double q3, 
+                    double q4)
+        {
+            YearlyLayangAvailabilityCalculation yearlyLayangAvailabilityCalculation = new YearlyLayangAvailabilityCalculation();
+            yearlyLayangAvailabilityCalculation.Id = ID;
+            yearlyLayangAvailabilityCalculation.xmin = xmin;
+            yearlyLayangAvailabilityCalculation.Year = year;
+            yearlyLayangAvailabilityCalculation.January = january;
+            yearlyLayangAvailabilityCalculation.February = february;
+            yearlyLayangAvailabilityCalculation.March = march;
+            yearlyLayangAvailabilityCalculation.April = april;
+            yearlyLayangAvailabilityCalculation.May = may;
+            yearlyLayangAvailabilityCalculation.June = june;
+            yearlyLayangAvailabilityCalculation.July = july;
+            yearlyLayangAvailabilityCalculation.August = august;
+            yearlyLayangAvailabilityCalculation.September = september;
+            yearlyLayangAvailabilityCalculation.October = october;
+            yearlyLayangAvailabilityCalculation.November = november;
+            yearlyLayangAvailabilityCalculation.December = december;
+            yearlyLayangAvailabilityCalculation.YTD = yTD;
+            yearlyLayangAvailabilityCalculation.YEP = yEP;
+            yearlyLayangAvailabilityCalculation.Q1 = q1;
+            yearlyLayangAvailabilityCalculation.Q2 = q2;
+            yearlyLayangAvailabilityCalculation.Q3 = q3;
+            yearlyLayangAvailabilityCalculation.Q4 = q4;
+            return yearlyLayangAvailabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _January;
+        partial void OnJanuaryChanging(double value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _February;
+        partial void OnFebruaryChanging(double value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _March;
+        partial void OnMarchChanging(double value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _April;
+        partial void OnAprilChanging(double value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _May;
+        partial void OnMayChanging(double value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _June;
+        partial void OnJuneChanging(double value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _July;
+        partial void OnJulyChanging(double value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _August;
+        partial void OnAugustChanging(double value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _September;
+        partial void OnSeptemberChanging(double value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _October;
+        partial void OnOctoberChanging(double value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _November;
+        partial void OnNovemberChanging(double value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _December;
+        partial void OnDecemberChanging(double value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YTD;
+        partial void OnYTDChanging(double value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YEP;
+        partial void OnYEPChanging(double value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q1;
+        partial void OnQ1Changing(double value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q2;
+        partial void OnQ2Changing(double value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q3;
+        partial void OnQ3Changing(double value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q4;
+        partial void OnQ4Changing(double value);
+        partial void OnQ4Changed();
+    }
+    /// <summary>
+    /// There are no comments for YearlyLayangReliabilityCalculationSingle in the schema.
+    /// </summary>
+    public partial class YearlyLayangReliabilityCalculationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyLayangReliabilityCalculation>
+    {
+        /// <summary>
+        /// Initialize a new YearlyLayangReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyLayangReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new YearlyLayangReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyLayangReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new YearlyLayangReliabilityCalculationSingle object.
+        /// </summary>
+        public YearlyLayangReliabilityCalculationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<YearlyLayangReliabilityCalculation> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for YearlyLayangReliabilityCalculation in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class YearlyLayangReliabilityCalculation : global::Microsoft.OData.Client.BaseEntityType
+    {
+        /// <summary>
+        /// Create a new YearlyLayangReliabilityCalculation object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="xmin">Initial value of xmin.</param>
+        /// <param name="year">Initial value of Year.</param>
+        /// <param name="january">Initial value of January.</param>
+        /// <param name="february">Initial value of February.</param>
+        /// <param name="march">Initial value of March.</param>
+        /// <param name="april">Initial value of April.</param>
+        /// <param name="may">Initial value of May.</param>
+        /// <param name="june">Initial value of June.</param>
+        /// <param name="july">Initial value of July.</param>
+        /// <param name="august">Initial value of August.</param>
+        /// <param name="september">Initial value of September.</param>
+        /// <param name="october">Initial value of October.</param>
+        /// <param name="november">Initial value of November.</param>
+        /// <param name="december">Initial value of December.</param>
+        /// <param name="yTD">Initial value of YTD.</param>
+        /// <param name="yEP">Initial value of YEP.</param>
+        /// <param name="q1">Initial value of Q1.</param>
+        /// <param name="q2">Initial value of Q2.</param>
+        /// <param name="q3">Initial value of Q3.</param>
+        /// <param name="q4">Initial value of Q4.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public static YearlyLayangReliabilityCalculation CreateYearlyLayangReliabilityCalculation(long ID, 
+                    long xmin, 
+                    int year, 
+                    double january, 
+                    double february, 
+                    double march, 
+                    double april, 
+                    double may, 
+                    double june, 
+                    double july, 
+                    double august, 
+                    double september, 
+                    double october, 
+                    double november, 
+                    double december, 
+                    double yTD, 
+                    double yEP, 
+                    double q1, 
+                    double q2, 
+                    double q3, 
+                    double q4)
+        {
+            YearlyLayangReliabilityCalculation yearlyLayangReliabilityCalculation = new YearlyLayangReliabilityCalculation();
+            yearlyLayangReliabilityCalculation.Id = ID;
+            yearlyLayangReliabilityCalculation.xmin = xmin;
+            yearlyLayangReliabilityCalculation.Year = year;
+            yearlyLayangReliabilityCalculation.January = january;
+            yearlyLayangReliabilityCalculation.February = february;
+            yearlyLayangReliabilityCalculation.March = march;
+            yearlyLayangReliabilityCalculation.April = april;
+            yearlyLayangReliabilityCalculation.May = may;
+            yearlyLayangReliabilityCalculation.June = june;
+            yearlyLayangReliabilityCalculation.July = july;
+            yearlyLayangReliabilityCalculation.August = august;
+            yearlyLayangReliabilityCalculation.September = september;
+            yearlyLayangReliabilityCalculation.October = october;
+            yearlyLayangReliabilityCalculation.November = november;
+            yearlyLayangReliabilityCalculation.December = december;
+            yearlyLayangReliabilityCalculation.YTD = yTD;
+            yearlyLayangReliabilityCalculation.YEP = yEP;
+            yearlyLayangReliabilityCalculation.Q1 = q1;
+            yearlyLayangReliabilityCalculation.Q2 = q2;
+            yearlyLayangReliabilityCalculation.Q3 = q3;
+            yearlyLayangReliabilityCalculation.Q4 = q4;
+            return yearlyLayangReliabilityCalculation;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _Id;
+        partial void OnIdChanging(long value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property xmin in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public long xmin
+        {
+            get
+            {
+                return this._xmin;
+            }
+            set
+            {
+                this.OnxminChanging(value);
+                this._xmin = value;
+                this.OnxminChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private long _xmin;
+        partial void OnxminChanging(long value);
+        partial void OnxminChanged();
+        /// <summary>
+        /// There are no comments for Property Year in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public int Year
+        {
+            get
+            {
+                return this._Year;
+            }
+            set
+            {
+                this.OnYearChanging(value);
+                this._Year = value;
+                this.OnYearChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private int _Year;
+        partial void OnYearChanging(int value);
+        partial void OnYearChanged();
+        /// <summary>
+        /// There are no comments for Property January in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double January
+        {
+            get
+            {
+                return this._January;
+            }
+            set
+            {
+                this.OnJanuaryChanging(value);
+                this._January = value;
+                this.OnJanuaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _January;
+        partial void OnJanuaryChanging(double value);
+        partial void OnJanuaryChanged();
+        /// <summary>
+        /// There are no comments for Property February in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double February
+        {
+            get
+            {
+                return this._February;
+            }
+            set
+            {
+                this.OnFebruaryChanging(value);
+                this._February = value;
+                this.OnFebruaryChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _February;
+        partial void OnFebruaryChanging(double value);
+        partial void OnFebruaryChanged();
+        /// <summary>
+        /// There are no comments for Property March in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double March
+        {
+            get
+            {
+                return this._March;
+            }
+            set
+            {
+                this.OnMarchChanging(value);
+                this._March = value;
+                this.OnMarchChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _March;
+        partial void OnMarchChanging(double value);
+        partial void OnMarchChanged();
+        /// <summary>
+        /// There are no comments for Property April in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double April
+        {
+            get
+            {
+                return this._April;
+            }
+            set
+            {
+                this.OnAprilChanging(value);
+                this._April = value;
+                this.OnAprilChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _April;
+        partial void OnAprilChanging(double value);
+        partial void OnAprilChanged();
+        /// <summary>
+        /// There are no comments for Property May in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double May
+        {
+            get
+            {
+                return this._May;
+            }
+            set
+            {
+                this.OnMayChanging(value);
+                this._May = value;
+                this.OnMayChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _May;
+        partial void OnMayChanging(double value);
+        partial void OnMayChanged();
+        /// <summary>
+        /// There are no comments for Property June in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double June
+        {
+            get
+            {
+                return this._June;
+            }
+            set
+            {
+                this.OnJuneChanging(value);
+                this._June = value;
+                this.OnJuneChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _June;
+        partial void OnJuneChanging(double value);
+        partial void OnJuneChanged();
+        /// <summary>
+        /// There are no comments for Property July in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double July
+        {
+            get
+            {
+                return this._July;
+            }
+            set
+            {
+                this.OnJulyChanging(value);
+                this._July = value;
+                this.OnJulyChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _July;
+        partial void OnJulyChanging(double value);
+        partial void OnJulyChanged();
+        /// <summary>
+        /// There are no comments for Property August in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double August
+        {
+            get
+            {
+                return this._August;
+            }
+            set
+            {
+                this.OnAugustChanging(value);
+                this._August = value;
+                this.OnAugustChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _August;
+        partial void OnAugustChanging(double value);
+        partial void OnAugustChanged();
+        /// <summary>
+        /// There are no comments for Property September in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double September
+        {
+            get
+            {
+                return this._September;
+            }
+            set
+            {
+                this.OnSeptemberChanging(value);
+                this._September = value;
+                this.OnSeptemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _September;
+        partial void OnSeptemberChanging(double value);
+        partial void OnSeptemberChanged();
+        /// <summary>
+        /// There are no comments for Property October in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double October
+        {
+            get
+            {
+                return this._October;
+            }
+            set
+            {
+                this.OnOctoberChanging(value);
+                this._October = value;
+                this.OnOctoberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _October;
+        partial void OnOctoberChanging(double value);
+        partial void OnOctoberChanged();
+        /// <summary>
+        /// There are no comments for Property November in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double November
+        {
+            get
+            {
+                return this._November;
+            }
+            set
+            {
+                this.OnNovemberChanging(value);
+                this._November = value;
+                this.OnNovemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _November;
+        partial void OnNovemberChanging(double value);
+        partial void OnNovemberChanged();
+        /// <summary>
+        /// There are no comments for Property December in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double December
+        {
+            get
+            {
+                return this._December;
+            }
+            set
+            {
+                this.OnDecemberChanging(value);
+                this._December = value;
+                this.OnDecemberChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _December;
+        partial void OnDecemberChanging(double value);
+        partial void OnDecemberChanged();
+        /// <summary>
+        /// There are no comments for Property YTD in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YTD
+        {
+            get
+            {
+                return this._YTD;
+            }
+            set
+            {
+                this.OnYTDChanging(value);
+                this._YTD = value;
+                this.OnYTDChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YTD;
+        partial void OnYTDChanging(double value);
+        partial void OnYTDChanged();
+        /// <summary>
+        /// There are no comments for Property YEP in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double YEP
+        {
+            get
+            {
+                return this._YEP;
+            }
+            set
+            {
+                this.OnYEPChanging(value);
+                this._YEP = value;
+                this.OnYEPChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _YEP;
+        partial void OnYEPChanging(double value);
+        partial void OnYEPChanged();
+        /// <summary>
+        /// There are no comments for Property Q1 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q1
+        {
+            get
+            {
+                return this._Q1;
+            }
+            set
+            {
+                this.OnQ1Changing(value);
+                this._Q1 = value;
+                this.OnQ1Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q1;
+        partial void OnQ1Changing(double value);
+        partial void OnQ1Changed();
+        /// <summary>
+        /// There are no comments for Property Q2 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q2
+        {
+            get
+            {
+                return this._Q2;
+            }
+            set
+            {
+                this.OnQ2Changing(value);
+                this._Q2 = value;
+                this.OnQ2Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q2;
+        partial void OnQ2Changing(double value);
+        partial void OnQ2Changed();
+        /// <summary>
+        /// There are no comments for Property Q3 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q3
+        {
+            get
+            {
+                return this._Q3;
+            }
+            set
+            {
+                this.OnQ3Changing(value);
+                this._Q3 = value;
+                this.OnQ3Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q3;
+        partial void OnQ3Changing(double value);
+        partial void OnQ3Changed();
+        /// <summary>
+        /// There are no comments for Property Q4 in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public double Q4
+        {
+            get
+            {
+                return this._Q4;
+            }
+            set
+            {
+                this.OnQ4Changing(value);
+                this._Q4 = value;
+                this.OnQ4Changed();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private double _Q4;
+        partial void OnQ4Changing(double value);
+        partial void OnQ4Changed();
+    }
+    /// <summary>
     /// Class containing all extension methods
     /// </summary>
     public static class ExtensionMethods
@@ -63132,6 +68046,213 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
                 { "Id", id }
             };
             return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculation> _source, global::System.Collections.Generic.IDictionary<string, object> keys)
+        {
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculation as global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="_source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculation> _source,
+            long id)
+        {
+            global::System.Collections.Generic.IDictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculationSingle(_source.Context, _source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(_source.Context, keys)));
         }
     }
 }
@@ -65854,6 +70975,159 @@ namespace CentralizedDatabaseSystemODataService.Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation> _MonthlyFPSOAvailabilityAndReliabilityCalculation;
         /// <summary>
+        /// There are no comments for YearlyAverageAvailabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculation> YearlyAverageAvailabilityCalculation
+        {
+            get
+            {
+                if ((this._YearlyAverageAvailabilityCalculation == null))
+                {
+                    this._YearlyAverageAvailabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculation>("YearlyAverageAvailabilityCalculation");
+                }
+                return this._YearlyAverageAvailabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculation> _YearlyAverageAvailabilityCalculation;
+        /// <summary>
+        /// There are no comments for YearlyAverageReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculation> YearlyAverageReliabilityCalculation
+        {
+            get
+            {
+                if ((this._YearlyAverageReliabilityCalculation == null))
+                {
+                    this._YearlyAverageReliabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculation>("YearlyAverageReliabilityCalculation");
+                }
+                return this._YearlyAverageReliabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculation> _YearlyAverageReliabilityCalculation;
+        /// <summary>
+        /// There are no comments for YearlyTargetCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculation> YearlyTargetCalculation
+        {
+            get
+            {
+                if ((this._YearlyTargetCalculation == null))
+                {
+                    this._YearlyTargetCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculation>("YearlyTargetCalculation");
+                }
+                return this._YearlyTargetCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculation> _YearlyTargetCalculation;
+        /// <summary>
+        /// There are no comments for YearlyHIPAvailabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculation> YearlyHIPAvailabilityCalculation
+        {
+            get
+            {
+                if ((this._YearlyHIPAvailabilityCalculation == null))
+                {
+                    this._YearlyHIPAvailabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculation>("YearlyHIPAvailabilityCalculation");
+                }
+                return this._YearlyHIPAvailabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculation> _YearlyHIPAvailabilityCalculation;
+        /// <summary>
+        /// There are no comments for YearlyHIPReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculation> YearlyHIPReliabilityCalculation
+        {
+            get
+            {
+                if ((this._YearlyHIPReliabilityCalculation == null))
+                {
+                    this._YearlyHIPReliabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculation>("YearlyHIPReliabilityCalculation");
+                }
+                return this._YearlyHIPReliabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculation> _YearlyHIPReliabilityCalculation;
+        /// <summary>
+        /// There are no comments for YearlyFPSOAvailabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculation> YearlyFPSOAvailabilityCalculation
+        {
+            get
+            {
+                if ((this._YearlyFPSOAvailabilityCalculation == null))
+                {
+                    this._YearlyFPSOAvailabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculation>("YearlyFPSOAvailabilityCalculation");
+                }
+                return this._YearlyFPSOAvailabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculation> _YearlyFPSOAvailabilityCalculation;
+        /// <summary>
+        /// There are no comments for YearlyFPSOReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculation> YearlyFPSOReliabilityCalculation
+        {
+            get
+            {
+                if ((this._YearlyFPSOReliabilityCalculation == null))
+                {
+                    this._YearlyFPSOReliabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculation>("YearlyFPSOReliabilityCalculation");
+                }
+                return this._YearlyFPSOReliabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculation> _YearlyFPSOReliabilityCalculation;
+        /// <summary>
+        /// There are no comments for YearlyLayangAvailabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculation> YearlyLayangAvailabilityCalculation
+        {
+            get
+            {
+                if ((this._YearlyLayangAvailabilityCalculation == null))
+                {
+                    this._YearlyLayangAvailabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculation>("YearlyLayangAvailabilityCalculation");
+                }
+                return this._YearlyLayangAvailabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculation> _YearlyLayangAvailabilityCalculation;
+        /// <summary>
+        /// There are no comments for YearlyLayangReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculation> YearlyLayangReliabilityCalculation
+        {
+            get
+            {
+                if ((this._YearlyLayangReliabilityCalculation == null))
+                {
+                    this._YearlyLayangReliabilityCalculation = base.CreateQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculation>("YearlyLayangReliabilityCalculation");
+                }
+                return this._YearlyLayangReliabilityCalculation;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculation> _YearlyLayangReliabilityCalculation;
+        /// <summary>
         /// There are no comments for DailyPowerGenerationAndDistribution in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
@@ -66812,6 +72086,78 @@ namespace CentralizedDatabaseSystemODataService.Default
         public void AddToMonthlyFPSOAvailabilityAndReliabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation monthlyFPSOAvailabilityAndReliabilityCalculation)
         {
             base.AddObject("MonthlyFPSOAvailabilityAndReliabilityCalculation", monthlyFPSOAvailabilityAndReliabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for YearlyAverageAvailabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToYearlyAverageAvailabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculation yearlyAverageAvailabilityCalculation)
+        {
+            base.AddObject("YearlyAverageAvailabilityCalculation", yearlyAverageAvailabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for YearlyAverageReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToYearlyAverageReliabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculation yearlyAverageReliabilityCalculation)
+        {
+            base.AddObject("YearlyAverageReliabilityCalculation", yearlyAverageReliabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for YearlyTargetCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToYearlyTargetCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculation yearlyTargetCalculation)
+        {
+            base.AddObject("YearlyTargetCalculation", yearlyTargetCalculation);
+        }
+        /// <summary>
+        /// There are no comments for YearlyHIPAvailabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToYearlyHIPAvailabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculation yearlyHIPAvailabilityCalculation)
+        {
+            base.AddObject("YearlyHIPAvailabilityCalculation", yearlyHIPAvailabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for YearlyHIPReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToYearlyHIPReliabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculation yearlyHIPReliabilityCalculation)
+        {
+            base.AddObject("YearlyHIPReliabilityCalculation", yearlyHIPReliabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for YearlyFPSOAvailabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToYearlyFPSOAvailabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculation yearlyFPSOAvailabilityCalculation)
+        {
+            base.AddObject("YearlyFPSOAvailabilityCalculation", yearlyFPSOAvailabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for YearlyFPSOReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToYearlyFPSOReliabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculation yearlyFPSOReliabilityCalculation)
+        {
+            base.AddObject("YearlyFPSOReliabilityCalculation", yearlyFPSOReliabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for YearlyLayangAvailabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToYearlyLayangAvailabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculation yearlyLayangAvailabilityCalculation)
+        {
+            base.AddObject("YearlyLayangAvailabilityCalculation", yearlyLayangAvailabilityCalculation);
+        }
+        /// <summary>
+        /// There are no comments for YearlyLayangReliabilityCalculation in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public void AddToYearlyLayangReliabilityCalculation(global::CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculation yearlyLayangReliabilityCalculation)
+        {
+            base.AddObject("YearlyLayangReliabilityCalculation", yearlyLayangReliabilityCalculation);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
         private abstract class GeneratedEdmModel
@@ -69908,6 +75254,240 @@ namespace CentralizedDatabaseSystemODataService.Default
         <Property Name=""MonthlyActualPlannedUptime"" Type=""Edm.Decimal"" Scale=""Variable"" />
         <Property Name=""MonthlyTarget"" Type=""Edm.Decimal"" Scale=""Variable"" />
       </EntityType>
+      <EntityType Name=""YearlyAverageAvailabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""January"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""February"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""March"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""April"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""May"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""June"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""July"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""August"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""September"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""October"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""November"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""December"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YTD"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YEP"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q1"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q2"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q3"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q4"" Type=""Edm.Double"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""YearlyAverageReliabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""January"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""February"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""March"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""April"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""May"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""June"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""July"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""August"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""September"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""October"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""November"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""December"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YTD"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YEP"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q1"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q2"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q3"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q4"" Type=""Edm.Double"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""YearlyTargetCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""January"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""February"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""March"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""April"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""May"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""June"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""July"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""August"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""September"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""October"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""November"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""December"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YTD"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YEP"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q1"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q2"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q3"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q4"" Type=""Edm.Double"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""YearlyHIPAvailabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""January"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""February"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""March"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""April"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""May"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""June"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""July"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""August"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""September"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""October"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""November"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""December"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YTD"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YEP"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q1"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q2"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q3"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q4"" Type=""Edm.Double"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""YearlyHIPReliabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""January"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""February"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""March"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""April"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""May"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""June"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""July"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""August"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""September"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""October"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""November"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""December"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YTD"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YEP"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q1"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q2"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q3"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q4"" Type=""Edm.Double"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""YearlyFPSOAvailabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""January"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""February"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""March"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""April"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""May"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""June"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""July"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""August"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""September"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""October"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""November"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""December"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YTD"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YEP"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q1"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q2"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q3"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q4"" Type=""Edm.Double"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""YearlyFPSOReliabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""January"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""February"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""March"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""April"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""May"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""June"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""July"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""August"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""September"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""October"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""November"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""December"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YTD"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YEP"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q1"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q2"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q3"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q4"" Type=""Edm.Double"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""YearlyLayangAvailabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""January"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""February"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""March"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""April"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""May"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""June"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""July"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""August"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""September"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""October"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""November"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""December"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YTD"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YEP"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q1"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q2"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q3"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q4"" Type=""Edm.Double"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""YearlyLayangReliabilityCalculation"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />
+        <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""January"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""February"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""March"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""April"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""May"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""June"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""July"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""August"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""September"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""October"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""November"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""December"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YTD"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""YEP"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q1"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q2"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q3"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""Q4"" Type=""Edm.Double"" Nullable=""false"" />
+      </EntityType>
     </Schema>
     <Schema Namespace=""Affra.Service.CentralizedDatabaseSystem.Domain.Approvals"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <ComplexType Name=""Approval"">
@@ -70994,6 +76574,69 @@ namespace CentralizedDatabaseSystemODataService.Default
           </Annotation>
         </EntitySet>
         <EntitySet Name=""MonthlyFPSOAvailabilityAndReliabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.MonthlyFPSOAvailabilityAndReliabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""YearlyAverageAvailabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageAvailabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""YearlyAverageReliabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyAverageReliabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""YearlyTargetCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyTargetCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""YearlyHIPAvailabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPAvailabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""YearlyHIPReliabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyHIPReliabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""YearlyFPSOAvailabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOAvailabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""YearlyFPSOReliabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyFPSOReliabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""YearlyLayangAvailabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangAvailabilityCalculation"">
+          <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
+            <Collection>
+              <PropertyPath>xmin</PropertyPath>
+            </Collection>
+          </Annotation>
+        </EntitySet>
+        <EntitySet Name=""YearlyLayangReliabilityCalculation"" EntityType=""Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport.YearlyLayangReliabilityCalculation"">
           <Annotation Term=""Org.OData.Core.V1.OptimisticConcurrency"">
             <Collection>
               <PropertyPath>xmin</PropertyPath>

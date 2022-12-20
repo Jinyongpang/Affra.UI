@@ -1,0 +1,9 @@
+﻿<td class="text-center" style="cursor:pointer; min-height: 30px;">
+    <div>
+        @if (this.Percentage != null)
+        {
+            @String.Format("{0:0.00}", Math.Round((double)this.Percentage, 2));
+        }%
+    </div>
+</td>
+     

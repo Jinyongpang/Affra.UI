@@ -1,0 +1,7 @@
+﻿@page "/AvailabilityAndReliability/AvailabilityAndReliabilityDashboardView"
+@using JXNippon.CentralizedDatabaseSystem.Shared.Views
+
+@attribute [Authorize(Policy = "AvailabilityAndReliability.Read")]
+
+<PageTitle>Availability And Reliability Facilities Dashboard</PageTitle>
+<JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityReport.AvailabilityAndReliabilityDashboardView />

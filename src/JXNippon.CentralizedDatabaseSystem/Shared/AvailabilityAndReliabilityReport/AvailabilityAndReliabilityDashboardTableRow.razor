@@ -1,5 +1,8 @@
 ﻿<tr>
-    <td style="background-color:#FCE4D6">@Title</td>
+    @if (@Title is not null)
+    {
+        <td rowspan="@RowSpan" class="text-center" style="background-color:#FCE4D6">@Title</td>
+    }
     <td style="background-color:#92CDDC" class="text-center">@Measure</td>
     @ChildContent
 </tr>
