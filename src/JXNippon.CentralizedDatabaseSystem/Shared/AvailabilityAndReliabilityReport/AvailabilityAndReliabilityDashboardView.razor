@@ -26,7 +26,7 @@
             </Content>
         </Layout>
     </Sider>
-    <Layout Style="height:100%;">
+    <Layout Style="overflow: auto">
         <Header Style="border-left: 1px solid #dbe0ea">
             <div class="row">
                 <div class="col-6">
@@ -37,66 +37,133 @@
         <Content Style="height:100%;background-color: white;">
             @if(this.HIPAvailabilityItems is not null)
             {
-                <AvailabilityAndReliabilityDashboardTableView Year="@HIPAvailabilityItems.Year">
-                    <AvailabilityAndReliabilityDashboardTableRow Title="HIP" Measure="Availability" RowSpan="2">
-                        @for (int i = 0; i < PropertyNames.Length; i++)
-                        {
-                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.HIPAvailabilityItems, PropertyNames[i].ToString())" />
-                        }
-                    </AvailabilityAndReliabilityDashboardTableRow>
-                    <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
-                        @for (int i = 0; i < PropertyNames.Length; i++)
-                        {
-                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.HIPReliabilityItems, PropertyNames[i].ToString())" />
-                        }
-                    </AvailabilityAndReliabilityDashboardTableRow>
+                <div class="p-1">
+                    <Card Title="Overall Facilities / Platform Availability">
+                        <RadzenChart>
+                            <RadzenLineSeries Data="this.HIPAvailabilityChartList" CategoryProperty="Month" Title="HIP Availability" LineType="LineType.Solid" ValueProperty="Percentage" />
+                            <RadzenLineSeries Data="this.LayangAvailabilityChartList" CategoryProperty="Month" Title="Layang Availability" LineType="LineType.Solid" ValueProperty="Percentage" />
+                            <RadzenLineSeries Data="this.FPSOAvailabilityChartList" CategoryProperty="Month" Title="FPSO Availability" LineType="LineType.Solid" ValueProperty="Percentage" />
+                            <RadzenLineSeries Data="this.AverageAvailabilityChartList" CategoryProperty="Month" Title="Average" LineType="LineType.Dotted" ValueProperty="Percentage" />
+                            <RadzenLineSeries Data="this.TargetChartList" CategoryProperty="Month" Title="Target" LineType="LineType.Dashed" ValueProperty="Percentage" />
+                            <RadzenCategoryAxis>
+                                <RadzenAxisTitle Text="Months" />
+                            </RadzenCategoryAxis>
+                            <RadzenValueAxis Max="100">
+                                <RadzenAxisTitle Text="Percentage" />
+                            </RadzenValueAxis>
+                            <RadzenLegend Position="LegendPosition.Bottom" />
+                        </RadzenChart>
+                    </Card>
+                </div>
+                <br />
+                <div class="p-1">
+                    <Card Title="Overall Facilities / Platform Reliability">
+                        <RadzenChart>
+                            <RadzenLineSeries Data="this.HIPReliabilityChartList" CategoryProperty="Month" Title="HIP Reliability" LineType="LineType.Solid" ValueProperty="Percentage" />
+                            <RadzenLineSeries Data="this.LayangReliabilityChartList" CategoryProperty="Month" Title="Layang Reliability" LineType="LineType.Solid" ValueProperty="Percentage" />
+                            <RadzenLineSeries Data="this.FPSOReliabilityChartList" CategoryProperty="Month" Title="FPSO Reliability" LineType="LineType.Solid" ValueProperty="Percentage" />
+                            <RadzenLineSeries Data="this.AverageReliabilityChartList" CategoryProperty="Month" Title="Average" LineType="LineType.Dotted" ValueProperty="Percentage" />
+                            <RadzenLineSeries Data="this.TargetChartList" CategoryProperty="Month" Title="Target" LineType="LineType.Dashed" ValueProperty="Percentage" />
+                            <RadzenCategoryAxis>
+                                <RadzenAxisTitle Text="Months" />
+                            </RadzenCategoryAxis>
+                            <RadzenValueAxis Max="100">
+                                <RadzenAxisTitle Text="Percentage" />
+                            </RadzenValueAxis>
+                            <RadzenLegend Position="LegendPosition.Bottom" />
+                        </RadzenChart>
+                    </Card>
+                </div>
+                <br />
+                <div class="p-1">
+                    <AvailabilityAndReliabilityDashboardTableView Year="@HIPAvailabilityItems.Year">
+                        <AvailabilityAndReliabilityDashboardTableRow Title="HIP" Measure="Availability" RowSpan="2">
+                            @if (HIPAvailabilityPercentageList is not null)
+                            {
+                                foreach (double percentage in HIPAvailabilityPercentageList)
+                                {
+                                    <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="percentage" />
+                                }
+                            }
+                        </AvailabilityAndReliabilityDashboardTableRow>
+                        <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
+                            @if (HIPReliabilityPercentageList is not null)
+                            {
+                                foreach (double percentage in HIPReliabilityPercentageList)
+                                {
+                                    <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="percentage" />
+                                }
+                            }
+                        </AvailabilityAndReliabilityDashboardTableRow>
 
-                    <AvailabilityAndReliabilityDashboardTableRow Title="Layang" Measure="Availability" RowSpan="2">
-                        @for (int i = 0; i < PropertyNames.Length; i++)
-                        {
-                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.LayangAvailabilityItems, PropertyNames[i].ToString())" />
-                        }
-                    </AvailabilityAndReliabilityDashboardTableRow>
-                    <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
-                        @for (int i = 0; i < PropertyNames.Length; i++)
-                        {
-                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.LayangReliabilityItems, PropertyNames[i].ToString())" />
-                        }
-                    </AvailabilityAndReliabilityDashboardTableRow>
+                        <AvailabilityAndReliabilityDashboardTableRow Title="Layang" Measure="Availability" RowSpan="2">
+                            @if (LayangAvailabilityPercentageList is not null)
+                            {
+                                foreach (double percentage in LayangAvailabilityPercentageList)
+                                {
+                                    <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="percentage" />
+                                }
+                            }
+                        </AvailabilityAndReliabilityDashboardTableRow>
+                        <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
+                            @if (LayangReliabilityPercentageList is not null)
+                            {
+                                foreach (double percentage in LayangReliabilityPercentageList)
+                                {
+                                    <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="percentage" />
+                                }
+                            }
+                        </AvailabilityAndReliabilityDashboardTableRow>
 
-                    <AvailabilityAndReliabilityDashboardTableRow Title="FPSO" Measure="Availability" RowSpan="2">
-                        @for (int i = 0; i < PropertyNames.Length; i++)
-                        {
-                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.FPSOAvailabilityItems, PropertyNames[i].ToString())" />
-                        }
-                    </AvailabilityAndReliabilityDashboardTableRow>
-                    <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
-                        @for (int i = 0; i < PropertyNames.Length; i++)
-                        {
-                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.FPSOReliabilityItems, PropertyNames[i].ToString())" />
-                        }
-                    </AvailabilityAndReliabilityDashboardTableRow>
+                        <AvailabilityAndReliabilityDashboardTableRow Title="FPSO" Measure="Availability" RowSpan="2">
+                            @if (FPSOAvailabilityPercentageList is not null)
+                            {
+                                foreach (double percentage in FPSOAvailabilityPercentageList)
+                                {
+                                    <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="percentage" />
+                                }
+                            }
+                        </AvailabilityAndReliabilityDashboardTableRow>
+                        <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
+                            @if (FPSOReliabilityPercentageList is not null)
+                            {
+                                foreach (double percentage in LayangReliabilityPercentageList)
+                                {
+                                    <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="percentage" />
+                                }
+                            }
+                        </AvailabilityAndReliabilityDashboardTableRow>
 
-                    <AvailabilityAndReliabilityDashboardTableRow Title="Average" Measure="Availability" RowSpan="2">
-                        @for (int i = 0; i < PropertyNames.Length; i++)
-                        {
-                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.AverageAvailabilityItems, PropertyNames[i].ToString())" />
-                        }
-                    </AvailabilityAndReliabilityDashboardTableRow>
-                    <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
-                        @for (int i = 0; i < PropertyNames.Length; i++)
-                        {
-                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.AverageReliabilityItems, PropertyNames[i].ToString())" />
-                        }
-                    </AvailabilityAndReliabilityDashboardTableRow>
+                        <AvailabilityAndReliabilityDashboardTableRow Title="Average" Measure="Availability" RowSpan="2">
+                            @if (AverageAvailabilityPercentageList is not null)
+                            {
+                                foreach (double percentage in AverageAvailabilityPercentageList)
+                                {
+                                    <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="percentage" />
+                                }
+                            }
+                        </AvailabilityAndReliabilityDashboardTableRow>
+                        <AvailabilityAndReliabilityDashboardTableRow Measure="Reliability">
+                            @if (AverageReliabilityPercentageList is not null)
+                            {
+                                foreach (double percentage in AverageReliabilityPercentageList)
+                                {
+                                    <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="percentage" />
+                                }
+                            }
+                        </AvailabilityAndReliabilityDashboardTableRow>
 
-                    <AvailabilityAndReliabilityDashboardTableRow Title="" Measure="Target" RowSpan="1">
-                        @for (int i = 0; i < PropertyNames.Length; i++)
-                        {
-                            <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="GetYearlyPropertyValue(this.TargetItems, PropertyNames[i].ToString())" />
-                        }
-                    </AvailabilityAndReliabilityDashboardTableRow>
-                </AvailabilityAndReliabilityDashboardTableView>
+                        <AvailabilityAndReliabilityDashboardTableRow Title="" Measure="Target" RowSpan="1">
+                            @if (TargetPercentageList is not null)
+                            {
+                                foreach (double percentage in TargetPercentageList)
+                                {
+                                    <DoubleMonthlyAvailabilityAndReliabilityDashboardDataItem Percentage="percentage" />
+                                }
+                            }
+                        </AvailabilityAndReliabilityDashboardTableRow>
+                    </AvailabilityAndReliabilityDashboardTableView>
+                </div>
             }
             else
             {
