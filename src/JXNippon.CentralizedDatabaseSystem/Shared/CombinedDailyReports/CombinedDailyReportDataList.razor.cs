@@ -72,7 +72,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.CombinedDailyReports
                         .Where(CombinedDailyReport => CombinedDailyReport.Date <= end);
                 }
 
+                var todayWith4HoursOffset = DateTime.Now.AddHours(4).ToUniversalTime();
+
                 Microsoft.OData.Client.QueryOperationResponse<CombinedDailyReport>? combinedDailyReportsResponse = await query
+                    .Where(x => x.Date < todayWith4HoursOffset)
                     .OrderByDescending(combinedDailyReport => combinedDailyReport.Date)
                     .Skip(request.StartIndex)
                     .Take(request.Count)
