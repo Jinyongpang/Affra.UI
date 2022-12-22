@@ -60,6 +60,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         private readonly Menu menu;
         private string search;
         private string folder;
+        private string section;
         private IEnumerable<RootFolder> folders; 
         private IEnumerable<string> selectedStatuses = new List<string>();
         private static IEnumerable<string> FileProcessStatusHolders = 
@@ -107,6 +108,11 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
                 args.Children.Text = GetTextForNode;
                 args.Children.HasChildren = HasChildren;
                 args.Children.Template = FolderTemplate;
+
+                foreach (var folder in dataFolder.Folders)
+                {
+                    folder.Section = dataFolder.Section;
+                }
             }
             else if (args.Value is Folder folder)
             {
@@ -115,23 +121,30 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
                 args.Children.Text = GetTextForNode;
                 args.Children.HasChildren = HasChildren;
                 args.Children.Template = FolderTemplate;
+                foreach (var childFolder in folder.Folders)
+                {
+                    childFolder.Section = folder.Section;
+                }
             }
         }
 
         private async Task OnValueChangedAsync(object value)
         {
             string folderName = string.Empty;
+            string section = string.Empty;
             if (value is DataFolder dataFolder)
             {
                 folderName = dataFolder.Folder;
-
+                section = dataFolder.Section;
             }
             else if (value is Folder folder)
             {
                 folderName = folder.Folder1;
+                section = folder.Section;
             }
 
-            folder = folderName;
+            this.section = section;
+            this.folder = folderName;
             await ReloadAsync();
         }
 
@@ -182,10 +195,10 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
 
         private Task ReloadAsync(string status = null, string searchInput = null)
         {
-            //fileManagementDataList.FileManagementFilter.Status = GetStatusFilter(status);
             fileManagementDataList.FileManagementFilter.Search = searchInput ?? search;
-            fileManagementDataList.Folder = folder;
+            fileManagementDataList.Folder = this.folder;
             fileManagementDataList.FileProcessStatusFilters = this.selectedStatuses;
+            fileManagementDataList.Section = this.section;
             return fileManagementDataList.ReloadAsync();
         }
 

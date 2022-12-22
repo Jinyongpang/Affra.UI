@@ -46,7 +46,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
         public CommonFilter FileManagementFilter { get; set; }
         public IEnumerable<string> FileProcessStatusFilters { get; set; }
         public string Folder { get; set; }
-
+        public string Section { get; set; }
         protected async override Task OnInitializedAsync()
         {
             isUserHavePermission = await UserService.CheckHasPermissionAsync(null, new Permission { Name = nameof(FeaturePermission.Administration), HasReadPermissoin = true, HasWritePermission = true });
@@ -96,6 +96,12 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.FileManagement
                     {
                         query = query
                             .Where(x => x.FolderName.ToUpper() == Folder.ToUpper());
+                    }
+
+                    if (!string.IsNullOrEmpty(Section))
+                    {
+                        query = query
+                            .Where(x => x.Section.ToUpper() == Section.ToUpper());
                     }
 
                     Microsoft.OData.Client.QueryOperationResponse<DataFile>? filesResponse = await query
