@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 21/10/2022 9:36:37 PM
+// Generation date: 23/12/2022 8:14:39 PM
 namespace UserODataService.Affra.Service.User.Domain.Users
 {
     /// <summary>
@@ -229,6 +229,69 @@ namespace UserODataService.Affra.Service.User.Domain.Users
         private string _Role;
         partial void OnRoleChanging(string value);
         partial void OnRoleChanged();
+        /// <summary>
+        /// There are no comments for Property Position in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Position
+        {
+            get
+            {
+                return this._Position;
+            }
+            set
+            {
+                this.OnPositionChanging(value);
+                this._Position = value;
+                this.OnPositionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Position;
+        partial void OnPositionChanging(string value);
+        partial void OnPositionChanged();
+        /// <summary>
+        /// There are no comments for Property Department in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Department
+        {
+            get
+            {
+                return this._Department;
+            }
+            set
+            {
+                this.OnDepartmentChanging(value);
+                this._Department = value;
+                this.OnDepartmentChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Department;
+        partial void OnDepartmentChanging(string value);
+        partial void OnDepartmentChanged();
+        /// <summary>
+        /// There are no comments for Property Division in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        public string Division
+        {
+            get
+            {
+                return this._Division;
+            }
+            set
+            {
+                this.OnDivisionChanging(value);
+                this._Division = value;
+                this.OnDivisionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.7.0")]
+        private string _Division;
+        partial void OnDivisionChanging(string value);
+        partial void OnDivisionChanged();
         /// <summary>
         /// There are no comments for Property Personalization in the schema.
         /// </summary>
@@ -1161,6 +1224,9 @@ namespace UserODataService.Default
         <Property Name=""Name"" Type=""Edm.String"" />
         <Property Name=""CreatedDateTime"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Role"" Type=""Edm.String"" />
+        <Property Name=""Position"" Type=""Edm.String"" />
+        <Property Name=""Department"" Type=""Edm.String"" />
+        <Property Name=""Division"" Type=""Edm.String"" />
         <Property Name=""Personalization"" Type=""Edm.String"" />
         <Property Name=""Status"" Type=""Affra.Service.User.Domain.Users.UserStatus"" Nullable=""false"" />
         <Property Name=""xmin"" Type=""Edm.Int64"" Nullable=""false"" />

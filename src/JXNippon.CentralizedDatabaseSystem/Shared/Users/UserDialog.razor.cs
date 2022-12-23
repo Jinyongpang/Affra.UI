@@ -7,7 +7,7 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 {
     public partial class UserDialog
     {
-        private UserPersonalization userPersonalization;
+        private UserPersonalization userPersonalization = new UserPersonalization();
         [Parameter] public User Item { get; set; }
         [Parameter] public int MenuAction { get; set; }
         [Parameter] public bool IsUserEdit { get; set; }
@@ -36,7 +36,16 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.Users
 
         protected Task SubmitAsync(User arg)
         {
-            Item.UserPersonalization = this.userPersonalization;
+            if (string.IsNullOrEmpty(Item.Username))
+            {
+                Item.Username = Item.Email;
+            }
+
+            if (Item.Id == Guid.Empty)
+            {
+                Item.CreatedDateTime = DateTime.UtcNow;
+            }
+
             DialogService.Close(true);
             return Task.CompletedTask;
         }
