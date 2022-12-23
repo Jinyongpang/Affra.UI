@@ -111,26 +111,34 @@ namespace JXNippon.CentralizedDatabaseSystem.Shared.AvailabilityAndReliabilityRe
         {
             isLoading = true;
 
-            using var serviceScope = ServiceProvider.CreateScope();
-            IGenericService<DailyAvailabilityAndReliability>? service = GetGenericService(serviceScope);
-            var query = service.Get();
-
-            if (Filter.DateRange?.Start != null)
+            try
             {
-                var start = Filter.DateRange.Start.ToUniversalTime();
-                var end = Filter.DateRange.End.ToUniversalTime();
-                query = query
-                    .Where(availabilityAndReliability => availabilityAndReliability.Date >= start)
-                    .Where(availabilityAndReliability => availabilityAndReliability.Date <= end);
+                using var serviceScope = ServiceProvider.CreateScope();
+                IGenericService<DailyAvailabilityAndReliability>? service = GetGenericService(serviceScope);
+                var query = service.Get();
+
+                if (Filter.DateRange?.Start != null)
+                {
+                    var start = Filter.DateRange.Start.ToUniversalTime();
+                    var end = Filter.DateRange.End.ToUniversalTime();
+                    query = query
+                        .Where(availabilityAndReliability => availabilityAndReliability.Date >= start)
+                        .Where(availabilityAndReliability => availabilityAndReliability.Date <= end);
+                }
+
+                Microsoft.OData.Client.QueryOperationResponse<DailyAvailabilityAndReliability>? response = await query
+                    .OrderBy(x => x.Date)
+                    .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
+                    .ToQueryOperationResponseAsync<DailyAvailabilityAndReliability>();
+
+                Count = (int)response.Count;
+                items = response.ToList();
+            }
+            catch (Exception ex)
+            {
+                this.AffraNotificationService.NotifyException(ex);
             }
 
-            Microsoft.OData.Client.QueryOperationResponse<DailyAvailabilityAndReliability>? response = await query
-                .OrderBy(x => x.Date)
-                .AppendQuery(args.Filters, args.Skip, args.Top, args.Sorts)
-                .ToQueryOperationResponseAsync<DailyAvailabilityAndReliability>();
-
-            Count = (int)response.Count;
-            items = response.ToList();
             isLoading = false;
 
             StateHasChanged();

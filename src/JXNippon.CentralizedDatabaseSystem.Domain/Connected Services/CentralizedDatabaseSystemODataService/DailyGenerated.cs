@@ -521,4 +521,31 @@ namespace CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabas
             set { this.Date = value.ToUniversalTime(); }
         }
     }
+    public partial class MonthlyFPSOAvailabilityAndReliabilityCalculation : IDaily, IEntity
+    {
+        [IgnoreClientProperty]
+        public DateTime DateUI
+        {
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+    }
+    public partial class MonthlyLayangAvailabilityAndReliabilityCalculation : IDaily, IEntity
+    {
+        [IgnoreClientProperty]
+        public DateTime DateUI
+        {
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+    }
+    public partial class MonthlyHIPAvailabilityAndReliabilityCalculation : IDaily, IEntity
+    {
+        [IgnoreClientProperty]
+        public DateTime DateUI
+        {
+            get { return this.Date.ToLocalDateTime(); }
+            set { this.Date = value.ToUniversalTime(); }
+        }
+    }
 }
