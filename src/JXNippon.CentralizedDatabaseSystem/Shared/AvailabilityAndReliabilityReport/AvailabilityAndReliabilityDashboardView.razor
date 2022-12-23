@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </Header>
-            <Content style="overflow-y: auto; max-height: 100%;">
+            <Content Style="overflow-y: auto; max-height: 100%;">
                 @if (YearList is not null && YearList.Count > 0)
                 {
                     <Menu DefaultSelectedKeys=@(new[] { YearList[0].ToString() }) DefaultOpenKeys=@(new[] { YearList[0].ToString() }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </Header>
-        <Content Style="height:100%;background-color: white;">
+        <Content Style="overflow-y: auto; max-height: 100%; background-color: white;">
             @if(this.HIPAvailabilityItems is not null)
             {
                 <div class="p-2">
