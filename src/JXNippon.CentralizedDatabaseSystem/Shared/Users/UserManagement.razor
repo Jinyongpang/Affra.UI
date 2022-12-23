@@ -1,7 +1,7 @@
 ﻿@using JXNippon.CentralizedDatabaseSystem.Shared.Commons
 
 <Layout Class="layout-view">
-    <Header>
+    <Header Style="height: 68px;">
         <div class="row">
             <div class="col-3">
                 <span>User Management</span>
@@ -9,14 +9,20 @@
             <div class="col-9 float-right align-items-center text-right mt-1">
                 <Space Size="@("middle")">
                     <SpaceItem>
-                        <Search Size="@("large")" Placeholder="Search user..." Style="20vw;" OnChange=@(args => ReloadAsync(null)) @bind-Value=search ClassicSearchIcon/>
+                        <Search Size="@("large")" Placeholder="Search user..." Style="20vw;" OnInput=@(args => ReloadAsync(searchInput : args.Value as string)) @bind-Value=search ClassicSearchIcon />
                     </SpaceItem>
                     <SpaceItem>
-                        <Button Type="primary" Size="@("large")" Shape="@ButtonShape.Round" OnClick=@(args => ReloadAsync(null))>
-                            <ChildContent>
-                                <Icon Type="reload" Theme="outline" Class="anticon-big"/><span style="font-size: 18px; margin-left: 10px;">Reload</span>
-                            </ChildContent>
-                        </Button>
+                        <AuthorizeView Policy="Administration.Read" Context="read">
+                            <RadzenSplitButton Click=@OnClickAsync Text="Reload" Icon="autorenew">
+                                <ChildContent>
+                                    <AuthorizeView Policy="Administration.ReadWrite">
+                                        <RadzenSplitButtonItem Text="New User ..." Value="New" Icon="assignment_ind" />
+                                        <RadzenSplitButtonItem Text="Import Users ..." Value="Import" Icon="open_in_browser">
+                                        </RadzenSplitButtonItem>
+                                    </AuthorizeView>
+                                </ChildContent>
+                            </RadzenSplitButton>
+                        </AuthorizeView>
                     </SpaceItem>
                 </Space>
             </div>

@@ -36,11 +36,47 @@
             {
                 <div class="row py-2">
                     <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Email" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Email" class="w-100" Placeholder="Enter email..." @bind-Value="@Item.Email" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenRequiredValidator Component="Email" Text="Email is required" Popup=false />
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Fullname" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Name" class="w-100" Placeholder="Enter name..." @bind-Value="@Item.Name" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenRequiredValidator Component="Name" Text="Name is required" Popup=false />
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
                         <RadzenLabel class="dialogTextSize" Text="Role" />
                     </div>
                     <div class="col-8">
                         <RadzenDropDown Name="Role" class="w-100" Placeholder="Select role..." Data=@roles @bind-Value="@Item.Role" Disabled=@isViewing></RadzenDropDown>
                         <RadzenRequiredValidator Component="Role" Text="Role is required" Popup=false/>
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Position" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Position" class="w-100" Placeholder="Enter position..." @bind-Value="@Item.Position" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenRequiredValidator Component="Position" Text="Position is required" Popup=false />
+                    </div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-4 align-items-center d-flex">
+                        <RadzenLabel class="dialogTextSize" Text="Department" />
+                    </div>
+                    <div class="col-8">
+                        <RadzenTextBox Name="Department" class="w-100" Placeholder="Enter department..." @bind-Value="@Item.Department" Disabled=@isViewing></RadzenTextBox>
+                        <RadzenRequiredValidator Component="Department" Text="Department is required" Popup=false />
                     </div>
                 </div>
             }

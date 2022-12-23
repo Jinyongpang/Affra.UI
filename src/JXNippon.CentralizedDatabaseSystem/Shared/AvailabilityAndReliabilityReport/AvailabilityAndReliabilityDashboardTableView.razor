@@ -1,0 +1,35 @@
+﻿<div>
+    <div class="ant-descriptions ant-descriptions-bordered ant-descriptions-small">
+        <div class="ant-descriptions-view">
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <th rowspan="2" style="width:6%;" class="text-center">@ReportName</th>
+                        <th rowspan="2" style="width:5%" class="text-center">Measure</th>
+                        <th colspan="12" class="text-center">Months</th>
+                        <th rowspan="2" style="width:3%" class="text-center">YTD</th>
+                        <th rowspan="2" style="width:3%" class="text-center">YEP</th>
+                        <th rowspan="2" style="width:3%" class="text-center">Q1</th>
+                        <th rowspan="2" style="width:3%" class="text-center">Q2</th>
+                        <th rowspan="2" style="width:3%" class="text-center">Q3</th>
+                        <th rowspan="2" style="width:3%" class="text-center">Q4</th>
+                    </tr>
+                    <tr>
+                        @{
+                            DateTime startDate = new DateTime(Year, 1, 1);
+                            DateTime endDate = startDate.AddYears(1);
+
+                            for (DateTime dt = startDate; dt < endDate; dt = dt.AddMonths(1))
+                            {
+                                <th style="width:5%" class="text-center">@dt.ToString("MMM-yy")</th>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @ChildContent
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

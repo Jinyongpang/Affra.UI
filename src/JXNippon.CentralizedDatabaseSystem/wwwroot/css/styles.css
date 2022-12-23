@@ -786,3 +786,9 @@ th, .rz-cell-filter {
 .cardlist-toggle > div > span.anticon {
     line-height: 28px;
 }
+
+
+.table-bordered > :not(caption) > * > * {
+    border: var(--rz-border-width) solid var(--rz-base-300);
+    padding: var(--rz-grid-cell-padding);
+}

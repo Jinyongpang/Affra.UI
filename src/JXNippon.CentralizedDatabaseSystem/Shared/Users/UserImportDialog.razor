@@ -1,0 +1,116 @@
+﻿@using Affra.Core.Domain.Services;
+@using Affra.Core.Infrastructure.OData.Extensions;
+@using CsvHelper.Configuration;
+@using System.Globalization;
+@using CsvHelper;
+@using JXNippon.CentralizedDatabaseSystem.Domain.Users;
+@using JXNippon.CentralizedDatabaseSystem.Notifications;
+@using UserODataService.Affra.Service.User.Domain.Users;
+
+@if (!isImporting)
+{
+    <div>
+        <InputFile id="fileInput" OnChange="ImportAsync" hidden />
+        <label type="button" for="fileInput" class="rz-button rz-button-md rz-variant-filled rz-secondary rz-shade-default">
+            <span class="rz-button-box">
+                <i class="rz-button-icon-left rzi">note_add</i>
+                <span class="rz-button-text">Click to select file ...</span>
+            </span>
+        </label>
+    </div>
+
+}
+else
+{
+    <div>
+        <RadzenButton Click=@(args => { cancellationTokenSource.Cancel(); }) Text="Cancel" ButtonStyle="ButtonStyle.Warning" />
+    </div>
+    <div class="pt-2">
+        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Importing user @name</RadzenText>
+        <RadzenProgressBar class="pt-1" Value="100" ShowValue="false" Mode="ProgressBarMode.Indeterminate" />
+    </div>
+}
+
+
+@code {
+
+    private List<UploadFileItem> fileList = new List<UploadFileItem>();
+    private bool isImporting = false;
+    private string name;
+    private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+    [Inject] private IServiceProvider ServiceProvider { get; set; }
+    [Inject] private AffraNotificationService AffraNotificationService { get; set; }
+    [Inject] private DialogService DialogService { get; set; }
+
+    private async Task ImportAsync(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            isImporting = true;
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    MissingFieldFound = MissingFieldFound,
+                    HeaderValidated = HeaderValidated,
+                };
+            using (var reader = new StreamReader(e.File.OpenReadStream()))
+            using (var csv = new CsvReader(reader, config))
+            {
+                var usersEnumerable = csv.GetRecordsAsync<User>();
+                cancellationTokenSource = new CancellationTokenSource();
+                await foreach (var user in usersEnumerable.WithCancellation(cancellationTokenSource.Token))
+                {
+                    name = user.Name;
+                    this.StateHasChanged();
+                    using var serviceScope = ServiceProvider.CreateScope();
+                    var service = GetGenericService(serviceScope);
+                    User existingUser = (await service.Get()
+                        .Where(x => x.Username.ToUpper() == user.Username.ToUpper())
+                        .ToQueryOperationResponseAsync<User>())
+                        .FirstOrDefault();
+
+                    if (existingUser is null)
+                    {
+                        user.CreatedDateTime = DateTime.UtcNow;
+                        await service.InsertAsync(user);
+                    }
+                    else
+                    {
+                        existingUser.Division = user.Division;
+                        existingUser.Department = user.Department;
+                        existingUser.Role = user.Role;
+                        existingUser.Email = user.Email;
+                        existingUser.Name = user.Name;
+                        using var updateServiceScope = ServiceProvider.CreateScope();
+                        var updateService = GetGenericService(updateServiceScope);
+                        await updateService.UpdateAsync(existingUser, existingUser.Id);
+                    }
+                }
+
+                AffraNotificationService.NotifyInfo("Users imported.");
+                this.DialogService.Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            AffraNotificationService.NotifyException(ex);
+        }
+        finally
+        {
+            isImporting = false;   
+        }
+    }
+
+
+    private void HeaderValidated(HeaderValidatedArgs args)
+    {
+    }
+
+    private void MissingFieldFound(MissingFieldFoundArgs args)
+    {
+    }
+
+    private IGenericService<User> GetGenericService(IServiceScope serviceScope)
+    {
+        return serviceScope.ServiceProvider.GetRequiredService<IUnitGenericService<User, IUserUnitOfWork>>();
+    }
+}

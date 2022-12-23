@@ -79,6 +79,7 @@
     border-color: var(--rz-base-200);
 }
 
+
 .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
     background: var(--rz-primary);
 }
@@ -93,4 +94,33 @@
 
 .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
     background-color: var(--rz-secondary);
+}
+
+.ant-picker:hover, .ant-picker-focused {
+    box-shadow: var(--rz-input-focus-shadow);
+    border: var(--rz-input-focus-border);
+}
+
+.ant-picker {
+    border-radius: var(--rz-input-border-radius);
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+    border-color: var(--rz-primary-light);
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner, .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner, .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+    background: var(--rz-primary-light);
+}
+
+.ant-spin-dot, .ant-spin {
+    color: var(--rz-primary);
+}
+
+.ant-spin-dot-item {
+    background-color: var(--rz-primary);
+}
+
+.ant-input-affix-wrapper:focus, .ant-input-affix-wrapper-focused {
+    border-color: var(--rz-primary);
 }

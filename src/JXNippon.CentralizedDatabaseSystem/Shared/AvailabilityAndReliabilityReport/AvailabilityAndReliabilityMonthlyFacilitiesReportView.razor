@@ -1,0 +1,138 @@
+﻿@using AntDesign;
+@using CentralizedDatabaseSystemODataService.Affra.Service.CentralizedDatabaseSystem.Domain.AvailabilityAndReliabilityReport;
+@using JXNippon.CentralizedDatabaseSystem.Shared.Description
+
+<Layout Class="layout-view">
+    <Sider Width="250" >
+        <Layout Style="height: 100%;background-color: white;">
+            <Header>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Year</span>
+                    </div>
+                </div>
+            </Header>
+            <Content style="overflow-y: auto; max-height: 100%;">
+                @if (YearList is not null && YearList.Count > 0)
+                {
+                    <Menu DefaultSelectedKeys=@(new[] { YearList[0].ToString() + DateTime.Now.Month }) DefaultOpenKeys=@(new[] { YearList[0].ToString() }) @ref=@menu Style="height: 100%;" Mode=@MenuMode.Inline OnMenuItemClicked=OnMenuItemSelectAsync>
+                        @foreach (int yearItem in YearList)
+                        {
+                            <SubMenu Key="@yearItem.ToString()">
+                                <TitleTemplate>
+                                    <span style="font-size: 16px; margin-left: 0px;">@yearItem</span>
+                                </TitleTemplate>
+                                <ChildContent>
+                                    @foreach (string month in GetMonthList())
+                                    {
+                                        if(month is not null && month != "")
+                                        {
+                                            <MenuItem Key="@(yearItem.ToString() + GetMonthInteger(month.ToString()))"><span style="font-size: 16px; margin-left: 0px;">@month</span></MenuItem>
+                                        }
+                                    }
+                                </ChildContent>
+                            </SubMenu>
+                        }
+                    </Menu>
+                }
+            </Content>
+        </Layout>
+    </Sider>
+    <Layout Style="height:100%;">
+        <Header Style="border-left: 1px solid #dbe0ea">
+            <div class="row">
+                <div class="col-6">
+                    <span>Monthly Availability And Reliability Facilities Report</span>
+                </div>
+            </div>
+        </Header>
+        <Content Style="height:100%;background-color: white;">
+            @if(this.HIPItems is not null)
+            {
+                <AvailabilityAndReliabilityGlobalItemView Year="@HIPItems.Date.Year" Title="Actual Plan Uptime (days)">
+                    @if (monthlyUptimeIsEditing)
+                    {
+                        <RadzenNumeric @bind-Value=@this.HIPItems.MonthlyActualPlannedUptime TValue="decimal?" Change="StopEdit" ShowUpDown="false" MouseLeave="MouseLeave"></RadzenNumeric>
+                    }
+                    else
+                    {
+                        <div @onclick='() => StartEdit("Uptime")'>
+                            @if (this.HIPItems.MonthlyActualPlannedUptime != null)
+                            {
+                                @Math.Round((decimal)this.HIPItems.MonthlyActualPlannedUptime, 2);
+                            }
+                        </div>
+                    }
+                </AvailabilityAndReliabilityGlobalItemView>
+
+                <AvailabilityAndReliabilityTableView Year="@HIPItems.Date.Year">
+                    <AvailabilityAndReliabilityTableRow RowName="HIP">
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.HIPItems.TotalUnplannedInterruption TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.HIPItems.TotalPlannedInterrupion TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.HIPItems.TotalStandby TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.HIPItems.TotalOnDuty TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.HIPItems.AvailabilityPercentage TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.HIPItems.ReliabilityPercentage TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.HIPItems.YTDReliabillity TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.HIPItems.YTDAvailability TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.HIPItems.YEPReliability TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.HIPItems.Date.Year.ToString() + this.HIPItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.HIPItems.YEPAvailability TItem="MonthlyHIPAvailabilityAndReliabilityCalculation" ItemId="@this.HIPItems.Id" Item="@this.HIPItems" />
+                    </AvailabilityAndReliabilityTableRow>
+
+                    <AvailabilityAndReliabilityTableRow RowName="Layang">
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.LayangItems.TotalUnplannedInterruption TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.LayangItems.TotalPlannedInterrupion TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.LayangItems.TotalStandby TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.LayangItems.TotalOnDuty TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.LayangItems.AvailabilityPercentage TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.LayangItems.ReliabilityPercentage TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.LayangItems.YTDReliabillity TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.LayangItems.YTDAvailability TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.LayangItems.YEPReliability TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.LayangItems.Date.Year.ToString() + this.LayangItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.LayangItems.YEPAvailability TItem="MonthlyLayangAvailabilityAndReliabilityCalculation" ItemId="@this.LayangItems.Id" Item="@this.LayangItems" />
+                    </AvailabilityAndReliabilityTableRow>
+
+                    <AvailabilityAndReliabilityTableRow RowName="FPSO">
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.FPSOItems.TotalUnplannedInterruption TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.FPSOItems.TotalPlannedInterrupion TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" IsEditable=true IsRequired=true @bind-Value=@this.FPSOItems.TotalStandby TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.FPSOItems.TotalOnDuty TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.FPSOItems.AvailabilityPercentage TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.FPSOItems.ReliabilityPercentage TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.FPSOItems.YTDReliabillity TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.FPSOItems.YTDAvailability TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.FPSOItems.YEPReliability TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                        <DecimalMonthlyAvailabilityAndReliabilityDataItem Year="@(this.FPSOItems.Date.Year.ToString() + this.FPSOItems.Date.Month.ToString())" OnDataUpdate="OnDataUpdateHandler" @bind-Value=@this.FPSOItems.YEPAvailability TItem="MonthlyFPSOAvailabilityAndReliabilityCalculation" ItemId="@this.FPSOItems.Id" Item="@this.FPSOItems" />
+                    </AvailabilityAndReliabilityTableRow>
+                </AvailabilityAndReliabilityTableView>
+
+                <AvailabilityAndReliabilityGlobalItemView Title="Monthly Average Facilities Availability">
+                    @GetMonthlyAvailabilityAverage()
+                </AvailabilityAndReliabilityGlobalItemView>
+
+                <AvailabilityAndReliabilityGlobalItemView Title="Monthly Target">
+                    @if (monthlyTargetIsEditing)
+                    {
+                        <RadzenNumeric @bind-Value=@this.HIPItems.MonthlyTarget TValue="decimal?" Change="StopEdit" ShowUpDown="false" MouseLeave="MouseLeave"></RadzenNumeric>
+                    }
+                    else
+                    {
+                        <div @onclick='() => StartEdit("Target")'>
+                            @if (this.HIPItems.MonthlyActualPlannedUptime != null)
+                            {
+                                @Math.Round((decimal)this.HIPItems.MonthlyTarget, 2);
+                            }
+                        </div>
+                    }
+                </AvailabilityAndReliabilityGlobalItemView>
+            }
+            else
+            {
+                <div class="min-vh-56 d-flex align-items-center justify-content-center gap-3">
+                    <GenericDescription Height="250px" ImageFile="@ImageFile.NoData" Description="No facilities data created.">
+                    </GenericDescription>
+                </div>
+            }
+        </Content>
+    </Layout>
+</Layout>
