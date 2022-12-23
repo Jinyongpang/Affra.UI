@@ -37,7 +37,7 @@
         <Content Style="height:100%;background-color: white;">
             @if(this.HIPAvailabilityItems is not null)
             {
-                <div class="p-1">
+                <div class="p-2">
                     <Card Title="Overall Facilities / Platform Availability">
                         <RadzenChart>
                             <RadzenLineSeries Data="this.HIPAvailabilityChartList" CategoryProperty="Month" Title="HIP Availability" LineType="LineType.Solid" ValueProperty="Percentage" />
@@ -56,7 +56,7 @@
                     </Card>
                 </div>
                 <br />
-                <div class="p-1">
+                <div class="px-2">
                     <Card Title="Overall Facilities / Platform Reliability">
                         <RadzenChart>
                             <RadzenLineSeries Data="this.HIPReliabilityChartList" CategoryProperty="Month" Title="HIP Reliability" LineType="LineType.Solid" ValueProperty="Percentage" />
@@ -75,7 +75,7 @@
                     </Card>
                 </div>
                 <br />
-                <div class="p-1">
+                <div class="px-2">
                     <AvailabilityAndReliabilityDashboardTableView Year="@HIPAvailabilityItems.Year">
                         <AvailabilityAndReliabilityDashboardTableRow Title="HIP" Measure="Availability" RowSpan="2">
                             @if (HIPAvailabilityPercentageList is not null)
